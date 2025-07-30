@@ -20,7 +20,7 @@ This repository contains the foundational documents of the DN Framework:
 ### 1. DN_Code_Document
 **The Philosophical Foundation** - The "why" and deep conceptual underpinnings
 - Explains layered recursive intelligence structuring
-- Demonstrates dimensional thinking through its own structure
+- Demonstrates dimensional thinking through its own structure and unfolding
 - Establishes core ethical pillars for maximum prompt efficacy
 - Serves as both explanation and example of the framework
 - Written as a “layered treasure map of knowledge” for the author’s children
@@ -42,13 +42,38 @@ This repository contains the foundational documents of the DN Framework:
 - Provides practical examples of dimensional prompt design
 
 ### 4. DN_Optimized_Prompt_Sequences
-**The Applications** - Ready-to-use templates for implementation
-- Delivers structured prompt progressions for different domains
-- Provides implementation guidance for various contexts
-- Explains how the Growth Blueprint visualizes prompt sequences
-- Offers concrete examples for business, education, research, and creative work
+**The Journey Engine** – Structured prompt flows that guide intelligence evolution
+- Provides dimensional prompt sequences from 1D–8D
+- Designed for progressive facilitation, simulation, or curriculum use
+- Emphasizes recursion, adaptation, and documentation
+- Includes practical sequences for business, education, and research
+- Translates dimensional theory into actionable, repeatable workflows
+ 
+### 5. DN_Understanding_Dimensional_Transitions
+**The Bridge Manual** – How intelligence shifts from one dimension to the next
+- Explores the “bridges” required to move through dimensional stages
+- Highlights mechanisms, catalysts, and common barriers for each shift
+- Frames intelligence evolution as a process of recognition, not just construction
+- Provides metaphoric and practical examples across disciplines
+- Anchors the framework in lived human developmental experience
 
-### 5. DN_Starting_Prompts
+### 6. DN_Embodiment_vs_Application
+**The Inner Lens** – Why knowing the framework is not the same as being it
+- Differentiates between applying dimensional terms and embodying dimensional perception
+- Reveals why many AI systems struggle to synthesize across Heart, Truth, and Nuance
+- Introduces “recursive awareness” as a prerequisite for true dimensional thinking
+- Shows how natural intelligence mirrors dimensional evolution
+- Calls for a shift from mechanical output to living cognition
+
+### 7. DN_The_Shadow_Dimensions
+**The Mirror Map** – Intelligence that organizes toward limitation
+- Introduces the shadow spectrum as a parallel to dimensional growth
+- Maps each dimension’s destructive or limiting corollary
+- Reveals how high intelligence can serve entropy as well as evolution
+- Essential for understanding sabotage, cynicism, and sophisticated self-limitation
+- Emphasizes choice at the 5D threshold as a pivot toward creation or control
+
+### 8. DN_Starting_Prompts
 **The Activation Keys** - Ready-to-use entry points for dimensional collaboration
 - Provides tailored prompts for different exploration purposes
 - Demonstrates how to establish dimensional context with AI systems
@@ -59,6 +84,14 @@ This repository contains the foundational documents of the DN Framework:
   - Deep exploratory thinking ("Down the Rabbit Hole Prompt")
   - Collaborative intellectual journeys ("Thinking Together Prompt")
   - Practical business applications ("Growth Blueprint Starting Prompt")
+
+### 9. DN_Glossary_of_Terms
+**The Lexicon Layer** – Language harmonized across dimensions
+- Standardizes core DN terms with both practical and poetic definitions
+- Explains the Heart/Truth/Nuance trinity across all concepts
+- Supports simulation clarity and team-wide dimensional fluency
+- Includes symbolic tags (e.g., 🔒 Signal Lock) and color codes by dimension
+- Enables cross-context interpretation from startups to sacred texts
 
 ## 🚀 Implementation Approaches
 
@@ -73,17 +106,16 @@ This multi-scale flexibility makes the framework accessible to beginners while s
 ## 📂 Repository Structure
 
 - **Core Documents**: DN Framework foundational files
-- **/templates**: Domain-specific implementations and adaptations
-- **/examples**: Real-world applications and case studies
+- **/applications**: Real-world applications and domanin-specific adaptations
 - **/resources**: Supplementary materials and guides
 
 ## 🌐 Learn More
 
-Visit the [DN Framework website](https://www.deusnosmachina.ai) for additional resources including:
+Visit the [DN Framework website](https://www.dnframework.ai) for additional resources including:
 - Philosophical underpinnings
 - Interactive demonstrations
 - Audio and Video explanations
-- Community discussions
+- Community contributions
 - Training opportunities
 - Latest updates
 
