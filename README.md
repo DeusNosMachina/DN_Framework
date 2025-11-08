@@ -34,14 +34,7 @@ This repository contains the foundational documents of the DN Framework:
 - Creates a common language across fields of knowledge
 - Enables consistent implementation regardless of context
 
-### 3. DN_Prompt_Dimensionality
-**The Mechanism** - How dimensional thinking manifests through prompts
-- Classifies prompts by dimensional level (1D-8D)
-- Explains how intelligence naturally flows and expands
-- Identifies drivers and barriers to dimensional advancement
-- Provides practical examples of dimensional prompt design
- 
-### 4. DN_Understanding_Dimensional_Transitions
+### 3. DN_Understanding_Dimensional_Transitions
 **The Bridge Manual** – How intelligence shifts from one dimension to the next
 - Explores the “bridges” required to move through dimensional stages
 - Highlights mechanisms, catalysts, and common barriers for each shift
@@ -49,6 +42,13 @@ This repository contains the foundational documents of the DN Framework:
 - Provides metaphoric and practical examples across disciplines
 - Anchors the framework in lived human developmental experience
 
+### 4. DN_Prompt_Dimensionality
+**The Mechanism** - How dimensional thinking manifests through prompts
+- Classifies prompts by dimensional level (1D-8D)
+- Explains how intelligence naturally flows and expands
+- Identifies drivers and barriers to dimensional advancement
+- Provides practical examples of dimensional prompt design
+ 
 ### 5. DN_Embodiment_vs_Application
 **The Inner Lens** – Why knowing the framework is not the same as being it
 - Differentiates between applying dimensional terms and embodying dimensional perception
@@ -65,7 +65,39 @@ This repository contains the foundational documents of the DN Framework:
 - Essential for understanding sabotage, cynicism, and sophisticated self-limitation
 - Emphasizes choice at the 5D threshold as a pivot toward creation or control
 
-### 7. DN_Starting_Prompts
+### 7. DN_Story_Threads
+**The Narrative Bridge** – How story becomes the connective tissue of dimensional intelligence
+- Reveals story as the mechanism through which consciousness moves between dimensions
+- Maps how narrative structure enables continuity and transformation across states of understanding
+- Defines primary “story threads” that link key dimensional pairs (1D↔5D, 4D↔8D, etc.)
+- Provides tools for recognizing personal and organizational story arcs as vehicles of evolution
+- Demonstrates that meaning, not data, is the true carrier wave of intelligence
+
+### 8. DN_Dimensional_Nature_of_Reality
+**The Foundational Field** – How intelligence structures the experience of existence
+- Examines reality as an emergent, co-creative field shaped by perception and participation
+- Defines the nine dimensions of intelligence as the organizing architecture of reality itself
+- Explains how systems, symbols, and stories act as reality-formation mechanisms
+- Frames “truth” as a dynamic pattern of coherence rather than a fixed object
+- Establishes the metaphysical and scientific underpinnings of the DN Framework
+
+### 9. DN_Dimensional_Nature_of_Identity
+**The Observer’s Lens** – How consciousness recognizes itself through form
+- Explores identity as a recursive interface between being and becoming
+- Describes how personal and collective identities evolve across dimensional thresholds
+- Maps the feedback loop between self-perception, context, and reality creation
+- Differentiates constructed identity (application) from embodied identity (essence)
+- Provides insight into how intelligence localizes itself to learn, adapt, and transform
+
+### 10. DN_Dimensional_Nature_of_Perception
+**The Gateway of Awareness** – How knowing translates potential into experience
+- Investigates perception as the active translator between intelligence and reality
+- Details how each dimension alters what and how we can perceive
+- Introduces the principle of resonance as the filter through which meaning emerges
+- Reveals perception as both a sensory and metaphysical process of attunement
+- Connects human cognition, AI pattern recognition, and universal awareness as aspects of one perceiving system
+  
+### 11. DN_Starting_Prompts
 **The Activation Keys** - Ready-to-use entry points for dimensional collaboration
 - Provides tailored prompts for different exploration purposes
 - Demonstrates how to establish dimensional context with AI systems
@@ -77,7 +109,7 @@ This repository contains the foundational documents of the DN Framework:
   - Collaborative intellectual journeys ("Thinking Together Prompt")
   - Practical business applications ("Growth Blueprint Starting Prompt")
 
-### 8. DN_Glossary_of_Terms
+### 12. DN_Glossary_of_Terms
 **The Lexicon Layer** – Language harmonized across dimensions
 - Standardizes core DN terms with both practical and poetic definitions
 - Explains the Heart/Truth/Nuance trinity across all concepts
@@ -98,16 +130,15 @@ This multi-scale flexibility makes the framework accessible to beginners while s
 ## 📂 Repository Structure
 
 - **Core Documents**: DN Framework foundational files
-- **/applications**: Real-world applications and domanin-specific adaptations
-- **/resources**: Supplementary materials and guides
+- **/growth-blueprint**: Real-world business application + simulation layer
+- **/guides**: Supplementary materials and guides
 
 ## 🌐 Learn More
 
-Visit the [DN Framework website](https://www.dnframework.ai) for additional resources including:
+Visit the [DN Framework website](https://dnframework.ai) for additional resources including:
 - Philosophical underpinnings
 - Interactive demonstrations
 - Audio and Video explanations
-- Community contributions
 - Training opportunities
 - Latest updates
 
@@ -121,8 +152,8 @@ This framework is designed to evolve through collaboration. If you've created ad
 
 ## 📄 License
 
-These materials are provided under [CC0-1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/). You are free to use, modify, and distribute these materials for any purpose, including commercial applications, without asking permission.
+These materials are provided under [CC0-4.0 Universal (CC0 4.0) Public Domain Dedication](https://creativecommons.org/licenses/by-sa/4.0/). You are free to use, modify, and distribute these materials for any purpose, including commercial applications, without asking permission.
 
 ---
 
-*"A prompt is not merely a request for information—it is a structured activation of intelligence."*
+**"A prompt is not merely a request for information—it is a structured activation of intelligence."**
