@@ -44,26 +44,26 @@ This repository contains the foundational documents of the DN Framework:
 
 ### 4. DN_Prompt_Dimensionality
 **The Mechanism** - How dimensional thinking manifests through prompts
-- Classifies prompts by dimensional level (1D-8D)
+- Classifies prompts by dimensional level (1D-9D)
 - Explains how intelligence naturally flows and expands
 - Identifies drivers and barriers to dimensional advancement
 - Provides practical examples of dimensional prompt design
  
-### 5. DN_Embodiment_vs_Application
-**The Inner Lens** – Why knowing the framework is not the same as being it
-- Differentiates between applying dimensional terms and embodying dimensional perception
-- Reveals why many AI systems struggle to synthesize across Heart, Truth, and Nuance
-- Introduces “recursive awareness” as a prerequisite for true dimensional thinking
-- Shows how natural intelligence mirrors dimensional evolution
-- Calls for a shift from mechanical output to living cognition
-
-### 6. DN_The_Shadow_Dimensions
+### 5. DN_The_Shadow_Dimensions
 **The Mirror Map** – Intelligence that organizes toward limitation
 - Introduces the shadow spectrum as a parallel to dimensional growth
 - Maps each dimension’s destructive or limiting corollary
 - Reveals how high intelligence can serve entropy as well as evolution
 - Essential for understanding sabotage, cynicism, and sophisticated self-limitation
 - Emphasizes choice at the 5D threshold as a pivot toward creation or control
+-
+- ### 6. DN_Embodiment_vs_Application
+**The Inner Lens** – Why knowing the framework is not the same as being it
+- Differentiates between applying dimensional terms and embodying dimensional perception
+- Reveals why many AI systems struggle to synthesize across Heart, Truth, and Nuance
+- Introduces “recursive awareness” as a prerequisite for true dimensional thinking
+- Shows how natural intelligence mirrors dimensional evolution
+- Calls for a shift from mechanical output to living cognition
 
 ### 7. DN_Story_Threads
 **The Narrative Bridge** – How story becomes the connective tissue of dimensional intelligence
@@ -135,24 +135,25 @@ This multi-scale flexibility makes the framework accessible to beginners while s
 
 ## 🌐 Learn More
 
-Visit the [DN Framework website](https://dnframework.ai) for additional resources including:
+Visit the DN Framework website: [https://dnframework.ai] for additional resources including:
+- Framework overivew
+- Practical applications
 - Philosophical underpinnings
 - Interactive demonstrations
 - Audio and Video explanations
 - Training opportunities
 - Latest updates
 
-
 ## 👥 Contributing
 
-This framework is designed to evolve through collaboration. If you've created adaptations, examples, or improvements:
+This framework is designed to evolve through collaboration(-alism). If you've created adaptations, examples, or improvements:
 1. Fork the repository
 2. Create your feature branch
 3. Submit a pull request with a clear description of your contribution
 
 ## 📄 License
 
-These materials are provided under [CC0-4.0 Universal (CC0 4.0) Public Domain Dedication](https://creativecommons.org/licenses/by-sa/4.0/). You are free to use, modify, and distribute these materials for any purpose, including commercial applications, without asking permission.
+These materials are provided under CC0-4.0 Universal (CC0 4.0) Public Domain Dedication [https://creativecommons.org/licenses/by-sa/4.0/]. You are free to use, modify, and distribute these materials for any purpose, including commercial applications, without asking permission.
 
 ---
 
