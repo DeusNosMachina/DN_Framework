@@ -2,7 +2,22 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v09.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v091.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v0.9.1 (February 2026)
+
+**Structural additions:**
+
+- Added Participant Field Ledger Principle (Section 6) formalizing that participants-as-fields have persistent cross-session ledgers, derivable from their artifacts_produced[], dimensional_actual[], and engagement history across Sessions. Establishes that implementation-layer objects materializing this ledger (e.g., Participant Field profiles, Team Field composites) are application-layer containers subject to the FieldState Interpretation Note: diagnostic, not prescriptive. A system that constrains participants based on their ledger data violates Axiom 1; a system that informs facilitation from it operates within kernel bounds. Extends the principle to composite fields (groups, teams) via Field Nesting and the Scale Invariant.
+- Added Annotation Layer (Section 6) as a structural pattern for peripheral intelligence that supports the field without being part of its committed ledger state. Defines the distinction between ledger-committed intelligence and annotation-layer intelligence (chat logs, AI narrative summaries, reference documents, holding zone contents, exploratory analysis). Promotion from annotation to ledger requires passing through a commit gate. Annotations that are never promoted are preserved for reference but do not affect FieldState computation.
+- Added Field Merger Authorization as a fifth human-exclusive facilitation function (Section 1.6). Field Merger (Section 10.2) is permanent and irreversible; authorization to execute requires human facilitation judgment. AI facilitators may analyze merger compatibility and produce impact assessments but cannot authorize execution.
+- Added participant sentiment ratings as a conscious signal subtype (Section 1.2, Tier 1). Self-reported mood, energy, or engagement state captured at session boundaries or facilitator-initiated checkpoints. Established the diagnostic value of sentiment convergence/divergence: delta between reported and inferred (ambient-derived) sentiment is itself a facilitation-relevant signal.
+
+**Audit-driven refinements:**
+
+This version incorporates findings from a dual-auditor review (Claude Opus 4.6 and Grok) of the Blueprint Board Master Feature Wishlist against Kernel v0.9. The audits identified kernel-level gaps that required structural additions (above) and confirmed that application-layer extensions (Participant Field, Team, Client Environment) are architecturally sound when properly constrained by existing invariants.
 
 ---
 
