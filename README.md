@@ -2,11 +2,11 @@
 
 ## Bridging Human and AI Intelligence Through Dimensional Thinking
 
-Welcome to Collaborationalism, a revolutionary concept of collaborative prompt development built around the ‘DN Framework,’ a methodology for structured intelligence communication that aligns human and artificial intelligence around multi-dimensional thinking. This framework provides a common language for human-AI collaboration, creating powerful new possibilities for solving complex problems across any domain.
+Welcome to Collaborationalism, a revolutionary concept of collaborative prompt development built around systems like the ‘DN Framework,’ a methodology for structured intelligence communication that aligns human and artificial intelligence around multi-dimensional thinking. This framework provides a common language for human-AI collaboration, creating powerful new possibilities for solving complex problems across any domain.
 
 ## 🔍 What Is Collaborationalism?
 
-Collaborationalism comes through using the DN meta-framework to help structure intelligence across dimensions, creating bridges between seemingly incompatible systems of thought. It's not just a philosophy or methodology, but a practical system for activating higher-dimensional thinking in any context.
+Collaborationalism comes through using systems like the DN meta-framework to help structure intelligence across dimensions, creating bridges between seemingly incompatible zones of thought. It's not just a philosophy or methodology, but a practical system for activating higher-dimensional thinking in any context.
 
 At its core are three fundamental pillars:
 - **Heart**: The motivational force, emotional resonance, and purpose
@@ -56,7 +56,7 @@ This repository contains the foundational documents of the DN Framework:
 - Reveals how high intelligence can serve entropy as well as evolution
 - Essential for understanding sabotage, cynicism, and sophisticated self-limitation
 - Emphasizes choice at the 5D threshold as a pivot toward creation or control
--
+
 - ### 6. DN_Embodiment_vs_Application
 **The Inner Lens** – Why knowing the framework is not the same as being it
 - Differentiates between applying dimensional terms and embodying dimensional perception
@@ -153,8 +153,7 @@ This framework is designed to evolve through collaboration(-alism). If you've cr
 
 ## 📄 License
 
-These materials are provided under CC0-4.0 Universal (CC0 4.0) Public Domain Dedication [https://creativecommons.org/licenses/by-sa/4.0/]. You are free to use, modify, and distribute these materials for any purpose, including commercial applications, without asking permission.
-
+These materials are provided under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). You are free to use, modify, and distribute these materials for any purpose, including commercial applications, provided you give appropriate credit and distribute any derivative works under the same license.
 ---
 
 **"A prompt is not merely a request for information—it is a structured activation of intelligence."**
