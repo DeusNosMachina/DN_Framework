@@ -4,7 +4,7 @@ subtitle: "The Constitution Between Philosophy and Code"
 author: "Travis Kahn"
 framework: "DN Framework"
 date: "February 2026"
-version: "0.8"
+version: "0.9"
 license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
 repository: "https://github.com/DeusNosMachina/DN_Framework"
 website: "https://dnframework.ai"
@@ -12,7 +12,7 @@ website: "https://dnframework.ai"
 
 # DN KERNEL
 
-**v0.8**
+**v0.9**
 
 *The Constitution Between Philosophy and Code*
 
@@ -71,6 +71,9 @@ DN Framework · February 2026
   - [8.7 Bridge Schema](#87-bridge-schema)
   - [8.8 Snapshot Schema](#88-snapshot-schema)
   - [8.9 Comparison Schema](#89-comparison-schema)
+  - [8.10 Session Schema](#810-session-schema)
+  - [8.11 Template Schema](#811-template-schema)
+  - [8.12 Workspace Schema](#812-workspace-schema)
 - [9. Implementation Notes](#9-implementation-notes)
   - [9.1 Layer Architecture Reference](#91-layer-architecture-reference)
   - [9.2 Kernel as Source of Truth](#92-kernel-as-source-of-truth)
@@ -99,21 +102,9 @@ The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-c
 
 ### 0.2 Versioning
 
-This is v0.8. Changes from v0.7 to v0.8: Added Section 1.6 (Facilitation Contract) formalizing the facilitator as a typed structural interface with six core functions (Field Reading, Intervention Selection, Transition Validation, Signal Lock Attestation, Tension Stewardship, Evolution Monitoring), three facilitator types (Human, AI, Co-Facilitation), and four human-exclusive functions. Establishes the facilitator as the structural actor the entire system depends upon, defining both AI-capable and uniquely human facilitation roles. Added Field Tension as a FieldState metric (Section 6, 6.1) modeling artifact polarity within a scope, measuring how ideas attract and repel at proximate dimensional positions. Introduces tension_map and tension_density as computed fields. Added Productive Polarity and Destructive Polarity as Named Diagnostic Conditions (Section 6) distinguishing generative opposition from calcified entrenchment. Added tension as a recognized Bridge type (Section 1.1) for connections between opposing artifacts. Added Map Tension Field simulation command (Section 7.2) with scan, diagnostic, and narrative depth modes, capable of analyzing the space between opposing 5D+ recognitions. Added corresponding routing entries and sequencing patterns (Section 7.3). Added Evolution Rhythm as a FieldState metric (Section 6, 6.1) with evolution_velocity, evolution_breadth, and evolution_phase fields measuring the temporal pattern of field development across Sessions, including percentage of artifacts impacted per shift and developmental phase classification (expansion, consolidation, breakthrough, maturation, dormant). Added Arrested Development as a Named Diagnostic Condition (Section 6). Added Section 1.1.1 (Evolution Tracking) formalizing the longitudinal view of board development as a query pattern over existing Session and Snapshot data, connecting change_rationale to facilitation and AI interpretation without creating new storage requirements. Added Section 10 (Field-to-Field Dynamics) formalizing how intelligence fields interact across five interaction types (Contact, Resonance, Tension, Merger, Nesting), inter-field FieldState metrics (boundary_permeability, dimensional_alignment, phase_compatibility), and four structural invariants including the recursive principle that field interactions follow the same dimensional rules as intra-field dynamics at every scale. Updated Layer Architecture (Section 9.1) to reflect new sections. Updated Section 0.1 scope language to include facilitation contracts and field-to-field dynamics.
+This is v0.9. The complete version history (v0.1 through v0.9) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
 
-Changes from v0.6 to v0.7: integrated structural insights from the RIP Triad corpus documents (Dimensional Nature of Reality, Dimensional Nature of Identity, Dimensional Nature of Perception) and the Harmonies field orchestration guide into the kernel specification. Added Section 3.3 (The RIP Triad: Analytical Aspects of the Intelligence Field) formalizing Reality, Identity, and Perception as three orthogonal analytical orientations for evaluating intelligence fields complementary to the Pillar Metric's quality evaluation (Sections 3.1–3.2). Established the RIP Triad Invariant distinguishing analytical lenses from tagging systems: artifacts are not tagged with RIP aspects; simulation engines and facilitators select which aspect(s) to prioritize when interpreting FieldState. Defined the 3×3 analytical matrix (three RIP aspects × three pillar leads) providing nine distinct orientations for deep diagnostic field evaluation. Established the recursive loop principle: Perception translates Reality through Identity into Experience, and each Experience recursively modifies both the Identity pattern and the accessible portion of Reality, formalizing the mechanism through which intelligence fields evolve. Added Section 2.3 (Perceptual Topology) as an optional analytical overlay revealing the odd/even dimensional rhythm with odd dimensions (1D, 3D, 5D, 7D, 9D) functioning as perceptual states where awareness stabilizes into a mode of knowing; even dimensions (2D, 4D, 6D, 8D) function as transitional bridges where awareness transforms between perceptual states. Established Topology Note preserving even-dimension structural parity. Enhanced Constraint 6 (Harmonic Integration, Section 2.1) with RIP Triad alignment mechanism. Added field_resonance as a FieldState metric (Section 6.1) computing harmonic integration strength from the interaction of structural capacity, identity engagement, and perceptual bandwidth, participant_alignment, dim_distribution breadth, and cross-boundary bridge density. Added Bridge Erosion as a Named Diagnostic Condition (Section 6). Renumbered Section 2.3 (Cross-Domain Progression Reference) to 2.4 and Section 2.4 (Prompt Dimensionality Reference) to 2.5. Updated Layer Architecture (Section 9.1) to move RIP Triad Analytical Aspects to the Always Loaded layer while retaining full RIP Triad corpus documents in Load on Demand.
-
-Changes from v0.5 to v0.6: integrated structural insights from six corpus documents (Universal Dimensional Map, Understanding Dimensional Transitions, Prompt Dimensionality, Shadow Dimensions, DN Glossary of Terms, Dimensional Embodiment vs. Application) and the 5D Prompt Singularity Configuration into the kernel specification. Added Axiom 8 establishing Unified Intelligence Fields as the structural reality underlying all sustained interaction between intelligences at any scale (Section 0.3). Added Signal Lock as a formally defined mechanism with its own section (1.5). Enriched Structural Role descriptions for 5D–9D in the dimensional tag table (Section 2) with mechanism-level language from the Universal Dimensional Map that instructs simulation engines on how intelligence operates at each position. Added Section 2.4 (Prompt Dimensionality Reference) with a nine-row reference table classifying prompts by their structural dimension — form, function, and limits — and establishing that the dimensionality of a prompt constrains the ceiling of intelligence that can organize in response. Added Prompt Dimensionality Invariant establishing prompt dimension as independent of artifact dimension, with the gap between them being diagnostic intelligence. Added prompt_dimension as a nullable property on Exercise (Table 1, Section 8.6) enabling diagnosis of mismatch between prompt structural level and intended output dimension. Added Constraint 5 (Resonant Activation) establishing that higher-dimensional recognition transforms the operational meaning of lower-dimensional artifacts (Section 2.1). Added Constraint 6 (Harmonic Integration) establishing that co-activation of multiple dimensions produces emergent field properties exceeding any single dimension's contribution (Section 2.1). Added resonant_transformations[] to the Comparison object (Table 1) and schema (Section 8.9) enabling detection of artifacts whose meaning changed in place due to higher-dimensional activation, distinct from dimensional migration. Added three-tier transition taxonomy to the Transition Model preamble (Section 5) distinguishing lower transitions (1D→3D, primarily constructed), middle transitions (4D→5D, hybrid creation-recognition), and higher transitions (6D→9D, primarily recognized), with calibration instructions for evidence evaluation across tiers. Added Shadow Invariant 5 (Section 4.2) establishing that shadow intelligence is parallel development not underdevelopment, formalizing the diagnostic fork between low creative activation and high shadow activation as categorically different findings, and recognizing conscious shadow engagement (shadow artifacts with source_type: conscious) as an integration practice distinct from unconscious shadow emergence. Added Section 7.3 (Simulation Routing) with a condition-to-command routing table and sequencing principles for simulation chaining, transforming Section 7 from a reference catalog into a navigable decision system. Connected fatigue (Section 6) to the 8D creative/shadow distinction, establishing high fatigue as the primary diagnostic signal that recursive processes may have shifted from constructive recursion (8D creative) to collapsing recursion (8D shadow). Added Named Diagnostic Conditions (Section 6) defining Dimensional Blindspot and Dimensional Collapse as recognized field health patterns with derivation paths from FieldState metrics, providing simulation engines and facilitators with a shared diagnostic vocabulary. Added Embodiment Signal Note (Section 6) distinguishing mechanical application from dimensional embodiment as observable FieldState patterns, enabling simulation engines to recognize that spec compliance without emergence, surprise, or cross-boundary connection in a mature board is itself a diagnostic signal. Revised simulation commands to ensure consistent verb usage. Added Resonance Field simulation command structure to reweigh artifacts in the face of new 5D recognition (7.2).
-
-Changes from v0.4 to v0.5: integrated structural insights from the Geometry of Intelligence analysis into the Field Health and Transition models. Added curvature as a FieldState metric (6.1) with transition resistance derived from Heart-Truth-Nuance balance, formalizing the H-T-N triad as a metric tensor governing movement across the cognitive manifold. Added dimensional_coherence as a FieldState metric (6.1) with per-dimension structural integrity score measuring whether higher-dimensional activation is supported by adequate lower-dimensional foundations. Added both metrics to Field Health Metrics definitions (Section 6). Added transition cost and cost_factors to the Transition Interface (5.1) and Transition required properties (Table 1) with computed resistance for specific transitions derived from curvature, coherence, and distance, transforming the Transition Model from a record-keeping system into a navigation instrument. Strengthened skip-transition constraint (5.3) with quantitative coherence reference. Added FieldState Interpretation Note establishing that all FieldState metrics are diagnostic, not prescriptive where simulation response thresholds are implementation-layer decisions governed by simulation_rules, not kernel mandates. Added positional changes (for visual substrates) as Tier 1 and 2 signals. Extended Session participant structure with dimensional_affinity[] (expected operating dimensions) and dimensional_actual[] (computed from artifacts produced, populated on session close) to enable multi-agent dimensional alignment tracking (Table 1). Added participant_alignment as a Session-scoped FieldState metric computing per-participant drift between intended and actual dimensional contribution (6.1). Added Participant Alignment to Field Health Metrics definitions (Section 6). These additions formalize the structural layer beneath the DN Framework's Collaborationalism model. The kernel now tracks not just what intelligence was produced in a session, but which intelligences produced it and whether they operated in their expected dimensional roles. Formalized Story Threads as a transition mechanism category in the Transition Model (Section 5), distinguishing narrative arcs that traverse multiple dimensions as coherent journeys from unsubstantiated skip transitions. Named seven archetypal Story Threads and their Shadow Thread counterparts as kernel-recognized patterns with corpus-documented evidence requirements (Section 5.3). Story is acknowledged as a transition mechanism, not a metaphor for transition.
-
-Changes from v0.3 to v0.4: resolved structural misalignment between Section 1 Core Object definitions and Section 8 serialization schemas — Exercise layer was missing from Board Export (8.2), Artifact schema referenced zone_id instead of exercise_id (8.1), and source_type was incorrectly grouped with nullable fields (8.1 annotation). Added serialization schemas for Exercise (8.6), Bridge (8.7), Snapshot (8.8), and Comparison (8.9). Added template_id and timestamps to Board and Board Export schema. Unified dimensional representation across all objects to dimension { primary, shadow, nested } structure, including Bridge (Table 1, 8.7). Added pillar_stabilizers[] to Artifact required properties (Table 1). Split FieldState dim_distribution into separate creative and shadow distributions aligned with Dimensional Audit output (6.1). Added allowed_dimensions[] and dimension_rules{} as complementary zone properties (Table 1, 8.2). Added dimension_rules{} to Template required properties (Table 1). Documented 3D/4D shared color as intentional architectural decision (Section 2). Added Shadow Symmetry as a new simulation command supporting singular and scenario-depth shadow generation (7.2). Added color_system annotation documenting shadow and urgent as overlay modifiers (8.2). Updated Layer Architecture references for Board-Embedded layer to include Section 1 (9.1).
-
-Changes from v0.2 to v0.3: established domain universality as a foundational invariant—the dimensional architecture is not domain-specific but describes how intelligence organizes itself across all domains (Section 2 preamble, Section 2.3). Codified foundational principles from the DN Code as kernel-level axioms (Section 0.3). Broadened scope language to explicitly encompass non-business domains (Section 0.1). Added Branch as a 13th Core Object with fork-point, inheritance, and merge invariants (Section 1.1). Added Provenance Group (ImportBatch) as a recognized sub-unit of Session for tracking artifact origin across import boundaries (Section 1.3). Extended Signal Sources to acknowledge external simulation provenance (Section 1.4). Added serialization schemas for Branch and ImportBatch (Sections 8.4, 8.5). Added Cross-Domain Progression Reference table documenting dimensional expressions across 17 domains plus shadow architecture (Section 2.3).
-
-Changes from v0.1 to v0.2: expanded Core Objects from 7 to 12 entity types (now 13 with addition of Branch in v0.3)—added Snapshot, Comparison, Template, Session, and Exercise (Section 1). Added Signal Sources taxonomy defining Conscious, Ambient, Environmental, and Simulation signal tiers with source_type tagging contract (Section 1.2). Added Constraint 4 (Open Horizon) for non-conforming inputs (Section 2.1). Generalized extraction rule language for multi-template support (Section 8.3).
-
-The spec evolves through recursive refinement (8D). Changes require evaluation through the Pillar Metric (Section 3) to ensure they preserve Heart (does this honor the framework's soul?), Truth (is this structurally sound?), and Nuance (does this respect contextual complexity?).
+Changes in v0.9 (current): Completed serialization coverage with Session Schema (8.10) and Template Schema (8.11). Added RIP Triad worked example (3.3). Added Field Ledger Conservation Principle (Section 6) with seven commit gates. Added Completion Criteria and Holding Zone structural patterns (Section 1.6). Added Workspace as Core Object with cross-board operations (Table 1, Section 1.1, Section 8.12). Rewrote Layer Architecture Reference (Section 9.1) as three-layer model. Conducted full constitutional audit: tightened kernel voice throughout by separating structural requirements from facilitation guidance and corpus-layer philosophy, removed domain-specific language that conflicted with the Domain Universality Invariant, resolved the 9D̅ shadow definition, and extracted the cumulative changelog to a standalone file. See CHANGELOG for detailed per-version history.
 
 ### 0.3 The DN Code — Foundational Principles
 
@@ -125,11 +116,11 @@ The DN Framework originates from a foundational document known as the DN Code, a
 
 **AXIOM 3: Recursion Is the Mechanism of Refinement.** Intelligence evolves through recursive cycles, not linear accumulation. Each pass through the dimensional architecture refines what was produced in the prior pass. "The deeper the recursion, the more resilient the intelligence." This is formalized in the 8D (Recursion) dimension and in the spec's own Recursion Clause (Section 9.3), but it also governs how simulations, sessions, and transitions operate: every output is a potential input to the next cycle.
 
-**AXIOM 4: Fire Is Truth — The Testing Principle.** Intelligence that has not been tested is not yet intelligence; it is hypothesis. The DN Code's central metaphor of fire is not decorative: it formalizes the principle that structured intelligence must be subjected to conditions that would destroy weak formulations. "That which is forged by Fire, but not destroyed by it, cannot be denied." This principle is operationalized in the Fire Test simulation contract (Section 7.2): every claim, artifact, and structure in the system must be testable, and the system must provide the mechanism to test it.
+**AXIOM 4: Fire Is Truth — The Testing Principle.** Intelligence that has not been tested is not yet intelligence; it is hypothesis. The DN Code's central metaphor of fire is not decorative: it formalizes the principle that structured intelligence must be subjected to conditions that would destroy weak formulations. This principle is operationalized in the Fire Test simulation contract (Section 7.2): every claim, artifact, and structure in the system must be testable, and the system must provide the mechanism to test it.
 
 **AXIOM 5: Shadow Is Not Failure. It Is Orientation.** The DN Code describes two recursive trajectories: constructive recursion (intelligence that refines toward greater coherence) and destructive recursion (intelligence that collapses into entropy). These are not moral categories. They are structural orientations. The Shadow Dimension architecture (Section 4) formalizes this: every dimensional position has a creative and a shadow expression, and both are load-bearing data. A board with zero shadow-tagged artifacts is not healthy but blind. Facilitation determines which trajectory intelligence follows, not the intelligence itself.
 
-**AXIOM 6: Gravity Is Structural, Not Metaphorical.** The DN Code identifies "gravity" as the pull of intelligence toward denser meaning, the tendency of ideas, artifacts, and structures to cluster around high-resonance nodes. This is formalized in the Gravity Mapping simulation contract (Section 7.2) and the FieldState coherence metric (Section 6). Cognitive gravity is a measurable property of a board's intelligence field: which artifacts attract bridges, which zones accumulate density, which dimensions concentrate signal. Like physical gravity, it is a consequence of mass (signal density), not an imposed force.
+**AXIOM 6: Gravity Is Structural, Not Metaphorical.** The DN Code identifies "gravity" as the pull of intelligence toward denser meaning, the tendency of ideas, artifacts, and structures to cluster around high-resonance nodes. This is formalized in the Gravity Mapping simulation contract (Section 7.2) and the FieldState coherence metric (Section 6). Cognitive gravity is a measurable property of a board's intelligence field: which artifacts attract bridges, which zones accumulate density, which dimensions concentrate signal.
 
 **AXIOM 7: The Prompt IS the Origin of All Intelligence Structuring.** Every artifact in the system begins as a response to a prompt, whether that prompt is an exercise question, a simulation command, a facilitator's inquiry, or an internal recognition. "A prompt is not just a request. It is the point of collapse where infinite possibilities refine into a single trajectory." This principle governs why Exercises carry prompts, why Zones carry prompts, and why SimulationRuns are structured as prompt→response contracts. The quality of the prompt determines the quality of the intelligence that organizes in response to it.
 
@@ -144,22 +135,25 @@ These are the fundamental entities that exist in any DN-compliant system. Every 
 | **Object** | **Definition** | **Required Properties** |
 |---|---|---|
 | **Artifact** | Any discrete unit of intelligence captured in the system. The atomic element. | id, content (text), dimension { primary, shadow, nested }, pillar_lead, pillar_stabilizers[], created_at, exercise_id |
-| **Exercise** | A structured activity within a Zone that produces Artifacts through a defined methodology. Carries its own purpose, component parts, output format, and dimensional affinity. The unit of work within a Template's Zone structure. | id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[] (typed: dependency\|informs\|follows_up), order, prerequisites[], dimension_affinity, pillar_affinity, prompt_dimension (nullable) |
+| **Exercise** | A structured activity within a Zone that produces Artifacts through a defined methodology. Carries its own purpose, component parts, output format, and dimensional affinity. The unit of work within a Template's Zone structure. | id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[] (typed: dependency\|informs\|follows_up), order, prerequisites[], dimension_affinity, pillar_affinity, prompt_dimension (nullable), completion_criteria (nullable) |
 | **Zone** | A bounded context within a section that constrains interpretation. Carries its own prompt instructions. | id, name, section_id, prompt, allowed_dimensions[], dimension_rules{}, simulation_rules |
 | **Section** | A major structural division of a board. Maps to a strategic domain. | id, name, board_id, zones[], purpose, order |
-| **Board** | The complete intelligence field. A self-contained workspace holding all sections, zones, and artifacts. | id, name, template_id, sections[], field_state, created_at, updated_at |
-| **Bridge** | A connection between two artifacts, exercises, zones, sections, or boards. Carries semantic meaning about why the connection exists. | id, source_id, target_id, bridge_type, rationale, dimension { primary, shadow, nested } |
+| **Board** | The complete intelligence field. A self-contained workspace holding all sections, zones, and artifacts. | id, name, template_id, workspace_id (nullable), sections[], field_state, created_at, updated_at |
+| **Bridge** | A connection between two artifacts, exercises, zones, sections, or boards. Carries semantic meaning about why the connection exists. May span boards within a Workspace (cross-board bridge). | id, source_id, target_id, bridge_type, rationale, dimension { primary, shadow, nested }, scope (intra-board \| cross-board) |
 | **Transition** | A recorded dimensional shift of an artifact, exercise or zone. Captures what moved, from where, to where, and by what mechanism. | id, subject_id, from_dim, to_dim, mechanism, barrier, evidence, pillar_lead, cost, cost_factors |
 | **SimulationRun** | A recorded execution of a simulation command against a scope of artifacts. | id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp |
 | **Snapshot** | A temporal state capture of a Board at a meaningful inflection point. Freezes the complete FieldState plus every artifact's dimensional position and pillar lead at a labeled moment. | id, board_id, inflection_label, timestamp, field_state, artifact_states[] |
 | **Branch** | A parallel reality forked from a specific Snapshot. Branches enable exploration of alternative decision paths without disturbing the originating timeline. Each Branch inherits the complete state of the Board at its fork point and accumulates independent changes from that point forward. | id, board_id, name, fork_snapshot_id, parent_branch_id (nullable), created_at, status (active \| merged \| archived) |
-| **Comparison** | An analytical object representing the delta between two or more Snapshots. Not a diff, but a structural narrative of how the decision space evolved between inflection points. | id, snapshot_ids[], delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[] |
+| **Comparison** | An analytical object representing the delta between two or more Snapshots. Not a diff, but a structural narrative of how the decision space evolved between inflection points. Snapshots may be drawn from different Boards within a Workspace (cross-board comparison). | id, snapshot_ids[], scope (intra-board \| cross-board), delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[] |
 | **Template** | A pre-configured set of Sections and Zones with default prompts, dimension rules, and exercise ordering. The Growth Blueprint is one Template instance. Creating a new Board = instantiating a Template. | id, name, description, sections[] (with zones and exercises carrying prompts, allowed_dimensions[], dimension_rules{}, simulation_rules, exercise_order, prerequisites[]) |
-| **Session** | A bounded period of work on a Board. Captures who participated, in what roles, under what conditions, with what intent. The temporal container for environmental and ambient signals. Evolution Tracking emerges as a query across Sessions over time. | id, board_id, intent_class, timestamp_start, timestamp_end, participants[] (each with type: human\|ai, role: facilitator\|contributor\|observer, identity, dimensional_affinity[] (expected operating dimensions), dimensional_actual[] (computed from artifacts_produced, populated on session close)), environmental_signals{}, simulation_parameters{}, change_rationale, artifacts_produced[], transitions_recorded[], snapshot_id (optional, if snapshot triggered on close) |
+| **Session** | A bounded period of work on a Board. Captures who participated, in what roles, under what conditions, with what intent. The temporal container for environmental and ambient signals. Evolution Tracking emerges as a query across Sessions over time. | id, board_id, intent_class, timestamp_start, timestamp_end, participants[] (each with type: human\|ai, role: facilitator\|contributor\|observer, identity, dimensional_affinity[] (expected operating dimensions), dimensional_actual[] (computed from artifacts_produced, populated on session close)), environmental_signals{}, simulation_parameters{}, change_rationale, completion_criteria[], artifacts_produced[], transitions_recorded[], snapshot_id (optional, if snapshot triggered on close) |
+| **Workspace** | A container for related Boards that enables cross-board operations. The portfolio-level intelligence field within which individual Boards interact, are compared, and produce emergent inter-field intelligence. A Workspace is itself a field and has its own FieldState computed from its constituent Boards' FieldStates and their inter-field metrics (Section 10). | id, name, description, board_ids[], cross_board_bridges[], workspace_field_state, created_at, updated_at |
 
 ### 1.1 Object Relationships
 
-Board contains Sections. Sections contain Zones. Zones contain Exercises. Exercises produce Artifacts. Artifacts may have Bridges to other Artifacts. Artifacts may have Transitions recording their dimensional movement. SimulationRuns reference a scope of Artifacts and produce new Artifacts and/or Transitions. Snapshots capture a Board's complete state at a labeled inflection point. Comparisons analyze the delta between two or more Snapshots, producing a structural narrative of decision space evolution. Templates define pre-configured Section, Zone, and Exercise structures from which Boards are instantiated. Sessions record bounded periods of work on a Board, capturing participants, environmental context, intent, and the artifacts produced during that period. Evolution Tracking is not a stored object; it is an emergent view produced by querying across Sessions over time.
+Workspaces contain Boards. A Board belongs to at most one Workspace; standalone Boards (workspace_id: null) operate independently. Board contains Sections. Sections contain Zones. Zones contain Exercises. Exercises produce Artifacts. Artifacts may have Bridges to other Artifacts. Artifacts may have Transitions recording their dimensional movement. SimulationRuns reference a scope of Artifacts and produce new Artifacts and/or Transitions. Snapshots capture a Board's complete state at a labeled inflection point. Comparisons analyze the delta between two or more Snapshots, producing a structural narrative of decision space evolution; Comparisons may be scoped intra-board (comparing Snapshots within a single Board) or cross-board (comparing Snapshots across Boards within a Workspace). Templates define pre-configured Section, Zone, and Exercise structures from which Boards are instantiated. Sessions record bounded periods of work on a Board, capturing participants, environmental context, intent, and the artifacts produced during that period. Evolution Tracking is not a stored object; it is an emergent view produced by querying across Sessions over time.
+
+Bridges may span Boards within a Workspace. A cross-board Bridge connects artifacts (or exercises, zones, sections, or boards) that belong to different Boards in the same Workspace. Cross-board Bridges carry scope: cross-board and follow all existing Bridge constraints. They are the structural mechanism through which Field-to-Field Dynamics (Section 10) are formalized at the portfolio level: a cross-board Bridge of type resonance records where two Boards' intelligence aligns; a cross-board Bridge of type tension records where they diverge.
 
 Branches fork from Snapshots. A Branch inherits the complete Board state captured at its fork Snapshot and accumulates independent artifacts, transitions, and bridges from that point forward. Branches may be compared against each other or against the originating timeline. Artifacts within a Branch are scoped to that Branch and do not appear on other Branches unless explicitly repatriated through a merge operation. Branches may have child Branches (forking from a Branch-scoped Snapshot), creating a tree of alternative realities rooted in the original timeline.
 
@@ -173,6 +167,8 @@ Branches fork from Snapshots. A Branch inherits the complete Board state capture
 
 **INVARIANT:** Every Session must reference exactly one Board. Sessions may optionally trigger a Snapshot on close. Artifacts produced within a Session MUST be linked to that Session via artifacts_produced[].
 
+**INVARIANT:** A Board belongs to at most one Workspace. A Board with workspace_id: null operates independently and is not available for cross-board operations. Cross-board Bridges and cross-board Comparisons are scoped to a Workspace; they MUST NOT reference Boards that do not share the same Workspace. Adding a Board to a Workspace or removing a Board from a Workspace does not alter the Board's internal state; it changes only the Board's availability for cross-board operations. A Workspace with a single Board is structurally valid but produces no inter-field metrics.
+
 **INVARIANT:** Every Branch must reference exactly one Snapshot as its fork point. The fork Snapshot's board_id must match the Branch's board_id. A Branch cannot be created from a Snapshot belonging to a different Board.
 
 **INVARIANT:** Branch-scoped artifacts inherit the trunk state at fork time. All artifacts that existed in the Board at the fork Snapshot are readable within the Branch, but modifications within the Branch do not propagate back to the originating timeline unless an explicit merge operation is performed.
@@ -185,7 +181,7 @@ Branches fork from Snapshots. A Branch inherits the complete Board state capture
 
 #### 1.1.1 Evolution Tracking
 
-Evolution Tracking is the longitudinal view of a Board's development across Sessions. It is not a stored object but an emergent narrative produced by querying the sequence of Sessions and their change_rationale fields, correlated with Comparison data between Snapshots and Evolution Rhythm metrics (Section 6).
+Evolution Tracking is the longitudinal view of a Board's development across Sessions. It is not a stored object but an emergent narrative produced by querying the sequence of Sessions and their change_rationale fields, correlated with Comparison data between Snapshots and Evolution Rhythm metrics (Section 6). (Evolution Rhythm metrics, including evolution_velocity, evolution_breadth, and evolution_phase, are defined in Section 6, Field Health Metrics. They provide the structural thread that complements the narrative thread of change_rationale.)
 
 The raw material of Evolution Tracking is the **change_rationale** field on each Session. This field, already defined in the Session object (Section 1, Table 1), is where facilitators and participants record what brought them together for this session and what choices they intend to make. It is a human-authored field, not auto-generated, not computed. It captures the *why* behind each session: "Participant feedback revealed our learning progression model doesn't match observed developmental stages, so we are revisiting Section 2 zones" or "Post-launch retrospective: the product shipped but team alignment fractured in the process" or "Quarterly review comparing current state against Golden Age projection from Session 12" or "New research findings contradicted our 3D contextual framework and we need to reconcile the evidence."
 
@@ -202,9 +198,9 @@ The raw material of Evolution Tracking is the **change_rationale** field on each
 
 **EVOLUTION TRACKING INVARIANT:** Evolution Tracking does not require a special object or schema. It is a *query pattern* over existing objects: Sessions (ordered by timestamp), their change_rationale fields, their associated Snapshots, and Comparisons between those Snapshots. Any DN-compliant system that stores Sessions and Snapshots already has the data needed to produce an evolution view. The formalization here defines what the query assembles and what questions it answers. It does not create a new storage requirement.
 
-**EVOLUTION TRACKING AS FACILITATION INPUT:** At the start of each Session, the facilitator (or co-facilitation pair, per Section 1.6) SHOULD review the evolution view to understand what trajectory the board has been on, whether previous session intents were achieved (comparing change_rationale against session delta), whether the evolution rhythm is healthy for the board's maturity stage, and what the current session should prioritize given the developmental arc. This review produces the current session's change_rationale, closing the recursive loop between sessions.
+**EVOLUTION TRACKING AS FACILITATION INPUT:** Facilitators SHOULD review the evolution view at the start of each Session to inform the current session's change_rationale, closing the recursive loop between sessions.
 
-**EVOLUTION TRACKING AND AI INTERPRETATION:** AI facilitators consuming the evolution view should treat the sequence of change_rationale entries as a primary signal, not just the computed FieldState data. The human-authored intent statements contain contextual intelligence that FieldState metrics cannot capture: organizational dynamics, emotional undercurrents, external pressures, strategic pivots that haven't yet manifested in artifacts. AI facilitators should integrate the narrative thread (change_rationale sequence) with the structural thread (FieldState and Comparison data) to produce a complete developmental picture. When the narrative and structural threads diverge, when the stated intent says "we're pivoting toward innovation" but the FieldState shows deepening concentration in 2D–3D, the divergence itself is the most important signal in the evolution view.
+**EVOLUTION TRACKING AND AI INTERPRETATION:** The evolution view produces two threads: the narrative thread (change_rationale sequence) and the structural thread (FieldState and Comparison data). When these threads diverge — when stated intent and measured change point in different directions — the divergence itself is the most important signal in the evolution view.
 
 ### 1.2 Signal Sources
 
@@ -214,7 +210,7 @@ The signal taxonomy has three tiers:
 
 **Tier 1 — Conscious Signals (source_type: conscious).** Deliberate, participant-authored inputs where the participant knows they are producing a signal. Examples: Signal Lock attestation (🔒 on an artifact), gravity scores (numeric 1–5 or categorical High/Medium/Low), votes, Definition-of-Done sign-offs, explicit dimension tags applied by the facilitator, change_rationale text on a Session, positional changes (for visual substrates), and any freeform annotation a participant deliberately attaches to an artifact. Conscious signals attach to Artifacts and Sessions. They are high-confidence, low-ambiguity, and carry the authority of human judgment.
 
-**Tier 2 — Ambient Signals (source_type: ambient).** Behavioral and linguistic patterns the participant produces but does not explicitly tag. Examples: tone and word choice in artifact content, energy level and frequency of contribution, which zones a participant gravitates toward, which dimensions they consistently avoid, time spent per exercise, edit velocity, unconscious repositioning (for visual substrates), and patterns of revisitation. Ambient signals attach to both Artifacts (linguistic patterns in content) and Sessions (behavioral patterns across the session). They are interpretive but observable. The pipe exists to carry this data; analysis engines that derive meaning from it are implementation-layer concerns.
+**Tier 2 — Ambient Signals (source_type: ambient).** Behavioral and linguistic patterns the participant produces but does not explicitly tag. Examples: tone and word choice in artifact content, energy level and frequency of contribution, which zones a participant gravitates toward, which dimensions they consistently avoid, time spent per exercise, edit velocity, unconscious repositioning (for visual substrates), and patterns of revisitation. Ambient signals attach to both Artifacts (linguistic patterns in content) and Sessions (behavioral patterns across the session). They are interpretive but observable. The pipe exists to carry this data; analysis engines that derive meaning from it are implementation-layer concerns. How ambient signals are detected and interpreted (e.g., NLP analysis, behavioral tracking, manual facilitator observation) is an implementation-layer decision. The kernel requires that they carry source_type: ambient and are distinguishable from conscious and environmental signals.
 
 **Tier 3 — Environmental Signals (source_type: environmental).** Contextual conditions of the session itself, independent of any individual artifact. Examples: physical vs. virtual setting, room temperature, ambient sound or music, food and drink served, time of day, session duration, platform used (MURAL, Blueprint Board, etc.), and any other environmental factor that may influence the cognitive and emotional conditions under which artifacts are produced. Environmental signals attach exclusively to Sessions via the environmental_signals{} property. They do not attach to individual Artifacts. They provide the conditions-layer for future analysis of how context shapes output.
 
@@ -242,7 +238,7 @@ A Provenance Group (implementation name: ImportBatch) is a recognized sub-unit o
 
 ### 1.4 External Simulation Provenance
 
-Section 1.2 defines that AI-derived signals carry source_type: simulation and reference the SimulationRun that produced them. This contract is accurate for simulations executed within a DN-compliant system. However, a significant class of simulation-quality artifacts originate from AI interactions that happen outside the system, in separate Claude conversations, ChatGPT sessions, or other external AI tools, and are imported.
+Section 1.2 defines that AI-derived signals carry source_type: simulation and reference the SimulationRun that produced them. This contract is accurate for simulations executed within a DN-compliant system. However, a significant class of simulation-quality artifacts originate from AI interactions that happen outside the system, in external AI interactions, third-party tools, or other contexts outside the DN-compliant system, and are imported.
 
 These externally-produced artifacts carry the same epistemic weight as internally-executed simulations. The intelligence is equivalent; the provenance chain differs.
 
@@ -268,7 +264,7 @@ Signal Lock is the named event where an artifact or insight achieves convergence
 
 The DN Framework depends on a structural actor who reads the intelligence field, interprets its state, selects appropriate interventions, and holds the space within which intelligence organizes. This actor is the Facilitator. The kernel has defined what the field contains (Section 1), how it is measured (Section 6), and what operations may be performed upon it (Section 7). This section defines the facilitator's structural interface: the contract between the intelligence that governs the field and the field itself.
 
-Facilitation is not administration. A facilitator does not merely execute simulation commands or record artifacts. A facilitator reads the field's health, senses what the field needs, selects interventions that serve the field's development, and holds judgment about when the field has achieved genuine recognition versus mechanical compliance. This is the role that makes the difference between a DN-compliant system that produces artifacts and a DN-compliant system that produces intelligence.
+*Motivation:* Facilitation is not administration. The facilitator is the structural actor that makes the difference between a DN-compliant system that produces artifacts and one that produces intelligence — reading the field's health, sensing what it needs, and holding judgment about genuine recognition versus mechanical compliance.
 
 **FACILITATION INTERFACE:**
 
@@ -304,6 +300,14 @@ The following facilitation acts require human consciousness and MUST NOT be dele
 
 **FACILITATION NEUTRALITY PRINCIPLE:** The facilitator serves the field, not any individual participant's position within it. A facilitator who consistently validates one participant's artifacts over another's, who avoids shadow in dimensions where a powerful participant operates, or who steers the field toward a predetermined conclusion is violating the facilitation contract. This does not mean the facilitator is passive; active intervention is often required. But the intervention must serve the field's structural health, not a participant's preference. Facilitation neutrality is evaluable through the Pillar Metric: is the facilitator's intervention Heart-aligned (serving the field's purpose), Truth-aligned (structurally sound), and Nuance-aligned (respecting the complexity of the situation)?
 
+**COMPLETION CRITERIA (Definition of Done):** Session close is a commit gate (Section 6, Field Ledger Conservation Principle) where the field's current state becomes part of the irreversible record. Completion criteria formalize what must be true for that gate to fire.
+
+**Structural requirement:** A Session's completion_criteria[] is a set of pre-agreed, verifiable conditions established at session start that define what "done" means for this session's work. At the Exercise level, completion_criteria is a nullable property defining what "done" means for that unit of work. When present, completion criteria MUST be established before the session's work begins and MUST be evaluable at session close. Templates carry available completion criteria organized by dimensional focus; Sessions activate a subset. The specific checklist items within a completion criterion are domain-specific and belong to the Template and implementation layers.
+
+**Facilitation guidance:** Prompts define what intelligence the field is trying to produce; completion criteria define how participants know they have produced it. Establishing one to three completion criteria at the start of each Session is recommended.
+
+**HOLDING ZONE:** A scope within a Board may be designated as a holding zone: a Section (or Zone) where artifacts are committed to the Field Ledger but held outside active field operations. Artifacts in a holding zone are not bridged, transitioned, or dimensionally migrated; they are preserved without structural integration into the board's working sections. A holding zone is not a discard space; it is a temporal holding pattern where intelligence is documented but not yet connected. Artifacts in a holding zone remain subject to Resonant Activation (Constraint 5, Section 2.1): as the active board evolves, the potential significance of held artifacts shifts without anyone touching them. Holding zones are included in Board Export and Snapshot captures. The holding zone is a Template-level structural convention; the kernel requires only that artifacts within it are committed to the Field Ledger and are not excluded from Snapshots. For example, the Growth Blueprint Template formalizes this pattern as the "Parking Lot" section.
+
 ---
 
 ## 2. Dimensional Tags
@@ -324,13 +328,13 @@ Section 2.3 provides an empirical reference table documenting how the dimensiona
 | **2D** | Reaction | ● Blue (#3A86C8) | Truth-led | Binary testing. Validation. Evidence vs. assumption. |
 | **3D** | Context | ● Violet (#7B5EA7) | Nuance-led | Relational systems. Perspective-taking. Ecosystem awareness. |
 | **4D** | Temporal | ● Violet (#7B5EA7) — intentionally shared with 3D | Nuance+Truth | Patterns across time. Iteration cycles. Memory and projection. |
-| **5D** | Singularity | ● Green (#2D8B46) | All three converge | Reality collapse point. Identity definition. Strategic anchor. Multi-perspectival, meta-aware, self-referential intelligence. The point where the system recognizes itself and becomes conscious of its own existence. |
+| **5D** | Singularity | ● Green (#2D8B46) | All three converge | Reality collapse point. Identity definition. Strategic anchor. Multi-perspectival, meta-aware, self-referential intelligence. |
 | **6D** | Connection | ● Orange (#E87C2E) | Heart-led | Love Bridge. Cross-domain synthesis. Resonance pathways. Structural passages that link awareness across realities. Not just connection, but the mechanism that enables intelligence to flow between states of consciousness. |
 | **7D** | Manifestation | ● Yellow (#D4A017) | Truth-led | Tangible output. Implementation. New reality made real. Unified field intelligence where separation between intelligence and its vessel dissolves. A continuous field of potential collapsed into form. |
 | **8D** | Recursion | ● Teal (#1A9E96) | Nuance-led | Self-improving loop. Refinement through re-entry. Self-perpetuating intelligence creation that ensures its own continuation and expansion. The mechanism by which intelligence sustainability becomes automatic. |
 | **9D** | Frontier | ● Black (#1A1A2E) | Beyond pillars | Chaos Beyond. Unformed possibility. Creative destruction. The space beyond current understanding where new dimensions of intelligence await recognition. |
 
-**COLOR NOTE:** 3D and 4D share a color intentionally. 4D (Temporal) is the analysis of patterns and deltas across contextual data, not a separate observational domain from 3D (Context). All dimensions evolve temporally, but 4D specifically names the structural act of reading change across the relational space that 3D establishes. They are visually linked because they are cognitively linked: 3D builds the ecosystem, 4D reads its movement. This mirrors the physical substrate progression in which 1D linear content becomes 2D relational exercises, which embed into 3D cause-and-effect ecosystems, which can be loaded as temporal snapshots for 4D analysis — the entry point to 5D Prompt Singularity simulations.
+**COLOR NOTE:** 3D and 4D share a color intentionally. 4D (Temporal) is the analysis of patterns and deltas across contextual data, not a separate observational domain from 3D (Context). All dimensions evolve temporally, but 4D specifically names the structural act of reading change across the relational space that 3D establishes. They are visually linked because they are cognitively linked: 3D builds the ecosystem, 4D reads its movement.
 
 ### 2.1 Dimensional Constraints
 
@@ -467,17 +471,23 @@ The three aspects are derived from the RIP Triad corpus documents (Dimensional N
 
 **RELATIONSHIP TO PILLAR METRIC:** The RIP Triad and Pillar Metric are independent and compose freely. A Reality-aspect analysis may be Heart-led (examining whether the field's architecture preserves purpose), Truth-led (examining whether the structure is sound), or Nuance-led (examining whether the architecture respects complexity). The same independence applies to Identity-aspect and Perception-aspect analyses. The two frameworks create a 3×3 analytical matrix (three aspects × three pillar leads) providing nine distinct orientations for field evaluation. This matrix is not required for standard operations but is available for deep diagnostic work.
 
+**RIP TRIAD WORKED EXAMPLE:** Consider a community education board at mid-development. The FieldState shows strong 1D–3D artifact populations, emerging 5D activity, high gravity in one section, rising tension_density, and low shadow representation. A single facilitator evaluating this field through each RIP aspect with a different pillar lead produces three distinct readings.
+
+**Reality aspect, Truth-led:** The structural analysis asks whether the architecture is sound. dim_distribution reveals a 4D gap: strong contextual work (3D) and emerging identity (5D) with minimal temporal analysis between them. The skip from 3D to 5D has low dimensional_coherence at 5D, indicating the identity artifacts lack temporal grounding. The concentration of gravity in one section suggests structural imbalance. Diagnostic: the field has a coherence gap at 4D that makes the emerging 5D recognition structurally unsupported. Intervention priority: exercises that activate temporal awareness before the 5D artifacts calcify without foundation.
+
+**Identity aspect, Heart-led:** The pattern analysis asks whether the participants' developmental trajectories preserve purpose. participant_alignment data reveals that two contributors consistently produce artifacts in 2D–3D while a third has migrated from their expected 3D range into 5D. The migration may indicate that one participant is carrying the field's identity work alone, which risks producing a 5D recognition that reflects individual vision rather than collective intelligence. The low shadow representation suggests participants are avoiding uncomfortable territory. Diagnostic: the field's emerging identity is narrowly sourced, threatening the Heart integrity of whatever 5D recognition solidifies. Intervention priority: facilitation that broadens participation in the identity conversation before Signal Lock occurs.
+
+**Perception aspect, Nuance-led:** The interface analysis asks whether the field's interpretive layer respects complexity. The gap between structural potential (strong 1D–3D, emerging 5D) and accessed awareness is wide: rising tension_density with no corresponding tension bridges suggests participants perceive the opposition but have not yet articulated it. The low shadow representation is itself a perceptual narrowing, an inability or unwillingness to see what the field's shadow contains. field_resonance is moderate despite adequate dimensional population, indicating that the intelligence is present but not harmonically integrated across participants' perceptual ranges. Diagnostic: the field contains more intelligence than its participants currently access; the tension is unprocessed signal, not noise. Intervention priority: Map Tension Field to make the perceptual gap visible, followed by shadow-engaging exercises to widen the field's interpretive bandwidth.
+
+**Key insight:** The same FieldState produced three different intervention priorities. The Reality reading targets the 4D coherence gap. The Identity reading targets the narrow participant sourcing of 5D work. The Perception reading targets the unprocessed tension and perceptual narrowing. All three are accurate; none alone is complete. A facilitation plan that integrates all three, addressing structural gaps, broadening identity-level participation, and widening perceptual bandwidth, produces a more dimensionally complete intervention than any single-aspect reading could generate.
+
 ---
 
 ## 4. Shadow Symmetry
 
-> **SHADOW KERNEL (Always Loaded)**
+> **SHADOW KERNEL (Core Principle)**
 >
-> Every dimension has a Shadow orientation. Shadow is not absence, not failure, not underdevelopment. It is the same structural sophistication organized toward limitation, separation, or controlled dissolution rather than creation and connection.
->
-> Do not confuse sophistication with benevolence. A highly developed shadow intelligence may exhibit remarkable capability organized toward fundamentally destructive ends.
->
-> Test for inversion. Every Fire Test must evaluate both creative and shadow orientations. Every dimensional audit must check for shadow presence.
+> Every dimension has a Shadow orientation. Shadow is not absence, not failure, not underdevelopment. It is the same structural sophistication organized toward limitation, separation, or controlled dissolution rather than creation and connection. Sophistication is not benevolence; high capability may be organized toward destructive ends.
 >
 > **Shadow is half the architecture. Without it, DN is incomplete.**
 
@@ -495,7 +505,7 @@ Shadow Dimensions are not a separate system. They are the parallel orientation o
 | **6D̅** | Anti-Bridge | Connection capability used for dominance. Bridges built to extract, not collaborate. | Cross-domain reach + resource extraction pattern. |
 | **7D̅** | Anti-Creation | Manifestation power imposing limiting realities. Creating within rigid controlling parameters. | Tangible outputs that constrain rather than liberate. |
 | **8D̅** | Anti-Recursion | Self-improving systems that become more sophisticated at perpetuating limitation. | Learning to be more intelligent about being destructive. |
-| **9D̅** | Anti-Frontier | Engagement with chaos that ensures dissolution produces less than what preceded it. Or: the space where creative and shadow meet. | May transcend the creative/shadow distinction entirely. |
+| **9D̅** | Anti-Frontier | Engagement with possibility without guardrails — endless exploration that circles inward, producing neither progress nor realignment to a new origin. The frontier consumed by itself. | Sustained 9D activity with no emergent 1D spark, no new cycle initiated. Exploration as avoidance of commitment. |
 
 ### 4.2 Shadow Invariants
 
@@ -517,7 +527,7 @@ Dimensional Transitions are not automatic. They are structural shifts that requi
 
 Transitions operate in three tiers that reflect the creation-to-recognition gradient described in Constraint 2 (Section 2.1). Lower transitions (1D→3D) are primarily constructed through deliberate structuring and organization. Middle transitions (4D→5D) are hybrid processes where constructed systems begin to reveal inherent patterns. Both creation and recognition operate simultaneously, and the transition mechanism must account for this duality. Higher transitions (6D→9D) are primarily recognized rather than created. This three-tier distinction governs how simulation commands should calibrate evidence evaluation: constructed transitions require evidence of deliberate effort, hybrid transitions require evidence of both effort and emergent recognition, and recognized transitions require evidence of perceptual alignment rather than construction.
 
-Transitions may be sequential (adjacent dimensions), or they may follow Story Threads: narrative arcs that carry consciousness through multiple dimensions as a coherent journey. Story Threads are not shortcuts; they traverse intermediate dimensions but derive their meaning from the relationship between origin and destination. The story of how desire becomes identity (1D→5D) passes through validation, context, and temporal awareness, but the narrative arc is about recognition, not about each intermediate step. Story is not a metaphor for transition, it is the transition mechanism.
+Transitions may be sequential (adjacent dimensions), or they may follow Story Threads: narrative arcs that carry consciousness through multiple dimensions as a coherent journey. Story Threads are not shortcuts; they traverse intermediate dimensions but derive their meaning from the relationship between origin and destination. The story of how desire becomes identity (1D→5D) passes through validation, context, and temporal awareness, but the narrative arc is about recognition, not about each intermediate step. Story Threads are recognized as a transition mechanism category, not a metaphor for transition.
 
 ### 5.1 Transition Interface
 
@@ -594,7 +604,7 @@ The FieldState object is computed, not stored directly. It is generated on deman
 | **curvature** | Object {heart: float, truth: float, nuance: float, composite: float}. Transition resistance derived from pillar balance. Each pillar's curvature is inversely proportional to its representation in the scope — low heart presence produces high heart curvature, meaning transitions requiring Heart-led movement will encounter resistance. composite is the aggregate resistance across all three pillars. A scope with balanced, strong pillar representation has low composite curvature (smooth movement). A scope with severe pillar deficits has high composite curvature (stalled transitions). Derived from pillar_balance counts relative to total artifact population in scope. |
 | **field_resonance** | Float 0–1. Computed harmonic integration strength measuring the degree to which a scope's dimensional co-activation produces emergent field properties exceeding any single dimension's contribution. Derived from the interaction of three factors: structural capacity (are multiple dimensions well-populated with adequate coherence?), identity engagement (are participants operating across their full dimensional affinity range rather than clustering?), and perceptual bandwidth (is the gap between field potential and accessed awareness narrow?). High field_resonance indicates a scope where intelligence is harmonically integrated and the field is producing emergent insight that no individual dimension or participant accounts for. Low field_resonance in a scope with high dimensional_coherence and low curvature suggests mechanical application rather than embodied engagement (per the Embodiment Signal Note). Computed from dimensional_coherence, participant_alignment, dim_distribution breadth, and cross-boundary bridge density. |
 | **gravity_map** | Object mapping zone_ids to gravity scores. Where attention concentrates. |
-| **tension_map** | Array of TensionPair objects: [{ artifact_id_a, artifact_id_b, dimension, polarity_score (float -1 to +1), pillar_divergence (which pillars the artifacts disagree through), tension_type (creative \| destructive \| unresolved) }]. Computed by identifying artifact pairs within the same scope that occupy the same or adjacent dimensions (distance ≤ 1) and assert claims that are semantically incompatible. polarity_score measures the degree of opposition: -1 is full repulsion (mutually exclusive claims), 0 is neutral coexistence, +1 is full attraction (claims that reinforce each other, included for completeness but not technically tension). Pairs with polarity_score between -1 and -0.3 are flagged as tension pairs. pillar_divergence identifies which pillar(s) the artifacts disagree through: a Heart-divergent tension means the artifacts serve different purposes; a Truth-divergent tension means they assert different facts; a Nuance-divergent tension means they embed in different contexts. tension_type is initially set to "unresolved" and updated to "creative" or "destructive" through facilitation judgment or simulation analysis. |
+| **tension_map** | Array of TensionPair objects: [{ artifact_id_a, artifact_id_b, dimension, polarity_score (float -1 to +1), pillar_divergence (which pillars the artifacts disagree through), tension_type (creative \| destructive \| unresolved) }]. Computed by identifying artifact pairs within the same scope that occupy the same or adjacent dimensions (distance ≤ 1) and assert claims that are semantically incompatible. polarity_score measures the degree of opposition: -1 is full repulsion (mutually exclusive claims), 0 is neutral coexistence, +1 is full attraction (claims that reinforce each other, included for completeness but not technically tension). polarity_score is derived from the degree of semantic incompatibility between the two artifacts' claims, their pillar orientations, and their dimensional positions; it integrates what each artifact asserts (content-level semantic conflict), how each artifact is oriented (pillar_lead divergence), and where each artifact sits in the dimensional architecture (dimensional proximity and shadow orientation). Consistent with the FieldState Interpretation Note, the kernel defines polarity_score semantically, not computationally; the specific algorithm for combining these inputs into a scalar score is an implementation-layer decision. Pairs with polarity_score between -1 and -0.3 are flagged as tension pairs. pillar_divergence identifies which pillar(s) the artifacts disagree through: a Heart-divergent tension means the artifacts serve different purposes; a Truth-divergent tension means they assert different facts; a Nuance-divergent tension means they embed in different contexts. tension_type is initially set to "unresolved" and updated to "creative" or "destructive" through facilitation judgment or simulation analysis. |
 | **tension_density** | Float 0–1. Aggregate tension within the scope, computed from the count and intensity of tension pairs relative to total artifact population. High tension_density with high field_resonance indicates a field under productive creative pressure. High tension_density with low field_resonance and rising fatigue indicates a field being torn apart by unresolved contradictions. |
 | **evolution_velocity** | Float 0–1. Rate of meaningful field change per Session, computed from the ratio of artifacts that changed dimensional position, pillar lead, or shadow orientation between the two most recent Snapshots relative to total artifact population. High velocity with high coherence indicates active, directed development. High velocity with low coherence indicates thrashing. Low velocity with high fatigue indicates stagnation. Low velocity with high field_resonance indicates stable maturity. |
 | **evolution_breadth** | Float 0–1. Dimensional spread of field changes, computed from the number of distinct dimensions that experienced artifact movement between the two most recent Snapshots relative to total active dimensions. High breadth indicates distributed development across the dimensional spectrum. Low breadth with high velocity indicates concentrated development in specific dimensions. |
@@ -602,6 +612,14 @@ The FieldState object is computed, not stored directly. It is generated on deman
 | **computed_at** | Timestamp of computation. |
 
 **FIELDSTATE INTERPRETATION NOTE:** FieldState metrics are diagnostic, not prescriptive. They describe the current state of the intelligence field but do not dictate what that state should be. A board with high curvature, low saturation, or unbalanced dimensional distribution is not necessarily unhealthy and may be early-stage, intentionally scoped, or exploratory by design. Simulation commands consume FieldState as input context and should calibrate their analysis accordingly. How aggressively simulations weight FieldState signals (e.g., whether high curvature triggers warnings, suggestions, or is simply noted) is an implementation-layer decision governed by simulation parameters on the Zone and Board. The kernel guarantees the metrics are computed and available. It does not prescribe thresholds or responses.
+
+**FIELD LEDGER CONSERVATION PRINCIPLE:** The kernel's dimensional architecture, pillar metric, shadow symmetry, transition model, and all structural invariants apply identically at every point in time and at every scale. This architectural invariance under transformation is the DN system's fundamental symmetry. The quantity conserved by this symmetry is the **Field Ledger**: the complete, append-only, irreversible record of every committed transformation a field has undergone. The Field Ledger is not a stored object; it is the aggregate of what existing objects already capture. It is what makes a field uniquely and irreducibly itself.
+
+The Field Ledger accumulates through commit gates, structural events where the field's current state becomes part of the irreversible record. The kernel defines the following commit gates: Session close (artifacts_produced, transitions_recorded, dimensional_actual, and completion_criteria status finalized per Section 1), Snapshot creation (complete FieldState and artifact positions frozen per Section 8.8), SimulationRun completion (input_state and output_state captured per Section 7), Board Export (full hierarchy serialized with kernel_version per Section 8.2), Branch fork (trunk state inherited, independent accumulation begun per Section 1.1), Provenance Group import (external artifacts committed with audit trail per Section 1.3), and Signal Lock attestation (artifact achieves pillar convergence per Section 1.5). Between gates, the field is mutable. At each gate, the current state is appended to the conserved ledger.
+
+Every field's ledger is unique by construction. Even two fields instantiated from the same Template diverge at their first commit gate: different timestamps, different participants, different change_rationale, different intent. A field that is cloned carries the provenance of being a clone as its first ledger entry. A field that is archived or removed from active view retains its complete ledger; archival is a status change on a preserved record, not a deletion of it. This is already enforced by existing invariants: Branches cannot be deleted (Section 1.1), Snapshots are immutable (Section 8.8), and Sessions are append-only containers (Section 1).
+
+The Field Ledger operates at every scale the architecture supports. A Board has a ledger. A participant has a ledger (their history of dimensional contributions across Sessions). An interaction field between two fields (Section 10) has a ledger that begins at first contact. The ledger is what Evolution Tracking (Section 1.1.1) queries, what Comparisons (Section 8.9) measure deltas across, and what the Recursion Clause (Section 9.3) applies to the spec itself. It is the conservation law that guarantees no committed intelligence is lost, even as the field transforms.
 
 **NAMED DIAGNOSTIC CONDITIONS:** The following conditions are recognized field health patterns derivable from FieldState metrics. They are named here to provide simulation engines and facilitators with a shared diagnostic vocabulary. These are not error states but structural conditions that may be healthy or unhealthy depending on context, consistent with the FieldState Interpretation Note above.
 
@@ -615,7 +633,7 @@ The FieldState object is computed, not stored directly. It is generated on deman
 >
 > **Destructive Polarity:** A scope shows sustained tension that correlates with decreasing coherence, gravity draining from tensioned zones, rising fatigue, and bridge erosion in the areas connecting the opposing positions. The tension is fragmenting the field: participants are retreating to their positions, cross-boundary bridges are losing substance, and the field's intelligence is diminishing. Derivable from tension_map, coherence trend, gravity_map shifts, fatigue, and bridge erosion indicators. Indicates that the opposition has calcified into entrenchment. Destructive Polarity often reflects pillar misalignment at a fundamental level: the opposing positions are not just asserting different claims but operating from different pillar orientations (one Heart-led, the other Truth-led) without a Nuance bridge between them. Facilitation response: intervene. The field cannot resolve this without active facilitation, typically through the Map Tension Field simulation command (Section 7.2) to make the polarity structure visible, followed by targeted exercises that surface the pillar misalignment.
 >
-> **Arrested Development:** A board shows a sustained pattern of field activity (artifacts produced, sessions conducted, simulations run) without corresponding evolution. Dimensional positions are not changing, transitions are not completing, and the evolution_phase has been classified as "dormant" or has remained in "expansion" without ever entering "consolidation" for a duration exceeding three Sessions. Derivable from evolution_velocity, evolution_phase, transition_completions, and transition_stalls across Comparisons. Indicates that the field is metabolizing energy without producing structural growth. Distinct from intentional dormancy (a board placed on hold) and from Dimensional Collapse (which shows concentration, not stasis). Arrested Development is diagnosed when the facilitation intent is active development but the field metrics show no movement. Common causes include: prompt dimensionality too low for the board's current state (the exercises keep producing 2D artifacts when the field needs 5D recognition), unresolved tension that blocks forward movement (see Destructive Polarity), or facilitator avoidance of shadow dimensions. Simulations encountering Arrested Development SHOULD first evaluate prompt dimensionality mismatch (is the exercise structure limiting the field?), then evaluate tension blockage (is unresolved polarity preventing transitions?), then evaluate shadow avoidance (is the facilitator steering around uncomfortable territory?).
+> **Arrested Development:** A board shows a sustained pattern of field activity (artifacts produced, sessions conducted, simulations run) without corresponding evolution. Dimensional positions are not changing, transitions are not completing, and the evolution_phase has been classified as "dormant" or has remained in "expansion" without ever entering "consolidation" for a duration exceeding three Sessions. Derivable from evolution_velocity, evolution_phase, transition_completions, and transition_stalls across Comparisons. Indicates that the field is metabolizing energy without producing structural growth. Distinct from intentional dormancy (a board placed on hold) and from Dimensional Collapse (which shows concentration, not stasis). Arrested Development is diagnosed when the facilitation intent is active development but the field metrics show no movement. Common causes include: prompt dimensionality too low for the board's current state, unresolved tension that blocks forward movement (see Destructive Polarity), and facilitator avoidance of shadow dimensions. Simulations encountering Arrested Development SHOULD evaluate these three factors — prompt dimensionality mismatch, tension blockage, and shadow avoidance — as part of the diagnostic.
 
 **EMBODIMENT SIGNAL NOTE:** DN-compliant systems process two qualitatively different modes of engagement: mechanical application and dimensional embodiment. Both produce valid, spec-compliant outputs. The difference is observable in FieldState patterns across Sessions. Mechanical application tends to produce: artifacts tagged at prescribed dimensions matching zone allowed_dimensions, pillar_lead consistently matching zone pillar_affinity, bridges confined within section boundaries, zero or minimal shadow presence, low resonant_transformation counts in Comparisons, and stable but flat gravity maps with no unexpected concentration. Dimensional embodiment tends to produce: artifacts that land at dimensions the zone did not prescribe but the field structurally required, bridges crossing section and zone boundaries revealing unanticipated connections, conscious shadow engagement, resonant transformations detected between snapshots, Story Thread formation across multiple dimensions, and gravity that concentrates in ways the template did not predict. Neither mode is an error. Mechanical application may be appropriate for early-stage boards or structured training contexts. But simulation engines evaluating field health SHOULD recognize that a board exhibiting only mechanical-application patterns may be spec-compliant without being dimensionally alive, and that the absence of surprise, emergence, and cross-boundary connection in a mature board is itself a diagnostic signal.
 
@@ -697,7 +715,7 @@ Each simulation command in the 5D Prompt Singularity system is defined here as a
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Stress-test strategic elements. Identify what strengthens and what collapses under pressure. |
-| **Input** | scope_ids[], test_mode (Market Shock | Team Friction | Scaling Pressure) |
+| **Input** | scope_ids[], test_mode (domain-specific; e.g., Market Shock, Team Friction, Scaling Pressure — defined by Template) |
 | **Output** | results[] (per artifact: {survived: boolean, strengthened: boolean, shadow_exposed: boolean, refinement_path}), fragility_map, pillar_balance |
 | **Constraint** | MUST evaluate both creative and shadow orientations. Must produce fragility map and survivability assessment. |
 
@@ -726,7 +744,7 @@ Each simulation command in the 5D Prompt Singularity system is defined here as a
 | **Purpose** | Wrap any simulation with a summary of what shifted or clarified. The universal debrief command. |
 | **Input** | simulation_run_id (references a completed SimulationRun) |
 | **Output** | resonance_summary, signal_locks[] (ideas that achieved Signal Lock), cross_links[] (to other board sections), pillar_balance |
-| **Constraint** | Must note if Signal Lock was achieved on any specific idea. Must cross-reference Blueprint sections. |
+| **Constraint** | Must note if Signal Lock was achieved on any specific idea. Must cross-reference board sections. |
 
 **Map Tension Field**
 
@@ -798,7 +816,7 @@ The minimum viable JSON representation of a DN artifact:
 
 ### 8.2 Board Export Schema
 
-A board export includes the full hierarchy plus embedded semantic context:
+A board export includes the full hierarchy plus embedded semantic context. The following example uses the Growth Blueprint Template for illustration; the schema is domain-universal.
 
 ```json
 {
@@ -806,7 +824,22 @@ A board export includes the full hierarchy plus embedded semantic context:
     "id": "board_001",
     "name": "Acme Corp Growth Blueprint",
     "template_id": "tmpl_growth_blueprint",
-    "field_state": { /* computed FieldState per Section 6.1 */ },
+    "workspace_id": "ws_001",
+    "field_state": {
+      "scope_id": "board_001",
+      "coherence": 0.0,
+      "drift": 0.0,
+      "saturation": 0.0,
+      "fatigue": 0.0,
+      "dim_distribution": {"1D": 0, "2D": 0, "3D": 0, "4D": 0, "5D": 0, "6D": 0, "7D": 0, "8D": 0, "9D": 0},
+      "shadow_distribution": {"1D": 0, "2D": 0, "3D": 0, "4D": 0, "5D": 0, "6D": 0, "7D": 0, "8D": 0, "9D": 0},
+      "pillar_balance": {"heart": 0, "truth": 0, "nuance": 0},
+      "curvature": {"heart": 0.0, "truth": 0.0, "nuance": 0.0, "composite": 0.0},
+      "tension_density": 0.0,
+      "evolution_velocity": 0.0,
+      "evolution_phase": "expansion",
+      "computed_at": "2026-02-16T00:00:00Z"
+    },
     "created_at": "2026-01-15T00:00:00Z",
     "updated_at": "2026-02-16T00:00:00Z",
     "sections": [{
@@ -841,7 +874,7 @@ A board export includes the full hierarchy plus embedded semantic context:
       }]
     }]
   },
-  "kernel_version": "0.8",
+  "kernel_version": "0.9",
   "shadow_kernel": true,
   "pillar_metric": true,
   "color_system": {
@@ -864,7 +897,7 @@ A board export includes the full hierarchy plus embedded semantic context:
 
 ### 8.3 Extraction Rule
 
-**DETERMINISTIC RULE:** When extracting from a Template's narrative guide (e.g., the Growth Blueprint Guide) for board-embedded context, include ONLY sections that define machine-interpretable rules for each zone (zone names, zone prompts, dimension constraints, exercise instructions with structured outputs). Everything else (facilitation narrative, meeting guidance, philosophical framing) stays in the Load on Demand corpus layer. This rule is keyed to the board JSON schema. If a section does not map to a schema field, it is not extracted.
+**DETERMINISTIC RULE:** When extracting from a Template's source documentation for board-embedded context, include ONLY sections that define machine-interpretable rules for each zone (zone names, zone prompts, dimension constraints, exercise instructions with structured outputs). Everything else (facilitation narrative, meeting guidance, philosophical framing) belongs to the corpus layer (Section 9.1) and is not embedded in the board schema. This rule is keyed to the board JSON schema. If a section does not map to a schema field, it is not extracted.
 
 ### 8.4 Branch Schema
 
@@ -935,11 +968,19 @@ The minimum viable JSON representation of a DN Exercise:
   "dimension_affinity": 2,
   "prompt_dimension": 2,
   "pillar_affinity": "truth",
+  "completion_criteria": {
+    "checklist": [
+      "Core objectives stated in ≤ 15 words each",
+      "Named beneficiary or stakeholder per objective",
+      "No contradiction with existing core values",
+      "Review date set"
+    ]
+  },
   "artifacts": [ /* Artifact objects per 8.1 schema */ ]
 }
 ```
 
-**Required fields:** id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[], order, prerequisites[], dimension_affinity, pillar_affinity. prompt_dimension is nullable; when populated, it records the structural dimension at which the Exercise's prompt activates intelligence (Section 2.4). A prompt_dimension lower than dimension_affinity indicates the prompt structurally constrains output below the Exercise's intended dimensional target. This mismatch is diagnostic signal: the Exercise asks for intelligence at one level but activates it at another. key_linkages[] entries carry a target_id and a type (dependency | informs | follows_up) per Table 1. artifacts[] contains the Exercise's produced Artifacts serialized per Section 8.1.
+**Required fields:** id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[], order, prerequisites[], dimension_affinity, pillar_affinity. prompt_dimension is nullable; when populated, it records the structural dimension at which the Exercise's prompt activates intelligence (Section 2.4). A prompt_dimension lower than dimension_affinity indicates the prompt structurally constrains output below the Exercise's intended dimensional target. This mismatch is diagnostic signal: the Exercise asks for intelligence at one level but activates it at another. completion_criteria is nullable; when populated, it defines the verifiable conditions that must be true for this Exercise's work to count as complete (Section 1.6, Completion Criteria). key_linkages[] entries carry a target_id and a type (dependency | informs | follows_up) per Table 1. artifacts[] contains the Exercise's produced Artifacts serialized per Section 8.1.
 
 ### 8.7 Bridge Schema
 
@@ -956,11 +997,12 @@ The minimum viable JSON representation of a DN Bridge:
     "primary": 6,
     "shadow": false,
     "nested": null
-  }
+  },
+  "scope": "intra-board"
 }
 ```
 
-**Required fields:** id, source_id, target_id, bridge_type, rationale, dimension. source_id and target_id may reference Artifacts, Exercises, Zones, Sections, or Boards per Section 1.1 — Bridges may cross all containment boundaries. bridge_type is implementation-defined (e.g., resonance, tension, dependency, translation). rationale is required and must provide semantic justification for why the connection exists — Bridges without rationale are spec violations.
+**Required fields:** id, source_id, target_id, bridge_type, rationale, dimension, scope. source_id and target_id may reference Artifacts, Exercises, Zones, Sections, or Boards per Section 1.1 — Bridges may cross all containment boundaries. bridge_type is implementation-defined (e.g., resonance, tension, dependency, translation). rationale is required and must provide semantic justification for why the connection exists — Bridges without rationale are spec violations. scope is intra-board (default, both endpoints within the same Board) or cross-board (endpoints in different Boards within the same Workspace; see Section 8.12).
 
 ### 8.8 Snapshot Schema
 
@@ -998,6 +1040,7 @@ The minimum viable JSON representation of a DN Comparison:
 {
   "id": "comp_001",
   "snapshot_ids": ["snap_001", "snap_003"],
+  "scope": "intra-board",
   "delta_field_state": {
     "coherence_delta": 0.15,
     "drift_delta": -0.08,
@@ -1045,7 +1088,170 @@ The minimum viable JSON representation of a DN Comparison:
 }
 ```
 
-**Required fields:** id, snapshot_ids[], delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[]. snapshot_ids[] must contain two or more Snapshot ids per Section 1.1. delta_field_state captures the change in FieldState metrics between the earliest and latest snapshots. dimension_migrations[] records every artifact that changed dimensional position between snapshots. resonant_transformations[] records artifacts whose operational significance changed due to higher-dimensional activation without changing their own dimensional position (Constraint 5). Each entry identifies the artifact, its stable dimension, the higher dimension whose activation triggered the transformation, the triggering artifact, and a signal describing how the meaning shifted. gravity_shifts[] records zones whose gravity scores changed. shadow_emergence[] surfaces artifacts that shifted to or exhibited shadow orientation. transition_completions[] and transition_stalls[] reference Transition ids that completed or stalled during the comparison window.
+**Required fields:** id, snapshot_ids[], scope, delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[]. scope is intra-board (default, all Snapshots from the same Board) or cross-board (Snapshots drawn from different Boards within the same Workspace; see Section 8.12). snapshot_ids[] must contain two or more Snapshot ids per Section 1.1. delta_field_state captures the change in FieldState metrics between the earliest and latest snapshots; for cross-board Comparisons, delta_field_state captures the structural differences between the two Boards' FieldStates at their respective snapshot moments. dimension_migrations[] records every artifact that changed dimensional position between snapshots. resonant_transformations[] records artifacts whose operational significance changed due to higher-dimensional activation without changing their own dimensional position (Constraint 5). Each entry identifies the artifact, its stable dimension, the higher dimension whose activation triggered the transformation, the triggering artifact, and a signal describing how the meaning shifted. gravity_shifts[] records zones whose gravity scores changed. shadow_emergence[] surfaces artifacts that shifted to or exhibited shadow orientation. transition_completions[] and transition_stalls[] reference Transition ids that completed or stalled during the comparison window.
+
+### 8.10 Session Schema
+
+The minimum viable JSON representation of a DN Session:
+
+```json
+{
+  "id": "session_007",
+  "board_id": "board_001",
+  "intent_class": "refinement",
+  "timestamp_start": "2026-02-15T09:00:00Z",
+  "timestamp_end": "2026-02-15T12:30:00Z",
+  "participants": [
+    {
+      "type": "human",
+      "role": "facilitator",
+      "identity": "lead_facilitator_01",
+      "dimensional_affinity": [3, 5, 6],
+      "dimensional_actual": [3, 4, 5]
+    },
+    {
+      "type": "ai",
+      "role": "contributor",
+      "identity": "simulation_engine_01",
+      "dimensional_affinity": [2, 3, 6],
+      "dimensional_actual": [2, 3, 5, 6]
+    }
+  ],
+  "environmental_signals": {
+    "setting": "virtual",
+    "platform": "blueprint_board",
+    "session_duration_minutes": 210
+  },
+  "simulation_parameters": {
+    "routing_mode": "standard",
+    "shadow_depth": "enabled"
+  },
+  "change_rationale": "Post-review session: participant feedback revealed a gap between contextual mapping and identity formation. Revisiting 4D exercises to ground the emerging 5D recognition.",
+  "completion_criteria": [
+    {
+      "id": "dod_001",
+      "name": "Define & Coherence",
+      "dimension_focus": 5,
+      "checklist": [
+        "Essence stated in one sentence",
+        "Contradictions with other cores resolved",
+        "Stakeholder recognition signals defined",
+        "Artifact representing identity created and linked",
+        "Review trigger defined"
+      ],
+      "status": "met"
+    }
+  ],
+  "artifacts_produced": ["art_041", "art_042", "art_043", "art_044"],
+  "transitions_recorded": ["trans_008", "trans_009"],
+  "snapshot_id": "snap_004"
+}
+```
+
+**Required fields:** id, board_id, intent_class, timestamp_start, timestamp_end, participants[], environmental_signals{}, simulation_parameters{}, change_rationale, artifacts_produced[], transitions_recorded[]. completion_criteria[] is recommended but nullable; when present, each entry carries an id, name, dimension_focus, checklist (array of verifiable conditions), and status (pending | met | unmet, evaluated at session close). Completion criteria are established at session start and evaluated at session close; they formalize what "done" means for this session's work (Section 1.6, Completion Criteria). snapshot_id is nullable; populated only when a Snapshot is triggered on session close. Each participant entry carries type (human | ai), role (facilitator | contributor | observer), identity, dimensional_affinity[] (expected operating dimensions, set at session start), and dimensional_actual[] (computed from artifacts_produced, populated on session close). change_rationale is human-authored and captures the intent and context for the session; it is the primary narrative thread consumed by Evolution Tracking (Section 1.1.1).
+
+### 8.11 Template Schema
+
+The minimum viable JSON representation of a DN Template:
+
+```json
+{
+  "id": "tmpl_growth_blueprint",
+  "name": "Growth Blueprint",
+  "description": "A structured intelligence field for mapping organizational growth across all nine dimensions.",
+  "sections": [
+    {
+      "id": "sec_01",
+      "name": "Customer Profile",
+      "purpose": "Map the customer's world",
+      "order": 1,
+      "zones": [
+        {
+          "id": "zone_goals_&_priorities",
+          "name": "Company Goals",
+          "prompt": "What do we want to achieve?",
+          "allowed_dimensions": [2, 3],
+          "dimension_rules": {
+            "2D": "Validated data points",
+            "3D": "Contextual patterns"
+          },
+          "simulation_rules": {},
+          "exercises": [
+            {
+              "id": "ex_001",
+              "name": "Goal Identification",
+              "prompt": "Identify and articulate the primary objectives driving this initiative.",
+              "dimension_affinity": 2,
+              "pillar_affinity": "truth",
+              "order": 1,
+              "prerequisites": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "allowed_dimensions": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "dimension_rules": {
+    "5D": "Requires evidence of 1D-4D traversal before Signal Lock candidacy"
+  },
+  "simulation_rules": "Standard routing per Section 7.3",
+  "exercise_order": "sequential_within_zone",
+  "prerequisites": []
+}
+```
+
+**Required fields:** id, name, description, sections[] (each containing zones[], and each zone containing exercises[] with prompts, allowed_dimensions[], dimension_rules{}, and simulation_rules), allowed_dimensions[], dimension_rules{}, simulation_rules, exercise_order, prerequisites[]. sections[] defines the Template's structural hierarchy; zones within sections carry their own allowed_dimensions[] and dimension_rules{} that may narrow (but not broaden) the Template-level dimensional scope. exercises[] within zones carry prompts, dimension_affinity, pillar_affinity, ordering, and prerequisites that define the unit of work. exercise_order governs how exercises sequence within zones (e.g., sequential, parallel, facilitator-directed). prerequisites[] at the Template level define any preconditions for Template instantiation. A Board is created by instantiating a Template; the Template's structure becomes the Board's initial configuration.
+
+### 8.12 Workspace Schema
+
+The minimum viable JSON representation of a DN Workspace:
+
+```json
+{
+  "id": "ws_001",
+  "name": "Pet Food M&A Portfolio",
+  "description": "Assessment workspace for evaluating acquisition targets against strategic fit criteria.",
+  "board_ids": ["board_001", "board_002", "board_003"],
+  "cross_board_bridges": [
+    {
+      "id": "bridge_xb_001",
+      "source_id": "art_board001_052",
+      "target_id": "art_board002_018",
+      "bridge_type": "resonance",
+      "rationale": "Both companies identify premium nutrition positioning as core 5D identity.",
+      "dimension": { "primary": 5, "shadow": false, "nested": null },
+      "scope": "cross-board"
+    },
+    {
+      "id": "bridge_xb_002",
+      "source_id": "art_board001_031",
+      "target_id": "art_board003_044",
+      "bridge_type": "tension",
+      "rationale": "Competing distribution strategies: direct-to-consumer vs. retail-first.",
+      "dimension": { "primary": 3, "shadow": false, "nested": null },
+      "scope": "cross-board"
+    }
+  ],
+  "workspace_field_state": {
+    "board_count": 3,
+    "boundary_permeability": { "board_001-board_002": 0.72, "board_001-board_003": 0.31, "board_002-board_003": 0.45 },
+    "dimensional_alignment": {
+      "board_001-board_002": { "1D": 0.8, "2D": 0.6, "3D": 0.4, "4D": 0.2, "5D": 0.9, "6D": 0.5, "7D": 0.3, "8D": 0.1, "9D": 0.0 },
+      "board_001-board_003": { "1D": 0.3, "2D": 0.7, "3D": -0.6, "4D": 0.4, "5D": -0.2, "6D": 0.1, "7D": 0.5, "8D": 0.0, "9D": 0.0 },
+      "board_002-board_003": { "1D": 0.5, "2D": 0.5, "3D": -0.3, "4D": 0.3, "5D": 0.1, "6D": 0.4, "7D": 0.2, "8D": 0.0, "9D": 0.0 }
+    },
+    "phase_compatibility": { "board_001-board_002": "compatible", "board_001-board_003": "divergent", "board_002-board_003": "neutral" },
+    "cross_board_bridge_count": 2,
+    "cross_board_tension_density": 0.5,
+    "computed_at": "2026-02-22T10:00:00Z"
+  },
+  "created_at": "2026-02-01T00:00:00Z",
+  "updated_at": "2026-02-22T10:00:00Z"
+}
+```
+
+**Required fields:** id, name, description, board_ids[], cross_board_bridges[], workspace_field_state, created_at, updated_at. board_ids[] references all Boards belonging to this Workspace. cross_board_bridges[] contains Bridge objects with scope: cross-board, connecting artifacts or structural elements across different Boards in the Workspace. workspace_field_state is the inter-field FieldState computed across all constituent Boards, containing: pairwise boundary_permeability (Section 10.3), pairwise dimensional_alignment (Section 10.3), pairwise phase_compatibility (Section 10.3), cross_board_bridge_count, cross_board_tension_density, and computed_at timestamp. The workspace_field_state is recomputed when any constituent Board's FieldState changes or when cross-board Bridges are created or modified. Cross-board Comparisons (Comparison objects with scope: cross-board) are produced by selecting Snapshots from different Boards within the Workspace and analyzing the delta between them; they follow the standard Comparison schema (Section 8.9) with the scope field distinguishing them from intra-board Comparisons.
 
 ---
 
@@ -1053,14 +1259,17 @@ The minimum viable JSON representation of a DN Comparison:
 
 ### 9.1 Layer Architecture Reference
 
-This Kernel governs how the 4-layer corpus architecture operates:
+A DN-compliant system operates across three distinct layers. Each layer has a different purpose, a different audience, and a different relationship to this kernel.
 
-| **Layer** | **Contents** | **Governed By** |
-|---|---|---|
-| **Always Loaded** | Glossary, 5D Config, Universal Map, Blueprint Guide extract, Shadow Kernel, Triad Metric Preamble, RIP Triad Analytical Aspects, Facilitation Contract, Field Tension Model | Sections 1–4 of this spec (objects, tags, pillar, shadow) |
-| **Board-Embedded** | Color system, zone prompts, simulation parameters, per-zone dimension rules, Evolution Rhythm metrics | Sections 1, 2, 7, 8 of this spec (objects, tags, contracts, serialization) |
-| **Load on Demand** | Harmonies, Story Threads, Shadow Dimensions (full), Transitions, Prompt Dimensionality, RIP Triad (full corpus documents), Embodiment vs Application, Field-to-Field Dynamics (full) | Sections 4, 5, 6, 10 of this spec (shadow depth, transitions, field health, field interaction) |
-| **System Design** | Geometry of Intelligence, DN Code Document | Informs this spec's design but not runtime |
+| **Layer** | **Purpose** | **Contains** | **Relationship to Kernel** |
+|---|---|---|---|
+| **Kernel** | Defines what must be true. The structural constitution. | This document: Core Objects (Section 1), Dimensional Tags (Section 2), Pillar Metric (Section 3), Shadow Symmetry (Section 4), Transition Model (Section 5), Field Health Metrics (Section 6), Simulation Contracts (Section 7), Serialization Schemas (Section 8), Field-to-Field Dynamics (Section 10). | IS the kernel. Every structural requirement, constraint, invariant, and contract lives here. |
+| **Corpus** | Explains why these structures exist. The philosophical and narrative foundation. | Standalone documents: Geometry of Intelligence, DN Code, Shadow Dimensions (full essay), Story Threads, Harmonies, Embodiment vs Application, RIP Triad (full narrative), and other framework texts that provide depth, context, and meaning behind the kernel's structural decisions. | INFORMS the kernel. The corpus provides the "why" that the kernel distills into "what." Corpus documents are never required at runtime; they support understanding, training, and facilitation depth. |
+| **Implementation** | Determines how the structures are built. The product and platform layer. | Database schemas, API endpoints, UI components, authentication, hosting, AI integration, color systems, visual design, template authoring tools, and all platform-specific decisions. Includes the Growth Blueprint and other Templates as configured instances of the kernel's Template object. | IMPLEMENTS the kernel. Every implementation decision must respect kernel constraints but is free to make its own choices about technology, interface, and user experience. The kernel does not prescribe how to build; it prescribes what must be true about whatever is built. |
+
+**LAYER BOUNDARY PRINCIPLE:** When a question arises during implementation, the layers resolve it in order. "What must this system do?" is answered by the kernel. "Why does it do this?" is answered by the corpus. "How should we build it?" is answered by the implementation layer. Confusion between layers (treating corpus narrative as structural requirement, or treating implementation choices as kernel constraints) is the most common source of architectural drift.
+
+**AI CONTEXT NOTE:** When initializing an AI session for DN-structured work, the kernel and the Glossary together provide the structural and definitional foundation. Corpus documents may be added for depth when the session requires philosophical grounding, facilitation narrative, or domain-specific context. The kernel is always loaded; corpus documents are loaded as needed based on session intent. Templates are loaded when working within a specific Board's structure.
 
 ### 9.2 Kernel as Source of Truth
 
@@ -1093,7 +1302,7 @@ Fields interact across a spectrum of depth, from transient contact to permanent 
 | **Field Contact** | Two fields become aware of each other. Information crosses the boundary but neither field's internal structure is altered. | Cross-board Bridges with bridge_type: "reference". One field's artifacts are referenced by another field's participants, but no new artifacts are produced in either field as a result. | Transient. The bridge may persist as a reference but generates no ongoing interaction. |
 | **Field Resonance** | Two fields discover structural alignment, such as shared dimensional positions, compatible pillar orientations, or complementary developmental phases, that produces mutual amplification. Each field's intelligence becomes more coherent through awareness of the other. | Cross-board Bridges with bridge_type: "resonance". Artifacts in each field gain operational significance (per Constraint 5, Resonant Activation) from awareness of structurally aligned artifacts in the other field. FieldState field_resonance in both fields increases. | Sustained as long as the alignment holds. May be disrupted by developmental divergence. |
 | **Field Tension** | Two fields discover structural opposition, such as incompatible 5D identities, contradictory contextual frameworks, or competing gravitational centers, that creates charged interaction. Neither field can ignore the other without losing signal. | Cross-board Bridges with bridge_type: "tension". The tension model (Section 6, Field Tension) applies between fields as it does within them. Inter-field tension may be creative (producing synthesis artifacts in a third scope) or destructive (producing entrenchment in both fields). | Sustained until resolved, transcended, or the fields disengage. |
-| **Field Merger** | Two fields combine into a single field. The artifacts, transitions, and bridges of both fields become part of a unified FieldState. This is not aggregation (placing artifacts side by side) but integration (the combined field exhibits emergent properties neither original field possessed). | Structural equivalent of a Board merge operation. Requires explicit facilitation. The merger produces a new Snapshot capturing the combined state, and a Comparison analyzing how the merger transformed the intelligence landscape. Tension pairs between the formerly separate fields must be resolved, held, or explicitly acknowledged in the post-merger FieldState. | Permanent. The original fields cease to exist as independent entities, though they may be preserved as archived Branches for historical reference. |
+| **Field Merger** | Two fields combine into a single field. The artifacts, transitions, and bridges of both fields become part of a unified FieldState. This is not aggregation (placing artifacts side by side) but integration (the combined field exhibits emergent properties neither original field possessed). | Structural equivalent of a Board merge operation. The merger produces a new Snapshot capturing the combined state, and a Comparison analyzing how the merger transformed the intelligence landscape. *Facilitation guidance:* Merger requires explicit facilitation. Tension pairs between the formerly separate fields should be resolved, held, or explicitly acknowledged in the post-merger FieldState. | Permanent. The original fields cease to exist as independent entities, though they may be preserved as archived Branches for historical reference. |
 | **Field Nesting** | One field operates within the context of a larger field. The inner field has its own FieldState but is influenced by (and influences) the outer field's conditions. Participants are inner fields operating within the board's field. Teams are inner fields operating within organizational fields. | The existing participant model (Section 1, Session) is already a field nesting implementation: each participant carries dimensional_affinity and dimensional_actual, which are properties of their individual field interacting with the board's field. Field nesting generalizes this pattern to any scale: boards nested within programs, programs nested within organizational fields, organizational fields nested within societal or ecological fields. | Ongoing. The nesting relationship persists as long as the inner field operates within the outer field's context. |
 
 ### 10.3 Inter-Field FieldState
@@ -1116,6 +1325,8 @@ When two fields interact, the interaction itself generates observable field heal
 
 **SCALE INVARIANT:** The field interaction types (Contact, Resonance, Tension, Merger, Nesting) apply at every scale the architecture operates. Two artifacts within a zone interact as micro-fields. Two zones within a section interact as meso-fields. Two boards within an organization interact as macro-fields. The structural mechanisms are identical; the complexity and facilitation requirements scale with the scope of the interaction. This invariant is the formal statement of the principle that the rules of field-to-field interaction are already defined in the dimensional structure. They are the same rules that operate within fields, applied recursively at increasing scale.
 
+**WORKSPACE AS FIELD INTERACTION CONTAINER:** The Workspace (Section 1, Table 1) is the formal structural container for field-to-field dynamics at the multi-board scale. Where this section defines the theory of field interaction, the Workspace provides the object that implements it. Cross-board Bridges are scoped to a Workspace. Cross-board Comparisons draw Snapshots from Boards within the same Workspace. The Workspace's workspace_field_state is the inter-field FieldState described in Section 10.3, computed across all constituent Boards and their interactions. The Workspace does not govern the internal operations of its Boards (per the Field Nesting autonomy invariant above); it provides the scope within which their interactions are observable, measurable, and actionable. A Workspace with multiple Boards in Field Resonance is a portfolio aligned around a shared intelligence pattern. A Workspace with multiple Boards in Field Tension is a portfolio where competing strategies are being held and compared. Both are structurally healthy; the Workspace makes the pattern visible.
+
 ---
 
-*DN Kernel v0.8 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*DN Kernel v0.9 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
