@@ -4,7 +4,7 @@ subtitle: "The Constitution Between Philosophy and Code"
 author: "Travis Kahn"
 framework: "DN Framework"
 date: "February 2026"
-version: "0.9.1"
+version: "0.9.2"
 license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
 repository: "https://github.com/DeusNosMachina/DN_Framework"
 website: "https://dnframework.ai"
@@ -12,7 +12,7 @@ website: "https://dnframework.ai"
 
 # DN KERNEL
 
-**v0.9.1**
+**v0.9.2**
 
 *The Constitution Between Philosophy and Code*
 
@@ -102,9 +102,9 @@ The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-c
 
 ### 0.2 Versioning
 
-This is v0.9.1. The complete version history (v0.1 through v0.9.1) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
+This is v0.9.2. The complete version history (v0.1 through v0.9.2) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
 
-Changes in v0.9.1 (current): Formalized the Participant Field Ledger principle (Section 6), establishing that participants-as-fields have persistent cross-session ledgers subject to the FieldState Interpretation Note. Added Field Merger to human-exclusive facilitation functions (Section 1.6). Added Annotation Layer structural pattern (Section 1.6) for non-ledger intelligence that lives on the board periphery. Added Participant Sentiment as a conscious signal subtype within the Signal Sources taxonomy (Section 1.2). Expanded Co-Facilitation (Section 1.6) to encompass any multi-party facilitator configuration (multi-human, multi-AI, or mixed) with facilitation lead transfer as a recorded session event. See CHANGELOG for detailed history.
+Changes in v0.9.2 (current): Expanded Branch lifecycle to four stages (active → paused → merged → archived), adding paused as a formal status that retains branch state without accepting new artifacts or sessions (Section 1.1, Section 8.4). Expanded completion criteria status enum from three values (pending, met, unmet) to seven (met, partially_met, unmet, deferred, scope_changed, not_evaluated, open_exploration), aligning the Session schema (Section 8.10) with the full range of completion outcomes defined in the wishlist. See CHANGELOG for detailed history.
 
 ### 0.3 The DN Code — Foundational Principles
 
@@ -143,7 +143,7 @@ These are the fundamental entities that exist in any DN-compliant system. Every 
 | **Transition** | A recorded dimensional shift of an artifact, exercise or zone. Captures what moved, from where, to where, and by what mechanism. | id, subject_id, from_dim, to_dim, mechanism, barrier, evidence, pillar_lead, cost, cost_factors |
 | **SimulationRun** | A recorded execution of a simulation command against a scope of artifacts. | id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp |
 | **Snapshot** | A temporal state capture of a Board at a meaningful inflection point. Freezes the complete FieldState plus every artifact's dimensional position and pillar lead at a labeled moment. | id, board_id, inflection_label, timestamp, field_state, artifact_states[] |
-| **Branch** | A parallel reality forked from a specific Snapshot. Branches enable exploration of alternative decision paths without disturbing the originating timeline. Each Branch inherits the complete state of the Board at its fork point and accumulates independent changes from that point forward. | id, board_id, name, fork_snapshot_id, parent_branch_id (nullable), created_at, status (active \| merged \| archived) |
+| **Branch** | A parallel reality forked from a specific Snapshot. Branches enable exploration of alternative decision paths without disturbing the originating timeline. Each Branch inherits the complete state of the Board at its fork point and accumulates independent changes from that point forward. | id, board_id, name, fork_snapshot_id, parent_branch_id (nullable), created_at, status (active \| paused \| merged \| archived) |
 | **Comparison** | An analytical object representing the delta between two or more Snapshots. Not a diff, but a structural narrative of how the decision space evolved between inflection points. Snapshots may be drawn from different Boards within a Workspace (cross-board comparison). | id, snapshot_ids[], scope (intra-board \| cross-board), delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[] |
 | **Template** | A pre-configured set of Sections and Zones with default prompts, dimension rules, and exercise ordering. The Growth Blueprint is one Template instance. Creating a new Board = instantiating a Template. | id, name, description, sections[] (with zones and exercises carrying prompts, allowed_dimensions[], dimension_rules{}, simulation_rules, exercise_order, prerequisites[]) |
 | **Session** | A bounded period of work on a Board. Captures who participated, in what roles, under what conditions, with what intent. The temporal container for environmental and ambient signals. Evolution Tracking emerges as a query across Sessions over time. | id, board_id, intent_class, timestamp_start, timestamp_end, participants[] (each with type: human\|ai, role: facilitator\|contributor\|observer, identity, dimensional_affinity[] (expected operating dimensions), dimensional_actual[] (computed from artifacts_produced, populated on session close)), environmental_signals{}, simulation_parameters{}, change_rationale, completion_criteria[], artifacts_produced[], transitions_recorded[], snapshot_id (optional, if snapshot triggered on close) |
@@ -175,7 +175,7 @@ Branches fork from Snapshots. A Branch inherits the complete Board state capture
 
 **INVARIANT:** Merge is selective, not automatic. Repatriating artifacts from a Branch to its parent requires explicit identification of which artifacts, transitions, and bridges transfer. The merge operation creates a new Snapshot on the receiving timeline capturing the post-merge state. Merge does not delete the source Branch.
 
-**INVARIANT:** Every Branch has a status. Active Branches accept new artifacts and sessions. Merged Branches are read-only records of the alternative path explored. Archived Branches are preserved but hidden from active views. No Branch may be deleted; alternative paths explored are historical facts.
+**INVARIANT:** Every Branch has a status. Active Branches accept new artifacts and sessions. Paused Branches retain their state but do not accept new artifacts or sessions; pausing preserves the Branch for future resumption without the finality of merge or archive. Merged Branches are read-only records of the alternative path explored. Archived Branches are preserved but hidden from active views. No Branch may be deleted; alternative paths explored are historical facts.
 
 **TENSION BRIDGE TYPE:** Bridges may carry bridge_type: "tension" indicating a connection between two artifacts that exists not because they reinforce each other but because they oppose each other in a structurally significant way. A tension bridge is not a failure of connection. It is the explicit acknowledgment that the space between these two artifacts is charged and load-bearing. Tension bridges carry polarity_score in their rationale metadata, enabling the tension_map computation in FieldState (Section 6.1). Tension bridges may be created by facilitation (conscious signal), by simulation analysis (simulation signal, particularly the Map Tension Field command), or by import from external analysis (external provenance). Like all bridges, tension bridges carry dimensional tags, but their dimension typically reflects the dimensional position where the tension manifests, not a separate dimensional identity.
 
@@ -926,7 +926,7 @@ The minimum viable JSON representation of a DN Branch:
 }
 ```
 
-**Required fields:** id, board_id, name, fork_snapshot_id, status. parent_branch_id is null for branches from the main timeline; non-null for branches forked from other branches.
+**Required fields:** id, board_id, name, fork_snapshot_id, status (active | paused | merged | archived). parent_branch_id is null for branches from the main timeline; non-null for branches forked from other branches.
 
 ### 8.5 ImportBatch (Provenance Group) Schema
 
@@ -1155,7 +1155,7 @@ The minimum viable JSON representation of a DN Session:
 }
 ```
 
-**Required fields:** id, board_id, intent_class, timestamp_start, timestamp_end, participants[], environmental_signals{}, simulation_parameters{}, change_rationale, artifacts_produced[], transitions_recorded[]. completion_criteria[] is recommended but nullable; when present, each entry carries an id, name, dimension_focus, checklist (array of verifiable conditions), and status (pending | met | unmet, evaluated at session close). Completion criteria are established at session start and evaluated at session close; they formalize what "done" means for this session's work (Section 1.6, Completion Criteria). snapshot_id is nullable; populated only when a Snapshot is triggered on session close. Each participant entry carries type (human | ai), role (facilitator | contributor | observer), identity, dimensional_affinity[] (expected operating dimensions, set at session start), and dimensional_actual[] (computed from artifacts_produced, populated on session close). change_rationale is human-authored and captures the intent and context for the session; it is the primary narrative thread consumed by Evolution Tracking (Section 1.1.1).
+**Required fields:** id, board_id, intent_class, timestamp_start, timestamp_end, participants[], environmental_signals{}, simulation_parameters{}, change_rationale, artifacts_produced[], transitions_recorded[]. completion_criteria[] is recommended but nullable; when present, each entry carries an id, name, dimension_focus, checklist (array of verifiable conditions), and status (met | partially_met | unmet | deferred | scope_changed | not_evaluated | open_exploration, evaluated at session close). Completion criteria are established at session start and evaluated at session close; they formalize what "done" means for this session's work (Section 1.6, Completion Criteria). snapshot_id is nullable; populated only when a Snapshot is triggered on session close. Each participant entry carries type (human | ai), role (facilitator | contributor | observer), identity, dimensional_affinity[] (expected operating dimensions, set at session start), and dimensional_actual[] (computed from artifacts_produced, populated on session close). change_rationale is human-authored and captures the intent and context for the session; it is the primary narrative thread consumed by Evolution Tracking (Section 1.1.1).
 
 ### 8.11 Template Schema
 
@@ -1336,4 +1336,4 @@ When two fields interact, the interaction itself generates observable field heal
 
 ---
 
-*DN Kernel v0.9.1 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*DN Kernel v0.9.2 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
