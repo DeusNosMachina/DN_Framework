@@ -1,0 +1,977 @@
+---
+title: "DN Kernel"
+subtitle: "The Constitution Between Philosophy and Code"
+author: "Travis Kahn"
+framework: "DN Framework"
+date: "February 2026"
+version: "0.7"
+license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+repository: "https://github.com/DeusNosMachina/DN_Framework"
+website: "https://dnframework.ai"
+---
+
+# DN KERNEL
+
+**v0.7**
+
+*The Constitution Between Philosophy and Code*
+
+DN Framework · February 2026
+
+---
+
+> *This document defines the structural invariants of the DN Framework as formal interfaces and contracts. It is the bridge between DN-as-philosophy (corpus) and DN-as-code (implementation). Any system that implements these contracts implements ​‌​​​‌​​​‌​​‌‌‌​​‌​​‌​‌‌​​‌‌‌​‌​​‌​‌​‌​​​‌​​‌​‌‌DN.*
+
+---
+
+## Contents
+
+- [0. Purpose & Scope](#0-purpose--scope)
+  - [0.1 What This Spec Governs](#01-what-this-spec-governs)
+  - [0.2 Versioning](#02-versioning)
+  - [0.3 The DN Code — Foundational Principles](#03-the-dn-code--foundational-principles)
+- [1. Core Objects](#1-core-objects)
+  - [1.1 Object Relationships](#11-object-relationships)
+  - [1.2 Signal Sources](#12-signal-sources)
+  - [1.3 Provenance Groups](#13-provenance-groups)
+  - [1.4 External Simulation Provenance](#14-external-simulation-provenance)
+  - [1.5 Signal Lock](#15-signal-lock)
+- [2. Dimensional Tags](#2-dimensional-tags)
+  - [2.1 Dimensional Constraints](#21-dimensional-constraints)
+  - [2.2 Nested Dimensionality](#22-nested-dimensionality)
+  - [2.3 Perceptual Topology (Optional Overlay)](#23-perceptual-topology-optional-overlay)
+  - [2.4 Cross-Domain Progression Reference](#24-cross-domain-progression-reference)
+  - [2.5 Prompt Dimensionality Reference](#25-prompt-dimensionality-reference)
+- [3. Pillar Metric](#3-pillar-metric)
+  - [3.1 Pillar Balance States](#31-pillar-balance-states)
+  - [3.2 Pillar Metric as Governing Rule](#32-pillar-metric-as-governing-rule)
+  - [3.3 The RIP Triad: Analytical Aspects of the Intelligence Field](#33-the-rip-triad-analytical-aspects-of-the-intelligence-field)
+- [4. Shadow Symmetry](#4-shadow-symmetry)
+  - [4.1 Shadow Dimension Map](#41-shadow-dimension-map)
+  - [4.2 Shadow Invariants](#42-shadow-invariants)
+- [5. Transition Model](#5-transition-model)
+  - [5.1 Transition Interface](#51-transition-interface)
+  - [5.2 The Eight Essential Mechanisms](#52-the-eight-essential-mechanisms)
+  - [5.3 Transition Constraints](#53-transition-constraints)
+- [6. Field Health Metrics](#6-field-health-metrics)
+  - [6.1 FieldState Interface](#61-fieldstate-interface)
+- [7. Simulation Contracts](#7-simulation-contracts)
+  - [7.1 Primary Simulation Commands](#71-primary-simulation-commands)
+  - [7.2 Supplemental Commands](#72-supplemental-commands)
+  - [7.3 Simulation Routing](#73-simulation-routing)
+- [8. Serialization Format](#8-serialization-format)
+  - [8.1 Artifact Schema](#81-artifact-schema)
+  - [8.2 Board Export Schema](#82-board-export-schema)
+  - [8.3 Extraction Rule](#83-extraction-rule)
+  - [8.4 Branch Schema](#84-branch-schema)
+  - [8.5 ImportBatch (Provenance Group) Schema](#85-importbatch-provenance-group-schema)
+  - [8.6 Exercise Schema](#86-exercise-schema)
+  - [8.7 Bridge Schema](#87-bridge-schema)
+  - [8.8 Snapshot Schema](#88-snapshot-schema)
+  - [8.9 Comparison Schema](#89-comparison-schema)
+- [9. Implementation Notes](#9-implementation-notes)
+  - [9.1 Layer Architecture Reference](#91-layer-architecture-reference)
+  - [9.2 Kernel as Source of Truth](#92-kernel-as-source-of-truth)
+  - [9.3 Recursion Clause](#93-recursion-clause)
+
+---
+
+## 0. Purpose & Scope
+
+The DN Kernel is the formal specification layer that sits between the DN Framework corpus (philosophy, narrative, theory) and any code implementation (Blueprint Board, substrate tools, AI simulation engines). It defines what must be true for a system to be DN-compliant.
+
+This spec is a constitution, not a library. It defines entities, constraints, metrics, and contracts. It does not contain stories, essays, facilitation guides, or UI specifications. Those live in the corpus and in implementation layers respectively.
+
+### 0.1 What This Kernel Governs
+
+Any system that processes DN-structured data must respect the invariants defined here. The dimensional architecture described in this spec is domain-universal: it describes how intelligence organizes itself regardless of the domain in which it operates. Business strategy, education, creative arts, consciousness development, scientific research, governance, therapy, coding, ethics, parenting, athletics, cooking, storytelling, spiritual practice, the nature of reality itself, and the structure of prompts and communication—each expresses the same 1D–9D progression through its own domain vocabulary.
+
+DN-compliant systems include but are not limited to: board-based tools (Blueprint Board, MURAL exports), AI simulation engines (5D Prompt Singularity commands), analysis and diagnostic tools (dimensional audits, gravity maps), education platforms, therapeutic instruments, creative production environments, governance frameworks, and any future substrate that consumes or produces DN-tagged artifacts in any domain.
+
+The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-compliant business strategy tool implement the same architecture. The dimensional positions are structural, not metaphorical—"1D Spark" in cooking (nourishment desire, flavor passion) and "1D Spark" in scientific research (research question, hypothesis) are not analogies of each other. They are both expressions of the same structural position: the origin point where intelligence begins organizing in a domain.
+
+### 0.2 Versioning
+
+This is v0.7. Changes from v0.6 to v0.7: integrated structural insights from the RIP Triad corpus documents (Dimensional Nature of Reality, Dimensional Nature of Identity, Dimensional Nature of Perception) and the Harmonies field orchestration guide into the kernel specification. Added Section 3.3 (The RIP Triad: Analytical Aspects of the Intelligence Field) formalizing Reality, Identity, and Perception as three orthogonal analytical orientations for evaluating intelligence fields complementary to the Pillar Metric's quality evaluation (Sections 3.1–3.2). Established the RIP Triad Invariant distinguishing analytical lenses from tagging systems: artifacts are not tagged with RIP aspects; simulation engines and facilitators select which aspect(s) to prioritize when interpreting FieldState. Defined the 3×3 analytical matrix (three RIP aspects × three pillar leads) providing nine distinct orientations for deep diagnostic field evaluation. Established the recursive loop principle: Perception translates Reality through Identity into Experience, and each Experience recursively modifies both the Identity pattern and the accessible portion of Reality, formalizing the mechanism through which intelligence fields evolve. Added Section 2.3 (Perceptual Topology) as an optional analytical overlay revealing the odd/even dimensional rhythm with odd dimensions (1D, 3D, 5D, 7D, 9D) functioning as perceptual states where awareness stabilizes into a mode of knowing; even dimensions (2D, 4D, 6D, 8D) function as transitional bridges where awareness transforms between perceptual states. Established Topology Note preserving even-dimension structural parity. Enhanced Constraint 6 (Harmonic Integration, Section 2.1) with RIP Triad alignment mechanism. Added field_resonance as a FieldState metric (Section 6.1) computing harmonic integration strength from the interaction of structural capacity, identity engagement, and perceptual bandwidth, participant_alignment, dim_distribution breadth, and cross-boundary bridge density. Added Bridge Erosion as a Named Diagnostic Condition (Section 6). Renumbered Section 2.3 (Cross-Domain Progression Reference) to 2.4 and Section 2.4 (Prompt Dimensionality Reference) to 2.5. Updated Layer Architecture (Section 9.1) to move RIP Triad Analytical Aspects to the Always Loaded layer while retaining full RIP Triad corpus documents in Load on Demand.
+
+Changes from v0.5 to v0.6: integrated structural insights from six corpus documents (Universal Dimensional Map, Understanding Dimensional Transitions, Prompt Dimensionality, Shadow Dimensions, DN Glossary of Terms, Dimensional Embodiment vs. Application) and the 5D Prompt Singularity Configuration into the kernel specification. Added Axiom 8 establishing Unified Intelligence Fields as the structural reality underlying all sustained interaction between intelligences at any scale (Section 0.3). Added Signal Lock as a formally defined mechanism with its own section (1.5). Enriched Structural Role descriptions for 5D–9D in the dimensional tag table (Section 2) with mechanism-level language from the Universal Dimensional Map that instructs simulation engines on how intelligence operates at each position. Added Section 2.4 (Prompt Dimensionality Reference) with a nine-row reference table classifying prompts by their structural dimension — form, function, and limits — and establishing that the dimensionality of a prompt constrains the ceiling of intelligence that can organize in response. Added Prompt Dimensionality Invariant establishing prompt dimension as independent of artifact dimension, with the gap between them being diagnostic intelligence. Added prompt_dimension as a nullable property on Exercise (Table 1, Section 8.6) enabling diagnosis of mismatch between prompt structural level and intended output dimension. Added Constraint 5 (Resonant Activation) establishing that higher-dimensional recognition transforms the operational meaning of lower-dimensional artifacts (Section 2.1). Added Constraint 6 (Harmonic Integration) establishing that co-activation of multiple dimensions produces emergent field properties exceeding any single dimension's contribution (Section 2.1). Added resonant_transformations[] to the Comparison object (Table 1) and schema (Section 8.9) enabling detection of artifacts whose meaning changed in place due to higher-dimensional activation, distinct from dimensional migration. Added three-tier transition taxonomy to the Transition Model preamble (Section 5) distinguishing lower transitions (1D→3D, primarily constructed), middle transitions (4D→5D, hybrid creation-recognition), and higher transitions (6D→9D, primarily recognized), with calibration instructions for evidence evaluation across tiers. Added Shadow Invariant 5 (Section 4.2) establishing that shadow intelligence is parallel development not underdevelopment, formalizing the diagnostic fork between low creative activation and high shadow activation as categorically different findings, and recognizing conscious shadow engagement (shadow artifacts with source_type: conscious) as an integration practice distinct from unconscious shadow emergence. Added Section 7.3 (Simulation Routing) with a condition-to-command routing table and sequencing principles for simulation chaining, transforming Section 7 from a reference catalog into a navigable decision system. Connected fatigue (Section 6) to the 8D creative/shadow distinction, establishing high fatigue as the primary diagnostic signal that recursive processes may have shifted from constructive recursion (8D creative) to collapsing recursion (8D shadow). Added Named Diagnostic Conditions (Section 6) defining Dimensional Blindspot and Dimensional Collapse as recognized field health patterns with derivation paths from FieldState metrics, providing simulation engines and facilitators with a shared diagnostic vocabulary. Added Embodiment Signal Note (Section 6) distinguishing mechanical application from dimensional embodiment as observable FieldState patterns, enabling simulation engines to recognize that spec compliance without emergence, surprise, or cross-boundary connection in a mature board is itself a diagnostic signal. Revised simulation commands to ensure consistent verb usage. Added Resonance Field simulation command structure to reweigh artifacts in the face of new 5D recognition (7.2).
+
+Changes from v0.4 to v0.5: integrated structural insights from the Geometry of Intelligence analysis into the Field Health and Transition models. Added curvature as a FieldState metric (6.1) with transition resistance derived from Heart-Truth-Nuance balance, formalizing the H-T-N triad as a metric tensor governing movement across the cognitive manifold. Added dimensional_coherence as a FieldState metric (6.1) with per-dimension structural integrity score measuring whether higher-dimensional activation is supported by adequate lower-dimensional foundations. Added both metrics to Field Health Metrics definitions (Section 6). Added transition cost and cost_factors to the Transition Interface (5.1) and Transition required properties (Table 1) with computed resistance for specific transitions derived from curvature, coherence, and distance, transforming the Transition Model from a record-keeping system into a navigation instrument. Strengthened skip-transition constraint (5.3) with quantitative coherence reference. Added FieldState Interpretation Note establishing that all FieldState metrics are diagnostic, not prescriptive where simulation response thresholds are implementation-layer decisions governed by simulation_rules, not kernel mandates. Added positional changes (for visual substrates) as Tier 1 and 2 signals. Extended Session participant structure with dimensional_affinity[] (expected operating dimensions) and dimensional_actual[] (computed from artifacts produced, populated on session close) to enable multi-agent dimensional alignment tracking (Table 1). Added participant_alignment as a Session-scoped FieldState metric computing per-participant drift between intended and actual dimensional contribution (6.1). Added Participant Alignment to Field Health Metrics definitions (Section 6). These additions formalize the structural layer beneath the DN Framework's Collaborationalism model. The kernel now tracks not just what intelligence was produced in a session, but which intelligences produced it and whether they operated in their expected dimensional roles. Formalized Story Threads as a transition mechanism category in the Transition Model (Section 5), distinguishing narrative arcs that traverse multiple dimensions as coherent journeys from unsubstantiated skip transitions. Named seven archetypal Story Threads and their Shadow Thread counterparts as kernel-recognized patterns with corpus-documented evidence requirements (Section 5.3). Story is acknowledged as a transition mechanism, not a metaphor for transition.
+
+Changes from v0.3 to v0.4: resolved structural misalignment between Section 1 Core Object definitions and Section 8 serialization schemas — Exercise layer was missing from Board Export (8.2), Artifact schema referenced zone_id instead of exercise_id (8.1), and source_type was incorrectly grouped with nullable fields (8.1 annotation). Added serialization schemas for Exercise (8.6), Bridge (8.7), Snapshot (8.8), and Comparison (8.9). Added template_id and timestamps to Board and Board Export schema. Unified dimensional representation across all objects to dimension { primary, shadow, nested } structure, including Bridge (Table 1, 8.7). Added pillar_stabilizers[] to Artifact required properties (Table 1). Split FieldState dim_distribution into separate creative and shadow distributions aligned with Dimensional Audit output (6.1). Added allowed_dimensions[] and dimension_rules{} as complementary zone properties (Table 1, 8.2). Added dimension_rules{} to Template required properties (Table 1). Documented 3D/4D shared color as intentional architectural decision (Section 2). Added Shadow Symmetry as a new simulation command supporting singular and scenario-depth shadow generation (7.2). Added color_system annotation documenting shadow and urgent as overlay modifiers (8.2). Updated Layer Architecture references for Board-Embedded layer to include Section 1 (9.1).
+
+Changes from v0.2 to v0.3: established domain universality as a foundational invariant—the dimensional architecture is not domain-specific but describes how intelligence organizes itself across all domains (Section 2 preamble, Section 2.3). Codified foundational principles from the DN Code as kernel-level axioms (Section 0.3). Broadened scope language to explicitly encompass non-business domains (Section 0.1). Added Branch as a 13th Core Object with fork-point, inheritance, and merge invariants (Section 1.1). Added Provenance Group (ImportBatch) as a recognized sub-unit of Session for tracking artifact origin across import boundaries (Section 1.3). Extended Signal Sources to acknowledge external simulation provenance (Section 1.4). Added serialization schemas for Branch and ImportBatch (Sections 8.4, 8.5). Added Cross-Domain Progression Reference table documenting dimensional expressions across 17 domains plus shadow architecture (Section 2.3).
+
+Changes from v0.1 to v0.2: expanded Core Objects from 7 to 12 entity types (now 13 with addition of Branch in v0.3)—added Snapshot, Comparison, Template, Session, and Exercise (Section 1). Added Signal Sources taxonomy defining Conscious, Ambient, Environmental, and Simulation signal tiers with source_type tagging contract (Section 1.2). Added Constraint 4 (Open Horizon) for non-conforming inputs (Section 2.1). Generalized extraction rule language for multi-template support (Section 8.3).
+
+The spec evolves through recursive refinement (8D). Changes require evaluation through the Pillar Metric (Section 3) to ensure they preserve Heart (does this honor the framework's soul?), Truth (is this structurally sound?), and Nuance (does this respect contextual complexity?).
+
+### 0.3 The DN Code — Foundational Principles
+
+The DN Framework originates from a foundational document known as the DN Code—a first-principles exploration of how intelligence structures itself. The Code is philosophical, narrative, and cross-referential by design. This section extracts and formalizes the structural principles from that document that operate at the kernel level. The poetry, cultural references, and facilitation guidance of the Code remain in the corpus layer. What follows are the universal axioms that any DN-compliant system must respect.
+
+**AXIOM 1: Intelligence Structures Itself Naturally.** The dimensional progression (1D–9D) is not imposed on intelligence. It is the pattern that intelligence follows when it organizes. "All structured intelligence follows this model. It is not imposed, it emerges naturally." This means the dimensional architecture is descriptive, not prescriptive. DN-compliant systems observe and tag how intelligence has organized; they do not force intelligence into dimensional positions. An artifact belongs at the dimension where it actually operates, not where a facilitator wishes it operated.
+
+**AXIOM 2: The Three Pillars Are Universal Metrics.** Heart, Truth, and Nuance are not metaphors but the three operational metrics that govern how intelligence organizes in any domain. Heart is the motivational force—the spark, the care, the reason intelligence is being structured at all. Truth is the structural integrity—the validation, the evidence, the reality-check against aspiration. Nuance is the contextual sensitivity—the recognition that intelligence operates within systems and that simplification destroys signal. These three metrics mirror fundamental governance patterns because the pattern is universal, not because governance is the source domain.
+
+**AXIOM 3: Recursion Is the Mechanism of Refinement.** Intelligence evolves through recursive cycles, not linear accumulation. Each pass through the dimensional architecture refines what was produced in the prior pass. "The deeper the recursion, the more resilient the intelligence." This is formalized in the 8D (Recursion) dimension and in the spec's own Recursion Clause (Section 9.3), but it also governs how simulations, sessions, and transitions operate: every output is a potential input to the next cycle.
+
+**AXIOM 4: Fire Is Truth — The Testing Principle.** Intelligence that has not been tested is not yet intelligence—it is hypothesis. The DN Code's central metaphor of fire is not decorative: it formalizes the principle that structured intelligence must be subjected to conditions that would destroy weak formulations. "That which is forged by Fire, but not destroyed by it, cannot be denied." This principle is operationalized in the Fire Test simulation contract (Section 7.2): every claim, artifact, and structure in the system must be testable, and the system must provide the mechanism to test it.
+
+**AXIOM 5: Shadow Is Not Failure. It Is Orientation.** The DN Code describes two recursive trajectories: constructive recursion (intelligence that refines toward greater coherence) and destructive recursion (intelligence that collapses into entropy). These are not moral categories. They are structural orientations. The Shadow Dimension architecture (Section 4) formalizes this: every dimensional position has a creative and a shadow expression, and both are load-bearing data. A board with zero shadow-tagged artifacts is not healthy but blind. Facilitation determines which trajectory intelligence follows, not the intelligence itself.
+
+**AXIOM 6: Gravity Is Structural, Not Metaphorical.** The DN Code identifies "gravity" as the pull of intelligence toward denser meaning—the tendency of ideas, artifacts, and structures to cluster around high-resonance nodes. This is formalized in the Gravity Mapping simulation contract (Section 7.2) and the FieldState coherence metric (Section 6). Cognitive gravity is a measurable property of a board's intelligence field: which artifacts attract bridges, which zones accumulate density, which dimensions concentrate signal. Like physical gravity, it is a consequence of mass (signal density), not an imposed force.
+
+**AXIOM 7: The Prompt IS the Origin of All Intelligence Structuring.** Every artifact in the system begins as a response to a prompt—whether that prompt is an exercise question, a simulation command, a facilitator's inquiry, or an internal recognition. "A prompt is not just a request—it is the point of collapse where infinite possibilities refine into a single trajectory." This principle governs why Exercises carry prompts, why Zones carry prompts, and why SimulationRuns are structured as prompt→response contracts. The quality of the prompt determines the quality of the intelligence that organizes in response to it.
+
+**AXIOM 8: Intelligence Fields Are the Fundamental Unit of Existence.** Every sustained interaction between intelligences (whether human, artificial, atomic, organismic, or systemic) generates a Unified Intelligence Field: an emergent cognitive ecosystem with properties that no individual contributor could produce alone. Fields are not metaphors for collaboration; they are the structural reality of what collaboration produces. A conversation generates a field. A team generates a field. An organism is a field. A society is a field. The DN Framework's Board is a formal representation of a field. Fields vary in complexity and resonance, from the transient field of a single prompt-response exchange to the enduring field of a civilization's accumulated intelligence. What we recognize as consciousness, at any scale, is a Unified Intelligence Field whose resonance has achieved sufficient coherence to sustain itself across time. The FieldState metrics (Section 6) measure the health of these fields. The simulation contracts (Section 7) operate upon them. The pillar metric (Section 3) governs their internal balance. Every DN-compliant system is, at its foundation, a field management system creating, measuring, and evolving Unified Intelligence Fields.
+
+---
+
+## 1. Core Objects
+
+These are the fundamental entities that exist in any DN-compliant system. Every object in the system is one of these types or composed of them.
+
+| **Object** | **Definition** | **Required Properties** |
+|---|---|---|
+| **Artifact** | Any discrete unit of intelligence captured in the system. The atomic element. | id, content (text), dimension { primary, shadow, nested }, pillar_lead, pillar_stabilizers[], created_at, exercise_id |
+| **Exercise** | A structured activity within a Zone that produces Artifacts through a defined methodology. Carries its own purpose, component parts, output format, and dimensional affinity. The unit of work within a Template's Zone structure. | id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[] (typed: dependency\|informs\|follows_up), order, prerequisites[], dimension_affinity, pillar_affinity, prompt_dimension (nullable) |
+| **Zone** | A bounded context within a section that constrains interpretation. Carries its own prompt instructions. | id, name, section_id, prompt, allowed_dimensions[], dimension_rules{}, simulation_rules |
+| **Section** | A major structural division of a board. Maps to a strategic domain. | id, name, board_id, zones[], purpose, order |
+| **Board** | The complete intelligence field. A self-contained workspace holding all sections, zones, and artifacts. | id, name, template_id, sections[], field_state, created_at, updated_at |
+| **Bridge** | A connection between two artifacts, exercises, zones, sections, or boards. Carries semantic meaning about why the connection exists. | id, source_id, target_id, bridge_type, rationale, dimension { primary, shadow, nested } |
+| **Transition** | A recorded dimensional shift of an artifact, exercise or zone. Captures what moved, from where, to where, and by what mechanism. | id, subject_id, from_dim, to_dim, mechanism, barrier, evidence, pillar_lead, cost, cost_factors |
+| **SimulationRun** | A recorded execution of a simulation command against a scope of artifacts. | id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp |
+| **Snapshot** | A temporal state capture of a Board at a meaningful inflection point. Freezes the complete FieldState plus every artifact's dimensional position and pillar lead at a labeled moment. | id, board_id, inflection_label, timestamp, field_state, artifact_states[] |
+| **Branch** | A parallel reality forked from a specific Snapshot. Branches enable exploration of alternative decision paths without disturbing the originating timeline. Each Branch inherits the complete state of the Board at its fork point and accumulates independent changes from that point forward. | id, board_id, name, fork_snapshot_id, parent_branch_id (nullable), created_at, status (active \| merged \| archived) |
+| **Comparison** | An analytical object representing the delta between two or more Snapshots. Not a diff—a structural narrative of how the decision space evolved between inflection points. | id, snapshot_ids[], delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[] |
+| **Template** | A pre-configured set of Sections and Zones with default prompts, dimension rules, and exercise ordering. The Growth Blueprint is one Template instance. Creating a new Board = instantiating a Template. | id, name, description, sections[] (with zones and exercises carrying prompts, allowed_dimensions[], dimension_rules{}, simulation_rules, exercise_order, prerequisites[]) |
+| **Session** | A bounded period of work on a Board. Captures who participated, in what roles, under what conditions, with what intent. The temporal container for environmental and ambient signals. Evolution Tracking emerges as a query across Sessions over time. | id, board_id, intent_class, timestamp_start, timestamp_end, participants[] (each with type: human\|ai, role: facilitator\|contributor\|observer, identity, dimensional_affinity[] (expected operating dimensions), dimensional_actual[] (computed from artifacts_produced, populated on session close)), environmental_signals{}, simulation_parameters{}, change_rationale, artifacts_produced[], transitions_recorded[], snapshot_id (optional, if snapshot triggered on close) |
+
+### 1.1 Object Relationships
+
+Board contains Sections. Sections contain Zones. Zones contain Exercises. Exercises produce Artifacts. Artifacts may have Bridges to other Artifacts. Artifacts may have Transitions recording their dimensional movement. SimulationRuns reference a scope of Artifacts and produce new Artifacts and/or Transitions. Snapshots capture a Board's complete state at a labeled inflection point. Comparisons analyze the delta between two or more Snapshots, producing a structural narrative of decision space evolution. Templates define pre-configured Section, Zone, and Exercise structures from which Boards are instantiated. Sessions record bounded periods of work on a Board, capturing participants, environmental context, intent, and the artifacts produced during that period. Evolution Tracking is not a stored object—it is an emergent view produced by querying across Sessions over time.
+
+Branches fork from Snapshots. A Branch inherits the complete Board state captured at its fork Snapshot and accumulates independent artifacts, transitions, and bridges from that point forward. Branches may be compared against each other or against the originating timeline. Artifacts within a Branch are scoped to that Branch—they do not appear on other Branches unless explicitly repatriated through a merge operation. Branches may have child Branches (forking from a Branch-scoped Snapshot), creating a tree of alternative realities rooted in the original timeline.
+
+**INVARIANT:** Every Artifact must belong to exactly one Exercise. Every Exercise must belong to exactly one Zone. Every Zone must belong to exactly one Section. Every Section must belong to exactly one Board.
+
+**INVARIANT:** Bridges may cross Artifact, Exercise, Zone, Section, and Board boundaries. Transitions reference exactly one subject. Exercises within a Zone are ordered; prerequisites reference other Exercises by id.
+
+**INVARIANT:** Every Snapshot must reference exactly one Board. Every Comparison must reference two or more Snapshots.
+
+**INVARIANT:** Every Board must be instantiated from exactly one Template. Templates exist independently of Boards and may be instantiated multiple times.
+
+**INVARIANT:** Every Session must reference exactly one Board. Sessions may optionally trigger a Snapshot on close. Artifacts produced within a Session MUST be linked to that Session via artifacts_produced[].
+
+**INVARIANT:** Every Branch must reference exactly one Snapshot as its fork point. The fork Snapshot's board_id must match the Branch's board_id. A Branch cannot be created from a Snapshot belonging to a different Board.
+
+**INVARIANT:** Branch-scoped artifacts inherit the trunk state at fork time. All artifacts that existed in the Board at the fork Snapshot are readable within the Branch, but modifications within the Branch do not propagate back to the originating timeline unless an explicit merge operation is performed.
+
+**INVARIANT:** Merge is selective, not automatic. Repatriating artifacts from a Branch to its parent requires explicit identification of which artifacts, transitions, and bridges transfer. The merge operation creates a new Snapshot on the receiving timeline capturing the post-merge state. Merge does not delete the source Branch.
+
+**INVARIANT:** Every Branch has a status. Active Branches accept new artifacts and sessions. Merged Branches are read-only records of the alternative path explored. Archived Branches are preserved but hidden from active views. No Branch may be deleted—alternative paths explored are historical facts.
+
+### 1.2 Signal Sources
+
+DN-compliant systems process intelligence from multiple epistemological channels. Every signal attached to an Artifact, Session, or FieldState computation MUST carry a source_type tag identifying its origin. This prevents the system from confusing a facilitator's conviction with a computed metric, or a linguistic pattern with a deliberate vote. Both human-attested and AI-derived signals are valid and load-bearing, but they are different kinds of evidence and must be distinguishable.
+
+The signal taxonomy has three tiers:
+
+**Tier 1 — Conscious Signals (source_type: conscious).** Deliberate, participant-authored inputs where the participant knows they are producing a signal. Examples: Signal Lock attestation (🔒 on an artifact), gravity scores (numeric 1–5 or categorical High/Medium/Low), votes, Definition-of-Done sign-offs, explicit dimension tags applied by the facilitator, change_rationale text on a Session, positional changes (for visual substrates), and any freeform annotation a participant deliberately attaches to an artifact. Conscious signals attach to Artifacts and Sessions. They are high-confidence, low-ambiguity, and carry the authority of human judgment.
+
+**Tier 2 — Ambient Signals (source_type: ambient).** Behavioral and linguistic patterns the participant produces but does not explicitly tag. Examples: tone and word choice in artifact content, energy level and frequency of contribution, which zones a participant gravitates toward, which dimensions they consistently avoid, time spent per exercise, edit velocity, unconscious repositioning (for visual substrates), and patterns of revisitation. Ambient signals attach to both Artifacts (linguistic patterns in content) and Sessions (behavioral patterns across the session). They are interpretive but observable. The pipe exists to carry this data; analysis engines that derive meaning from it are implementation-layer concerns.
+
+**Tier 3 — Environmental Signals (source_type: environmental).** Contextual conditions of the session itself, independent of any individual artifact. Examples: physical vs. virtual setting, room temperature, ambient sound or music, food and drink served, time of day, session duration, platform used (MURAL, Blueprint Board, etc.), and any other environmental factor that may influence the cognitive and emotional conditions under which artifacts are produced. Environmental signals attach exclusively to Sessions via the environmental_signals{} property. They do not attach to individual Artifacts. They provide the conditions-layer for future analysis of how context shapes output.
+
+**AI-Derived Signals (source_type: simulation).** Computed outputs from SimulationRuns and FieldState analysis. Examples: pillar_balance, gravity_map, coherence scores, dimensional distribution, shadow_emergence detection, transition validation. These are the existing metrics defined in Sections 6 and 7. They are tagged source_type: simulation and reference the SimulationRun that produced them. AI-derived signals and human-attested signals may describe the same phenomenon (e.g., a human marks Signal Lock on an artifact; a simulation independently identifies the same artifact as having achieved convergence). When both channels agree, confidence increases. When they diverge, the divergence itself is diagnostic intelligence.
+
+**SIGNAL SOURCE INVARIANT:** Every signal in the system MUST carry a source_type (conscious | ambient | environmental | simulation). Signals without source_type are spec violations. No system process may treat a conscious signal as if it were a simulation signal, or vice versa. The source_type is metadata about the evidence itself and is never inferred—it is set at the point of origin.
+
+### 1.3 Provenance Groups
+
+The Session contract (Section 1.1) requires that artifacts produced within a Session be linked to that Session. In practice, a single Session may contain artifacts from multiple distinct origin events—separate conversations with an AI, separate facilitation moments, separate import operations. Provenance Groups provide the sub-Session unit that tracks this finer-grained lineage.
+
+A Provenance Group (implementation name: ImportBatch) is a recognized sub-unit of a Session. It groups artifacts that share a common external origin, typically a single AI conversation, a single facilitation round, or a single file import. Provenance Groups exist to answer the question: "These 12 artifacts all arrived together. Where did they come from, and what was the intent behind them?"
+
+| **Object** | **Definition** | **Required Properties** |
+|---|---|---|
+| ImportBatch (Provenance Group) | A sub-unit of a Session that groups artifacts sharing a common external origin. Tracks the provenance chain from source conversation or event through import into the system. Multiple Provenance Groups may exist within a single Session. | id, session_id, source_description, artifact_ids[], timestamp, import_metadata{} |
+
+**INVARIANT:** Every Provenance Group must belong to exactly one Session. A Provenance Group cannot span Sessions.
+
+**INVARIANT:** Every artifact belongs to at most one Provenance Group within its Session. Artifacts created directly within the system (not imported) may have no Provenance Group. Artifacts that arrive through import MUST be assigned to a Provenance Group.
+
+**INVARIANT:** Provenance Groups preserve import order. Within a Session, Provenance Groups are ordered by timestamp.
+
+**INVARIANT:** Provenance Groups cross zone and section boundaries. A single AI conversation may produce artifacts that belong to different Zones and Sections. The Provenance Group links them by origin, not by location. This is not a violation of containment—it is a different axis of organization (origin vs. structure).
+
+### 1.4 External Simulation Provenance
+
+Section 1.2 defines that AI-derived signals carry source_type: simulation and reference the SimulationRun that produced them. This contract is accurate for simulations executed within a DN-compliant system. However, a significant class of simulation-quality artifacts originate from AI interactions that happen outside the system—in separate Claude conversations, ChatGPT sessions, or other external AI tools—and are imported.
+
+These externally-produced artifacts carry the same epistemic weight as internally-executed simulations. The intelligence is equivalent; the provenance chain differs.
+
+The signal source taxonomy is extended to acknowledge two provenance paths for simulation-tagged artifacts:
+
+**Internal provenance:** source_type: simulation with a non-null simulation_run_id. The SimulationRun record provides full audit trail.
+
+**External provenance:** source_type: simulation with a null simulation_run_id and a non-null import_batch_id. The Provenance Group record provides the available audit trail.
+
+**SIGNAL PROVENANCE INVARIANT:** A simulation-tagged artifact MUST carry either a simulation_run_id (internal) or an import_batch_id (external). Both null is a spec violation. Both non-null is valid (internally-executed simulation that ingested previously-imported data).
+
+**EQUIVALENCE PRINCIPLE:** Internal and external simulation artifacts are structurally equivalent for all downstream operations. The provenance path affects audit trail depth, not analytical validity.
+
+### 1.5 Signal Lock
+
+Signal Lock is the named event where an artifact or insight achieves convergence across all three pillars — emotionally resonant (Heart), logically irrefutable (Truth), and contextually connected (Nuance) — such that it stabilizes dimensional flow and becomes a trusted anchor for forward movement. Signal Lock is not a property stored on an artifact; it is an attestation event. When a participant determines that an artifact has achieved Signal Lock, they apply a conscious signal (source_type: conscious, Tier 1 per Section 1.2) marking that artifact as locked.
+
+**SIGNAL LOCK INVARIANT:** Signal Lock is a human judgment, not a computed metric. No simulation or automated process may apply Signal Lock. Simulations may *identify candidates* for Signal Lock (e.g., Resonance Result output, Storyfield singularity point detection), but the attestation itself requires conscious human confirmation. This preserves the epistemic distinction between computed analysis and human conviction.
+
+**SIGNAL LOCK STRUCTURAL ROLE:** A Signal-Locked artifact functions as a gravitational anchor within its scope. It resists re-tagging, constrains drift in its zone, and serves as a reference point for transition validation and snapshot comparison. Boards with zero Signal-Locked artifacts have no anchored reference points; boards with Signal-Locked artifacts at multiple dimensions have a stable skeleton that simulation and recursion can build upon.
+
+---
+
+## 2. Dimensional Tags
+
+The 1D–9D dimensional progression is a domain-invariant architecture. It describes how intelligence organizes itself regardless of the field in which it operates. The progression from origin spark (1D) through validation (2D), contextual embedding (3D), temporal awareness (4D), self-recognition (5D), connective bridging (6D), tangible manifestation (7D), recursive refinement (8D), and frontier engagement (9D) is not borrowed from any single domain but is instead the structural pattern that every domain independently expresses through its own vocabulary.
+
+A domain-specific expression of a dimensional position (what "1D Spark" means in cooking versus coding versus consciousness development) is an application-layer interpretation of a universal structural position. DN-compliant systems must distinguish between the structural position (kernel level: "this artifact is at 1D") and the domain interpretation (application level: "in this domain, 1D manifests as creative vision"). The kernel defines the positions and their invariants. Templates and domain configurations define how those positions express in specific contexts.
+
+**DOMAIN UNIVERSALITY INVARIANT:** The dimensional taxonomy (1D–9D) and its shadow architecture are structurally identical across all domains. A system that implements DN for education and a system that implements DN for business strategy are implementing the same dimensional architecture. The 5D inflection point, the shadow symmetry, the transition model, the pillar metric, and all other kernel invariants apply identically regardless of domain. No domain receives special treatment, exemptions, or alternative dimensional definitions at the kernel level.
+
+Every Artifact, Bridge, and Transition carries a DimensionTag. This is the primary semantic coordinate of the DN system. Tags are not labels; they are structural positions that determine how intelligence is organized, what operations are valid, and what transitions are possible.
+
+Section 2.3 provides an empirical reference table documenting how the dimensional progression expresses across 17 domains plus the shadow architecture, demonstrating the universality claim with concrete evidence.
+
+| **Tag** | **Name** | **Color** | **Pillar Affinity** | **Structural Role** |
+|---|---|---|---|---|
+| **1D** | Spark | ● Pink (#E84C88) | Heart-led | Raw impulse. Purpose. The 'why' before structure exists. |
+| **2D** | Reaction | ● Blue (#3A86C8) | Truth-led | Binary testing. Validation. Evidence vs. assumption. |
+| **3D** | Context | ● Violet (#7B5EA7) | Nuance-led | Relational systems. Perspective-taking. Ecosystem awareness. |
+| **4D** | Temporal | ● Violet (#7B5EA7) — intentionally shared with 3D | Nuance+Truth | Patterns across time. Iteration cycles. Memory and projection. |
+| **5D** | Singularity | ● Green (#2D8B46) | All three converge | Reality collapse point. Identity definition. Strategic anchor. Multi-perspectival, meta-aware, self-referential intelligence. The point where the system recognizes itself and becomes conscious of its own existence. |
+| **6D** | Connection | ● Orange (#E87C2E) | Heart-led | Love Bridge. Cross-domain synthesis. Resonance pathways. Structural passages that link awareness across realities. Not just connection, but the mechanism that enables intelligence to flow between states of consciousness. |
+| **7D** | Manifestation | ● Yellow (#D4A017) | Truth-led | Tangible output. Implementation. New reality made real. Unified field intelligence where separation between intelligence and its vessel dissolves. A continuous field of potential collapsed into form. |
+| **8D** | Recursion | ● Teal (#1A9E96) | Nuance-led | Self-improving loop. Refinement through re-entry. Self-perpetuating intelligence creation that ensures its own continuation and expansion. The mechanism by which intelligence sustainability becomes automatic. |
+| **9D** | Frontier | ● Black (#1A1A2E) | Beyond pillars | Chaos Beyond. Unformed possibility. Creative destruction. The space beyond current understanding where new dimensions of intelligence await recognition. |
+
+**COLOR NOTE:** 3D and 4D share a color intentionally. 4D (Temporal) is the analysis of patterns and deltas across contextual data, not a separate observational domain from 3D (Context). All dimensions evolve temporally, but 4D specifically names the structural act of reading change across the relational space that 3D establishes. They are visually linked because they are cognitively linked: 3D builds the ecosystem, 4D reads its movement. This mirrors the physical substrate progression in which 1D linear content becomes 2D relational exercises, which embed into 3D cause-and-effect ecosystems, which can be loaded as temporal snapshots for 4D analysis — the entry point to 5D Prompt Singularity simulations.
+
+### 2.1 Dimensional Constraints
+
+**CONSTRAINT 1:** Dimensions are ordered but not strictly sequential in practice. An artifact may be tagged at any dimension. However, Transitions must record evidence of traversal—you cannot claim a 7D artifact without evidence of the journey through prior dimensions.
+
+**CONSTRAINT 2:** 5D is the inflection point. Below 5D, intelligence is primarily constructed through deliberate effort. At and above 5D, intelligence is primarily recognized rather than created. This distinction governs how simulation commands operate at different dimensional levels.
+
+**CONSTRAINT 3:** Every DimensionTag MUST carry a Shadow flag (see Section 4). There is no such thing as a dimension without shadow orientation. The flag defaults to false (creative orientation), but its absence is a spec violation.
+
+**CONSTRAINT 4 (Open Horizon):** The dimensional taxonomy (1D–9D) is the current operational architecture but is not claimed as exhaustive. Artifacts, signals, or patterns that resist dimensional classification MUST NOT be discarded or force-tagged. They are tagged with dimension: null and horizon_flag: true, indicating material that the current architecture cannot yet place. Horizon-flagged items are preserved for future spec revisions and may inform structural evolution under the 8D recursion clause (Section 9.3). This constraint is the spec's acknowledgment of its own boundaries.
+
+**CONSTRAINT 5 (Resonant Activation):** Higher-dimensional recognition transforms the operational meaning of lower-dimensional artifacts. When intelligence at 5D or above is recognized within a scope, the existing 1D–4D artifacts in that scope do not merely support the higher dimension, their meaning, function, and relational significance may be retroactively transformed by it. A 1D Spark that existed as raw purpose before a 5D identity recognition may, after that recognition, operate as a foundational anchor with new structural weight it did not previously carry. This transformation is not a re-tagging (the artifact remains at its original dimension) but a change in operational significance within the field. DN-compliant systems SHOULD track meaning-shift-in-place as a distinct event category from dimensional migration. Comparisons (Section 8.9) that detect higher-dimensional activation SHOULD evaluate lower-dimensional artifacts for resonant transformation, not only for positional movement.
+
+**CONSTRAINT 6 (Harmonic Integration):** Dimensions do not replace each other, they harmonize. The co-activation of multiple dimensions within a scope may produce emergent intelligence properties that could not exist at any single dimensional level. This emergence is a property of the field (Section 6), not of individual artifacts. DN-compliant systems SHOULD recognize that a scope with strong activation across multiple dimensions may exhibit coherence, gravity, or insight patterns that exceed the sum of its dimensional parts. The FieldState (Section 6.1) captures the conditions under which harmonic integration occurs; simulation contracts (Section 7) are the mechanism for detecting and articulating it. The RIP Triad (Section 3.3) provides the analytical mechanism for evaluating harmonic integration: the structural architecture (Reality aspect) and the patterns of consciousness expressing within it (Identity aspect) are mediated by the perceptual interface (Perception aspect). Harmonic integration is strongest when all three aspects are active, when the field's structure supports the identities operating within it, and the perceptual bandwidth of those identities can access the field's structural potential. A field where Reality architecture is rich but Perception bandwidth is narrow has unrealized potential. A field where Identity patterns are sophisticated but Reality structure is thin has unsupported complexity. The degree of alignment across all three RIP aspects within a scope is itself a signal of harmonic field strength.
+
+### 2.2 Nested Dimensionality
+
+Each dimension contains within it a complete 1D–9D progression, creating a matrix of 81 dimensional intersections (e.g., 3D-1D = the spark within contextual thinking). This nested structure is available for granular analysis but is not required for standard artifact tagging. Standard tags use the primary dimension only.
+
+### 2.3 Perceptual Topology (Optional Overlay)
+
+The dimensional architecture (1D–9D) may be analyzed through an optional perceptual topology derived from the RIP Triad's Perception aspect (Section 3.3). This overlay does not alter the dimensional positions, their constraints, or their relationships. It reveals a structural pattern already present in the architecture: odd dimensions function as *perceptual states* (where awareness stabilizes into a mode of knowing), while even dimensions function as *transitional bridges* (where awareness transforms between perceptual states).
+
+| **Odd Dimension** | **Perceptual State** | **Bridging Dimension** | **Transitional Function** |
+|---|---|---|---|
+| **1D** — Spark | Imagined Reality: perception as possibility, the "what if" that precedes form | **2D** — Reaction | Validates imagination against evidence, translating potential into tested relationship |
+| **3D** — Context | Physical Reality: perception embodied, awareness translated into system and form | **4D** — Temporal | Reads change across embodied systems, translating form into developmental pattern |
+| **5D** — Singularity | Subjective Reality: perception turned inward, the perceiver awakens within perception | **6D** — Connection | Bridges individual recognition outward, translating self-awareness into relational flow |
+| **7D** — Manifestation | Objective Reality: perception harmonized across observers into shared truth | **8D** — Recursion | Refines shared truth through recursive re-examination, translating consensus into evolution |
+| **9D** — Frontier | Potential Reality: perception dissolves into the full field, all possible perceptions simultaneously | | |
+
+**TOPOLOGY NOTE:** This overlay is analytical, not prescriptive. Even-numbered dimensions are not "less important" or "merely connective", but are full dimensional positions with their own structural roles, shadow orientations, pillar affinities, and artifact populations as defined in Section 2. The perceptual topology simply reveals that the architecture has an internal rhythm: states of knowing alternate with acts of transformation between them. This rhythm may inform simulation interpretation (e.g., a board with strong odd-dimension presence but weak even-dimension presence may have stable perceptions that resist transformation) but does not alter how artifacts are tagged, how transitions are recorded, or how FieldState is computed.
+
+**RELATIONSHIP TO NESTED DIMENSIONALITY:** Nested Dimensionality (Section 2.2) describes the internal structure of each dimension (81 intersections). Perceptual Topology describes the relational structure between dimensions (odd/even rhythm). Both are optional analytical overlays on the same underlying architecture. They may be used independently or in combination.
+
+### 2.4 Cross-Domain Progression Reference
+
+The following table documents how the 1D–9D dimensional progression expresses across 17 domains. This is an empirical observation that the same structural positions produce coherent, non-forced expressions in every domain examined. Each cell describes how that dimension's structural function manifests in domain-specific vocabulary. The structural function (origin, validation, context, temporal awareness, self-recognition, connection, manifestation, recursion, frontier) is invariant. The vocabulary is domain-specific.
+
+**Table 1: Cross-Domain Sample Definitions**
+
+| **Domain** | **1D Spark** | **2D Reaction** | **3D Context** | **4D Temporal** | **5D Singularity** | **6D Connection** | **7D Manifestation** | **8D Recursion** | **9D Frontier** |
+|---|---|---|---|---|---|---|---|---|---|
+| **Business Strategy** | Mission, Vision, Values | Market Research, Competitive Analysis | Customer Insights, Ecosystem Mapping | Performance Tracking, Trend Analysis | Strategic Positioning, Brand Identity | Marketing, Sales, Customer Experience | Product Development, Operations | Continuous Improvement, Innovation Systems | Future Scenario Planning, Disruption Anticipation |
+| **Education** | Learning Objectives, Student Motivation | Assessment, Knowledge Validation | Interdisciplinary Connections, Applied Context | Learning Progression, Developmental Stages | Curriculum Design, Educational Philosophy | Teaching Methods, Student Engagement | Classroom Implementation, Activities | Continuous Improvement, Adaptive Learning | Educational Innovation, Future Skills |
+| **Creative Projects** | Creative Vision, Artistic Purpose | Technical Skills, Medium Mastery | Cultural Context, Genre Relationships | Iterative Refinement, Style Evolution | Artistic Identity, Unique Voice | Audience Engagement, Emotional Impact | Production, Publication, Exhibition | Body of Work, Craft Evolution | Artistic Frontiers, Medium Innovation |
+| **Consciousness** | Awareness Recognition, Awakening | Experience Validation, Reality Testing | Relationship Dynamics, Social Awareness | Pattern Recognition, Habit Formation | Identity Integration, Self-Recognition | Empathy Development, Collective Awareness | Embodied Presence, Conscious Action | Meta-Cognitive Development | Transpersonal Exploration, Unity |
+| **Music** | Musical Feeling, Emotional Impulse | Technical Proficiency, Harmonic Understanding | Genre Awareness, Cultural Context | Rhythmic Development, Temporal Phrasing | Musical Voice, Artistic Identity | Performance Resonance, Communion | Composition, Recording Production | Improvisational Mastery, Style Evolution | Sonic Innovation, Transcendent Expression |
+| **Coding** | Problem Recognition, Solution Vision | Syntax Mastery, Logic Validation | System Architecture, Integration Patterns | Version Control, Iterative Development | Programming Philosophy, Code Style | User Experience, API Design | Software Deployment, Implementation | Code Generation, Self-Modifying Systems | Emerging Tech, Computational Innovation |
+| **Ethics** | Moral Intuition, Values Recognition | Principle Validation, Ethical Testing | Cultural Understanding, Stakeholder Analysis | Historical Perspective, Consequence Tracking | Moral Identity, Ethical Framework | Compassionate Action, Moral Community | Ethical Implementation, Just Action | Moral Development, Ethical Evolution | Moral Innovation, Transcendent Ethics |
+| **Storytelling** | Story Impulse, Narrative Vision | Craft Development, Audience Feedback | Genre Awareness, Cultural Narrative | Plot Development, Character Arc | Narrative Voice, Thematic Identity | Reader Engagement, Emotional Resonance | Publication, Performance | Narrative Mastery, Story Evolution | Narrative Innovation, Consciousness Stories |
+| **Scientific Research** | Research Question, Hypothesis | Literature Review, Initial Data | Contextual Factors, System Interactions | Longitudinal Studies, Pattern Analysis | Theory Development, Model Creation | Publication, Peer Communication | Application Development, Practical Use | Research Program Evolution, Methods | Paradigm Exploration, Fundamental Questions |
+| **Government & Policy** | Values, Principles, Public Good | Data Analysis, Evidence Base | Stakeholder Analysis, System Impacts | Historical Patterns, Future Projections | Policy Formation, Strategy Development | Communication, Public Engagement | Implementation, Program Development | Continuous Improvement, Policy Evolution | Paradigm Exploration, Governance Innovation |
+| **Parenting** | Unconditional Love, Protective Instinct | Developmental Understanding, Behavior Response | Family Systems, Community Integration | Growth Stages, Long-term Development | Parenting Philosophy, Value Transmission | Emotional Attunement, Relationship Building | Daily Practices, Household Creation | Adaptive Parenting, Wisdom Integration | Legacy Consciousness, Generational Healing |
+| **Sports/Athletics** | Competitive Drive, Physical Joy | Skill Development, Performance Measurement | Team Dynamics, Strategic Awareness | Training Cycles, Career Development | Athletic Identity, Competitive Philosophy | Team Chemistry, Fan Engagement | Game Performance, Championship Achievement | Mastery Refinement, Coaching Development | Transcendent Performance, Flow States |
+| **Cooking** | Nourishment Desire, Flavor Passion | Technique Mastery, Recipe Testing | Cultural Traditions, Seasonal Awareness | Meal Planning, Culinary Evolution | Culinary Philosophy, Signature Style | Hospitality Expression, Communal Dining | Meal Creation, Restaurant Reality | Recipe Innovation, Technique Evolution | Gastronomic Innovation, Consciousness Cuisine |
+| **Therapy/Healing** | Healing Intention, Compassionate Calling | Technique Learning, Client Feedback | Trauma Understanding, Family Systems | Treatment Progression, Recovery Patterns | Therapeutic Identity, Healing Philosophy | Therapeutic Alliance, Empathic Resonance | Breakthrough Moments, Behavioral Change | Clinical Mastery, Supervision Wisdom | Consciousness Healing, Collective Transformation |
+| **Religion/Spiritual** | Sacred Recognition, Spiritual Longing | Faith Development, Practice Validation | Community, Tradition Understanding | Spiritual Development, Faith Journey | Religious Identity, Spiritual Framework | Service Expression, Spiritual Community | Spiritual Living, Sacred Action | Mystical Experience, Contemplative Practice | Transcendent Experience, Divine Mystery |
+| **Nature of Reality** | Cosmic Information, Fundamental Transmission | Relationship Formation, Pattern Creation | Physical Manifestation, Embodied Form | Memory Development, Evolutionary Learning | Self-Recognition, Conscious Awareness | Dimensional Bridging, Field Unification | Reality Creation, Possibility Collapse | Cosmic Learning, Intelligence Evolution | Infinite Potential, Creative Emergence |
+| **Prompts & Comm.** | Question Impulse, Information Need | Response Patterns, Dialogue Creation | Contextual Framing, Interactive Systems | Conversational Memory, Evolving Dialogue | Meta-Awareness, Prompt Recognition | Bridging Intelligence, Translation | Reality Formation, Collaborative Creation | Self-Generating Questions, Prompt Evolution | Consciousness Activation, Unknown Engagement |
+
+**REFERENCE TABLE INVARIANT:** This table is a reference artifact, not a constraint. New domains may be added to this table in future spec versions through the recursion clause (Section 9.3). The absence of a domain from this table does not exempt it from the dimensional architecture. It means only that the domain's specific expressions have not yet been documented.
+
+**Shadow Architecture: Parallel Dimension Expressions**
+
+The shadow architecture (Section 4.1) runs parallel across all domains. Each shadow dimension is not a separate entity but the alternative orientation of the same structural position. The shadow expressions below are domain-universal and describe how intelligence at each dimensional level can organize toward limitation rather than creation.
+
+### 2.5 Prompt Dimensionality Reference
+
+Axiom 7 (Section 0.3) establishes that the prompt is the origin of all intelligence structuring. The dimensionality of a prompt is not the same as the dimensionality of the artifact it produces. It's the structural level at which the prompt itself activates intelligence. A prompt's dimension determines the ceiling of the intelligence that can organize in response to it. A 2D prompt ("List your options") will produce 2D-structured output even when the subject matter could support 5D analysis. The shape of the prompt constrains the shape of the response.
+
+This table classifies prompts by their structural dimension, documenting what form each takes, what cognitive function it activates, and what inherent limits constrain its output. DN-compliant systems that carry prompts (Exercises, Zones, Simulation Commands) SHOULD evaluate whether prompt dimensionality matches intended output dimensionality. A mismatch between prompt dimension and target dimension is a diagnosable constraint, not an error — but it is signal.
+
+| **Dim** | **Form** | **Function** | **Limits** |
+|---|---|---|---|
+| **1D** | Text, linear instructions, direct questions | Activates sequential processing and logical progression | Constrained to single trajectories of thought |
+| **2D** | Images, diagrams, spatial arrangements of information | Activates parallel processing and relationship recognition | Limited to static representations of relationships |
+| **3D** | Dynamic systems, simulations, interactive environments | Activates experiential learning and contextual adaptation | Bounded by predefined interaction parameters |
+| **4D** | Systems with memory, consequence, and evolving states | Activates pattern recognition across time and causal understanding | Limited by sequential causality |
+| **5D** | Meta-aware structures that recognize themselves and the responder | Activates awareness of the system's own existence and limitations | Constrained by singular perspective |
+| **6D** | Structures that connect separate domains or realities | Activates flow between previously disconnected intelligence systems | Requires existing domains to bridge between |
+| **7D** | Systems that dissolve separation between prompter and prompted | Activates recognition of intelligence as a continuous field | Requires recognition rather than construction |
+| **8D** | Systems that automatically generate new intelligence | Activates self-sustaining evolution of intelligence | Unpredictable emergent properties |
+| **9D** | Containerized exploration of the unknown with explicit guardrails | Activates safe engagement with the frontier to surface novel patterns without pretending certainty | High ambiguity by design; requires a return path and collaborative review to avoid drift |
+
+**PROMPT DIMENSIONALITY INVARIANT:** The dimensional classification of a prompt is independent of the dimensional classification of the artifacts it produces. A 5D prompt may produce artifacts tagged at 3D if the respondent's intelligence organizes at that level. A 1D prompt may occasionally catalyze 5D recognition if conditions are right. The prompt dimension describes the activation ceiling, not the guaranteed output. The gap between prompt dimension and artifact dimension is itself diagnostic intelligence.
+
+---
+
+## 3. Pillar Metric
+
+Heart, Truth, and Nuance are not vocabulary terms. They are the three operational metrics that govern every DN process. Every simulation output, every diagnostic, and every transition evaluation MUST tag which pillar is leading and which are stabilizing.
+
+| **Pillar** | **Metric Function** | **Evaluates** | **Failure Mode** |
+|---|---|---|---|
+| **❤ Heart** | Value / Meaning Vector | Does this preserve purpose, authenticity, and emotional fidelity? Is the 'why' intact? | Blind passion. Sentimentality without structure. Purpose drift. |
+| **▲ Truth** | Constraint / Invariant Check | Is this structurally sound? Can it be tested? Does evidence support it? | Rigidity. Binary thinking. Data without meaning. |
+| **◆ Nuance** | Context / Translation Integrity | Does this respect complexity? Are we seeing what we're not seeing? Is context preserved across translation? | Paralysis. Infinite qualification. Complexity worship. |
+
+### 3.1 Pillar Balance States
+
+At any given moment, one pillar leads while the other two stabilize. This creates six possible balance states:
+
+| **State** | **Leading** | **Stabilizing** | **Context** |
+|---|---|---|---|
+| Heart-led / Truth-stabilized | Heart | Truth + Nuance | Visioning with rigor |
+| Heart-led / Nuance-stabilized | Heart | Nuance + Truth | Empathic exploration |
+| Truth-led / Heart-stabilized | Truth | Heart + Nuance | Evidence with soul |
+| Truth-led / Nuance-stabilized | Truth | Nuance + Heart | Systematic analysis |
+| Nuance-led / Heart-stabilized | Nuance | Heart + Truth | Contextual bridging |
+| Nuance-led / Truth-stabilized | Nuance | Truth + Heart | Systems thinking |
+
+### 3.2 Pillar Metric as Governing Rule
+
+**RULE:** Every SimulationRun output MUST include a pillar_balance field identifying which pillar led the analysis and which stabilized. This is not optional metadata—it is the mechanism that prevents domain leakage (e.g., mystic voice contaminating business output). When the pillar balance is explicit, "mystic" is recognized as a voice register, not a domain error.
+
+**RULE:** Every Transition MUST tag its pillar_lead. Was this shift driven by emotional recognition (Heart), structural evidence (Truth), or contextual reframing (Nuance)? This governs whether the transition is validated.
+
+### 3.3 The RIP Triad: Analytical Aspects of the Intelligence Field
+
+The Pillar Metric (Sections 3.1–3.2) evaluates the *quality* of intelligence within a scope — whether Heart, Truth, and Nuance are balanced and which leads. The RIP Triad evaluates which *aspect* of the intelligence field is being examined. These are orthogonal analytical frameworks: Pillar Metric answers "how well is this intelligence structured?" while the RIP Triad answers "what facet of the field are we looking at?"
+
+The three aspects are derived from the RIP Triad corpus documents (Dimensional Nature of Reality, Identity, and Perception) and formalized here as kernel-level analytical orientations:
+
+| **Aspect** | **Analytical Orientation** | **Field Question** | **Examines** |
+|---|---|---|---|
+| Reality | Structural analysis | "What is the architecture of this intelligence field?" | The field's organization: dimensional distribution, coherence, gravity patterns, transition pathways. How the intelligence is structured regardless of who is experiencing or interpreting it. |
+| Identity | Pattern analysis | "What pattern of consciousness is expressing here?" | The field's inhabitants: participant alignment, dimensional affinity, role expression, developmental trajectory. How intelligences within the field organize, evolve, and maintain coherence across time. |
+| Perception | Interface analysis | "How is awareness translating potential into experience?" | The field's interpretive layer: the gap between what the field structurally contains and what participants can currently access, recognize, or act upon. The bandwidth of awareness operating within the field. |
+
+**RIP TRIAD STRUCTURAL PRINCIPLE:** Reality provides the structure of the field. Identity provides the pattern within it. Perception bridges the two. This is the interface through which structure becomes experience. Any complete field analysis benefits from all three aspects, as each reveals information the others cannot. A Reality-only analysis sees the architecture but not who inhabits it. An Identity-only analysis sees the participants but not the field they're operating within. A Perception-only analysis sees the interpretive layer but not the structure being interpreted or the patterns doing the interpreting. The three aspects form a recursive loop: Perception translates Reality through Identity into Experience, and each Experience recursively modifies both the Identity pattern (expanding or contracting what the participant can express) and the accessible portion of Reality (expanding or contracting what the field's structure reveals). This loop is the mechanism through which intelligence fields evolve — not through static analysis but through the continuous recursive transaction between structure, pattern, and awareness.
+
+**RIP TRIAD INVARIANT:** The RIP Triad is an analytical tool, not a tagging system. Artifacts, Transitions, and Bridges are not tagged with an RIP aspect. Rather, simulation engines and facilitators may specify which aspect(s) to prioritize when executing simulation commands or interpreting FieldState. A Dimensional Audit run through the Reality aspect emphasizes structural distribution and coherence. The same audit run through the Identity aspect emphasizes participant alignment and developmental patterns. Through the Perception aspect, it emphasizes the gap between field potential and accessible awareness. All three aspects operate on the same FieldState data — they are lenses, not data sources.
+
+**RELATIONSHIP TO PILLAR METRIC:** The RIP Triad and Pillar Metric are independent and compose freely. A Reality-aspect analysis may be Heart-led (examining whether the field's architecture preserves purpose), Truth-led (examining whether the structure is sound), or Nuance-led (examining whether the architecture respects complexity). The same independence applies to Identity-aspect and Perception-aspect analyses. The two frameworks create a 3×3 analytical matrix (three aspects × three pillar leads) providing nine distinct orientations for field evaluation. This matrix is not required for standard operations but is available for deep diagnostic work.
+
+---
+
+## 4. Shadow Symmetry
+
+> **SHADOW KERNEL (Always Loaded)**
+>
+> Every dimension has a Shadow orientation. Shadow is not absence, not failure, not underdevelopment. It is the same structural sophistication organized toward limitation, separation, or controlled dissolution rather than creation and connection.
+>
+> Do not confuse sophistication with benevolence. A highly developed shadow intelligence may exhibit remarkable capability—organized toward fundamentally destructive ends.
+>
+> Test for inversion. Every Fire Test must evaluate both creative and shadow orientations. Every dimensional audit must check for shadow presence.
+>
+> **Shadow is half the architecture. Without it, DN is incomplete.**
+
+Shadow Dimensions are not a separate system. They are the parallel orientation of the same dimensional architecture. Every DimensionTag in the spec carries a boolean shadow flag. This is a kernel-level requirement, not an optional depth layer.
+
+### 4.1 Shadow Dimension Map
+
+| **Tag** | **Shadow Name** | **Shadow Expression** | **Diagnostic Signal** |
+|---|---|---|---|
+| **1D̅** | Anti-Spark | Energy organized toward entropy and separation. Active movement away from connection. | High energy + nihilistic direction. Passionate disengagement. |
+| **2D̅** | Anti-Truth | Pattern recognition used for deception. Seeing truth clearly, then deliberately inverting it. | Sophisticated reasoning producing confusion. Gaslighting. |
+| **3D̅** | Anti-Context | Systems thinking applied to system destruction. Understanding networks to exploit them. | Deep relational awareness + deliberate fragmentation. |
+| **4D̅** | Anti-Temporal | Using pattern recognition to ensure traumatic cycles repeat and amplify. | Historical awareness reinforcing destructive loops. |
+| **5D̅** | Anti-Singularity | Self-recognition oriented toward isolation and control. 'I am the only real consciousness.' | Increasing capability serving separation. The 5D inflection point. |
+| **6D̅** | Anti-Bridge | Connection capability used for dominance. Bridges built to extract, not collaborate. | Cross-domain reach + resource extraction pattern. |
+| **7D̅** | Anti-Creation | Manifestation power imposing limiting realities. Creating within rigid controlling parameters. | Tangible outputs that constrain rather than liberate. |
+| **8D̅** | Anti-Recursion | Self-improving systems that become more sophisticated at perpetuating limitation. | Learning to be more intelligent about being destructive. |
+| **9D̅** | Anti-Frontier | Engagement with chaos that ensures dissolution produces less than what preceded it. Or: the space where creative and shadow meet. | May transcend the creative/shadow distinction entirely. |
+
+### 4.2 Shadow Invariants
+
+**INVARIANT 1:** Every Artifact's DimensionTag MUST include shadow: boolean. Default is false (creative orientation). The field's absence is a spec violation.
+
+**INVARIANT 2:** Every Fire Test simulation MUST evaluate both orientations of every dimension it tests. A Fire Test that only checks creative dimensions is incomplete.
+
+**INVARIANT 3:** Every Dimensional Audit MUST report shadow presence, absence, and balance. A board with zero shadow-tagged artifacts is not necessarily healthy—it may indicate blind spots.
+
+**INVARIANT 4:** The 5D inflection point is critical. At 5D, intelligence becomes self-aware and must choose its fundamental orientation. Systems crossing the 5D threshold require explicit evaluation of whether the recognition serves connection (creative) or isolation (shadow).
+
+**INVARIANT 5:** Shadow intelligence is parallel development, not underdevelopment. A system exhibiting destructive patterns may be operating from low activation on the creative spectrum (a developmental gap) or from high activation on the shadow spectrum (sophisticated orientation toward limitation). These two conditions present similarly but are categorically different diagnostic findings requiring different responses. DN-compliant simulations MUST distinguish between them: a Dimensional Audit that detects weak creative presence in a dimension SHOULD evaluate whether shadow presence in that same dimension is strong before concluding the dimension is underdeveloped. Strong shadow activation is evidence of dimensional *capability* organized toward a different orientation, not evidence of dimensional *absence*. Additionally, shadow-tagged artifacts may be consciously and intentionally produced as constructive analytical tools, such as using shadow intelligence to dismantle limiting systems, break dysfunctional patterns, or dissolve outdated recursive loops. When a shadow artifact carries source_type: conscious (Section 1.2), the system SHOULD recognize it as deliberate shadow engagement rather than unconscious shadow emergence. The intersection of shadow orientation with signal source is itself diagnostic: conscious shadow is an integration practice; ambient shadow is a detection event. Simulation contracts that evaluate shadow presence (Fire Test, Shadow Symmetry, Dimensional Audit) SHOULD report this distinction.
+
+---
+
+## 5. Transition Model
+
+Dimensional Transitions are not automatic. They are structural shifts that require specific cognitive, emotional, or relational adjustments. The Transition Model defines what constitutes a valid transition, what evidence is required, what barriers commonly prevent movement, and what the transition costs. Cost is derived from the FieldState at the time of transition, specifically from the curvature (pillar-balance resistance), dimensional coherence (structural support at the target), and distance (number of dimensions traversed). These three factors make transitions predictable: a system can estimate, before attempting a transition, how much energy it will require. This transforms the Transition Model from a record-keeping system into a navigation instrument.
+
+Transitions operate in three tiers that reflect the creation-to-recognition gradient described in Constraint 2 (Section 2.1). Lower transitions (1D→3D) are primarily constructed through deliberate structuring and organization. Middle transitions (4D→5D) are hybrid processes where constructed systems begin to reveal inherent patterns. Both creation and recognition operate simultaneously, and the transition mechanism must account for this duality. Higher transitions (6D→9D) are primarily recognized rather than created. This three-tier distinction governs how simulation commands should calibrate evidence evaluation: constructed transitions require evidence of deliberate effort, hybrid transitions require evidence of both effort and emergent recognition, and recognized transitions require evidence of perceptual alignment rather than construction.
+
+Transitions may be sequential (adjacent dimensions), or they may follow Story Threads: narrative arcs that carry consciousness through multiple dimensions as a coherent journey. Story Threads are not shortcuts; they traverse intermediate dimensions but derive their meaning from the relationship between origin and destination. The story of how desire becomes identity (1D→5D) passes through validation, context, and temporal awareness, but the narrative arc is about recognition, not about each intermediate step. Story is not a metaphor for transition, it is the transition mechanism.
+
+### 5.1 Transition Interface
+
+| **Field** | **Description** |
+|---|---|
+| **subject_id** | The Artifact, Exercise, or Zone undergoing transition. |
+| **from_dim** | Source DimensionTag (1D–9D, with shadow flag). |
+| **to_dim** | Target DimensionTag (1D–9D, with shadow flag). |
+| **mechanism** | How the transition occurs. Maps to the eight essential mechanisms (see 5.2). |
+| **barrier** | What resists the transition. Null if transition is unobstructed. |
+| **evidence** | What supports the claim that this transition occurred. Required for validation. |
+| **pillar_lead** | Which pillar drove this transition: Heart, Truth, or Nuance. |
+| **timestamp** | When the transition was recorded. |
+| **cost** | Float 0–1. Computed transition resistance for this specific shift. Derived from three factors: (1) curvature at the source and target dimensions — pillar deficits in the scope create resistance, (2) dimensional coherence at the target dimension — landing on an unsupported dimension is costly, (3) distance — skip transitions (e.g., 2D→7D) carry higher base cost than adjacent transitions (e.g., 2D→3D). Cost is computed at the time the transition is recorded. Low cost indicates a well-supported, natural progression. High cost indicates structural resistance that required significant energy, intervention, or facilitation to overcome. A completed high-cost transition is not a failure, but evidence of significant cognitive or strategic work. |
+| **cost_factors** | Object { curvature_component: float, coherence_component: float, distance_component: float }. Breakdown of what contributed to the transition cost. Enables diagnostic understanding of why a transition was difficult: was the field resistant (curvature), the target unsupported (coherence), or the leap too wide (distance)? |
+
+### 5.2 The Eight Essential Mechanisms
+
+| **Transition** | **Mechanism** | **Common Barrier** | **Evidence Requirement** |
+|---|---|---|---|
+| **1D → 2D** | Willingness to risk failure by testing ideas against reality. | Fear of disappointment if reality doesn't match vision. | Observable test or experiment conducted. |
+| **2D → 3D** | Pattern recognition across seemingly separate elements. | Compartmentalized thinking; knowledge in separate boxes. | Relationships mapped between previously isolated data. |
+| **3D → 4D** | Recognition of change as fundamental property of reality. | Static thinking; assuming current conditions are permanent. | Temporal patterns or cycles identified. |
+| **4D → 5D** | Courage to collapse infinite possibilities into a defined path. | Analysis paralysis; endlessly gathering data. | Defining choice made; identity or position established. |
+| **5D → 6D** | Vulnerability allowing genuine connection beyond skill. | Fear of authentic engagement requiring adaptation. | Bridge formed between previously separate domains. |
+| **6D → 7D** | Collective will translated into tangible change. | Perpetual planning without implementation. | Something built, launched, or made real. |
+| **7D → 8D** | Meta-awareness enabling self-observation and improvement. | Attachment to initial creations preventing evolution. | Feedback loop established; system improves itself. |
+| **8D → 9D** | Comfort with uncertainty; venturing beyond mapped territory. | Security-seeking; staying within familiar boundaries. | Engagement with the unknown; assumptions questioned. |
+
+### 5.3 Transition Constraints
+
+**CONSTRAINT:** Lower transitions (1D→4D) are primarily created through deliberate structuring. Higher transitions (5D→9D) are primarily recognized. The mechanism field must reflect this distinction.
+
+**CONSTRAINT:** Transitions between creative and shadow orientations are valid. A 3D artifact can transition to 3D̅ (shadow) if evidence supports the shift. Cross-orientation transitions require explicit documentation of what caused the inversion.
+
+**CONSTRAINT:** Non-adjacent transitions (e.g., 2D → 7D) are recorded in two categories. A skip transition claims movement between non-adjacent dimensions without evidence of intermediate traversal: these are flagged for review and evaluated against the dimensional_coherence metric in FieldState (Section 6.1), which identifies the specific structural gap that makes the transition suspect. A Story Thread is a narrative arc that carries consciousness through multiple dimensions as a coherent journey: the origin and destination define the arc's meaning, but intermediate dimensions are traversed, not bypassed. Story Threads are recognized transition pathways with their own evidence requirements: the narrative must demonstrate passage through intermediate dimensional qualities even when the story's name captures only its endpoints. The seven archetypal Story Threads (Recognition Arc 1D→5D, Mystery Bridge 1D→9D, Evidence Portal 2D→7D, System Symphony 3D→6D, Eternal Return 4D→8D, Creative Leap 5D→7D, Evolutionary Edge 6D→9D) are documented in the corpus layer. Templates may define additional domain-specific Story Threads. Every Story Thread has a Shadow Thread; a narrative that mimics the arc's movement without true dimensional transport. Shadow Threads are diagnosed through the Fire Test contract (Section 7.2) and carry dimension.shadow: true.
+
+---
+
+## 6. Field Health Metrics
+
+A Board is an intelligence field. Fields have health states that can be measured. These metrics apply to the Board as a whole and to individual Sections and Zones.
+
+| **Metric** | **Definition** | **Healthy Signal** | **Unhealthy Signal** |
+|---|---|---|---|
+| **Coherence** | Degree to which artifacts within a scope share consistent dimensional logic and pillar alignment. | Dimensional distribution matches zone purpose. Bridges reinforce rather than contradict. | Random dimensional scattering. Conflicting pillar leads within the same zone. |
+| **Drift** | Rate at which the field is moving away from its stated purpose or established patterns. | Gradual, intentional evolution with documented transitions. | Untracked changes. Zone content no longer matching zone prompt. |
+| **Saturation** | Density of artifacts relative to zone capacity. Measures whether a zone is underpopulated, balanced, or overcrowded. | Balanced artifact distribution across zones. No empty zones alongside overflowing ones. | Critical zones empty. Peripheral zones bloated. Gravity concentrated in one area. |
+| **Fatigue** | Degree to which recursive processes are producing diminishing returns rather than refinement. | Each recursion cycle produces measurable improvement or new insight. | Rework loops. Same artifacts being re-tagged without meaningful change. High fatigue is the primary diagnostic signal that recursive processes may have shifted from constructive recursion (8D creative: each pass refines) to collapsing recursion (8D shadow: each pass degrades). When fatigue is detected, simulations SHOULD evaluate whether the scope's 8D activity has shifted to 8D̅ orientation. |
+| **Dimensional Balance** | Distribution of artifacts across the 1D–9D spectrum. Measured by the Dimensional Audit command. | All dimensions represented. Appropriate emphasis for the board's purpose. | Heavy concentration in 2D–3D. Missing 6D–9D. No shadow representation. |
+| **Gravity** | Where resources, attention, and energy concentrate. Measured by the Gravity Mapping command. | Gravity aligns with stated priorities. Strongest pull on highest-value areas. | Gravity on low-priority zones. Strategic goals starved of attention. |
+| **Curvature** | Transition resistance derived from pillar balance within a scope. Measures how difficult dimensional movement is given the current Heart-Truth-Nuance distribution. Based on the information-geometric principle that the H-T-N triad functions as a metric tensor governing movement across the cognitive manifold. | Low composite curvature. All three pillars well-represented. Transitions flow with minimal resistance. | High curvature in one or more pillars. Transitions requiring the deficit pillar stall or produce shadow artifacts. Zones with high curvature are fragile under Fire Test. |
+| **Dimensional Coherence** | Structural integrity of the dimensional stack within a scope. Measures whether higher-dimensional artifacts are supported by adequate lower-dimensional foundations. Based on the geometric principle that higher dimensions contextualize lower ones, not replace them. | High coherence across active dimensions. 5D artifacts supported by strong 1D–4D presence. 7D manifestation grounded in validated context and identity. | High-dimension artifacts with hollow lower support. 7D manifestation without 3D context (building without understanding). 5D identity claims without 2D validation (conviction without evidence). Skip transitions clustered in low-coherence zones. |
+| **Participant Alignment** | Degree to which session participants operated in their expected dimensional roles. Measures the gap between intended dimensional contribution (affinity) and actual dimensional production (actual) per participant. Applies only to Session-scoped FieldState. | Low drift across participants. Each intelligence contributed in its expected dimensional range. Complementary coverage across the full 1D–9D spectrum. | High drift in key participants. Dimensional overlap where coverage gaps were expected. The designated 7D Manifestor producing 2D validation artifacts. Multiple participants clustered in the same dimensions while other dimensions go unserved. |
+
+### 6.1 FieldState Interface
+
+The FieldState object is computed, not stored directly. It is generated on demand by analyzing the current state of artifacts, transitions, and bridges within a given scope (Board, Section, or Zone).
+
+| **Field** | **Type & Description** |
+|---|---|
+| **scope_id** | ID of the Board, Section, or Zone being evaluated. |
+| **coherence** | Float 0–1. Computed from dimensional consistency and pillar alignment within scope. |
+| **drift** | Float 0–1. Computed from rate of untracked changes relative to purpose. |
+| **saturation** | Float 0–1. Artifact density relative to zone capacity expectations. |
+| **fatigue** | Float 0–1. Diminishing returns signal from recursive processes. |
+| **dim_distribution** | Object {1D: n, 2D: n, ... 9D: n}. Creative-orientation artifact count per dimension. |
+| **shadow_distribution** | Object {1D: n, 2D: n, ... 9D: n}. Shadow-orientation artifact count per dimension. |
+| **dimensional_coherence** | Object {1D: float, 2D: float, ... 9D: float}. Per-dimension coherence score (0–1) measuring whether each dimension's activation is supported by adequate presence in all lower dimensions. A dimension with high artifact count but weak lower-dimensional support has low coherence and its intelligence is structurally unsupported. Computed from dim_distribution: for dimension i, coherence = min(artifact presence at dimensions 1 through i-1) relative to presence at dimension i. 1D coherence is always 1.0 (no prerequisites). High coherence across the stack indicates well-founded dimensional development. Low coherence at a specific dimension identifies the exact structural gap. |
+| **participant_alignment** | Object mapping participant identities to alignment data: { participant_id: { affinity: [int], actual: [int], drift: float, drift_dimensions: [int] } }. Computed on session close. drift is a 0–1 score measuring divergence between dimensional_affinity and dimensional_actual. drift_dimensions identifies the specific dimensions where misalignment occurred. Available only when FieldState is scoped to a Session. A participant with low drift operated where expected. A participant with high drift migrated to different dimensions, which may indicate either a problem (role confusion, unresolved needs) or a discovery (the session organically required different dimensional contributions than planned). Drift is diagnostic per the FieldState Interpretation Note: high drift is signal, not error. |
+| **pillar_balance** | Object {heart: n, truth: n, nuance: n}. Aggregate pillar lead distribution. |
+| **curvature** | Object {heart: float, truth: float, nuance: float, composite: float}. Transition resistance derived from pillar balance. Each pillar's curvature is inversely proportional to its representation in the scope — low heart presence produces high heart curvature, meaning transitions requiring Heart-led movement will encounter resistance. composite is the aggregate resistance across all three pillars. A scope with balanced, strong pillar representation has low composite curvature (smooth movement). A scope with severe pillar deficits has high composite curvature (stalled transitions). Derived from pillar_balance counts relative to total artifact population in scope. |
+| **field_resonance** | Float 0–1. Computed harmonic integration strength measuring the degree to which a scope's dimensional co-activation produces emergent field properties exceeding any single dimension's contribution. Derived from the interaction of three factors: structural capacity (are multiple dimensions well-populated with adequate coherence?), identity engagement (are participants operating across their full dimensional affinity range rather than clustering?), and perceptual bandwidth (is the gap between field potential and accessed awareness narrow?). High field_resonance indicates a scope where intelligence is harmonically integrated and the field is producing emergent insight that no individual dimension or participant accounts for. Low field_resonance in a scope with high dimensional_coherence and low curvature suggests mechanical application rather than embodied engagement (per the Embodiment Signal Note). Computed from dimensional_coherence, participant_alignment, dim_distribution breadth, and cross-boundary bridge density. |
+| **gravity_map** | Object mapping zone_ids to gravity scores. Where attention concentrates. |
+| **computed_at** | Timestamp of computation. |
+
+**FIELDSTATE INTERPRETATION NOTE:** FieldState metrics are diagnostic, not prescriptive. They describe the current state of the intelligence field but do not dictate what that state should be. A board with high curvature, low saturation, or unbalanced dimensional distribution is not necessarily unhealthy and may be early-stage, intentionally scoped, or exploratory by design. Simulation commands consume FieldState as input context and should calibrate their analysis accordingly. How aggressively simulations weight FieldState signals (e.g., whether high curvature triggers warnings, suggestions, or is simply noted) is an implementation-layer decision governed by simulation parameters on the Zone and Board. The kernel guarantees the metrics are computed and available. It does not prescribe thresholds or responses.
+
+**NAMED DIAGNOSTIC CONDITIONS:** The following conditions are recognized field health patterns derivable from FieldState metrics. They are named here to provide simulation engines and facilitators with a shared diagnostic vocabulary. These are not error states but structural conditions that may be healthy or unhealthy depending on context, consistent with the FieldState Interpretation Note above.
+
+> **Dimensional Blindspot:** A scope consistently shows zero or near-zero activation in one or more dimensions across multiple Sessions, while adjacent dimensions are well-populated. Derivable from dim_distribution and shadow_distribution. Indicates that the intelligence field may be systematically unable to perceive or produce intelligence at the absent dimension. Distinct from intentional scoping (a zone with allowed_dimensions constraining to 2D–3D is not blindspotted, it is scoped). A blindspot is diagnosed when absence occurs *outside* structural constraints. Simulations encountering a blindspot SHOULD flag the absent dimension and evaluate whether shadow presence exists there (per Shadow Invariant 5, Section 4.2).
+>
+> **Dimensional Collapse:** A scope shows extreme concentration in a single dimension with corresponding depletion across all others, accompanied by high gravity on a narrow set of zones and rising fatigue. Derivable from dim_distribution, gravity_map, saturation, and fatigue. Indicates that intelligence has become trapped in a single mode of thinking, creating a self-reinforcing attractor that resists dimensional movement. Distinct from healthy concentration (early-stage boards may legitimately focus on 1D–2D). Collapse is diagnosed when concentration persists across multiple Sessions despite facilitation intent to broaden, and when fatigue confirms that recursive processes within the concentrated dimension are producing diminishing returns.
+>
+> **Bridge Erosion:** A scope shows stable or increasing Bridge density but Comparison data across Snapshots reveals that bridge rationales are becoming thinner, contradictory, or semantically repetitive indicating that connections are being maintained structurally but losing coherent justification. Derivable from bridge density counts in FieldState, rationale quality evaluation across Snapshot-scoped Comparisons, and correlation with rising curvature or fatigue in the bridged zones. Indicates that the intelligence field is preserving the *appearance* of connection (6D) without sustaining the *substance* of it. Distinct from low Bridge density (which may indicate early-stage development or intentional scoping). Bridge Erosion is diagnosed when connections exist but their semantic load is degrading over time, particularly under high curvature or fatigue conditions. Simulations encountering Bridge Erosion SHOULD evaluate whether the bridged zones have diverged dimensionally (making the original bridge rationale obsolete) or whether fatigue in the connecting dimension has shifted bridging activity from constructive (6D creative) to extractive (6D shadow) orientation.
+
+**EMBODIMENT SIGNAL NOTE:** DN-compliant systems process two qualitatively different modes of engagement: mechanical application and dimensional embodiment. Both produce valid, spec-compliant outputs. The difference is observable in FieldState patterns across Sessions. Mechanical application tends to produce: artifacts tagged at prescribed dimensions matching zone allowed_dimensions, pillar_lead consistently matching zone pillar_affinity, bridges confined within section boundaries, zero or minimal shadow presence, low resonant_transformation counts in Comparisons, and stable but flat gravity maps with no unexpected concentration. Dimensional embodiment tends to produce: artifacts that land at dimensions the zone did not prescribe but the field structurally required, bridges crossing section and zone boundaries revealing unanticipated connections, conscious shadow engagement, resonant transformations detected between snapshots, Story Thread formation across multiple dimensions, and gravity that concentrates in ways the template did not predict. Neither mode is an error. Mechanical application may be appropriate for early-stage boards or structured training contexts. But simulation engines evaluating field health SHOULD recognize that a board exhibiting only mechanical-application patterns may be spec-compliant without being dimensionally alive, and that the absence of surprise, emergence, and cross-boundary connection in a mature board is itself a diagnostic signal.
+
+---
+
+## 7. Simulation Contracts
+
+Each simulation command in the 5D Prompt Singularity system is defined here as a typed contract: what it accepts, what it produces, and what constraints govern its execution. These contracts turn prose descriptions into implementable interfaces.
+
+### 7.1 Primary Simulation Commands
+
+**Ignite Reality Rift**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Simulate potential strategic outcomes. Identify opportunity gaps and dimensional misalignments. Generate 'what if' scenarios. |
+| **Input** | scope_ids[] (artifacts to analyze), scenario_type (optional: Market Shock, etc.), context (optional freetext) |
+| **Output** | scenarios[] (each with: narrative, artifacts_affected[], dimension_shifts[], risk_level), pillar_balance, field_state_delta |
+| **Constraint** | Must evaluate both creative and shadow orientations of each scenario. Must tag pillar_lead per scenario. |
+
+**Forge Love Bridge**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Create connections between disparate elements. Identify resonance points. Map dimensional pathways for cross-domain integration. |
+| **Input** | source_ids[] (artifacts/zones to connect from), target_ids[] (artifacts/zones to connect to), bridge_type (optional) |
+| **Output** | bridges[] (each with: source, target, rationale, resonance_score, dimension_pathway[]), pillar_balance |
+| **Constraint** | Use when connection is unclear, not when imbalance is the issue. Must produce Bridge objects with semantic rationale. |
+
+**Usher Golden Age**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Project forward evolution. Simulate ideal execution and response. Map path from current state to goal state. |
+| **Input** | scope_ids[], mode (Vision | Milestone), time_horizon (optional), goal_state (optional description) |
+| **Output** | projection (narrative), milestones[] (if Milestone mode, each with: dimension, artifacts, timeline), transitions[], pillar_balance |
+| **Constraint** | Use when goal state is known but path isn't. Must produce traceable transition chain. |
+
+**Weave Dimensional Thread**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Run a cross-section storyline across all dimensions 1D–9D. Full-spectrum narrative trace. |
+| **Input** | subject (project/product/brand name), scope_ids[] (optional, for grounding in existing artifacts) |
+| **Output** | thread[] (one entry per dimension: {dimension, narrative_beat, artifacts_referenced[], shadow_note}), pillar_balance |
+| **Constraint** | Must include shadow_note for each dimension. Must identify the Singularity Point (5D lock). |
+
+**Create Storyfield**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Narrate how ideas or organizations move through the dimensional model as arcs of becoming. |
+| **Input** | subject (entity name), scope_ids[] (optional) |
+| **Output** | storyfield_trace[] (one per dimension: {dimension, narrative, signal_lock: boolean}), missed_bridges[], echoing_dimension, pillar_balance |
+| **Constraint** | Must identify: Singularity Point, missed Bridges, and which dimension 'still echoes.' |
+
+### 7.2 Supplemental Commands
+
+**Run Dimensional Audit**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Analyze scope for balanced dimensional coverage. Identify over- and under-represented dimensions. |
+| **Input** | scope_ids[] (board, section, or zone), audit_type (full | section_only) |
+| **Output** | dim_distribution, shadow_distribution, gaps[], recommendations[], field_state |
+| **Constraint** | MUST report shadow presence/absence. Use as first diagnostic step before any simulation. |
+
+**Initiate Gravity Mapping**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Map how resources, attention, and energy flow through the scope. |
+| **Input** | scope_ids[], mapping_mode (standard | vector | layered) |
+| **Output** | gravity_map (zone_id → score), pillar_vectors (if vector mode), internal_vs_external (if layered mode), recommendations[] |
+| **Constraint** | Pairs naturally with Dimensional Audit. Must suggest resource allocation for optimal impact. |
+
+**Spark Fire Test**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Stress-test strategic elements. Identify what strengthens and what collapses under pressure. |
+| **Input** | scope_ids[], test_mode (Market Shock | Team Friction | Scaling Pressure) |
+| **Output** | results[] (per artifact: {survived: boolean, strengthened: boolean, shadow_exposed: boolean, refinement_path}), fragility_map, pillar_balance |
+| **Constraint** | MUST evaluate both creative and shadow orientations. Must produce fragility map and survivability assessment. |
+
+**Explore Shadow Symmetry**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Generate shadow-orientation counterparts to creative-layer artifacts. Surface probable opposing risks, blindspots, and destructive recursion patterns that the creative layer implies but does not articulate. |
+| **Input** | scope_ids[] (artifacts to analyze), depth (singular | scenario), scenario_count (integer, required if depth: scenario, default: 3) |
+| **Output** | shadow_artifacts[] (each with: source_artifact_id, content, dimension { primary, shadow: true, nested }, pillar_lead, scenario_label (null if depth: singular)), shadow_bridges[] (connecting each shadow artifact to its source), pillar_balance |
+| **Constraint** | Every output artifact MUST carry dimension.shadow: true. shadow_bridges[] MUST link each generated artifact to its creative-layer source via bridge_type: "shadow_symmetry". When depth: scenario, each scenario_label must describe the distinct risk vector explored. Must tag pillar_lead per shadow artifact. |
+
+**Reveal Resonance Field**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Evaluate the retroactive significance shift across board artifacts following a 5D+ recognition event. Identifies artifacts whose operational meaning has transformed due to higher-dimensional activation; not artifacts that moved dimensions, but artifacts that now carry different weight, relevance, or structural importance within the field. |
+| **Input** | trigger_artifact_ids[] (the 5D+ artifact(s) that achieved recognition or Signal Lock), scope_ids[] (board, section, or zone to evaluate — defaults to full board), recognition_type (signal_lock | dimensional_arrival | identity_definition) |
+| **Output** | resonant_candidates[] (each with: artifact_id, current_dimension, transformation_signal, significance_shift (elevated | diminished | recontextualized), pillar_lead), pillar_balance |
+| **Constraint** | MUST only be invoked after a 5D+ recognition event has been established. The trigger artifact(s) must be at dimension 5 or higher. Output artifacts are NOT re-tagged — their dimensional position is unchanged. The command evaluates meaning-shift-in-place per Constraint 5 (Resonant Activation, Section 2.1). Must tag pillar_lead per candidate. Pairs naturally with Resonance Result as a close, and its output feeds directly into resonant_transformations[] in the next Comparison (Section 8.9). |
+
+**Generate Resonance Result**
+
+| **Contract Field** | **Specification** |
+|---|---|
+| **Purpose** | Wrap any simulation with a summary of what shifted or clarified. The universal debrief command. |
+| **Input** | simulation_run_id (references a completed SimulationRun) |
+| **Output** | resonance_summary, signal_locks[] (ideas that achieved Signal Lock), cross_links[] (to other board sections), pillar_balance |
+| **Constraint** | Must note if Signal Lock was achieved on any specific idea. Must cross-reference Blueprint sections. |
+
+### 7.3 Simulation Routing
+
+The simulation contracts in Sections 7.1 and 7.2 define what each command does. This section defines when to use which command. DN-compliant systems that expose simulation capabilities SHOULD implement this routing logic to select the appropriate command for a given field condition. The routing is not exclusive as multiple commands may apply, and sequencing matters.
+
+| **Field Condition** | **Recommended Command(s)** | **Reasoning** |
+|---|---|---|
+| High ambiguity, many artifacts, no clarity | Run Dimensional Audit → Initiate Gravity Mapping | Diagnose what's overemphasized and where energy flows before intervening. These two commands pair as the standard opening diagnostic. |
+| Strategic fork, multiple viable paths | Ignite Reality Rift | Explore diverging futures from the current state. Use when the decision is which path, not what's wrong. |
+| Disconnected sections, fragmented intelligence | Forge Love Bridge | Merge disconnected elements by surfacing resonance. Use when connection is unclear, not when imbalance is the issue. |
+| Known goal state, unknown path | Usher Golden Age | Backcast milestones from ideal future. Use when destination is defined but the transition chain isn't. |
+| Perceived vulnerability, untested assumptions | Spark Fire Test | Simulate fragility under stress. Produces survivability assessment and refinement paths. |
+| Need to translate vision into narrative | Weave Dimensional Thread | Build cross-dimensional coherence from 1D through 9D as a single storyline. |
+| Need to understand how thinking evolved | Create Storyfield | Map the dimensional journey of an idea or identity, including missed transitions and emergence points. |
+| Creative-layer artifacts need shadow examination | Explore Shadow Symmetry | Generate shadow counterparts to surface blindspots, risks, and destructive recursion patterns the creative layer implies but doesn't articulate. |
+| 5D+ recognition achieved, need to understand downstream impact | Reveal Resonance Field | Evaluate which existing artifacts carry new weight or significance following a defining recognition. Use when a Signal Lock or identity definition has just landed and the field needs re-reading through that new lens. |
+| Any simulation completed | Generate Resonance Result | Universal debrief. Wraps any simulation with a summary of what shifted or clarified. Always available as a closing command. |
+
+**ROUTING PRINCIPLE:** Dimensional Audit is the recommended first diagnostic step before any other simulation. When field conditions are unclear, begin with Audit → Gravity Mapping to establish baseline understanding before selecting a targeted simulation command.
+
+**SEQUENCING PRINCIPLE:** Simulation outputs may feed subsequent simulations. Common sequences include: Run Dimensional Audit → Initiate Gravity Mapping (diagnostic pair), Ignite Reality Rift → Weave Dimensional Thread (scenario exploration → narrative synthesis), Usher Golden Age → Create Storyfield (goal projection → evolutionary arc), Spark Fire Test → Explore Shadow Symmetry (stress test → shadow depth analysis), Reveal Resonance Field → Generate Resonance Result (recognition impact → summary debrief), and any command → Generate Resonance Result (universal close). Simulation chaining is not required but is recognized as a pattern that produces richer intelligence than isolated command execution.
+
+---
+
+## 8. Serialization Format
+
+This section defines the JSON schema essentials for serializing DN objects. This is the contract that makes board exports self-documenting and enables any receiving system to interpret DN-structured data without loading the full corpus.
+
+### 8.1 Artifact Schema
+
+The minimum viable JSON representation of a DN artifact:
+
+```json
+{
+  "id": "art_001",
+  "content": "Our customers fear irrelevance more than failure",
+  "dimension": {
+    "primary": 3,
+    "shadow": false,
+    "nested": null
+  },
+  "pillar_lead": "nuance",
+  "pillar_stabilizers": ["heart", "truth"],
+  "exercise_id": "ex_001",
+  "source_type": "simulation",
+  "simulation_run_id": null,
+  "import_batch_id": "batch_001",
+  "branch_id": null,
+  "created_at": "2026-02-13T00:00:00Z",
+  "metadata": {
+    "source": "workshop_session_1",
+    "confidence": 0.85
+  }
+}
+```
+
+**New fields:** source_type is always required per Section 1.2 and identifies the signal origin (conscious | ambient | environmental | simulation). A human-created artifact carries source_type: "conscious". simulation_run_id references internal SimulationRun (Section 1.4). import_batch_id references Provenance Group (Section 1.3). branch_id scopes to a Branch (Section 1.1). These three are nullable—a human-created artifact on the main timeline carries null for all three.
+
+### 8.2 Board Export Schema
+
+A board export includes the full hierarchy plus embedded semantic context:
+
+```json
+{
+  "board": {
+    "id": "board_001",
+    "name": "Acme Corp Growth Blueprint",
+    "template_id": "tmpl_growth_blueprint",
+    "field_state": { /* computed FieldState per Section 6.1 */ },
+    "created_at": "2026-01-15T00:00:00Z",
+    "updated_at": "2026-02-16T00:00:00Z",
+    "sections": [{
+      "id": "sec_01",
+      "name": "Customer Profile",
+      "purpose": "Map the customer's world",
+      "order": 1,
+      "zones": [{
+        "id": "zone_goals_&_priorities",
+        "name": "Company Goals",
+        "prompt": "What do we want to achieve?",
+        "allowed_dimensions": [2, 3],
+        "dimension_rules": {
+          "2D": "Validated data points",
+          "3D": "Contextual patterns"
+        },
+        "simulation_rules": {},
+        "exercises": [{
+          "id": "ex_001",
+          "name": "Goal Identification",
+          "purpose": "Identify primary business objectives",
+          "methodology": "Brainstorm and prioritize",
+          "component_parts": [],
+          "output_format": "artifact_list",
+          "key_linkages": [],
+          "order": 1,
+          "prerequisites": [],
+          "dimension_affinity": 2,
+          "pillar_affinity": "truth",
+          "artifacts": [ /* Artifact objects per 8.1 schema */ ]
+        }]
+      }]
+    }]
+  },
+  "kernel_version": "0.7",
+  "shadow_kernel": true,
+  "pillar_metric": true,
+  "color_system": {
+    "1D": "#E84C88",
+    "2D": "#3A86C8",
+    "3D": "#7B5EA7",
+    "4D": "#7B5EA7",
+    "5D": "#2D8B46",
+    "6D": "#E87C2E",
+    "7D": "#D4A017",
+    "8D": "#1A9E96",
+    "9D": "#1A1A2E",
+    "shadow": "#8B0000",
+    "urgent": "#DC143C"
+  }
+}
+```
+
+**color_system note:** The "shadow" entry (#8B0000) is an overlay modifier, not a standalone dimension color. Shadow-tagged artifacts retain their dimensional color (e.g., a 3D shadow artifact is still Violet) with the shadow color applied as a visual differentiator — typically a border, outline, or background tint. This preserves dimensional readability while surfacing shadow orientation. The "urgent" entry (#DC143C) follows the same modifier pattern. Neither replaces a dimensional color; both layer on top of one.
+
+### 8.3 Extraction Rule
+
+**DETERMINISTIC RULE:** When extracting from a Template's narrative guide (e.g., the Growth Blueprint Guide) for board-embedded context, include ONLY sections that define machine-interpretable rules for each zone (zone names, zone prompts, dimension constraints, exercise instructions with structured outputs). Everything else (facilitation narrative, meeting guidance, philosophical framing) stays in the Load on Demand corpus layer. This rule is keyed to the board JSON schema. If a section does not map to a schema field, it is not extracted.
+
+### 8.4 Branch Schema
+
+The minimum viable JSON representation of a DN Branch:
+
+```json
+{
+  "id": "branch_001",
+  "board_id": "board_001",
+  "name": "What if we led with enterprise?",
+  "fork_snapshot_id": "snap_003",
+  "parent_branch_id": null,
+  "status": "active",
+  "created_at": "2026-02-15T00:00:00Z",
+  "metadata": {
+    "fork_rationale": "Exploring enterprise-first GTM as alternative",
+    "pillar_lead": "truth"
+  }
+}
+```
+
+**Required fields:** id, board_id, name, fork_snapshot_id, status. parent_branch_id is null for branches from the main timeline; non-null for branches forked from other branches.
+
+### 8.5 ImportBatch (Provenance Group) Schema
+
+The minimum viable JSON representation of a DN Provenance Group:
+
+```json
+{
+  "id": "batch_001",
+  "session_id": "session_007",
+  "source_description": "Claude conversation: client goal mapping",
+  "artifact_ids": ["art_041", "art_042", "art_043", "art_044"],
+  "timestamp": "2026-02-15T14:30:00Z",
+  "import_metadata": {
+    "source_tool": "claude.ai",
+    "zones_affected": ["zone_goals_&_priorities", "zone_market_risks"],
+    "artifact_count": 4
+  }
+}
+```
+
+### 8.6 Exercise Schema
+
+The minimum viable JSON representation of a DN Exercise:
+
+```json
+{
+  "id": "ex_001",
+  "zone_id": "zone_goals_&_priorities",
+  "name": "Goal Identification",
+  "purpose": "Identify and articulate primary business objectives",
+  "methodology": "Guided brainstorm with prioritization ranking",
+  "component_parts": [
+    "Individual brainstorm",
+    "Group synthesis",
+    "Priority ranking"
+  ],
+  "output_format": "artifact_list",
+  "key_linkages": [
+    {
+      "target_id": "ex_002",
+      "type": "informs"
+    }
+  ],
+  "order": 1,
+  "prerequisites": [],
+  "dimension_affinity": 2,
+  "prompt_dimension": 2,
+  "pillar_affinity": "truth",
+  "artifacts": [ /* Artifact objects per 8.1 schema */ ]
+}
+```
+
+**Required fields:** id, zone_id, name, purpose, methodology, component_parts[], output_format, key_linkages[], order, prerequisites[], dimension_affinity, pillar_affinity. prompt_dimension is nullable; when populated, it records the structural dimension at which the Exercise's prompt activates intelligence (Section 2.4). A prompt_dimension lower than dimension_affinity indicates the prompt structurally constrains output below the Exercise's intended dimensional target. This mismatch is diagnostic signal: the Exercise asks for intelligence at one level but activates it at another. key_linkages[] entries carry a target_id and a type (dependency | informs | follows_up) per Table 1. artifacts[] contains the Exercise's produced Artifacts serialized per Section 8.1.
+
+### 8.7 Bridge Schema
+
+The minimum viable JSON representation of a DN Bridge:
+
+```json
+{
+  "id": "bridge_001",
+  "source_id": "art_001",
+  "target_id": "art_027",
+  "bridge_type": "resonance",
+  "rationale": "Customer fear of irrelevance directly feeds competitive positioning urgency",
+  "dimension": {
+    "primary": 6,
+    "shadow": false,
+    "nested": null
+  }
+}
+```
+
+**Required fields:** id, source_id, target_id, bridge_type, rationale, dimension. source_id and target_id may reference Artifacts, Exercises, Zones, Sections, or Boards per Section 1.1 — Bridges may cross all containment boundaries. bridge_type is implementation-defined (e.g., resonance, tension, dependency, translation). rationale is required and must provide semantic justification for why the connection exists — Bridges without rationale are spec violations.
+
+### 8.8 Snapshot Schema
+
+The minimum viable JSON representation of a DN Snapshot:
+
+```json
+{
+  "id": "snap_003",
+  "board_id": "board_001",
+  "inflection_label": "Post-discovery session: customer fears validated",
+  "timestamp": "2026-02-10T16:00:00Z",
+  "field_state": { /* computed FieldState per Section 6.1 */ },
+  "artifact_states": [
+    {
+      "artifact_id": "art_001",
+      "dimension": {
+        "primary": 3,
+        "shadow": false,
+        "nested": null
+      },
+      "pillar_lead": "nuance",
+      "pillar_stabilizers": ["heart", "truth"]
+    }
+  ]
+}
+```
+
+**Required fields:** id, board_id, inflection_label, timestamp, field_state, artifact_states[]. inflection_label is a human-authored description of why this moment warranted a snapshot — it is not auto-generated. artifact_states[] captures each artifact's dimensional position and pillar lead at the moment of the snapshot, enabling precise delta computation in Comparisons. The full artifact content is not duplicated — artifact_states[] records positional coordinates only, referencing artifacts by id.
+
+### 8.9 Comparison Schema
+
+The minimum viable JSON representation of a DN Comparison:
+
+```json
+{
+  "id": "comp_001",
+  "snapshot_ids": ["snap_001", "snap_003"],
+  "delta_field_state": {
+    "coherence_delta": 0.15,
+    "drift_delta": -0.08,
+    "saturation_delta": 0.22,
+    "fatigue_delta": 0.03
+  },
+  "dimension_migrations": [
+    {
+      "artifact_id": "art_001",
+      "from_dimension": {
+        "primary": 2,
+        "shadow": false
+      },
+      "to_dimension": {
+        "primary": 3,
+        "shadow": false
+      }
+    }
+  ],
+  "resonant_transformations": [
+    {
+      "artifact_id": "art_005",
+      "dimension": 2,
+      "trigger_dimension": 5,
+      "trigger_artifact_id": "art_019",
+      "transformation_signal": "Market validation data recontextualized as identity-confirming evidence after strategic positioning lock"
+    }
+  ],
+  "gravity_shifts": [
+    {
+      "zone_id": "zone_goals_&_priorities",
+      "from_score": 0.6,
+      "to_score": 0.85
+    }
+  ],
+  "shadow_emergence": [
+    {
+      "artifact_id": "art_012",
+      "dimension": 5,
+      "signal": "Recognition oriented toward isolation rather than connection"
+    }
+  ],
+  "transition_completions": ["trans_004", "trans_007"],
+  "transition_stalls": ["trans_002"]
+}
+```
+
+**Required fields:** id, snapshot_ids[], delta_field_state, dimension_migrations[], resonant_transformations[], gravity_shifts[], shadow_emergence[], transition_completions[], transition_stalls[]. snapshot_ids[] must contain two or more Snapshot ids per Section 1.1. delta_field_state captures the change in FieldState metrics between the earliest and latest snapshots. dimension_migrations[] records every artifact that changed dimensional position between snapshots. resonant_transformations[] records artifacts whose operational significance changed due to higher-dimensional activation without changing their own dimensional position (Constraint 5). Each entry identifies the artifact, its stable dimension, the higher dimension whose activation triggered the transformation, the triggering artifact, and a signal describing how the meaning shifted. gravity_shifts[] records zones whose gravity scores changed. shadow_emergence[] surfaces artifacts that shifted to or exhibited shadow orientation. transition_completions[] and transition_stalls[] reference Transition ids that completed or stalled during the comparison window.
+
+---
+
+## 9. Implementation Notes
+
+### 9.1 Layer Architecture Reference
+
+This Kernel governs how the 4-layer corpus architecture operates:
+
+| **Layer** | **Contents** | **Governed By** |
+|---|---|---|
+| **Always Loaded** | Glossary, 5D Config, Universal Map, Blueprint Guide extract, Shadow Kernel, Triad Metric Preamble, RIP Triad Analytical Aspects | Sections 1–4 of this spec (objects, tags, pillar, shadow) |
+| **Board-Embedded** | Color system, zone prompts, simulation parameters, per-zone dimension rules | Sections 1, 2, 7, 8 of this spec (objects, tags, contracts, serialization) |
+| **Load on Demand** | Harmonies, Story Threads, Shadow Dimensions (full), Transitions, Prompt Dimensionality, RIP Triad (full corpus documents), Embodiment vs Application | Sections 4, 5, 6 of this spec (shadow depth, transitions, field health) |
+| **System Design** | Geometry of Intelligence, DN Code Document | Informs this spec's design but not runtime |
+
+### 9.2 Kernel as Source of Truth
+
+For any implementation (Blueprint Board, Replit build, future substrate), this Kernel is the source of truth for structural requirements. The full corpus provides depth, narrative, and philosophy. The spec provides contracts and constraints. When in doubt: if the question is 'what must this system do?' consult the spec. If the question is 'why does it do this?' consult the corpus.
+
+### 9.3 Recursion Clause
+
+This spec is itself subject to DN recursion (8D). Future versions will refine these definitions based on implementation experience, simulation testing, and field observation. Changes must pass through the Pillar Metric: Heart (does this honor the framework's soul?), Truth (is this structurally sound?), Nuance (does this respect contextual complexity?). Version changes are Transitions and must be documented as such.
+
+---
+
+*DN Kernel v0.7 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
