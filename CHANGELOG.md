@@ -2,7 +2,16 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v091.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v092.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v0.9.2 (February 2026)
+
+**Alignment corrections:**
+
+- Expanded Branch lifecycle from three statuses (active | merged | archived) to four (active | paused | merged | archived), aligning with the wishlist-defined lifecycle (§1.4). Paused Branches retain their state but do not accept new artifacts or sessions, preserving the Branch for future resumption without the finality of merge or archive. Updated Table 1 (Core Objects), Section 1.1 (Branch status invariant), and Section 8.4 (Branch Schema required fields).
+- Expanded completion criteria status enum from three values (pending | met | unmet) to seven (met | partially_met | unmet | deferred | scope_changed | not_evaluated | open_exploration), aligning with the wishlist-defined completion statuses (§8.5). The expanded enum captures the full range of completion outcomes: partial progress, deliberate deferral, mid-session scope changes, criteria not yet evaluated, and exploratory work without fixed endpoints. Updated Section 8.10 (Session Schema description).
 
 ---
 
@@ -14,6 +23,7 @@ This file contains the complete version history for the DN Kernel specification.
 - Added Annotation Layer (Section 6) as a structural pattern for peripheral intelligence that supports the field without being part of its committed ledger state. Defines the distinction between ledger-committed intelligence and annotation-layer intelligence (chat logs, AI narrative summaries, reference documents, holding zone contents, exploratory analysis). Promotion from annotation to ledger requires passing through a commit gate. Annotations that are never promoted are preserved for reference but do not affect FieldState computation.
 - Added Field Merger Authorization as a fifth human-exclusive facilitation function (Section 1.6). Field Merger (Section 10.2) is permanent and irreversible; authorization to execute requires human facilitation judgment. AI facilitators may analyze merger compatibility and produce impact assessments but cannot authorize execution.
 - Added participant sentiment ratings as a conscious signal subtype (Section 1.2, Tier 1). Self-reported mood, energy, or engagement state captured at session boundaries or facilitator-initiated checkpoints. Established the diagnostic value of sentiment convergence/divergence: delta between reported and inferred (ambient-derived) sentiment is itself a facilitation-relevant signal.
+- Expanded Co-Facilitation (Section 1.6) from a human+AI pair to any multi-party facilitator configuration: multiple humans, multiple AIs, or any combination. Added facilitation lead concept: at any moment one facilitator holds the lead (whose active interventions are authoritative) while others operate in support roles. Lead transfer is a facilitation act recorded in the session log. All facilitators retain independent authority over human-exclusive functions regardless of lead status. Co-facilitating teams that persist across sessions develop their own composite Participant Field per the Participant Field Ledger Principle.
 
 **Audit-driven refinements:**
 
