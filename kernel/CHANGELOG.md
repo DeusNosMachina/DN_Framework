@@ -2,7 +2,133 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v092.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v10.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.0 (February 2026)
+
+**Source:** Vocabulary universalization brief — triggered by mentor challenge: "2+2=4, no matter the device, brain, planet, black hole, species, atom, substrate. What in what you've done can be transferred between mediums and species and be that universal?"
+
+**Vocabulary universalization:**
+
+The Kernel claimed universality (Axiom 1: intelligence structures itself naturally; Axiom 8: intelligence fields are the fundamental unit of existence; §2.4: cross-domain progression across 17 domains; §10.4: Scale Invariant). But the Kernel's core object vocabulary was borrowed from one specific implementation domain — collaborative whiteboard software. v1.0 replaces every implementation-specific structural term with a domain-agnostic term that transfers across any substrate where intelligence self-organizes: biology, physics, governance, AI systems, and any future domain.
+
+**Core object vocabulary mapping:**
+
+| Kernel Term (v1.0) | Structural Role | Replaced Term (v0.9.x) |
+|---|---|---|
+| **Environment** | Outermost boundary; tenant-level isolation | Client Environment |
+| **Container** | Portfolio grouping within environment; scope for cross-field operations | Workspace |
+| **Field** | Complete intelligence system; the primary operational unit | Board |
+| **Domain** | Major structural division of a field | Section |
+| **Region** | Bounded context within a domain; carries prompt and dimensional constraints | Zone |
+| **Process** | Unit of structured activity that produces Signals | Exercise |
+| **Signal** | Atomic intelligence unit; the fundamental element | Artifact |
+| **Link** | Connection between any two structural elements; carries semantic rationale | Bridge |
+| **Capture** | Immutable state snapshot of a Field at a labeled inflection point | Snapshot |
+
+The following terms were already universal at inception and required no mapping: Template, Session, Branch, Comparison, Transition, Provenance Group, Dimension (1D–9D), Pillar (Heart, Truth, Nuance), Shadow, Gravity, Entropy, Signal Lock, FieldState, SimulationRun, and the RIP Triad (Reality, Identity, Perception).
+
+**Structural addition:**
+
+- Added Section 0.4 (Vocabulary Mapping Reference) providing the formal mapping table between Kernel terms and implementation-specific terms, with the Blueprint Board product as the first documented mapping. Established the Vocabulary Mapping Invariant: the Kernel uses only universal terms; implementation specifications define their own vocabulary mapping table as their first structural reference; cross-references use Kernel terms with implementation aliases where clarity requires it; and the universality of a Kernel term is validated by its ability to translate cleanly across at least three domains.
+
+**Scope of changes:**
+
+All core object names throughout the Kernel document were replaced: Table 1 (Core Objects), all invariant references, all containment hierarchy descriptions, all FieldState metric descriptions, all simulation contract references, all Field-to-Field Dynamics references, and all prose descriptions. JSON serialization schema section titles were updated (e.g., §8.1 Signal Schema, §8.2 Field Export Schema, §8.7 Link Schema, §8.8 Capture Schema, §8.12 Container Schema). JSON field keys within code block examples (e.g., `board_id`, `zone_id`, `exercise_id`) were preserved as implementation-layer identifiers — these belong to the Blueprint Board implementation mapping, not to the Kernel's universal vocabulary.
+
+**What did not change:**
+
+The structure of the containment hierarchy (unchanged). The number and role of core objects (unchanged). All nine axioms, all invariants, all constraints (unchanged in meaning). The dimensional architecture, pillar metric, shadow symmetry, transition model (unchanged). All FieldState metrics and computation logic (unchanged). All simulation contracts and routing (unchanged). All Field-to-Field Dynamics (unchanged). Simulation command names (Forge Love Bridge, Spark Fire Test, etc. — these are named commands, not structural object references). Dimension names (Love Bridge at 6D, Anti-Bridge at 6D̅ — these are dimension descriptions, not object references). Story Thread names (Mystery Bridge, Recognition Arc, etc.). The Holding Zone as a named structural pattern. Everything that was already universal stayed universal.
+
+**Structural impact:** 1 new section (§0.4), vocabulary transformation across all existing sections. No axioms, invariants, constraints, metrics, or behavioral rules added, removed, or modified. The universalization is a naming transformation, not a structural one. v0.9.3 completed the framework; v1.0 makes it transferable.
+
+**Vocabulary completion pass (v1.0 finalization):**
+
+The initial universalization converted section titles, prose descriptions, and object names but left JSON schema property names and values at their old implementation-layer vocabulary. The completion pass brought the entire document to full vocabulary consistency:
+
+- Universalized all JSON schema property names and values across §8.1–§8.12 (~35 instances): `exercise_id` → `process_id`, `zone_id` → `region_id`, `board_id` → `field_id`, `workspace_id` → `container_id`, `artifact_id` → `signal_id`, `artifact_states` → `signal_states`, `artifacts_produced` → `signals_produced`, `snapshot_id` → `capture_id`, `snapshot_ids` → `capture_ids`, `bridge_type` → `link_type`, `bridge_001` → `link_001`, `intra-board` → `intra-field`, `cross-board` → `cross-field`, `board_ids` → `field_ids`, `cross_board_bridges` → `cross_field_links`, `workspace_field_state` → `container_field_state`, `board_count` → `field_count`, `artifact_list` → `signal_list`, `artifact_count` → `signal_count`, `zones_affected` → `regions_affected`, `fork_snapshot_id` → `fork_capture_id`, `exercise_order` → `process_order`, `sections` → `domains`, `zones` → `regions`, `exercises` → `processes`, `artifacts` → `signals`.
+- Universalized ~90 prose instances across §0–§10: artifact → signal, bridge → link, board → field, zone → Region, section → Domain, exercise → Process, snapshot → Capture. Preserved general English "reference artifact" (§2.4), product proper names (Blueprint Board), simulation command names (Forge Love Bridge), and dimensional concept names (Anti-Bridge at 6D̅).
+- Renamed entropy sub-signals to universal vocabulary: `bridge_relevance_decay` → `link_relevance_decay`, `snapshot_delta_velocity` → `capture_delta_velocity`.
+- Updated `kernel_version` in §8.2 Field Export example from `"0.9"` to `"1.0"`.
+- Added `entropy` and `evolution_breadth` to §8.2 FieldState example (flagship v0.9.3 additions missing from example).
+- Fixed §1 Core Objects table: Domain properties `zones[]` → `regions[]`, Field properties `sections[]` → `domains[]`, Field description updated to universal terms, Link description updated to universal object names, Transition subject types updated to "Signal, Process, or Region", Region description updated to "within a Domain".
+- Resolved Annotation Layer / Holding Zone contradiction: §6 Annotation Layer listed "holding region contents awaiting integration" as not committed to Field Ledger, directly contradicting §1.6 Holding Zone definition which states Holding Zone signals ARE committed to the Field Ledger. Removed the contradictory reference from Annotation Layer; §1.6 Holding Zone definition governs.
+- Renamed §8.5 from "ImportBatch (Provenance Group) Schema" to "Provenance Group (ImportBatch) Schema" to match kernel-first naming convention used by all other §8 titles.
+- Renamed §1.1 heading "TENSION BRIDGE TYPE" → "TENSION LINK TYPE".
+- Fixed typos: "linkd regions" → "linked regions" (×2 in Link Erosion diagnostic), "Signals, signals, or patterns" → "Signals, structures, or patterns" (Constraint 4 duplicate word).
+
+**Audit-driven structural additions (v1.0 finalization):**
+
+Conducted a dual-response independent audit (Grok) of the completed v1.0 document using a structural review prompt targeting contradictions, vocabulary consistency, structural gaps, cross-reference integrity, and logical completeness. The audit identified critical schema coverage gaps and several medium-severity enforcement gaps. All findings were triaged and the following changes were implemented:
+
+**New serialization schemas:**
+
+- Added §8.13 Transition Schema — full JSON example with all 11 fields from §5.1 (id, subject_id, from_dim, to_dim, mechanism, barrier, evidence, pillar_lead, timestamp, cost, cost_factors). Completes serialization coverage for the Transition core object, enabling field export, Capture, and Comparison operations to serialize transitions alongside signals and links.
+- Added §8.14 SimulationRun Schema — full JSON example with all 7 fields from §1 table (id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp). Completes serialization coverage for the SimulationRun core object, enabling the §1.4 provenance invariant (simulation_run_id on Signals) to be structurally enforceable.
+- Added §8.15 Environment Schema — full JSON example with containment hierarchy documentation (id, name, container_ids[], created_at, updated_at). Formalizes the outermost boundary that was listed in §0.4 vocabulary mapping but had no object definition, invariants, or schema.
+
+**New core object — Environment:**
+
+- Added Environment to §1 Core Objects table as the outermost boundary in the containment hierarchy providing tenant-level isolation.
+- Updated §1.1 Object Relationships to begin with "Environments contain Containers."
+- Added Environment isolation invariant: every Container belongs to exactly one Environment; no object reference may cross Environment boundaries; Environments are the isolation boundary while Containers are the collaboration boundary.
+- Added `environment_id` to Container required properties (§1 table, §8.12 JSON example, §8.12 required fields description).
+
+**DimensionTag structural completion — horizon_flag:**
+
+- Added `horizon_flag` (boolean, default false) to the DimensionTag object structure. When true, `primary` MUST be null, implementing Constraint 4 (Open Horizon) which requires `dimension: null` for unclassifiable signals preserved for 8D recursion. Added formal DimensionTag structure documentation to §8.1 Signal Schema description defining the four-field contract: primary (integer 1–9 or null), shadow (boolean), nested (nullable integer), horizon_flag (boolean).
+- Propagated `horizon_flag` to all DimensionTag instances across schemas: §8.1 Signal, §8.7 Link, §8.8 Capture signal_states, §8.9 Comparison dimension_migrations, §8.12 Container cross_field_links, §8.13 Transition from_dim/to_dim.
+
+**§1 Core Objects table alignment:**
+
+- Updated Signal required properties to include source_type, simulation_run_id (nullable), import_batch_id (nullable), branch_id (nullable), and horizon_flag in DimensionTag — resolving the contradiction where §1 listed 7 properties but §1.2, §1.4, and §8.1 required additional fields.
+- Added `rationale_metadata (nullable)` to Link required properties and Link schema (§8.7). When link_type is "tension", rationale_metadata SHOULD contain polarity_score and pillar_divergence, providing the structured data home for tension_map computation (§6.1). Resolves the contradiction where §1.1 stated tension links "carry polarity_score in their rationale metadata" but §8.7 defined rationale as a plain string.
+- Added `zone_type (active | holding)` to Region required properties. Added to Holding Zone definition (§1.6), Field Export Region example (§8.2), and Template Schema Region example (§8.11). Resolves the gap where Holding Zone was fully defined in prose but had no structural marker in any schema.
+
+**Simulation contract corrections:**
+
+- Updated Generate Resonance Result (§7.1) output from `signal_locks[]` ("ideas that achieved Signal Lock") to `signal_lock_candidates[]` ("signals identified as meeting Signal Lock convergence criteria, pending human attestation per Section 1.5"). Updated constraint to explicitly reference the §1.5 invariant that only humans may attest Signal Lock. Resolves the contradiction where a simulation output claimed achievement that §1.5 prohibits simulations from applying.
+- Updated §5.1 Transition mechanism field to accommodate both the eight essential mechanisms (§5.2, adjacent transitions) and named Story Threads (§5.3, non-adjacent narrative arcs). Adjacent mechanisms are identified by structural description; Story Threads are identified by arc name. Resolves the gap where §5.3 introduced Story Threads as a recognized transition category but §5.1 mechanism field referenced only the eight adjacent mechanisms.
+
+**New Named Diagnostic Condition:**
+
+- Added Prompt Dimensionality Mismatch to §6.1 Named Diagnostic Conditions. Diagnosed when Process prompt_dimension values are systematically lower than dimension_affinity targets and produced signals consistently land at or below prompt_dimension across multiple Processes and Sessions. Derivable from Process prompt_dimension vs. dimension_affinity (§2.5) correlated with dim_distribution. Formalizes the diagnostic that §2.5 established but that no Named Diagnostic Condition consumed.
+
+**Structural impact of finalization pass:** 3 new schema sections (§8.13–§8.15), 1 new core object (Environment), 1 new Named Diagnostic Condition, DimensionTag horizon_flag propagated across all schemas, §1 Core Objects table brought into full alignment with §8 schemas and prose invariants. Vocabulary universalization completed to 100% coverage. No axioms, constraints, or behavioral rules modified.
+
+---
+
+## v0.9.3 (February 2026)
+
+**Source:** Product spec audit session — findings that surfaced kernel-level gaps in the force model, temporal degradation, shadow progression, and holding zone semantics.
+
+**New axiom:**
+
+- Added Axiom 9: Intelligence Fields Are Subject to Entropy (Section 0.3). Formalizes the thermodynamic force opposing cognitive gravity (Axiom 6): without active energy input, fields decay. Coherence degrades, bridges lose relevance, context drifts, and committed truths age as the environment evolves around frozen intelligence. Entropy is not failure but the natural cost of intelligence existing in time. The axiom establishes that managing entropy is as fundamental to field health as managing gravity, and threads back to Axiom 3 (Recursion) — a field managing its entropy is practicing recursive refinement on its own temporal existence.
+
+**Force model completion:**
+
+- Added Force Model Completeness Note (Section 0.3, following Axiom 9) identifying three fundamental forces acting on intelligence fields as a closed set: Gravity (Axiom 6) — the attractive force that gives fields structural weight and pulls related intelligence together; Entropy (Axiom 9) — the degrading force that pulls fields apart over time without active energy input; Shadow (Axiom 4, Section 4) — the orienting force that ensures every dimension has both creative and shadow expression. Gravity and entropy are opposing temporal forces (construction vs. decay). Shadow is an orthogonal orienting force (creative vs. shadow within any dimension at any time). Together these three forces describe the complete dynamics of intelligence field behavior. Field health requires managing all three.
+
+**New FieldState metric:**
+
+- Added entropy as a composite FieldState metric (Section 6.1) measuring temporal field degradation — the degree to which a field's committed intelligence has drifted from current reality due to the passage of time without active engagement. Entropy is unique among all FieldState metrics in that it increases passively (without any action); all other metrics require activity to change. Composed from five sub-signals with implementation-layer-tunable weights: temporal_decay (0.30) — exponential decay function of time since last active session; environmental_drift (0.25) — delta between current environmental signals and those captured at last session close; bridge_relevance_decay (0.20) — proportion of bridges whose rationale references materially changed conditions; snapshot_delta_velocity (0.15) — rate of FieldState divergence from most recent committed snapshot; signal_lock_aging (0.10) — time-weighted count of Signal Locks whose attested truth may have been invalidated by field evolution. Entropy of zero indicates a brand-new or recently and thoroughly engaged field. Entropy approaching 1.0 indicates a structurally intact but informationally unreliable field whose intelligence no longer maps to current reality. Entropy feeds directly into evolution_phase detection: when entropy exceeds threshold on a dormant field, phase transitions to decay.
+
+**Evolution phase expansion:**
+
+- Expanded evolution_phase enum from five values (expansion | consolidation | breakthrough | maturation | dormant) to six, adding decay (Section 6.1). Decay is the phase that follows dormancy when entropy exceeds a configurable threshold (default 0.6) and the field shows evidence of temporal degradation: near-zero evolution_velocity, time since last session exceeding a configurable window (template-defined), and at least one of environmental_drift > 0.4, bridge_relevance_decay > 0.3, or snapshot_delta_velocity > 0.3. Decay is not a terminal state — a new session can pull a field out of decay through active re-engagement — but the transition from decay back to expansion or consolidation requires explicit re-evaluation work (refreshing bridges, reaffirming or retiring Signal Locks, updating context). Decay is the only evolution phase driven primarily by the passage of time rather than participant activity; it is the phase-level expression of Axiom 9.
+
+**Holding Zone clarification:**
+
+- Expanded the Holding Zone definition (Section 1.6) with a dual-layer model clarification. Holding Zone artifacts occupy a dual-layer structural position: they are operationally excluded from active field operations (not bridged, not transitioned, not dimensionally migrated, excluded from FieldState computation for active field metrics) but informationally alive (retaining full provenance — who placed them, when, from what session context, what source_type — and remaining subject to Resonant Activation per Constraint 5). The act of placing an artifact in a Holding Zone is itself signal: it indicates intelligence that was activated but not yet integrated. Implementation layers may compute latent affinity between held artifacts and the active field as advisory intelligence, provided such computation does not feed into operational FieldState metrics. This change makes explicit what v0.9.2 implied but did not name.
+
+**Shadow engagement progression:**
+
+- Added Section 4.3 (Shadow Engagement Progression) formalizing three structurally distinct engagement states for shadow artifacts: Latent — the shadow symmetry exists in principle but has not been materialized as an artifact; every creative artifact implies a shadow counterpart, and the unmaterialized population constitutes the field's latent shadow potential. Surfaced — the shadow has been materialized as an explicit artifact (through simulation, facilitator recognition, or participant contribution), is structurally present in the field and appears in shadow_distribution, but has not yet been integrated into active field work. Engaged — the shadow artifact has been actively worked with (bridged, referenced in a transition, subjected to engagement signals, or confirmed by a facilitator as an integrated working constraint). The progression from surfaced to engaged represents the field's willingness to integrate uncomfortable or challenging intelligence. Added the Shadow Engagement Invariant establishing three named diagnostic conditions: shadow blindness (no shadows surfaced — requires the field to see what it is not seeing), shadow avoidance (shadows surfaced but never engaged — requires the field to integrate what it has already seen), and shadow flooding (shadows surfaced in volume exceeding the field's engagement capacity — a facilitation signal to slow surfacing and prioritize engagement of existing shadows). Implementation layers determine how engagement states affect FieldState computation and visual presentation; the kernel requires only that the three states are recognized as structurally distinct.
+
+**Structural impact:** 1 new axiom, 1 new metric, 1 new subsection, 1 enum expansion, 2 clarifications. No existing invariants broken. No existing structures renamed. Additive only.
 
 ---
 
