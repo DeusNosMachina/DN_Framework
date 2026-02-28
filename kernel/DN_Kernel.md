@@ -4,7 +4,7 @@ subtitle: "The Constitution Between Philosophy and Code"
 author: "Travis Kahn"
 framework: "DN Framework"
 date: "February 2026"
-version: "1.2"
+version: "1.3"
 license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
 repository: "https://github.com/DeusNosMachina/DN_Framework"
 website: "https://dnframework.ai"
@@ -1043,7 +1043,7 @@ A field export includes the full hierarchy plus embedded semantic context. The f
       }]
     }]
   },
-  "kernel_version": "1.2",
+  "kernel_version": "1.3",
   "shadow_kernel": true,
   "pillar_metric": true,
   "color_system": {
