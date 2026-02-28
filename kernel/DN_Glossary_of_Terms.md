@@ -25,6 +25,8 @@ Heart/Truth/Nuance trinity
 
 -   **Application**: Included to support flexible yet coherent usage
 
+**Vocabulary note:** This Glossary uses Growth Blueprint application-layer terminology (artifact, bridge, board, zone, exercise, snapshot, workspace) alongside the DN Kernel's universal terms (Signal, Link, Field, Region, Process, Capture, Container). The complete mapping is documented in the Kernel's §0.4 vocabulary table. Where application-layer terms appear in definitions below, the corresponding kernel term is noted parenthetically on first use within each entry. Kernel terms are not re-listed as separate Glossary entries to avoid version drift between documents.
+
 ## Core Pillars (Trinity Framework)
 ### Heart
 *Poetic Synonyms:* Spark, Soul, Essence, Flame, Pulse
@@ -824,7 +826,7 @@ replacement when the board advances to 5D identity definition.
 *Poetic Synonyms:* Echo Balance Check, Signal Spectrum Scan
 
 **Definition:** A structured review of which dimensions are active,
-overemphasized, or missing from a strategy, board, or simulation—used
+overemphasized, or missing from a strategy, board (kernel: Field), or simulation—used
 to ensure full-spectrum intelligence is being engaged.
 
 **Heart:** Checks for emotional blind spots or neglected desires.
@@ -843,7 +845,7 @@ to ensure full-spectrum intelligence is being engaged.
 ### Dimensional Stickies
 *Poetic Synonyms:* Thought-beads, Intelligence Gems, Color Keys
 
-**Definition:** Visual Artifact markers aligned to each dimension, used
+**Definition:** Visual Artifact (kernel: Signal) markers aligned to each dimension, used
 to tag insights, ideas, or prompts during simulations. They signal where
 an idea lives dimensionally.
 
@@ -865,10 +867,10 @@ prioritization.
 *Poetic Synonyms:* Memory of Becoming, Strategic DNA Trail, The Board's
 Biography
 
-**Definition:** The longitudinal view of a Board's development across
+**Definition:** The longitudinal view of a Board's (kernel: Field's) development across
 Sessions. Not a stored object but an emergent narrative produced by
 querying the sequence of Sessions and their change_rationale fields,
-correlated with Comparison data between Snapshots and Evolution Rhythm
+correlated with Comparison data between Snapshots (kernel: Captures) and Evolution Rhythm
 metrics. The raw material is the human-authored change_rationale on each
 Session, capturing the "why" behind each period of work. Evolution
 Tracking answers the question: how did this field arrive at its current
@@ -908,7 +910,7 @@ produced by the DN system's fundamental symmetry: that the dimensional
 architecture, pillar metric, shadow symmetry, and all structural
 invariants apply identically at every point in time and at every scale.
 The Field Ledger accumulates through commit gates: Session close,
-Snapshot creation, SimulationRun completion, Board Export, Branch fork,
+Snapshot creation, SimulationRun completion, Board Export (kernel: Field Export), Branch fork,
 Provenance Group import, and Signal Lock attestation. Between gates, the
 field is mutable. At each gate, the current state is appended to the
 conserved ledger. Every field's ledger is unique by construction; even
@@ -1032,10 +1034,10 @@ facilitation.
 *Poetic Synonyms:* Strategic Waiting Room, Wisdom Shelf, Idea Sanctuary,
 The Deferred Field
 
-**Definition:** A designated scope within a Board (formalized as a
-section in the Growth Blueprint template) where artifacts are committed
+**Definition:** A designated scope within a Board (kernel: Field), formalized as a
+Region with `holding: true`, where artifacts (kernel: Signals) are committed
 to the Field Ledger but held outside active field operations. Parked
-artifacts are not bridged, transitioned, or dimensionally migrated; they
+artifacts are not bridged (linked), transitioned, or dimensionally migrated; they
 are preserved without structural integration. The Parking Lot is not a
 discard pile; it is a temporal holding pattern where ideas are
 documented but not yet connected. Parked artifacts remain subject to
@@ -1096,7 +1098,7 @@ Significance Cascade, Field Re-Reading
 
 **Definition:** A simulation command invoked after a 5D or higher
 recognition event (such as Signal Lock or identity definition) that
-evaluates all artifacts within a scope for retroactive significance
+evaluates all artifacts (kernel: Signals) within a scope for retroactive significance
 shift. The command does not re-tag or re-position artifacts — it
 identifies which ones now carry different weight, relevance, or meaning
 in light of the new recognition. Some artifacts are elevated (they were
@@ -1155,7 +1157,7 @@ understanding.
 Architecture, Shadow Casting
 
 **Definition:** A simulation command that generates shadow-orientation
-counterparts to creative-layer artifacts. Surfaces probable opposing
+counterparts to creative-layer artifacts (kernel: Signals). Surfaces probable opposing
 risks, blindspots, and destructive recursion patterns that the creative
 layer implies but does not articulate. Available in two depths: Singular
 (one shadow counterpart per artifact) and Scenario (multiple shadow
@@ -1178,7 +1180,7 @@ creative-layer work feels too "clean."
 vision imply but refuse to name?"
 
 -   Every output artifact carries dimension.shadow: true and is linked
-to its source via a shadow_symmetry bridge.
+to its source via a shadow_symmetry bridge (kernel: Link).
 
 -   Pairs well with Fire Test (stress → shadow depth) and Dimensional
 Audit (coverage → shadow presence check).
@@ -1216,7 +1218,7 @@ narratives, and simulation retrospectives.
 Electromagnetic Intelligence
 
 **Definition:** A simulation command that identifies, measures, and
-characterizes structural tension within a scope, surfacing artifact
+characterizes structural tension within a scope, surfacing artifact (kernel: Signal)
 pairs that assert incompatible claims at the same or adjacent
 dimensional positions. Produces a polarity map showing where the
 field's energy is concentrated in conflict versus alignment. Available
@@ -1256,6 +1258,8 @@ premature agreement.
 ### 10th Dimension (Meta-Framework Evolution)
 *Poetic Synonyms:* Strange Loop Transcendence, Framework Alchemy,
 Self-Transcending Intelligence, Recursive Horizon, System Genesis
+
+**Note:** The 10th Dimension is a corpus-layer concept. The DN Kernel caps at 9 dimensions; the 10th Dimension is not part of the kernel's dimensional architecture and is not tagged, transitioned, or computed. It is included here as a philosophical horizon relevant to the Recursion Clause (Kernel §9.3) and to practitioners exploring meta-framework evolution.
 
 **Definition:** The meta-dimensional space where a framework evolves its
 own structural foundations and axioms, transcending its original
@@ -1301,8 +1305,8 @@ itself to change how it structures meaning
 *Poetic Synonyms:* Stalled Becoming, The Spinning Wheel, Motion Without
 Movement, Metabolic Stagnation
 
-**Definition:** A Named Diagnostic Condition where a board shows
-sustained activity (artifacts produced, sessions conducted, simulations
+**Definition:** A Named Diagnostic Condition where a board (kernel: Field) shows
+sustained activity (artifacts (Signals) produced, sessions conducted, simulations
 run) without corresponding evolution. Dimensional positions are not
 changing, transitions are not completing, and the board's evolution
 phase has been dormant or stuck in perpetual expansion without
@@ -1334,9 +1338,9 @@ then tension blockage, then shadow avoidance.
 Timeline, What-If Path
 
 **Definition:** A parallel exploration space forked from a specific
-Snapshot, enabling investigation of alternative decision paths without
+Snapshot (kernel: Capture), enabling investigation of alternative decision paths without
 disturbing the originating timeline. Branches inherit the complete state
-of the Board at their fork point and accumulate independent changes from
+of the Board (kernel: Field) at their fork point and accumulate independent changes from
 that moment forward. They may be compared against each other or against
 the original timeline, and selectively merged when alternative paths
 produce valuable intelligence.
@@ -1367,7 +1371,7 @@ are archived preserve the record of paths explored.
 *Poetic Synonyms:* Hollow Connections, Fraying Links, The Thinning
 Thread, Structural Decay
 
-**Definition:** A Named Diagnostic Condition where Bridge density
+**Definition:** A Named Diagnostic Condition where Bridge (kernel: Link) density
 remains stable or increases but Comparison data reveals that bridge
 rationales are becoming thinner, contradictory, or semantically
 repetitive. The intelligence field is preserving the appearance of
@@ -1380,7 +1384,7 @@ conditions.
 **Heart:** The relationships are still there in name, but the meaning
 has drained out of them.
 **Truth:** Derivable from bridge density counts, rationale quality
-evaluation across Snapshots, and correlation with rising curvature or
+evaluation across Snapshots (kernel: Captures), and correlation with rising curvature or
 fatigue.
 **Nuance:** Simulations should evaluate whether bridged zones have
 diverged dimensionally (making original rationales obsolete) or whether
@@ -1874,7 +1878,7 @@ whether the field follows a recognizable developmental phase. Composed
 of three sub-metrics: evolution_velocity (rate of meaningful change per
 Session), evolution_breadth (dimensional spread of changes), and
 evolution_phase (heuristic classification as expansion, consolidation,
-breakthrough, maturation, or dormant).
+breakthrough, maturation, dormant, or decay).
 
 **Heart:** Every field has a natural rhythm of becoming. Honoring that
 rhythm is an act of care.
