@@ -2,7 +2,109 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v10.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v12.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.3 (February 2026)
+
+**Source:** Self-audit of DN Kernel v1.2 against Glossary and Changelog identified 17 findings across structural, inconsistency, and advisory severity tiers. Core architecture validated as sound — problems existed at layer boundaries, not in the architecture itself.
+
+**JSON schema key universalization:**
+
+- Universalized all JSON schema keys in Section 8 from pre-v1.0 implementation terms to kernel terms. The v1.2 vocabulary pass universalized prose and JSON value-level scope fields but explicitly protected JSON keys as "implementation-layer identifiers." The self-audit found that developers copy examples, not prose — divergent key naming between examples and prose descriptions would produce incompatible implementations. All §8.1–§8.15 schema examples now use kernel-term keys: board_id → field_id, artifact_id → signal_id, bridge_type → link_type, snapshot_ids → capture_ids, zone_id → region_id, exercise_id → process_id, workspace_id → container_id, sections → domains, zones → regions, exercises → processes, artifacts → signals. ID prefixes updated accordingly (art_ → sig_, board_ → field_, snap_ → cap_, ex_ → proc_, bridge_ → link_, ws_ → ctr_, sec_ → dom_, zone_ → reg_, dod_ → cc_). The §0.4 vocabulary mapping table continues to document the implementation aliases for application layers that use original product terminology.
+
+**FieldState stub completion:**
+
+- Added missing load-bearing metrics to the Field Export FieldState stub (Section 8.2): entropy (Axiom 9, triggers decay phase), dimensional_coherence (per-dimension coherence breakdown), field_resonance (harmonic integration strength), gravity_map, tension_map, and evolution_breadth. The v1.1 stub addition included coherence, drift, saturation, fatigue, and evolution metrics but omitted these five, all of which are defined in §6.1 and referenced by simulation contracts.
+
+**Axiom misattribution fix:**
+
+- Fixed Force Model Note (Section 0.3): Shadow was cited as Axiom 4 (Fire/Testing); corrected to Axiom 5 (Shadow/Orientation). Constitutional reference integrity restored.
+
+**Table 1 fix:**
+
+- Fixed Field required properties in Table 1: sections[] → domains[]. The v1.0 vocabulary pass renamed the prose description but missed the canonical required-properties list.
+
+**Transition model reconciliation:**
+
+- Reconciled three-tier transition model constraint (Section 5.3) to match Section 5 preamble. §5 preamble defined three tiers: 1D→3D (constructed), 4D→5D (hybrid), 6D→9D (recognized). §5.3 constraint contradicted with two tiers: 1D→4D (created), 5D→9D (recognized). §5.3 now matches the authoritative three-tier model, and the constraint text reflects the hybrid middle tier.
+
+**Completion criteria status enum placement:**
+
+- Added the seven-value completion_criteria status enum (met | partially_met | unmet | deferred | scope_changed | not_evaluated | open_exploration) to the Section 1.6 structural requirement where completion criteria are first defined. Previously the enum appeared only in Session schema prose (§8.10). The structural requirement now documents the enum at its definitional home.
+
+**Changelog translation note:**
+
+- Added vocabulary translation note after the v0.9 changelog entry mapping pre-v1.0 terms to current kernel terms for readers tracing architectural decisions through historical entries.
+
+**Glossary conformance (parenthetical clarification):**
+
+- Added parenthetical kernel-term clarifications to Glossary entries that use application-layer vocabulary, conforming Glossary definitions to kernel terminology without duplicating the kernel's term definitions. The Glossary intentionally does not re-list kernel terms as separate entries to avoid version drift between documents.
+
+**Structural impact:** All §8 JSON schema examples universalized (12 schemas, ~45 key replacements). 5 missing FieldState metrics added to Field Export stub. 1 axiom reference corrected. 1 Table 1 property corrected. 1 transition model constraint reconciled. 1 status enum relocated to definitional home. Glossary parenthetical conformance pass. No existing axioms, invariants, constraints, or behavioral rules modified. All changes are corrective and normalizing.
+
+---
+
+## v1.2 (February 2026)
+
+**Source:** External audit (Grok) of DN Kernel v1.1 identified structural gaps in serialization schema coverage, simulation output contract precision, and transition pathway typing. Prioritized by distinguishing genuine schema gaps from layer-confusion misreads (where the auditor expected the Kernel to perform implementation-layer enforcement).
+
+**Missing serialization schemas:**
+
+- Added Section 8.13 (Transition Schema). The minimum viable JSON representation of a DN Transition, including all fields from the Transition interface (Section 5.1): id, subject_id, from_dim, to_dim, mechanism, mechanism_type, story_thread_id, barrier, evidence, pillar_lead, timestamp, cost, cost_factors. Includes documentation of evidence calibration requirements across the three-tier model (constructed, hybrid, recognition). This was the highest-priority gap: Transitions are referenced by Evolution Tracking (Section 1.1.1), Comparisons (Section 8.9), and every simulation command, but had no export/import contract.
+- Added Section 8.14 (SimulationRun Schema). The minimum viable JSON representation of a DN SimulationRun, including: id, command, scope_ids[], input_state, output_state, pillar_balance, signals_produced[], transitions_produced[], session_id, timestamp. Establishes the provenance contract for all simulation-derived intelligence (source_type: simulation per Section 1.2). Mirrors the signal_lock_candidates[] distinction (see below) in output_state.
+- Added Section 8.15 (Environment Schema). The minimum viable JSON representation of a DN Environment — the outermost containment boundary. Includes: id, name, description, container_ids[], tenant_isolation, created_at, updated_at, metadata{}. Explicitly documents that Environment is an administrative boundary, not an intelligence field: it carries no FieldState, spatial_topology, or position. Cross-Environment interaction is not defined by this Kernel.
+
+**Signal Lock candidate distinction:**
+
+- Fixed Generate Resonance Result contract (Section 7.2) to output `signal_lock_candidates[]` rather than `signal_locks[]`. The original naming implied the simulation applied Signal Lock, violating the Signal Lock Invariant (Section 1.5) which requires human attestation. The fix enforces the epistemic distinction at the contract level: simulations identify candidates; humans attest locks. SimulationRun schema (Section 8.14) mirrors this naming in output_state.
+
+**Transition pathway typing:**
+
+- Added `mechanism_type` enum (sequential | skip | story_thread) and `story_thread_id` (nullable) to the Transition interface (Section 5.1) and Transition required properties in Table 1 (Core Objects). This enables typed classification of transition pathways: sequential for adjacent dimensions, skip for non-adjacent (flagged for review against dimensional_coherence), and story_thread for named narrative arcs. When mechanism_type is story_thread, story_thread_id identifies the specific arc. Templates may define domain-specific Story Thread ids beyond the seven archetypes documented in the corpus layer. Updated Transition Schema (Section 8.13) to include both fields.
+
+**Holding Zone explicit identification:**
+
+- Added `holding` boolean (default: false) to Region required properties in Table 1 (Core Objects). When true, the Region is a Holding Zone per Section 1.6: its signals are operationally excluded from active field operations and FieldState computation. Updated Section 1.6 (Holding Zone) to explicitly reference the `holding` flag as the structural marker for filtering, cross-referencing Table 1, FieldState (Section 6.1), Field Export (Section 8.2), and Capture (Section 8.8). DN-compliant systems MUST filter signals in Regions where `holding: true` from FieldState metric inputs. Implementation layers no longer need to rely on naming conventions.
+
+**Signal Lock candidate enforcement (additional):**
+
+- Fixed Create Storyfield command (Section 7.1) to output `signal_lock_candidate: boolean` rather than `signal_lock: boolean` in storyfield_trace[] entries. Updated constraint to clarify that simulation-identified candidates require human attestation per Section 1.5. All simulation output contracts now consistently use candidate terminology.
+
+**Vocabulary universalization completion:**
+
+- Completed the v1.0 vocabulary universalization pass. Swept all remaining implementation-specific terms from kernel prose: "artifact" → Signal, "bridge" → Link, "zone" → Region, "board" → Field, "exercise" → Process. 92 prose-level replacements across axioms (Section 0.3), signal sources (Section 1.2), provenance groups (Section 1.3), external simulation provenance (Section 1.4), Signal Lock (Section 1.5), facilitation contract (Section 1.6), dimensional constraints (Section 2.1), shadow engagement (Section 4.3), transition constraints (Section 5.3), field health metrics (Section 6), FieldState (Section 6.1), simulation contracts (Section 7.1, 7.2), serialization schemas (Section 8), and field-to-field dynamics (Section 10). JSON value-level scope fields updated from implementation terms ("intra-board", "cross-board") to kernel terms ("intra-field", "cross-field") in Comparison (Section 8.9) and Container (Section 8.12) schema examples. Renamed "TENSION BRIDGE TYPE" header to "TENSION LINK TYPE" (Section 1.1). All protected content unchanged: JSON schema keys (implementation-layer identifiers like "artifact_id", "bridge_type"), §0.4 vocabulary mapping table (implementation aliases by design), product names ("Blueprint Board"), proper names ("Love Bridge", "Anti-Bridge", "Mystery Bridge", "Holding Zone"), dimension names, simulation command names, and Story Thread names.
+
+**Structural impact:** 3 new serialization schemas (§8.13, §8.14, §8.15), 2 new Transition fields (mechanism_type, story_thread_id), 2 simulation contract fixes (signal_lock_candidates in §7.1 and §7.2), 1 new Region property (holding) wired to operational rules (§1.6), vocabulary universalization completion (92 prose-level replacements, 4 JSON value-level scope fixes). No existing axioms, invariants, constraints, or behavioral rules modified. All changes close gaps identified by external audit — no new architecture introduced. Additive, corrective, and normalizing.
+
+---
+
+## v1.1 (February 2026)
+
+**Source:** Late-night architectural recognition — the Kernel's objects carry dimensional coordinates (what kind of intelligence) but not spatial coordinates (where the intelligence sits within the bounded space of a Field). The 9×9×9 nested dimensional matrix is an 81-point map viewed from a 9-dimensional lens — but navigated through physical space. Every interface layer, from a flat whiteboard to a holographic volume, is a spatial topology within which the dimensional architecture renders. The piping was missing.
+
+**Spatial position architecture:**
+
+- Added Section 1.1.2 (Spatial Position) establishing that every object in the containment hierarchy — Signal, Process, Region, Domain, Link — carries a nullable `position` property representing the object's location within its host Field's spatial topology. Position is contextual, not intrinsic: it describes where an object sits within a specific Field's bounded space, not what the object is. The same Signal referenced via a cross-field Link occupies a position in its home Field's topology; it does not carry that position into the referencing Field. Added `position (nullable)` to required properties on Signal, Process, Region, Domain, and Link in Table 1 (Core Objects). The position property carries coordinates (a float array whose length matches the host Field's spatial_topology.dimensions), a placed_at timestamp, and a nullable placed_by participant identity.
+- Added `spatial_topology` as a required property on Field (Table 1), defining the coordinate system and dimensionality of the Field's spatial space. The Kernel does not prescribe the topology: a two-dimensional planar surface (whiteboard), a three-dimensional volume (holographic/AR), and higher-dimensional simulation spaces are all valid. The spatial_topology property carries dimensions (integer ≥ 2), coordinate_system (string), and optional bounds.
+- Established the Position Invariant: position is nullable and a system that does not render spatially operates with null positions across all objects and is fully spec-compliant. The Kernel does not require spatial rendering; it requires that the piping exists for any implementation that does.
+- Recognized positional proximity as an ambient signal (source_type: ambient, Tier 2 per Section 1.2). Objects placed near each other within a Field's spatial topology carry relational meaning — they are spatially associated even before a Link formalizes the connection. Updated Tier 2 ambient signal examples to include spatial proximity and spatial proximity computation.
+- Established that Captures include spatial position in signal_states[] when the host Field carries a spatial_topology, enabling Comparisons to detect spatial migration as a distinct event category from dimensional migration. Spatial migration without dimensional migration (an object that moved location but stayed at the same dimension) and dimensional migration without spatial migration (an object that changed dimension but stayed in place) are different diagnostic signals carrying different facilitation implications. Updated Capture schema description (Section 8.8) and Capture JSON example to include position in signal_states[] entries.
+- Established that Templates may define a default spatial_topology for Fields instantiated from them, overridable at Field instantiation. Regions within a Field inherit the Field's spatial_topology and do not define independent topologies.
+- Added spatial_topology to Field Export schema JSON example (Section 8.2) and position to Signal schema JSON example (Section 8.1).
+- Added position to all serialization schema JSON examples for objects that carry position: Signal (Section 8.1), Field Export nested Domain/Region/Process objects (Section 8.2), Process (Section 8.6), and Link (Section 8.7). Updated Capture signal_states JSON example (Section 8.8) to include position. Updated Process and Link schema descriptions to document the nullable position field.
+- Added spatial_migrations[] to the Comparison schema (Section 8.9) as a new tracked delta category parallel to dimension_migrations[]. Each spatial_migrations entry identifies the signal, its from_position and to_position coordinates, and a boolean dimensional_migration flag indicating whether the signal also changed dimension in the same window. Updated Comparison JSON example and required fields description. Updated Comparison required properties in Table 1 (Core Objects).
+- Added default_spatial_topology to the Template schema (Section 8.11) as a nullable property. When populated, it defines the default spatial topology for Fields instantiated from the Template, overridable at Field instantiation. Updated Template JSON example and required fields description.
+- Established dual temporality within the position property. Every positioned object carries two temporal coordinates: **placed_at** (wall-clock time — when the placement happened in external reality) and **field_context** (developmental time — where the placement happened in the Field's own evolutionary arc). field_context records the session_index, capture_index, resolution_index, evolution_phase, and coherence at the moment of placement. These coordinates are independent: wall-clock time advances continuously; developmental time advances only through resolution events. The rate at which field_context advances relative to placed_at is evolution_velocity, now grounded in per-object measurement.
+- Introduced **resolution_index** as a required property on Field and as a field within field_context on every positioned object. The resolution_index is the Field's cumulative count of discrete resolution events — every Signal placement, Transition completion, Signal Lock attestation, and Capture creation increments it by one. It is the Field's internal tick count: the number of times its state has discretely advanced. Two objects with the same resolution_index were placed during the same tick. Objects with distant resolution_indices were placed in different developmental moments regardless of wall-clock separation. This concept converges independently with the "Tick" primitive in the Worldlines Computational Framework (v7), validating the structural universality of discrete resolution as the fundamental temporal unit of any developing intelligence field.
+- Established the Dual Temporality Invariant: field_context is nullable (as part of the nullable position property). When present, it is immutable after placement — it records where the Field was when the object arrived, not where the Field is now. This immutability follows the same principle as Captures: once a developmental moment is recorded, it cannot be retroactively altered.
+- Updated all serialization schema JSON examples (§8.1, §8.2, §8.6, §8.7, §8.8) to include field_context within position. Added resolution_index to Field Export schema (§8.2).
+- Added Spatial Topology in Field Interaction note (Section 10.4) establishing that when Fields with spatial topologies interact, the spatial consequences are computable from the constituent Fields' topologies and object positions. The geometry of how two Fields' topologies meet determines which objects become proximate, displaced, or unaffected. Spatial position is preserved through interaction — an object's position within its home Field's topology is not destroyed by the interaction. This is the spatial expression of the Field Nesting autonomy invariant.
+
+**Architectural significance:** The spatial position and dual temporality architecture completes the coordinate system for DN objects. Every object now carries three positional coordinates: a dimensional coordinate (dimension { primary, shadow, nested }) describing *what kind* of intelligence it is, a spatial coordinate (position.coordinates[]) describing *where it sits* within its host Field's bounded space, and a developmental coordinate (position.field_context.resolution_index) describing *when in the Field's own evolution* it arrived. The dimensional coordinate is intrinsic to the object. The spatial and developmental coordinates are contextual to the Field. Together they enable the full navigable matrix: 9 dimensions × 9 nested vectors × n spatial dimensions × developmental time, where n is defined by the Field's spatial_topology and developmental time is measured in resolution events. This future-proofs the Kernel for multi-spatial interface layers — AR, holographic projection, immersive 3D environments — and for temporal analysis that distinguishes wall-clock aging from developmental progression, while requiring zero changes for implementations that operate in 2D, without spatial rendering, or without developmental time tracking.
+
+**Structural impact:** 1 new section (§1.1.2), 2 new Field properties (spatial_topology, resolution_index), position with field_context added to 5 Core Object schemas, 1 new Comparison delta category (spatial_migrations[]), 1 new Template property (default_spatial_topology), 2 new invariants (Position Invariant, Dual Temporality Invariant), 1 signal source expansion (Tier 2 spatial proximity), Capture schema expanded, 7 serialization schemas updated (§8.1, §8.2, §8.6, §8.7, §8.8, §8.9, §8.11), Field-to-Field Dynamics expanded. No existing axioms, invariants, constraints, or behavioral rules modified. Additive only.
 
 ---
 
@@ -43,60 +145,6 @@ All core object names throughout the Kernel document were replaced: Table 1 (Cor
 The structure of the containment hierarchy (unchanged). The number and role of core objects (unchanged). All nine axioms, all invariants, all constraints (unchanged in meaning). The dimensional architecture, pillar metric, shadow symmetry, transition model (unchanged). All FieldState metrics and computation logic (unchanged). All simulation contracts and routing (unchanged). All Field-to-Field Dynamics (unchanged). Simulation command names (Forge Love Bridge, Spark Fire Test, etc. — these are named commands, not structural object references). Dimension names (Love Bridge at 6D, Anti-Bridge at 6D̅ — these are dimension descriptions, not object references). Story Thread names (Mystery Bridge, Recognition Arc, etc.). The Holding Zone as a named structural pattern. Everything that was already universal stayed universal.
 
 **Structural impact:** 1 new section (§0.4), vocabulary transformation across all existing sections. No axioms, invariants, constraints, metrics, or behavioral rules added, removed, or modified. The universalization is a naming transformation, not a structural one. v0.9.3 completed the framework; v1.0 makes it transferable.
-
-**Vocabulary completion pass (v1.0 finalization):**
-
-The initial universalization converted section titles, prose descriptions, and object names but left JSON schema property names and values at their old implementation-layer vocabulary. The completion pass brought the entire document to full vocabulary consistency:
-
-- Universalized all JSON schema property names and values across §8.1–§8.12 (~35 instances): `exercise_id` → `process_id`, `zone_id` → `region_id`, `board_id` → `field_id`, `workspace_id` → `container_id`, `artifact_id` → `signal_id`, `artifact_states` → `signal_states`, `artifacts_produced` → `signals_produced`, `snapshot_id` → `capture_id`, `snapshot_ids` → `capture_ids`, `bridge_type` → `link_type`, `bridge_001` → `link_001`, `intra-board` → `intra-field`, `cross-board` → `cross-field`, `board_ids` → `field_ids`, `cross_board_bridges` → `cross_field_links`, `workspace_field_state` → `container_field_state`, `board_count` → `field_count`, `artifact_list` → `signal_list`, `artifact_count` → `signal_count`, `zones_affected` → `regions_affected`, `fork_snapshot_id` → `fork_capture_id`, `exercise_order` → `process_order`, `sections` → `domains`, `zones` → `regions`, `exercises` → `processes`, `artifacts` → `signals`.
-- Universalized ~90 prose instances across §0–§10: artifact → signal, bridge → link, board → field, zone → Region, section → Domain, exercise → Process, snapshot → Capture. Preserved general English "reference artifact" (§2.4), product proper names (Blueprint Board), simulation command names (Forge Love Bridge), and dimensional concept names (Anti-Bridge at 6D̅).
-- Renamed entropy sub-signals to universal vocabulary: `bridge_relevance_decay` → `link_relevance_decay`, `snapshot_delta_velocity` → `capture_delta_velocity`.
-- Updated `kernel_version` in §8.2 Field Export example from `"0.9"` to `"1.0"`.
-- Added `entropy` and `evolution_breadth` to §8.2 FieldState example (flagship v0.9.3 additions missing from example).
-- Fixed §1 Core Objects table: Domain properties `zones[]` → `regions[]`, Field properties `sections[]` → `domains[]`, Field description updated to universal terms, Link description updated to universal object names, Transition subject types updated to "Signal, Process, or Region", Region description updated to "within a Domain".
-- Resolved Annotation Layer / Holding Zone contradiction: §6 Annotation Layer listed "holding region contents awaiting integration" as not committed to Field Ledger, directly contradicting §1.6 Holding Zone definition which states Holding Zone signals ARE committed to the Field Ledger. Removed the contradictory reference from Annotation Layer; §1.6 Holding Zone definition governs.
-- Renamed §8.5 from "ImportBatch (Provenance Group) Schema" to "Provenance Group (ImportBatch) Schema" to match kernel-first naming convention used by all other §8 titles.
-- Renamed §1.1 heading "TENSION BRIDGE TYPE" → "TENSION LINK TYPE".
-- Fixed typos: "linkd regions" → "linked regions" (×2 in Link Erosion diagnostic), "Signals, signals, or patterns" → "Signals, structures, or patterns" (Constraint 4 duplicate word).
-
-**Audit-driven structural additions (v1.0 finalization):**
-
-Conducted a dual-response independent audit (Grok) of the completed v1.0 document using a structural review prompt targeting contradictions, vocabulary consistency, structural gaps, cross-reference integrity, and logical completeness. The audit identified critical schema coverage gaps and several medium-severity enforcement gaps. All findings were triaged and the following changes were implemented:
-
-**New serialization schemas:**
-
-- Added §8.13 Transition Schema — full JSON example with all 11 fields from §5.1 (id, subject_id, from_dim, to_dim, mechanism, barrier, evidence, pillar_lead, timestamp, cost, cost_factors). Completes serialization coverage for the Transition core object, enabling field export, Capture, and Comparison operations to serialize transitions alongside signals and links.
-- Added §8.14 SimulationRun Schema — full JSON example with all 7 fields from §1 table (id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp). Completes serialization coverage for the SimulationRun core object, enabling the §1.4 provenance invariant (simulation_run_id on Signals) to be structurally enforceable.
-- Added §8.15 Environment Schema — full JSON example with containment hierarchy documentation (id, name, container_ids[], created_at, updated_at). Formalizes the outermost boundary that was listed in §0.4 vocabulary mapping but had no object definition, invariants, or schema.
-
-**New core object — Environment:**
-
-- Added Environment to §1 Core Objects table as the outermost boundary in the containment hierarchy providing tenant-level isolation.
-- Updated §1.1 Object Relationships to begin with "Environments contain Containers."
-- Added Environment isolation invariant: every Container belongs to exactly one Environment; no object reference may cross Environment boundaries; Environments are the isolation boundary while Containers are the collaboration boundary.
-- Added `environment_id` to Container required properties (§1 table, §8.12 JSON example, §8.12 required fields description).
-
-**DimensionTag structural completion — horizon_flag:**
-
-- Added `horizon_flag` (boolean, default false) to the DimensionTag object structure. When true, `primary` MUST be null, implementing Constraint 4 (Open Horizon) which requires `dimension: null` for unclassifiable signals preserved for 8D recursion. Added formal DimensionTag structure documentation to §8.1 Signal Schema description defining the four-field contract: primary (integer 1–9 or null), shadow (boolean), nested (nullable integer), horizon_flag (boolean).
-- Propagated `horizon_flag` to all DimensionTag instances across schemas: §8.1 Signal, §8.7 Link, §8.8 Capture signal_states, §8.9 Comparison dimension_migrations, §8.12 Container cross_field_links, §8.13 Transition from_dim/to_dim.
-
-**§1 Core Objects table alignment:**
-
-- Updated Signal required properties to include source_type, simulation_run_id (nullable), import_batch_id (nullable), branch_id (nullable), and horizon_flag in DimensionTag — resolving the contradiction where §1 listed 7 properties but §1.2, §1.4, and §8.1 required additional fields.
-- Added `rationale_metadata (nullable)` to Link required properties and Link schema (§8.7). When link_type is "tension", rationale_metadata SHOULD contain polarity_score and pillar_divergence, providing the structured data home for tension_map computation (§6.1). Resolves the contradiction where §1.1 stated tension links "carry polarity_score in their rationale metadata" but §8.7 defined rationale as a plain string.
-- Added `zone_type (active | holding)` to Region required properties. Added to Holding Zone definition (§1.6), Field Export Region example (§8.2), and Template Schema Region example (§8.11). Resolves the gap where Holding Zone was fully defined in prose but had no structural marker in any schema.
-
-**Simulation contract corrections:**
-
-- Updated Generate Resonance Result (§7.1) output from `signal_locks[]` ("ideas that achieved Signal Lock") to `signal_lock_candidates[]` ("signals identified as meeting Signal Lock convergence criteria, pending human attestation per Section 1.5"). Updated constraint to explicitly reference the §1.5 invariant that only humans may attest Signal Lock. Resolves the contradiction where a simulation output claimed achievement that §1.5 prohibits simulations from applying.
-- Updated §5.1 Transition mechanism field to accommodate both the eight essential mechanisms (§5.2, adjacent transitions) and named Story Threads (§5.3, non-adjacent narrative arcs). Adjacent mechanisms are identified by structural description; Story Threads are identified by arc name. Resolves the gap where §5.3 introduced Story Threads as a recognized transition category but §5.1 mechanism field referenced only the eight adjacent mechanisms.
-
-**New Named Diagnostic Condition:**
-
-- Added Prompt Dimensionality Mismatch to §6.1 Named Diagnostic Conditions. Diagnosed when Process prompt_dimension values are systematically lower than dimension_affinity targets and produced signals consistently land at or below prompt_dimension across multiple Processes and Sessions. Derivable from Process prompt_dimension vs. dimension_affinity (§2.5) correlated with dim_distribution. Formalizes the diagnostic that §2.5 established but that no Named Diagnostic Condition consumed.
-
-**Structural impact of finalization pass:** 3 new schema sections (§8.13–§8.15), 1 new core object (Environment), 1 new Named Diagnostic Condition, DimensionTag horizon_flag propagated across all schemas, §1 Core Objects table brought into full alignment with §8 schemas and prose invariants. Vocabulary universalization completed to 100% coverage. No axioms, constraints, or behavioral rules modified.
 
 ---
 
@@ -197,6 +245,8 @@ Conducted a full audit of every section against the question: "does this describ
 - Added illustrative note to Board Export Schema (Section 8.2) clarifying that the Growth Blueprint example demonstrates the domain-universal schema.
 - Generalized Extraction Rule (Section 8.3) from "Template's narrative guide" to "Template's source documentation."
 - Separated structural contract from facilitation guidance in Field Merger (Section 10.2), labeling facilitation-specific requirements explicitly.
+
+**Vocabulary translation note:** This entry uses the pre-v1.0 vocabulary current at the time of writing. The v1.0 vocabulary universalization (see v1.0 entry below) renamed the following terms: Artifact → Signal, Bridge → Link, Board → Field, Zone → Region, Exercise → Process, Snapshot → Capture, Workspace → Container, Section → Domain. The §0.4 mapping table in the kernel document provides the complete translation.
 
 ---
 
