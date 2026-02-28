@@ -12,7 +12,7 @@ website: "https://dnframework.ai"
 
 # DN KERNEL
 
-**v1.2**
+**v1.3**
 
 *The Constitution Between Philosophy and Code*
 
@@ -108,9 +108,9 @@ The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-c
 
 ### 0.2 Versioning
 
-This is v1.2. The complete version history (v0.1 through v1.2) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
+This is v1.3. The complete version history (v0.1 through v1.3) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
 
-Changes in v1.2 (current): Added three missing serialization schemas: Transition (Section 8.13), SimulationRun (Section 8.14), and Environment (Section 8.15), closing the gap where load-bearing Core Objects lacked export/import contracts. Added mechanism_type enum (sequential | skip | story_thread) and story_thread_id (nullable) to the Transition interface (Section 5.1) and Table 1, enabling typed classification of transition pathways. Fixed Signal Lock candidate distinction across all simulation output contracts: Generate Resonance Result (Section 7.2) and Create Storyfield (Section 7.1) now output signal_lock_candidates[] / signal_lock_candidate flags rather than signal_locks[] / signal_lock, enforcing the Signal Lock Invariant (Section 1.5) that simulations identify candidates but cannot apply locks. SimulationRun schema (Section 8.14) mirrors this distinction. Added holding boolean (default: false) to Region required properties in Table 1 and wired to operational rules in Section 1.6, enabling explicit Holding Zone identification and FieldState filtering. Completed vocabulary universalization: swept all remaining implementation-specific terms (artifact, bridge, zone, board, exercise) from kernel prose, restoring compliance with the Vocabulary Mapping Invariant (Section 0.4). JSON schema value-level scope fields updated from implementation terms (intra-board, cross-board) to kernel terms (intra-field, cross-field). See CHANGELOG for detailed history.
+Changes in v1.3 (current): Self-audit of kernel v1.2 identified 17 findings across structural, inconsistency, and advisory severity tiers. Universalized all JSON schema keys in Section 8 from pre-v1.0 implementation terms to kernel terms (board_id → field_id, artifact_id → signal_id, bridge_type → link_type, snapshot_ids → capture_ids, zone_id → region_id, exercise_id → process_id, workspace_id → container_id, sections → domains, zones → regions, exercises → processes, artifacts → signals). Added missing FieldState metrics (entropy, dimensional_coherence, field_resonance, gravity_map, tension_map, evolution_breadth) to the Field Export example (Section 8.2). Fixed Axiom misattribution in Force Model Note (Section 0.3): Shadow corrected from Axiom 4 to Axiom 5. Fixed Table 1 Field required properties: sections[] → domains[]. Reconciled three-tier transition model (Section 5.3) to match Section 5 preamble: lower (1D→3D), middle (4D→5D), higher (6D→9D). Added completion_criteria status enum (met | partially_met | unmet | deferred | scope_changed | not_evaluated | open_exploration) to Section 1.6 structural requirement. See CHANGELOG for detailed history.
 
 ### 0.3 The DN Code — Foundational Principles
 
@@ -138,7 +138,7 @@ The DN Framework originates from a foundational document known as the DN Code, a
 
 - **Gravity** (Axiom 6) — the attractive force that gives fields structural weight and pulls related intelligence together.
 - **Entropy** (Axiom 9) — the degrading force that pulls fields apart over time without active energy input.
-- **Shadow** (Axiom 4, Section 4) — the orienting force that ensures every dimension has both creative and shadow expression.
+- **Shadow** (Axiom 5, Section 4) — the orienting force that ensures every dimension has both creative and shadow expression.
 
 Gravity and entropy are opposing temporal forces (construction vs. decay). Shadow is an orthogonal orienting force (creative vs. shadow within any dimension at any time). Together, these three forces describe the complete dynamics of intelligence field behavior. Field health requires managing all three: sufficient gravity to hold structure, managed entropy to prevent decay, and integrated shadow to maintain honest self-awareness.
 
@@ -177,7 +177,7 @@ These are the fundamental entities that exist in any DN-compliant system. Every 
 | **Process** | A structured activity within a Region that produces Signals through a defined methodology. Carries its own purpose, component parts, output format, and dimensional affinity. The unit of work within a Template's Region structure. | id, region_id, name, purpose, methodology, component_parts[], output_format, key_linkages[] (typed: dependency\|informs\|follows_up), order, prerequisites[], dimension_affinity, pillar_affinity, prompt_dimension (nullable), completion_criteria (nullable), position (nullable) |
 | **Region** | A bounded context within a section that constrains interpretation. Carries its own prompt instructions. | id, name, domain_id, prompt, allowed_dimensions[], dimension_rules{}, simulation_rules, holding (boolean, default: false), position (nullable) |
 | **Domain** | A major structural division of a field. Maps to a strategic domain. | id, name, field_id, regions[], purpose, order, position (nullable) |
-| **Field** | The complete intelligence field. A self-contained container holding all sections, regions, and signals. | id, name, template_id, container_id (nullable), spatial_topology, resolution_index, sections[], field_state, created_at, updated_at |
+| **Field** | The complete intelligence field. A self-contained container holding all sections, regions, and signals. | id, name, template_id, container_id (nullable), spatial_topology, resolution_index, domains[], field_state, created_at, updated_at |
 | **Link** | A connection between two signals, processes, regions, sections, or fields. Carries semantic meaning about why the connection exists. May span fields within a Container (cross-field link). | id, source_id, target_id, link_type, rationale, dimension { primary, shadow, nested }, scope (intra-field \| cross-field), position (nullable) |
 | **Transition** | A recorded dimensional shift of a signal, process or region. Captures what moved, from where, to where, and by what mechanism. | id, subject_id, from_dim, to_dim, mechanism, mechanism_type (sequential \| skip \| story_thread), story_thread_id (nullable), barrier, evidence, pillar_lead, timestamp, cost, cost_factors |
 | **SimulationRun** | A recorded execution of a simulation command against a scope of signals. | id, command, scope_ids[], input_state, output_state, pillar_balance, timestamp |
@@ -387,7 +387,7 @@ The following facilitation acts require human consciousness and MUST NOT be dele
 
 **COMPLETION CRITERIA (Definition of Done):** Session close is a commit gate (Section 6, Field Ledger Conservation Principle) where the field's current state becomes part of the irreversible record. Completion criteria formalize what must be true for that gate to fire.
 
-**Structural requirement:** A Session's completion_criteria[] is a set of pre-agreed, verifiable conditions established at session start that define what "done" means for this session's work. At the Process level, completion_criteria is a nullable property defining what "done" means for that unit of work. When present, completion criteria MUST be established before the session's work begins and MUST be evaluable at session close. Templates carry available completion criteria organized by dimensional focus; Sessions activate a subset. The specific checklist items within a completion criterion are domain-specific and belong to the Template and implementation layers.
+**Structural requirement:** A Session's completion_criteria[] is a set of pre-agreed, verifiable conditions established at session start that define what "done" means for this session's work. At the Process level, completion_criteria is a nullable property defining what "done" means for that unit of work. When present, completion criteria MUST be established before the session's work begins and MUST be evaluable at session close. Each criterion carries a status evaluated at session close: met | partially_met | unmet | deferred | scope_changed | not_evaluated | open_exploration. Templates carry available completion criteria organized by dimensional focus; Sessions activate a subset. The specific checklist items within a completion criterion are domain-specific and belong to the Template and implementation layers.
 
 **Facilitation guidance:** Prompts define what intelligence the field is trying to produce; completion criteria define how participants know they have produced it. Establishing one to three completion criteria at the start of each Session is recommended.
 
@@ -662,7 +662,7 @@ Transitions may be sequential (adjacent dimensions), or they may follow Story Th
 
 ### 5.3 Transition Constraints
 
-**CONSTRAINT:** Lower transitions (1D→4D) are primarily created through deliberate structuring. Higher transitions (5D→9D) are primarily recognized. The mechanism field must reflect this distinction.
+**CONSTRAINT:** Lower transitions (1D→3D) are primarily created through deliberate structuring. Middle transitions (4D→5D) are hybrid, requiring evidence of both deliberate effort and emergent recognition. Higher transitions (6D→9D) are primarily recognized. The mechanism field must reflect this distinction.
 
 **CONSTRAINT:** Transitions between creative and shadow orientations are valid. A 3D signal can transition to 3D̅ (shadow) if evidence supports the shift. Cross-orientation transitions require explicit documentation of what caused the inversion.
 
@@ -898,7 +898,7 @@ The minimum viable JSON representation of a DN signal:
 
 ```json
 {
-  "id": "art_001",
+  "id": "sig_001",
   "content": "Our customers fear irrelevance more than failure",
   "dimension": {
     "primary": 3,
@@ -919,7 +919,7 @@ The minimum viable JSON representation of a DN signal:
       "coherence": 0.42
     }
   },
-  "exercise_id": "ex_001",
+  "process_id": "proc_001",
   "source_type": "simulation",
   "simulation_run_id": null,
   "import_batch_id": "batch_001",
@@ -941,10 +941,10 @@ A field export includes the full hierarchy plus embedded semantic context. The f
 ```json
 {
   "field": {
-    "id": "board_001",
+    "id": "field_001",
     "name": "Acme Corp Growth Blueprint",
     "template_id": "tmpl_growth_blueprint",
-    "workspace_id": "ws_001",
+    "container_id": "ctr_001",
     "spatial_topology": {
       "dimensions": 2,
       "coordinate_system": "cartesian",
@@ -952,24 +952,30 @@ A field export includes the full hierarchy plus embedded semantic context. The f
     },
     "resolution_index": 247,
     "field_state": {
-      "scope_id": "board_001",
+      "scope_id": "field_001",
       "coherence": 0.0,
       "drift": 0.0,
       "saturation": 0.0,
       "fatigue": 0.0,
       "dim_distribution": {"1D": 0, "2D": 0, "3D": 0, "4D": 0, "5D": 0, "6D": 0, "7D": 0, "8D": 0, "9D": 0},
       "shadow_distribution": {"1D": 0, "2D": 0, "3D": 0, "4D": 0, "5D": 0, "6D": 0, "7D": 0, "8D": 0, "9D": 0},
+      "dimensional_coherence": {"1D": 1.0, "2D": 0.0, "3D": 0.0, "4D": 0.0, "5D": 0.0, "6D": 0.0, "7D": 0.0, "8D": 0.0, "9D": 0.0},
       "pillar_balance": {"heart": 0, "truth": 0, "nuance": 0},
       "curvature": {"heart": 0.0, "truth": 0.0, "nuance": 0.0, "composite": 0.0},
+      "field_resonance": 0.0,
+      "gravity_map": {},
+      "tension_map": [],
       "tension_density": 0.0,
       "evolution_velocity": 0.0,
+      "evolution_breadth": 0.0,
       "evolution_phase": "expansion",
+      "entropy": 0.0,
       "computed_at": "2026-02-16T00:00:00Z"
     },
     "created_at": "2026-01-15T00:00:00Z",
     "updated_at": "2026-02-16T00:00:00Z",
-    "sections": [{
-      "id": "sec_01",
+    "domains": [{
+      "id": "dom_01",
       "name": "Customer Profile",
       "purpose": "Map the customer's world",
       "order": 1,
@@ -985,8 +991,8 @@ A field export includes the full hierarchy plus embedded semantic context. The f
           "coherence": 0.0
         }
       },
-      "zones": [{
-        "id": "zone_goals_&_priorities",
+      "regions": [{
+        "id": "reg_goals_priorities",
         "name": "Company Goals",
         "prompt": "What do we want to achieve?",
         "allowed_dimensions": [2, 3],
@@ -995,6 +1001,7 @@ A field export includes the full hierarchy plus embedded semantic context. The f
           "3D": "Contextual patterns"
         },
         "simulation_rules": {},
+        "holding": false,
         "position": {
           "coordinates": [120.0, 80.0],
           "placed_at": "2026-01-15T00:00:00Z",
@@ -1007,13 +1014,13 @@ A field export includes the full hierarchy plus embedded semantic context. The f
             "coherence": 0.0
           }
         },
-        "exercises": [{
-          "id": "ex_001",
+        "processes": [{
+          "id": "proc_001",
           "name": "Goal Identification",
           "purpose": "Identify primary business objectives",
           "methodology": "Brainstorm and prioritize",
           "component_parts": [],
-          "output_format": "artifact_list",
+          "output_format": "signal_list",
           "key_linkages": [],
           "order": 1,
           "prerequisites": [],
@@ -1031,12 +1038,12 @@ A field export includes the full hierarchy plus embedded semantic context. The f
               "coherence": 0.0
             }
           },
-          "artifacts": [ /* Signal objects per 8.1 schema */ ]
+          "signals": [ /* Signal objects per 8.1 schema */ ]
         }]
       }]
     }]
   },
-  "kernel_version": "0.9",
+  "kernel_version": "1.2",
   "shadow_kernel": true,
   "pillar_metric": true,
   "color_system": {
@@ -1068,9 +1075,9 @@ The minimum viable JSON representation of a DN Branch:
 ```json
 {
   "id": "branch_001",
-  "board_id": "board_001",
+  "field_id": "field_001",
   "name": "What if we led with enterprise?",
-  "fork_snapshot_id": "snap_003",
+  "fork_capture_id": "cap_003",
   "parent_branch_id": null,
   "status": "active",
   "created_at": "2026-02-15T00:00:00Z",
@@ -1091,13 +1098,13 @@ The minimum viable JSON representation of a DN Provenance Group:
 {
   "id": "batch_001",
   "session_id": "session_007",
-  "source_description": "Claude conversation: client goal mapping",
-  "artifact_ids": ["art_041", "art_042", "art_043", "art_044"],
+  "source_description": "AI conversation: client goal mapping",
+  "signal_ids": ["sig_041", "sig_042", "sig_043", "sig_044"],
   "timestamp": "2026-02-15T14:30:00Z",
   "import_metadata": {
     "source_tool": "claude.ai",
-    "zones_affected": ["zone_goals_&_priorities", "zone_market_risks"],
-    "artifact_count": 4
+    "regions_affected": ["reg_goals_priorities", "reg_market_risks"],
+    "signal_count": 4
   }
 }
 ```
@@ -1108,8 +1115,8 @@ The minimum viable JSON representation of a DN Process:
 
 ```json
 {
-  "id": "ex_001",
-  "zone_id": "zone_goals_&_priorities",
+  "id": "proc_001",
+  "region_id": "reg_goals_priorities",
   "name": "Goal Identification",
   "purpose": "Identify and articulate primary business objectives",
   "methodology": "Guided brainstorm with prioritization ranking",
@@ -1118,10 +1125,10 @@ The minimum viable JSON representation of a DN Process:
     "Group synthesis",
     "Priority ranking"
   ],
-  "output_format": "artifact_list",
+  "output_format": "signal_list",
   "key_linkages": [
     {
-      "target_id": "ex_002",
+      "target_id": "proc_002",
       "type": "informs"
     }
   ],
@@ -1150,7 +1157,7 @@ The minimum viable JSON representation of a DN Process:
       "coherence": 0.42
     }
   },
-  "artifacts": [ /* Signal objects per 8.1 schema */ ]
+  "signals": [ /* Signal objects per 8.1 schema */ ]
 }
 ```
 
@@ -1162,10 +1169,10 @@ The minimum viable JSON representation of a DN Link:
 
 ```json
 {
-  "id": "bridge_001",
-  "source_id": "art_001",
-  "target_id": "art_027",
-  "bridge_type": "resonance",
+  "id": "link_001",
+  "source_id": "sig_001",
+  "target_id": "sig_027",
+  "link_type": "resonance",
   "rationale": "Customer fear of irrelevance directly feeds competitive positioning urgency",
   "dimension": {
     "primary": 6,
@@ -1196,14 +1203,14 @@ The minimum viable JSON representation of a DN Capture:
 
 ```json
 {
-  "id": "snap_003",
-  "board_id": "board_001",
+  "id": "cap_003",
+  "field_id": "field_001",
   "inflection_label": "Post-discovery session: customer fears validated",
   "timestamp": "2026-02-10T16:00:00Z",
   "field_state": { /* computed FieldState per Section 6.1 */ },
-  "artifact_states": [
+  "signal_states": [
     {
-      "artifact_id": "art_001",
+      "signal_id": "sig_001",
       "dimension": {
         "primary": 3,
         "shadow": false,
@@ -1237,7 +1244,7 @@ The minimum viable JSON representation of a DN Comparison:
 ```json
 {
   "id": "comp_001",
-  "snapshot_ids": ["snap_001", "snap_003"],
+  "capture_ids": ["cap_001", "cap_003"],
   "scope": "intra-field",
   "delta_field_state": {
     "coherence_delta": 0.15,
@@ -1247,7 +1254,7 @@ The minimum viable JSON representation of a DN Comparison:
   },
   "dimension_migrations": [
     {
-      "artifact_id": "art_001",
+      "signal_id": "sig_001",
       "from_dimension": {
         "primary": 2,
         "shadow": false
@@ -1260,23 +1267,23 @@ The minimum viable JSON representation of a DN Comparison:
   ],
   "resonant_transformations": [
     {
-      "artifact_id": "art_005",
+      "signal_id": "sig_005",
       "dimension": 2,
       "trigger_dimension": 5,
-      "trigger_artifact_id": "art_019",
+      "trigger_signal_id": "sig_019",
       "transformation_signal": "Market validation data recontextualized as identity-confirming evidence after strategic positioning lock"
     }
   ],
   "gravity_shifts": [
     {
-      "zone_id": "zone_goals_&_priorities",
+      "region_id": "reg_goals_priorities",
       "from_score": 0.6,
       "to_score": 0.85
     }
   ],
   "shadow_emergence": [
     {
-      "artifact_id": "art_012",
+      "signal_id": "sig_012",
       "dimension": 5,
       "signal": "Recognition oriented toward isolation rather than connection"
     }
@@ -1285,7 +1292,7 @@ The minimum viable JSON representation of a DN Comparison:
   "transition_stalls": ["trans_002"],
   "spatial_migrations": [
     {
-      "signal_id": "art_001",
+      "signal_id": "sig_001",
       "from_position": {
         "coordinates": [245.0, 380.0]
       },
@@ -1307,7 +1314,7 @@ The minimum viable JSON representation of a DN Session:
 ```json
 {
   "id": "session_007",
-  "board_id": "board_001",
+  "field_id": "field_001",
   "intent_class": "refinement",
   "timestamp_start": "2026-02-15T09:00:00Z",
   "timestamp_end": "2026-02-15T12:30:00Z",
@@ -1336,25 +1343,25 @@ The minimum viable JSON representation of a DN Session:
     "routing_mode": "standard",
     "shadow_depth": "enabled"
   },
-  "change_rationale": "Post-review session: participant feedback revealed a gap between contextual mapping and identity formation. Revisiting 4D exercises to ground the emerging 5D recognition.",
+  "change_rationale": "Post-review session: participant feedback revealed a gap between contextual mapping and identity formation. Revisiting 4D processes to ground the emerging 5D recognition.",
   "completion_criteria": [
     {
-      "id": "dod_001",
+      "id": "cc_001",
       "name": "Define & Coherence",
       "dimension_focus": 5,
       "checklist": [
         "Essence stated in one sentence",
         "Contradictions with other cores resolved",
         "Stakeholder recognition signals defined",
-        "Artifact representing identity created and linked",
+        "Signal representing identity created and linked",
         "Review trigger defined"
       ],
       "status": "met"
     }
   ],
-  "artifacts_produced": ["art_041", "art_042", "art_043", "art_044"],
+  "signals_produced": ["sig_041", "sig_042", "sig_043", "sig_044"],
   "transitions_recorded": ["trans_008", "trans_009"],
-  "snapshot_id": "snap_004"
+  "capture_id": "cap_004"
 }
 ```
 
@@ -1369,15 +1376,15 @@ The minimum viable JSON representation of a DN Template:
   "id": "tmpl_growth_blueprint",
   "name": "Growth Blueprint",
   "description": "A structured intelligence field for mapping organizational growth across all nine dimensions.",
-  "sections": [
+  "domains": [
     {
-      "id": "sec_01",
+      "id": "dom_01",
       "name": "Customer Profile",
       "purpose": "Map the customer's world",
       "order": 1,
-      "zones": [
+      "regions": [
         {
-          "id": "zone_goals_&_priorities",
+          "id": "reg_goals_priorities",
           "name": "Company Goals",
           "prompt": "What do we want to achieve?",
           "allowed_dimensions": [2, 3],
@@ -1386,9 +1393,9 @@ The minimum viable JSON representation of a DN Template:
             "3D": "Contextual patterns"
           },
           "simulation_rules": {},
-          "exercises": [
+          "processes": [
             {
-              "id": "ex_001",
+              "id": "proc_001",
               "name": "Goal Identification",
               "prompt": "Identify and articulate the primary objectives driving this initiative.",
               "dimension_affinity": 2,
@@ -1406,7 +1413,7 @@ The minimum viable JSON representation of a DN Template:
     "5D": "Requires evidence of 1D-4D traversal before Signal Lock candidacy"
   },
   "simulation_rules": "Standard routing per Section 7.3",
-  "exercise_order": "sequential_within_zone",
+  "process_order": "sequential_within_region",
   "prerequisites": [],
   "default_spatial_topology": {
     "dimensions": 2,
@@ -1416,7 +1423,7 @@ The minimum viable JSON representation of a DN Template:
 }
 ```
 
-**Required fields:** id, name, description, sections[] (each containing regions[], and each region containing processes[] with prompts, allowed_dimensions[], dimension_rules{}, and simulation_rules), allowed_dimensions[], dimension_rules{}, simulation_rules, process_order, prerequisites[]. sections[] defines the Template's structural hierarchy; regions within sections carry their own allowed_dimensions[] and dimension_rules{} that may narrow (but not broaden) the Template-level dimensional scope. processes[] within regions carry prompts, dimension_affinity, pillar_affinity, ordering, and prerequisites that define the unit of work. process_order governs how processes sequence within regions (e.g., sequential, parallel, facilitator-directed). prerequisites[] at the Template level define any preconditions for Template instantiation. default_spatial_topology is nullable; when populated, it defines the default spatial topology for Fields instantiated from this Template (Section 1.1.2). The default may be overridden at Field instantiation. A Field is created by instantiating a Template; the Template's structure becomes the Field's initial configuration.
+**Required fields:** id, name, description, domains[] (each containing regions[], and each region containing processes[] with prompts, allowed_dimensions[], dimension_rules{}, and simulation_rules), allowed_dimensions[], dimension_rules{}, simulation_rules, process_order, prerequisites[]. domains[] defines the Template's structural hierarchy; regions within domains carry their own allowed_dimensions[] and dimension_rules{} that may narrow (but not broaden) the Template-level dimensional scope. processes[] within regions carry prompts, dimension_affinity, pillar_affinity, ordering, and prerequisites that define the unit of work. process_order governs how processes sequence within regions (e.g., sequential, parallel, facilitator-directed). prerequisites[] at the Template level define any preconditions for Template instantiation. default_spatial_topology is nullable; when populated, it defines the default spatial topology for Fields instantiated from this Template (Section 1.1.2). The default may be overridden at Field instantiation. A Field is created by instantiating a Template; the Template's structure becomes the Field's initial configuration.
 
 ### 8.12 Container Schema
 
@@ -1424,39 +1431,39 @@ The minimum viable JSON representation of a DN Container:
 
 ```json
 {
-  "id": "ws_001",
+  "id": "ctr_001",
   "name": "Pet Food M&A Portfolio",
-  "description": "Assessment workspace for evaluating acquisition targets against strategic fit criteria.",
-  "board_ids": ["board_001", "board_002", "board_003"],
-  "cross_board_bridges": [
+  "description": "Assessment container for evaluating acquisition targets against strategic fit criteria.",
+  "field_ids": ["field_001", "field_002", "field_003"],
+  "cross_field_links": [
     {
-      "id": "bridge_xb_001",
-      "source_id": "art_board001_052",
-      "target_id": "art_board002_018",
-      "bridge_type": "resonance",
+      "id": "link_xf_001",
+      "source_id": "sig_field001_052",
+      "target_id": "sig_field002_018",
+      "link_type": "resonance",
       "rationale": "Both companies identify premium nutrition positioning as core 5D identity.",
       "dimension": { "primary": 5, "shadow": false, "nested": null },
       "scope": "cross-field"
     },
     {
-      "id": "bridge_xb_002",
-      "source_id": "art_board001_031",
-      "target_id": "art_board003_044",
-      "bridge_type": "tension",
+      "id": "link_xf_002",
+      "source_id": "sig_field001_031",
+      "target_id": "sig_field003_044",
+      "link_type": "tension",
       "rationale": "Competing distribution strategies: direct-to-consumer vs. retail-first.",
       "dimension": { "primary": 3, "shadow": false, "nested": null },
       "scope": "cross-field"
     }
   ],
-  "workspace_field_state": {
-    "board_count": 3,
-    "boundary_permeability": { "board_001-board_002": 0.72, "board_001-board_003": 0.31, "board_002-board_003": 0.45 },
+  "container_field_state": {
+    "field_count": 3,
+    "boundary_permeability": { "field_001-field_002": 0.72, "field_001-field_003": 0.31, "field_002-field_003": 0.45 },
     "dimensional_alignment": {
-      "board_001-board_002": { "1D": 0.8, "2D": 0.6, "3D": 0.4, "4D": 0.2, "5D": 0.9, "6D": 0.5, "7D": 0.3, "8D": 0.1, "9D": 0.0 },
-      "board_001-board_003": { "1D": 0.3, "2D": 0.7, "3D": -0.6, "4D": 0.4, "5D": -0.2, "6D": 0.1, "7D": 0.5, "8D": 0.0, "9D": 0.0 },
-      "board_002-board_003": { "1D": 0.5, "2D": 0.5, "3D": -0.3, "4D": 0.3, "5D": 0.1, "6D": 0.4, "7D": 0.2, "8D": 0.0, "9D": 0.0 }
+      "field_001-field_002": { "1D": 0.8, "2D": 0.6, "3D": 0.4, "4D": 0.2, "5D": 0.9, "6D": 0.5, "7D": 0.3, "8D": 0.1, "9D": 0.0 },
+      "field_001-field_003": { "1D": 0.3, "2D": 0.7, "3D": -0.6, "4D": 0.4, "5D": -0.2, "6D": 0.1, "7D": 0.5, "8D": 0.0, "9D": 0.0 },
+      "field_002-field_003": { "1D": 0.5, "2D": 0.5, "3D": -0.3, "4D": 0.3, "5D": 0.1, "6D": 0.4, "7D": 0.2, "8D": 0.0, "9D": 0.0 }
     },
-    "phase_compatibility": { "board_001-board_002": "compatible", "board_001-board_003": "divergent", "board_002-board_003": "neutral" },
+    "phase_compatibility": { "field_001-field_002": "compatible", "field_001-field_003": "divergent", "field_002-field_003": "neutral" },
     "cross_field_link_count": 2,
     "cross_field_tension_density": 0.5,
     "computed_at": "2026-02-22T10:00:00Z"
@@ -1475,7 +1482,7 @@ The minimum viable JSON representation of a DN Transition:
 ```json
 {
   "id": "trans_008",
-  "subject_id": "art_001",
+  "subject_id": "sig_001",
   "from_dim": {
     "primary": 3,
     "shadow": false
@@ -1510,7 +1517,7 @@ The minimum viable JSON representation of a DN SimulationRun:
 {
   "id": "sim_014",
   "command": "run_dimensional_audit",
-  "scope_ids": ["board_001"],
+  "scope_ids": ["field_001"],
   "input_state": {
     "field_state": { /* FieldState at time of invocation */ },
     "scope_description": "Full field audit post-Session 7"
@@ -1519,14 +1526,14 @@ The minimum viable JSON representation of a DN SimulationRun:
     "dim_distribution": {"1D": 8, "2D": 14, "3D": 11, "4D": 3, "5D": 6, "6D": 2, "7D": 1, "8D": 0, "9D": 0},
     "shadow_distribution": {"1D": 1, "2D": 0, "3D": 2, "4D": 0, "5D": 1, "6D": 0, "7D": 0, "8D": 0, "9D": 0},
     "gaps": ["4D underrepresented relative to 3D and 5D populations", "No 8D or 9D activity"],
-    "gravity_concentration": "sec_01",
-    "signal_lock_candidates": ["art_019", "art_033"]
+    "gravity_concentration": "dom_01",
+    "signal_lock_candidates": ["sig_019", "sig_033"]
   },
   "pillar_balance": {
     "lead": "truth",
     "stabilizers": ["nuance", "heart"]
   },
-  "signals_produced": ["art_045", "art_046"],
+  "signals_produced": ["sig_045", "sig_046"],
   "transitions_produced": [],
   "session_id": "session_007",
   "timestamp": "2026-02-15T10:45:00Z"
@@ -1544,7 +1551,7 @@ The minimum viable JSON representation of a DN Environment:
   "id": "env_001",
   "name": "Acme Corporation",
   "description": "Production environment for Acme Corp's DN-structured intelligence operations.",
-  "container_ids": ["ws_001", "ws_002"],
+  "container_ids": ["ctr_001", "ctr_002"],
   "tenant_isolation": true,
   "created_at": "2025-11-01T00:00:00Z",
   "updated_at": "2026-02-22T00:00:00Z",
@@ -1635,4 +1642,4 @@ When two fields interact, the interaction itself generates observable field heal
 
 ---
 
-*DN Kernel v1.2 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*DN Kernel v1.3 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
