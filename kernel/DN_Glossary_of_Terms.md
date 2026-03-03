@@ -2307,6 +2307,40 @@ for revised significance.
 data points (2D) or context maps (3D) mean something different
 than they did before?"
 
+### Resolution Debt Ratio
+*Poetic Synonyms:* Unfinished Paths, The Incomplete Record, Stalled
+Momentum
+
+**Definition:** The proportion of attempted transitions that remain
+incomplete or stalled relative to total transitions within a field's
+most recent evaluation window. A field that consistently begins
+transitions without completing them is accumulating resolution debt —
+metabolizing energy into movement without producing structural change.
+Measured as an entropy sub-signal in Kernel §6.1 (weight 0.15).
+
+**Heart:** You keep starting journeys without arriving. The paths
+multiply but none of them reach a destination. That pattern carries a
+felt weight — the exhaustion of motion without progress.
+**Truth:** Incomplete transitions are not neutral. They consume field
+energy without producing resolved states. The ratio of incomplete to
+complete transitions is a direct measurement of wasted structural work.
+**Nuance:** Resolution debt is not always pathological. A field in
+early expansion may intentionally open many transition paths to explore
+before committing. The signal becomes diagnostic when a field in
+consolidation or maturation shows rising debt — that indicates stalling,
+not exploration.
+
+**Application:**
+
+-   Monitor alongside evolution_phase: rising resolution_debt_ratio
+during consolidation is a stronger warning than during expansion.
+
+-   Examine stalled transitions for common barriers — shadow avoidance,
+missing links, insufficient gravity at the target dimension.
+
+-   Ask, "Are we starting more journeys than we're finishing, and is
+that intentional or a sign we're avoiding the hard landings?"
+
 ### Signal Lock
 *Poetic Synonyms:* Insight Beacon, Dimensional Anchor, Conviction
 Crystal, Irrefutable Core
@@ -2469,6 +2503,44 @@ significant cognitive or strategic work.
 
 -   Low-cost transitions indicate natural, well-supported progressions.
 Celebrate them, but don't mistake ease for depth.
+
+### Unresolved State Load
+*Poetic Synonyms:* Open Questions, The Weight of the Unfinished,
+Accumulated Silence
+
+**Definition:** The accumulation of open states within a field — states
+that have been surfaced or initiated but not resolved or engaged.
+Shadows that were named but never worked with, completion criteria that
+were deferred and never revisited, tensions that were detected but never
+visited in a session, links whose rationale references conditions that
+have materially changed. The count is normalized to total signal
+population. Measured as the primary entropy sub-signal in Kernel §6.1
+(weight 0.30), reflecting the principle that activity without resolution
+is a more actionable diagnostic signal than the passage of time alone.
+
+**Heart:** The field is carrying questions it hasn't answered, shadows
+it hasn't faced, tensions it hasn't visited. That weight accumulates
+whether or not the calendar moves — and the field feels it.
+**Truth:** A field can have active sessions and still show rising
+unresolved state load. Activity without resolution is not engagement; it
+is the appearance of health masking structural decay.
+**Nuance:** Not all unresolved states are pathological. A field in
+early expansion will naturally accumulate surfaced shadows and open
+tensions as it maps new territory. The signal becomes diagnostic when a
+mature field shows rising load — that indicates avoidance, not
+exploration.
+
+**Application:**
+
+-   Compare against evolution_phase: rising load during expansion is
+normal; rising load during consolidation or maturation is a warning.
+
+-   Examine the composition of the load: is it primarily shadow
+avoidance, resolution avoidance, or tension avoidance? Each points
+to a different facilitation intervention.
+
+-   Ask, "Are we carrying weight we haven't looked at, and is that
+weight growing?"
 
 ## Domain-Specific Adaptations (Applied Dimensional Intelligence)
 ### Change Management via Dimensional Gravity
