@@ -2,7 +2,38 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v12.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v14.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.4 (February 2026)
+
+**Source:** Worldlines Framework v7 convergence analysis identified that the v1.3 entropy sub-signal model conflated two independent diagnostic signals (time-without-activity and activity-without-resolution) and that bridge_relevance_decay was not structurally independent from the other sub-signals. Concurrent vocabulary sweep identified 16 surviving implementation-layer terms from the v1.2 universalization pass.
+
+**Entropy sub-signal rewrite (Section 6.1):**
+
+- Reweighted entropy sub-signals to elevate unresolved_state_load (new, weight 0.30) as the primary entropy driver — measuring the accumulation of open computational states within a field (surfaced-but-unengaged shadow signals + deferred completion criteria + unvisited tension scopes + links whose rationale references materially changed conditions). This sub-signal absorbs the v1.3 bridge_relevance_decay concept, now expressed as link relevance within the unresolved state count.
+- Demoted temporal_decay from primary (v1.3 weight 0.30) to second position (weight 0.25). Both sub-signals are essential; the ordering reflects that activity-without-resolution is a more actionable diagnostic signal than time-without-activity.
+- Restored environmental_drift (weight 0.20) as a standalone sub-signal, previously displaced by bridge_relevance_decay in v1.3.
+- Replaced snapshot_delta_velocity (v1.3, weight 0.15) with resolution_debt_ratio (weight 0.15) — the ratio of incomplete or stalled transitions to total transitions attempted within the field's most recent evaluation window. Measures an independent signal (the field's pattern of incomplete work) rather than a derivative of other sub-signals.
+- signal_lock_aging (weight 0.10) unchanged.
+- Updated evolution_phase decay detection thresholds to reference v1.4 sub-signals: at least one of unresolved_state_load > 0.4, environmental_drift > 0.4, resolution_debt_ratio > 0.3, signal_lock_aging > 0.3.
+
+**Vocabulary sweep (16 violations fixed):**
+
+- Completed post-v1.2 vocabulary sweep identifying 16 surviving implementation-layer terms that escaped the v1.2 universalization pass. All violations were in prose descriptions, not in the §0.4 mapping table, changelog, or passages explicitly discussing implementation-layer vocabulary. Fixes by term:
+  - **section → domain** (7 instances): Region definition in Table 1 ("within a section" → "within a domain"), Holding Zone Parking Lot reference, RIP Triad worked example (2 instances), Embodiment Signal Note, Dimensional Audit input scope, Map Tension Field input scope, Reveal Resonance Field input scope, Scale Invariant (Section 10.4).
+  - **snapshot → capture** (5 instances): Session definition in Table 1 ("if snapshot triggered" → "if capture triggered"), Comparison definition ("Snapshots may be drawn" → "Captures may be drawn"), evolution_velocity description, evolution_breadth description, Embodiment Signal Note.
+  - **board → field** (1 instance): Extraction Rule (Section 8.3) ("board-embedded context" → "field-embedded context").
+  - **bridged → linked** (2 instances): Shadow Engagement Progression Surfaced state and Engaged state (Section 4.3) — "bridged" used as a verb for the Link object action.
+  - **section_only → domain_only** (1 instance): Dimensional Audit audit_type enum value (Section 7.2).
+- Additionally fixed 2 typos in Link Erosion diagnostic condition (Section 6): "linkd" → "linked" (2 occurrences).
+
+**Version markers updated:**
+
+- Updated all version references from v1.3 to v1.4: YAML frontmatter, document heading, Field Export kernel_version JSON example (Section 8.2), and document footer.
+
+**Structural impact:** Entropy sub-signal model rewritten (5 sub-signals, 3 replaced or reweighted, 1 new, 1 unchanged). 16 vocabulary violations corrected. 2 typos fixed. 4 version markers updated. No axioms, invariants, constraints, or structural objects added, removed, or modified. The entropy rewrite changes sub-signal composition and weights; the composite entropy metric's role in FieldState and evolution_phase detection is unchanged. All vocabulary fixes are normalizing.
 
 ---
 
