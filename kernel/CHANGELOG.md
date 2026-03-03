@@ -19,21 +19,22 @@ This file contains the complete version history for the DN Kernel specification.
 - signal_lock_aging (weight 0.10) unchanged.
 - Updated evolution_phase decay detection thresholds to reference v1.4 sub-signals: at least one of unresolved_state_load > 0.4, environmental_drift > 0.4, resolution_debt_ratio > 0.3, signal_lock_aging > 0.3.
 
-**Vocabulary sweep (16 violations fixed):**
+**Vocabulary sweep (19 violations fixed):**
 
-- Completed post-v1.2 vocabulary sweep identifying 16 surviving implementation-layer terms that escaped the v1.2 universalization pass. All violations were in prose descriptions, not in the §0.4 mapping table, changelog, or passages explicitly discussing implementation-layer vocabulary. Fixes by term:
-  - **section → domain** (7 instances): Region definition in Table 1 ("within a section" → "within a domain"), Holding Zone Parking Lot reference, RIP Triad worked example (2 instances), Embodiment Signal Note, Dimensional Audit input scope, Map Tension Field input scope, Reveal Resonance Field input scope, Scale Invariant (Section 10.4).
+- Completed post-v1.2 vocabulary sweep identifying 19 surviving implementation-layer terms that escaped the v1.2 universalization pass. All violations were in prose descriptions, not in the §0.4 mapping table, changelog, or passages explicitly discussing implementation-layer vocabulary. Fixes by term:
+  - **section → domain** (10 instances): Region definition in Table 1 ("within a section" → "within a domain"), Field description in Table 1 ("holding all sections" → "holding all domains"), Link description in Table 1 ("regions, sections, or fields" → "regions, domains, or fields"), Holding Zone Parking Lot reference, RIP Triad worked example (2 instances), Embodiment Signal Note, Dimensional Audit input scope, Map Tension Field input scope, Reveal Resonance Field input scope, Scale Invariant (Section 10.4). Additionally, "cross-section" → "cross-domain" in Storyfield simulation command Purpose (Section 7.1), counted separately below.
   - **snapshot → capture** (5 instances): Session definition in Table 1 ("if snapshot triggered" → "if capture triggered"), Comparison definition ("Snapshots may be drawn" → "Captures may be drawn"), evolution_velocity description, evolution_breadth description, Embodiment Signal Note.
   - **board → field** (1 instance): Extraction Rule (Section 8.3) ("board-embedded context" → "field-embedded context").
   - **bridged → linked** (2 instances): Shadow Engagement Progression Surfaced state and Engaged state (Section 4.3) — "bridged" used as a verb for the Link object action.
   - **section_only → domain_only** (1 instance): Dimensional Audit audit_type enum value (Section 7.2).
+  - **cross-section → cross-domain** (1 instance): Storyfield simulation command Purpose (Section 7.1).
 - Additionally fixed 2 typos in Link Erosion diagnostic condition (Section 6): "linkd" → "linked" (2 occurrences).
 
 **Version markers updated:**
 
 - Updated all version references from v1.3 to v1.4: YAML frontmatter, document heading, Field Export kernel_version JSON example (Section 8.2), and document footer.
 
-**Structural impact:** Entropy sub-signal model rewritten (5 sub-signals, 3 replaced or reweighted, 1 new, 1 unchanged). 16 vocabulary violations corrected. 2 typos fixed. 4 version markers updated. No axioms, invariants, constraints, or structural objects added, removed, or modified. The entropy rewrite changes sub-signal composition and weights; the composite entropy metric's role in FieldState and evolution_phase detection is unchanged. All vocabulary fixes are normalizing.
+**Structural impact:** Entropy sub-signal model rewritten (5 sub-signals, 3 replaced or reweighted, 1 new, 1 unchanged). 19 vocabulary violations corrected. 2 typos fixed. 4 version markers updated. No axioms, invariants, constraints, or structural objects added, removed, or modified. The entropy rewrite changes sub-signal composition and weights; the composite entropy metric's role in FieldState and evolution_phase detection is unchanged. All vocabulary fixes are normalizing.
 
 ---
 
