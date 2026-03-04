@@ -8,7 +8,7 @@ This file contains the complete version history for the DN Kernel specification.
 
 ## v1.4 (February 2026)
 
-**Source:** Worldlines Framework v7 convergence analysis identified that the v1.3 entropy sub-signal model conflated two independent diagnostic signals (time-without-activity and activity-without-resolution) and that bridge_relevance_decay was not structurally independent from the other sub-signals. Concurrent vocabulary sweep identified 16 surviving implementation-layer terms from the v1.2 universalization pass.
+**Source:** Worldlines Framework v7 convergence analysis identified that the v1.3 entropy sub-signal model conflated two independent diagnostic signals (time-without-activity and activity-without-resolution) and that bridge_relevance_decay was not structurally independent from the other sub-signals. Concurrent vocabulary sweep identified 19 surviving implementation-layer terms from the v1.2 universalization pass. Structural review (dual-auditor: Claude Opus 4.6 and custom GPT trained on DN corpus) identified three clarification-level gaps in Signal Lock governance, Holding Zone activation detection, and dual temporality/evolution metric relationship.
 
 **Entropy sub-signal rewrite (Section 6.1):**
 
@@ -34,7 +34,13 @@ This file contains the complete version history for the DN Kernel specification.
 
 - Updated all version references from v1.3 to v1.4: YAML frontmatter, document heading, Field Export kernel_version JSON example (Section 8.2), and document footer.
 
-**Structural impact:** Entropy sub-signal model rewritten (5 sub-signals, 3 replaced or reweighted, 1 new, 1 unchanged). 19 vocabulary violations corrected. 2 typos fixed. 4 version markers updated. No axioms, invariants, constraints, or structural objects added, removed, or modified. The entropy rewrite changes sub-signal composition and weights; the composite entropy metric's role in FieldState and evolution_phase detection is unchanged. All vocabulary fixes are normalizing.
+**Audit-driven clarifications (3 findings):**
+
+- Added explicit human-presence requirement to Signal Lock Invariant (Section 1.5): Signal Lock attestation requires a human facilitator in the active session. Sessions operating under AI-only facilitation may identify signal_lock_candidates but cannot commit Signal Lock events to the Field Ledger. This makes explicit what was previously implied by the intersection of the Signal Lock Invariant, the AI Facilitator limitation, and the human-exclusive facilitation functions. No new invariant introduced; the existing invariant's operational consequence is now stated directly.
+- Added Resonant Activation detection clarification to Holding Zone dual-layer model (Section 1.6): Holding Zone signals do not influence active FieldState metrics but may be included in simulation scope and Comparison analysis, enabling Resonant Activation detection. Simulation commands that evaluate significance shifts (notably Reveal Resonance Field) may include holding regions in their scope; output must label held signals as resonant transformations, not dimensional migrations, and must not retroactively inject them into FieldState computation. This closes the measurement gap between operational exclusion and informational life without modifying the Holding Zone's FieldState exclusion rule.
+- Added dual temporality clarification to evolution_velocity definition (Section 6.1): evolution_velocity is computed from inter-Capture signal deltas, not from resolution_index arithmetic. resolution_index provides the developmental temporal coordinate; evolution metrics measure what changed between coordinates. Simulations that explain deltas should reference field_context (developmental time) as the primary frame and placed_at (wall-clock time) as secondary context. This prevents time-frame confusion in simulation outputs where developmental maturity and calendar age diverge.
+
+**Structural impact:** Entropy sub-signal model rewritten (5 sub-signals, 3 replaced or reweighted, 1 new, 1 unchanged). 19 vocabulary violations corrected. 2 typos fixed. 4 version markers updated. 3 clarifying additions (§1.5, §1.6, §6.1) closing spec-level ambiguities identified by structural review. No axioms, invariants, constraints, or structural objects added, removed, or modified. The entropy rewrite changes sub-signal composition and weights; the composite entropy metric's role in FieldState and evolution_phase detection is unchanged. All vocabulary fixes are normalizing. All clarifications make explicit what was previously implied by the intersection of existing rules.
 
 ---
 
