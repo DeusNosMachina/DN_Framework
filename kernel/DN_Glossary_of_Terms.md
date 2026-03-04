@@ -1,4 +1,6 @@
 # Dimensional Glossary for the DN Framework & Growth Blueprint
+*v1.5 · March 2026*
+
 This glossary is designed for Facilitators, AI model trainers, and
 strategic practitioners using the DN Framework. Use it to align language
 across documents, enable simulation consistency, and deepen dimensional
@@ -794,6 +796,15 @@ them, it is a verifiable, participant-co-authored standard. Recommend
 establishing one to three cards at the start of a session to serve as a
 compass.
 
+**Implementation-layer synonym:** In the Blueprint Board product
+specification, the Definition of Done is implemented as **completion
+criteria** — a JSONB structure on Sessions carrying name,
+dimension_focus, checklist items, and a 7-status enum (`met |
+partially_met | unmet | deferred | scope_changed | not_evaluated |
+open_exploration`). The structural concept is identical:
+dimensionally-scoped checklists that define what completion means for a
+given session's work.
+
 **Heart:** Prevents the quiet erosion of quality that occurs when
 "done" is assumed rather than defined, honoring the team's commitment
 to finishing what they start with integrity.
@@ -1005,6 +1016,48 @@ dimensions.
 
 -   Used for prioritization, capacity planning, and realignment.
 
+### Holding Zone / "Parking Lot"
+*Poetic Synonyms:* Strategic Waiting Room, Wisdom Shelf, Idea Sanctuary,
+The Deferred Field, Parking Lot
+
+**Definition:** A designated scope within a Board (kernel: Field), formalized as a
+Region with `holding: true`, where artifacts (kernel: Signals) are committed
+to the Field Ledger but held outside active field operations. Held
+artifacts are not bridged (linked), transitioned, or dimensionally migrated; they
+are preserved without structural integration. The Holding Zone is not a
+discard pile; it is a temporal holding pattern where ideas are
+documented but not yet connected. Held artifacts remain subject to
+Resonant Activation: as the active board evolves, the potential
+significance of held artifacts shifts without anyone touching them. An
+artifact held during early 2D validation may acquire entirely
+different weight after a 5D identity recognition, not because the
+artifact changed but because the field's perception of it did. The
+Holding Zone is part of the Field Ledger and subject to its conservation
+principle; held artifacts are never lost, only deferred. The Growth
+Blueprint template historically named this pattern "Parking Lot."
+Cross-document standardization now uses "Holding Zone" as the canonical
+term.
+
+**Heart:** Honors ideas that are important but not yet ready, without
+abandoning them.
+**Truth:** Preserves artifacts in the ledger with full provenance,
+preventing loss while maintaining focused forward movement.
+**Nuance:** Recognizes that timing is a strategic variable, and that an
+idea's relationship to the field changes as the field evolves, even
+when the idea itself remains untouched.
+
+**Application:**
+
+-   Use during fast-moving sessions to prevent derailment without
+discarding signal.
+
+-   Ask, "Is this a now-thing or a next-thing? And when we revisit it,
+what might the field's evolution have done to its significance?"
+
+-   Revisit during recursion cycles, retrospectives, or when dimensional
+gaps appear. Held artifacts are often the first place to look
+when a blindspot surfaces.
+
 ### Love Bridge / "Forge Love Bridge"
 *Poetic Synonyms:* Heart-to-Heart Channel, Resonance Layer
 
@@ -1029,45 +1082,6 @@ alignment?"
 
 -   Vital for partner alignment, user empathy, and cross-functional
 facilitation.
-
-### Parking Lot
-*Poetic Synonyms:* Strategic Waiting Room, Wisdom Shelf, Idea Sanctuary,
-The Deferred Field
-
-**Definition:** A designated scope within a Board (kernel: Field), formalized as a
-Region with `holding: true`, where artifacts (kernel: Signals) are committed
-to the Field Ledger but held outside active field operations. Parked
-artifacts are not bridged (linked), transitioned, or dimensionally migrated; they
-are preserved without structural integration. The Parking Lot is not a
-discard pile; it is a temporal holding pattern where ideas are
-documented but not yet connected. Parked artifacts remain subject to
-Resonant Activation: as the active board evolves, the potential
-significance of parked artifacts shifts without anyone touching them. An
-artifact parked during early 2D validation may acquire entirely
-different weight after a 5D identity recognition, not because the
-artifact changed but because the field's perception of it did. The
-Parking Lot is part of the Field Ledger and subject to its conservation
-principle; parked artifacts are never lost, only deferred.
-
-**Heart:** Honors ideas that are important but not yet ready, without
-abandoning them.
-**Truth:** Preserves artifacts in the ledger with full provenance,
-preventing loss while maintaining focused forward movement.
-**Nuance:** Recognizes that timing is a strategic variable, and that an
-idea's relationship to the field changes as the field evolves, even
-when the idea itself remains untouched.
-
-**Application:**
-
--   Use during fast-moving sessions to prevent derailment without
-discarding signal.
-
--   Ask, "Is this a now-thing or a next-thing? And when we revisit it,
-what might the field's evolution have done to its significance?"
-
--   Revisit during recursion cycles, retrospectives, or when dimensional
-gaps appear. Parked artifacts are often the first place to look
-when a blindspot surfaces.
 
 ### Reality Rift / "Ignite Reality Rift"
 *Poetic Synonyms:* Window into the Possible, Strategic Forecast Flame
@@ -1301,6 +1315,45 @@ reshaping the frameworks used to understand them
 -   Navigating "strange loops" where intelligence looks back upon
 itself to change how it structures meaning
 
+### Annotation Layer
+*Poetic Synonyms:* Peripheral Intelligence, The Margin Notes, Living
+Commentary, Field Context Layer
+
+**Definition:** One of the three application layers in the Blueprint
+Board architecture, sitting between the Field Ledger (Layer 1, conserved
+structural intelligence) and the Computation Cache (Layer 3, derived
+metrics). The Annotation Layer contains peripheral intelligence that
+contextualizes the field's structural elements without being part of the
+structural record itself: facilitator notes, visual markers, canvas
+position metadata, participant comments, highlight/pin states, color
+overrides, Action Item metadata, and other contextual information.
+Annotation Layer entries may be promoted to Artifacts (Signals) or
+Bridges (Links) through explicit facilitator action, at which point they
+enter the Field Ledger.
+
+**Heart:** Not all intelligence is structural. Some is contextual,
+provisional, or personal. The Annotation Layer honors intelligence that
+matters without forcing it into the formal ledger before it is ready.
+**Truth:** Provides a typed, queryable, persistent store for
+non-structural metadata. Every entry carries provenance (who, when, in
+what Session context).
+**Nuance:** The boundary between Annotation Layer and Field Ledger is
+the boundary between "things we're noting" and "things we're committing
+to." Promotion from annotation to artifact is a facilitation decision
+that converts peripheral intelligence into conserved intelligence.
+
+**Application:**
+
+-   Use for all intelligence that contextualizes without structurally
+participating: margin notes, visual callouts, temporary groupings,
+provisional labels.
+
+-   Ask, "Is this observation ready to be committed to the field's
+permanent record, or is it still peripheral context?"
+
+-   Holding Zone metadata, Action Item provenance, and canvas position
+data all live in the Annotation Layer.
+
 ### Arrested Development
 *Poetic Synonyms:* Stalled Becoming, The Spinning Wheel, Motion Without
 Movement, Metabolic Stagnation
@@ -1332,6 +1385,42 @@ structural change.
 
 -   Investigation sequence: check prompt dimensionality mismatch first,
 then tension blockage, then shadow avoidance.
+
+### Basin Depth
+*Poetic Synonyms:* Gravitational Well Depth, Inertia Measure, The
+Anchor's Weight, Escape Resistance
+
+**Definition:** A sub-metric within the gravity map measuring how deeply
+intelligence is concentrated within a scope (Zone/Region). Basin depth
+is computed from a five-factor formula: signal density, Bridge density,
+Signal Lock presence, temporal persistence, and dimensional
+concentration. Deep basins represent strong gravitational attractors that
+resist departure — Transitions originating from deep basins encounter
+additional inertia (source_basin_depth contributes to the Transition
+Cost four-factor model). Basin depth is visually rendered as branch
+thickness in the nonagonal Sacred Timeline view.
+
+**Heart:** Deep basins are not problems to solve — they are evidence of
+where the field's energy has naturally concentrated. Respecting that
+concentration is an act of care for the field's organic development.
+**Truth:** Provides a quantifiable, five-factor measure of gravitational
+concentration that feeds directly into Transition Cost computation.
+**Nuance:** Deep basins at lower dimensions (1D–3D) may indicate
+healthy foundational work. Deep basins at higher dimensions (7D–9D) may
+indicate premature crystallization. The diagnostic meaning of basin
+depth depends on the dimension and the Board's evolution phase.
+
+**Application:**
+
+-   Use to diagnose why Transitions from specific zones feel difficult:
+the zone may be a deep basin creating departure inertia.
+
+-   Ask, "Is this basin deep because the work here is genuinely rich, or
+because we're stuck?"
+
+-   Basin depth feeds into Transition Cost. A high-cost Transition
+originating from a deep basin is working against gravitational
+inertia.
 
 ### Branch
 *Poetic Synonyms:* Parallel Reality, Decision Fork, Alternative
@@ -1488,6 +1577,45 @@ comes from chaos.
 -   Essential for moonshot thinking, crisis resets, and future-back
 simulations.
 
+### Charter
+*Poetic Synonyms:* Mission Brief, Bounded Contract, The Agent's Compass,
+Exploration Mandate
+
+**Definition:** A structured goal/constraint/criteria document governing
+a Work Branch's autonomous agent execution. The Charter defines what the
+agent is authorized to explore (goals), what it must not violate
+(constraints), how success is measured (criteria), and what specific
+actions are requested (directives). The Charter is the dimensional
+scoping instrument for Work Branches: it constrains the agent's
+operating range, allowed simulation commands, and completion thresholds.
+A Work Branch without a Charter is structurally invalid — the Charter is
+the contract that makes autonomous exploration accountable.
+
+**Heart:** Trust requires boundaries. The Charter is the facilitator's
+way of saying "I trust you to explore within these walls" — and the
+walls make the trust meaningful.
+**Truth:** Produces a JSONB structure with typed fields: goals (text[]),
+constraints (text[]), success criteria (text[]), and directives
+(Directive objects with scope, command, and priority).
+**Nuance:** The quality of a Charter determines the quality of Work
+Branch output. Vague goals produce vague exploration.
+Over-constrained boundaries produce narrow output. The facilitator's
+skill in writing Charters is a 3D (context) competency: understanding
+what the agent needs to know to explore effectively.
+
+**Application:**
+
+-   Write Charters with the same care you would write a brief for a
+trusted colleague: clear enough to act on, open enough to discover
+unexpected value.
+
+-   Ask, "If I handed this Charter to someone who knows the framework
+but not this Board's history, could they do useful work?"
+
+-   Review Charter success criteria before reviewing Work Branch output.
+If the output doesn't meet the criteria, the first diagnostic
+question is whether the criteria were well-specified.
+
 ### Co-Creation Frame
 *Poetic Synonyms:* Unity Canvas, Shared Spark Space
 
@@ -1541,6 +1669,43 @@ the AI can't compute?"
 -   Structure sessions so that AI field readings are available to the
 human facilitator as input, not as directives.
 
+### Commit Gate
+*Poetic Synonyms:* Ledger Moment, Conservation Event, The Irreversible
+Step, Memory Threshold
+
+**Definition:** A structural event at which the Board's (Field's)
+current state becomes part of the irreversible Field Ledger record.
+Commit gates are the conservation mechanism of the DN system: between
+gates, the field is mutable; at each gate, the current state is appended
+to the conserved record. The Kernel defines seven canonical commit gates:
+Session close, Capture creation, SimulationRun completion, Field Export,
+Branch fork, Provenance Group import, and Signal Lock attestation.
+Implementation layers add secondary commit events (Artifact creation,
+Bridge formation, Transition recording, Annotation promotion, Action
+Item commit) that produce ledger entries within the context of canonical
+gates.
+
+**Heart:** Every commit gate is a moment of commitment — the field
+declares "this is real now" and accepts that it cannot be un-known.
+**Truth:** Provides a formally defined, enumerable set of events that
+produce append-only ledger entries. The commit gate list is the complete
+specification of when and how the Field Ledger grows.
+**Nuance:** The distinction between canonical gates (Kernel-defined) and
+implementation-level events (spec-defined) reflects the layer
+architecture. Canonical gates are structural invariants; implementation
+events are the specific actions that satisfy them.
+
+**Application:**
+
+-   Use when designing any new feature that produces field state changes:
+ask "Which commit gate does this change flow through?"
+
+-   Every commit gate produces a potential Capture opportunity. Not all
+gates require Captures, but all Captures require gates.
+
+-   The Field Ledger's depth (number of commit gate events) is itself a
+measure of the field's developmental richness.
+
 ### Context Weaving
 *Poetic Synonyms:* Narrative Tapestry, Systemic Lacing
 
@@ -1558,6 +1723,40 @@ realities align.
 
 -   Especially powerful after running parallel simulations or
 stakeholder engagements.
+
+### Council Execution Mode
+*Poetic Synonyms:* Multi-Mind Consensus, The Deliberation, Parallel
+Intelligence, Model Parliament
+
+**Definition:** A simulation execution axis in which a simulation
+command is independently executed by multiple AI models, producing
+separate outputs that are then synthesized by a designated chairman
+model. Council mode provides structural diversity of perspective by
+leveraging different models' cognitive characteristics, with anonymized
+presentation to reduce model-identity bias. The alternative is Solo
+mode, where a single model executes the command.
+
+**Heart:** Honors the principle that no single intelligence — human or
+artificial — holds a monopoly on insight. Multiple perspectives produce
+richer intelligence than any single perspective, however capable.
+**Truth:** Produces per-model rankings, chairman synthesis, and
+comparative analysis. The structural output is richer than solo execution
+at the cost of higher computational investment.
+**Nuance:** Council mode is most valuable when the simulation involves
+judgment, interpretation, or creative generation. For deterministic
+computations (FieldState metrics, transition cost), solo mode is
+sufficient and more efficient.
+
+**Application:**
+
+-   Use for high-stakes simulations where perspective diversity matters:
+Shadow Symmetry analysis, Fire Tests, Tension Field mapping.
+
+-   Ask, "Would this simulation benefit from multiple independent
+perspectives, or is one sufficient?"
+
+-   The chairman model synthesizes but does not override. Individual
+model outputs are preserved for facilitator review.
 
 ### Curvature
 *Poetic Synonyms:* Resistance Landscape, Pillar Terrain, Movement
@@ -1720,6 +1919,18 @@ structural gap to address.
 
 -   Pairs naturally with Dimensional Audit for targeted diagnosis.
 
+**Implementation note:** In the Blueprint Board implementation,
+field-level `coherence` is computed as a composite three-factor metric:
+`dimensional_consistency` (0.40 weight) — the dimensional-stack
+integrity described in this definition; `pillar_alignment` (0.35
+weight) — agreement between Artifact pillar leads and the pillar
+distribution expected for their dimensional positions; and
+`shadow_integration` (0.25 weight) — the degree to which
+shadow-oriented Artifacts are linked to and engaged with creative-layer
+Artifacts. This definition covers the first factor; the implementation
+composite ensures that coherence reflects not just dimensional support
+but also pillar health and shadow engagement.
+
 ### Dimensional Collapse
 *Poetic Synonyms:* Gravity Well Trap, Echo Chamber, Recursive Loop
 
@@ -1866,6 +2077,41 @@ growth.
 
 -   Ask, "What dimension are we over-indexing? What's underdeveloped?"
 
+### Entropy Valve
+*Poetic Synonyms:* Controlled Chaos Gate, The Pressure Release,
+Stagnation Countermeasure, Living Ventilation
+
+**Definition:** The cross-cutting mechanism connecting three field
+maintenance systems: the Chaos Slider (controlled randomization of
+simulation prompts), the Reaffirmation Cadence (periodic re-engagement
+triggered by rising entropy), and the Holding Zone re-evaluation
+(surfacing held Artifacts whose latent affinity has shifted). The
+Entropy Valve governs how much controlled disruption is injected into a
+field as a countermeasure to stagnation. When evolution_phase is
+'dormant', simulation routing may suggest elevated chaos levels — the
+valve opens wider. When the field is in active 'expansion', the valve
+narrows to avoid disrupting creative momentum.
+
+**Heart:** Fields need both stability and disruption. The Entropy Valve
+is the caring hand that knows when to comfort and when to provoke.
+**Truth:** Links three independently specified mechanisms into a
+coherent entropy management system with measurable inputs (entropy
+sub-signals) and configurable outputs (chaos level, reaffirmation
+intensity, holding zone resurfacing frequency).
+**Nuance:** The valve is a facilitation concept, not a single algorithm.
+Human facilitators adjust the valve by choosing chaos slider levels,
+reaffirmation presets, and holding zone review frequency. The system
+recommends; the facilitator decides.
+
+**Application:**
+
+-   Monitor entropy sub-signals to understand what kind of stagnation
+the field is experiencing before adjusting the valve.
+
+-   Ask, "Does this field need fresh disruption (chaos slider),
+re-engagement with existing material (reaffirmation), or
+reconnection with deferred ideas (holding zone review)?"
+
 ### Evolution Rhythm
 *Poetic Synonyms:* Developmental Pulse, Growth Cadence, The Board's
 Heartbeat, Structural Tempo
@@ -1934,6 +2180,41 @@ or a co-facilitation pair.
 
 -   Every Session must have at least one participant fulfilling the
 facilitation contract. Zero facilitators is a spec violation.
+
+### Field Export
+*Poetic Synonyms:* Portable Intelligence, The Traveler's Pack,
+Serialized Wisdom, Living Archive
+
+**Definition:** The serialized, portable representation of a Board's
+(Field's) complete intelligence: structure, Artifacts, Bridges,
+Transitions, FieldState, Branches, Snapshots, and metadata. Field Export
+is a Kernel-defined commit gate event (Kernel §8.2) that produces a
+self-contained JSON document carrying a `kernel_version` tag, enabling
+any DN-compliant system to consume and reconstruct the field. Field
+Export is the mechanism through which intelligence becomes portable
+across platforms, storage layers, and time.
+
+**Heart:** Intelligence should not be imprisoned in any single system.
+Field Export ensures that the work a field produces — every insight,
+every connection, every transformation — belongs to the field's
+stewards, not to the platform.
+**Truth:** Produces a formally specified JSON structure containing every
+structural element defined in the Kernel's serialization schemas (Kernel
+§8.1–§8.15). Carries version metadata enabling forward and backward
+compatibility.
+**Nuance:** Export scope may be full (complete field) or scoped
+(specific Branches, time ranges, or dimensional subsets). The choice of
+scope is itself a strategic decision about what intelligence is
+portable.
+
+**Application:**
+
+-   Use for data portability, archival, cross-platform migration, and
+integration with external systems (Git repositories, shared drives,
+cloud storage).
+
+-   Every Field Export is a commit gate event that enters the Field
+Ledger: the act of exporting is itself a conserved transformation.
 
 ### Field Tension
 *Poetic Synonyms:* Idea Electromagnetism, Charged Polarity, Valence
@@ -2226,6 +2507,44 @@ is it?"
 
 -   Prompt Singularities often catalyze Singularity Points in strategy.
 
+### Reaffirmation Cadence
+*Poetic Synonyms:* Entropy Counter-pulse, Living Maintenance, Field
+Tending, The Gardener's Return
+
+**Definition:** A periodic mechanism that converts rising entropy into
+facilitated re-engagement by surfacing field elements requiring human
+attention. When a Board's entropy exceeds configurable thresholds, the
+Reaffirmation Cadence triggers structured prompts for facilitators to
+re-evaluate aged Bridges (Links), dormant Signal Locks, held Artifacts
+(Signals), and environmental drift. The cadence operates as an Entropy
+Valve: controlled injection of re-engagement energy into fields that
+would otherwise decay passively under Axiom 9. Three preset intensities
+exist (gentle, standard, intensive), each calibrated to the Board's
+evolution phase and entropy composition.
+
+**Heart:** Entropy is not negligence — it is the natural cost of time.
+Reaffirmation honors the field by returning attention to what time has
+quietly changed.
+**Truth:** Produces specific, actionable prompts tied to entropy
+sub-signals. Each reaffirmation event is a commit gate opportunity that
+reduces measured entropy.
+**Nuance:** The appropriate cadence intensity depends on the Board's
+evolution phase. A field in active expansion needs less reaffirmation
+than a mature field in maintenance. Forcing intensive reaffirmation on
+an expanding field disrupts creative momentum.
+
+**Application:**
+
+-   Monitor entropy composition to understand which sub-signals are
+driving the cadence trigger.
+
+-   Ask, "Is this reaffirmation surfacing things that still matter, or
+are we tending a garden we've outgrown?"
+
+-   Pairs naturally with Holding Zone re-evaluation: the cadence
+surfaces held Artifacts that have gained latent affinity with the
+active field.
+
 ### Recursion Loop
 *Poetic Synonyms:* Insight Spiral, Learning Circuit, Iterative Echo,
 Self-Refining Pattern
@@ -2275,38 +2594,6 @@ dimensional clarity.
 -   Especially valuable in 5D-8D recursion or blueprint polishing
 cycles.
 
-### Resonant Activation
-*Poetic Synonyms:* Downward Illumination, Recognition Echo, Meaning
-Cascade, Retroactive Depth
-
-**Definition:** The principle that higher-dimensional recognition
-transforms the operational meaning of lower-dimensional artifacts. When
-intelligence at 5D or above is recognized within a scope, existing
-1D--4D artifacts don't merely support the higher dimension...their
-meaning, function, and relational significance may be retroactively
-transformed by it. A piece of market data (2D) that existed as simple
-validation becomes, after a 5D identity recognition, a foundational
-pillar of strategic identity. The artifact hasn't moved dimensions. Its
-significance within the field has changed.
-
-**Heart:** Honors the experience of looking back at earlier work and
-realizing it meant more than you knew at the time.
-**Truth:** Establishes a trackable, structural event, resonant
-transformation, distinct from dimensional migration, captured in
-Comparison schemas.
-**Nuance:** Recognizes that intelligence fields are not ladders but
-resonant systems, where movement at any level affects all other levels.
-
-**Application:**
-
--   Watch for resonant activation after any 5D+ recognition event:
-earlier artifacts may need re-evaluation not for re-tagging but
-for revised significance.
-
--   Ask, "Now that we've defined who we are (5D), which of our earlier
-data points (2D) or context maps (3D) mean something different
-than they did before?"
-
 ### Resolution Debt Ratio
 *Poetic Synonyms:* Unfinished Paths, The Incomplete Record, Stalled
 Momentum
@@ -2340,6 +2627,137 @@ missing links, insufficient gravity at the target dimension.
 
 -   Ask, "Are we starting more journeys than we're finishing, and is
 that intentional or a sign we're avoiding the hard landings?"
+
+### Resonant Activation
+*Poetic Synonyms:* Downward Illumination, Recognition Echo, Meaning
+Cascade, Retroactive Depth
+
+**Definition:** The principle that higher-dimensional recognition
+transforms the operational meaning of lower-dimensional artifacts. When
+intelligence at 5D or above is recognized within a scope, existing
+1D--4D artifacts don't merely support the higher dimension...their
+meaning, function, and relational significance may be retroactively
+transformed by it. A piece of market data (2D) that existed as simple
+validation becomes, after a 5D identity recognition, a foundational
+pillar of strategic identity. The artifact hasn't moved dimensions. Its
+significance within the field has changed.
+
+**Heart:** Honors the experience of looking back at earlier work and
+realizing it meant more than you knew at the time.
+**Truth:** Establishes a trackable, structural event, resonant
+transformation, distinct from dimensional migration, captured in
+Comparison schemas.
+**Nuance:** Recognizes that intelligence fields are not ladders but
+resonant systems, where movement at any level affects all other levels.
+
+**Application:**
+
+-   Watch for resonant activation after any 5D+ recognition event:
+earlier artifacts may need re-evaluation not for re-tagging but
+for revised significance.
+
+-   Ask, "Now that we've defined who we are (5D), which of our earlier
+data points (2D) or context maps (3D) mean something different
+than they did before?"
+
+### Shadow Branch
+*Poetic Synonyms:* Mirror Path, Darkness Fork, The Uncomfortable Road,
+Shadow Exploration Space
+
+**Definition:** A Branch (parallel exploration track) intentionally
+created to explore the shadow orientation of a specific dimension or the
+Board's overall shadow landscape. Shadow Branches are the Branch-level
+expression of the Shadow Engagement Progression (Kernel §4.3). Where
+individual Artifacts progress through latent → surfaced → engaged,
+Shadow Branches provide a dedicated space for the surfacing phase at
+scale — exploring what an entire dimension's shadow contains before
+selectively integrating engaged shadows back to the trunk.
+
+**Heart:** Provides a safe, bounded container for exploring what the
+field is afraid to face, without contaminating the creative workspace
+until the field is ready.
+**Truth:** Creates structurally tagged Branches (shadow: true) with
+their own FieldState, enabling shadow-specific diagnostics without
+distorting the trunk's FieldState computation.
+**Nuance:** The decision to merge shadow insights back to the trunk is a
+facilitation judgment, not an automatic process. Some shadow explorations
+produce intelligence that transforms the trunk; others serve their
+purpose by being witnessed and then archived.
+
+**Application:**
+
+-   Create when Shadow Symmetry analysis reveals significant unexplored
+shadow territory at a specific dimension.
+
+-   Ask, "What is this dimension's shadow trying to tell us, and do we
+need a dedicated space to listen?"
+
+-   Merge selectively. A Shadow Branch that remains unmerged is not a
+failure — it is evidence of shadow engagement without premature
+integration.
+
+### Shadow Hierarchy
+*Poetic Synonyms:* Shadow Engagement Spectrum, The Four Shadow States,
+Dark Awareness Progression
+
+**Definition:** The four-stage diagnostic progression describing a
+field's relationship with its shadow intelligence, from complete
+unawareness to overwhelming presence. Each stage carries distinct
+facilitation implications:
+
+-   **Shadow Blindness:** Zero or near-zero shadow-tagged Artifacts
+across the field. The field cannot see its own shadow. Facilitation
+intervention: activate shadow awareness through Explore Shadow
+Symmetry or Dimensional Audit with explicit shadow focus.
+
+-   **Shadow Suppression:** Shadows have been surfaced (shadow-tagged
+Artifacts exist) but show zero engagement — no links formed, no
+transitions recorded, no integration attempted. The field sees its
+shadow but refuses to work with it. Facilitation intervention:
+bridging exercises between creative and shadow Artifacts; direct
+Shadow Confrontation per the Facilitation Contract.
+
+-   **Shadow Avoidance:** A broader condition where shadow engagement
+remains superficial despite repeated surfacing. Distinguished from
+Suppression by degree: Avoidance may include token engagement
+without genuine integration. Facilitation intervention: examine
+what specific shadows are being avoided and why; often tied to
+pillar misalignment at the avoided dimension.
+
+-   **Shadow Flooding:** Shadow signals surfaced in volume exceeding the
+field's capacity to engage them, producing overwhelm rather than
+integration. Diagnosed when shadow_distribution grows rapidly
+without corresponding link formation between shadow and creative
+signals. Facilitation intervention: slow surfacing, prioritize
+engagement of existing shadows, and use the Holding Zone to defer
+excess shadow material for future engagement.
+
+**Heart:** The field's relationship with its shadow is a measure of its
+courage. Each stage is a step in the journey from denial to
+integration — and no stage is shameful.
+**Truth:** All four states are derivable from FieldState metrics:
+shadow_distribution, link density between shadow and creative Artifacts,
+shadow engagement state counts, and the ratio of surfaced to engaged
+shadows across Sessions.
+**Nuance:** The hierarchy is not strictly linear. A field may oscillate
+between states as different dimensions' shadows are surfaced. A field
+may be at Shadow Blindness on one dimension while experiencing Shadow
+Flooding on another. The diagnostic applies per-dimension as well as
+field-wide.
+
+**Application:**
+
+-   Diagnose the field's shadow state before choosing shadow-engagement
+interventions. The same intervention (Explore Shadow Symmetry) is
+appropriate for Blindness but counterproductive for Flooding.
+
+-   Ask, "Where are we on the shadow hierarchy, and is that position
+appropriate for our evolution phase?"
+
+-   Early-stage Boards may legitimately be at Shadow Blindness — the
+creative foundation needs building before shadow work begins. The
+hierarchy becomes diagnostic when shadow absence persists despite
+developmental readiness.
 
 ### Signal Lock
 *Poetic Synonyms:* Insight Beacon, Dimensional Anchor, Conviction
@@ -2446,6 +2864,46 @@ load-bearing for this field?"
 -   May be created by facilitation (conscious signal), simulation
 analysis (Map Tension Field output), or import.
 
+### Transition Cost
+*Poetic Synonyms:* Movement Price, Crossing Weight, Shift Resistance,
+Bridge Toll
+
+**Definition:** The computed resistance for a specific dimensional
+transition, derived from four factors: curvature (pillar-balance
+resistance at the target), dimensional coherence (structural
+support at the target dimension), distance (number of dimensions
+traversed), and basin depth (gravitational inertia at the source scope
+resisting departure). Cost transforms the Transition Model from a
+record-keeping system into a navigation instrument — a system can
+estimate, before attempting a transition, how much energy it will
+require. Formalized as a four-factor model in Kernel v1.5.
+
+**Heart:** Acknowledges that growth has real costs (emotional,
+relational, structural) and that naming those costs honors the
+difficulty of genuine transformation.
+**Truth:** Provides a quantifiable, computed measure that makes
+transition difficulty predictable rather than mysterious.
+**Nuance:** Distinguishes between transitions that are hard because the
+field resists (high curvature), because the target is unsupported (low
+coherence), because the leap is wide (high distance), or because the
+source is gravitationally entrenched (high basin depth)...four
+different problems requiring four different interventions.
+
+**Application:**
+
+-   Use to diagnose *why* a transition is stalling, not just *that* it
+is stalling.
+
+-   Ask, "Is this transition expensive because we lack the right
+pillar, because the destination dimension is hollow, or because
+we're trying to skip too far?"
+
+-   A completed high-cost transition is not a failure but evidence of
+significant cognitive or strategic work.
+
+-   Low-cost transitions indicate natural, well-supported progressions.
+Celebrate them, but don't mistake ease for depth.
+
 ### Trinitized Prompting
 
 *Poetic Synonyms:* Heart-Truth-Nuance Invocation, Whole-System Prompting
@@ -2467,42 +2925,36 @@ dimensional alignment.
 -   Trinitized prompts are ideal for guiding 5D Singularity events or
 major reframes.
 
-### Transition Cost
-*Poetic Synonyms:* Movement Price, Crossing Weight, Shift Resistance,
-Bridge Toll
+### Trunk
+*Poetic Synonyms:* Main Timeline, The Living Record, Primary Path, Root
+Branch
 
-**Definition:** The computed resistance for a specific dimensional
-transition, derived from three factors: curvature (pillar-balance
-resistance at source and target), dimensional coherence (structural
-support at the target dimension), and distance (number of dimensions
-traversed). Cost transforms the Transition Model from a record-keeping
-system into a navigation instrument — a system can estimate, before
-attempting a transition, how much energy it will require.
+**Definition:** The implicit main timeline of a Board (Field), from
+which all Branches fork and to which merged Branch intelligence returns.
+The trunk is not a stored object — it is the default scope when no
+Branch is specified. All Artifacts, Bridges, Transitions, and Sessions
+that are not scoped to a named Branch exist on the trunk. The trunk
+represents the Board's canonical intelligence history: the path of
+committed decisions, recognized identities, and resolved tensions.
 
-**Heart:** Acknowledges that growth has real costs (emotional,
-relational, structural) and that naming those costs honors the
-difficulty of genuine transformation.
-**Truth:** Provides a quantifiable, computed measure that makes
-transition difficulty predictable rather than mysterious.
-**Nuance:** Distinguishes between transitions that are hard because the
-field resists (high curvature), because the target is unsupported (low
-coherence), or because the leap is wide (high distance)\...three
-different problems requiring three different interventions.
+**Heart:** The trunk is the Board's story as it actually unfolded — not
+every possibility explored, but the path chosen and committed to.
+**Truth:** Structurally, the trunk is the complement of all Branches:
+everything not on a Branch is on the trunk. It carries the Board's
+primary Field Ledger and its canonical FieldState.
+**Nuance:** Trunk warnings alert facilitators when proposed Branch
+merges would alter Signal-Locked Artifacts or high-gravity zones on the
+trunk. The trunk's stability is a resource — protecting it from casual
+disruption is a facilitation responsibility.
 
 **Application:**
 
--   Use to diagnose *why* a transition is stalling, not just *that* it
-is stalling.
+-   When Branching, ask: "What does the trunk look like without this
+exploration?" The answer reveals what the Board's committed
+intelligence contains.
 
--   Ask, "Is this transition expensive because we lack the right
-pillar, because the destination dimension is hollow, or because
-we're trying to skip too far?"
-
--   A completed high-cost transition is not a failure but evidence of
-significant cognitive or strategic work.
-
--   Low-cost transitions indicate natural, well-supported progressions.
-Celebrate them, but don't mistake ease for depth.
+-   Merge to trunk selectively. Not all Branch insights belong on the
+main timeline.
 
 ### Unresolved State Load
 *Poetic Synonyms:* Open Questions, The Weight of the Unfinished,
@@ -2541,6 +2993,41 @@ to a different facilitation intervention.
 
 -   Ask, "Are we carrying weight we haven't looked at, and is that
 weight growing?"
+
+### Work Branch
+*Poetic Synonyms:* Agent Path, Autonomous Exploration, Delegated
+Journey, The Assigned Road
+
+**Definition:** A Branch with autonomous agent execution capability,
+governed by a Charter that defines goals, constraints, success criteria,
+and directives. Work Branches enable sustained, goal-oriented
+exploration by AI agents within bounded parameters, producing
+intelligence that is reviewed and selectively merged by human
+facilitators. Each Work Branch operates under the Facilitation Contract
+with the human facilitator maintaining override authority.
+
+**Heart:** Extends the co-facilitation partnership by trusting the AI to
+explore within agreed boundaries, while preserving human stewardship
+over what enters the trunk.
+**Truth:** Produces measurable deliverables against Charter-defined
+success criteria. Merge analyses provide structured evaluation of the
+Branch's output.
+**Nuance:** The Charter is the dimensional scoping instrument. A
+well-written Charter constrains the agent's dimensional range, allowed
+simulation commands, and completion criteria. A vague Charter produces
+vague output.
+
+**Application:**
+
+-   Use for sustained exploration tasks that benefit from AI persistence:
+competitive analysis, pattern detection across large signal
+populations, shadow landscape mapping.
+
+-   Ask, "Can I define clear enough boundaries that I'd trust an agent
+to explore within them?"
+
+-   Review merge analyses before accepting any Work Branch output into
+the trunk.
 
 ## Domain-Specific Adaptations (Applied Dimensional Intelligence)
 ### Change Management via Dimensional Gravity
