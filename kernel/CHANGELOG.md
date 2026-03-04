@@ -2,7 +2,27 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v14.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v15.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.5 (March 2026)
+
+**Source:** Terminology audit of Blueprint Board v2 Product Specification against DN Glossary v14 identified two substantive collisions between Kernel terminology and Glossary definitions.
+
+**Metric rename — `saturation` → `dimensional_density` (K1):**
+
+- Renamed the FieldState metric `saturation` to `dimensional_density` across all Kernel references: Section 1.6 (Holding Zone invariant metric list), Section 6 (Field Health Metrics table), Section 6.1 (FieldState Interface table, FieldState Interpretation Note, Dimensional Collapse diagnostic), Section 8.2 (Field Export JSON example), and Section 8.9 (Comparison Schema JSON example — `saturation_delta` → `dimensional_density_delta`). The Glossary defines "Signal Saturation" as a qualitative facilitation condition (insight overload, confusion, paralysis). The Kernel defined `saturation` as a quantitative density metric (Float 0–1, signal count relative to capacity). These are structurally different concepts sharing a name. The rename eliminates the collision while more precisely describing what the metric measures. Disambiguating note added to the §6 table row and §6.1 interface entry referencing the qualitative Glossary term.
+
+**Transition Cost model extension — 3-factor → 4-factor (K2):**
+
+- Extended the Transition Cost model from three factors to four by adding `basin_depth` — gravitational inertia at the source scope resisting departure. Updated Section 5 preamble (three factors → four factors with basin depth described), Section 5.1 Transition Interface `cost` field (added factor 4: basin depth at source scope derived from gravity_map), Section 5.1 `cost_factors` field (added `basin_depth_component: float` to the object structure and diagnostic question set), and Section 8.13 Transition Schema JSON example (redistributed component values to sum to existing `cost` value of 0.42: curvature 0.15, coherence 0.12, distance 0.10, basin_depth 0.05). The fourth factor was derived from the Worldlines Framework v7 convergence analysis (same source that drove the v1.4 entropy reweighting). Basin depth is already computable from existing FieldState metrics (gravity_map) and captures a real phenomenon: deep gravitational wells resist departure. The extension formalizes as an explicit cost component what was previously implicit in the architecture.
+
+**Version markers updated:**
+
+- Updated all version references from v1.4 to v1.5: YAML frontmatter, document heading, §0.2 version statement and changelog, Field Export `kernel_version` JSON example (Section 8.2), and document footer.
+
+**Structural impact:** 1 metric renamed across 7 locations (§1.6, §6, §6.1 ×3, §8.2, §8.9). 1 cost factor added across 4 locations (§5 preamble, §5.1 ×2, §8.13). 6 version markers updated. No axioms, invariants, constraints, or structural objects added, removed, or modified. The metric rename is terminological — the computation is unchanged. The cost factor addition extends an existing model — all prior three-factor cost computations remain valid sub-components of the four-factor model. Both changes are normalizing and additive.
 
 ---
 
