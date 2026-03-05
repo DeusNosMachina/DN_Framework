@@ -2,7 +2,61 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v15.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v16.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.6 (March 2026)
+
+**Source:** Structural analysis of the Force Model identified that the three-force model (gravity, entropy, shadow) distributed two fundamental force dynamics across multiple constructs without naming them: the lateral binding and alignment force between peer intelligence (captured implicitly in Links, field_resonance, tension_map, and Resonant Activation) and the transformative force enabling genuine dimensional state change (captured implicitly in the Transition Model's mechanisms and evidence requirements). Concurrent review of Section 7 simulation contracts against the 5D Prompt Singularity Facilitation Guide (v19) identified two structural gaps: (1) no simulation contract accepted pillar_focus or rip_aspect as typed inputs despite Section 3.3 establishing that facilitators specify which RIP aspect to prioritize when executing simulations, and (2) seven baseline simulation rules governing all commands were formalized in the facilitation guide but absent from the Kernel.
+
+**Force Model extension — 3-force → 5-force (K1):**
+
+- Added Axiom 10 (Resonance): the binding and alignment force between peer intelligences. Resonance operates laterally between elements at the same structural scale, producing both attraction (between compatible signals) and repulsion (between incompatible signals). Grounds the existing field_resonance metric, tension_map polarity dynamics, and Link structural load-bearing in a named force. Includes structural analog to electromagnetism.
+- Added Axiom 11 (Transmutation): the force that enables genuine dimensional state change. Transmutation is the enabling condition without which transitions would be positional re-labeling rather than authentic state change. Grounds the Transition Model's eight essential mechanisms and three-tier evidence calibration in a named force. Includes structural analog to the weak nuclear force.
+- Expanded Force Model Note (Section 0.3) from three forces to five, with updated force descriptions and field health summary.
+- Added transmutation grounding paragraph to Transition Model preamble (Section 5) establishing that transmutation is not a mechanism alongside the eight essential mechanisms but the force that makes all eight operative.
+- Added physics-analog parenthetical to Signal Lock Structural Role (Section 1.5) linking Signal Lock's close-range binding behavior to the strong nuclear force.
+- Updated Field Tension description (Section 6) to reference the resonance force (Axiom 10), replacing the previous electromagnetic analogy with a structural grounding in the named force.
+
+**FieldState metrics — 2 new metrics (K2):**
+
+- Added `resonance_binding` (Float 0–1) to FieldState Interface (Section 6.1): structural binding strength between peer signals, measuring how strongly signals are held in coherent relationship through intrinsic compatibility. Computed from Link rationale density, reciprocal link ratio, and link_type distribution. Distinguished from field_resonance (macro emergent property vs. structural pairwise property). Feeds into Link Erosion detection.
+- Added `transmutation_potential` (Float 0–1) to FieldState Interface (Section 6.1): readiness of a scope for genuine dimensional state change. Computed from pillar convergence, shadow integration, evidence density, and boundary readiness (inverse basin_depth). Feeds into Arrested Development detection.
+- Added Resonance Binding and Transmutation Potential rows to Field Health Metrics table (Section 6) with healthy/unhealthy signal descriptions.
+
+**Simulation contract structural gap closure (K3):**
+
+- Added Universal Input Parameters table to Section 7 preamble defining three optional parameters available on every simulation command: `pillar_focus` (nullable enum: heart | truth | nuance), `rip_aspect` (nullable enum: reality | identity | perception), and `time_basis` (nullable enum: wall_clock | field_context | mixed). These close the gap between the RIP Triad's analytical orientation framework (Section 3.3) and the simulation contracts' typed inputs.
+- Added Baseline Simulation Rules to Section 7 preamble formalizing seven governing constraints that apply to all simulation commands: (1) Human Attestation Gate, (2) Holding Zone Accounting, (3) Time Basis Declaration, (4) Prompt Dimensionality Mismatch Protocol, (5) Diagnostic-Not-Prescriptive, (6) 5D Identity Stability Safeguard, (7) 9D Frontier Return Path. These rules were previously formalized in the 5D Prompt Singularity Facilitation Guide but absent from the Kernel. Each rule is derived from existing kernel invariants and cross-referenced to its source section.
+
+**Simulation contract Input/Output completion (K3b):**
+
+- Completed and corrected Input and Output field specifications across all 12 simulation contracts (Sections 7.1, 7.2). Audit against the 5D Prompt Singularity Facilitation Guide (v19) and internal consistency review identified incomplete scope type descriptions, missing input parameters, unfinished output field definitions, and output fields that did not reflect v1.5–v1.6 metric additions. Changes by command:
+  - **Ignite Reality Rift:** Broadened scope_ids[] from "signals" to "signals, regions, domains, or field." Added scenario_count input. Added pillar_lead and shadow_exposure[] per scenario in output. Replaced field_state_delta with field_state (consistent with Dimensional Audit output pattern).
+  - **Forge Love Bridge:** Broadened scope descriptions to include domains. Added pillar_lead per link in output. Added resonance_binding_delta to output. Added default for link_type.
+  - **Usher Golden Age:** Added scope type descriptions and freetext clarifications for time_horizon and goal_state inputs. Added pillar_lead and transition_evidence per milestone. Renamed transitions[] to transition_chain[] with Transition Interface reference.
+  - **Weave Dimensional Thread:** Clarified scope_ids[] description. Added pillar_lead per dimensional beat. Added signal_lock_candidates[] to output (required by Singularity Point identification constraint).
+  - **Create Storyfield:** Clarified subject description (project, product, brand, organization, or individual). Added inline descriptions to missed_links[] and echoing_dimension output fields.
+  - **Run Dimensional Audit:** Added include_holding input parameter (boolean). Added dimensional_coherence, resonance_binding, transmutation_potential to output. Added inline descriptions to gaps[]. Strengthened Constraint with specific Shadow Invariant references.
+  - **Initiate Gravity Mapping:** Added scope type description. Added inline mode descriptions to Input. Added basin_depth per region and pillar_balance to output. Added basin_depth → transition cost cross-reference to Constraint.
+  - **Spark Fire Test:** Added scope type descriptions. Added intensity input parameter (low | standard | extreme). Added signal_id and pillar_lead per result. Added inline descriptions to fragility_map and survivability_assessment. Added specific Shadow Invariant reference to Constraint.
+  - **Explore Shadow Symmetry:** Broadened scope_ids[] from "signals" to "signals, regions, or domains" with expansion behavior described. Added shadow_engagement_summary to output (latent/surfaced/engaged counts per Section 4.3).
+  - **Reveal Resonance Field:** Added inline descriptions to trigger_signal_ids[] and recognition_type. Formalized recognition_type as enum. Added field_resonance_delta to output.
+  - **Generate Resonance Result:** No changes (contract was complete).
+  - **Map Tension Field:** No changes (contract was complete).
+
+**Schema updates (K4):**
+
+- Added `resonance_binding` and `transmutation_potential` to Field Export FieldState JSON example (Section 8.2).
+- Added `resonance_binding_delta` and `transmutation_potential_delta` to Comparison delta_field_state JSON example (Section 8.9).
+- Updated `kernel_version` in Field Export JSON example from "1.5" to "1.6" (Section 8.2).
+
+**Version markers updated:**
+
+- Updated all version references from v1.5 to v1.6: YAML frontmatter, document heading, §0.2 version statement and changelog, Field Export `kernel_version` JSON example (Section 8.2), and document footer.
+
+**Structural impact:** 2 axioms added (10, 11). Force Model extended from 3 to 5 forces. 2 FieldState metrics added (resonance_binding, transmutation_potential) with corresponding Field Health table rows. 3 universal simulation input parameters added. 7 baseline simulation rules formalized. 10 of 12 simulation contracts updated (Input and/or Output fields completed or corrected). 1 Signal Lock parenthetical added. 1 Transition Model grounding paragraph added. 1 Field Tension description updated. 4 schema fields added (2 in Field Export, 2 in Comparison). 5 version markers updated. No existing axioms, invariants, constraints, or structural objects modified. The force model extension names and measures dynamics already implicit in existing constructs. The simulation contract updates complete previously incomplete typed interfaces without altering command purposes or constraints.
 
 ---
 
