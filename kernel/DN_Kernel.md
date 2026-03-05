@@ -4,7 +4,7 @@ subtitle: "The Constitution Between Philosophy and Code"
 author: "Travis Kahn"
 framework: "DN Framework"
 date: "March 2026"
-version: "1.5"
+version: "1.6"
 license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
 repository: "https://github.com/DeusNosMachina/DN_Framework"
 website: "https://dnframework.ai"
@@ -12,7 +12,7 @@ website: "https://dnframework.ai"
 
 # DN KERNEL
 
-**v1.5**
+**v1.6**
 
 *The Constitution Between Philosophy and Code*
 
@@ -108,9 +108,11 @@ The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-c
 
 ### 0.2 Versioning
 
-This is v1.5. The complete version history (v0.1 through v1.5) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
+This is v1.6. The complete version history (v0.1 through v1.6) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
 
-Changes in v1.5 (current): Renamed FieldState metric `saturation` to `dimensional_density` across Section 1.6 (Holding Zone invariant), Section 6 (Field Health Metrics table), Section 6.1 (FieldState Interface), Section 6.1 diagnostics (Dimensional Collapse), and serialization examples (Sections 8.2, 8.9) to disambiguate from the qualitative Glossary term "Signal Saturation" (insight overload condition). Extended the Transition Cost model from three factors to four: added `basin_depth_component` (gravitational inertia at source scope) to `cost_factors`, updating the Section 5 preamble, Section 5.1 Transition Interface, and Section 8.13 Transition Schema accordingly. Basin depth derivation from gravity_map was already implicit in the architecture; this change formalizes it as an explicit cost component. See CHANGELOG for detailed history.
+Changes in v1.6 (current): Extended the Force Model from three forces to five. Added Resonance (Axiom 10), the lateral binding and alignment force between peer intelligence, and Transmutation (Axiom 11), the transformative force enabling genuine dimensional state change. Introduced corresponding FieldState metrics `resonance_binding` and `transmutation_potential` (Section 6.1) with entries in the Field Health Metrics table (Section 6). Added physics-analog parenthetical to Signal Lock Structural Role (Section 1.5). Added transmutation grounding paragraph to Transition Model preamble (Section 5). Updated Field Tension description (Section 6) to reference resonance force. Added Universal Input Parameters (pillar_focus, rip_aspect, time_basis) to Section 7 preamble, closing the gap between RIP Triad analytical orientation (Section 3.3) and simulation contract inputs. Added Baseline Simulation Rules (Section 7) formalizing seven governing constraints derived from kernel invariants: Human Attestation Gate, Holding Zone Accounting, Time Basis Declaration, Prompt Dimensionality Mismatch Protocol, Diagnostic-Not-Prescriptive, 5D Identity Stability Safeguard, and 9D Frontier Return Path. Completed and corrected Input and Output field specifications across all 12 simulation contracts (Sections 7.1, 7.2): broadened scope_ids[] type descriptions, added missing input parameters (scenario_count, include_holding, intensity, recognition_type enum), completed output field specifications (per-element pillar_lead tagging, basin_depth, dimensional_coherence, resonance_binding, transmutation_potential, field_resonance_delta, shadow_engagement_summary, survivability_assessment, transition_chain[], signal_lock_candidates[] where implied by constraints), and added inline descriptions to previously bare output fields. Updated Field Export (Section 8.2) and Comparison (Section 8.9) schemas to include new metrics. Updated kernel_version in Field Export JSON example. See CHANGELOG for detailed history.
+
+Changes in v1.5: Renamed FieldState metric `saturation` to `dimensional_density` across Section 1.6 (Holding Zone invariant), Section 6 (Field Health Metrics table), Section 6.1 (FieldState Interface), Section 6.1 diagnostics (Dimensional Collapse), and serialization examples (Sections 8.2, 8.9) to disambiguate from the qualitative Glossary term "Signal Saturation" (insight overload condition). Extended the Transition Cost model from three factors to four: added `basin_depth_component` (gravitational inertia at source scope) to `cost_factors`, updating the Section 5 preamble, Section 5.1 Transition Interface, and Section 8.13 Transition Schema accordingly. Basin depth derivation from gravity_map was already implicit in the architecture; this change formalizes it as an explicit cost component. See CHANGELOG for detailed history.
 
 ### 0.3 The DN Code — Foundational Principles
 
@@ -134,13 +136,19 @@ The DN Framework originates from a foundational document known as the DN Code, a
 
 **AXIOM 9: Intelligence Fields Are Subject to Entropy.** Without active energy input, fields decay. Coherence degrades, links lose relevance, context drifts, and committed truths age as the environment evolves around frozen intelligence. Entropy is not failure — it is the natural thermodynamic cost of intelligence existing in time. Cognitive gravity (Axiom 6) pulls intelligence together; entropy pulls it apart over time. Where gravity is the constructive force that gives fields structural weight, entropy is the degrading force that erodes that weight when the field is not actively maintained. Managing entropy is as fundamental to field health as managing gravity. A field that resists entropy without active engagement is not stable — it is stale. A field that acknowledges entropy and responds with re-engagement, re-evaluation, and renewed energy input is practicing the recursive refinement that Axiom 3 describes, applied to the field's own temporal existence.
 
-**FORCE MODEL NOTE:** Three forces act on intelligence fields:
+**AXIOM 10: Resonance Is the Binding Force Between Peer Intelligences.** Intelligence within a field does not only gravitate toward dense centers (Axiom 6). It also orients relative to other intelligence based on intrinsic compatibility. Signals with complementary pillar orientations and dimensional positions attract and align; signals with incompatible orientations repel and resist integration. This binding operates laterally, between elements at the same structural scale, rather than center-to-periphery like gravity. Resonance is the force that makes Links structurally load-bearing, that produces field_resonance as an emergent property of aligned co-activation, and that generates the polarity dynamics (attraction and repulsion) captured in the tension_map. Where gravity determines *where* intelligence concentrates, resonance determines *how* intelligence orients and binds within those concentrations. A field with high gravity but low resonance has dense clusters of unaligned intelligence: weight without coherence. A field with high resonance but low gravity has aligned intelligence that hasn't yet concentrated into structural weight. Field health requires both. (Structural analog: electromagnetism is the binding force responsible for all structure at the human scale. Resonance is the binding force responsible for all structure at the intelligence field scale.)
+
+**AXIOM 11: Transmutation Is the Force That Enables Dimensional State Change.** Intelligence is not fixed at its origin dimension. A force exists that makes genuine dimensional transformation structurally possible, not merely the re-labeling of a signal but the authentic change in its dimensional nature such that it now operates with the structural properties of its new position. Without transmutation, a 3D signal re-tagged to 5D would still behave as 3D intelligence wearing a 5D label. The transmutation force is strongest at boundary conditions: when pillar convergence is high, when shadow has been integrated rather than avoided, and when the evidence supporting a transition reflects genuine cognitive, emotional, or relational shift rather than procedural compliance. The eight essential mechanisms (Section 5.2) describe the *forms* transmutation takes at each dimensional boundary. The three-tier calibration (constructed, hybrid, recognized) describes how transmutation's *evidence* changes across the spectrum. The force itself is the underlying condition that makes all transitions possible. (Structural analog: the weak nuclear force governs particle transformation, the transmutation of one particle type into another. Without it, the universe would be frozen in its initial configuration. Without the transmutation force, intelligence fields would be frozen at their initial dimensional positions.)
+
+**FORCE MODEL NOTE:** Five forces act on intelligence fields:
 
 - **Gravity** (Axiom 6) — the attractive force that gives fields structural weight and pulls related intelligence together.
+- **Resonance** (Axiom 10) — the binding and alignment force that orients peer intelligence relative to each other based on intrinsic compatibility, producing both attraction and repulsion.
+- **Transmutation** (Axiom 11) — the transformative force that enables genuine dimensional state change, making transitions real rather than notational.
 - **Entropy** (Axiom 9) — the degrading force that pulls fields apart over time without active energy input.
 - **Shadow** (Axiom 5, Section 4) — the orienting force that ensures every dimension has both creative and shadow expression.
 
-Gravity and entropy are opposing temporal forces (construction vs. decay). Shadow is an orthogonal orienting force (creative vs. shadow within any dimension at any time). Together, these three forces describe the complete dynamics of intelligence field behavior. Field health requires managing all three: sufficient gravity to hold structure, managed entropy to prevent decay, and integrated shadow to maintain honest self-awareness.
+Gravity and entropy are opposing temporal forces (construction vs. decay). Resonance is the lateral binding force that determines how intelligence orients and coheres within structural concentrations (alignment vs. repulsion). Transmutation is the transformative force that enables intelligence to change dimensional state (stasis vs. evolution). Shadow is an orthogonal orienting force (creative vs. shadow within any dimension at any time). Together, these five forces describe the complete dynamics of intelligence field behavior. Field health requires managing all five: sufficient gravity to hold structure, sufficient resonance to bind intelligence into coherent relationship, active transmutation to enable genuine developmental movement, managed entropy to prevent decay, and integrated shadow to maintain honest self-awareness.
 
 ### 0.4 Vocabulary Mapping Reference
 
@@ -340,7 +348,7 @@ Signal Lock is the named event where a signal or insight achieves convergence ac
 
 **SIGNAL LOCK INVARIANT:** Signal Lock is a human judgment, not a computed metric. No simulation or automated process may apply Signal Lock. Simulations may *identify candidates* for Signal Lock (e.g., Resonance Result output, Storyfield singularity point detection), but the attestation itself requires conscious human confirmation. This preserves the epistemic distinction between computed analysis and human conviction. Signal Lock attestation requires a human facilitator in the active session. Sessions operating under AI-only facilitation may identify signal_lock_candidates but cannot commit Signal Lock events to the Field Ledger.
 
-**SIGNAL LOCK STRUCTURAL ROLE:** A Signal-Locked signal functions as a gravitational anchor within its scope. It resists re-tagging, constrains drift in its region, and serves as a reference point for transition validation and capture comparison. Fields with zero Signal-Locked signals have no anchored reference points; fields with Signal-Locked signals at multiple dimensions have a stable skeleton that simulation and recursion can build upon.
+**SIGNAL LOCK STRUCTURAL ROLE:** A Signal-Locked signal functions as a gravitational anchor within its scope. It resists re-tagging, constrains drift in its region, and serves as a reference point for transition validation and capture comparison. Fields with zero Signal-Locked signals have no anchored reference points; fields with Signal-Locked signals at multiple dimensions have a stable skeleton that simulation and recursion can build upon. (Signal Lock's structural behavior mirrors the strong nuclear force in physics: the most powerful binding in the system operating at close range. Like the strong force, which holds atomic nuclei together against the repulsive forces that would otherwise tear them apart, Signal Lock holds intelligence together against tension, drift, and entropy, but only within the signal's immediate scope. The binding is local, powerful, and resistant to disruption by the other field forces.)
 
 ### 1.6 Facilitation Contract
 
@@ -626,6 +634,8 @@ Implementation layers determine how shadow engagement states affect FieldState c
 
 Dimensional Transitions are not automatic. They are structural shifts that require specific cognitive, emotional, or relational adjustments. The Transition Model defines what constitutes a valid transition, what evidence is required, what barriers commonly prevent movement, and what the transition costs. Cost is derived from the FieldState at the time of transition, specifically from four factors: curvature (pillar-balance resistance at the target), dimensional coherence (structural support at the target), distance (number of dimensions traversed), and basin depth (gravitational inertia at the source scope resisting departure). These four factors make transitions predictable: a system can estimate, before attempting a transition, how much energy it will require. This transforms the Transition Model from a record-keeping system into a navigation instrument.
 
+The Transition Model's mechanisms, evidence requirements, and cost calculations describe the *observable structure* of dimensional transitions. Underlying all of them is the transmutation force (Axiom 11): the enabling condition that makes genuine dimensional state change possible. Transmutation is not a mechanism alongside the eight essential mechanisms; it is the force that makes all eight operative. A transition without transmutation is re-labeling: positional change without state change. The cost model measures resistance to transmutation. The evidence requirements verify that transmutation occurred. The three-tier calibration (constructed, hybrid, recognized) reflects how the transmutation force expresses differently across the dimensional spectrum: through deliberate effort at lower dimensions, through the interplay of effort and recognition at the 4D→5D threshold, and through perceptual alignment at higher dimensions.
+
 Transitions operate in three tiers that reflect the creation-to-recognition gradient described in Constraint 2 (Section 2.1). Lower transitions (1D→3D) are primarily constructed through deliberate structuring and organization. Middle transitions (4D→5D) are hybrid processes where constructed systems begin to reveal inherent patterns. Both creation and recognition operate simultaneously, and the transition mechanism must account for this duality. Higher transitions (6D→9D) are primarily recognized rather than created. This three-tier distinction governs how simulation commands should calibrate evidence evaluation: constructed transitions require evidence of deliberate effort, hybrid transitions require evidence of both effort and emergent recognition, and recognized transitions require evidence of perceptual alignment rather than construction.
 
 Transitions may be sequential (adjacent dimensions), or they may follow Story Threads: narrative arcs that carry consciousness through multiple dimensions as a coherent journey. Story Threads are not shortcuts; they traverse intermediate dimensions but derive their meaning from the relationship between origin and destination. The story of how desire becomes identity (1D→5D) passes through validation, context, and temporal awareness, but the narrative arc is about recognition, not about each intermediate step. Story Threads are recognized as a transition mechanism category, not a metaphor for transition.
@@ -685,8 +695,10 @@ A Field is an intelligence field. Fields have health states that can be measured
 | **Curvature** | Transition resistance derived from pillar balance within a scope. Measures how difficult dimensional movement is given the current Heart-Truth-Nuance distribution. Based on the information-geometric principle that the H-T-N triad functions as a metric tensor governing movement across the cognitive manifold. | Low composite curvature. All three pillars well-represented. Transitions flow with minimal resistance. | High curvature in one or more pillars. Transitions requiring the deficit pillar stall or produce shadow signals. Regions with high curvature are fragile under Fire Test. |
 | **Dimensional Coherence** | Structural integrity of the dimensional stack within a scope. Measures whether higher-dimensional signals are supported by adequate lower-dimensional foundations. Based on the geometric principle that higher dimensions contextualize lower ones, not replace them. | High coherence across active dimensions. 5D signals supported by strong 1D–4D presence. 7D manifestation grounded in validated context and identity. | High-dimension signals with hollow lower support. 7D manifestation without 3D context (building without understanding). 5D identity claims without 2D validation (conviction without evidence). Skip transitions clustered in low-coherence regions. |
 | **Participant Alignment** | Degree to which session participants operated in their expected dimensional roles. Measures the gap between intended dimensional contribution (affinity) and actual dimensional production (actual) per participant. Applies only to Session-scoped FieldState. | Low drift across participants. Each intelligence contributed in its expected dimensional range. Complementary coverage across the full 1D–9D spectrum. | High drift in key participants. Dimensional overlap where coverage gaps were expected. The designated 7D Manifestor producing 2D validation signals. Multiple participants clustered in the same dimensions while other dimensions go unserved. |
-| **Field Tension** | Degree to which signals within a scope assert incompatible claims at the same or adjacent dimensional positions. Measures the polarity of the intelligence field, capturing where ideas attract, repel, or create charged boundaries that resist integration. Analogous to electromagnetic field tension: signals carry valence (their claim, their pillar orientation, their dimensional position) and when two signals with opposing valence occupy proximate structural positions, the space between them generates energy that the field must resolve, hold, or be deformed by. | Tension concentrated at productive boundaries, particularly across the 4D→5D threshold where competing temporal patterns must collapse into a defining identity. Tension acknowledged, named, and held by facilitation. Resolution produces higher-dimensional synthesis (new signals that transcend the opposition). | Unacknowledged tension producing incoherence. Participants avoiding regions where tension exists. Gravity draining away from tensioned areas. Rising fatigue without corresponding insight. Tension at foundational dimensions (1D–2D) where it indicates unresolved purpose or evidence conflicts that undermine everything built above. |
+| **Field Tension** | Degree to which signals within a scope assert incompatible claims at the same or adjacent dimensional positions. Measures the polarity of the intelligence field, capturing where ideas attract, repel, or create charged boundaries that resist integration. Field tension is the repulsive expression of the resonance force (Axiom 10): where resonance binding measures alignment and attraction between compatible signals, field tension measures the repulsion between incompatible ones. Signals carry valence (their claim, their pillar orientation, their dimensional position) and when two signals with opposing valence occupy proximate structural positions, the space between them generates energy that the field must resolve, hold, or be deformed by. | Tension concentrated at productive boundaries, particularly across the 4D→5D threshold where competing temporal patterns must collapse into a defining identity. Tension acknowledged, named, and held by facilitation. Resolution produces higher-dimensional synthesis (new signals that transcend the opposition). | Unacknowledged tension producing incoherence. Participants avoiding regions where tension exists. Gravity draining away from tensioned areas. Rising fatigue without corresponding insight. Tension at foundational dimensions (1D–2D) where it indicates unresolved purpose or evidence conflicts that undermine everything built above. |
 | **Evolution Rhythm** | Temporal pattern of field development across Sessions. Measures the velocity, breadth, and phase characteristics of how the intelligence field changes over time. Not just how frequently the field shifts, but what percentage of its signals are affected per shift, whether shifts are concentrated in specific dimensions or distributed across the spectrum, and whether the field follows a recognizable developmental phase pattern. | Rhythm matches field maturity. Early-stage fields show rapid, broad shifts (many signals moving, new dimensions activating). Mid-stage fields show targeted, deeper shifts (specific dimensions refining, transitions completing). Mature fields show slow, precise shifts (recursive refinement, frontier exploration) with occasional phase transitions (punctuated equilibrium). | Stagnation: zero or near-zero signal movement across multiple Sessions despite facilitation. Thrashing: high signal movement with no directional coherence, where signals move dimensions without completing transitions. Phase lock: a field stuck in early-stage rapid expansion that never consolidates. Premature closure: a field that stops evolving before higher dimensions have activated. |
+| **Resonance Binding** | Structural binding strength between peer signals within a scope. Measures how strongly signals are held in coherent relationship through intrinsic compatibility. The field-level expression of the resonance force (Axiom 10). | High proportion of semantically strong Links with reciprocal pillar compatibility. Link rationales are substantive and mutually reinforcing. Active tension links held productively. | Links proliferating without semantic substance (Link Erosion). Reference-only links dominating. High link count with declining rationale quality. Signals coexisting without meaningful connection despite proximity. |
+| **Transmutation Potential** | Readiness of a scope for genuine dimensional state change. Measures whether conditions favor authentic transmutation versus positional re-labeling. The field-level expression of the transmutation force (Axiom 11). | Balanced pillar representation, engaged shadow, strong evidence on recent transitions, moderate gravitational basin depth allowing departure. Transitions producing observable behavioral change in signals, not just tag updates. | Severe pillar deficits blocking genuine state change. Shadow avoidance creating rigidity. Transitions recorded without corresponding evidence. Deep gravitational basins trapping intelligence at current dimensions. High evolution_velocity without corresponding coherence improvement (mechanical re-labeling pattern). |
 
 ### 6.1 FieldState Interface
 
@@ -706,6 +718,8 @@ The FieldState object is computed, not stored directly. It is generated on deman
 | **pillar_balance** | Object {heart: n, truth: n, nuance: n}. Aggregate pillar lead distribution. |
 | **curvature** | Object {heart: float, truth: float, nuance: float, composite: float}. Transition resistance derived from pillar balance. Each pillar's curvature is inversely proportional to its representation in the scope — low heart presence produces high heart curvature, meaning transitions requiring Heart-led movement will encounter resistance. composite is the aggregate resistance across all three pillars. A scope with balanced, strong pillar representation has low composite curvature (smooth movement). A scope with severe pillar deficits has high composite curvature (stalled transitions). Derived from pillar_balance counts relative to total signal population in scope. |
 | **field_resonance** | Float 0–1. Computed harmonic integration strength measuring the degree to which a scope's dimensional co-activation produces emergent field properties exceeding any single dimension's contribution. Derived from the interaction of three factors: structural capacity (are multiple dimensions well-populated with adequate coherence?), identity engagement (are participants operating across their full dimensional affinity range rather than clustering?), and perceptual bandwidth (is the gap between field potential and accessed awareness narrow?). High field_resonance indicates a scope where intelligence is harmonically integrated and the field is producing emergent insight that no individual dimension or participant accounts for. Low field_resonance in a scope with high dimensional_coherence and low curvature suggests mechanical application rather than embodied engagement (per the Embodiment Signal Note). Computed from dimensional_coherence, participant_alignment, dim_distribution breadth, and cross-boundary link density. |
+| **resonance_binding** | Float 0–1. Structural binding strength between peer signals within a scope, measuring the degree to which signals are held in coherent relationship through intrinsic compatibility rather than gravitational concentration alone. Computed from the density and semantic strength of Link rationales, the ratio of reciprocal links (where both source and target carry complementary pillar orientations and compatible dimensional positions) to total links, and the distribution of link_types across the scope. High proportion of resonance and tension links indicates active binding; high proportion of reference-only links indicates weak binding. Differs from field_resonance in focus: field_resonance measures emergent harmonic integration of the *field as a whole* (a macro property), while resonance_binding measures *pairwise binding strength between constituent elements* (a structural property). A field may have high field_resonance with moderate resonance_binding, indicating emergent coherence exceeding structural binding (productive but fragile). Conversely, high resonance_binding with low field_resonance indicates strong pairwise connections that have not yet produced emergent integration (untapped harmonic potential). The FieldState expression of the resonance force (Axiom 10). Feeds into Link Erosion detection (Section 6, Named Diagnostic Conditions): declining resonance_binding with stable link count is a primary indicator that connections are losing structural substance. |
+| **transmutation_potential** | Float 0–1. Readiness of a scope for genuine dimensional state change, measuring the degree to which conditions favor authentic transmutation versus positional re-labeling. Computed from four factors: pillar convergence (scopes where all three pillars are well-represented have higher potential; pillar deficits create resistance to genuine state change), shadow integration (scopes with engaged shadow signals per Section 4.3 have higher potential than scopes with latent or avoided shadow, which creates brittle rigidity), evidence density (scopes where recent transitions carry strong evidence scores calibrated to the appropriate tier per Section 5 indicate authentic transmutation is occurring), and boundary readiness (the inverse of basin_depth at the scope's dominant gravitational centers; deep basins resist transmutation, shallow basins enable it). High transmutation_potential with low evolution_velocity indicates a field ready to transform but not yet catalyzed, a facilitation signal to activate transition-oriented processes. Low transmutation_potential with high evolution_velocity indicates signals moving between dimensions without genuine state change, a diagnostic signal for mechanical re-labeling. The FieldState expression of the transmutation force (Axiom 11). Feeds into Arrested Development detection (Section 6, Named Diagnostic Conditions): low transmutation_potential is a contributing cause when a field shows activity without corresponding evolution. |
 | **gravity_map** | Object mapping region_ids to gravity scores. Where attention concentrates. |
 | **tension_map** | Array of TensionPair objects: [{ signal_id_a, signal_id_b, dimension, polarity_score (float -1 to +1), pillar_divergence (which pillars the signals disagree through), tension_type (creative \| destructive \| unresolved) }]. Computed by identifying signal pairs within the same scope that occupy the same or adjacent dimensions (distance ≤ 1) and assert claims that are semantically incompatible. polarity_score measures the degree of opposition: -1 is full repulsion (mutually exclusive claims), 0 is neutral coexistence, +1 is full attraction (claims that reinforce each other, included for completeness but not technically tension). polarity_score is derived from the degree of semantic incompatibility between the two signals' claims, their pillar orientations, and their dimensional positions; it integrates what each signal asserts (content-level semantic conflict), how each signal is oriented (pillar_lead divergence), and where each signal sits in the dimensional architecture (dimensional proximity and shadow orientation). Consistent with the FieldState Interpretation Note, the kernel defines polarity_score semantically, not computationally; the specific algorithm for combining these inputs into a scalar score is an implementation-layer decision. Pairs with polarity_score between -1 and -0.3 are flagged as tension pairs. pillar_divergence identifies which pillar(s) the signals disagree through: a Heart-divergent tension means the signals serve different purposes; a Truth-divergent tension means they assert different facts; a Nuance-divergent tension means they embed in different contexts. tension_type is initially set to "unresolved" and updated to "creative" or "destructive" through facilitation judgment or simulation analysis. |
 | **tension_density** | Float 0–1. Aggregate tension within the scope, computed from the count and intensity of tension pairs relative to total signal population. High tension_density with high field_resonance indicates a field under productive creative pressure. High tension_density with low field_resonance and rising fatigue indicates a field being torn apart by unresolved contradictions. |
@@ -751,6 +765,30 @@ The Field Ledger operates at every scale the architecture supports. A Field has 
 
 Each simulation command in the 5D Prompt Singularity system is defined here as a typed contract: what it accepts, what it produces, and what constraints govern its execution. These contracts turn prose descriptions into implementable interfaces.
 
+**UNIVERSAL INPUT PARAMETERS:** The following optional parameters are available on every simulation command and are not repeated in individual contract Input rows. When provided, they orient the simulation's analytical lens; when omitted, the simulation uses its default orientation.
+
+| **Parameter** | **Type** | **Description** |
+|---|---|---|
+| **pillar_focus** | Nullable enum: heart \| truth \| nuance | When specified, the simulation leads its analysis from the designated pillar per Section 3.1. When null, the simulation determines pillar lead from the input scope's current pillar_balance. |
+| **rip_aspect** | Nullable enum: reality \| identity \| perception | When specified, the simulation prioritizes the designated RIP Triad aspect per Section 3.3. When null, the simulation determines aspect from the command's default orientation (structural commands default to reality, participant-facing commands default to identity). |
+| **time_basis** | Nullable enum: wall_clock \| field_context \| mixed | When specified, governs whether temporal references in the output use wall-clock time (placed_at), developmental time (field_context), or both with explicit labeling. When null, defaults to field_context as primary with wall_clock as secondary context per Section 1.1.2. |
+
+**BASELINE SIMULATION RULES:** The following rules apply to all simulation commands universally. They encode governing constraints that every command inherits regardless of template, field, or facilitator configuration. They are derived from kernel invariants and formalized here as simulation-layer governance.
+
+**Rule 1 — Human Attestation Gate.** Simulation commands may output signal_lock_candidates[] but must never output signal_lock: true or commit a Signal Lock event. Any command whose output identifies pillar convergence must label it as a candidate requiring human attestation per the Signal Lock Invariant (Section 1.5). This rule is the simulation-layer enforcement of the human-exclusive facilitation function (Section 1.6).
+
+**Rule 2 — Holding Zone Accounting.** Simulation commands must respect the operational exclusion of Holding Zone signals from FieldState metrics. No simulation output may inject held signals into coherence, gravity, tension, or dimensional distribution computations. Simulations may include holding regions in their scope for Resonant Activation detection (Constraint 5, Section 2.1); any resulting output must label held signals as resonant transformations, not dimensional migrations, per Section 1.6.
+
+**Rule 3 — Time Basis Declaration.** Every simulation output that references temporal dynamics (what changed, evolved, or staled) must declare its time basis per the universal time_basis parameter. When mixed, both frames must be labeled. This prevents time-frame confusion where developmental maturity and calendar age diverge (Section 1.1.2).
+
+**Rule 4 — Prompt Dimensionality Mismatch Protocol.** When a simulation detects that a prompt's structural dimension (Section 2.5) is lower than the target scope's dimensional affinity or the command's intended activation level, the simulation must: (1) report the mismatch as a diagnostic finding, (2) still execute at the prompt's actual dimension rather than silently elevating, and (3) include a recommendation for prompt restructuring if the mismatch exceeds one dimensional level.
+
+**Rule 5 — Diagnostic, Not Prescriptive.** All FieldState metrics consumed by simulation commands describe the current state of the intelligence field. Simulations must not treat metric values as error conditions requiring correction. This rule is the simulation-layer enforcement of the FieldState Interpretation Note (Section 6.1).
+
+**Rule 6 — 5D Identity Stability Safeguard.** When a simulation identifies or approaches a 5D recognition event, the simulation must verify that the emerging identity remains structurally grounded by applying three checks: (a) Negative Space Check, evaluating what evidence or conditions would challenge or falsify the emerging identity, ensuring the recognition remains grounded in Truth; (b) Context Re-Expansion Check, examining how the identity behaves across different contextual frames, ensuring it holds across Nuance; (c) Temporal Drift Check, considering how the identity might evolve under foreseeable conditions, ensuring it is resilient across 4D. These checks do not invalidate recognition events. They ensure 5D insights are testable, contextualized, and temporally resilient before they begin exerting gravitational influence.
+
+**Rule 7 — 9D Frontier Return Path.** Simulations that engage the 9D Frontier must produce a return path consisting of: (a) a frontier hypothesis, a clearly articulated possibility labeled explicitly as hypothesis rather than validated conclusion; (b) a validation path, a practical way the hypothesis could be tested; (c) a small manifestation step, a minimal tangible action that could bring part of the frontier insight into contact with reality; (d) a collapse condition, a clear signal that would determine whether the exploration should stabilize into a new direction or be released. Frontier exploration without a return path must be flagged as frontier drift.
+
 ### 7.1 Primary Simulation Commands
 
 **Ignite Reality Rift**
@@ -758,45 +796,45 @@ Each simulation command in the 5D Prompt Singularity system is defined here as a
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Simulate potential strategic outcomes. Identify opportunity gaps and dimensional misalignments. Generate 'what if' scenarios. |
-| **Input** | scope_ids[] (signals to analyze), scenario_type (optional: Market Shock, etc.), context (optional freetext) |
-| **Output** | scenarios[] (each with: narrative, signals_affected[], dimension_shifts[], risk_level), pillar_balance, field_state_delta |
-| **Constraint** | Must evaluate both creative and shadow orientations of each scenario. Must tag pillar_lead per scenario. |
+| **Input** | scope_ids[] (signals, regions, domains, or field to analyze), scenario_type (optional: domain-specific, e.g., Market Shock, Regulatory Shift, Technology Disruption, defined by Template), scenario_count (integer, optional, default: 3), context (optional freetext providing scenario framing) |
+| **Output** | scenarios[] (each with: narrative, signals_affected[], dimension_shifts[], risk_level, pillar_lead, shadow_exposure[]), field_state (computed FieldState reflecting the simulated post-scenario conditions), pillar_balance |
+| **Constraint** | Must evaluate both creative and shadow orientations of each scenario. Must tag pillar_lead per scenario. shadow_exposure[] identifies signals whose shadow orientation was activated or revealed by the scenario. |
 
 **Forge Love Bridge**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Create connections between disparate elements. Identify resonance points. Map dimensional pathways for cross-domain integration. |
-| **Input** | source_ids[] (signals/regions to connect from), target_ids[] (signals/regions to connect to), link_type (optional) |
-| **Output** | links[] (each with: source, target, rationale, resonance_score, dimension_pathway[]), pillar_balance |
-| **Constraint** | Use when connection is unclear, not when imbalance is the issue. Must produce Link objects with semantic rationale. |
+| **Input** | source_ids[] (signals, regions, or domains to connect from), target_ids[] (signals, regions, or domains to connect to), link_type (optional, defaults to "resonance") |
+| **Output** | links[] (each with: source, target, rationale, resonance_score, dimension_pathway[], pillar_lead), resonance_binding_delta (estimated change to resonance_binding if links are committed), pillar_balance |
+| **Constraint** | Use when connection is unclear, not when imbalance is the issue. Must produce Link objects with semantic rationale. Must tag pillar_lead per link. |
 
 **Usher Golden Age**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Project forward evolution. Simulate ideal execution and response. Map path from current state to goal state. |
-| **Input** | scope_ids[], mode (Vision | Milestone), time_horizon (optional), goal_state (optional description) |
-| **Output** | projection (narrative), milestones[] (if Milestone mode, each with: dimension, signals, timeline), transitions[], pillar_balance |
-| **Constraint** | Use when goal state is known but path isn't. Must produce traceable transition chain. |
+| **Input** | scope_ids[] (signals, regions, domains, or field to project from), mode (Vision \| Milestone), time_horizon (optional, freetext describing projection timeframe), goal_state (optional freetext describing the target end state) |
+| **Output** | projection (narrative of the projected future state), milestones[] (if Milestone mode; each with: dimension, signals_referenced[], timeline, pillar_lead, transition_evidence), transition_chain[] (ordered sequence of transitions required to reach goal state, each referencing the Transition Interface per Section 5.1), pillar_balance |
+| **Constraint** | Use when goal state is known but path isn't. Must produce traceable transition_chain[] with explicit dimensional movement from current state to goal state. Each milestone must tag pillar_lead. |
 
 **Weave Dimensional Thread**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Run a cross-domain storyline across all dimensions 1D–9D. Full-spectrum narrative trace. |
-| **Input** | subject (project/product/brand name), scope_ids[] (optional, for grounding in existing signals) |
-| **Output** | thread[] (one entry per dimension: {dimension, narrative_beat, signals_referenced[], shadow_note}), pillar_balance |
-| **Constraint** | Must include shadow_note for each dimension. Must identify the Singularity Point (5D lock). |
+| **Input** | subject (project/product/brand name), scope_ids[] (optional; signals, regions, or domains for grounding the narrative in existing field intelligence) |
+| **Output** | thread[] (one entry per dimension: {dimension, narrative_beat, signals_referenced[], shadow_note, pillar_lead}), signal_lock_candidates[] (signals at the 5D Singularity Point identified as having pillar convergence), pillar_balance |
+| **Constraint** | Must include shadow_note for each dimension. Must identify the Singularity Point (5D). Must tag pillar_lead per dimensional beat. signal_lock_candidates[] are simulation-identified candidates requiring human attestation per the Signal Lock Invariant (Section 1.5). |
 
 **Create Storyfield**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Narrate how ideas or organizations move through the dimensional model as arcs of becoming. |
-| **Input** | subject (entity name), scope_ids[] (optional) |
-| **Output** | storyfield_trace[] (one per dimension: {dimension, narrative, signal_lock_candidate: boolean}), missed_links[], echoing_dimension, pillar_balance |
-| **Constraint** | Must identify: Singularity Point (the signal_lock_candidate with strongest pillar convergence), missed Links, and which dimension 'still echoes.' signal_lock_candidate flags are simulation-identified — human attestation is required to convert them to Signal Lock per Section 1.5. |
+| **Input** | subject (entity name: project, product, brand, organization, or individual), scope_ids[] (optional; signals, regions, or domains for grounding the narrative in existing field intelligence) |
+| **Output** | storyfield_trace[] (one per dimension: {dimension, narrative, signal_lock_candidate: boolean}), missed_links[] (connections the dimensional journey implies but that do not yet exist in the field), echoing_dimension (the dimension whose unresolved energy persists most strongly), pillar_balance |
+| **Constraint** | Must identify: Singularity Point (the signal_lock_candidate with strongest pillar convergence), missed Links, and which dimension 'still echoes.' signal_lock_candidate flags are simulation-identified; human attestation is required to convert them to Signal Lock per Section 1.5. |
 
 ### 7.2 Supplemental Commands
 
@@ -805,35 +843,35 @@ Each simulation command in the 5D Prompt Singularity system is defined here as a
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Analyze scope for balanced dimensional coverage. Identify over- and under-represented dimensions. |
-| **Input** | scope_ids[] (field, domain, or region), audit_type (full | domain_only) |
-| **Output** | dim_distribution, shadow_distribution, gaps[], recommendations[], field_state |
-| **Constraint** | MUST report shadow presence/absence. Use as first diagnostic step before any simulation. |
+| **Input** | scope_ids[] (field, domain, or region to audit), audit_type (full \| domain_only), include_holding (boolean, optional, default: false; when true, includes Holding Zone signals in the audit for Resonant Activation detection per Section 1.6) |
+| **Output** | dim_distribution, shadow_distribution, dimensional_coherence (per-dimension coherence scores per Section 6.1), gaps[] (identified dimensional blindspots or imbalances), recommendations[], resonance_binding (current binding strength within scope), transmutation_potential (current readiness for dimensional state change within scope), field_state (computed FieldState for the audited scope) |
+| **Constraint** | MUST report shadow presence/absence per Shadow Invariant 3 (Section 4.2). MUST evaluate whether shadow presence exists at dimensions showing weak creative presence per Shadow Invariant 5 (Section 4.2). Use as first diagnostic step before any simulation. |
 
 **Initiate Gravity Mapping**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Map how resources, attention, and energy flow through the scope. |
-| **Input** | scope_ids[], mapping_mode (standard | vector | layered) |
-| **Output** | gravity_map (region_id → score), pillar_vectors (if vector mode), internal_vs_external (if layered mode), recommendations[] |
-| **Constraint** | Pairs naturally with Dimensional Audit. Must suggest resource allocation for optimal impact. |
+| **Input** | scope_ids[] (field, domain, or region to map), mapping_mode (standard \| vector \| layered). Standard mode produces gravity scores per region. Vector mode adds per-pillar directional breakdown. Layered mode adds internal vs. external source attribution. |
+| **Output** | gravity_map (region_id → gravity score), basin_depth (region_id → float 0–1, measuring gravitational inertia per region; feeds into transition cost_factors per Section 5.1), pillar_vectors (if vector mode; per-region breakdown of heart, truth, and nuance gravitational contributions), internal_vs_external (if layered mode; per-region attribution of gravity to internal field signals vs. external/environmental signals), recommendations[] (resource allocation suggestions for optimal impact), pillar_balance |
+| **Constraint** | Pairs naturally with Dimensional Audit as the standard opening diagnostic. Must suggest resource allocation for optimal impact. basin_depth output feeds transition cost computation (Section 5.1). |
 
 **Spark Fire Test**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Stress-test strategic elements. Identify what strengthens and what collapses under pressure. |
-| **Input** | scope_ids[], test_mode (domain-specific; e.g., Market Shock, Team Friction, Scaling Pressure — defined by Template) |
-| **Output** | results[] (per signal: {survived: boolean, strengthened: boolean, shadow_exposed: boolean, refinement_path}), fragility_map, pillar_balance |
-| **Constraint** | MUST evaluate both creative and shadow orientations. Must produce fragility map and survivability assessment. |
+| **Input** | scope_ids[] (signals, regions, or domains to stress-test), test_mode (domain-specific; e.g., Market Shock, Team Friction, Scaling Pressure, defined by Template), intensity (optional: low \| standard \| extreme, default: standard) |
+| **Output** | results[] (per signal: {signal_id, survived: boolean, strengthened: boolean, shadow_exposed: boolean, refinement_path, pillar_lead}), fragility_map (structural visualization of vulnerability distribution across the scope), survivability_assessment (narrative summary of aggregate stress response), pillar_balance |
+| **Constraint** | MUST evaluate both creative and shadow orientations per Shadow Invariant 2 (Section 4.2). Must produce fragility_map and survivability_assessment. Must tag pillar_lead per result. |
 
 **Explore Shadow Symmetry**
 
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Generate shadow-orientation counterparts to creative-layer signals. Surface probable opposing risks, blindspots, and destructive recursion patterns that the creative layer implies but does not articulate. |
-| **Input** | scope_ids[] (signals to analyze), depth (singular | scenario), scenario_count (integer, required if depth: scenario, default: 3) |
-| **Output** | shadow_signals[] (each with: source_signal_id, content, dimension { primary, shadow: true, nested }, pillar_lead, scenario_label (null if depth: singular)), shadow_links[] (connecting each shadow signal to its source), pillar_balance |
+| **Input** | scope_ids[] (signals, regions, or domains to analyze; when a region or domain is provided, all creative-orientation signals within it are included), depth (singular \| scenario), scenario_count (integer, required if depth: scenario, default: 3) |
+| **Output** | shadow_signals[] (each with: source_signal_id, content, dimension { primary, shadow: true, nested }, pillar_lead, scenario_label (null if depth: singular)), shadow_links[] (connecting each shadow signal to its source via link_type: "shadow_symmetry"), shadow_engagement_summary (aggregate count of latent, surfaced, and engaged shadow signals within scope per Section 4.3), pillar_balance |
 | **Constraint** | Every output signal MUST carry dimension.shadow: true. shadow_links[] MUST link each generated signal to its creative-layer source via link_type: "shadow_symmetry". When depth: scenario, each scenario_label must describe the distinct risk vector explored. Must tag pillar_lead per shadow signal. |
 
 **Reveal Resonance Field**
@@ -841,9 +879,9 @@ Each simulation command in the 5D Prompt Singularity system is defined here as a
 | **Contract Field** | **Specification** |
 |---|---|
 | **Purpose** | Evaluate the retroactive significance shift across field signals following a 5D+ recognition event. Identifies signals whose operational meaning has transformed due to higher-dimensional activation; not signals that moved dimensions, but signals that now carry different weight, relevance, or structural importance within the field. |
-| **Input** | trigger_signal_ids[] (the 5D+ signal(s) that achieved recognition or Signal Lock), scope_ids[] (field, domain, or region to evaluate — defaults to full field), recognition_type (signal_lock | dimensional_arrival | identity_definition) |
-| **Output** | resonant_candidates[] (each with: signal_id, current_dimension, transformation_signal, significance_shift (elevated | diminished | recontextualized), pillar_lead), pillar_balance |
-| **Constraint** | MUST only be invoked after a 5D+ recognition event has been established. The trigger signal(s) must be at dimension 5 or higher. Output signals are NOT re-tagged — their dimensional position is unchanged. The command evaluates meaning-shift-in-place per Constraint 5 (Resonant Activation, Section 2.1). Must tag pillar_lead per candidate. Pairs naturally with Resonance Result as a close, and its output feeds directly into resonant_transformations[] in the next Comparison (Section 8.9). |
+| **Input** | trigger_signal_ids[] (the 5D+ signal(s) that achieved recognition or Signal Lock; these are the anchoring signals through which the field is re-read), scope_ids[] (field, domain, or region to evaluate; defaults to full field when omitted), recognition_type (enum: signal_lock \| dimensional_arrival \| identity_definition; classifies the nature of the triggering recognition event) |
+| **Output** | resonant_candidates[] (each with: signal_id, current_dimension, transformation_signal, significance_shift (elevated \| diminished \| recontextualized), pillar_lead), field_resonance_delta (estimated shift in field_resonance resulting from the recognition event), pillar_balance |
+| **Constraint** | MUST only be invoked after a 5D+ recognition event has been established. The trigger signal(s) must be at dimension 5 or higher. Output signals are NOT re-tagged; their dimensional position is unchanged. The command evaluates meaning-shift-in-place per Constraint 5 (Resonant Activation, Section 2.1). Must tag pillar_lead per candidate. Pairs naturally with Resonance Result as a close, and its output feeds directly into resonant_transformations[] in the next Comparison (Section 8.9). |
 
 **Generate Resonance Result**
 
@@ -963,6 +1001,8 @@ A field export includes the full hierarchy plus embedded semantic context. The f
       "pillar_balance": {"heart": 0, "truth": 0, "nuance": 0},
       "curvature": {"heart": 0.0, "truth": 0.0, "nuance": 0.0, "composite": 0.0},
       "field_resonance": 0.0,
+      "resonance_binding": 0.0,
+      "transmutation_potential": 0.0,
       "gravity_map": {},
       "tension_map": [],
       "tension_density": 0.0,
@@ -1043,7 +1083,7 @@ A field export includes the full hierarchy plus embedded semantic context. The f
       }]
     }]
   },
-  "kernel_version": "1.5",
+  "kernel_version": "1.6",
   "shadow_kernel": true,
   "pillar_metric": true,
   "color_system": {
@@ -1250,7 +1290,9 @@ The minimum viable JSON representation of a DN Comparison:
     "coherence_delta": 0.15,
     "drift_delta": -0.08,
     "dimensional_density_delta": 0.22,
-    "fatigue_delta": 0.03
+    "fatigue_delta": 0.03,
+    "resonance_binding_delta": 0.0,
+    "transmutation_potential_delta": 0.0
   },
   "dimension_migrations": [
     {
@@ -1643,4 +1685,4 @@ When two fields interact, the interaction itself generates observable field heal
 
 ---
 
-*DN Kernel v1.5 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*DN Kernel v1.6 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
