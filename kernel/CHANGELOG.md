@@ -2,7 +2,108 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v16.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v17.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.7 (March 2026)
+
+**Source:** Discussion with custom GPT (trained on DN Kernel v1.4, updated to v1.6 during session) exploring fluid dynamics as a candidate extension to the force model identified a genuine structural gap: the Kernel defines what fields are (ontology), what forces act on them (dynamics), and what operations are valid (simulation contracts), but does not formalize how intelligence propagates through the field's connective structure. Links are defined as semantic relationships with dimensional tags, but their behavior as transport structures, what they can carry, how faithfully, and under what activation conditions, is not part of the structural contract. This gap was corroborated by the observation that nature's connective structures (chemical bonds, synapses, membranes, mycelial networks) are never mere adjacency; they are active relational media with transport properties. The GPT recommended treating this as a field-behavior formalism rather than a new axiom. After review, the conclusion was that propagation is irreducible and warrants constitutional status, but the specific mechanics (fluid dynamics, graph diffusion, wave propagation) remain implementation-layer interpretive models.
+
+**Axiom addition (K1):**
+
+- Added Axiom 12 (Flow): "Intelligence Fields Propagate Through Flow." Establishes that intelligence fields are not static containers; the effects of the five forces propagate through the field's connective tissue according to the transport properties of those connections. Flow is the governing principle of intelligence transport. A field may have strong gravity, high resonance, and active transmutation, yet still fail to develop if the transport paths between its structural elements are degraded, saturated, or dormant.
+- Added Transport Principle note to Section 0.3 (after Force Model Note) clarifying that Flow is not a sixth force but the governing principle of how the five forces' effects propagate through a field's connective structure. Forces act on fields; flow determines how those effects are transmitted.
+
+**Link transport properties (K2):**
+
+- Added `transport` as a nullable property on the Link object (Section 1, Table 1). Updated Link definition to reflect transport role.
+- Added Section 1.1.3 (Link Transport Properties) defining the structural contract: when present, the transport block carries four properties: `capacity` (float 0-1, throughput), `fidelity` (float 0-1, signal integrity in transit), `resistance` (float 0-1, activation cost of transfer), and `state` (enum: dormant | active | saturated | degraded). Each property documented with natural analogs.
+- Added Transport Invariant: transport is nullable at the link level; systems without transport data are fully spec-compliant. Transport values conform to the schema and feed aggregate flow metrics in FieldState.
+- Added Transport and Existing Link Properties note clarifying that transport properties complement but do not replace rationale, link_type, and dimension.
+
+**FieldState flow metrics (K3):**
+
+- Added `flow_coherence` (Float 0-1) to FieldState Interface (Section 6.1): alignment of active transport paths with the field's dimensional structure. Computed from the ratio of dimensionally aligned active links to total active links.
+- Added `flow_resistance` (Float 0-1) to FieldState Interface (Section 6.1): aggregate resistance across the field's link network. Computed from mean resistance weighted by gravity center proximity.
+- Added `turbulence` (Float 0-1) to FieldState Interface (Section 6.1): ratio of intelligence movement outside established transport paths to total movement. Computed by comparing signal movements between Captures against the active link network.
+- Added Flow Coherence, Flow Resistance, and Turbulence rows to Field Health Metrics table (Section 6) with healthy/unhealthy signal descriptions.
+
+**Schema updates (K4):**
+
+- Updated Link Schema JSON example (Section 8.7) to include transport block with sample values. Updated required fields documentation.
+- Added `flow_coherence`, `flow_resistance`, and `turbulence` to Field Export FieldState JSON example (Section 8.2).
+- Added `flow_coherence_delta`, `flow_resistance_delta`, and `turbulence_delta` to Comparison delta_field_state JSON example (Section 8.9).
+- Updated `kernel_version` in Field Export JSON example from "1.6" to "1.7" (Section 8.2).
+
+**Version markers updated:**
+
+- Updated all version references from v1.6 to v1.7: YAML frontmatter, document heading, Section 0.2 version statement and changelog, Field Export `kernel_version` JSON example (Section 8.2), and document footer.
+
+**Cross-audit consistency pass (K5):**
+
+Following the primary v1.7 additions (K1–K4), a four-model cross-audit (Claude, Grok, Gemini, ChatGPT 5.4) against the full Kernel and CHANGELOG identified 17 internal consistency issues accumulated across prior versions. All corrections below are structural fixes — no new concepts, axioms, or metrics were introduced. Changes are grouped by category.
+
+*Table 1 parity fixes:*
+
+- Added `source_type` to Signal required properties (Table 1). The Signal Source Invariant (Section 1.2) mandates source_type on every signal and Section 8.1 implements it, but the canonical Signal definition in Table 1 omitted it.
+- Added `signals_produced[]`, `transitions_produced[]`, and `session_id` to SimulationRun required properties (Table 1). Section 8.14 requires all three; they link runs to sessions and track generated output.
+- Added `story_thread_id (nullable)` to Transition required fields list in Section 8.13 prose. The prose paragraph described it as required when mechanism_type is story_thread, and the JSON example included it, but the comma-separated required fields list omitted it.
+
+*Cross-reference corrections:*
+
+- Fixed Table of Contents entry for Section 0.1: "What This Spec Governs" → "What This Kernel Governs" to match actual heading text.
+- Fixed Transport Principle note (Section 0.3): "Section 1.1, Link Transport Properties" → "Section 1.1.3" for precise subsection reference.
+- Fixed Section 2 preamble: "Section 2.3" → "Section 2.4" for Cross-Domain Progression Reference. Section 2.3 is Perceptual Topology (inserted in v1.4); Cross-Domain Progression is Section 2.4.
+- Fixed Section 8.6 Process Schema prose: "Section 2.4" → "Section 2.5" for Prompt Dimensionality Reference. Same stale-numbering origin as above.
+- Fixed Holding Zone exclusion list (Section 1.6): "gravity" → "gravity_map" to match FieldState metric name.
+
+*Field Health Metrics table completions (Section 6):*
+
+- Added **Entropy** row to Field Health Metrics table with healthy/unhealthy signal descriptions. Entropy had the most detailed definition in Section 6.1 (five sub-signals, Axiom 9 expression, decay phase driver) but no diagnostic guidance row in the health table.
+- Added **Field Resonance** row to Field Health Metrics table with healthy/unhealthy signal descriptions. Distinct from Resonance Binding (which already had a row): Field Resonance measures emergent harmonic integration of the whole field (macro property), while Resonance Binding measures pairwise binding strength (structural property).
+
+*FieldState scope clarification:*
+
+- Added "or Session" to FieldState Interface scope definition (Section 6.1). The `participant_alignment` metric explicitly states it is "available only when FieldState is scoped to a Session," but the scope definition listed only "Field, Domain, or Region" — a direct contradiction.
+- Added participant_alignment serialization note to Session Schema (Section 8.10) documenting that Session-scoped FieldState (including participant_alignment) is captured within the session-close Capture's field_state.
+
+*Simulation contract fix:*
+
+- Added `pillar_lead` to Map Tension Field output `tension_pairs[]` shape (Section 7.2). The command's own constraint states "Must tag pillar_lead per tension pair" but the output field list omitted it.
+
+*Named Diagnostic Condition fix:*
+
+- Fixed Link Erosion derivation reference (Section 6): "link density counts in FieldState" → "resonance_binding trends (declining binding strength with stable link population)." No `link_density` or `link_count` metric exists in FieldState; the actual metric feeding Link Erosion detection is `resonance_binding` (as stated in Section 6.1).
+
+*Comparison schema completions (Section 8.9):*
+
+- Added `field_resonance_delta` to Comparison delta_field_state JSON example. The Reveal Resonance Field command (Section 7.2) explicitly outputs field_resonance_delta, but the Comparison schema — the object that formally captures deltas between Captures — had no field for it.
+- Added `tension_density_delta`, `entropy_delta`, `evolution_velocity_delta`, and `evolution_breadth_delta` to Comparison delta_field_state JSON example. These scalar metrics have no alternative representation in Comparison (unlike gravity, which has gravity_shifts[], and distributions, which have dimension_migrations[]) and are diagnostically central to decay tracking, polarity analysis, and developmental rhythm.
+
+*Transition cost derivation clarification (Section 5.1):*
+
+- Added derivation note to cost_factors in Transition Interface clarifying that `basin_depth` is not an independent FieldState metric but is derived from `gravity_map` data within the transition's source scope. The Gravity Mapping command outputs basin_depth per region explicitly; between runs, basin_depth_component is computed from current gravity_map. Closes the data-source ambiguity without adding a new metric.
+
+*Template schema fix:*
+
+- Added `"holding": false` to Template Schema Region example (Section 8.11). Table 1 defines `holding` as a Region required property and the Field Export example (Section 8.2) includes it, but the Template example omitted it.
+
+*Round 2 cross-audit fixes (K5b):*
+
+Following a second four-model cross-audit on the K5-corrected Kernel, four additional consistency issues were identified.
+
+- Fixed `scope_id` row in FieldState Interface (Section 6.1) to include "or Session." The K5 edit added Session to the intro sentence but missed this row, leaving them contradictory.
+- Fixed Axiom 6 (Section 0.3): "FieldState coherence metric" → "FieldState gravity_map metric." Gravity is formalized through `gravity_map`, not `coherence`; the two are structurally distinct metrics.
+- Clarified Container definition (Table 1): replaced "is itself a field and has its own FieldState" with precise language that `container_field_state` is a specialized inter-field metric bundle (boundary_permeability, dimensional_alignment, phase_compatibility per Section 10.3), not the standard FieldState Interface (Section 6.1). Resolves semantic drift where Table 1 implied Container carries a standard FieldState.
+- Added "(recommended, nullable)" annotation to `completion_criteria[]` and "(nullable, populated if capture triggered on close)" annotation to `capture_id` in Session required properties (Table 1). Section 8.10 characterizes completion_criteria as "recommended but nullable," but Table 1 listed it without annotation alongside required properties, creating a characterization mismatch.
+
+*Environment clarification:*
+
+- Added Containment Hierarchy Note after Table 1 (Section 1) acknowledging that the containment hierarchy extends above Core Objects to the Environment (Section 8.15), which provides tenant-level data isolation but is not an intelligence field and does not participate in the dimensional architecture. Clarifies that cross-field intelligence operations are scoped to Containers and their constituent Fields, not to the Environment.
+- Added cross-field intelligence scoping sentence to Environment Schema (Section 8.15) clarifying that portfolio-level analysis across Fields is housed in the analyst's own Field within the Container, not on the Environment.
+
+**Structural impact:** 1 axiom added (12). 1 transport principle note added. 1 new subsection added (1.1.3). 4 link transport properties defined. 3 FieldState metrics added (flow_coherence, flow_resistance, turbulence) with corresponding Field Health table rows. 2 existing FieldState metrics given Field Health table rows (entropy, field_resonance). 1 Link Schema updated. 11 schema fields added across Field Export (3), Comparison (8), and Link (transport block). 5 version markers updated. 3 Table 1 definitions corrected (Signal: source_type added; SimulationRun: 3 properties added; Container: FieldState characterization clarified). 2 Table 1 annotations corrected (Session: completion_criteria, capture_id). 1 axiom reference corrected (Axiom 6: coherence → gravity_map). 1 simulation contract output shape corrected (Map Tension Field: pillar_lead in tension_pairs). 1 named diagnostic condition derivation corrected (Link Erosion). 2 FieldState scope references corrected (intro sentence and scope_id row). 5 cross-references corrected. 1 transition cost derivation clarified. 1 serialization note added (participant_alignment path). 1 template schema example corrected. 1 Containment Hierarchy Note added (Section 1) with corresponding Environment Schema clarification (Section 8.15). 23 consistency fixes total from two cross-audit rounds. No existing axioms, invariants, or constraints modified. All changes are additive or corrective.
 
 ---
 
