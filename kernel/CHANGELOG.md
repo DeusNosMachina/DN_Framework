@@ -2,7 +2,38 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v17.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v18.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.8 (March 2026)
+
+**Source:** Analysis of the Geometry of Intelligence corpus document against the v1.7 Kernel identified that thermodynamics, while structurally present across the force model (gravity as attractor dynamics, entropy as temporal cost, transmutation as phase change, basin_depth as energetic stability, flow as transport mechanics), was not explicitly named as the governing regime. A custom GPT consultation confirmed the diagnosis and recommended a minimal intervention: one framing paragraph, optionally one derived metric, and diagnostic labels rather than new ontology. Cross-model review (Claude) concurred with the framing note and diagnostics but recommended against a new `activation_energy` metric on the grounds that `transmutation_potential` and `flow_resistance` already provide the same computational information. The review also identified path-dependence, attractor-basin language for 5D identity, and three specific field health patterns (Metastability, Phase Lock, Runaway Amplification) as low-cost additions derivable from existing metrics. The guiding principle for all v1.8 changes: the Kernel should stay sparse; interpretive expansion belongs in the Geometry of Intelligence corpus layer; the Kernel imports only what changes computation, invariants, or diagnostics.
+
+**Thermodynamic Regime Note (K1):**
+
+- Added Thermodynamic Regime Note to Section 0.3 (after Transport Principle). Names thermodynamics as the governing regime of the existing force model — describing energy cost, irreversibility, equilibrium, and critical transition within intelligence fields — without adding a new force, axiom, or ontology. The note explicitly licenses reasoning about DN fields in terms of state, phase, barrier, and dissipation using existing structural machinery.
+
+**Path-dependence statement (K2):**
+
+- Added two sentences to the Field Ledger Conservation Principle (Section 6) establishing that field evolution is path-dependent: transitions may alter the future state-space of a field even when surface configurations later resemble earlier states, and history is part of structure, not merely record. This extends the Field Ledger's existing irreversibility-of-record to irreversibility-of-structural-consequence. No new objects, metrics, or invariants added; the statement clarifies what the existing append-only ledger already implies for field dynamics.
+
+**5D attractor basin language (K3):**
+
+- Added one sentence to Rule 6 (5D Identity Stability Safeguard, Section 7) naming stable 5D identity states as attractor basins within the field, with basin_depth governing both persistence and resistance to further transmutation. This surfaces attractor-basin language already implicit in gravity_map, basin_depth, Dimensional Collapse, and the 5D Identity Stability Safeguard's three checks. No new metrics or invariants added.
+
+**Named Diagnostic Conditions (K4):**
+
+- Added **Metastability** to Named Diagnostic Conditions (Section 6): field appears stable but only through constant compensatory input rather than genuine structural coherence. Derivable from low evolution_velocity + high unresolved_state_load + active session frequency preventing decay + low field_resonance relative to session investment. Distinct from genuine maturity and healthy consolidation.
+- Added **Phase Lock** to Named Diagnostic Conditions (Section 6): field accumulates transition pressure at a specific dimensional boundary but cannot cross it. Derivable from high transmutation_potential + high flow_resistance or basin_depth at threshold + stalled transitions concentrated at specific boundary + rising localized tension_density. Distinct from Arrested Development (field-wide stasis vs. threshold-specific lock). Notes common manifestation at 4D→5D and 5D→6D boundaries.
+- Added **Runaway Amplification** to Named Diagnostic Conditions (Section 6): recursion or turbulence drives anti-homeostatic escalation — the field's self-referential processes amplify deviation rather than correct it. Derivable from rising turbulence + declining coherence + rising fatigue + increasing evolution_velocity + declining flow_coherence. Distinct from healthy breakthrough and productive turbulence. Named as the field-scale expression of the 8D creative/shadow shift.
+
+**Version markers updated:**
+
+- Updated all version references from v1.7 to v1.8: YAML frontmatter, document heading, Section 0.2 version statement and changelog, Field Export `kernel_version` JSON example (Section 8.2), and document footer.
+- Removed v1.6 changelog summary from Section 0.2 (Kernel now carries only v1.8 current + v1.7 previous; detailed history lives in this CHANGELOG).
+
+**Structural impact:** 1 framing note added (Thermodynamic Regime Note, Section 0.3). 2 sentences added to Field Ledger Conservation Principle (path-dependence). 1 sentence added to Rule 6 (attractor basin language). 3 Named Diagnostic Conditions added (Metastability, Phase Lock, Runaway Amplification). 5 version markers updated. 1 prior-version changelog entry removed from Section 0.2. No axioms, forces, FieldState metrics, structural objects, invariants, constraints, simulation contracts, or serialization schemas added, removed, or modified. All changes are framing statements or diagnostic patterns derived from existing metrics. The Kernel's computational surface is unchanged; its explanatory surface is extended.
 
 ---
 
