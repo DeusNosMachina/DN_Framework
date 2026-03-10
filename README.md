@@ -17,6 +17,7 @@ DN_Framework/
 ├── Growth_Blueprint/    Business application suite — real-world implementation layer
 ├── Nested-Matrices/     Domain-specific dimensional matrices
 ├── Guides/              Supplementary materials and usage guides
+├── field-scanner/       Autonomous research agent — stress-tests the framework against external research
 ├── CHANGELOG.md         Repository-level change history
 ├── LICENSE              CC BY-SA 4.0
 └── README.md            ← you are here
@@ -36,6 +37,8 @@ Each folder contains its own README with detailed descriptions of its contents.
 
 **If you want to prompt with it:** The corpus includes `DN_Starting_Prompts.docx` with ready-to-use entry points for dimensional collaboration with AI systems.
 
+**If you want to test it:** See [`field-scanner/`](field-scanner/) — an autonomous agent that fetches academic papers daily and interprets them through the DN Framework's dimensional architecture, tracking where the framework holds and where it strains.
+
 ---
 
 ## The Three Pillars
@@ -45,6 +48,16 @@ Every element of the DN Framework organizes around three foundational pillars:
 - **Heart** — The motivational force, emotional resonance, and purpose
 - **Truth** — The foundational reality, verifiable evidence, and objective facts
 - **Nuance** — The contextual refinement, systemic connections, and adaptive complexity
+
+---
+
+## DN Field Scanner
+
+The [`field-scanner/`](field-scanner/) directory houses an autonomous research agent that stress-tests the DN Framework against external academic research. Every day, the agent fetches recent papers from across disciplines, selects candidates most likely to strain or validate the framework's structural claims, and interprets them through the Kernel's dimensional architecture.
+
+The scanner tracks two things: **strain** (where external research challenges or exceeds DN's claims) and **validation** (where independent research arrives at structural principles DN already asserts). Findings are routed to the appropriate layer — Kernel revisions, implementation candidates for the product build, corpus enrichment, or scanner-internal tension tracking.
+
+The git history of the scanner's outputs is itself a Field Ledger — the append-only, irreversible record of the framework's engagement with external research over time. See the [field-scanner README](field-scanner/README.md) for full details on scoring, interpretation principles, and architecture.
 
 ---
 
