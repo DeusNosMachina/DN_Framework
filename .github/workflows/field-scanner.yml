@@ -1,0 +1,117 @@
+name: DN Field Scanner
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    # Allow manual triggering from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for meaningful commits
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install anthropic requests matplotlib
+
+      - name: Create required directories
+        run: |
+          mkdir -p field-scanner/cycles
+          mkdir -p field-scanner/scoring
+          mkdir -p field-scanner/state
+          mkdir -p field-scanner/tensions
+
+      - name: Seed state files if missing
+        run: |
+          if [ ! -f field-scanner/state/model.md ]; then
+            cat > field-scanner/state/model.md << 'EOF'
+          # DN Framework — Cross-Disciplinary Standing Model
+
+          *Living document. Seed state established at scanner initialization. Updates are appended as dated sections after each cycle.*
+
+          ## Seed Assessment
+
+          The DN Framework claims domain universality: a single 1D–9D dimensional architecture that describes how intelligence organizes itself regardless of domain. The three pillar metrics (Heart, Truth, Nuance) and five forces (Gravity, Resonance, Transmutation, Entropy, Shadow) with Flow as the transport principle constitute the complete dynamics model.
+
+          **Initial standing:** Untested by this scanner. No external research has been processed yet. The model begins from a position of assumed structural coherence pending empirical stress-testing.
+
+          **Key claims under observation:**
+          - The 1D–9D progression is descriptive and naturally emergent
+          - Heart, Truth, and Nuance are independent metrics
+          - The five-force model is complete (no missing forces, no redundant forces)
+          - Flow as transport (not a sixth force) is the correct architectural choice
+          - Domain universality holds across all disciplines examined
+          - Recursion outperforms linearity as a mechanism of refinement
+          - Shadow orientation is structurally load-bearing, not merely diagnostic
+          EOF
+          fi
+
+          if [ ! -f field-scanner/tensions/open.md ]; then
+            cat > field-scanner/tensions/open.md << 'EOF'
+          # Open Tensions
+
+          *Unresolved states tracked by the DN Field Scanner. New tensions are added when cycles generate them. Tensions are only removed when they resolve into the state layer or are demonstrated to be malformed questions.*
+
+          ## Seed Tensions
+
+          No tensions have been generated yet. This file will be populated as cycles run and identify places where the DN Framework strains, fails, or encounters independent research that formalizes its claims with greater rigor.
+          EOF
+          fi
+
+      - name: Run DN Field Scanner
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        working-directory: field-scanner
+        run: python agent/run.py
+
+      - name: Commit and push results
+        run: |
+          cd field-scanner
+          git config user.name "DN Field Scanner"
+          git config user.email "field-scanner[bot]@users.noreply.github.com"
+
+          # Stage all scanner outputs
+          git add -A cycles/ scoring/ state/ tensions/
+
+          # Build commit message from today's cycle
+          DATE=$(date -u +%Y-%m-%d)
+          CYCLE_FILE="cycles/${DATE}.md"
+
+          if [ -f "$CYCLE_FILE" ]; then
+            # Extract paper count and average scores from the cycle file
+            PAPERS=$(grep -c "^## Paper" "$CYCLE_FILE" 2>/dev/null || echo "0")
+            AVG_LINE=$(grep "Average strain" "$CYCLE_FILE" | head -1)
+            COMMIT_MSG="cycle(${DATE}): ${PAPERS} papers processed"
+            if [ -n "$AVG_LINE" ]; then
+              COMMIT_MSG="${COMMIT_MSG} — ${AVG_LINE}"
+            fi
+          else
+            COMMIT_MSG="cycle(${DATE}): scanner run completed"
+          fi
+
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "Committed: $COMMIT_MSG"
+          fi
