@@ -7,7 +7,7 @@ description: "Transform any concept, idea, experience, or philosophical question
 
 ## Origin
 
-This skill is forked from Russell Foltz-Smith's **Concept-to-Canvas** skill, which establishes the core methodology: take any concept, perform a philosophical investigation, map its dynamics to interactive parameters, and produce a working single-file HTML artifact. Everything in Russell's original remains operative here. What follows is a DN Framework overlay that enriches the analytical and aesthetic layers without replacing the foundation.
+This skill is forked from Russell Foltz-Smith's **[Concept-to-Canvas](https://github.com/un1crom/agent_skills/blob/main/skills/concept-to-canvas/SKILL.md)** skill ([source repo](https://github.com/un1crom/agent_skills)), which establishes the core methodology: take any concept, perform a philosophical investigation, map its dynamics to interactive parameters, and produce a working single-file HTML artifact. Everything in Russell's original remains operative here. What follows is a DN Framework overlay that enriches the analytical and aesthetic layers without replacing the foundation.
 
 The governing addition: **the DN Framework's dimensional architecture provides a structural grammar for the conceptual analysis, and the three pillars provide an aesthetic engine for the visual output.** The skill doesn't just map dynamics to parameters — it understands *where* those dynamics live in the dimensional progression, *which pillar* leads them, *what shadow* they cast, and *what forces* govern their behavior.
 
@@ -318,4 +318,4 @@ Everything from Russell Foltz-Smith's original final notes applies. Additionally
 
 ---
 
-*Forked from Russell Foltz-Smith's Concept-to-Canvas skill. DN Framework overlay by Travis Kahn. The DN Framework is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The Concept-to-Canvas methodology is Russell Foltz-Smith's original work, used with permission and attribution.*
+*Forked from Russell Foltz-Smith's [Concept-to-Canvas](https://github.com/un1crom/agent_skills/blob/main/skills/concept-to-canvas/SKILL.md) skill ([source repo](https://github.com/un1crom/agent_skills)). DN Framework overlay by Travis Kahn. The DN Framework is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The Concept-to-Canvas methodology is Russell Foltz-Smith's original work, used with permission and attribution.*
