@@ -290,18 +290,33 @@ def load_dn_context() -> str:
     kernel_path = PROMPTS_DIR / "dn_kernel_excerpt.md"
     glossary_path = PROMPTS_DIR / "dn_glossary_excerpt.md"
 
-    # Try prompt-directory excerpts first, fall back to repo-level copies
-    for label, path, fallbacks in [
-        ("DN KERNEL", kernel_path, [REPO_ROOT.parent / "DN_Kernel.md", REPO_ROOT.parent / "DN_Kernel_v18.md"]),
-        ("DN GLOSSARY", glossary_path, [REPO_ROOT.parent / "DN_Glossary_of_Terms.md", REPO_ROOT.parent / "DN_Glossary_of_Terms_v15.md"]),
+    # Context budget (chars): Opus has ~200K token window (~800K chars).
+    # Reserve space for: charter (~26K), state (~12K), prompt + paper (~8K), response (~16K).
+    # That leaves ~738K for Kernel + Glossary. Split proportionally by importance.
+    KERNEL_LIMIT = 253_000   # Full Kernel fits — load it entirely
+    GLOSSARY_LIMIT = 140_000  # Full Glossary fits — load it entirely
+    # If these ever grow beyond budget, smart truncation keeps beginning + end
+
+    for label, path, fallbacks, limit in [
+        ("DN KERNEL", kernel_path, [REPO_ROOT.parent / "DN_Kernel.md", REPO_ROOT.parent / "DN_Kernel_v18.md"], KERNEL_LIMIT),
+        ("DN GLOSSARY", glossary_path, [REPO_ROOT.parent / "DN_Glossary_of_Terms.md", REPO_ROOT.parent / "DN_Glossary_of_Terms_v15.md"], GLOSSARY_LIMIT),
     ]:
         loaded = False
         for p in [path] + fallbacks:
             if p.exists():
                 text = p.read_text(encoding="utf-8")
-                # Truncate if very long to stay within context limits
-                if len(text) > 40_000:
-                    text = text[:40_000] + "\n\n[... truncated for context window ...]"
+                if len(text) > limit:
+                    # Smart truncation: keep beginning (structure, axioms) and end (field dynamics)
+                    keep_start = int(limit * 0.7)
+                    keep_end = int(limit * 0.3)
+                    text = (
+                        text[:keep_start]
+                        + f"\n\n[... {len(text) - keep_start - keep_end:,} characters omitted for context window ...]\n\n"
+                        + text[-keep_end:]
+                    )
+                    log.info(f"{label}: {len(text):,} chars after smart truncation (original: {len(p.read_text()):,})")
+                else:
+                    log.info(f"{label}: loaded in full ({len(text):,} chars)")
                 context_parts.append(f"<{label.lower().replace(' ', '_')}>\n{text}\n</{label.lower().replace(' ', '_')}>")
                 loaded = True
                 break
@@ -312,7 +327,7 @@ def load_dn_context() -> str:
     if CHARTER_PATH.exists():
         charter_text = CHARTER_PATH.read_text(encoding="utf-8")
         context_parts.append(f"<interpretation_charter>\n{charter_text}\n</interpretation_charter>")
-        log.info("Loaded Interpretation Charter.")
+        log.info(f"Loaded Interpretation Charter ({len(charter_text):,} chars).")
     else:
         log.warning("Interpretation Charter not found. Agent will interpret without architectural guidance.")
 
@@ -324,13 +339,13 @@ def load_current_state() -> str:
     parts = []
     if STATE_MODEL.exists():
         text = STATE_MODEL.read_text(encoding="utf-8")
-        if len(text) > 8000:
-            text = text[:8000] + "\n\n[... truncated ...]"
+        if len(text) > 20_000:
+            text = text[:20_000] + "\n\n[... truncated ...]"
         parts.append(f"<current_model_state>\n{text}\n</current_model_state>")
     if TENSIONS_OPEN.exists():
         text = TENSIONS_OPEN.read_text(encoding="utf-8")
-        if len(text) > 4000:
-            text = text[:4000] + "\n\n[... truncated ...]"
+        if len(text) > 15_000:
+            text = text[:15_000] + "\n\n[... truncated ...]"
         parts.append(f"<open_tensions>\n{text}\n</open_tensions>")
     return "\n\n".join(parts)
 
