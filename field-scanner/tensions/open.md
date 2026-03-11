@@ -21,3 +21,13 @@
 **Kernel sections engaged:** §0.3 Axiom 3, §3 Pillar Metric, §4.1 Shadow Dimension Map, §1 Dimensional Progression
 **Tension:** Falsifiability of dimensional mapping: If DN's dimensional progression can be projected onto any multi-stage developmental model (GPIF's 5 stages, Erikson's 8 stages, Bloom's 6 levels, etc.) without clear falsification criteria, what distinguishes DN's architecture from a generic stage-theory template? The DN Framework needs to articulate what a staged developmental model would look like that *cannot* be mapped onto 1D-9D progression, or the dimensional claim risks being unfalsifiable.
 
+
+
+---
+
+### New Tensions — 2026-03-11
+
+**Source:** Properties for the Emergence of Consciousness in Humans and AI, an Interdisciplinary Review (strain: 4)
+**Kernel sections engaged:** §0.1 Domain Universality, §1 Axiom 2 (Dimensional Progression), §2 Dimensional Architecture, §4 Shadow Dimension Map, §3 Pillar Metric, §2.2 Nested Dimensionality
+**Tension:** property-conjunction-vs-dimensional-progression: Quiroga's consciousness framework treats emergence as arising from the conjunction of independent, non-hierarchical functional properties (attention, cognition, perception, emotion, embodiment, creativity, self-awareness) rather than from dimensional progression or hierarchical integration. DN needs to articulate why dimensional ordering adds explanatory value beyond what a flat property-conjunction model provides. If a non-hierarchical property set can account for consciousness emergence as effectively as DN's dimensional architecture, what work is the hierarchy doing? This is not a contradiction but a parsimony challenge: DN must show that its additional structural complexity (dimensional ordering, nesting, progression) captures something the flat model misses, or acknowledge that the dimensional hierarchy may be descriptive overlay rather than structural necessity.
+
