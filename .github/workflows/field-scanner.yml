@@ -89,7 +89,7 @@ jobs:
           git config user.email "field-scanner[bot]@users.noreply.github.com"
 
           # Stage all scanner outputs
-          git add -A cycles/ scoring/ state/ tensions/
+          git add -A cycles/ scoring/ state/ tensions/ agent/prompts/
 
           # Build commit message from today's cycle
           DATE=$(date -u +%Y-%m-%d)

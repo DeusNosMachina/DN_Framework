@@ -45,7 +45,9 @@ TENSIONS_OPEN = REPO_ROOT / "tensions" / "open.md"
 CYCLES_DIR = REPO_ROOT / "cycles"
 SCORES_FILE = REPO_ROOT / "scoring" / "scores.jsonl"
 DISTRIBUTION_PNG = REPO_ROOT / "scoring" / "distribution.png"
+TENSION_LEDGER = REPO_ROOT / "tensions" / "ledger.md"
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
+CHARTER_PATH = PROMPTS_DIR / "interpretation_charter.md"
 
 TODAY = datetime.date.today().isoformat()
 
@@ -282,7 +284,7 @@ def select_papers(papers: list[dict], client: anthropic.Anthropic) -> list[dict]
 # ---------------------------------------------------------------------------
 
 def load_dn_context() -> str:
-    """Load the DN Kernel and Glossary for use as grounding context."""
+    """Load the DN Kernel, Glossary, and Interpretation Charter for grounding context."""
     context_parts = []
 
     kernel_path = PROMPTS_DIR / "dn_kernel_excerpt.md"
@@ -305,6 +307,14 @@ def load_dn_context() -> str:
                 break
         if not loaded:
             log.warning(f"Could not load {label}. Interpretation will proceed without it.")
+
+    # Load the Interpretation Charter — this teaches the agent HOW to read the Kernel
+    if CHARTER_PATH.exists():
+        charter_text = CHARTER_PATH.read_text(encoding="utf-8")
+        context_parts.append(f"<interpretation_charter>\n{charter_text}\n</interpretation_charter>")
+        log.info("Loaded Interpretation Charter.")
+    else:
+        log.warning("Interpretation Charter not found. Agent will interpret without architectural guidance.")
 
     return "\n\n".join(context_parts)
 
@@ -349,6 +359,15 @@ def build_interpretation_prompt(paper: dict, dn_context: str, current_state: str
 
     return f"""You are the interpretive engine for the DN Field Scanner. Your job is to honestly assess how this paper relates to the DN Framework's structural claims. Prioritize honesty about the framework's limits over smooth narrative. Comfortable coherence is failure. Productive tension is success.
 
+CRITICAL: You have been provided an Interpretation Charter alongside the Kernel and Glossary. The Charter teaches you HOW to read the Kernel. Follow its guidance on:
+- What "dimensional progression" actually means (structural mapping, NOT sequential climbing)
+- Nested dimensionality and the depth defense against falsifiability claims
+- The maturity weighting of Kernel sections (foundational vs. recent)
+- The "describing DN back to itself" trap (narrative flexibility ≠ validation)
+- What genuine strain looks like vs. vocabulary differences
+- Force model interpretation (dynamics vs. mechanisms)
+- The entropy event horizon open question
+
 {dn_context}
 
 {current_state}
@@ -362,30 +381,32 @@ URL: {source_url}
 Abstract: {abstract}
 
 INTERPRETATION PRINCIPLES:
-1. DN is descriptive, not prescriptive. If this paper shows intelligence organizing differently, that's strain on DN, not failure of the intelligence.
-2. Domain universality is the big claim. Does this paper's domain express the 1D–9D progression, or resist it?
+1. DN is descriptive, not prescriptive. The 1D-9D architecture is a MAP OF STRUCTURE, not a sequential climbing mandate. Ask "does this system resist MAPPING?" not "does this system fail to PROGRESS?"
+2. Domain universality is the big claim. Does this paper's domain exhibit dimensional structure when mapped, or does the mapping produce contradictions?
 3. Pillar independence matters. Papers showing evaluation systems collapsing into fewer axes (or requiring more) are structurally significant.
-4. Mathematical rigor outranks narrative elegance. If this paper formalizes something DN handles only narratively, that's productive tension.
-5. Shadow is load-bearing. Papers engaging with absence, hesitancy, uncertainty, negative space test Section 4 of the Kernel.
+4. Mathematical rigor outranks narrative elegance. If this paper formalizes something DN handles only narratively, that's productive tension — note it as "formal exceeding."
+5. Shadow is load-bearing. Papers engaging with absence, hesitancy, uncertainty, negative space test Section 4 of the Kernel. Papers treating absence as mere deficiency (to fix) create tension; papers treating absence as structurally generative (shaping the system) align.
 6. Recursion is the mechanism. Papers showing recursive approaches outperform linear ones validate Axiom 3. Papers showing linear approaches working fine strain it.
-7. The forces must be distinguishable. If this paper's model works with fewer or different forces, that challenges the five-force model.
+7. Forces describe DYNAMICS, not mechanisms. A paper showing coherence through a novel mechanism is not contradicting Resonance unless the structural DYNAMIC (lateral binding between peer intelligence) is absent. Ask: "Is the dynamic absent, or just the expected mechanism?"
+8. Maturity matters. Strain against foundational claims (dimensional architecture, pillar independence, domain universality) is categorically more significant than strain against recent formalizations (five-force naming, transport properties, thermodynamic regime note). Note which you are testing.
 
 SCORING RULES:
 - Strain (0–10): How much this paper resists DN interpretation. Scores above 5 require identification of a specific DN claim (Kernel section, axiom, or invariant) that is challenged.
-- Validation (0–10): How specifically this paper validates DN — not just consistency but structural specificity. Scores above 3 require articulable structural specificity: name WHICH axiom, invariant, or architectural claim the paper independently confirms. "Compatible with DN" is not validation.
+- Validation (0–10): How specifically this paper validates DN — not just consistency but structural specificity. Scores above 3 require articulable structural specificity: name WHICH axiom, invariant, or architectural claim the paper independently confirms. "Compatible with DN" is not validation. Before scoring above 3, ask: "If DN did not exist, would I still recognize this paper as arriving at the same structural principle?"
 
 Respond ONLY with valid JSON (no markdown fences, no explanation outside the JSON):
 {{
-  "interpretation": "<Your full interpretive analysis. 3-5 paragraphs. Be specific about dimensional mapping, pillar engagement, force dynamics. Identify exactly where the framework handles this paper well and where it strains or fails.>",
+  "interpretation": "<Your full interpretive analysis. 3-5 paragraphs. Be specific about dimensional mapping, pillar engagement, force dynamics. Identify exactly where the framework handles this paper well and where it strains or fails. Follow the Charter's guidance throughout.>",
   "strain": <integer 0-10>,
   "validation": <integer 0-10>,
   "strain_rationale": "<What specific DN claim is challenged and how. If strain <= 5, what general tension exists. If strain > 5, name the Kernel section/axiom.>",
   "validation_rationale": "<What specific DN structural principle is independently confirmed. If validation <= 3, note that compatibility alone is not validation. If validation > 3, name the axiom/invariant.>",
+  "maturity_target": "<Which maturity tier does this paper's strain/validation primarily engage? One of: 'foundational', 'mature', 'recent'. See Charter §4.>",
   "dn_sections_engaged": ["<list of Kernel sections, e.g., '§0.3 Axiom 3', '§3 Pillar Metric', '§4.1 Shadow Dimension Map'>"],
   "dimensions_engaged": ["<list of dimensions engaged, e.g., '2D', '5D', '8D'>"],
   "pillars_engaged": ["<subset of: 'Heart', 'Truth', 'Nuance'>"],
   "forces_engaged": ["<subset of: 'Gravity', 'Resonance', 'Transmutation', 'Entropy', 'Shadow', 'Flow'>"],
-  "tension_generated": "<Description of a new tension to add to tensions/open.md, or null if none>",
+  "tension_generated": "<Description of a new tension to add to the tension ledger, or null if none. Include a short tension_id slug for tracking, e.g., 'entropy-impossibility-conditions'>",
   "model_update": "<Brief description of any update warranted to state/model.md, or null if none>"
 }}"""
 
@@ -469,7 +490,7 @@ def update_model_state(results: list[dict]) -> None:
 
 
 def update_tensions(results: list[dict]) -> None:
-    """Append new tensions to tensions/open.md."""
+    """Update both tensions/open.md (raw log) and tensions/ledger.md (structured tracking)."""
     tensions = [r for r in results if r.get("tension_generated")]
     if not tensions:
         log.info("No new tensions generated this cycle.")
@@ -477,6 +498,7 @@ def update_tensions(results: list[dict]) -> None:
 
     TENSIONS_OPEN.parent.mkdir(parents=True, exist_ok=True)
 
+    # --- Append raw tensions to open.md (unchanged behavior) ---
     section = f"\n\n---\n\n### New Tensions — {TODAY}\n\n"
     for r in tensions:
         title = r["paper"]["title"]
@@ -493,6 +515,158 @@ def update_tensions(results: list[dict]) -> None:
         f.write(section)
 
     log.info(f"Added {len(tensions)} new tensions to tensions/open.md.")
+
+    # --- Update structured Tension Ledger ---
+    _update_tension_ledger(tensions)
+
+
+def _update_tension_ledger(new_tensions: list[dict]) -> None:
+    """
+    Maintain a structured tension ledger that consolidates related tensions,
+    tracks citation counts, and promotes tensions that cross the review threshold.
+
+    The ledger is a markdown file with a parseable structure:
+    - Each tension has an ID, description, citation count, source papers, maturity target, and status
+    - Status: 'tracking' (< 3 citations), 'review' (>= 3 citations), 'resolved', 'malformed'
+    - The REVIEW QUEUE section lists tensions ready for human attention
+    """
+    REVIEW_THRESHOLD = 3
+
+    # Load existing ledger or create new one
+    if TENSION_LEDGER.exists():
+        ledger_text = TENSION_LEDGER.read_text(encoding="utf-8")
+    else:
+        ledger_text = ""
+
+    # Parse existing tensions from ledger (simple structured format)
+    # Format: ### TENSION_ID | status | citations: N
+    import re
+    existing_tensions: dict[str, dict] = {}
+    tension_blocks = re.split(r'(?=^### [a-z])', ledger_text, flags=re.MULTILINE)
+    for block in tension_blocks:
+        header_match = re.match(
+            r'^### ([a-z0-9_-]+) \| status: (\w+) \| citations: (\d+)',
+            block.strip()
+        )
+        if header_match:
+            tid = header_match.group(1)
+            existing_tensions[tid] = {
+                "id": tid,
+                "status": header_match.group(2),
+                "citations": int(header_match.group(3)),
+                "block": block.strip(),
+            }
+
+    # Process new tensions
+    updated_ids = set()
+    new_entries = []
+
+    for r in new_tensions:
+        tension_text = r.get("tension_generated", "")
+        title = r.get("paper", {}).get("title", "Unknown")
+        strain = r.get("strain", 0)
+        maturity = r.get("maturity_target", "unknown")
+        sections = ", ".join(r.get("dn_sections_engaged", []))
+
+        # Extract tension_id if the agent included one (format: "tension_id: some-slug-here")
+        tid_match = re.search(r'([a-z][a-z0-9_-]{2,40})', tension_text.lower().replace(" ", "-")[:60])
+        tension_id = tid_match.group(1) if tid_match else f"tension-{TODAY}-{len(new_entries)}"
+
+        # Check if this tension matches an existing one (by ID prefix match)
+        matched_existing = None
+        for eid, edata in existing_tensions.items():
+            # Simple keyword overlap check — tensions with similar IDs are related
+            if (eid in tension_id or tension_id in eid or
+                    _tension_similarity(eid, tension_id) > 0.5):
+                matched_existing = eid
+                break
+
+        if matched_existing:
+            # Increment citation count on existing tension
+            old = existing_tensions[matched_existing]
+            new_count = old["citations"] + 1
+            new_status = "review" if new_count >= REVIEW_THRESHOLD else old["status"]
+            # Append new source to existing block
+            updated_block = old["block"].replace(
+                f"citations: {old['citations']}",
+                f"citations: {new_count}"
+            )
+            if new_status != old["status"]:
+                updated_block = updated_block.replace(
+                    f"status: {old['status']}",
+                    f"status: {new_status}"
+                )
+            updated_block += f"\n- [{TODAY}] {title} (strain: {strain})"
+            existing_tensions[matched_existing]["block"] = updated_block
+            existing_tensions[matched_existing]["citations"] = new_count
+            existing_tensions[matched_existing]["status"] = new_status
+            updated_ids.add(matched_existing)
+            log.info(f"  Tension '{matched_existing}' now at {new_count} citations (status: {new_status})")
+        else:
+            # Create new tension entry
+            entry = (
+                f"### {tension_id} | status: tracking | citations: 1\n\n"
+                f"**Maturity target:** {maturity}\n"
+                f"**Kernel sections:** {sections}\n"
+                f"**Description:** {tension_text}\n\n"
+                f"**Sources:**\n"
+                f"- [{TODAY}] {title} (strain: {strain})"
+            )
+            new_entries.append(entry)
+            log.info(f"  New tension registered: '{tension_id}'")
+
+    # Rebuild ledger
+    header = (
+        "# DN Field Scanner — Tension Ledger\n\n"
+        "*Structured tracking of tensions across cycles. Tensions are promoted to*\n"
+        "*the Review Queue when they accumulate 3+ independent citations.*\n\n"
+        f"*Last updated: {TODAY}*\n\n"
+    )
+
+    # Collect review-ready tensions
+    review_queue = []
+    tracking = []
+    resolved = []
+
+    for tid, tdata in existing_tensions.items():
+        if tdata["status"] == "review":
+            review_queue.append(tdata["block"])
+        elif tdata["status"] in ("resolved", "malformed"):
+            resolved.append(tdata["block"])
+        else:
+            tracking.append(tdata["block"])
+
+    # Add new entries to tracking
+    tracking.extend(new_entries)
+
+    sections = [header]
+
+    if review_queue:
+        sections.append("---\n\n## REVIEW QUEUE\n\n"
+                       "*These tensions have been independently surfaced by 3+ papers.*\n"
+                       "*They warrant human review for potential Kernel revision.*\n\n")
+        sections.append("\n\n".join(review_queue))
+
+    sections.append("\n\n---\n\n## TRACKING\n\n"
+                   "*Active tensions accumulating citations.*\n\n")
+    sections.append("\n\n".join(tracking) if tracking else "*No tensions currently tracking.*")
+
+    if resolved:
+        sections.append("\n\n---\n\n## RESOLVED / MALFORMED\n\n")
+        sections.append("\n\n".join(resolved))
+
+    TENSION_LEDGER.write_text("\n".join(sections), encoding="utf-8")
+    log.info(f"Updated tension ledger: {len(review_queue)} in review, {len(tracking)} tracking.")
+
+
+def _tension_similarity(a: str, b: str) -> float:
+    """Simple word-overlap similarity between two tension IDs."""
+    words_a = set(a.replace("-", " ").replace("_", " ").split())
+    words_b = set(b.replace("-", " ").replace("_", " ").split())
+    if not words_a or not words_b:
+        return 0.0
+    overlap = words_a & words_b
+    return len(overlap) / min(len(words_a), len(words_b))
 
 
 # ---------------------------------------------------------------------------
