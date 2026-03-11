@@ -23,3 +23,21 @@
 
 **Sources:**
 - [2026-03-11] Properties for the Emergence of Consciousness in Humans and AI, an Interdisciplinary Review (strain: 4)
+
+### non-normal-transient-amplification-v2 | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2 Five Forces, §0.3 Axiom 3, §0.1 Domain Universality, §2 Dimensional Architecture, §1 Axiom 2 (Dimensional Progression)
+**Description:** non-normal-transient-amplification-v2: Revised from initial scan. Pseudo-coherence challenges the Resonance force at the DYNAMIC level (not just mechanism): collective coherence arises from matrix-geometric imposition on passive elements rather than lateral binding between peer elements. DN can partially absorb this by mapping to Gravity (concentration along dominant mode) but must then acknowledge that collective coherence does not necessarily involve Resonance — straining the five-force model's implicit completeness claim. Additionally, the formal mathematical apparatus (pseudospectral thresholds, non-normality measures, pseudo-critical transitions) constitutes formal exceeding that DN's descriptive vocabulary cannot express. The dimensional architecture itself is not contradicted — pseudo-coherence maps coherently to 1D-2D — but the force model and Axiom 3 face genuine pressure.
+
+**Sources:**
+- [2026-03-11] Pseudo-Coherence and Stochastic Synchronization: A Non-Normal Route to Collective Dynamics without Oscillators (strain: 6)
+
+### homogeneous-vs-qualitative-dimensions | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §2 Dimensional Architecture, §0.1 Domain Universality, §2 Five Forces, §1.5 Signal Lock, §0.3 Axiom 3 (Recursion), §2.2 Nested Dimensionality
+**Description:** homogeneous-vs-qualitative-dimensions: Gallo, Lambiotte & Carletti (2025) demonstrate that multi-dimensional synchronization on networks can be rigorously analyzed using geometrically homogeneous dimensions (oscillators on d-spheres with no qualitative distinction between dimensions) coupled through matrix-weighted edges. DN's dimensional architecture assigns qualitatively distinct structural properties to each dimension (1D–9D). This paper shows that a homogeneous-dimensional framework with rich coupling structure (matrix weights) achieves formal predictive power — stability proofs, necessary conditions, decomposition theorems — that DN's qualitative-hierarchical approach cannot currently express. DN must articulate what explanatory work qualitative dimensional distinction performs that homogeneous-dimensional models with structured coupling cannot replicate. This compounds the parsimony challenge from the Quiroga property-conjunction tension: multiple rigorous frameworks achieve results without qualitative dimensional hierarchy. Kernel sections: §2 Dimensional Architecture, §0.1 Domain Universality, §2 Five Forces.
+
+**Sources:**
+- [2026-03-11] Synchronization of higher-dimensional Kuramoto oscillators on networks: from scalar to matrix-weighted couplings (strain: 6)
