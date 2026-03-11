@@ -18,6 +18,7 @@ DN_Framework/
 ├── Nested-Matrices/     Domain-specific dimensional matrices
 ├── Guides/              Supplementary materials and usage guides
 ├── field-scanner/       Autonomous research agent — stress-tests the framework against external research
+├── skills/              Agent skills — reusable instruction sets for AI-assisted creation and analysis
 ├── CHANGELOG.md         Repository-level change history
 ├── LICENSE              CC BY-SA 4.0
 └── README.md            ← you are here
@@ -39,6 +40,8 @@ Each folder contains its own README with detailed descriptions of its contents.
 
 **If you want to test it:** See [`field-scanner/`](field-scanner/) — an autonomous agent that fetches academic papers daily and interprets them through the DN Framework's dimensional architecture, tracking where the framework holds and where it strains.
 
+**If you want to create with it:** See [`skills/`](skills/) — reusable instruction sets that infuse DN's dimensional logic into AI-assisted workflows. Upload a skill file to any AI chat to activate its methodology.
+
 ---
 
 ## The Three Pillars
@@ -58,6 +61,16 @@ The [`field-scanner/`](field-scanner/) directory houses an autonomous research a
 The scanner tracks two things: **strain** (where external research challenges or exceeds DN's claims) and **validation** (where independent research arrives at structural principles DN already asserts). Findings are routed to the appropriate layer — Kernel revisions, implementation candidates for the product build, corpus enrichment, or scanner-internal tension tracking.
 
 The git history of the scanner's outputs is itself a Field Ledger — the append-only, irreversible record of the framework's engagement with external research over time. See the [field-scanner README](field-scanner/README.md) for full details on scoring, interpretation principles, and architecture.
+
+---
+
+## Skills
+
+The [`skills/`](skills/) directory contains reusable instruction sets that bring DN's structural thinking into AI-assisted creative and analytical workflows. Skills are not autonomous agents — they are methodology files you upload to an AI chat to activate a specific process.
+
+**Current skills:**
+
+- **[DN Concept-to-Canvas](skills/SKILL_DN-Concept-to-Canvas.md)** — Transforms any concept into an interactive visual-computational investigation. Analyzes concepts through dimensional tension-pairs, maps dynamics to interactive parameters, and produces working single-file HTML artifacts. Forked from Russell Foltz-Smith's Concept-to-Canvas skill with a DN Framework overlay that adds pillar-led aesthetics, shadow mode, five-force visual modeling, and prototype activation for DN-compliant system design. Works for any project — DN vocabulary activates when relevant and disappears when it isn't.
 
 ---
 
