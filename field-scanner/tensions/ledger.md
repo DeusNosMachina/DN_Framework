@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-11*
+*Last updated: 2026-03-12*
 
 
 
@@ -41,3 +41,12 @@
 
 **Sources:**
 - [2026-03-11] Synchronization of higher-dimensional Kuramoto oscillators on networks: from scalar to matrix-weighted couplings (strain: 6)
+
+### flow-compositional-structure | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2.5 Flow, §2 Five Forces, §0.3 Axiom 12 (Flow), §0.1 Domain Universality, §2 Dimensional Architecture
+**Description:** flow-compositional-structure: PDGC (Faes et al. 2025) decomposes directional information flow into redundant, synergistic, and unique causal components using partial information decomposition — a complete decomposition algebra for the compositional structure of inter-system influence. DN's Flow (§2.5, Axiom 12) treats transport as undifferentiated, providing no apparatus to distinguish between these structurally distinct modes of information transfer. The five-force model faces compounding pressure: redundancy and synergy cut across the Gravity/Resonance distinction rather than mapping onto individual forces, suggesting the force model's categories may not align with the actual structural primitives of information flow. This is formal exceeding that compounds existing tensions from pseudo-coherence and Kuramoto synchronization — rigorous mathematical frameworks achieving precise decomposition in territory DN claims, using structural primitives DN lacks. Kernel sections: §2.5 Flow, §2 Five Forces, §0.3 Axiom 12.
+
+**Sources:**
+- [2026-03-12] Dissecting Spectral Granger Causality through Partial Information Decomposition (strain: 6)

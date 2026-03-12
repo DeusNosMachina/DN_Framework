@@ -45,3 +45,13 @@
 **Kernel sections engaged:** §2 Dimensional Architecture, §0.1 Domain Universality, §2 Five Forces, §1.5 Signal Lock, §0.3 Axiom 3 (Recursion), §2.2 Nested Dimensionality
 **Tension:** homogeneous-vs-qualitative-dimensions: Gallo, Lambiotte & Carletti (2025) demonstrate that multi-dimensional synchronization on networks can be rigorously analyzed using geometrically homogeneous dimensions (oscillators on d-spheres with no qualitative distinction between dimensions) coupled through matrix-weighted edges. DN's dimensional architecture assigns qualitatively distinct structural properties to each dimension (1D–9D). This paper shows that a homogeneous-dimensional framework with rich coupling structure (matrix weights) achieves formal predictive power — stability proofs, necessary conditions, decomposition theorems — that DN's qualitative-hierarchical approach cannot currently express. DN must articulate what explanatory work qualitative dimensional distinction performs that homogeneous-dimensional models with structured coupling cannot replicate. This compounds the parsimony challenge from the Quiroga property-conjunction tension: multiple rigorous frameworks achieve results without qualitative dimensional hierarchy. Kernel sections: §2 Dimensional Architecture, §0.1 Domain Universality, §2 Five Forces.
 
+
+
+---
+
+### New Tensions — 2026-03-12
+
+**Source:** Dissecting Spectral Granger Causality through Partial Information Decomposition (strain: 6)
+**Kernel sections engaged:** §2.5 Flow, §2 Five Forces, §0.3 Axiom 12 (Flow), §0.1 Domain Universality, §2 Dimensional Architecture
+**Tension:** flow-compositional-structure: PDGC (Faes et al. 2025) decomposes directional information flow into redundant, synergistic, and unique causal components using partial information decomposition — a complete decomposition algebra for the compositional structure of inter-system influence. DN's Flow (§2.5, Axiom 12) treats transport as undifferentiated, providing no apparatus to distinguish between these structurally distinct modes of information transfer. The five-force model faces compounding pressure: redundancy and synergy cut across the Gravity/Resonance distinction rather than mapping onto individual forces, suggesting the force model's categories may not align with the actual structural primitives of information flow. This is formal exceeding that compounds existing tensions from pseudo-coherence and Kuramoto synchronization — rigorous mathematical frameworks achieving precise decomposition in territory DN claims, using structural primitives DN lacks. Kernel sections: §2.5 Flow, §2 Five Forces, §0.3 Axiom 12.
+

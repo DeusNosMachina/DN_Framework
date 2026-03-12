@@ -67,3 +67,21 @@ Add to Open Questions: Gallo et al. (2025) on higher-dimensional Kuramoto synchr
 
 No update warranted. The paper demonstrates cluster synchronization in reservoir computer networks through well-characterized symmetry-based mechanisms. While compatible with DN's vocabulary, it does not generate sufficient strain or validation to modify the standing model. It provides a useful contrast case against the pseudo-coherence tension (Troude & Sornette): this paper's synchronization operates through classical resonant coupling, confirming that resonance-based organization works in data-driven systems but through entirely conventional mechanisms that DN's force model describes at lower resolution than the paper's own mathematical framework.
 
+
+
+---
+
+### Cycle Update — 2026-03-12
+
+**Dissecting Spectral Granger Causality through Partial Information Decomposition** (strain, strain: 6, validation: 1)
+
+Add to Open Questions: Faes et al. (2025) on PDGC demonstrates that information flow between coupled subsystems has compositional structure (redundancy, synergy, unique information) that DN's Flow concept and five-force model cannot currently express. DN needs to determine whether Flow requires internal decomposition to remain adequate as a transport principle, or whether the force model's categories need restructuring to accommodate information-theoretic primitives that cut across current force boundaries. Add to domain tracking: Network Neuroscience/Information Theory — PDGC provides formal decomposition algebra for directional influence that exceeds DN's descriptive capacity for inter-field dynamics.
+
+**Video TokenCom: Textual Intent-Guided Multi-Rate Video Token Communications with UEP-Based Adaptive Source-Channel Coding** (strain, strain: 3, validation: 1)
+
+No update warranted. The paper generates low strain (3) and minimal validation (1). It adds a minor data point to the existing pattern of formal exceeding of DN's Flow concept by domain-specific mathematical frameworks, but does not rise to the level of modifying the standing model. The selection rationale's framing of TokenCom as using 'fundamentally different structural primitives' was assessed and found to be a vocabulary difference rather than structural incompatibility — tokens, UEP, and multi-rate coding are domain-specific mechanisms that implement information organization mappable onto DN's dimensional positions without contradiction.
+
+**Progressive Split Mamba: Effective State Space Modelling for Image Restoration** (validation, strain: 3, validation: 2)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It reinforces the existing parsimony challenge (homogeneous-vs-qualitative-dimensions tension from Gallo et al.) with another example of successful multi-scale organization without qualitative dimensional hierarchy, but does not add a categorically new tension. The selection rationale's framing of PS-Mamba as validating dimensional progression was assessed as a vocabulary-overlap trap per Charter §5.
+
