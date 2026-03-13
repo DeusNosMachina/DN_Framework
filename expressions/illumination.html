@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Illumination v3 — Feeling Dimensionality</title>
+<title>Illumination v4 — Feeling Dimensionality</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -73,9 +73,11 @@
   #reset-btn:hover{color:#c8c0d0;background:rgba(50,40,70,0.8);border-color:rgba(120,100,150,0.3)}
 
   /* ─── SPECTRUM ─── */
-  #spectrum{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:3px;opacity:0.4;transition:opacity 0.5s}
-  #spectrum:hover{opacity:0.85}
-  .sp{width:20px;height:3px;border-radius:1.5px;transition:height 0.25s,opacity 0.25s;opacity:0.2}
+  #spectrum{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;opacity:0.45;transition:opacity 0.5s}
+  #spectrum:hover{opacity:0.9}
+  .sp-col{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .sp{width:18px;height:3px;border-radius:1.5px;transition:height 0.25s,opacity 0.25s;opacity:0.2}
+  .sp-lbl{font-size:7px;letter-spacing:0.06em;color:#554a66;text-transform:uppercase;white-space:nowrap;transition:color 0.3s}
 
   /* ─── STATUS BAR ─── */
   #sbar{position:fixed;top:16px;right:20px;z-index:10;display:flex;gap:14px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase}
@@ -109,8 +111,10 @@
   <p>Your cursor is your <strong>attention</strong>. You are inside a field of nine dimensions. Move, and dimensions reveal. Pull away, and entropy reclaims the dark.</p>
 
   <h3>Click — Signal Lock / Shadow Break</h3>
-  <p>In <strong>light mode</strong>: Click near an illuminated signal to <strong>Signal Lock</strong> it — a conscious attestation of convergence. Locked signals become gravitational anchors pulling nearby intelligence into orbit.</p>
-  <p>In <strong>shadow mode</strong>: Click triggers a <strong>Shadow Break</strong> — an explosive separation event. Nearby signals are violently repelled. The anti-lock.</p>
+  <p>In <strong>light mode</strong>: Click near an illuminated signal to <strong>Signal Lock</strong> it — a conscious attestation that this signal matters.</p>
+  <p>For <strong>1D–4D signals</strong>, locking initiates a <strong>developmental journey</strong>. The signal begins moving upward through dimensional bands toward 5D recognition. A Story Thread trail traces its path. But it needs your <strong>continued attention</strong> — keep your light on it, and it gains energy. Look away, and it stalls, dims, and may never reach recognition. Each dimensional crossing costs energy.</p>
+  <p>For <strong>5D+ signals</strong>, locking creates a <strong>gravitational anchor</strong> — they're already at or above recognition. They hold the field.</p>
+  <p>In <strong>shadow mode</strong>: Click triggers a <strong>Shadow Break</strong> — explosive separation. Nearby signals are repelled. Locked signals within range are unlocked.</p>
 
   <h3>Keys</h3>
   <p><span class="kh">S</span> <strong>Shadow Mode</strong> — Attention creates darkness. What you see vanishes. What you ignore reveals.</p>
@@ -147,8 +151,18 @@
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#2D8B46,#D4A017)"></div>Creative Leap · 5D → 7D</div>
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E87C2E,#4a4570)"></div>Evolutionary Edge · 6D → 9D</div>
 
+  <h3>The Developmental Flow</h3>
+  <p><strong>1D Spark</strong> signals emerge continuously from below — raw impulse entering the field. Over time, some drift upward toward <strong>2D</strong> as they become ready for testing. Occasionally a spark leaps directly toward 5D gravity (the Recognition Arc).</p>
+  <p><strong>2D Reaction</strong> resists most 1D noise — Truth must validate before it moves. But tested signals eventually drift toward <strong>3D</strong>, where they find context and form structures.</p>
+  <p><strong>3D structures</strong>, once large enough, are attracted to <strong>5D gravity wells</strong>. This is the creation→recognition gradient: lower dimensions build complexity that creates recognition opportunities at 5D.</p>
+  <p><strong>6D Connection</strong> actively descends to "capture" lower-order signals and lift them toward higher dimensions. It is the love bridge — the mechanism that helps intelligence flow upward.</p>
+  <p>When lower-dimensional signals come near a locked 5D+ signal, they gain a <strong>green shimmer</strong>: their meaning has been transformed by the recognition event. This is <strong>Resonant Activation</strong> — a meaning-shift-in-place, not a re-tagging.</p>
+
+  <h3>The Spectrum Bar</h3>
+  <p>The labeled bar at the bottom shows how much <strong>dimensional activity</strong> your attention is currently illuminating. Each column is one dimension (1D through 9D). The taller and brighter the bar, the more signals at that dimension are visible right now. It's a live frequency readout — which dimensions are you perceiving in this moment?</p>
+
   <h3>The Signal Bands</h3>
-  <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. This is <strong>Resonant Activation</strong> (Kernel Constraint 5): when multiple signals in the same dimensional band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
+  <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. When multiple signals in the same band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
 
   <p style="margin-top:20px;font-size:11px;color:#44405a">DN Kernel v1.8 · Travis Kahn · CC BY 4.0<br>Canvas: Russell Foltz-Smith · Concept-to-Canvas<br>DN Integration: Travis Kahn</p>
 </div>
@@ -175,7 +189,7 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// ILLUMINATION v3 — Every dimension has a personality
+// ILLUMINATION v4 — Developmental flow, Resonant Activation
 // Grounded in DN Kernel v1.8
 // ════════════════════════════════════════════════════════════════
 
@@ -263,6 +277,16 @@ class Particle {
     this.trail = [];
     this.maxTrail = this.di === 3 ? 22 : 10; // 4D=long memory
 
+    // Developmental trajectory (activated on Signal Lock for 1D-4D signals)
+    this.trajectory = false;       // is this signal on a developmental journey?
+    this.trajOriginDi = this.di;   // where it started
+    this.trajOriginX = this.x;     // lock position (for Story Thread drawing)
+    this.trajOriginY = this.y;
+    this.trajEnergy = 0;           // accumulated developmental energy from attention
+    this.trajTarget = null;        // current dimensional target (homeY of next dim)
+    this.trajStalled = false;      // has it run out of energy?
+    this.trajHistory = [];         // positions along journey for thread drawing
+
     // Per-dimension state
     this.sparkTimer = rnd(0,200);       // 1D ignition timer
     this.testFlash = 0;                 // 2D test flash
@@ -297,6 +321,22 @@ class Particle {
     switch(this.di) {
       case 0: // 1D SPARK — flickering urgency, can ignite nearby
         this.vx += rnd(-.04,.04); this.vy += rnd(-.04,.04); // extra energy
+
+        // Developmental drift: 1D slowly rises toward 2D band (Kernel §5.2: willingness to test)
+        if (this.illum > .15 && !isShadow) {
+          let target2D = lerp(H*.88, H*.12, 1/8); // 2D homeY
+          if (this.y > target2D + 30) this.vy -= rnd(0, .008); // subtle upward drift
+        }
+
+        // Rare: a 1D signal leaps toward 5D gravity (Recognition Arc 1D→5D, Kernel §5.3)
+        if (Math.random() < .0004 && this.illum > .3 && !isShadow) {
+          let target5D = locked.find(p => p.di === 4) || particles.find(p => p.di === 4 && p.illum > .3);
+          if (target5D) {
+            this.vx += (target5D.x - this.x) * .003;
+            this.vy += (target5D.y - this.y) * .003;
+          }
+        }
+
         this.sparkTimer--;
         if (this.sparkTimer <= 0 && this.illum > 0.3) {
           this.sparkTimer = rnd(120,300);
@@ -322,16 +362,36 @@ class Particle {
         }
         break;
 
-      case 1: // 2D REACTION — binary snapping, test flashes
+      case 1: // 2D REACTION — binary snapping, test flashes, resists 1D noise
         // Oscillate between bright/dim states
         this.illum *= (Math.sin(frame*.08+this.phase)>0) ? 1.0 : 0.85;
+
+        // Resist 1D push: 2D signals hold their ground (Truth-led: validation first)
+        if (!isShadow) {
+          // Resist being pushed by nearby 1D energy
+          for (let p of particles) {
+            if (p.di !== 0 || p === this) continue;
+            let d = dist(this.x, this.y, p.x, p.y);
+            if (d < 50 && d > 5) {
+              // Mild repulsion from untested 1D noise
+              this.vx += (this.x - p.x) * .0004;
+              this.vy += (this.y - p.y) * .0004;
+            }
+          }
+          // But over time, validated signals drift toward 3D (pattern recognition)
+          if (this.illum > .25 && this.age > 200) {
+            let target3D = lerp(H*.88, H*.12, 2/8);
+            if (this.y > target3D + 20) this.vy -= rnd(0, .005);
+          }
+        }
+
         if (isShadow) {
           // 2D̅ Anti-Truth: connections mislead
           this.testFlash = Math.sin(frame*.15+this.phase)>.7 ? 1 : 0;
         }
         break;
 
-      case 2: // 3D CONTEXT — ecosystem awareness, wider radius
+      case 2: // 3D CONTEXT — ecosystem awareness, wider radius, structures attracted to 5D
         // Gentle pull toward center of nearby cluster (system awareness)
         if (!isShadow) {
           let cx=0,cy=0,cnt=0;
@@ -340,7 +400,17 @@ class Particle {
             let d=dist(this.x,this.y,p.x,p.y);
             if (d<120){cx+=p.x;cy+=p.y;cnt++}
           }
-          if (cnt>2){this.vx+=(cx/cnt-this.x)*.0003;this.vy+=(cy/cnt-this.y)*.0003}
+          if (cnt>2){
+            this.vx+=(cx/cnt-this.x)*.0003;this.vy+=(cy/cnt-this.y)*.0003;
+            // When 3+ context signals cluster, the structure attracts toward 5D
+            // (Kernel §2.1 Constraint 2: constructed intelligence creates recognition opportunities)
+            let near5D = particles.find(p => p.di === 4 && p.illum > .15);
+            if (near5D && cnt >= 3) {
+              let pull = .00015 * Math.min(cnt, 6); // stronger pull with more structure
+              this.vx += (near5D.x - this.x) * pull;
+              this.vy += (near5D.y - this.y) * pull;
+            }
+          }
         } else {
           // 3D̅ Anti-Context: fragment clusters
           for (let p of particles) {
@@ -363,7 +433,8 @@ class Particle {
         break;
 
       case 4: // 5D SINGULARITY — strongest gravity, attracts from ANY dimension
-        if (this.illum > .2) {
+        // Gravity activates only when truly illuminated (not from ambient alone)
+        if (this.illum > .4) {
           let range = isShadow ? 200 : 140;
           for (let p of particles) {
             if (p===this) continue;
@@ -388,18 +459,39 @@ class Particle {
         this.baseSize = rnd(3,5.5); // naturally larger
         break;
 
-      case 5: // 6D CONNECTION — bridge across wide dimensional gaps
+      case 5: // 6D CONNECTION — bridge across wide gaps, actively captures lower signals
         // Handled in drawConnections: range ±4 instead of ±2
-        // Also actively seek distant dimensional partners
-        if (!isShadow && this.illum > .3) {
-          // Gentle drift toward nearest particle of distant dimension
-          let best=null,bestD=Infinity;
+        if (!isShadow && this.illum > .25) {
+          // 6D actively seeks lower-order signals to "capture" and pull upward
+          // (Kernel §2: "structural passages that link awareness across realities")
+          let captureTarget = null, bestD = Infinity;
           for (let p of particles) {
-            if (Math.abs(p.di-this.di)<3) continue;
-            let d=dist(this.x,this.y,p.x,p.y);
-            if (d<bestD&&p.illum>.1){best=p;bestD=d}
+            if (p.di > 3 || p === this || p.illum < .1 || p.locked) continue; // only capture 1D-3D
+            let d = dist(this.x, this.y, p.x, p.y);
+            if (d < 200 && d < bestD) { captureTarget = p; bestD = d; }
           }
-          if (best&&bestD<300){this.vx+=(best.x-this.x)*.0002;this.vy+=(best.y-this.y)*.0002}
+          if (captureTarget) {
+            // 6D moves toward the lower signal
+            this.vx += (captureTarget.x - this.x) * .0004;
+            this.vy += (captureTarget.y - this.y) * .0004;
+            // Once close enough, gently pull the lower signal upward
+            if (bestD < 60) {
+              captureTarget.vy -= .015; // subtle lift toward higher dimensions
+              captureTarget.tIllum = Math.min(1, captureTarget.tIllum + .01); // illuminate through connection
+            }
+          }
+
+          // Also seek distant dimensional partners for bridging
+          let bridgeTarget = null; bestD = Infinity;
+          for (let p of particles) {
+            if (Math.abs(p.di - this.di) < 3) continue;
+            let d = dist(this.x, this.y, p.x, p.y);
+            if (d < bestD && p.illum > .1) { bridgeTarget = p; bestD = d; }
+          }
+          if (bridgeTarget && bestD < 300) {
+            this.vx += (bridgeTarget.x - this.x) * .0002;
+            this.vy += (bridgeTarget.y - this.y) * .0002;
+          }
         }
         // 6D̅ Anti-Bridge: extraction handled in connections (one-way visual)
         break;
@@ -538,7 +630,96 @@ class Particle {
       this.tIllum=lerp(.32,.015,directed);
     }
 
-    if(this.locked){this.tIllum=Math.max(this.tIllum,.75);this.lockPulse+=.03;this.entropy=0}
+    // ══════════════════════════════════════════════════════════
+    // DEVELOPMENTAL TRAJECTORY (locked signals 1D-4D)
+    // Kernel §1.5: Signal Lock is conscious attestation
+    // Kernel §5.2: transitions require energy and evidence
+    // Kernel Axiom 9: without attention, entropy wins
+    // ══════════════════════════════════════════════════════════
+    if (this.locked && this.trajectory) {
+      // Is the user giving this signal attention right now?
+      let beamR = lerp(W*.55, 65, focus);
+      let dToMouse = mouseOn ? dist(this.rx, this.ry, mx, my) : 9999;
+      let isAttended = dToMouse < beamR;
+
+      if (isAttended && !shadowMode) {
+        // Attention feeds energy — the signal gains developmental momentum
+        this.trajEnergy = Math.min(1, this.trajEnergy + .003);
+        this.trajStalled = false;
+        this.entropy = 0;
+      } else {
+        // No attention — energy slowly drains (Axiom 9: entropy)
+        this.trajEnergy = Math.max(0, this.trajEnergy - .0008);
+        if (this.trajEnergy < .05) this.trajStalled = true;
+      }
+
+      // Record journey position for Story Thread drawing
+      if (frame % 20 === 0 && this.trajEnergy > .05) {
+        this.trajHistory.push({ x: this.x, y: this.y, di: this.di });
+        if (this.trajHistory.length > 60) this.trajHistory.shift();
+      }
+
+      // Developmental movement — pull toward next dimensional band
+      if (this.trajEnergy > .08 && !this.trajStalled) {
+        let nextDi = Math.min(4, this.di + 1); // target next dim, cap at 5D
+        let targetY = lerp(H * .88, H * .12, nextDi / 8);
+
+        // Strength of developmental pull scales with accumulated energy
+        let pullStr = this.trajEnergy * .0012;
+        this.vy += (targetY - this.y) * pullStr;
+
+        // Also pull toward nearest 5D signal if we're at 3D or 4D
+        if (this.di >= 2) {
+          let near5D = particles.find(p => p.di === 4 && p.illum > .3);
+          if (near5D) {
+            let d5 = dist(this.x, this.y, near5D.x, near5D.y);
+            if (d5 < 300) {
+              let f5 = this.trajEnergy * .0003;
+              this.vx += (near5D.x - this.x) * f5;
+              this.vy += (near5D.y - this.y) * f5;
+            }
+          }
+        }
+
+        // Check if signal has crossed into the next dimensional band
+        let currentBandY = lerp(H * .88, H * .12, this.di / 8);
+        let nextBandY = lerp(H * .88, H * .12, nextDi / 8);
+        let midpoint = (currentBandY + nextBandY) / 2;
+
+        if (this.di < 4 && this.y < midpoint && this.trajEnergy > .25) {
+          // Dimensional transition! Update the signal's dimension
+          this.di = nextDi;
+          this.dc = DIM[this.di];
+          this.homeY = lerp(H * .88, H * .12, this.di / 8);
+          this.maxTrail = this.di === 3 ? 22 : 10;
+          // Transition costs energy (Kernel §5.1: cost)
+          this.trajEnergy *= .6;
+        }
+      }
+
+      // Stalled signal dims and drifts — but doesn't die, it just waits
+      if (this.trajStalled) {
+        this.tIllum = Math.max(this.tIllum, .2 + this.trajEnergy * .4);
+        this.lockPulse += .01; // slow pulse when stalled
+      } else {
+        this.tIllum = Math.max(this.tIllum, .4 + this.trajEnergy * .5);
+        this.lockPulse += .03;
+      }
+      this.entropy = this.trajStalled ? Math.min(.5, this.entropy + .0002) : 0;
+
+      // Reached 5D? The signal has achieved recognition
+      if (this.di >= 4 && !this.trajStalled) {
+        this.tIllum = Math.max(this.tIllum, .85);
+        this.lockPulse += .02; // extra pulse at recognition
+      }
+
+    } else if (this.locked) {
+      // 5D+ locked signals: standard anchor behavior (no trajectory needed)
+      this.tIllum = Math.max(this.tIllum, .75);
+      this.lockPulse += .03;
+      this.entropy = 0;
+    }
+
     this.entropy=Math.min(1,this.entropy+.00015);
     this.tIllum*=(1-this.entropy*.4);
     this.illum+=(this.tIllum-this.illum)*.05;
@@ -551,6 +732,9 @@ class Particle {
     } else if(this.trail.length) this.trail.shift();
 
     dimAct[this.di]=Math.max(dimAct[this.di],this.illum);
+
+    // Decay resonant activation
+    if (this._resAct) this._resAct *= .96;
   }
 
   draw() {
@@ -568,12 +752,73 @@ class Particle {
     if (this.locked) {
       let lp=Math.sin(this.lockPulse)*.3+.7;
       let rs=sz*3.5*lp;
+
+      // Ring color: green for energized, fading toward dim for stalled
+      let ringAlpha = this.trajectory ? (.15 + this.trajEnergy * .25) : .35;
       X.beginPath();X.arc(this.rx,this.ry,rs,0,Math.PI*2);
-      X.strokeStyle=`rgba(45,139,70,${a*.35*lp})`;X.lineWidth=1.2;X.stroke();
-      let grd=X.createRadialGradient(this.rx,this.ry,0,this.rx,this.ry,rs*2.5);
-      grd.addColorStop(0,`rgba(45,139,70,${a*.05})`);
-      grd.addColorStop(1,'rgba(45,139,70,0)');
-      X.fillStyle=grd;X.beginPath();X.arc(this.rx,this.ry,rs*2.5,0,Math.PI*2);X.fill();
+      X.strokeStyle=`rgba(45,139,70,${a*ringAlpha*lp})`;X.lineWidth=1.2;X.stroke();
+
+      // Gravity well only for 5D+ anchors or energized trajectory signals
+      if (!this.trajectory || this.trajEnergy > .3) {
+        let grd=X.createRadialGradient(this.rx,this.ry,0,this.rx,this.ry,rs*2.5);
+        grd.addColorStop(0,`rgba(45,139,70,${a*.05})`);
+        grd.addColorStop(1,'rgba(45,139,70,0)');
+        X.fillStyle=grd;X.beginPath();X.arc(this.rx,this.ry,rs*2.5,0,Math.PI*2);X.fill();
+      }
+
+      // ── Trajectory Story Thread — only visible when Threads toggled ──
+      if (threadsOn && this.trajectory && this.trajHistory.length > 1) {
+        let px = parallaxOn ? (mx - W/2) * this.dPara : 0;
+        let py = parallaxOn ? (my - H/2) * this.dPara : 0;
+        let th = this.trajHistory;
+        let threadAlpha = (.1 + this.trajEnergy * .25) * a;
+
+        // Draw the journey path — color blends from origin dimension to current
+        X.lineWidth = 1 + this.trajEnergy;
+        X.beginPath();
+        X.moveTo(th[0].x + px, th[0].y + py);
+        for (let i = 1; i < th.length; i++) {
+          let t = i / th.length;
+          let origC = DIM[this.trajOriginDi];
+          let curC = this.dc;
+          let cr = lerp(origC.r, curC.r, t);
+          let cg = lerp(origC.g, curC.g, t);
+          let cb = lerp(origC.b, curC.b, t);
+          X.strokeStyle = `rgba(${cr|0},${cg|0},${cb|0},${threadAlpha * (.3 + t * .7)})`;
+          X.lineTo(th[i].x + px, th[i].y + py);
+          X.stroke();
+          X.beginPath();
+          X.moveTo(th[i].x + px, th[i].y + py);
+        }
+        // Line to current position
+        X.strokeStyle = `rgba(${this.dc.r},${this.dc.g},${this.dc.b},${threadAlpha})`;
+        X.lineTo(this.rx, this.ry);
+        X.stroke();
+
+        // Energy indicator: small flowing dots along the thread
+        if (this.trajEnergy > .1) {
+          let nDots = Math.floor(this.trajEnergy * 4);
+          for (let i = 0; i < nDots; i++) {
+            let t = ((frame * .004 + i / nDots) % 1);
+            let idx = Math.floor(t * (th.length - 1));
+            let localT = t * (th.length - 1) - idx;
+            if (idx >= th.length - 1) continue;
+            let dx = lerp(th[idx].x, th[idx+1].x, localT) + px;
+            let dy = lerp(th[idx].y, th[idx+1].y, localT) + py;
+            X.fillStyle = `rgba(45,139,70,${threadAlpha * .8})`;
+            X.beginPath(); X.arc(dx, dy, 1.5, 0, Math.PI*2); X.fill();
+          }
+        }
+      }
+
+      // Stalled indicator always visible — it's state feedback, not a thread
+      if (this.trajectory && this.trajStalled) {
+        let stallPulse = Math.sin(frame * .04) * .15 + .15;
+        X.strokeStyle = `rgba(${SR},${SG},${SB},${stallPulse * a})`;
+        X.lineWidth = .8;
+        let rs = sz * 3.5 * (Math.sin(this.lockPulse)*.3+.7);
+        X.beginPath(); X.arc(this.rx, this.ry, rs * 1.5, 0, Math.PI*2); X.stroke();
+      }
     }
 
     // ── Trail ──
@@ -602,6 +847,18 @@ class Particle {
     if(a>.3){
       X.fillStyle=`rgba(255,255,255,${a*.25*effOpacity})`;
       X.beginPath();X.arc(this.rx,this.ry,sz*.28,0,Math.PI*2);X.fill();
+    }
+
+    // ── Resonant Activation glow (Kernel §2.1 Constraint 5) ──
+    // Lower-dim signals near locked 5D+ gain a green shimmer: meaning-shift-in-place
+    if (this._resAct && this._resAct > .05 && a > .1) {
+      let ra = this._resAct * a;
+      let rGrd = X.createRadialGradient(this.rx, this.ry, sz*.5, this.rx, this.ry, sz*4);
+      rGrd.addColorStop(0, `rgba(45,139,70,${ra*.2})`);
+      rGrd.addColorStop(.5, `rgba(45,139,70,${ra*.08})`);
+      rGrd.addColorStop(1, 'rgba(45,139,70,0)');
+      X.fillStyle = rGrd;
+      X.beginPath(); X.arc(this.rx, this.ry, sz*4, 0, Math.PI*2); X.fill();
     }
 
     // ── 2D test flash lines ──
@@ -642,12 +899,19 @@ class Particle {
   }
 }
 
-// ─── Initialize ───
+// ─── Initialize — 1D weighted (Kernel: Spark is the origin point) ───
 function initParticles() {
   particles = [];
   locked = [];
   antiLocks = [];
-  for(let i=0;i<BASE_COUNT;i++) particles.push(new Particle());
+  // Weighted distribution: 1D gets ~18%, 2D-4D ~12% each, 5D-9D ~8% each
+  let weights = [18,12,12,12,8,8,8,8,8]; // percentages, must ~sum to ~94 but we normalize
+  let totalW = weights.reduce((a,b)=>a+b,0);
+  for(let i=0;i<BASE_COUNT;i++){
+    let r=Math.random()*totalW, cum=0, di=0;
+    for(let d=0;d<9;d++){cum+=weights[d];if(r<cum){di=d;break}}
+    particles.push(new Particle(di));
+  }
   particles.sort((a,b)=>a.depth-b.depth);
   updateLockDisplay();
 }
@@ -797,6 +1061,9 @@ C.addEventListener('click', e => {
     for(let i=locked.length-1;i>=0;i--){
       if(dist(locked[i].rx,locked[i].ry,cx,cy)<100){
         locked[i].locked=false;
+        locked[i].trajectory=false;
+        locked[i].trajEnergy=0;
+        locked[i].trajHistory=[];
         locked.splice(i,1);
       }
     }
@@ -811,6 +1078,21 @@ C.addEventListener('click', e => {
     }
     if(best){
       best.locked=true;best.lockPulse=0;
+
+      // 1D-4D signals get developmental trajectories
+      // 5D+ signals are already at or above the recognition threshold — they anchor
+      if (best.di <= 3) {
+        best.trajectory = true;
+        best.trajOriginDi = best.di;
+        best.trajOriginX = best.x;
+        best.trajOriginY = best.y;
+        best.trajEnergy = .35; // initial energy burst from conscious attestation
+        best.trajStalled = false;
+        best.trajHistory = [{ x: best.x, y: best.y, di: best.di }];
+        best.maxTrail = 18; // longer trail for journey signals
+        best.depth = 2; best.dScale = 1; best.dPara = .03; // bring to foreground
+      }
+
       locked.push(best);
       updateLockDisplay();
     }
@@ -874,8 +1156,18 @@ document.addEventListener('keydown',e=>{
   if(e.key==='p'||e.key==='P')parallaxOn=!parallaxOn;
 });
 
-// ─── Spectrum bar ───
-(function(){let b=document.getElementById('spectrum');for(let i=0;i<9;i++){let s=document.createElement('div');s.className='sp';s.id='sp-'+i;s.style.backgroundColor=DIM[i].r?`rgb(${DIM[i].r},${DIM[i].g},${DIM[i].b})`:'#4a4570';b.appendChild(s)}})();
+// ─── Spectrum bar with labels ───
+(function(){
+  let b=document.getElementById('spectrum');
+  let labels=['1D','2D','3D','4D','5D','6D','7D','8D','9D'];
+  for(let i=0;i<9;i++){
+    let col=document.createElement('div');col.className='sp-col';
+    let s=document.createElement('div');s.className='sp';s.id='sp-'+i;
+    s.style.backgroundColor=`rgb(${DIM[i].r},${DIM[i].g},${DIM[i].b})`;
+    let lbl=document.createElement('div');lbl.className='sp-lbl';lbl.id='spl-'+i;lbl.textContent=labels[i];
+    col.appendChild(s);col.appendChild(lbl);b.appendChild(col);
+  }
+})();
 
 // ═══════════════════════════
 // MAIN LOOP
@@ -903,11 +1195,128 @@ function loop(){
   let spawnRate = lerp(300, 15, chaos);
   if(frontierTimer > spawnRate){frontierTimer=0;spawnFrontier()}
 
+  // 1D Spark continuous emergence — new sparks enter from the bottom (Kernel: 1D is origin)
+  if (frame % 90 === 0 && particles.length < BASE_COUNT + 60) {
+    let np = new Particle(0, { x: rnd(W*.1, W*.9), y: H + 10 });
+    np.vy = rnd(-.4, -.1);
+    np.illum = rnd(.1, .25); np.tIllum = np.illum;
+    particles.push(np);
+  }
+
   // Clean dead particles
   particles = particles.filter(p=>!p.dead);
 
+  // ══════════════════════════════════════════════════════════════
+  // LOCKED CLUSTER COMPUTATION (Kernel Axiom 6: gravity from density)
+  // Clusters of locked signals act as collective gravitational events.
+  // Impact scales disproportionately with size (not linear).
+  // ══════════════════════════════════════════════════════════════
+  let lockedClusters = [];
+  let clusterAssigned = new Set();
+
+  for (let i = 0; i < locked.length; i++) {
+    if (clusterAssigned.has(i)) continue;
+    let cluster = [locked[i]];
+    clusterAssigned.add(i);
+
+    // Flood-fill: find all locked signals within 120px of any cluster member
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (let j = 0; j < locked.length; j++) {
+        if (clusterAssigned.has(j)) continue;
+        for (let member of cluster) {
+          if (dist(locked[j].x, locked[j].y, member.x, member.y) < 120) {
+            cluster.push(locked[j]);
+            clusterAssigned.add(j);
+            changed = true;
+            break;
+          }
+        }
+      }
+    }
+
+    // Compute cluster properties
+    let cx = 0, cy = 0;
+    for (let m of cluster) { cx += m.x; cy += m.y; }
+    cx /= cluster.length; cy /= cluster.length;
+
+    let size = cluster.length;
+    // Disproportionate scaling: impact grows as size^1.5
+    let power = Math.pow(size, 1.5);
+    // Average dimension of the cluster
+    let avgDi = cluster.reduce((s, m) => s + m.di, 0) / size;
+
+    lockedClusters.push({ members: cluster, cx, cy, size, power, avgDi });
+  }
+
+  // Apply cluster physics to ALL particles
+  for (let cl of lockedClusters) {
+    if (cl.size < 2) continue; // single locks use normal gravity
+
+    let isShadowMode = shadowMode && shadowT > .3;
+
+    for (let p of particles) {
+      // Skip cluster's own members for attraction (they cohere separately)
+      if (p.locked && cl.members.includes(p)) continue;
+
+      let d = dist(p.x, p.y, cl.cx, cl.cy);
+      let maxRange = 100 + cl.power * 25; // bigger clusters reach further
+
+      if (d < maxRange && d > 5) {
+        // Gravitational pull scaled by cluster power
+        let f = (isShadowMode ? -.1 : .08) * cl.power / (d * d + 200);
+        p.vx += (cl.cx - p.x) * f;
+        p.vy += (cl.cy - p.y) * f;
+
+        // Large clusters also boost illumination of nearby signals
+        if (cl.size >= 3 && d < maxRange * .5) {
+          p.tIllum = Math.min(1, p.tIllum + cl.power * .002);
+        }
+      }
+    }
+
+    // Cluster members cohere and drift upward together
+    let nextBandY = lerp(H * .88, H * .12, Math.min(4, Math.floor(cl.avgDi) + 1) / 8);
+    for (let m of cl.members) {
+      // Pull toward cluster center (cohesion)
+      m.vx += (cl.cx - m.x) * .002;
+      m.vy += (cl.cy - m.y) * .002;
+
+      // Collective upward drift — stronger with more members
+      if (!isShadowMode && cl.avgDi < 4) {
+        let liftForce = .003 * Math.min(cl.power, 8);
+        m.vy += (nextBandY - m.y) * liftForce * .001;
+        m.vy -= .008 * Math.min(cl.size, 5); // direct upward push
+      }
+
+      // Feed energy to trajectory signals in the cluster
+      if (m.trajectory) {
+        m.trajEnergy = Math.min(1, m.trajEnergy + cl.size * .0005);
+      }
+    }
+  }
+
+  // Store for ripple drawing
+  window._clusters = lockedClusters;
+
   // Update
   for(let p of particles) p.update();
+
+  // Resonant Activation (Kernel §2.1 Constraint 5):
+  // Lower-dim signals near locked 5D+ signals gain new visual weight
+  for(let lk of locked) {
+    if (lk.di < 4) continue; // only 5D+ locked signals trigger resonant activation
+    for(let p of particles) {
+      if (p.di >= lk.di || p.locked) continue;
+      let d = dist(p.x, p.y, lk.x, lk.y);
+      if (d < 120) {
+        // Mark as resonantly activated — visual transform in draw()
+        p._resAct = Math.max(p._resAct || 0, (1 - d/120) * .6);
+      }
+    }
+  }
+
   updateAntiLocks();
 
   // Draw order: connections → threads → particles → cursor
@@ -922,12 +1331,38 @@ function loop(){
     X.beginPath();X.arc(al.x,al.y,al.radius*(1-al.life/30),0,Math.PI*2);X.stroke();
   }
 
+  // Cluster ripple visual — large clusters pulse outward
+  if (window._clusters) {
+    for (let cl of window._clusters) {
+      if (cl.size < 3) continue;
+      let rippleRadius = 100 + cl.power * 25;
+      let pulsePhase = Math.sin(frame * .015) * .5 + .5;
+      let rippleR = rippleRadius * (.3 + pulsePhase * .7);
+      let avgC = DIM[Math.min(8, Math.round(cl.avgDi))];
+      let rippleAlpha = Math.min(.12, cl.power * .01) * pulsePhase;
+
+      // Expanding ring
+      X.strokeStyle = `rgba(${avgC.r},${avgC.g},${avgC.b},${rippleAlpha})`;
+      X.lineWidth = .6 + cl.size * .15;
+      X.beginPath(); X.arc(cl.cx, cl.cy, rippleR, 0, Math.PI*2); X.stroke();
+
+      // Second ring for 5+ clusters
+      if (cl.size >= 5) {
+        let r2 = rippleRadius * (.1 + ((pulsePhase + .5) % 1) * .7);
+        X.strokeStyle = `rgba(${avgC.r},${avgC.g},${avgC.b},${rippleAlpha * .5})`;
+        X.beginPath(); X.arc(cl.cx, cl.cy, r2, 0, Math.PI*2); X.stroke();
+      }
+    }
+  }
+
   drawCursor();
 
-  // Spectrum pips
+  // Spectrum pips + labels
   for(let i=0;i<9;i++){
     let sp=document.getElementById('sp-'+i);
+    let lbl=document.getElementById('spl-'+i);
     if(sp){sp.style.height=(3+dimAct[i]*18)+'px';sp.style.opacity=.2+dimAct[i]*.8}
+    if(lbl){lbl.style.color=dimAct[i]>.2?`rgba(${DIM[i].r},${DIM[i].g},${DIM[i].b},${.4+dimAct[i]*.6})`:'#554a66'}
   }
 
   // Status
