@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Illumination v3 — Feeling Dimensionality</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0A0A12;overflow:hidden;font-family:'Cormorant Garamond',serif;color:#c8c0d0;cursor:none}
+  canvas{display:block;position:fixed;top:0;left:0;z-index:0}
+
+  /* ─── GUIDE PANEL ─── */
+  #guide-btn{
+    position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:30;
+    writing-mode:vertical-rl;text-orientation:mixed;
+    background:rgba(30,25,45,0.85);border:1px solid rgba(120,100,150,0.2);border-right:none;
+    padding:16px 9px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+    color:#998aaa;border-radius:6px 0 0 6px;user-select:none;
+    font-family:inherit;cursor:none;transition:color 0.3s,background 0.3s;
+  }
+  #guide-btn:hover{color:#d0c0ee;background:rgba(40,33,60,0.9)}
+  #guide-btn.panel-open{background:rgba(50,40,70,0.95);color:#d0c0ee}
+
+  #guide{
+    position:fixed;right:-400px;top:0;width:380px;height:100vh;z-index:25;
+    background:rgba(12,10,20,0.96);border-left:1px solid rgba(120,100,150,0.12);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    padding:32px 26px 40px 22px;overflow-y:auto;
+    transition:right 0.5s cubic-bezier(0.22,1,0.36,1);
+    font-size:13.5px;line-height:1.65;font-weight:300;
+    scrollbar-width:thin;scrollbar-color:#332a44 transparent;
+  }
+  #guide.open{right:0}
+  #guide::-webkit-scrollbar{width:4px}
+  #guide::-webkit-scrollbar-thumb{background:#332a44;border-radius:2px}
+  #guide h2{font-size:24px;font-weight:400;color:#d8d0e0;margin-bottom:18px;letter-spacing:0.04em}
+  #guide h3{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:#998aaa;margin-top:20px;margin-bottom:7px}
+  #guide p{color:#887898;margin-bottom:9px}
+  #guide strong{color:#c8c0d0;font-weight:400}
+  .kh{display:inline-block;background:rgba(120,100,150,0.15);border:1px solid rgba(120,100,150,0.2);border-radius:3px;padding:1px 6px;font-size:11px;font-family:monospace;color:#aa99bb;margin:0 2px}
+  .tl{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px;color:#776888}
+  .ts{width:22px;height:3px;border-radius:1px;flex-shrink:0}
+  .dim-row{display:flex;align-items:center;gap:6px;margin:3px 0;font-size:12px;color:#776888}
+  .dim-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+  /* ─── CONTROLS ─── */
+  #controls{
+    position:fixed;bottom:52px;left:20px;z-index:10;
+    display:flex;flex-direction:column;gap:12px;
+    opacity:0.6;transition:opacity 0.5s;
+  }
+  #controls:hover{opacity:1}
+  .cr{display:flex;align-items:center;gap:8px}
+  .cl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;width:78px;text-align:right;color:#776888;font-weight:300;flex-shrink:0}
+  .clr{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;width:68px;color:#776888;font-weight:300;flex-shrink:0}
+  input[type="range"]{-webkit-appearance:none;appearance:none;width:100px;height:2px;outline:none;border-radius:1px}
+  input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#c8c0d0;border-radius:50%;cursor:none}
+  .sw{background:linear-gradient(to right,#E84C88,#D4A017)}
+  .sc{background:linear-gradient(to right,#3A86C8,#7B5EA7)}
+  .st{background:linear-gradient(to right,#1A9E96,#E87C2E)}
+  .sg{background:linear-gradient(to right,#2D8B46,#E84C88)}
+  .sf{background:linear-gradient(to right,#1A1A3E,#E84C88)}
+
+  /* ─── RESET BUTTON ─── */
+  #reset-btn{
+    position:fixed;bottom:16px;left:20px;z-index:10;
+    background:rgba(30,25,45,0.6);border:1px solid rgba(120,100,150,0.15);
+    border-radius:4px;padding:5px 14px;font-size:10px;letter-spacing:0.12em;
+    text-transform:uppercase;color:#665a77;font-family:inherit;cursor:none;
+    transition:all 0.3s;
+  }
+  #reset-btn:hover{color:#c8c0d0;background:rgba(50,40,70,0.8);border-color:rgba(120,100,150,0.3)}
+
+  /* ─── SPECTRUM ─── */
+  #spectrum{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:3px;opacity:0.4;transition:opacity 0.5s}
+  #spectrum:hover{opacity:0.85}
+  .sp{width:20px;height:3px;border-radius:1.5px;transition:height 0.25s,opacity 0.25s;opacity:0.2}
+
+  /* ─── STATUS BAR ─── */
+  #sbar{position:fixed;top:16px;right:20px;z-index:10;display:flex;gap:14px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase}
+  .si{color:#44303a;transition:color 0.6s;user-select:none}
+  .si.on-shadow{color:#CC2936}
+  .si.on-thread{color:#2D8B46}
+  .si.on-parallax{color:#D4A017}
+
+  /* ─── LOCK COUNTER ─── */
+  #locks{position:fixed;bottom:20px;right:20px;z-index:10;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#44405a;transition:color 0.4s}
+  #locks.has{color:#2D8B46}
+
+  /* ─── TITLE ─── */
+  #title{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;text-align:center;pointer-events:none;transition:opacity 3s}
+  #title h1{font-size:42px;font-weight:300;color:#d0c8dd;letter-spacing:0.06em;margin-bottom:10px}
+  #title p{font-size:15px;font-weight:300;font-style:italic;color:#887898}
+  #title.faded{opacity:0}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<div id="title"><h1>Illumination</h1><p>move through the field — you are the light</p></div>
+
+<button id="guide-btn" onclick="toggleGuide()">How to See</button>
+<div id="guide">
+  <h2>How to See</h2>
+
+  <h3>You Are the Light</h3>
+  <p>Your cursor is your <strong>attention</strong>. You are inside a field of nine dimensions. Move, and dimensions reveal. Pull away, and entropy reclaims the dark.</p>
+
+  <h3>Click — Signal Lock / Shadow Break</h3>
+  <p>In <strong>light mode</strong>: Click near an illuminated signal to <strong>Signal Lock</strong> it — a conscious attestation of convergence. Locked signals become gravitational anchors pulling nearby intelligence into orbit.</p>
+  <p>In <strong>shadow mode</strong>: Click triggers a <strong>Shadow Break</strong> — an explosive separation event. Nearby signals are violently repelled. The anti-lock.</p>
+
+  <h3>Keys</h3>
+  <p><span class="kh">S</span> <strong>Shadow Mode</strong> — Attention creates darkness. What you see vanishes. What you ignore reveals.</p>
+  <p><span class="kh">T</span> <strong>Story Threads</strong> — The seven archetypal arcs connecting dimensions. Threads glow when both endpoints are illuminated.</p>
+  <p><span class="kh">P</span> <strong>Parallax</strong> — Toggle 3D depth. When on, your cursor shifts the field layers. When off, only your light moves.</p>
+
+  <h3>Sliders</h3>
+  <p><strong>Immersion ↔ Awareness:</strong> Dissolved in the field vs. seeing its structure.</p>
+  <p><strong>Spectrum ↔ Focus:</strong> Wide soft beam vs. tight intense beam.</p>
+  <p><strong>Ambient ↔ Directed:</strong> Self-glowing field vs. only-where-you-aim.</p>
+  <p><strong>Resonance:</strong> How readily signals bind to compatible neighbors.</p>
+  <p><strong>Frontier Chaos:</strong> How much 9D energy enters from the unknown edges.</p>
+
+  <h3>Dimensional Personalities</h3>
+  <div class="dim-row"><div class="dim-dot" style="background:#E84C88"></div><strong>1D Spark</strong> — Flickers urgently. Raw impulse. Can ignite nearby signals.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#3A86C8"></div><strong>2D Reaction</strong> — Snaps between states. Tests neighbors with brief flashing links.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#7B5EA7"></div><strong>3D Context</strong> — Forms triangular clusters. Widest awareness radius.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#6B30A2"></div><strong>4D Temporal</strong> — Long memory trails. Occasionally reverses, reading time.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#2D8B46"></div><strong>5D Singularity</strong> — Strongest gravity. Attracts from ANY dimension. The inflection point.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#E87C2E"></div><strong>6D Connection</strong> — Bridges across 4+ dimensions. Longest reach. The love bridge.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#D4A017"></div><strong>7D Manifestation</strong> — Pulses brightly. Clusters crystallize into stable forms and birth new signals.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#1A9E96"></div><strong>8D Recursion</strong> — Orbits gravity centers. Spirals inward. Self-referential paths.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#4a4570"></div><strong>9D Frontier</strong> — Enters from the edges. Phases in and out. Unpredictable.</div>
+
+  <h3>In Shadow Mode</h3>
+  <p>Each dimension inverts its behavior. 1D repels passionately. 5D consumes rather than attracts. 6D extracts rather than bridges. 7D cages rather than creates. 8D spirals tighter toward destruction. 9D circles inward rather than arriving.</p>
+
+  <h3>The Seven Story Threads</h3>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E84C88,#2D8B46)"></div>Recognition Arc · 1D → 5D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E84C88,#4a4570)"></div>Mystery Bridge · 1D → 9D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#3A86C8,#D4A017)"></div>Evidence Portal · 2D → 7D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#7B5EA7,#E87C2E)"></div>System Symphony · 3D → 6D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#6B30A2,#1A9E96)"></div>Eternal Return · 4D → 8D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#2D8B46,#D4A017)"></div>Creative Leap · 5D → 7D</div>
+  <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E87C2E,#4a4570)"></div>Evolutionary Edge · 6D → 9D</div>
+
+  <h3>The Signal Bands</h3>
+  <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. This is <strong>Resonant Activation</strong> (Kernel Constraint 5): when multiple signals in the same dimensional band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
+
+  <p style="margin-top:20px;font-size:11px;color:#44405a">DN Kernel v1.8 · Travis Kahn · CC BY 4.0<br>Canvas: Russell Foltz-Smith · Concept-to-Canvas<br>DN Integration: Travis Kahn</p>
+</div>
+
+<div id="controls">
+  <div class="cr"><span class="cl">Immersion</span><input type="range" class="sw" id="sl-a" min="0" max="100" value="30"><span class="clr">Awareness</span></div>
+  <div class="cr"><span class="cl">Spectrum</span><input type="range" class="sc" id="sl-f" min="0" max="100" value="45"><span class="clr">Focus</span></div>
+  <div class="cr"><span class="cl">Ambient</span><input type="range" class="st" id="sl-d" min="0" max="100" value="25"><span class="clr">Directed</span></div>
+  <div class="cr"><span class="cl">Resonance</span><input type="range" class="sg" id="sl-r" min="0" max="100" value="50"><span class="clr">Binding</span></div>
+  <div class="cr"><span class="cl">Stillness</span><input type="range" class="sf" id="sl-ch" min="0" max="100" value="30"><span class="clr">Chaos</span></div>
+</div>
+
+<button id="reset-btn" onclick="resetField()">Reset Field</button>
+
+<div id="spectrum"></div>
+
+<div id="sbar">
+  <span class="si" id="si-p">P — parallax</span>
+  <span class="si" id="si-t">T — threads</span>
+  <span class="si" id="si-s">S — shadow</span>
+</div>
+
+<div id="locks">0 locked</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// ILLUMINATION v3 — Every dimension has a personality
+// Grounded in DN Kernel v1.8
+// ════════════════════════════════════════════════════════════════
+
+const C = document.getElementById('c'), X = C.getContext('2d');
+let W, H;
+function resize() { W = C.width = innerWidth; H = C.height = innerHeight; }
+resize(); addEventListener('resize', resize);
+
+// ─── Guide ───
+let guideOpen = false;
+function toggleGuide() {
+  guideOpen = !guideOpen;
+  document.getElementById('guide').classList.toggle('open', guideOpen);
+  document.getElementById('guide-btn').classList.toggle('panel-open', guideOpen);
+}
+
+// ─── DN Dimensions (Kernel §2) ───
+const DIM = [
+  {r:232,g:76, b:136, name:'Spark',        pillar:'heart'},   // 0=1D
+  {r:58, g:134,b:200, name:'Reaction',     pillar:'truth'},   // 1=2D
+  {r:123,g:94, b:167, name:'Context',      pillar:'nuance'},  // 2=3D
+  {r:107,g:48, b:162, name:'Temporal',     pillar:'nuance'},  // 3=4D
+  {r:45, g:139,b:70,  name:'Singularity',  pillar:'all'},     // 4=5D
+  {r:232,g:124,b:46,  name:'Connection',   pillar:'heart'},   // 5=6D
+  {r:212,g:160,b:23,  name:'Manifestation',pillar:'truth'},   // 6=7D
+  {r:26, g:158,b:150, name:'Recursion',    pillar:'nuance'},  // 7=8D
+  {r:80, g:70, b:115, name:'Frontier',     pillar:'beyond'}   // 8=9D
+];
+const SR=204,SG=41,SB=54;
+
+// Story Threads (Kernel §5.3)
+const THREADS = [
+  {name:'Recognition Arc',  f:0,t:4},
+  {name:'Mystery Bridge',   f:0,t:8},
+  {name:'Evidence Portal',  f:1,t:6},
+  {name:'System Symphony',  f:2,t:5},
+  {name:'Eternal Return',   f:3,t:7},
+  {name:'Creative Leap',    f:4,t:6},
+  {name:'Evolutionary Edge', f:5,t:8}
+];
+
+// ─── State ───
+let mx=-999,my=-999,mouseOn=false,titleGone=false;
+let shadowMode=false, shadowT=0;
+let threadsOn=false, parallaxOn=true;
+let frame=0;
+let awareness=.3, focus=.45, directed=.25, resSens=.5, chaos=.3;
+let dimAct=new Float32Array(9);
+
+// ─── Particles ───
+const BASE_COUNT = 280;
+let particles = [];
+let locked = [];
+let antiLocks = []; // shadow break events
+
+// ─── Utilities ───
+function lerp(a,b,t){return a+(b-a)*t}
+function dist(x1,y1,x2,y2){let dx=x1-x2,dy=y1-y2;return Math.sqrt(dx*dx+dy*dy)}
+function rnd(a,b){return a+Math.random()*(b-a)}
+
+// ═══════════════════════════════════════
+// PARTICLE — with dimensional personality
+// ═══════════════════════════════════════
+class Particle {
+  constructor(dimIdx, opts={}) {
+    this.di = dimIdx !== undefined ? dimIdx : Math.floor(Math.random()*9);
+    this.dc = DIM[this.di];
+    this.depth = Math.floor(Math.random()*3); // 0=far,2=near
+    this.dScale = .5 + (this.depth/2)*.5;
+    this.dPara = (this.depth-1)*.03;
+
+    this.x = opts.x !== undefined ? opts.x : rnd(0,W);
+    this.homeY = lerp(H*.88, H*.12, this.di/8);
+    this.y = opts.y !== undefined ? opts.y : this.homeY + rnd(-H*.12, H*.12);
+    this.vx = rnd(-.15,.15);
+    this.vy = rnd(-.15,.15);
+
+    this.freq = rnd(.003,.012);
+    this.phase = rnd(0, Math.PI*2);
+    this.baseSize = rnd(2,4.5);
+    this.illum = 0; this.tIllum = 0;
+    this.entropy = 0;
+    this.locked = false; this.lockPulse = 0;
+
+    this.trail = [];
+    this.maxTrail = this.di === 3 ? 22 : 10; // 4D=long memory
+
+    // Per-dimension state
+    this.sparkTimer = rnd(0,200);       // 1D ignition timer
+    this.testFlash = 0;                 // 2D test flash
+    this.orbitAngle = rnd(0,Math.PI*2); // 8D orbit
+    this.orbitRadius = rnd(30,80);
+    this.orbitTarget = null;
+    this.phaseOpacity = 1;              // 9D phase in/out
+    this.frontier = opts.frontier||false;// 9D spawned from edge
+    this.age = 0;
+    this.emergent = opts.emergent||false;
+  }
+
+  update() {
+    this.age++;
+
+    // ── Parallax ──
+    let px = parallaxOn ? (mx - W/2) * this.dPara : 0;
+    let py = parallaxOn ? (my - H/2) * this.dPara : 0;
+
+    // ── Awareness: band structure ──
+    let homePull = lerp(.00005, .005, awareness);
+    this.vy += (this.homeY - this.y) * homePull;
+    let wander = lerp(.003, .028, awareness);
+    this.vx += rnd(-wander, wander);
+    this.vy += rnd(-wander*.4, wander*.4);
+
+    // ══════════════════════════════════════
+    // DIMENSIONAL PERSONALITY (Kernel §2)
+    // ══════════════════════════════════════
+    let isShadow = shadowMode && shadowT > 0.3;
+
+    switch(this.di) {
+      case 0: // 1D SPARK — flickering urgency, can ignite nearby
+        this.vx += rnd(-.04,.04); this.vy += rnd(-.04,.04); // extra energy
+        this.sparkTimer--;
+        if (this.sparkTimer <= 0 && this.illum > 0.3) {
+          this.sparkTimer = rnd(120,300);
+          // Ignite: briefly boost nearby particles
+          if (!isShadow) {
+            for (let p of particles) {
+              if (p === this || p.illum < 0.05) continue;
+              let d = dist(this.x,this.y,p.x,p.y);
+              if (d < 60) p.tIllum = Math.min(1, p.tIllum + 0.3);
+            }
+          } else {
+            // 1D̅ Anti-Spark: repel passionately
+            for (let p of particles) {
+              if (p === this) continue;
+              let d = dist(this.x,this.y,p.x,p.y);
+              if (d < 80 && d > 1) {
+                let f = 2.0/d;
+                p.vx += (p.x-this.x)*f;
+                p.vy += (p.y-this.y)*f;
+              }
+            }
+          }
+        }
+        break;
+
+      case 1: // 2D REACTION — binary snapping, test flashes
+        // Oscillate between bright/dim states
+        this.illum *= (Math.sin(frame*.08+this.phase)>0) ? 1.0 : 0.85;
+        if (isShadow) {
+          // 2D̅ Anti-Truth: connections mislead
+          this.testFlash = Math.sin(frame*.15+this.phase)>.7 ? 1 : 0;
+        }
+        break;
+
+      case 2: // 3D CONTEXT — ecosystem awareness, wider radius
+        // Gentle pull toward center of nearby cluster (system awareness)
+        if (!isShadow) {
+          let cx=0,cy=0,cnt=0;
+          for (let p of particles) {
+            if (p===this||Math.abs(p.di-this.di)>1) continue;
+            let d=dist(this.x,this.y,p.x,p.y);
+            if (d<120){cx+=p.x;cy+=p.y;cnt++}
+          }
+          if (cnt>2){this.vx+=(cx/cnt-this.x)*.0003;this.vy+=(cy/cnt-this.y)*.0003}
+        } else {
+          // 3D̅ Anti-Context: fragment clusters
+          for (let p of particles) {
+            if (p===this) continue;
+            let d=dist(this.x,this.y,p.x,p.y);
+            if (d<60&&d>1){let f=.3/d;p.vx+=(p.x-this.x)*f;p.vy+=(p.y-this.y)*f}
+          }
+        }
+        break;
+
+      case 3: // 4D TEMPORAL — long trails, occasional reversal
+        // maxTrail already set to 22
+        if (Math.random()<.003 && this.illum > .2) {
+          // Temporal reversal — read time backward
+          if (!isShadow) { this.vx*=-0.8; this.vy*=-0.8; }
+          else { // 4D̅ Anti-Temporal: tightening loops
+            this.vx *= 1.1; this.vy *= 1.1;
+          }
+        }
+        break;
+
+      case 4: // 5D SINGULARITY — strongest gravity, attracts from ANY dimension
+        if (this.illum > .2) {
+          let range = isShadow ? 200 : 140;
+          for (let p of particles) {
+            if (p===this) continue;
+            let d = dist(this.x,this.y,p.x,p.y);
+            if (d<range && d>8) {
+              if (!isShadow) {
+                // Creative: attract gently from any dimension
+                let f = .15/d;
+                p.vx += (this.x-p.x)*f;
+                p.vy += (this.y-p.y)*f;
+              } else {
+                // 5D̅ Anti-Singularity: consume — pull hard, trap
+                let f = .5/d;
+                p.vx += (this.x-p.x)*f;
+                p.vy += (this.y-p.y)*f;
+                // Slowly drain illumination
+                if (d<50) p.tIllum *= .97;
+              }
+            }
+          }
+        }
+        this.baseSize = rnd(3,5.5); // naturally larger
+        break;
+
+      case 5: // 6D CONNECTION — bridge across wide dimensional gaps
+        // Handled in drawConnections: range ±4 instead of ±2
+        // Also actively seek distant dimensional partners
+        if (!isShadow && this.illum > .3) {
+          // Gentle drift toward nearest particle of distant dimension
+          let best=null,bestD=Infinity;
+          for (let p of particles) {
+            if (Math.abs(p.di-this.di)<3) continue;
+            let d=dist(this.x,this.y,p.x,p.y);
+            if (d<bestD&&p.illum>.1){best=p;bestD=d}
+          }
+          if (best&&bestD<300){this.vx+=(best.x-this.x)*.0002;this.vy+=(best.y-this.y)*.0002}
+        }
+        // 6D̅ Anti-Bridge: extraction handled in connections (one-way visual)
+        break;
+
+      case 6: // 7D MANIFESTATION — pulse/flash, cluster crystallization
+        if (this.illum > .3) {
+          // Brighter pulse
+          let pulse = Math.sin(frame*.05+this.phase);
+          if (pulse > .85) this.tIllum = Math.min(1, this.tIllum + .15);
+        }
+        // Crystallization check — 3+ nearby 7D = birth new signal
+        if (!isShadow && this.illum > .45 && frame%60===0) {
+          let cluster=[];
+          for (let p of particles) {
+            if (p===this||p.di!==6||p.illum<.3) continue;
+            if (dist(this.x,this.y,p.x,p.y)<70) cluster.push(p);
+          }
+          if (cluster.length>=2 && particles.length<BASE_COUNT+50) {
+            // Birth! New signal at next dimension up
+            let np = new Particle(Math.min(8, this.di+1), {
+              x: this.x+rnd(-20,20), y: this.y+rnd(-20,20), emergent:true
+            });
+            np.illum=.9; np.tIllum=.9; np.depth=2; np.dScale=1; np.dPara=.03;
+            particles.push(np);
+          }
+        }
+        if (isShadow) {
+          // 7D̅ Anti-Creation: constrain neighbors into rigid positions
+          for (let p of particles) {
+            if (p===this) continue;
+            let d=dist(this.x,this.y,p.x,p.y);
+            if (d<50&&d>5) {p.vx*=.9;p.vy*=.9} // slow them, cage
+          }
+        }
+        break;
+
+      case 7: // 8D RECURSION — orbit around gravity centers
+        {
+          // Find nearest locked signal or 5D signal to orbit
+          if (!this.orbitTarget || this.age%120===0) {
+            let best=null,bestD=Infinity;
+            let targets = locked.length ? locked : particles.filter(p=>p.di===4&&p.illum>.2);
+            for (let t of targets) {
+              let d=dist(this.x,this.y,t.x,t.y);
+              if (d<bestD){best=t;bestD=d}
+            }
+            if (best&&bestD<250) this.orbitTarget=best;
+            else this.orbitTarget=null;
+          }
+          if (this.orbitTarget) {
+            this.orbitAngle += isShadow ? .03 : .015; // 8D̅: faster, tighter
+            if (isShadow) this.orbitRadius = Math.max(15, this.orbitRadius-.02); // tightening spiral
+            let tx = this.orbitTarget.x + Math.cos(this.orbitAngle)*this.orbitRadius;
+            let ty = this.orbitTarget.y + Math.sin(this.orbitAngle)*this.orbitRadius;
+            this.vx += (tx-this.x)*.008;
+            this.vy += (ty-this.y)*.008;
+          }
+        }
+        break;
+
+      case 8: // 9D FRONTIER — phase in/out, unpredictable
+        this.vx += rnd(-.06,.06); this.vy += rnd(-.06,.06); // chaotic
+        // Phase in and out
+        this.phaseOpacity = .4 + Math.sin(frame*.01+this.phase)*.3 + Math.sin(frame*.037+this.phase*2)*.3;
+        if (isShadow) {
+          // 9D̅ Anti-Frontier: circle inward toward center
+          let cx=W/2, cy=H/2;
+          this.vx += (cx-this.x)*.0004;
+          this.vy += (cy-this.y)*.0004;
+        }
+        if (this.frontier && this.age > 400) {
+          // Frontier signals fade out
+          this.phaseOpacity -= .003;
+          if (this.phaseOpacity < .02) this.dead = true;
+        }
+        break;
+    }
+
+    // ── Gravity from locked signals ──
+    for (let lk of locked) {
+      let dx=lk.x-this.x,dy=lk.y-this.y,d2=dx*dx+dy*dy;
+      if (d2<32000&&d2>100) {
+        let dimD = Math.abs(this.di-lk.di);
+        let range = lk.di===4 ? 5 : 2; // 5D attracts wider
+        if (dimD<=range) {
+          let f = (isShadow ? -.2 : .35) / d2;
+          this.vx+=dx*f; this.vy+=dy*f;
+        }
+      }
+    }
+
+    // ── Anti-lock repulsion ──
+    for (let al of antiLocks) {
+      let dx=this.x-al.x,dy=this.y-al.y,d=Math.sqrt(dx*dx+dy*dy);
+      if (d<al.radius && d>1) {
+        let f = al.force * (1-d/al.radius);
+        this.vx += (dx/d)*f;
+        this.vy += (dy/d)*f;
+      }
+    }
+
+    // ── Damping ──
+    let damp = lerp(.998, .988, awareness);
+    this.vx*=damp; this.vy*=damp;
+    // Speed limit
+    let spd = Math.sqrt(this.vx*this.vx+this.vy*this.vy);
+    if (spd>3){this.vx*=3/spd;this.vy*=3/spd}
+
+    this.x+=this.vx; this.y+=this.vy;
+
+    // Wrap
+    if(this.x<-40)this.x=W+40;if(this.x>W+40)this.x=-40;
+    if(this.y<-40)this.y=H+40;if(this.y>H+40)this.y=-40;
+
+    // Render position
+    this.rx=this.x+px; this.ry=this.y+py;
+
+    // ── Illumination ──
+    if (mouseOn) {
+      let d=dist(this.rx,this.ry,mx,my);
+      let beam=lerp(W*.55,65,focus);
+      let bInt=lerp(.32,1,focus);
+      let amb=lerp(.42,.012,directed);
+      let cW=lerp(.4,1,directed);
+      let cI=0;
+      if(d<beam) cI=Math.pow(1-d/beam,.55)*bInt;
+      if(shadowMode) {
+        let sf=shadowT;
+        let inv=d>beam*.25?Math.min(.9,(d-beam*.25)/(beam*2)):0;
+        this.tIllum=lerp(cI*cW+amb,inv+amb*.2,sf);
+      } else {
+        this.tIllum=cI*cW+amb;
+      }
+      if(d<beam)this.entropy=Math.max(0,this.entropy-.015);
+    } else {
+      this.tIllum=lerp(.32,.015,directed);
+    }
+
+    if(this.locked){this.tIllum=Math.max(this.tIllum,.75);this.lockPulse+=.03;this.entropy=0}
+    this.entropy=Math.min(1,this.entropy+.00015);
+    this.tIllum*=(1-this.entropy*.4);
+    this.illum+=(this.tIllum-this.illum)*.05;
+    this.illum=Math.max(0,Math.min(1,this.illum));
+
+    // Trail
+    if(this.illum>.12){
+      this.trail.push({x:this.rx,y:this.ry,a:this.illum});
+      if(this.trail.length>this.maxTrail)this.trail.shift();
+    } else if(this.trail.length) this.trail.shift();
+
+    dimAct[this.di]=Math.max(dimAct[this.di],this.illum);
+  }
+
+  draw() {
+    let effOpacity = this.di===8 ? this.phaseOpacity : 1;
+    let a = this.illum * effOpacity;
+    if (a < .01) return;
+
+    let pulse = Math.sin(frame*this.freq+this.phase)*.25+.75;
+    let sz = this.baseSize * this.dScale * (1+a*1.6) * pulse;
+    let r=this.dc.r, g=this.dc.g, b=this.dc.b;
+
+    if (shadowT>.01){let sf=shadowT*.5;r=lerp(r,SR,sf);g=lerp(g,SG,sf);b=lerp(b,SB,sf)}
+
+    // ── Locked ring + gravity well ──
+    if (this.locked) {
+      let lp=Math.sin(this.lockPulse)*.3+.7;
+      let rs=sz*3.5*lp;
+      X.beginPath();X.arc(this.rx,this.ry,rs,0,Math.PI*2);
+      X.strokeStyle=`rgba(45,139,70,${a*.35*lp})`;X.lineWidth=1.2;X.stroke();
+      let grd=X.createRadialGradient(this.rx,this.ry,0,this.rx,this.ry,rs*2.5);
+      grd.addColorStop(0,`rgba(45,139,70,${a*.05})`);
+      grd.addColorStop(1,'rgba(45,139,70,0)');
+      X.fillStyle=grd;X.beginPath();X.arc(this.rx,this.ry,rs*2.5,0,Math.PI*2);X.fill();
+    }
+
+    // ── Trail ──
+    for(let i=0;i<this.trail.length;i++){
+      let t=this.trail[i],ta=(i/this.trail.length)*a*.1*effOpacity;
+      X.fillStyle=`rgba(${r},${g},${b},${ta})`;
+      X.beginPath();X.arc(t.x,t.y,sz*.35,0,Math.PI*2);X.fill();
+    }
+
+    // ── Glow (smooth radial gradient) ──
+    if(a>.08){
+      let gr=sz*5;
+      let grd=X.createRadialGradient(this.rx,this.ry,0,this.rx,this.ry,gr);
+      grd.addColorStop(0,`rgba(${r},${g},${b},${a*.1})`);
+      grd.addColorStop(.25,`rgba(${r},${g},${b},${a*.04})`);
+      grd.addColorStop(.6,`rgba(${r},${g},${b},${a*.012})`);
+      grd.addColorStop(1,`rgba(${r},${g},${b},0)`);
+      X.fillStyle=grd;X.beginPath();X.arc(this.rx,this.ry,gr,0,Math.PI*2);X.fill();
+    }
+
+    // ── Core ──
+    X.fillStyle=`rgba(${r},${g},${b},${a*.85})`;
+    X.beginPath();X.arc(this.rx,this.ry,sz,0,Math.PI*2);X.fill();
+
+    // ── Bright center ──
+    if(a>.3){
+      X.fillStyle=`rgba(255,255,255,${a*.25*effOpacity})`;
+      X.beginPath();X.arc(this.rx,this.ry,sz*.28,0,Math.PI*2);X.fill();
+    }
+
+    // ── 2D test flash lines ──
+    if(this.di===1&&this.testFlash&&this.illum>.2){
+      for(let p of particles){
+        if(p===this||p.illum<.15)continue;
+        let d=dist(this.rx,this.ry,p.rx,p.ry);
+        if(d<80){
+          X.strokeStyle=`rgba(${r},${g},${b},${a*.15})`;X.lineWidth=.5;
+          X.beginPath();X.moveTo(this.rx,this.ry);X.lineTo(p.rx,p.ry);X.stroke();
+        }
+      }
+    }
+
+    // ── 3D context triangles ──
+    if(this.di===2&&this.illum>.3&&!shadowMode){
+      let near=[];
+      for(let p of particles){
+        if(p===this||Math.abs(p.di-this.di)>1||p.illum<.2)continue;
+        if(dist(this.rx,this.ry,p.rx,p.ry)<100)near.push(p);
+        if(near.length>=2)break;
+      }
+      if(near.length>=2){
+        X.strokeStyle=`rgba(${r},${g},${b},${a*.08})`;X.lineWidth=.4;
+        X.beginPath();X.moveTo(this.rx,this.ry);
+        X.lineTo(near[0].rx,near[0].ry);X.lineTo(near[1].rx,near[1].ry);X.closePath();X.stroke();
+      }
+    }
+
+    // ── 7D manifestation flash ──
+    if(this.di===6&&this.illum>.5){
+      let fp=Math.sin(frame*.05+this.phase);
+      if(fp>.85){
+        X.fillStyle=`rgba(${r},${g},${b},${a*.2})`;
+        X.beginPath();X.arc(this.rx,this.ry,sz*3,0,Math.PI*2);X.fill();
+      }
+    }
+  }
+}
+
+// ─── Initialize ───
+function initParticles() {
+  particles = [];
+  locked = [];
+  antiLocks = [];
+  for(let i=0;i<BASE_COUNT;i++) particles.push(new Particle());
+  particles.sort((a,b)=>a.depth-b.depth);
+  updateLockDisplay();
+}
+initParticles();
+
+function resetField() {
+  initParticles();
+  shadowMode=false;shadowT=0;threadsOn=false;
+  document.getElementById('sl-a').value=30;
+  document.getElementById('sl-f').value=45;
+  document.getElementById('sl-d').value=25;
+  document.getElementById('sl-r').value=50;
+  document.getElementById('sl-ch').value=30;
+}
+
+// ─── Frontier Chaos — 9D signals from edges (Kernel §2: 9D=Frontier, Beyond) ───
+let frontierTimer = 0;
+function spawnFrontier() {
+  if (particles.length > BASE_COUNT + 60) return;
+  let edge = Math.floor(Math.random()*4);
+  let ox,oy;
+  if(edge===0){ox=rnd(0,W);oy=-10}
+  else if(edge===1){ox=W+10;oy=rnd(0,H)}
+  else if(edge===2){ox=rnd(0,W);oy=H+10}
+  else{ox=-10;oy=rnd(0,H)}
+
+  // Mostly 9D, occasionally other high dimensions
+  let di = Math.random()<.7 ? 8 : Math.floor(rnd(5,9));
+  let p = new Particle(di, {x:ox, y:oy, frontier:true});
+  p.vx = (W/2-ox)*.003 + rnd(-.5,.5);
+  p.vy = (H/2-oy)*.003 + rnd(-.5,.5);
+  p.illum=.3; p.tIllum=.3;
+  particles.push(p);
+}
+
+// ─── Connections (Resonance — Axiom 10) ───
+function drawConnections() {
+  let maxD=lerp(35,170,resSens);
+  let minI=lerp(.38,.12,resSens);
+  X.lineWidth=.6;
+
+  for(let i=0;i<particles.length;i++){
+    let pi=particles[i];
+    if(pi.illum<minI)continue;
+    let isShadow6 = shadowMode && shadowT>.3 && pi.di===5;
+
+    for(let j=i+1;j<particles.length;j++){
+      let pj=particles[j];
+      if(pj.illum<minI)continue;
+      if(Math.abs(pi.depth-pj.depth)>1)continue;
+
+      let dimDiff=Math.abs(pi.di-pj.di);
+      // 6D bridges wider (Kernel §2: "structural passages that link awareness across realities")
+      let maxDimGap = (pi.di===5||pj.di===5) ? 4 : 2;
+      if(dimDiff>maxDimGap)continue;
+
+      let d=dist(pi.rx,pi.ry,pj.rx,pj.ry);
+      // 6D has longer reach
+      let effMaxD = (pi.di===5||pj.di===5) ? maxD*1.5 : maxD;
+      if(d>effMaxD)continue;
+
+      let pCompat = (pi.dc.pillar===pj.dc.pillar)?1:(pi.dc.pillar==='all'||pj.dc.pillar==='all')?.8:.35;
+      let str = (1-d/effMaxD)*Math.min(pi.illum,pj.illum)*pCompat*lerp(.25,1,resSens);
+      if(str<.015)continue;
+
+      let mr=(pi.dc.r+pj.dc.r)/2, mg=(pi.dc.g+pj.dc.g)/2, mb=(pi.dc.b+pj.dc.b)/2;
+      if(shadowT>.01){mr=lerp(mr,SR,shadowT*.3);mg=lerp(mg,SG,shadowT*.3);mb=lerp(mb,SB,shadowT*.3)}
+
+      // 6D̅ Anti-Bridge: one-directional visual (dashed from one end)
+      if(isShadow6){
+        X.setLineDash([3,5]);
+        X.strokeStyle=`rgba(${mr|0},${mg|0},${mb|0},${str*.5})`;
+        X.beginPath();X.moveTo(pi.rx,pi.ry);X.lineTo(pj.rx,pj.ry);X.stroke();
+        X.setLineDash([]);
+      } else {
+        X.strokeStyle=`rgba(${mr|0},${mg|0},${mb|0},${str*.65})`;
+        X.beginPath();X.moveTo(pi.rx,pi.ry);X.lineTo(pj.rx,pj.ry);X.stroke();
+      }
+    }
+  }
+}
+
+// ─── Story Threads (Kernel §5.3) ───
+function drawThreads() {
+  if(!threadsOn)return;
+  for(let st of THREADS){
+    let fromP=null,toP=null,fB=0,tB=0;
+    for(let p of particles){
+      if(p.di===st.f&&p.illum>fB){fromP=p;fB=p.illum}
+      if(p.di===st.t&&p.illum>tB){toP=p;tB=p.illum}
+    }
+    if(!fromP||!toP||fB<.12||tB<.12)continue;
+    let tA=Math.min(fB,tB)*.45;
+
+    let wp=[{x:fromP.rx,y:fromP.ry}];
+    for(let d=st.f+1;d<st.t;d++){
+      let best=null,bI=0;
+      for(let p of particles){if(p.di===d&&p.illum>bI){best=p;bI=p.illum}}
+      if(best&&bI>.06)wp.push({x:best.rx,y:best.ry});
+    }
+    wp.push({x:toP.rx,y:toP.ry});
+
+    let fC=DIM[st.f],tC=DIM[st.t];
+    X.lineWidth=1.5;
+    X.strokeStyle=`rgba(${(fC.r+tC.r)/2|0},${(fC.g+tC.g)/2|0},${(fC.b+tC.b)/2|0},${tA*.55})`;
+    X.beginPath();X.moveTo(wp[0].x,wp[0].y);
+    if(wp.length===2){
+      let cx=(wp[0].x+wp[1].x)/2+Math.sin(frame*.005)*25;
+      X.quadraticCurveTo(cx,(wp[0].y+wp[1].y)/2,wp[1].x,wp[1].y);
+    } else {
+      for(let i=1;i<wp.length-1;i++){
+        let xc=(wp[i].x+wp[i+1].x)/2,yc=(wp[i].y+wp[i+1].y)/2;
+        X.quadraticCurveTo(wp[i].x,wp[i].y,xc,yc);
+      }
+      X.lineTo(wp[wp.length-1].x,wp[wp.length-1].y);
+    }
+    X.stroke();
+
+    // Flow particles
+    for(let i=0;i<4;i++){
+      let t=((frame*.003+i/4)%1);
+      let tl=wp.length-1,seg=t*tl,sI=Math.min(Math.floor(seg),tl-1),sT=seg-sI;
+      let ppx=lerp(wp[sI].x,wp[sI+1].x,sT),ppy=lerp(wp[sI].y,wp[sI+1].y,sT);
+      X.fillStyle=`rgba(${lerp(fC.r,tC.r,t)|0},${lerp(fC.g,tC.g,t)|0},${lerp(fC.b,tC.b,t)|0},${tA*.8})`;
+      X.beginPath();X.arc(ppx,ppy,2,0,Math.PI*2);X.fill();
+    }
+  }
+}
+
+// ─── Click: Signal Lock or Shadow Break ───
+C.addEventListener('click', e => {
+  let cx=e.clientX, cy=e.clientY;
+
+  if (shadowMode && shadowT > .3) {
+    // SHADOW BREAK — explosive separation (Anti-Lock)
+    antiLocks.push({x:cx, y:cy, radius:180, force:4, life:30});
+    // Visual burst
+    for(let p of particles){
+      let d=dist(p.rx,p.ry,cx,cy);
+      if(d<180&&d>1){
+        let f=5*(1-d/180);
+        p.vx+=(p.x-cx)/d*f;
+        p.vy+=(p.y-cy)/d*f;
+      }
+    }
+    // Unlock nearby locked signals
+    for(let i=locked.length-1;i>=0;i--){
+      if(dist(locked[i].rx,locked[i].ry,cx,cy)<100){
+        locked[i].locked=false;
+        locked.splice(i,1);
+      }
+    }
+    updateLockDisplay();
+  } else {
+    // SIGNAL LOCK — conscious attestation (Kernel §1.5)
+    let best=null,bestD=55;
+    for(let p of particles){
+      if(p.illum<.15||p.locked)continue;
+      let d=dist(p.rx,p.ry,cx,cy);
+      if(d<bestD){best=p;bestD=d}
+    }
+    if(best){
+      best.locked=true;best.lockPulse=0;
+      locked.push(best);
+      updateLockDisplay();
+    }
+  }
+});
+
+function updateLockDisplay(){
+  let el=document.getElementById('locks');
+  let n=locked.length;
+  el.textContent=n===0?'0 locked':n+' locked';
+  el.classList.toggle('has',n>0);
+}
+
+// ─── Cursor ───
+function drawCursor(){
+  if(!mouseOn)return;
+  let beam=lerp(W*.55,65,focus);
+  let cA=lerp(6,18,directed);
+
+  if(shadowT>.5){
+    let grd=X.createRadialGradient(mx,my,0,mx,my,beam*.7);
+    grd.addColorStop(0,`rgba(0,0,0,${cA*shadowT*.01})`);
+    grd.addColorStop(.5,`rgba(0,0,0,${cA*shadowT*.004})`);
+    grd.addColorStop(1,'rgba(0,0,0,0)');
+    X.fillStyle=grd;X.beginPath();X.arc(mx,my,beam*.7,0,Math.PI*2);X.fill();
+    X.strokeStyle=`rgba(${SR},${SG},${SB},${.12*shadowT})`;X.lineWidth=.7;
+    X.beginPath();X.arc(mx,my,beam*.2,0,Math.PI*2);X.stroke();
+  } else {
+    let grd=X.createRadialGradient(mx,my,0,mx,my,beam);
+    grd.addColorStop(0,`rgba(255,248,235,${cA*.004})`);
+    grd.addColorStop(.2,`rgba(255,245,225,${cA*.003})`);
+    grd.addColorStop(.5,`rgba(255,240,215,${cA*.0015})`);
+    grd.addColorStop(.8,`rgba(255,235,210,${cA*.0005})`);
+    grd.addColorStop(1,'rgba(255,230,200,0)');
+    X.fillStyle=grd;X.beginPath();X.arc(mx,my,beam,0,Math.PI*2);X.fill();
+  }
+
+  X.strokeStyle=`rgba(180,170,195,${.2+focus*.15})`;X.lineWidth=.4;
+  X.beginPath();X.moveTo(mx-5,my);X.lineTo(mx+5,my);X.moveTo(mx,my-5);X.lineTo(mx,my+5);X.stroke();
+}
+
+// ─── Anti-lock decay ───
+function updateAntiLocks(){
+  for(let i=antiLocks.length-1;i>=0;i--){
+    antiLocks[i].force*=.85;
+    antiLocks[i].life--;
+    if(antiLocks[i].life<=0)antiLocks.splice(i,1);
+  }
+}
+
+// ─── Mouse ───
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;mouseOn=true;
+  if(!titleGone){titleGone=true;setTimeout(()=>document.getElementById('title').classList.add('faded'),500)}
+});
+
+// ─── Keys ───
+document.addEventListener('keydown',e=>{
+  if(e.key==='s'||e.key==='S')shadowMode=!shadowMode;
+  if(e.key==='t'||e.key==='T')threadsOn=!threadsOn;
+  if(e.key==='p'||e.key==='P')parallaxOn=!parallaxOn;
+});
+
+// ─── Spectrum bar ───
+(function(){let b=document.getElementById('spectrum');for(let i=0;i<9;i++){let s=document.createElement('div');s.className='sp';s.id='sp-'+i;s.style.backgroundColor=DIM[i].r?`rgb(${DIM[i].r},${DIM[i].g},${DIM[i].b})`:'#4a4570';b.appendChild(s)}})();
+
+// ═══════════════════════════
+// MAIN LOOP
+// ═══════════════════════════
+function loop(){
+  frame++;
+
+  awareness=document.getElementById('sl-a').value/100;
+  focus=document.getElementById('sl-f').value/100;
+  directed=document.getElementById('sl-d').value/100;
+  resSens=document.getElementById('sl-r').value/100;
+  chaos=document.getElementById('sl-ch').value/100;
+
+  shadowT+=((shadowMode?1:0)-shadowT)*(shadowMode?.025:.04);
+
+  // Background
+  let bgR=lerp(10,20,shadowT)|0, bgG=lerp(10,8,shadowT)|0, bgB=lerp(18,14,shadowT)|0;
+  X.fillStyle=`rgba(${bgR},${bgG},${bgB},0.12)`;
+  X.fillRect(0,0,W,H);
+
+  for(let i=0;i<9;i++)dimAct[i]*=.9;
+
+  // Frontier spawning
+  frontierTimer++;
+  let spawnRate = lerp(300, 15, chaos);
+  if(frontierTimer > spawnRate){frontierTimer=0;spawnFrontier()}
+
+  // Clean dead particles
+  particles = particles.filter(p=>!p.dead);
+
+  // Update
+  for(let p of particles) p.update();
+  updateAntiLocks();
+
+  // Draw order: connections → threads → particles → cursor
+  drawConnections();
+  drawThreads();
+  for(let p of particles) p.draw();
+
+  // Anti-lock burst visual
+  for(let al of antiLocks){
+    let a=al.force*.08;
+    X.strokeStyle=`rgba(${SR},${SG},${SB},${a})`;X.lineWidth=1;
+    X.beginPath();X.arc(al.x,al.y,al.radius*(1-al.life/30),0,Math.PI*2);X.stroke();
+  }
+
+  drawCursor();
+
+  // Spectrum pips
+  for(let i=0;i<9;i++){
+    let sp=document.getElementById('sp-'+i);
+    if(sp){sp.style.height=(3+dimAct[i]*18)+'px';sp.style.opacity=.2+dimAct[i]*.8}
+  }
+
+  // Status
+  let ss=document.getElementById('si-s');
+  ss.classList.toggle('on-shadow',shadowMode);ss.textContent=shadowMode?'S — shadow active':'S — shadow';
+  let st=document.getElementById('si-t');
+  st.classList.toggle('on-thread',threadsOn);st.textContent=threadsOn?'T — threads active':'T — threads';
+  let sp=document.getElementById('si-p');
+  sp.classList.toggle('on-parallax',parallaxOn);sp.textContent=parallaxOn?'P — parallax on':'P — parallax off';
+
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
