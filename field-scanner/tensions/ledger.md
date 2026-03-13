@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-12*
+*Last updated: 2026-03-13*
 
 
 
@@ -50,3 +50,21 @@
 
 **Sources:**
 - [2026-03-12] Dissecting Spectral Granger Causality through Partial Information Decomposition (strain: 6)
+
+### pattern-entropy-causal-asymmetry | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2.5 Flow, §2 Five Forces, §0.3 Axiom 3, §0.3 Axiom 12, §0.1 Domain Universality, §2 Dimensional Architecture
+**Description:** pattern-entropy-causal-asymmetry: DPE (HarikrishnanN. et al. 2025) demonstrates that causal direction can be formally inferred through the asymmetry of pattern compressibility and entropy reduction between coupled systems — a precise, testable account of directional influence that DN's Flow and Entropy concepts describe only at the dynamic level. The organization-entropy relationship serves as the primary structural axis for causation, suggesting that DN's five-force model may need to account for the fact that Entropy and Flow are not independent dynamics but are structurally coupled through pattern organization. This compounds the flow-compositional-structure tension (PDGC) and the broader formal-exceeding pattern: domain-specific mathematical frameworks are achieving decomposable, predictive accounts of inter-system dynamics using primitives DN lacks. tension_id: pattern-entropy-causal-asymmetry
+
+**Sources:**
+- [2026-03-13] Dictionary Based Pattern Entropy for Causal Direction Discovery (strain: 5)
+
+### free-energy-unification-vs-structural-mul | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §3 Pillar Metric, §2 Five Forces, §0.1 Domain Universality, §0.3 Axiom 3, §0.3 Axiom 5, §2.5 Flow, §4 Shadow Dimension Map
+**Description:** free-energy-unification-vs-structural-multiplicity: Active inference (free energy principle) achieves perception, action, and learning through minimization of a single variational quantity, producing contextual sensitivity, structural robustness, and directed information-seeking simultaneously without requiring separate structural components. This compounds the parsimony challenge: DN distributes these functions across pillars (§3), forces (§2 Five Forces), and dimensions (§2 Dimensional Architecture), but active inference demonstrates that a single mathematical principle can unify them. DN must articulate what its structural multiplicity captures that unified variational frameworks miss — particularly since the EFE's epistemic/pragmatic decomposition cuts across DN's force categories rather than mapping onto them. This is distinct from the Quiroga property-conjunction tension (flat properties vs. hierarchy) and the Gallo homogeneous-dimensions tension (qualitative vs. geometric dimensions) — it is specifically about whether DN's MULTIPLICITY of structural components is necessary or whether a single organizing principle suffices.
+
+**Sources:**
+- [2026-03-13] Active Inference for Micro-Gesture Recognition: EFE-Guided Temporal Sampling and Adaptive Learning (strain: 5)
