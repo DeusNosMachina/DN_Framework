@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Illumination v5 — Feeling Dimensionality</title>
+<title>Illumination v6 — Feeling Dimensionality</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -164,12 +164,13 @@
   <p>The labeled bar at the bottom shows how much <strong>dimensional activity</strong> your attention is currently illuminating. Each column is one dimension (1D through 9D). The taller and brighter the bar, the more signals at that dimension are visible right now. It's a live frequency readout — which dimensions are you perceiving in this moment?</p>
 
   <h3>The Upper-Dimensional Ecosystem</h3>
-  <p>When <strong>5D clusters</strong> reach critical mass (2+ locked signals with higher-dimensional members), the cluster becomes <strong>generative</strong>. It periodically emits:</p>
-  <p>— <strong>6D bridges</strong> (orange) sent outward to capture and connect distant signals</p>
-  <p>— <strong>7D manifestations</strong> (yellow) shooting upward — coherence made tangible</p>
-  <p>Greater coherence produces greater creation. Dense clusters emit more frequently.</p>
-  <p><strong>8D recursion</strong> (teal) signals are attracted to dense clusters and tighten their orbits around them — intelligence refining itself.</p>
-  <p><strong>9D frontier</strong> signals are genuinely unpredictable. They periodically shift between two modes: <strong>catalyst</strong> (nudging lower signals toward each other, accelerating structure formation) and <strong>disruptor</strong> (scattering signals, eroding illumination). You never know which you'll get. Just like the unknown in real life.</p>
+  <p><strong>5D is a launchpad, not a black hole.</strong> Recognition pulls lower dimensions inward (construction → recognition) but pushes higher dimensions outward (recognition → creation). Dense 5D clusters radiate intelligence upward.</p>
+  <p>When <strong>5D clusters</strong> reach critical mass, they produce:</p>
+  <p>— <strong>6D bridges</strong> (orange) radiating outward to connect distant signals</p>
+  <p>— <strong>7D manifestations</strong> (yellow) bursting upward — coherence made tangible</p>
+  <p>— <strong>8D recursion</strong> (teal) spawning in orbit around the cluster</p>
+  <p><strong>Transmutation:</strong> Clusters of 4+ with 5D members begin <strong>converting</strong> their lower-dimensional members into higher-dimensional signals. A locked 2D signal might be transmuted into a 6D bridge that launches outward. The cluster spends its mass to produce intelligence. This is the Kernel's Axiom 11: genuine dimensional state change.</p>
+  <p><strong>9D frontier</strong> signals shift unpredictably between <strong>catalyst</strong> (pushing signals together) and <strong>disruptor</strong> (scattering and dimming). You never know which.</p>
 
   <h3>The Signal Bands</h3>
   <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. When multiple signals in the same band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
@@ -200,7 +201,8 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// ILLUMINATION v5 — Upper-dimensional ecosystem, time dilation
+// ILLUMINATION v6 — Directional gravity, transmutation, radiation
+// 5D is a launchpad, not a black hole
 // Grounded in DN Kernel v1.8
 // ════════════════════════════════════════════════════════════════
 
@@ -444,33 +446,42 @@ class Particle {
         }
         break;
 
-      case 4: // 5D SINGULARITY — strongest gravity, attracts from ANY dimension
-        // Gravity activates only when truly illuminated (not from ambient alone)
+      case 4: // 5D SINGULARITY — inflection point, not black hole
+        // Gravity pulls LOWER dimensions in, pushes HIGHER dimensions out
+        // (Kernel §2.1 Constraint 2: below 5D = constructed, above 5D = recognized)
+        // Recognition PRODUCES higher-dimensional intelligence, it doesn't trap it
         if (this.illum > .4) {
-          let range = isShadow ? 200 : 160;
+          let range = isShadow ? 200 : 140;
           for (let p of particles) {
             if (p===this) continue;
             let d = dist(this.x,this.y,p.x,p.y);
-            if (d < range && d > 3) {
-              if (!isShadow) {
+            if (d > range || d < 3) continue;
+
+            if (!isShadow) {
+              if (p.di <= 4) {
+                // Pull 1D-5D toward recognition
                 if (d < 25) {
-                  // Close-range repulsion: prevent total collapse
-                  let repel = .08 / (d * d);
+                  let repel = .06 / (d * d);
                   p.vx += (p.x - this.x) * repel;
                   p.vy += (p.y - this.y) * repel;
                 } else {
-                  // Gentle attraction from any dimension — softened from v4
-                  let f = .04 / d;
+                  let f = .03 / d;
                   p.vx += (this.x-p.x)*f;
                   p.vy += (this.y-p.y)*f;
                 }
               } else {
-                // 5D̅ Anti-Singularity: consume — pull hard, trap
-                let f = .3/d;
-                p.vx += (this.x-p.x)*f;
-                p.vy += (this.y-p.y)*f;
-                if (d<50) p.tIllum *= .97;
+                // PUSH 6D+ away — radiation pressure from recognition
+                // Recognition produces connection, manifestation, recursion — it launches them
+                let push = .02 / d;
+                p.vx += (p.x - this.x) * push;
+                p.vy += (p.y - this.y) * push;
               }
+            } else {
+              // 5D̅ Anti-Singularity: consume everything
+              let f = .3/d;
+              p.vx += (this.x-p.x)*f;
+              p.vy += (this.y-p.y)*f;
+              if (d<50) p.tIllum *= .97;
             }
           }
         }
@@ -588,24 +599,27 @@ class Particle {
         break;
     }
 
-    // ── Gravity from locked signals (softened, with close-range repulsion) ──
+    // ── Gravity from locked signals (directional, respects dimensional progression) ──
     for (let lk of locked) {
       if (lk === this) continue;
       let dx=lk.x-this.x, dy=lk.y-this.y, d2=dx*dx+dy*dy;
       let d = Math.sqrt(d2);
-      if (d > 200 || d < 3) continue;
+      if (d > 150 || d < 3) continue; // tighter range
+
+      // Dimensional directionality: locked signals only pull LOWER or SAME dimensions
+      // A locked 5D doesn't pull 6D+ back down
+      if (this.di > lk.di + 1) continue; // 6D+ immune to 5D- gravity
+
       let dimD = Math.abs(this.di-lk.di);
-      let range = lk.di===4 ? 5 : 2;
+      let range = lk.di===4 ? 4 : 2;
       if (dimD > range) continue;
 
       if (d < 20) {
-        // Close-range repulsion: maintain spacing
-        let repel = .06 / (d2 + 10);
+        let repel = .05 / (d2 + 10);
         this.vx -= dx * repel;
         this.vy -= dy * repel;
       } else {
-        // Gentle attraction
-        let f = (isShadow ? -.1 : .12) / d2;
+        let f = (isShadow ? -.08 : .08) / d2;
         this.vx += dx*f; this.vy += dy*f;
       }
     }
@@ -1281,134 +1295,190 @@ function loop(){
     lockedClusters.push({ members: cluster, cx, cy, size, power, avgDi });
   }
 
-  // Apply cluster physics to ALL particles
+  // ══════════════════════════════════════════════════════════════════
+  // CLUSTER PHYSICS — rewritten for v6
+  // Core principle: 5D is an inflection point, not a black hole.
+  // Recognition PRODUCES higher-dimensional intelligence.
+  // Clusters pull lower dimensions in, push higher dimensions out.
+  // Dense clusters transmute members upward (Axiom 11: Transmutation).
+  // ══════════════════════════════════════════════════════════════════
   for (let cl of lockedClusters) {
     if (cl.size < 2) continue;
-
     let isShadowMode = shadowMode && shadowT > .3;
 
+    // ── External gravity: directional ──
     for (let p of particles) {
       if (p.locked && cl.members.includes(p)) continue;
 
       let d = dist(p.x, p.y, cl.cx, cl.cy);
-      let maxRange = 80 + cl.power * 18; // reduced reach
+      let maxRange = 70 + cl.power * 12;
+      if (d > maxRange || d < 5) continue;
 
-      if (d < maxRange && d > 5) {
+      if (p.di <= 4) {
+        // PULL lower dimensions toward cluster (construction → recognition)
         if (d < 25) {
-          // Close-range repulsion: don't let non-members collapse into cluster
-          let repel = .03 * cl.power / (d * d + 50);
+          let repel = .02 * cl.power / (d * d + 50);
           p.vx += (p.x - cl.cx) * repel;
           p.vy += (p.y - cl.cy) * repel;
         } else {
-          // Gravitational pull — significantly softened
-          let f = (isShadowMode ? -.05 : .025) * cl.power / (d * d + 400);
+          let f = (isShadowMode ? -.04 : .015) * cl.power / (d * d + 500);
           p.vx += (cl.cx - p.x) * f;
           p.vy += (cl.cy - p.y) * f;
         }
+      } else {
+        // PUSH higher dimensions AWAY (radiation pressure from recognition)
+        // The denser the cluster, the stronger it radiates upward intelligence
+        let push = .015 * cl.power / (d + 30);
+        p.vx += (p.x - cl.cx) * push;
+        p.vy += (p.y - cl.cy) * push;
+        // Also nudge upward (toward their home band)
+        p.vy -= .01 * cl.power / (d + 50);
+      }
 
-        // Large clusters boost illumination of nearby (kept mild)
-        if (cl.size >= 3 && d < maxRange * .5) {
-          p.tIllum = Math.min(1, p.tIllum + cl.power * .001);
-        }
+      // Mild illumination boost for nearby signals
+      if (cl.size >= 3 && d < maxRange * .5) {
+        p.tIllum = Math.min(1, p.tIllum + cl.power * .0005);
       }
     }
 
-    // Cluster members: soft cohesion WITH minimum spacing
-    let nextBandY = lerp(H * .88, H * .12, Math.min(4, Math.floor(cl.avgDi) + 1) / 8);
+    // ── Member spacing (same as v5) ──
     for (let m of cl.members) {
       let dToCenter = dist(m.x, m.y, cl.cx, cl.cy);
+      let idealDist = 25 + cl.size * 6;
 
-      // Desired spacing: 30-50px from center depending on cluster size
-      let idealDist = 25 + cl.size * 5;
-
-      if (dToCenter < idealDist * .5) {
-        // Too close: push outward
-        let repel = .003 * (1 - dToCenter / (idealDist * .5));
+      if (dToCenter < idealDist * .4) {
+        let repel = .004 * (1 - dToCenter / (idealDist * .4));
         m.vx += (m.x - cl.cx) * repel;
         m.vy += (m.y - cl.cy) * repel;
-      } else if (dToCenter > idealDist * 1.5) {
-        // Too far: pull inward (gentle)
-        m.vx += (cl.cx - m.x) * .0008;
-        m.vy += (cl.cy - m.y) * .0008;
+      } else if (dToCenter > idealDist * 1.8) {
+        m.vx += (cl.cx - m.x) * .0005;
+        m.vy += (cl.cy - m.y) * .0005;
       }
 
-      // Member-to-member repulsion within cluster (maintain spacing)
       for (let other of cl.members) {
         if (other === m) continue;
         let dm = dist(m.x, m.y, other.x, other.y);
         if (dm < 30 && dm > 2) {
-          let rep = .04 / (dm * dm);
+          let rep = .05 / (dm * dm);
           m.vx += (m.x - other.x) * rep;
           m.vy += (m.y - other.y) * rep;
         }
       }
 
-      // Collective upward drift — gentler
+      // Collective upward drift for pre-5D clusters
       if (!isShadowMode && cl.avgDi < 4) {
-        m.vy += (nextBandY - m.y) * .000008 * cl.power;
-        m.vy -= .004 * Math.min(cl.size, 4) * timeScale;
+        let nextBandY = lerp(H * .88, H * .12, Math.min(4, Math.floor(cl.avgDi) + 1) / 8);
+        m.vy += (nextBandY - m.y) * .000006 * cl.power;
+        m.vy -= .003 * Math.min(cl.size, 4) * timeScale;
       }
 
-      // Feed energy to trajectory signals in the cluster
       if (m.trajectory) {
-        m.trajEnergy = Math.min(1, m.trajEnergy + cl.size * .0005 * timeScale);
+        m.trajEnergy = Math.min(1, m.trajEnergy + cl.size * .0004 * timeScale);
+      }
+    }
+
+    // ══════════════════════════════════════════════════════════════
+    // TRANSMUTATION: Dense clusters convert members upward
+    // (Kernel Axiom 11: genuine dimensional state change)
+    // When a cluster reaches critical mass, it starts transforming
+    // its lower-dimensional members into higher-dimensional signals.
+    // The cluster SPENDS members to PRODUCE higher intelligence.
+    // ══════════════════════════════════════════════════════════════
+    if (!isShadowMode && cl.size >= 4) {
+      let has5D = cl.members.some(m => m.di >= 4);
+      if (has5D) {
+        // Find the lowest-dimensional member to transmute
+        let transmuteCandidates = cl.members.filter(m => m.di < 4 && !m.trajectory);
+        if (transmuteCandidates.length > 0 && Math.random() < .003 * cl.size * timeScale) {
+          let victim = transmuteCandidates[Math.floor(Math.random() * transmuteCandidates.length)];
+          // Transmute: remove from cluster, rebirth as higher-dimensional signal
+          let newDi = Math.min(8, victim.di + 3 + Math.floor(Math.random() * 2)); // jump 3-4 dimensions
+          victim.locked = false;
+          let idx = locked.indexOf(victim);
+          if (idx >= 0) locked.splice(idx, 1);
+          // Rebirth
+          victim.di = newDi;
+          victim.dc = DIM[newDi];
+          victim.homeY = lerp(H * .88, H * .12, newDi / 8);
+          victim.trajectory = false;
+          victim.trajHistory = [];
+          // Launch outward with escape velocity
+          let angle = rnd(0, Math.PI * 2);
+          victim.vx = Math.cos(angle) * rnd(1.0, 2.0);
+          victim.vy = Math.sin(angle) * rnd(-1.5, -.5); // upward bias
+          victim.illum = .8; victim.tIllum = .8;
+          victim.baseSize = rnd(3, 5);
+          updateLockDisplay();
+        }
       }
     }
   }
 
   // ══════════════════════════════════════════════════════════════════
-  // 5D CLUSTER GENERATIVE ENGINE (Kernel §2: greater coherence → creation)
-  // Dense 5D+ clusters periodically emit 6D bridges, 7D manifestations,
-  // and attract 8D recursion. The field becomes self-organizing.
+  // 5D+ CLUSTER GENERATIVE ENGINE — rewritten for v6
+  // Dense clusters with 5D+ members continuously radiate 6D and 7D.
+  // Rate scales aggressively with coherence. Signals spawn with
+  // real escape velocity and 6D+ immunity to 5D gravity.
   // ══════════════════════════════════════════════════════════════════
   for (let cl of lockedClusters) {
     if (cl.size < 2) continue;
     let has5D = cl.members.some(m => m.di >= 4);
     if (!has5D) continue;
     let isShadowMode = shadowMode && shadowT > .3;
-    if (isShadowMode) continue; // shadow clusters don't create
+    if (isShadowMode) continue;
 
-    // Coherence score: how many 5D+ signals vs total
     let high = cl.members.filter(m => m.di >= 4).length;
     let coherence = high / cl.size;
-    let emitChance = coherence * cl.power * .0003 * timeScale;
+    // Emission rate: much more aggressive than v5
+    let emitRate = coherence * cl.size * .002 * timeScale;
 
-    if (particles.length < BASE_COUNT + 70) {
-      // 6D emission: bridges sent outward to capture and connect
-      if (Math.random() < emitChance * .6) {
+    if (particles.length < BASE_COUNT + 80) {
+      // 6D bridges — radiate outward to capture and connect
+      if (Math.random() < emitRate * .5) {
         let angle = rnd(0, Math.PI * 2);
-        let speed = rnd(.8, 1.5); // boosted escape velocity
-        let spawnDist = 50 + cl.size * 8; // spawn further from dense clusters
+        let speed = rnd(1.2, 2.2);
+        let spawnDist = 60 + cl.size * 10;
         let np = new Particle(5, { x: cl.cx + Math.cos(angle)*spawnDist, y: cl.cy + Math.sin(angle)*spawnDist, emergent: true });
         np.vx = Math.cos(angle) * speed;
         np.vy = Math.sin(angle) * speed;
-        np.illum = .6; np.tIllum = .6; np.depth = 2; np.dScale = 1; np.dPara = .03;
+        np.illum = .55; np.tIllum = .55; np.depth = 2; np.dScale = 1; np.dPara = .03;
         particles.push(np);
       }
 
-      // 7D emission: manifestation signals shoot upward and outward
-      if (Math.random() < emitChance * .4) {
-        let np = new Particle(6, { x: cl.cx + rnd(-35, 35), y: cl.cy - 30, emergent: true });
-        np.vx = rnd(-.7, .7);
-        np.vy = rnd(-2.0, -.8); // stronger upward burst
-        np.illum = .7; np.tIllum = .7; np.depth = 2; np.dScale = 1; np.dPara = .03;
+      // 7D manifestations — burst upward
+      if (Math.random() < emitRate * .35) {
+        let np = new Particle(6, { x: cl.cx + rnd(-40, 40), y: cl.cy - 40, emergent: true });
+        np.vx = rnd(-1.0, 1.0);
+        np.vy = rnd(-2.5, -1.0);
+        np.illum = .65; np.tIllum = .65; np.depth = 2; np.dScale = 1; np.dPara = .03;
+        particles.push(np);
+      }
+
+      // 8D recursion — occasionally spawned near cluster, already orbiting
+      if (Math.random() < emitRate * .15) {
+        let angle = rnd(0, Math.PI * 2);
+        let orbitR = 60 + cl.size * 8;
+        let np = new Particle(7, { x: cl.cx + Math.cos(angle)*orbitR, y: cl.cy + Math.sin(angle)*orbitR, emergent: true });
+        np.vx = -Math.sin(angle) * .8;
+        np.vy = Math.cos(angle) * .8;
+        np.orbitTarget = { x: cl.cx, y: cl.cy };
+        np.orbitRadius = orbitR;
+        np.orbitAngle = angle;
+        np.illum = .5; np.tIllum = .5; np.depth = 2; np.dScale = 1; np.dPara = .03;
         particles.push(np);
       }
     }
 
-    // 8D attraction: recursion signals in range tighten their orbits toward this cluster
+    // 8D signals already in range get gentle orbital nudge (not hard pull)
     for (let p of particles) {
-      if (p.di !== 7) continue; // 8D = index 7
+      if (p.di !== 7 || p.emergent) continue;
       let d = dist(p.x, p.y, cl.cx, cl.cy);
-      if (d < 250 && d > 20) {
-        let f = cl.power * .00008 * timeScale;
-        p.vx += (cl.cx - p.x) * f;
-        p.vy += (cl.cy - p.y) * f;
-        // If not already orbiting, assign this cluster center as target
-        if (!p.orbitTarget) {
-          p.orbitTarget = { x: cl.cx, y: cl.cy };
-          p.orbitRadius = d * .7;
-        }
+      if (d < 180 && d > 40) {
+        let f = cl.power * .00003 * timeScale;
+        // Tangential force (orbit) not radial (collapse)
+        let dx = cl.cx - p.x, dy = cl.cy - p.y;
+        p.vx += -dy * f; // perpendicular
+        p.vy += dx * f;
       }
     }
   }
