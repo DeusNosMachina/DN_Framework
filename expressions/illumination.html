@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Illumination v4 — Feeling Dimensionality</title>
+<title>Illumination v5 — Feeling Dimensionality</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -61,6 +61,7 @@
   .st{background:linear-gradient(to right,#1A9E96,#E87C2E)}
   .sg{background:linear-gradient(to right,#2D8B46,#E84C88)}
   .sf{background:linear-gradient(to right,#1A1A3E,#E84C88)}
+  .stime{background:linear-gradient(to right,#4B0082,#D4A017)}
 
   /* ─── RESET BUTTON ─── */
   #reset-btn{
@@ -127,6 +128,7 @@
   <p><strong>Ambient ↔ Directed:</strong> Self-glowing field vs. only-where-you-aim.</p>
   <p><strong>Resonance:</strong> How readily signals bind to compatible neighbors.</p>
   <p><strong>Frontier Chaos:</strong> How much 9D energy enters from the unknown edges.</p>
+  <p><strong>Slow ↔ Fast:</strong> Time dilation. Near-stoppage on the left; rapid evolution on the right. Default is slightly slower than real-time — space to see what's happening.</p>
 
   <h3>Dimensional Personalities</h3>
   <div class="dim-row"><div class="dim-dot" style="background:#E84C88"></div><strong>1D Spark</strong> — Flickers urgently. Raw impulse. Can ignite nearby signals.</div>
@@ -161,6 +163,14 @@
   <h3>The Spectrum Bar</h3>
   <p>The labeled bar at the bottom shows how much <strong>dimensional activity</strong> your attention is currently illuminating. Each column is one dimension (1D through 9D). The taller and brighter the bar, the more signals at that dimension are visible right now. It's a live frequency readout — which dimensions are you perceiving in this moment?</p>
 
+  <h3>The Upper-Dimensional Ecosystem</h3>
+  <p>When <strong>5D clusters</strong> reach critical mass (2+ locked signals with higher-dimensional members), the cluster becomes <strong>generative</strong>. It periodically emits:</p>
+  <p>— <strong>6D bridges</strong> (orange) sent outward to capture and connect distant signals</p>
+  <p>— <strong>7D manifestations</strong> (yellow) shooting upward — coherence made tangible</p>
+  <p>Greater coherence produces greater creation. Dense clusters emit more frequently.</p>
+  <p><strong>8D recursion</strong> (teal) signals are attracted to dense clusters and tighten their orbits around them — intelligence refining itself.</p>
+  <p><strong>9D frontier</strong> signals are genuinely unpredictable. They periodically shift between two modes: <strong>catalyst</strong> (nudging lower signals toward each other, accelerating structure formation) and <strong>disruptor</strong> (scattering signals, eroding illumination). You never know which you'll get. Just like the unknown in real life.</p>
+
   <h3>The Signal Bands</h3>
   <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. When multiple signals in the same band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
 
@@ -173,6 +183,7 @@
   <div class="cr"><span class="cl">Ambient</span><input type="range" class="st" id="sl-d" min="0" max="100" value="25"><span class="clr">Directed</span></div>
   <div class="cr"><span class="cl">Resonance</span><input type="range" class="sg" id="sl-r" min="0" max="100" value="50"><span class="clr">Binding</span></div>
   <div class="cr"><span class="cl">Stillness</span><input type="range" class="sf" id="sl-ch" min="0" max="100" value="30"><span class="clr">Chaos</span></div>
+  <div class="cr"><span class="cl">Slow</span><input type="range" class="stime" id="sl-time" min="5" max="200" value="85"><span class="clr">Fast</span></div>
 </div>
 
 <button id="reset-btn" onclick="resetField()">Reset Field</button>
@@ -189,7 +200,7 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// ILLUMINATION v4 — Developmental flow, Resonant Activation
+// ILLUMINATION v5 — Upper-dimensional ecosystem, time dilation
 // Grounded in DN Kernel v1.8
 // ════════════════════════════════════════════════════════════════
 
@@ -237,6 +248,7 @@ let shadowMode=false, shadowT=0;
 let threadsOn=false, parallaxOn=true;
 let frame=0;
 let awareness=.3, focus=.45, directed=.25, resSens=.5, chaos=.3;
+let timeScale = .85; // default slightly slower than v4
 let dimAct=new Float32Array(9);
 
 // ─── Particles ───
@@ -337,7 +349,7 @@ class Particle {
           }
         }
 
-        this.sparkTimer--;
+        this.sparkTimer -= timeScale;
         if (this.sparkTimer <= 0 && this.illum > 0.3) {
           this.sparkTimer = rnd(120,300);
           // Ignite: briefly boost nearby particles
@@ -435,28 +447,34 @@ class Particle {
       case 4: // 5D SINGULARITY — strongest gravity, attracts from ANY dimension
         // Gravity activates only when truly illuminated (not from ambient alone)
         if (this.illum > .4) {
-          let range = isShadow ? 200 : 140;
+          let range = isShadow ? 200 : 160;
           for (let p of particles) {
             if (p===this) continue;
             let d = dist(this.x,this.y,p.x,p.y);
-            if (d<range && d>8) {
+            if (d < range && d > 3) {
               if (!isShadow) {
-                // Creative: attract gently from any dimension
-                let f = .15/d;
-                p.vx += (this.x-p.x)*f;
-                p.vy += (this.y-p.y)*f;
+                if (d < 25) {
+                  // Close-range repulsion: prevent total collapse
+                  let repel = .08 / (d * d);
+                  p.vx += (p.x - this.x) * repel;
+                  p.vy += (p.y - this.y) * repel;
+                } else {
+                  // Gentle attraction from any dimension — softened from v4
+                  let f = .04 / d;
+                  p.vx += (this.x-p.x)*f;
+                  p.vy += (this.y-p.y)*f;
+                }
               } else {
                 // 5D̅ Anti-Singularity: consume — pull hard, trap
-                let f = .5/d;
+                let f = .3/d;
                 p.vx += (this.x-p.x)*f;
                 p.vy += (this.y-p.y)*f;
-                // Slowly drain illumination
                 if (d<50) p.tIllum *= .97;
               }
             }
           }
         }
-        this.baseSize = rnd(3,5.5); // naturally larger
+        this.baseSize = rnd(3,5.5);
         break;
 
       case 5: // 6D CONNECTION — bridge across wide gaps, actively captures lower signals
@@ -542,7 +560,7 @@ class Particle {
             else this.orbitTarget=null;
           }
           if (this.orbitTarget) {
-            this.orbitAngle += isShadow ? .03 : .015; // 8D̅: faster, tighter
+            this.orbitAngle += (isShadow ? .03 : .015) * timeScale; // 8D̅: faster, tighter
             if (isShadow) this.orbitRadius = Math.max(15, this.orbitRadius-.02); // tightening spiral
             let tx = this.orbitTarget.x + Math.cos(this.orbitAngle)*this.orbitRadius;
             let ty = this.orbitTarget.y + Math.sin(this.orbitAngle)*this.orbitRadius;
@@ -570,16 +588,25 @@ class Particle {
         break;
     }
 
-    // ── Gravity from locked signals ──
+    // ── Gravity from locked signals (softened, with close-range repulsion) ──
     for (let lk of locked) {
-      let dx=lk.x-this.x,dy=lk.y-this.y,d2=dx*dx+dy*dy;
-      if (d2<32000&&d2>100) {
-        let dimD = Math.abs(this.di-lk.di);
-        let range = lk.di===4 ? 5 : 2; // 5D attracts wider
-        if (dimD<=range) {
-          let f = (isShadow ? -.2 : .35) / d2;
-          this.vx+=dx*f; this.vy+=dy*f;
-        }
+      if (lk === this) continue;
+      let dx=lk.x-this.x, dy=lk.y-this.y, d2=dx*dx+dy*dy;
+      let d = Math.sqrt(d2);
+      if (d > 200 || d < 3) continue;
+      let dimD = Math.abs(this.di-lk.di);
+      let range = lk.di===4 ? 5 : 2;
+      if (dimD > range) continue;
+
+      if (d < 20) {
+        // Close-range repulsion: maintain spacing
+        let repel = .06 / (d2 + 10);
+        this.vx -= dx * repel;
+        this.vy -= dy * repel;
+      } else {
+        // Gentle attraction
+        let f = (isShadow ? -.1 : .12) / d2;
+        this.vx += dx*f; this.vy += dy*f;
       }
     }
 
@@ -598,9 +625,10 @@ class Particle {
     this.vx*=damp; this.vy*=damp;
     // Speed limit
     let spd = Math.sqrt(this.vx*this.vx+this.vy*this.vy);
-    if (spd>3){this.vx*=3/spd;this.vy*=3/spd}
+    if (spd>2.5){this.vx*=2.5/spd;this.vy*=2.5/spd}
 
-    this.x+=this.vx; this.y+=this.vy;
+    this.x += this.vx * timeScale;
+    this.y += this.vy * timeScale;
 
     // Wrap
     if(this.x<-40)this.x=W+40;if(this.x>W+40)this.x=-40;
@@ -643,32 +671,25 @@ class Particle {
       let isAttended = dToMouse < beamR;
 
       if (isAttended && !shadowMode) {
-        // Attention feeds energy — the signal gains developmental momentum
-        this.trajEnergy = Math.min(1, this.trajEnergy + .003);
+        this.trajEnergy = Math.min(1, this.trajEnergy + .003 * timeScale);
         this.trajStalled = false;
-        this.entropy = 0;
+        this.entropy = Math.max(0, this.entropy - .008 * timeScale);
       } else {
-        // No attention — energy slowly drains (Axiom 9: entropy)
-        this.trajEnergy = Math.max(0, this.trajEnergy - .0008);
+        this.trajEnergy = Math.max(0, this.trajEnergy - .0008 * timeScale);
         if (this.trajEnergy < .05) this.trajStalled = true;
       }
 
-      // Record journey position for Story Thread drawing
-      if (frame % 20 === 0 && this.trajEnergy > .05) {
+      if (frame % Math.max(1, Math.round(20 / timeScale)) === 0 && this.trajEnergy > .05) {
         this.trajHistory.push({ x: this.x, y: this.y, di: this.di });
         if (this.trajHistory.length > 60) this.trajHistory.shift();
       }
 
-      // Developmental movement — pull toward next dimensional band
       if (this.trajEnergy > .08 && !this.trajStalled) {
-        let nextDi = Math.min(4, this.di + 1); // target next dim, cap at 5D
+        let nextDi = Math.min(4, this.di + 1);
         let targetY = lerp(H * .88, H * .12, nextDi / 8);
-
-        // Strength of developmental pull scales with accumulated energy
         let pullStr = this.trajEnergy * .0012;
         this.vy += (targetY - this.y) * pullStr;
 
-        // Also pull toward nearest 5D signal if we're at 3D or 4D
         if (this.di >= 2) {
           let near5D = particles.find(p => p.di === 4 && p.illum > .3);
           if (near5D) {
@@ -681,46 +702,54 @@ class Particle {
           }
         }
 
-        // Check if signal has crossed into the next dimensional band
         let currentBandY = lerp(H * .88, H * .12, this.di / 8);
         let nextBandY = lerp(H * .88, H * .12, nextDi / 8);
         let midpoint = (currentBandY + nextBandY) / 2;
 
         if (this.di < 4 && this.y < midpoint && this.trajEnergy > .25) {
-          // Dimensional transition! Update the signal's dimension
           this.di = nextDi;
           this.dc = DIM[this.di];
           this.homeY = lerp(H * .88, H * .12, this.di / 8);
           this.maxTrail = this.di === 3 ? 22 : 10;
-          // Transition costs energy (Kernel §5.1: cost)
           this.trajEnergy *= .6;
         }
       }
 
-      // Stalled signal dims and drifts — but doesn't die, it just waits
       if (this.trajStalled) {
         this.tIllum = Math.max(this.tIllum, .2 + this.trajEnergy * .4);
-        this.lockPulse += .01; // slow pulse when stalled
+        this.lockPulse += .01 * timeScale;
       } else {
         this.tIllum = Math.max(this.tIllum, .4 + this.trajEnergy * .5);
-        this.lockPulse += .03;
+        this.lockPulse += .03 * timeScale;
       }
-      this.entropy = this.trajStalled ? Math.min(.5, this.entropy + .0002) : 0;
+      if (this.trajStalled) {
+        this.entropy = Math.min(.5, this.entropy + .0003 * timeScale);
+      }
+      // (entropy for non-stalled trajectory is managed by the attended/unattended block above)
 
-      // Reached 5D? The signal has achieved recognition
       if (this.di >= 4 && !this.trajStalled) {
         this.tIllum = Math.max(this.tIllum, .85);
-        this.lockPulse += .02; // extra pulse at recognition
+        this.lockPulse += .02 * timeScale;
       }
 
     } else if (this.locked) {
-      // 5D+ locked signals: standard anchor behavior (no trajectory needed)
-      this.tIllum = Math.max(this.tIllum, .75);
-      this.lockPulse += .03;
-      this.entropy = 0;
+      // 5D+ locked signals: anchor behavior
+      let beamR = lerp(W*.55, 65, focus);
+      let dToMouse = mouseOn ? dist(this.rx, this.ry, mx, my) : 9999;
+      let isAttended = dToMouse < beamR;
+
+      if (isAttended) {
+        this.tIllum = Math.max(this.tIllum, .75);
+        this.entropy = Math.max(0, this.entropy - .005 * timeScale);
+      } else {
+        // Unattended locked signals still glow but accumulate slow entropy
+        this.tIllum = Math.max(this.tIllum, .45 - this.entropy * .3);
+        this.entropy = Math.min(.6, this.entropy + .0001 * timeScale);
+      }
+      this.lockPulse += .03 * timeScale;
     }
 
-    this.entropy=Math.min(1,this.entropy+.00015);
+    this.entropy=Math.min(1,this.entropy+.00015 * timeScale);
     this.tIllum*=(1-this.entropy*.4);
     this.illum+=(this.tIllum-this.illum)*.05;
     this.illum=Math.max(0,Math.min(1,this.illum));
@@ -925,6 +954,7 @@ function resetField() {
   document.getElementById('sl-d').value=25;
   document.getElementById('sl-r').value=50;
   document.getElementById('sl-ch').value=30;
+  document.getElementById('sl-time').value=85;
 }
 
 // ─── Frontier Chaos — 9D signals from edges (Kernel §2: 9D=Frontier, Beyond) ───
@@ -1180,6 +1210,7 @@ function loop(){
   directed=document.getElementById('sl-d').value/100;
   resSens=document.getElementById('sl-r').value/100;
   chaos=document.getElementById('sl-ch').value/100;
+  timeScale=document.getElementById('sl-time').value/100; // 0.05 to 2.0
 
   shadowT+=((shadowMode?1:0)-shadowT)*(shadowMode?.025:.04);
 
@@ -1191,12 +1222,12 @@ function loop(){
   for(let i=0;i<9;i++)dimAct[i]*=.9;
 
   // Frontier spawning
-  frontierTimer++;
+  frontierTimer += timeScale;
   let spawnRate = lerp(300, 15, chaos);
   if(frontierTimer > spawnRate){frontierTimer=0;spawnFrontier()}
 
   // 1D Spark continuous emergence — new sparks enter from the bottom (Kernel: 1D is origin)
-  if (frame % 90 === 0 && particles.length < BASE_COUNT + 60) {
+  if (frame % Math.max(1, Math.round(90 / timeScale)) === 0 && particles.length < BASE_COUNT + 60) {
     let np = new Particle(0, { x: rnd(W*.1, W*.9), y: H + 10 });
     np.vy = rnd(-.4, -.1);
     np.illum = rnd(.1, .25); np.tIllum = np.illum;
@@ -1252,47 +1283,175 @@ function loop(){
 
   // Apply cluster physics to ALL particles
   for (let cl of lockedClusters) {
-    if (cl.size < 2) continue; // single locks use normal gravity
+    if (cl.size < 2) continue;
 
     let isShadowMode = shadowMode && shadowT > .3;
 
     for (let p of particles) {
-      // Skip cluster's own members for attraction (they cohere separately)
       if (p.locked && cl.members.includes(p)) continue;
 
       let d = dist(p.x, p.y, cl.cx, cl.cy);
-      let maxRange = 100 + cl.power * 25; // bigger clusters reach further
+      let maxRange = 80 + cl.power * 18; // reduced reach
 
       if (d < maxRange && d > 5) {
-        // Gravitational pull scaled by cluster power
-        let f = (isShadowMode ? -.1 : .08) * cl.power / (d * d + 200);
-        p.vx += (cl.cx - p.x) * f;
-        p.vy += (cl.cy - p.y) * f;
+        if (d < 25) {
+          // Close-range repulsion: don't let non-members collapse into cluster
+          let repel = .03 * cl.power / (d * d + 50);
+          p.vx += (p.x - cl.cx) * repel;
+          p.vy += (p.y - cl.cy) * repel;
+        } else {
+          // Gravitational pull — significantly softened
+          let f = (isShadowMode ? -.05 : .025) * cl.power / (d * d + 400);
+          p.vx += (cl.cx - p.x) * f;
+          p.vy += (cl.cy - p.y) * f;
+        }
 
-        // Large clusters also boost illumination of nearby signals
+        // Large clusters boost illumination of nearby (kept mild)
         if (cl.size >= 3 && d < maxRange * .5) {
-          p.tIllum = Math.min(1, p.tIllum + cl.power * .002);
+          p.tIllum = Math.min(1, p.tIllum + cl.power * .001);
         }
       }
     }
 
-    // Cluster members cohere and drift upward together
+    // Cluster members: soft cohesion WITH minimum spacing
     let nextBandY = lerp(H * .88, H * .12, Math.min(4, Math.floor(cl.avgDi) + 1) / 8);
     for (let m of cl.members) {
-      // Pull toward cluster center (cohesion)
-      m.vx += (cl.cx - m.x) * .002;
-      m.vy += (cl.cy - m.y) * .002;
+      let dToCenter = dist(m.x, m.y, cl.cx, cl.cy);
 
-      // Collective upward drift — stronger with more members
+      // Desired spacing: 30-50px from center depending on cluster size
+      let idealDist = 25 + cl.size * 5;
+
+      if (dToCenter < idealDist * .5) {
+        // Too close: push outward
+        let repel = .003 * (1 - dToCenter / (idealDist * .5));
+        m.vx += (m.x - cl.cx) * repel;
+        m.vy += (m.y - cl.cy) * repel;
+      } else if (dToCenter > idealDist * 1.5) {
+        // Too far: pull inward (gentle)
+        m.vx += (cl.cx - m.x) * .0008;
+        m.vy += (cl.cy - m.y) * .0008;
+      }
+
+      // Member-to-member repulsion within cluster (maintain spacing)
+      for (let other of cl.members) {
+        if (other === m) continue;
+        let dm = dist(m.x, m.y, other.x, other.y);
+        if (dm < 30 && dm > 2) {
+          let rep = .04 / (dm * dm);
+          m.vx += (m.x - other.x) * rep;
+          m.vy += (m.y - other.y) * rep;
+        }
+      }
+
+      // Collective upward drift — gentler
       if (!isShadowMode && cl.avgDi < 4) {
-        let liftForce = .003 * Math.min(cl.power, 8);
-        m.vy += (nextBandY - m.y) * liftForce * .001;
-        m.vy -= .008 * Math.min(cl.size, 5); // direct upward push
+        m.vy += (nextBandY - m.y) * .000008 * cl.power;
+        m.vy -= .004 * Math.min(cl.size, 4) * timeScale;
       }
 
       // Feed energy to trajectory signals in the cluster
       if (m.trajectory) {
-        m.trajEnergy = Math.min(1, m.trajEnergy + cl.size * .0005);
+        m.trajEnergy = Math.min(1, m.trajEnergy + cl.size * .0005 * timeScale);
+      }
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // 5D CLUSTER GENERATIVE ENGINE (Kernel §2: greater coherence → creation)
+  // Dense 5D+ clusters periodically emit 6D bridges, 7D manifestations,
+  // and attract 8D recursion. The field becomes self-organizing.
+  // ══════════════════════════════════════════════════════════════════
+  for (let cl of lockedClusters) {
+    if (cl.size < 2) continue;
+    let has5D = cl.members.some(m => m.di >= 4);
+    if (!has5D) continue;
+    let isShadowMode = shadowMode && shadowT > .3;
+    if (isShadowMode) continue; // shadow clusters don't create
+
+    // Coherence score: how many 5D+ signals vs total
+    let high = cl.members.filter(m => m.di >= 4).length;
+    let coherence = high / cl.size;
+    let emitChance = coherence * cl.power * .0003 * timeScale;
+
+    if (particles.length < BASE_COUNT + 70) {
+      // 6D emission: bridges sent outward to capture and connect
+      if (Math.random() < emitChance * .6) {
+        let angle = rnd(0, Math.PI * 2);
+        let speed = rnd(.8, 1.5); // boosted escape velocity
+        let spawnDist = 50 + cl.size * 8; // spawn further from dense clusters
+        let np = new Particle(5, { x: cl.cx + Math.cos(angle)*spawnDist, y: cl.cy + Math.sin(angle)*spawnDist, emergent: true });
+        np.vx = Math.cos(angle) * speed;
+        np.vy = Math.sin(angle) * speed;
+        np.illum = .6; np.tIllum = .6; np.depth = 2; np.dScale = 1; np.dPara = .03;
+        particles.push(np);
+      }
+
+      // 7D emission: manifestation signals shoot upward and outward
+      if (Math.random() < emitChance * .4) {
+        let np = new Particle(6, { x: cl.cx + rnd(-35, 35), y: cl.cy - 30, emergent: true });
+        np.vx = rnd(-.7, .7);
+        np.vy = rnd(-2.0, -.8); // stronger upward burst
+        np.illum = .7; np.tIllum = .7; np.depth = 2; np.dScale = 1; np.dPara = .03;
+        particles.push(np);
+      }
+    }
+
+    // 8D attraction: recursion signals in range tighten their orbits toward this cluster
+    for (let p of particles) {
+      if (p.di !== 7) continue; // 8D = index 7
+      let d = dist(p.x, p.y, cl.cx, cl.cy);
+      if (d < 250 && d > 20) {
+        let f = cl.power * .00008 * timeScale;
+        p.vx += (cl.cx - p.x) * f;
+        p.vy += (cl.cy - p.y) * f;
+        // If not already orbiting, assign this cluster center as target
+        if (!p.orbitTarget) {
+          p.orbitTarget = { x: cl.cx, y: cl.cy };
+          p.orbitRadius = d * .7;
+        }
+      }
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // 9D CHAOS AGENT (Kernel §2: "space beyond current understanding")
+  // 9D signals are genuinely unpredictable: sometimes they nudge
+  // lower signals together (catalyst), sometimes they destroy
+  // coherence entirely (entropy from the frontier).
+  // ══════════════════════════════════════════════════════════════════
+  for (let p of particles) {
+    if (p.di !== 8 || p.illum < .15) continue; // 9D = index 8
+
+    // Each 9D signal rolls its behavior every ~180 frames
+    if (!p._chaosMode || frame % Math.max(1, Math.round(180 / timeScale)) === 0) {
+      p._chaosMode = Math.random() < .55 ? 'catalyst' : 'disruptor';
+    }
+
+    for (let q of particles) {
+      if (q === p || q.di === 8 || q.illum < .08) continue;
+      let d = dist(p.x, p.y, q.x, q.y);
+      if (d > 100 || d < 5) continue;
+
+      if (p._chaosMode === 'catalyst') {
+        // Push lower signals toward the nearest other signal (nucleation)
+        let nearest = null, nD = Infinity;
+        for (let r of particles) {
+          if (r === q || r === p || r.di === 8) continue;
+          let dd = dist(q.x, q.y, r.x, r.y);
+          if (dd < nD && dd > 10) { nearest = r; nD = dd; }
+        }
+        if (nearest && nD < 150) {
+          let f = .02 * p.illum * timeScale / d;
+          q.vx += (nearest.x - q.x) * f;
+          q.vy += (nearest.y - q.y) * f;
+        }
+      } else {
+        // Disrupt: scatter nearby signals, erode illumination
+        let f = .08 * p.illum * timeScale / d;
+        q.vx += (q.x - p.x) * f;
+        q.vy += (q.y - p.y) * f;
+        q.tIllum *= (1 - .003 * timeScale); // slight dimming
+        q.entropy = Math.min(1, q.entropy + .002 * timeScale);
       }
     }
   }
