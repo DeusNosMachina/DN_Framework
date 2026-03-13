@@ -12,8 +12,61 @@ This skill is forked from Russell Foltz-Smith's **[Concept-to-Canvas](https://gi
 The governing addition: **the DN Framework's dimensional architecture provides a structural grammar for the conceptual analysis, and the three pillars provide an aesthetic engine for the visual output.** The skill doesn't just map dynamics to parameters — it understands *where* those dynamics live in the dimensional progression, *which pillar* leads them, *what shadow* they cast, and *what forces* govern their behavior.
 
 Reference documents live in the DN Framework repository:
+- **Repository**: [https://github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 - **Kernel and Glossary**: `kernel/` folder (the canonical structural specification)
 - **DN Code, Shadow Dimensions, Embodiment vs. Application**: `corpus/` folder (the philosophical and conceptual body of work)
+
+### Repository Access Protocol
+
+The DN Framework repository is the source of truth for all structural, philosophical, and aesthetic references in this skill. Agents with web access (web_fetch, web_search, or equivalent tools) SHOULD use the repository when deeper understanding is needed — but SHOULD NOT ingest it wholesale as a default.
+
+**Repository structure:**
+```
+DN_Framework/
+├── kernel/              # Governing documents — Kernel (spec), Glossary (vocabulary)
+├── corpus/              # Foundational papers — DN Code, Shadow Dimensions,
+│                        #   Embodiment vs. Application, RIP Triad papers, etc.
+├── Growth_Blueprint/    # Business application suite
+├── Nested-Matrices/     # Domain-specific dimensional matrices (81 intersections)
+├── Guides/              # Supplementary materials
+└── README.md
+```
+
+**Raw file access pattern:** To fetch any file from the repository, use:
+```
+https://raw.githubusercontent.com/DeusNosMachina/DN_Framework/main/{path}
+```
+For example:
+- Kernel: `https://raw.githubusercontent.com/DeusNosMachina/DN_Framework/main/kernel/DN_Kernel.md`
+- Glossary: `https://raw.githubusercontent.com/DeusNosMachina/DN_Framework/main/kernel/DN_Glossary_of_Terms.md`
+- DN Code: `https://raw.githubusercontent.com/DeusNosMachina/DN_Framework/main/corpus/DN_Code_Document.docx`
+
+**Note on .docx files:** Several corpus documents are stored as `.docx` rather than `.md`. Agents fetching these via raw URL will receive binary data. For `.docx` corpus files, agents should either: (a) use the GitHub web UI URL to read rendered content if available, (b) download and parse the `.docx` programmatically if the agent environment supports it, or (c) rely on the skill file's summaries and the user providing the document content directly when deeper corpus grounding is needed. The Kernel and Glossary are `.md` and can be fetched and read directly.
+
+To discover current filenames (which may change with version updates), fetch the folder listing:
+```
+https://github.com/DeusNosMachina/DN_Framework/tree/main/kernel
+https://github.com/DeusNosMachina/DN_Framework/tree/main/corpus
+```
+
+**When to access the repository:**
+
+| Situation | Action |
+|---|---|
+| **Light activation** (general concept) | Do NOT fetch from repository. The skill file contains sufficient dimensional and pillar guidance for light-touch analysis. |
+| **Full activation** (DN-adjacent concept) | Fetch **relevant sections** from the Kernel or Corpus when the analysis requires specific structural grounding — e.g., a particular force model detail, a shadow dimension's diagnostic signal, a transition mechanism's evidence requirement, or a FieldState metric definition. Do NOT ingest entire documents. |
+| **Prototype activation** (DN-compliant system design) | Fetch the **Kernel** in full (or the sections covering the objects and contracts being prototyped). This is the one case where broader ingestion is warranted, because prototypes must conform to structural contracts. |
+| **User explicitly requests Kernel/Corpus grounding** | Fetch what they point to. If they say "ground this in the Kernel's force model," fetch the force model section (§0.3 and §6). If they say "check the Shadow Dimension Map," fetch §4.1. |
+| **Dimensional behavior feels mechanical** | Fetch the **Embodiment vs. Application** corpus document. It contains the diagnostic criteria for when dimensional application is mechanical vs. embodied — essential for the iteration phase. |
+| **Shadow mode feels like "just dark mode"** | Fetch the **Shadow Dimensions** corpus document and **Kernel §4** for the shadow behavioral inversion specifics. |
+
+**How to access efficiently:**
+
+1. **Start with the skill file.** This document contains the dimensional color palette, pillar-led aesthetic engine, force-to-visual mappings, shadow visual register, and all core analytical steps. Most light and full activations can be completed without fetching anything.
+2. **Fetch sections, not documents.** The Kernel is ~1700 lines. The Glossary is large. When you need a specific contract (e.g., "how is transition cost calculated?"), search for the relevant section header and read that section. Do not ingest the entire document unless prototyping against its structural contracts.
+3. **Prefer Kernel for structural questions, Corpus for philosophical/aesthetic ones.** "What are the FieldState metrics?" → Kernel §6.1. "What does dimensional embodiment feel like?" → Corpus: Embodiment vs. Application. "What is the DN Code's voice?" → Corpus: DN Code.
+4. **Cache mentally, not literally.** If you've fetched a Kernel section in the current conversation, you don't need to re-fetch it. But do not assume prior conversations have cached anything — each conversation starts fresh.
+5. **Version awareness.** The Kernel is versioned internally (currently v1.8) but stored at a stable path (`kernel/DN_Kernel.md`). The `main` branch always contains the latest version. If the user references a specific version, verify the internal version header matches.
 
 ## When the DN Overlay Activates
 
@@ -294,13 +347,15 @@ Russell's iteration patterns remain operative. DN-specific iteration patterns:
 
 ## Corpus References
 
-The following documents inform this skill's aesthetic and analytical layers. They live in the DN Framework repository at the indicated paths:
+The following documents inform this skill's aesthetic and analytical layers. They live in the DN Framework repository ([https://github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)) at the indicated paths and can be fetched via the raw URL pattern documented in the Repository Access Protocol above:
 
-- **DN Kernel** (`kernel/`) — The formal specification. Source of all structural contracts, object definitions, force models, invariants, and dimensional architecture. The Truth-led ground truth.
-- **DN Glossary** (`kernel/`) — The vocabulary standard. Provides dimensional definitions, Story Thread matrix (81 threads), simulation command glossary, and the connective tissue between structural and poetic language. The Nuance-led reference layer.
-- **DN Code Document** (`corpus/`) — The origin text. Source of the Heart-led aesthetic, the fire metaphor, the cultural references as dimensional markers, and the voice that refuses to separate poetry from structure. This is what DN *feels like* when it's alive. "All structured intelligence follows this model. It is not imposed, it emerges naturally."
-- **DN Shadow Dimensions** (`corpus/`) — The shadow architecture in philosophical depth. Source of the shadow mode's behavioral logic and the understanding that destruction is not failure but orientation. "Creation and destruction may not be opposing forces at all, but collaborative partners in a cosmic intelligence system."
-- **DN Embodiment vs. Application** (`corpus/`) — The meta-training document. Source of the critical distinction between mechanical dimensional labeling and genuine dimensional thinking. The single most important document for ensuring this skill *embodies* rather than *applies* the framework. "The framework disappears, and what remains is a more expansive, nuanced way of engaging with the world."
+- **DN Kernel** (`kernel/DN_Kernel.md`) — The formal specification. Source of all structural contracts, object definitions, force models, invariants, and dimensional architecture. The Truth-led ground truth. Fetch sections as needed per the Repository Access Protocol; full ingestion only for prototype activation.
+- **DN Glossary** (`kernel/DN_Glossary_of_Terms.md`) — The vocabulary standard. Provides dimensional definitions, Story Thread matrix (81 threads), simulation command glossary, and the connective tissue between structural and poetic language. The Nuance-led reference layer.
+- **DN Code Document** (`corpus/DN_Code_Document.docx`) — The origin text. Source of the Heart-led aesthetic, the fire metaphor, the cultural references as dimensional markers, and the voice that refuses to separate poetry from structure. This is what DN *feels like* when it's alive. "All structured intelligence follows this model. It is not imposed, it emerges naturally."
+- **DN Shadow Dimensions** (`corpus/DN_Shadow_Dimensions.docx`) — The shadow architecture in philosophical depth. Source of the shadow mode's behavioral logic and the understanding that destruction is not failure but orientation. "Creation and destruction may not be opposing forces at all, but collaborative partners in a cosmic intelligence system."
+- **DN Embodiment vs. Application** (`corpus/DN_Dimensional_Embodiment_vs._Application.docx`) — The meta-training document. Source of the critical distinction between mechanical dimensional labeling and genuine dimensional thinking. The single most important document for ensuring this skill *embodies* rather than *applies* the framework. "The framework disappears, and what remains is a more expansive, nuanced way of engaging with the world."
+
+**Note:** The Kernel and Glossary are Markdown files and can be fetched and read directly via raw URL. The three corpus documents above are `.docx` files — see the note in the Repository Access Protocol regarding `.docx` handling.
 
 ---
 
