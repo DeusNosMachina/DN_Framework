@@ -19,6 +19,7 @@ DN_Framework/
 ├── Guides/              Supplementary materials and usage guides
 ├── field-scanner/       Autonomous research agent — stress-tests the framework against external research
 ├── skills/              Agent skills — reusable instruction sets for AI-assisted creation and analysis
+├── expressions/         Interactive experiences — the framework made experiential
 ├── CHANGELOG.md         Repository-level change history
 ├── LICENSE              CC BY-SA 4.0
 └── README.md            ← you are here
@@ -41,6 +42,8 @@ Each folder contains its own README with detailed descriptions of its contents.
 **If you want to test it:** See [`field-scanner/`](field-scanner/) — an autonomous agent that fetches academic papers daily and interprets them through the DN Framework's dimensional architecture, tracking where the framework holds and where it strains.
 
 **If you want to create with it:** See [`skills/`](skills/) — reusable instruction sets that infuse DN's dimensional logic into AI-assisted workflows. Upload a skill file to any AI chat to activate its methodology.
+
+**If you want to experience it:** See [`expressions/`](expressions/) — interactive visualizations that embody the dimensional architecture. No reading required — move your cursor, click, and feel how dimensionality works.
 
 ---
 
@@ -66,11 +69,13 @@ The git history of the scanner's outputs is itself a Field Ledger — the append
 
 ## Skills
 
-The [`skills/`](skills/) directory contains reusable instruction sets that bring DN's structural thinking into AI-assisted creative and analytical workflows. Skills are not autonomous agents — they are methodology files you upload to an AI chat to activate a specific process.
+The [`skills/`](skills/) directory contains reusable instruction sets that bring DN's structural thinking into AI-assisted creative and analytical workflows. Skills are not autonomous agents — they are methodology files you upload to an AI chat to activate a specific process. See the [skills README](skills/) for current offerings.
 
-**Current skills:**
+---
 
-- **[DN Concept-to-Canvas](skills/SKILL_DN-Concept-to-Canvas.md)** — Transforms any concept into an interactive visual-computational investigation. Analyzes concepts through dimensional tension-pairs, maps dynamics to interactive parameters, and produces working single-file HTML artifacts. Forked from Russell Foltz-Smith's Concept-to-Canvas skill with a DN Framework overlay that adds pillar-led aesthetics, shadow mode, five-force visual modeling, and prototype activation for DN-compliant system design. Works for any project — DN vocabulary activates when relevant and disappears when it isn't.
+## Expressions
+
+The [`expressions/`](expressions/) directory contains interactive experiences that embody the DN Framework's dimensional architecture. These are not explanations — they are the framework made experiential, built to pass the embodiment test: strip all labels, and the visualization should still feel dimensional. See the [expressions README](expressions/) for what's available.
 
 ---
 
