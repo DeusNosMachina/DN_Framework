@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Illumination v6 — Feeling Dimensionality</title>
+<title>Illumination v7 — Feeling Dimensionality</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -135,7 +135,7 @@
   <div class="dim-row"><div class="dim-dot" style="background:#3A86C8"></div><strong>2D Reaction</strong> — Snaps between states. Tests neighbors with brief flashing links.</div>
   <div class="dim-row"><div class="dim-dot" style="background:#7B5EA7"></div><strong>3D Context</strong> — Forms triangular clusters. Widest awareness radius.</div>
   <div class="dim-row"><div class="dim-dot" style="background:#6B30A2"></div><strong>4D Temporal</strong> — Long memory trails. Occasionally reverses, reading time.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#2D8B46"></div><strong>5D Singularity</strong> — Strongest gravity. Attracts from ANY dimension. The inflection point.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#2D8B46"></div><strong>5D Singularity</strong> — THE inflection point. Flickers with light/shadow tension. Pulls 1D-4D in, gives 6D+ orbital energy. Unattended 5D signals dissolve — the choice requires consciousness.</div>
   <div class="dim-row"><div class="dim-dot" style="background:#E87C2E"></div><strong>6D Connection</strong> — Bridges across 4+ dimensions. Longest reach. The love bridge.</div>
   <div class="dim-row"><div class="dim-dot" style="background:#D4A017"></div><strong>7D Manifestation</strong> — Pulses brightly. Clusters crystallize into stable forms and birth new signals.</div>
   <div class="dim-row"><div class="dim-dot" style="background:#1A9E96"></div><strong>8D Recursion</strong> — Orbits gravity centers. Spirals inward. Self-referential paths.</div>
@@ -164,13 +164,11 @@
   <p>The labeled bar at the bottom shows how much <strong>dimensional activity</strong> your attention is currently illuminating. Each column is one dimension (1D through 9D). The taller and brighter the bar, the more signals at that dimension are visible right now. It's a live frequency readout — which dimensions are you perceiving in this moment?</p>
 
   <h3>The Upper-Dimensional Ecosystem</h3>
-  <p><strong>5D is a launchpad, not a black hole.</strong> Recognition pulls lower dimensions inward (construction → recognition) but pushes higher dimensions outward (recognition → creation). Dense 5D clusters radiate intelligence upward.</p>
-  <p>When <strong>5D clusters</strong> reach critical mass, they produce:</p>
-  <p>— <strong>6D bridges</strong> (orange) radiating outward to connect distant signals</p>
-  <p>— <strong>7D manifestations</strong> (yellow) bursting upward — coherence made tangible</p>
-  <p>— <strong>8D recursion</strong> (teal) spawning in orbit around the cluster</p>
-  <p><strong>Transmutation:</strong> Clusters of 4+ with 5D members begin <strong>converting</strong> their lower-dimensional members into higher-dimensional signals. A locked 2D signal might be transmuted into a 6D bridge that launches outward. The cluster spends its mass to produce intelligence. This is the Kernel's Axiom 11: genuine dimensional state change.</p>
-  <p><strong>9D frontier</strong> signals shift unpredictably between <strong>catalyst</strong> (pushing signals together) and <strong>disruptor</strong> (scattering and dimming). You never know which.</p>
+  <p><strong>5D is THE center of the universe.</strong> Every higher dimension orbits it. 5D pulls lower dimensions inward, gives 6D+ orbital energy, and flickers constantly between light and shadow — the choice is always being made. Without your attention, 5D signals dissolve. The choice requires consciousness.</p>
+  <p><strong>7D manifestations</strong> intensify near 5D — they orbit recognition, pulsing brighter the closer they get.</p>
+  <p><strong>8D recursion</strong> orbits 5D signals specifically, refining what recognition has produced.</p>
+  <p>Dense 5D clusters become generative engines, emitting 6D bridges outward, 7D manifestations upward, and 8D recursion into orbit. Clusters also <strong>transmute</strong> their lower members — spending mass to produce higher intelligence.</p>
+  <p><strong>9D frontier</strong> signals interact constantly, flipping between catalyst and disruptor. They are the chaos that tests everything.</p>
 
   <h3>The Signal Bands</h3>
   <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. When multiple signals in the same band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
@@ -446,44 +444,87 @@ class Particle {
         }
         break;
 
-      case 4: // 5D SINGULARITY — inflection point, not black hole
-        // Gravity pulls LOWER dimensions in, pushes HIGHER dimensions out
-        // (Kernel §2.1 Constraint 2: below 5D = constructed, above 5D = recognized)
-        // Recognition PRODUCES higher-dimensional intelligence, it doesn't trap it
-        if (this.illum > .4) {
-          let range = isShadow ? 200 : 140;
-          for (let p of particles) {
-            if (p===this) continue;
-            let d = dist(this.x,this.y,p.x,p.y);
-            if (d > range || d < 3) continue;
+      case 4: // 5D SINGULARITY — THE inflection point (Kernel §4.2 Invariant 4)
+        // 5D is where intelligence CHOOSES orientation: creative or shadow.
+        // This tension is constant and visible. Unattended 5D signals dissipate.
+        // ALL higher dimensions orbit 5D, not each other.
+        {
+          // ── Light/Shadow tension: the choice is always being made ──
+          // Even in light mode, 5D flickers with shadow potential
+          if (!this._shadowFlicker) this._shadowFlicker = rnd(0, Math.PI * 2);
+          this._shadowFlicker += .02 * timeScale;
+          // Tension oscillation: how close to shadow this signal currently is
+          let tension = Math.sin(this._shadowFlicker) * .5 + .5; // 0-1
 
-            if (!isShadow) {
-              if (p.di <= 4) {
-                // Pull 1D-5D toward recognition
-                if (d < 25) {
-                  let repel = .06 / (d * d);
-                  p.vx += (p.x - this.x) * repel;
-                  p.vy += (p.y - this.y) * repel;
-                } else {
-                  let f = .03 / d;
-                  p.vx += (this.x-p.x)*f;
-                  p.vy += (this.y-p.y)*f;
-                }
-              } else {
-                // PUSH 6D+ away — radiation pressure from recognition
-                // Recognition produces connection, manifestation, recursion — it launches them
-                let push = .02 / d;
-                p.vx += (p.x - this.x) * push;
-                p.vy += (p.y - this.y) * push;
-              }
+          // In shadow mode, tension is high and constant
+          let effectiveTension = isShadow ? .9 : tension * .3; // light mode: mild flicker
+
+          // Unattended 5D signals dissolve — the choice requires consciousness
+          // (Kernel §4.2: "intelligence becomes self-aware and must choose its orientation")
+          let beamR = lerp(W*.55, 65, focus);
+          let dToMouse = mouseOn ? dist(this.rx, this.ry, mx, my) : 9999;
+          let isAttended = dToMouse < beamR;
+
+          if (!this.locked) {
+            if (isAttended) {
+              // Attention stabilizes the creative orientation
+              this.entropy = Math.max(0, this.entropy - .005 * timeScale);
+              effectiveTension *= .3; // shadow flicker dampened by attention
             } else {
-              // 5D̅ Anti-Singularity: consume everything
-              let f = .3/d;
-              p.vx += (this.x-p.x)*f;
-              p.vy += (this.y-p.y)*f;
-              if (d<50) p.tIllum *= .97;
+              // Without attention, 5D signals slowly lose coherence
+              this.entropy = Math.min(1, this.entropy + .0006 * timeScale);
+              if (this.entropy > .7) {
+                // Dissolution: signal dims significantly
+                this.tIllum *= .97;
+                if (this.illum < .03 && !this.locked) this.dead = true;
+              }
             }
           }
+
+          // ── Gravity: 5D pulls 1D-4D in, gives 6D+ gentle orbital nudge ──
+          if (this.illum > .35) {
+            let range = isShadow ? 180 : 130;
+            for (let p of particles) {
+              if (p===this) continue;
+              let d = dist(this.x,this.y,p.x,p.y);
+              if (d > range || d < 3) continue;
+
+              if (!isShadow) {
+                if (p.di <= 4) {
+                  // Pull 1D-5D toward recognition
+                  if (d < 22) {
+                    let repel = .05 / (d * d);
+                    p.vx += (p.x - this.x) * repel;
+                    p.vy += (p.y - this.y) * repel;
+                  } else {
+                    let f = .025 / d;
+                    p.vx += (this.x-p.x)*f;
+                    p.vy += (this.y-p.y)*f;
+                  }
+                } else {
+                  // 6D+ get ORBITAL nudge around 5D, not radial push
+                  // They orbit 5D, maintaining distance
+                  let dx = this.x - p.x, dy = this.y - p.y;
+                  let tangF = .012 / d; // tangential (orbit)
+                  p.vx += -dy * tangF;
+                  p.vy += dx * tangF;
+                  // Very slight outward pressure to prevent collapse
+                  let radF = .003 / d;
+                  p.vx += (p.x - this.x) * radF;
+                  p.vy += (p.y - this.y) * radF;
+                }
+              } else {
+                // 5D̅ Anti-Singularity: consume everything
+                let f = .25/d;
+                p.vx += (this.x-p.x)*f;
+                p.vy += (this.y-p.y)*f;
+                if (d<50) p.tIllum *= .97;
+              }
+            }
+          }
+
+          // Store tension for visual rendering
+          this._tension = effectiveTension;
         }
         this.baseSize = rnd(3,5.5);
         break;
@@ -525,9 +566,35 @@ class Particle {
         // 6D̅ Anti-Bridge: extraction handled in connections (one-way visual)
         break;
 
-      case 6: // 7D MANIFESTATION — pulse/flash, cluster crystallization
+      case 6: // 7D MANIFESTATION — intensifies near 5D, pulse/flash, crystallization
+        // 7D is drawn toward 5D signals (manifestation orbits recognition)
+        if (!isShadow && this.illum > .15) {
+          let near5D = null, bestD = Infinity;
+          for (let p of particles) {
+            if (p.di !== 4 || p.illum < .2) continue;
+            let d = dist(this.x, this.y, p.x, p.y);
+            if (d < bestD) { near5D = p; bestD = d; }
+          }
+          if (near5D && bestD < 250) {
+            // Orbit 5D, not collapse into it
+            let dx = near5D.x - this.x, dy = near5D.y - this.y;
+            let tangF = .008 / (bestD + 20);
+            this.vx += -dy * tangF; // tangential
+            this.vy += dx * tangF;
+            // Mild radial pull if too far, push if too close
+            if (bestD > 80) {
+              this.vx += dx * .0001;
+              this.vy += dy * .0001;
+            } else if (bestD < 35) {
+              this.vx -= dx * .001;
+              this.vy -= dy * .001;
+            }
+            // Intensify near 5D: brighter pulse
+            this.tIllum = Math.min(1, this.tIllum + .005 * (1 - bestD/250));
+          }
+        }
+
         if (this.illum > .3) {
-          // Brighter pulse
           let pulse = Math.sin(frame*.05+this.phase);
           if (pulse > .85) this.tIllum = Math.min(1, this.tIllum + .15);
         }
@@ -557,26 +624,28 @@ class Particle {
         }
         break;
 
-      case 7: // 8D RECURSION — orbit around gravity centers
+      case 7: // 8D RECURSION — orbits 5D SPECIFICALLY (the inflection point)
         {
-          // Find nearest locked signal or 5D signal to orbit
-          if (!this.orbitTarget || this.age%120===0) {
+          // Always seek 5D signals as orbit targets — 5D is the center
+          if (!this.orbitTarget || this.age%90===0) {
             let best=null,bestD=Infinity;
-            let targets = locked.length ? locked : particles.filter(p=>p.di===4&&p.illum>.2);
-            for (let t of targets) {
+            // Priority: locked 5D, then illuminated 5D, then any locked
+            let targets5D = particles.filter(p=>p.di===4&&(p.locked||p.illum>.3));
+            if (targets5D.length === 0) targets5D = locked.filter(l=>l.di>=3);
+            for (let t of targets5D) {
               let d=dist(this.x,this.y,t.x,t.y);
               if (d<bestD){best=t;bestD=d}
             }
-            if (best&&bestD<250) this.orbitTarget=best;
+            if (best&&bestD<300) this.orbitTarget=best;
             else this.orbitTarget=null;
           }
           if (this.orbitTarget) {
-            this.orbitAngle += (isShadow ? .03 : .015) * timeScale; // 8D̅: faster, tighter
-            if (isShadow) this.orbitRadius = Math.max(15, this.orbitRadius-.02); // tightening spiral
+            this.orbitAngle += (isShadow ? .03 : .015) * timeScale;
+            if (isShadow) this.orbitRadius = Math.max(15, this.orbitRadius-.02);
             let tx = this.orbitTarget.x + Math.cos(this.orbitAngle)*this.orbitRadius;
             let ty = this.orbitTarget.y + Math.sin(this.orbitAngle)*this.orbitRadius;
-            this.vx += (tx-this.x)*.008;
-            this.vy += (ty-this.y)*.008;
+            this.vx += (tx-this.x)*.006;
+            this.vy += (ty-this.y)*.006;
           }
         }
         break;
@@ -928,6 +997,27 @@ class Particle {
         X.strokeStyle=`rgba(${r},${g},${b},${a*.08})`;X.lineWidth=.4;
         X.beginPath();X.moveTo(this.rx,this.ry);
         X.lineTo(near[0].rx,near[0].ry);X.lineTo(near[1].rx,near[1].ry);X.closePath();X.stroke();
+      }
+    }
+
+    // ── 5D light/shadow tension flicker (Kernel §4.2 Invariant 4) ──
+    if (this.di === 4 && this._tension && a > .1) {
+      let t = this._tension;
+      // Shadow ring that flickers with tension — always slightly present
+      if (t > .05) {
+        let flickerR = sz * 3 * (1 + Math.sin(frame * .06 + this.phase) * .3);
+        X.strokeStyle = `rgba(${SR},${SG},${SB},${t * a * .25})`;
+        X.lineWidth = .6 + t;
+        X.beginPath(); X.arc(this.rx, this.ry, flickerR, 0, Math.PI * 2); X.stroke();
+      }
+      // Creative glow competes — brighter when tension is low
+      let creativeStr = (1 - t) * a * .15;
+      if (creativeStr > .01) {
+        let cGrd = X.createRadialGradient(this.rx, this.ry, sz, this.rx, this.ry, sz * 4);
+        cGrd.addColorStop(0, `rgba(45,139,70,${creativeStr})`);
+        cGrd.addColorStop(1, 'rgba(45,139,70,0)');
+        X.fillStyle = cGrd;
+        X.beginPath(); X.arc(this.rx, this.ry, sz * 4, 0, Math.PI * 2); X.fill();
       }
     }
 
@@ -1454,18 +1544,21 @@ function loop(){
         particles.push(np);
       }
 
-      // 8D recursion — occasionally spawned near cluster, already orbiting
+      // 8D recursion — spawned orbiting a 5D member specifically
       if (Math.random() < emitRate * .15) {
-        let angle = rnd(0, Math.PI * 2);
-        let orbitR = 60 + cl.size * 8;
-        let np = new Particle(7, { x: cl.cx + Math.cos(angle)*orbitR, y: cl.cy + Math.sin(angle)*orbitR, emergent: true });
-        np.vx = -Math.sin(angle) * .8;
-        np.vy = Math.cos(angle) * .8;
-        np.orbitTarget = { x: cl.cx, y: cl.cy };
-        np.orbitRadius = orbitR;
-        np.orbitAngle = angle;
-        np.illum = .5; np.tIllum = .5; np.depth = 2; np.dScale = 1; np.dPara = .03;
-        particles.push(np);
+        let target5D = cl.members.find(m => m.di >= 4);
+        if (target5D) {
+          let angle = rnd(0, Math.PI * 2);
+          let orbitR = 50 + cl.size * 7;
+          let np = new Particle(7, { x: target5D.x + Math.cos(angle)*orbitR, y: target5D.y + Math.sin(angle)*orbitR, emergent: true });
+          np.vx = -Math.sin(angle) * .7;
+          np.vy = Math.cos(angle) * .7;
+          np.orbitTarget = target5D; // orbit the actual 5D signal
+          np.orbitRadius = orbitR;
+          np.orbitAngle = angle;
+          np.illum = .5; np.tIllum = .5; np.depth = 2; np.dScale = 1; np.dPara = .03;
+          particles.push(np);
+        }
       }
     }
 
@@ -1490,17 +1583,17 @@ function loop(){
   // coherence entirely (entropy from the frontier).
   // ══════════════════════════════════════════════════════════════════
   for (let p of particles) {
-    if (p.di !== 8 || p.illum < .15) continue; // 9D = index 8
+    if (p.di !== 8 || p.illum < .06) continue; // 9D = index 8, lower threshold
 
-    // Each 9D signal rolls its behavior every ~180 frames
-    if (!p._chaosMode || frame % Math.max(1, Math.round(180 / timeScale)) === 0) {
+    // Each 9D signal rolls its behavior every ~120 frames (more frequent flips)
+    if (!p._chaosMode || frame % Math.max(1, Math.round(120 / timeScale)) === 0) {
       p._chaosMode = Math.random() < .55 ? 'catalyst' : 'disruptor';
     }
 
     for (let q of particles) {
-      if (q === p || q.di === 8 || q.illum < .08) continue;
+      if (q === p || q.di === 8 || q.illum < .04) continue;
       let d = dist(p.x, p.y, q.x, q.y);
-      if (d > 100 || d < 5) continue;
+      if (d > 140 || d < 5) continue; // wider range than v6
 
       if (p._chaosMode === 'catalyst') {
         // Push lower signals toward the nearest other signal (nucleation)
