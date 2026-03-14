@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The RIP Field – DN Framework</title>
+<title>The RIP Field – DN Framework v9</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:100%;height:100%;overflow:hidden;background:#060608;cursor:none;font-family:'Cormorant Garamond',serif}
   canvas{display:block}
   #caption{position:fixed;bottom:44px;left:50%;transform:translateX(-50%);z-index:50;text-align:center;pointer-events:none;width:90%;max-width:520px}
-  #captionText{font-size:clamp(14px,1.8vw,17px);font-weight:300;letter-spacing:.04em;line-height:1.5;color:rgba(255,255,255,0.6);transition:color .8s,opacity .8s}
-  #captionText.harmonized{color:rgba(212,160,23,0.85);text-shadow:0 0 20px rgba(212,160,23,0.15)}
-  #captionText.shadow-active{color:rgba(204,41,54,0.7)}
-  #hotkey{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:50;pointer-events:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+  #captionText{font-size:clamp(14px,1.8vw,17px);font-weight:300;letter-spacing:.04em;line-height:1.5;color:rgba(255,255,255,0.78);transition:color .8s,opacity .8s}
+  #captionText.harmonized{color:rgba(212,160,23,0.95);text-shadow:0 0 24px rgba(212,160,23,0.2)}
+  #captionText.shadow-active{color:rgba(204,41,54,0.85)}
+  #hotkey{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:50;pointer-events:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.55)}
   #hotkey span{color:rgba(204,41,54,0.7)}
   #shadowIndicator{position:fixed;top:16px;right:16px;z-index:50;width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);background:transparent;transition:all 0.8s;pointer-events:none}
   #shadowIndicator.active{background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5)}
@@ -27,7 +27,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
-// THE RIP FIELD — DN Framework (Final)
+// THE RIP FIELD — DN Framework v9
+// Sonic Dimensionality: ambient harmonics shaped by your gravity.
 // Light creates. Shadow destroys. Both are necessary.
 // "Creation and destruction may not be opposing forces at all,
 //  but collaborative partners in a cosmic intelligence system."
@@ -59,6 +60,168 @@ const BOND_DIST=40;
 
 let fieldCx, fieldCy, fieldScale;
 
+// ═══════════════════════════════════════════════════════════════
+// SOUND ENGINE — Cosmic Ambient Harmonics
+// The field hums. Your gravity shapes the music.
+// Structure adds complexity. Shadow inverts the harmony.
+// ═══════════════════════════════════════════════════════════════
+let audioCtx=null, soundReady=false, soundOn=false;
+let ambMaster=null;
+// 4-voice ambient pad: root, third, fifth, octave (Cmaj7 feeling)
+// C2, E2, G2, B2 — warm, meditative
+const AMB_BASE=[65.41, 82.41, 98.00, 123.47];
+// Shadow intervals: Cm(b5) — C, Eb, Gb, Bb — tense, dissonant
+const AMB_SHADOW=[65.41, 77.78, 92.50, 116.54];
+let ambOscs=[], ambGains=[];
+// Structure layers: higher harmonics that fade in with bond complexity
+let structOscs=[], structGains=[];
+// C3, G3, E4 — octave-spaced shimmer
+const STRUCT_FREQ=[130.81, 196.00, 329.63];
+const STRUCT_SHADOW=[130.81, 185.00, 311.13];
+// LFO for gentle pulsing
+let lfoNode=null, lfoGain=null;
+// Smoothed activity for tempo modulation
+let soundActivity=0, soundStructure=0, soundShadowBlend=0;
+
+function initSound(){
+  if(soundReady)return;
+  try{
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    soundReady=true;
+
+    ambMaster=audioCtx.createGain();
+    ambMaster.gain.value=0;
+    ambMaster.connect(audioCtx.destination);
+
+    // LFO: gentle amplitude tremolo (the "breathing")
+    lfoNode=audioCtx.createOscillator();
+    lfoGain=audioCtx.createGain();
+    lfoNode.type='sine';
+    lfoNode.frequency.value=0.15; // very slow breath
+    lfoGain.gain.value=0.08; // subtle
+    lfoNode.connect(lfoGain);
+    lfoNode.start();
+
+    // Ambient pad voices
+    for(let i=0;i<4;i++){
+      let osc=audioCtx.createOscillator();
+      let gain=audioCtx.createGain();
+      osc.type='sine';
+      osc.frequency.value=AMB_BASE[i];
+      gain.gain.value=i===0?0.10:i===1?0.06:i===2?0.07:0.04;
+      // Connect LFO to each voice's gain for breathing
+      lfoGain.connect(gain.gain);
+      osc.connect(gain);
+      gain.connect(ambMaster);
+      osc.start();
+      ambOscs.push(osc);
+      ambGains.push(gain);
+    }
+
+    // Structure layers: dormant until bonds form
+    for(let i=0;i<3;i++){
+      let osc=audioCtx.createOscillator();
+      let gain=audioCtx.createGain();
+      osc.type='sine';
+      osc.frequency.value=STRUCT_FREQ[i];
+      gain.gain.value=0; // silent until structures emerge
+      osc.connect(gain);
+      gain.connect(ambMaster);
+      osc.start();
+      structOscs.push(osc);
+      structGains.push(gain);
+    }
+
+    // Fade in gently
+    let t=audioCtx.currentTime;
+    ambMaster.gain.setTargetAtTime(0.6,t,2.5);
+    soundOn=true;
+  }catch(e){console.warn('Audio unavailable:',e);}
+}
+
+function updateRIPSound(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+
+  // ── Activity: cursor velocity + clicks + hold → LFO speed (tempo feel) ──
+  // Slow/still = 0.1Hz breath. Fast/active = 0.4Hz pulse.
+  let actTarget=constrain(smoothVel/12+holdIntensity*0.3+exciteLevel*0.5,0,1);
+  soundActivity=lerp(soundActivity,actTarget,0.02);
+  let lfoFreq=0.1+soundActivity*0.35;
+  lfoNode.frequency.setTargetAtTime(lfoFreq,t,0.5);
+  // Activity also subtly increases LFO depth
+  lfoGain.gain.setTargetAtTime(0.06+soundActivity*0.08,t,0.3);
+
+  // ── Structure: bond count → harmonic layers ──
+  let bondNorm=constrain(bonds.length/80,0,1); // 80 bonds = full complexity
+  let structTarget=bondNorm;
+  soundStructure=lerp(soundStructure,structTarget,0.01);
+
+  for(let i=0;i<3;i++){
+    // Layer i fades in at different thresholds
+    let threshold=i*0.25; // 0, 0.25, 0.5
+    let layerGain=constrain((soundStructure-threshold)/0.3,0,1)*[0.04,0.03,0.025][i];
+    structGains[i].gain.setTargetAtTime(layerGain,t,0.8);
+  }
+
+  // ── Shadow blend: shift frequencies toward dissonant intervals ──
+  soundShadowBlend=lerp(soundShadowBlend,shadowT,0.015);
+  let sb=soundShadowBlend;
+
+  for(let i=0;i<4;i++){
+    let freq=AMB_BASE[i]+(AMB_SHADOW[i]-AMB_BASE[i])*sb;
+    ambOscs[i].frequency.setTargetAtTime(freq,t,1.2);
+    // Shadow also shifts waveform: pure sine → slight triangle edge
+    ambOscs[i].type=sb>0.5?'triangle':'sine';
+  }
+  for(let i=0;i<3;i++){
+    let freq=STRUCT_FREQ[i]+(STRUCT_SHADOW[i]-STRUCT_FREQ[i])*sb;
+    structOscs[i].frequency.setTargetAtTime(freq,t,1.2);
+  }
+
+  // ── Convergence boost: when R×I converges, pad gets slightly louder + warmer ──
+  let convBoost=0.6+smoothConv*0.35;
+  ambMaster.gain.setTargetAtTime(convBoost,t,1.5);
+}
+
+// Click/interaction sonic feedback
+function playBridgeSound(){
+  if(!soundReady||!audioCtx)return;
+  // Gentle chime — the Perception golden tone
+  let osc=audioCtx.createOscillator();
+  let gain=audioCtx.createGain();
+  osc.type='sine';
+  // Pitch rises with more bonds (building complexity)
+  let basePitch=329.63+bonds.length*0.8; // E4 + complexity
+  osc.frequency.value=basePitch;
+  gain.gain.setValueAtTime(0.08,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+1.2);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start();osc.stop(audioCtx.currentTime+1.3);
+  // Second voice: fifth above, quieter
+  let osc2=audioCtx.createOscillator();
+  let gain2=audioCtx.createGain();
+  osc2.type='sine';
+  osc2.frequency.value=basePitch*1.5;
+  gain2.gain.setValueAtTime(0.03,audioCtx.currentTime);
+  gain2.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.9);
+  osc2.connect(gain2);gain2.connect(audioCtx.destination);
+  osc2.start();osc2.stop(audioCtx.currentTime+1.0);
+}
+
+function playShadowSound(){
+  if(!soundReady||!audioCtx)return;
+  // Low, dissonant burst
+  let osc=audioCtx.createOscillator();
+  let gain=audioCtx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.value=73.42; // D2 — low growl
+  gain.gain.setValueAtTime(0.1,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.5);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start();osc.stop(audioCtx.currentTime+0.6);
+}
+
 function setup(){
   createCanvas(windowWidth,windowHeight);
   pixelDensity(1);
@@ -82,14 +245,14 @@ function layoutField(){
       hx, hy, x:hx, y:hy, vx:0, vy:0,
       phase:random(TWO_PI),
       wobX:random(0.3,1), wobY:random(0.3,1), wobAmp:random(0.6,2),
-      size:random(2.5,5.5), baseAlpha:random(35,65),
+      size:random(2.5,5.5), baseAlpha:random(55,95),
       illum:0, tIllum:0,
     });
   }
 }
 
 function draw(){
-  background(6,6,10,24);
+  background(6,6,10,18);
   breathPhase+=0.015;
 
   let mVel=dist(mouseX,mouseY,pmouseX,pmouseY);
@@ -125,7 +288,7 @@ function draw(){
   let gStr=(attention*0.12+holdBoost*0.35)*(shadowMode?-1:1);
 
   let beam=fieldScale*1.1;
-  let ambient=0.25+exciteLevel*0.08;
+  let ambient=0.38+exciteLevel*0.1;
 
   let rNear=0,iNear=0, convR=gRad*0.7;
 
@@ -188,7 +351,7 @@ function draw(){
     }
 
     let dM=mouseOn?dist(p.x,p.y,mouseX,mouseY):9999;
-    if(dM<beam) p.tIllum=pow(1-dM/beam,0.5)*0.75+ambient;
+    if(dM<beam) p.tIllum=pow(1-dM/beam,0.5)*0.9+ambient;
     else p.tIllum=ambient;
     if(holdIntensity>0.1&&dM<gRad) p.tIllum=min(1,p.tIllum+holdIntensity*0.3*(1-dM/gRad));
     if(shadowMode&&dM<beam*0.3) p.tIllum=lerp(p.tIllum,ambient*0.15,shadowT*(1-dM/(beam*0.3)));
@@ -223,6 +386,9 @@ function draw(){
       }
     }
   }
+
+  // Sound engine
+  if(soundReady&&frameCount%3===0) updateRIPSound();
 
   detectClusters();
   detectInterCluster();
@@ -278,7 +444,7 @@ function draw(){
   noStroke();
 
   // Field labels
-  let la=16+smoothConv*6;
+  let la=28+smoothConv*10;
   textFont('Cormorant Garamond');
   textSize(clampV(fieldScale*0.055,10,14));
   textAlign(CENTER,CENTER);
@@ -287,19 +453,19 @@ function draw(){
 
   // Sacred shapes
   for(let sg of sacredShapes){
-    let a=sg.life*25, shimmer=sin(frameCount*0.03+sg.birth)*0.3+0.7;
-    noFill(); stroke(PC[0],PC[1],PC[2],a*shimmer); strokeWeight(0.5+sg.life*0.5);
+    let a=sg.life*40, shimmer=sin(frameCount*0.03+sg.birth)*0.3+0.7;
+    noFill(); stroke(PC[0],PC[1],PC[2],a*shimmer); strokeWeight(0.6+sg.life*0.7);
     beginShape(); for(let pt of sg.points)vertex(pt.x,pt.y); endShape(CLOSE);
     noStroke();
     for(let pt of sg.points){
-      fill(PC[0],PC[1],PC[2],a*0.3*shimmer); ellipse(pt.x,pt.y,5,5);
-      fill(255,255,255,a*0.2*shimmer); ellipse(pt.x,pt.y,2,2);
+      fill(PC[0],PC[1],PC[2],a*0.5*shimmer); ellipse(pt.x,pt.y,6,6);
+      fill(255,255,255,a*0.3*shimmer); ellipse(pt.x,pt.y,2.5,2.5);
     }
   }
 
   // Inter-cluster links
   for(let link of interClusterLinks){
-    let a=link.strength*30;
+    let a=link.strength*50;
     stroke(PC[0],PC[1],PC[2],a); strokeWeight(0.5+link.strength*0.8);
     let mx=(link.ax+link.bx)/2+sin(breathPhase*3)*4;
     let my=(link.ay+link.by)/2+cos(breathPhase*3)*4;
@@ -309,7 +475,7 @@ function draw(){
 
   // Comet trail
   for(let ct of cometTrail){
-    let a=ct.life*ct.intensity*18;
+    let a=ct.life*ct.intensity*28;
     fill(PC[0],PC[1],PC[2],a);
     ellipse(ct.x,ct.y,3+ct.intensity*2.5,3+ct.intensity*2.5);
   }
@@ -318,11 +484,11 @@ function draw(){
   for(let sw of shockwaves){
     noFill();
     // Outer ring
-    stroke(SC[0],SC[1],SC[2],sw.life*60);
+    stroke(SC[0],SC[1],SC[2],sw.life*85);
     strokeWeight(1.5+sw.force*2);
     ellipse(sw.x,sw.y,sw.radius*2,sw.radius*2);
     // Inner echo
-    stroke(SC[0],SC[1],SC[2],sw.life*25);
+    stroke(SC[0],SC[1],SC[2],sw.life*40);
     strokeWeight(0.6);
     ellipse(sw.x,sw.y,sw.radius*1.4,sw.radius*1.4);
   }
@@ -330,23 +496,23 @@ function draw(){
 
   // Bond lines
   for(let b of bonds){
-    let vis=b.life*b.strength*max(b.a.illum,b.b.illum,0.25);
+    let vis=b.life*b.strength*max(b.a.illum,b.b.illum,0.35);
     if(vis<0.01)continue;
     let col=shadowMode?SC:PC;
-    let alpha=vis*60;
+    let alpha=vis*90;
 
     if(b.strength>0.5&&b.age>60){
       let mx=(b.a.x+b.b.x)/2, my=(b.a.y+b.b.y)/2;
-      fill(col[0],col[1],col[2],alpha*0.05);
-      ellipse(mx,my,5+b.strength*4,5+b.strength*4);
+      fill(col[0],col[1],col[2],alpha*0.08);
+      ellipse(mx,my,6+b.strength*5,6+b.strength*5);
     }
     stroke(col[0],col[1],col[2],alpha);
-    strokeWeight(0.3+b.strength*1.2);
+    strokeWeight(0.4+b.strength*1.5);
     line(b.a.x,b.a.y,b.b.x,b.b.y);
     if(b.strength>0.25){
-      noStroke(); fill(col[0],col[1],col[2],alpha*0.4);
+      noStroke(); fill(col[0],col[1],col[2],alpha*0.5);
       let mx=(b.a.x+b.b.x)/2, my=(b.a.y+b.b.y)/2;
-      ellipse(mx,my,1.5+b.strength,1.5+b.strength);
+      ellipse(mx,my,2+b.strength*1.5,2+b.strength*1.5);
     }
   }
   noStroke();
@@ -360,9 +526,9 @@ function draw(){
       :(shadowT>0.3?[lerp(IC[0],SC[0],shadowT*.4),lerp(IC[1],SC[1],shadowT*.4),lerp(IC[2],SC[2],shadowT*.4)]:IC);
     let breath=sin(breathPhase*2+p.phase)*0.07+1;
     let sz=p.size*breath;
-    if(a>4){fill(col[0],col[1],col[2],a*0.09);ellipse(p.x,p.y,sz*3.5,sz*3.5);}
-    fill(col[0],col[1],col[2],a);ellipse(p.x,p.y,sz,sz);
-    if(p.illum>0.65){fill(255,255,255,a*0.12);ellipse(p.x,p.y,sz*0.3,sz*0.3);}
+    if(a>3){fill(col[0],col[1],col[2],a*0.14);ellipse(p.x,p.y,sz*4,sz*4);}
+    fill(col[0],col[1],col[2],a*1.3);ellipse(p.x,p.y,sz,sz);
+    if(p.illum>0.55){fill(255,255,255,a*0.2);ellipse(p.x,p.y,sz*0.35,sz*0.35);}
   }
 
   // Signals
@@ -371,9 +537,9 @@ function draw(){
     if(a<0.5)continue;
     let sz=s.size*(0.3+s.life*0.7);
     let col=s.shadow?SC:PC;
-    if(a>3){fill(col[0],col[1],col[2],a*0.1);ellipse(s.x,s.y,sz*3,sz*3);}
-    fill(col[0],col[1],col[2],a);ellipse(s.x,s.y,sz,sz);
-    if(a>8&&!s.shadow){fill(255,255,255,a*0.3);ellipse(s.x,s.y,sz*0.25,sz*0.25);}
+    if(a>2){fill(col[0],col[1],col[2],a*0.15);ellipse(s.x,s.y,sz*3.5,sz*3.5);}
+    fill(col[0],col[1],col[2],a*1.2);ellipse(s.x,s.y,sz,sz);
+    if(a>6&&!s.shadow){fill(255,255,255,a*0.4);ellipse(s.x,s.y,sz*0.3,sz*0.3);}
   }
 
   // Edge shadow
@@ -392,21 +558,21 @@ function draw(){
     let cs=3+smoothConv*1.5+holdIntensity*2;
     if(shadowMode){
       // Shadow cursor: red, slightly larger, menacing
-      fill(SC[0],SC[1],SC[2],140+sin(breathPhase*6)*30);
+      fill(SC[0],SC[1],SC[2],170+sin(breathPhase*6)*35);
       noStroke(); ellipse(mouseX,mouseY,(cs+1)*cp,(cs+1)*cp);
-      fill(255,255,255,40);
+      fill(255,255,255,55);
       ellipse(mouseX,mouseY,cs*cp*0.25,cs*cp*0.25);
     } else {
-      fill(255,248,245,70+holdIntensity*40);
+      fill(255,248,245,95+holdIntensity*50);
       noStroke(); ellipse(mouseX,mouseY,cs*cp,cs*cp);
-      fill(255,255,255,35+holdIntensity*25);
+      fill(255,255,255,50+holdIntensity*30);
       ellipse(mouseX,mouseY,cs*cp*0.3,cs*cp*0.3);
     }
   }
 
   if(smoothConv>0.45&&!shadowMode){
     let ph=(breathPhase*8)%TWO_PI;
-    noFill();stroke(PC[0],PC[1],PC[2],(smoothConv-0.45)*20*(0.5+sin(ph)*0.5));
+    noFill();stroke(PC[0],PC[1],PC[2],(smoothConv-0.45)*35*(0.5+sin(ph)*0.5));
     strokeWeight(0.4); ellipse(mouseX,mouseY,28+sin(ph)*18,28+sin(ph)*18);
     noStroke();
   }
@@ -567,7 +733,7 @@ function spawnSignal(x,y,intensity,isShadow){
   signals.push({x:x+random(-4,4),y:y+random(-4,4),
     vx:random(-0.3,0.3)+(isShadow?random(-0.5,0.5):0),
     vy:random(-0.15,-0.02)+(isShadow?random(-0.3,0.3):0),
-    life:1,size:1.5+intensity*2,alpha:25+intensity*35,shadow:isShadow});
+    life:1,size:1.5+intensity*2,alpha:40+intensity*45,shadow:isShadow});
 }
 
 function clampV(v,mn,mx){return v<mn?mn:v>mx?mx:v}
@@ -603,11 +769,14 @@ function updateCaption(mouseOn){
 }
 
 function mousePressed(){
+  if(!soundReady) initSound(); // Browser requires user gesture for audio
   if(shadowMode){
     // SHADOW CLICK: entropy explosion
+    playShadowSound();
     shadowBreak(mouseX,mouseY);
   } else {
     // LIGHT CLICK: bridge creation
+    playBridgeSound();
     holding=true; holdFrames=0;
     cumulativeEnergy+=20;
     let count=0;
