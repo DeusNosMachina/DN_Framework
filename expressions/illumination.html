@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Illumination v7 — Feeling Dimensionality</title>
+<title>Illumination v8 — Feeling Dimensionality</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -17,10 +17,15 @@
     background:rgba(30,25,45,0.85);border:1px solid rgba(120,100,150,0.2);border-right:none;
     padding:16px 9px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
     color:#998aaa;border-radius:6px 0 0 6px;user-select:none;
-    font-family:inherit;cursor:none;transition:color 0.3s,background 0.3s;
+    font-family:inherit;cursor:pointer;transition:color 0.3s,background 0.3s,border-color 0.3s,box-shadow 0.3s,padding 0.3s;
   }
-  #guide-btn:hover{color:#d0c0ee;background:rgba(40,33,60,0.9)}
-  #guide-btn.panel-open{background:rgba(50,40,70,0.95);color:#d0c0ee}
+  #guide-btn:hover{
+    color:#e0d4f0;background:rgba(50,40,75,0.95);
+    border-color:rgba(45,139,70,0.25);
+    box-shadow:-4px 0 16px rgba(45,139,70,0.08),inset 0 0 12px rgba(120,100,150,0.06);
+    padding:18px 11px;
+  }
+  #guide-btn.panel-open{background:rgba(50,40,70,0.95);color:#d0c0ee;border-color:rgba(120,100,150,0.3)}
 
   #guide{
     position:fixed;right:-400px;top:0;width:380px;height:100vh;z-index:25;
@@ -30,45 +35,71 @@
     transition:right 0.5s cubic-bezier(0.22,1,0.36,1);
     font-size:13.5px;line-height:1.65;font-weight:300;
     scrollbar-width:thin;scrollbar-color:#332a44 transparent;
+    cursor:default;
   }
   #guide.open{right:0}
   #guide::-webkit-scrollbar{width:4px}
   #guide::-webkit-scrollbar-thumb{background:#332a44;border-radius:2px}
-  #guide h2{font-size:24px;font-weight:400;color:#d8d0e0;margin-bottom:18px;letter-spacing:0.04em}
-  #guide h3{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:#998aaa;margin-top:20px;margin-bottom:7px}
-  #guide p{color:#887898;margin-bottom:9px}
-  #guide strong{color:#c8c0d0;font-weight:400}
+  #guide h2{font-size:24px;font-weight:400;color:#e0d8ec;margin-bottom:18px;letter-spacing:0.04em}
+  #guide h3{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:#b0a0c0;margin-top:20px;margin-bottom:7px}
+  #guide p{color:#9a8aac;margin-bottom:9px}
+  #guide strong{color:#d8d0e4;font-weight:400}
   .kh{display:inline-block;background:rgba(120,100,150,0.15);border:1px solid rgba(120,100,150,0.2);border-radius:3px;padding:1px 6px;font-size:11px;font-family:monospace;color:#aa99bb;margin:0 2px}
-  .tl{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px;color:#776888}
+  .tl{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px;color:#9088a0}
   .ts{width:22px;height:3px;border-radius:1px;flex-shrink:0}
-  .dim-row{display:flex;align-items:center;gap:6px;margin:3px 0;font-size:12px;color:#776888}
+  .dim-row{display:flex;align-items:center;gap:6px;margin:3px 0;font-size:12px;color:#9088a0}
   .dim-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
   /* ─── CONTROLS ─── */
   #controls{
     position:fixed;bottom:52px;left:20px;z-index:10;
     display:flex;flex-direction:column;gap:12px;
-    opacity:0.6;transition:opacity 0.5s;
+    opacity:0.5;transition:opacity 0.7s,background 0.7s,box-shadow 0.7s,backdrop-filter 0.7s;
+    padding:14px 16px 14px 10px;border-radius:8px;
+    background:rgba(15,12,25,0);
+    box-shadow:0 0 0 0 rgba(45,139,70,0);
+    cursor:default;
   }
-  #controls:hover{opacity:1}
+  #controls:hover{
+    opacity:1;background:rgba(15,12,25,0.65);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    box-shadow:0 0 18px 0 rgba(45,139,70,0.06),inset 0 0 0 1px rgba(120,100,150,0.1);
+  }
   .cr{display:flex;align-items:center;gap:8px}
   .cl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;width:78px;text-align:right;color:#776888;font-weight:300;flex-shrink:0}
   .clr{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;width:68px;color:#776888;font-weight:300;flex-shrink:0}
-  input[type="range"]{-webkit-appearance:none;appearance:none;width:100px;height:2px;outline:none;border-radius:1px}
-  input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#c8c0d0;border-radius:50%;cursor:none}
+  input[type="range"]{-webkit-appearance:none;appearance:none;width:100px;height:2px;outline:none;border-radius:1px;cursor:pointer}
+  input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:#c8c0d0;border-radius:50%;cursor:pointer}
   .sw{background:linear-gradient(to right,#E84C88,#D4A017)}
   .sc{background:linear-gradient(to right,#3A86C8,#7B5EA7)}
   .st{background:linear-gradient(to right,#1A9E96,#E87C2E)}
   .sg{background:linear-gradient(to right,#2D8B46,#E84C88)}
   .sf{background:linear-gradient(to right,#1A1A3E,#E84C88)}
   .stime{background:linear-gradient(to right,#4B0082,#D4A017)}
+  .shar{background:linear-gradient(to right,#2D8B46,#7B5EA7)}
+
+  /* ─── TOGGLE SWITCHES ─── */
+  .tog-row{display:flex;align-items:center;gap:8px;margin:2px 0}
+  .tog-lbl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#776888;font-weight:300;width:90px;text-align:right;flex-shrink:0}
+  .tog{
+    position:relative;width:32px;height:16px;border-radius:8px;
+    background:rgba(40,35,55,0.8);border:1px solid rgba(120,100,150,0.2);
+    cursor:pointer;transition:background 0.3s,border-color 0.3s;flex-shrink:0;
+  }
+  .tog.on{background:rgba(45,139,70,0.3);border-color:rgba(45,139,70,0.4)}
+  .tog::after{
+    content:'';position:absolute;top:2px;left:2px;width:10px;height:10px;
+    border-radius:50%;background:#776888;transition:transform 0.3s,background 0.3s;
+  }
+  .tog.on::after{transform:translateX(16px);background:#2D8B46}
+  .sound-divider{width:100%;height:1px;background:rgba(120,100,150,0.08);margin:4px 0}
 
   /* ─── RESET BUTTON ─── */
   #reset-btn{
     position:fixed;bottom:16px;left:20px;z-index:10;
     background:rgba(30,25,45,0.6);border:1px solid rgba(120,100,150,0.15);
     border-radius:4px;padding:5px 14px;font-size:10px;letter-spacing:0.12em;
-    text-transform:uppercase;color:#665a77;font-family:inherit;cursor:none;
+    text-transform:uppercase;color:#665a77;font-family:inherit;cursor:pointer;
     transition:all 0.3s;
   }
   #reset-btn:hover{color:#c8c0d0;background:rgba(50,40,70,0.8);border-color:rgba(120,100,150,0.3)}
@@ -102,49 +133,53 @@
 
 <canvas id="c"></canvas>
 
-<div id="title"><h1>Illumination</h1><p>move through the field — you are the light</p></div>
+<div id="title"><h1>Illumination</h1><p>move through the field — you are the light and the sound</p></div>
 
 <button id="guide-btn" onclick="toggleGuide()">How to See</button>
 <div id="guide">
   <h2>How to See</h2>
 
   <h3>You Are the Light</h3>
-  <p>Your cursor is your <strong>attention</strong>. You are inside a field of nine dimensions. Move, and dimensions reveal. Pull away, and entropy reclaims the dark.</p>
+  <p>Your cursor is <strong>attention</strong> moving through a field of nine dimensions. What you illuminate, lives. What you ignore, entropy reclaims.</p>
 
-  <h3>Click — Signal Lock / Shadow Break</h3>
-  <p>In <strong>light mode</strong>: Click near an illuminated signal to <strong>Signal Lock</strong> it — a conscious attestation that this signal matters.</p>
-  <p>For <strong>1D–4D signals</strong>, locking initiates a <strong>developmental journey</strong>. The signal begins moving upward through dimensional bands toward 5D recognition. A Story Thread trail traces its path. But it needs your <strong>continued attention</strong> — keep your light on it, and it gains energy. Look away, and it stalls, dims, and may never reach recognition. Each dimensional crossing costs energy.</p>
-  <p>For <strong>5D+ signals</strong>, locking creates a <strong>gravitational anchor</strong> — they're already at or above recognition. They hold the field.</p>
-  <p>In <strong>shadow mode</strong>: Click triggers a <strong>Shadow Break</strong> — explosive separation. Nearby signals are repelled. Locked signals within range are unlocked.</p>
+  <h3>Interact</h3>
+  <p><strong>Click</strong> near an illuminated signal to <strong>Signal Lock</strong> it — a conscious attestation. <strong>1D–4D</strong> signals begin a developmental journey upward toward 5D recognition, fueled by your continued attention. <strong>5D+</strong> signals become gravitational anchors.</p>
+  <p>In <strong>shadow mode</strong>, click triggers a <strong>Shadow Break</strong> — explosive separation that unlocks nearby signals.</p>
 
   <h3>Keys</h3>
-  <p><span class="kh">S</span> <strong>Shadow Mode</strong> — Attention creates darkness. What you see vanishes. What you ignore reveals.</p>
-  <p><span class="kh">T</span> <strong>Story Threads</strong> — The seven archetypal arcs connecting dimensions. Threads glow when both endpoints are illuminated.</p>
-  <p><span class="kh">P</span> <strong>Parallax</strong> — Toggle 3D depth. When on, your cursor shifts the field layers. When off, only your light moves.</p>
+  <p><span class="kh">S</span> <strong>Shadow</strong> — Your attention creates darkness. What you see vanishes; what you ignore reveals.</p>
+  <p><span class="kh">T</span> <strong>Threads</strong> — Seven archetypal arcs connecting dimensions, glowing when both endpoints are lit.</p>
+  <p><span class="kh">P</span> <strong>Parallax</strong> — Toggle 3D depth shifting with cursor movement.</p>
 
   <h3>Sliders</h3>
-  <p><strong>Immersion ↔ Awareness:</strong> Dissolved in the field vs. seeing its structure.</p>
-  <p><strong>Spectrum ↔ Focus:</strong> Wide soft beam vs. tight intense beam.</p>
-  <p><strong>Ambient ↔ Directed:</strong> Self-glowing field vs. only-where-you-aim.</p>
-  <p><strong>Resonance:</strong> How readily signals bind to compatible neighbors.</p>
-  <p><strong>Frontier Chaos:</strong> How much 9D energy enters from the unknown edges.</p>
-  <p><strong>Slow ↔ Fast:</strong> Time dilation. Near-stoppage on the left; rapid evolution on the right. Default is slightly slower than real-time — space to see what's happening.</p>
+  <p><strong>Immersion ↔ Awareness</strong> · Dissolved in the field vs. seeing band structure.</p>
+  <p><strong>Spectrum ↔ Focus</strong> · Wide soft beam vs. tight intense beam.</p>
+  <p><strong>Ambient ↔ Directed</strong> · Self-glowing field vs. only-where-you-aim.</p>
+  <p><strong>Resonance</strong> · How readily signals bind to compatible neighbors.</p>
+  <p><strong>Frontier Chaos</strong> · How much 9D energy enters from the edges.</p>
+  <p><strong>Time</strong> · Near-stoppage to rapid evolution.</p>
 
-  <h3>Dimensional Personalities</h3>
-  <div class="dim-row"><div class="dim-dot" style="background:#E84C88"></div><strong>1D Spark</strong> — Flickers urgently. Raw impulse. Can ignite nearby signals.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#3A86C8"></div><strong>2D Reaction</strong> — Snaps between states. Tests neighbors with brief flashing links.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#7B5EA7"></div><strong>3D Context</strong> — Forms triangular clusters. Widest awareness radius.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#6B30A2"></div><strong>4D Temporal</strong> — Long memory trails. Occasionally reverses, reading time.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#2D8B46"></div><strong>5D Singularity</strong> — THE inflection point. Flickers with light/shadow tension. Pulls 1D-4D in, gives 6D+ orbital energy. Unattended 5D signals dissolve — the choice requires consciousness.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#E87C2E"></div><strong>6D Connection</strong> — Bridges across 4+ dimensions. Longest reach. The love bridge.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#D4A017"></div><strong>7D Manifestation</strong> — Pulses brightly. Clusters crystallize into stable forms and birth new signals.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#1A9E96"></div><strong>8D Recursion</strong> — Orbits gravity centers. Spirals inward. Self-referential paths.</div>
-  <div class="dim-row"><div class="dim-dot" style="background:#4a4570"></div><strong>9D Frontier</strong> — Enters from the edges. Phases in and out. Unpredictable.</div>
+  <h3>Sound</h3>
+  <p><strong>Background</strong> toggles a cosmic drone that shifts with your position — lower dimensions are warmer, higher are ethereal. Shadow mode makes it gritty.</p>
+  <p><strong>Tones</strong> toggles dimensional signal tones. Each dimension has a unique pitch — your beam plays the field like an instrument as it sweeps across signals.</p>
+  <p><strong>Harmonic Depth</strong> controls overtone richness: clean fundamentals on the left, full harmonic series on the right.</p>
 
-  <h3>In Shadow Mode</h3>
-  <p>Each dimension inverts its behavior. 1D repels passionately. 5D consumes rather than attracts. 6D extracts rather than bridges. 7D cages rather than creates. 8D spirals tighter toward destruction. 9D circles inward rather than arriving.</p>
+  <h3>The Nine Dimensions</h3>
+  <div class="dim-row"><div class="dim-dot" style="background:#E84C88"></div><strong>1D Spark</strong> — Raw impulse. Flickers, ignites neighbors.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#3A86C8"></div><strong>2D Reaction</strong> — Binary testing. Snaps between states.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#7B5EA7"></div><strong>3D Context</strong> — Ecosystem awareness. Triangular clusters.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#6B30A2"></div><strong>4D Temporal</strong> — Long memory. Occasional reversal.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#2D8B46"></div><strong>5D Singularity</strong> — THE center. Pulls lower in, gives higher orbital energy. Dissolves without attention.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#E87C2E"></div><strong>6D Connection</strong> — The love bridge. Captures and lifts.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#D4A017"></div><strong>7D Manifestation</strong> — Crystallizes near 5D. Births new signals.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#1A9E96"></div><strong>8D Recursion</strong> — Orbits 5D. Spirals, self-refines.</div>
+  <div class="dim-row"><div class="dim-dot" style="background:#4a4570"></div><strong>9D Frontier</strong> — Phases in from edges. Catalyst or disruptor.</div>
 
-  <h3>The Seven Story Threads</h3>
+  <h3>The Living Field</h3>
+  <p>Dense 5D clusters become <strong>generative engines</strong> — emitting 6D bridges, 7D manifestations, and 8D recursion. Clusters <strong>transmute</strong> lower members upward, spending mass to produce higher intelligence. Signals near locked 5D+ anchors gain a <strong>green shimmer</strong>: resonant activation, meaning transformed in place.</p>
+  <p>In <strong>shadow mode</strong>, every dimension inverts. 1D repels. 5D consumes. 6D extracts. 7D cages. 8D spirals toward destruction. Shadow tones are the same notes, slightly wrong — the field heard through a broken frequency.</p>
+
+  <h3>Story Threads</h3>
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E84C88,#2D8B46)"></div>Recognition Arc · 1D → 5D</div>
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E84C88,#4a4570)"></div>Mystery Bridge · 1D → 9D</div>
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#3A86C8,#D4A017)"></div>Evidence Portal · 2D → 7D</div>
@@ -153,27 +188,7 @@
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#2D8B46,#D4A017)"></div>Creative Leap · 5D → 7D</div>
   <div class="tl"><div class="ts" style="background:linear-gradient(to right,#E87C2E,#4a4570)"></div>Evolutionary Edge · 6D → 9D</div>
 
-  <h3>The Developmental Flow</h3>
-  <p><strong>1D Spark</strong> signals emerge continuously from below — raw impulse entering the field. Over time, some drift upward toward <strong>2D</strong> as they become ready for testing. Occasionally a spark leaps directly toward 5D gravity (the Recognition Arc).</p>
-  <p><strong>2D Reaction</strong> resists most 1D noise — Truth must validate before it moves. But tested signals eventually drift toward <strong>3D</strong>, where they find context and form structures.</p>
-  <p><strong>3D structures</strong>, once large enough, are attracted to <strong>5D gravity wells</strong>. This is the creation→recognition gradient: lower dimensions build complexity that creates recognition opportunities at 5D.</p>
-  <p><strong>6D Connection</strong> actively descends to "capture" lower-order signals and lift them toward higher dimensions. It is the love bridge — the mechanism that helps intelligence flow upward.</p>
-  <p>When lower-dimensional signals come near a locked 5D+ signal, they gain a <strong>green shimmer</strong>: their meaning has been transformed by the recognition event. This is <strong>Resonant Activation</strong> — a meaning-shift-in-place, not a re-tagging.</p>
-
-  <h3>The Spectrum Bar</h3>
-  <p>The labeled bar at the bottom shows how much <strong>dimensional activity</strong> your attention is currently illuminating. Each column is one dimension (1D through 9D). The taller and brighter the bar, the more signals at that dimension are visible right now. It's a live frequency readout — which dimensions are you perceiving in this moment?</p>
-
-  <h3>The Upper-Dimensional Ecosystem</h3>
-  <p><strong>5D is THE center of the universe.</strong> Every higher dimension orbits it. 5D pulls lower dimensions inward, gives 6D+ orbital energy, and flickers constantly between light and shadow — the choice is always being made. Without your attention, 5D signals dissolve. The choice requires consciousness.</p>
-  <p><strong>7D manifestations</strong> intensify near 5D — they orbit recognition, pulsing brighter the closer they get.</p>
-  <p><strong>8D recursion</strong> orbits 5D signals specifically, refining what recognition has produced.</p>
-  <p>Dense 5D clusters become generative engines, emitting 6D bridges outward, 7D manifestations upward, and 8D recursion into orbit. Clusters also <strong>transmute</strong> their lower members — spending mass to produce higher intelligence.</p>
-  <p><strong>9D frontier</strong> signals interact constantly, flipping between catalyst and disruptor. They are the chaos that tests everything.</p>
-
-  <h3>The Signal Bands</h3>
-  <p>You may notice entire dimensional bands "exciting" at once — horizontal streaks of light shooting across the field. When multiple signals in the same band are illuminated simultaneously, the trail persistence creates a visible harmonic. You're seeing the field resonate at a specific dimensional frequency.</p>
-
-  <p style="margin-top:20px;font-size:11px;color:#44405a">DN Kernel v1.8 · Travis Kahn · CC BY 4.0<br>Canvas: Russell Foltz-Smith · Concept-to-Canvas<br>DN Integration: Travis Kahn</p>
+  <p style="margin-top:20px;font-size:11px;color:#554a66">DN Kernel v1.8 · Travis Kahn · CC BY 4.0<br>Canvas: Russell Foltz-Smith · Concept-to-Canvas<br>DN Integration: Travis Kahn</p>
 </div>
 
 <div id="controls">
@@ -183,6 +198,10 @@
   <div class="cr"><span class="cl">Resonance</span><input type="range" class="sg" id="sl-r" min="0" max="100" value="50"><span class="clr">Binding</span></div>
   <div class="cr"><span class="cl">Stillness</span><input type="range" class="sf" id="sl-ch" min="0" max="100" value="30"><span class="clr">Chaos</span></div>
   <div class="cr"><span class="cl">Slow</span><input type="range" class="stime" id="sl-time" min="5" max="200" value="85"><span class="clr">Fast</span></div>
+  <div class="sound-divider"></div>
+  <div class="tog-row"><span class="tog-lbl">Background</span><div class="tog" id="tog-bg" onclick="toggleBgSound()"></div></div>
+  <div class="tog-row"><span class="tog-lbl">Tones</span><div class="tog" id="tog-tone" onclick="toggleTones()"></div></div>
+  <div class="cr"><span class="cl">Clean</span><input type="range" class="shar" id="sl-harm" min="0" max="100" value="35"><span class="clr">Rich</span></div>
 </div>
 
 <button id="reset-btn" onclick="resetField()">Reset Field</button>
@@ -199,8 +218,9 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// ILLUMINATION v6 — Directional gravity, transmutation, radiation
-// 5D is a launchpad, not a black hole
+// ILLUMINATION v8 — Sonic Dimensionality
+// Web Audio API sound engine: cosmic drone + dimensional tones
+// Musical DN Codex integration: the field becomes an instrument
 // Grounded in DN Kernel v1.8
 // ════════════════════════════════════════════════════════════════
 
@@ -250,6 +270,198 @@ let frame=0;
 let awareness=.3, focus=.45, directed=.25, resSens=.5, chaos=.3;
 let timeScale = .85; // default slightly slower than v4
 let dimAct=new Float32Array(9);
+
+// ═══════════════════════════════════════════════════════
+// SOUND ENGINE — Web Audio API (Musical DN Codex)
+// The field becomes an instrument played by attention.
+// ═══════════════════════════════════════════════════════
+let audioCtx = null;
+let bgSoundOn = false, tonesOn = false;
+let harmonicDepth = 0.35;
+let soundInitialized = false;
+
+// Dimensional pitch map (pentatonic-ish to avoid dissonance when layered)
+// C3, D3, E3, G3, A3, C4, D4, E4, G4
+const DIM_FREQ = [130.81, 146.83, 164.81, 196.00, 220.00, 261.63, 293.66, 329.63, 392.00];
+// Shadow: ~40 cents sharp (quarter-tone-ish detune) — unsettling beating
+const SHADOW_DETUNE = 42; // cents
+// Waveforms per dimension: light mode
+const DIM_WAVE = ['sine','sine','sine','sine','sine','sine','sine','sine','sine'];
+// Waveforms per dimension: shadow mode (harsher — triangle is the ceiling, not sawtooth)
+const DIM_WAVE_SHADOW = ['triangle','triangle','triangle','triangle','square','triangle','triangle','square','triangle'];
+
+// Drone state
+let droneOscs = [];
+let droneGains = [];
+let droneMaster = null;
+let droneRootFreq = 55; // A1 base
+
+// Tone pool: one gain+osc per dimension, reused
+let toneOscs = [];  // [dim][harmonic_index]
+let toneGains = []; // master gain per dim
+let toneMaster = null;
+
+// Smoothing targets for drone
+let droneTargetFreq = 55;
+let droneTargetDetune = 0;
+let droneTargetShadow = 0;
+
+function initAudio() {
+  if (soundInitialized) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    soundInitialized = true;
+
+    // ── Master outputs ──
+    droneMaster = audioCtx.createGain();
+    droneMaster.gain.value = 0;
+    droneMaster.connect(audioCtx.destination);
+
+    toneMaster = audioCtx.createGain();
+    toneMaster.gain.value = 0;
+    toneMaster.connect(audioCtx.destination);
+
+    // ── Cosmic Drone: root + fifth + octave ──
+    for (let i = 0; i < 3; i++) {
+      let osc = audioCtx.createOscillator();
+      let gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = droneRootFreq * (i === 0 ? 1 : i === 1 ? 1.5 : 2); // root, fifth, octave
+      gain.gain.value = i === 0 ? 0.12 : i === 1 ? 0.06 : 0.04; // root loudest
+      osc.connect(gain);
+      gain.connect(droneMaster);
+      osc.start();
+      droneOscs.push(osc);
+      droneGains.push(gain);
+    }
+
+    // ── Dimensional Tone Pool ──
+    for (let d = 0; d < 9; d++) {
+      let dimGain = audioCtx.createGain();
+      dimGain.gain.value = 0;
+      dimGain.connect(toneMaster);
+      toneGains.push(dimGain);
+
+      // Up to 4 harmonics per dimension (controlled by harmonicDepth slider)
+      let oscs = [];
+      for (let h = 0; h < 4; h++) {
+        let osc = audioCtx.createOscillator();
+        let hGain = audioCtx.createGain();
+        osc.type = DIM_WAVE[d];
+        osc.frequency.value = DIM_FREQ[d] * (h + 1); // fundamental, 2nd, 3rd, 4th harmonic
+        hGain.gain.value = h === 0 ? 1 : 0; // start with fundamental only
+        osc.connect(hGain);
+        hGain.connect(dimGain);
+        osc.start();
+        oscs.push({ osc, gain: hGain });
+      }
+      toneOscs.push(oscs);
+    }
+  } catch(e) {
+    console.warn('Web Audio not available:', e);
+  }
+}
+
+function toggleBgSound() {
+  bgSoundOn = !bgSoundOn;
+  document.getElementById('tog-bg').classList.toggle('on', bgSoundOn);
+  if (bgSoundOn && !soundInitialized) initAudio();
+  if (!soundInitialized) return;
+  // Fade in/out drone
+  let t = audioCtx.currentTime;
+  droneMaster.gain.cancelScheduledValues(t);
+  droneMaster.gain.setTargetAtTime(bgSoundOn ? 0.7 : 0, t, bgSoundOn ? 1.5 : 0.8);
+}
+
+function toggleTones() {
+  tonesOn = !tonesOn;
+  document.getElementById('tog-tone').classList.toggle('on', tonesOn);
+  if (tonesOn && !soundInitialized) initAudio();
+  if (!soundInitialized) return;
+  let t = audioCtx.currentTime;
+  toneMaster.gain.cancelScheduledValues(t);
+  toneMaster.gain.setTargetAtTime(tonesOn ? 0.5 : 0, t, tonesOn ? 0.6 : 0.4);
+}
+
+function updateSound() {
+  if (!soundInitialized || !audioCtx) return;
+  let t = audioCtx.currentTime;
+  harmonicDepth = document.getElementById('sl-harm').value / 100;
+
+  // ══════════════════════════════════════════════════════
+  // COSMIC DRONE — cursor position modulates the universe
+  // ══════════════════════════════════════════════════════
+  if (bgSoundOn && mouseOn) {
+    // Y-axis: dimensional altitude → root pitch
+    // Bottom (1D) = A1(55Hz), Top (9D) = A2(110Hz)
+    let yNorm = 1 - Math.max(0, Math.min(1, my / H)); // 0=bottom, 1=top
+    droneTargetFreq = 55 + yNorm * 55; // 55-110Hz range
+
+    // X-axis: edge vs center → detuning
+    let xNorm = Math.abs(mx / W - 0.5) * 2; // 0=center, 1=edge
+    droneTargetDetune = xNorm * 8; // 0-8 cents beating at edges
+
+    // Shadow blend
+    droneTargetShadow = shadowT;
+  }
+
+  // Smooth interpolation for drone
+  let rootF = droneRootFreq + (droneTargetFreq - droneRootFreq) * 0.02;
+  droneRootFreq = rootF;
+
+  for (let i = 0; i < droneOscs.length; i++) {
+    let mult = i === 0 ? 1 : i === 1 ? 1.5 : 2;
+    // Shadow: shift fifth toward tritone (1.5 → ~1.414)
+    if (i === 1) mult = lerp(1.5, 1.414, droneTargetShadow);
+    droneOscs[i].frequency.setTargetAtTime(rootF * mult, t, 0.1);
+    droneOscs[i].detune.setTargetAtTime(droneTargetDetune * (i === 0 ? 0 : i + 1), t, 0.1);
+    // Shadow: shift waveform blend by changing type for osc 0 and 1
+    droneOscs[i].type = droneTargetShadow > 0.5 ? 'sawtooth' : 'sine';
+  }
+
+  // ══════════════════════════════════════════════════════
+  // DIMENSIONAL TONES — illumination plays each dimension
+  // ══════════════════════════════════════════════════════
+  if (tonesOn) {
+    for (let d = 0; d < 9; d++) {
+      // Use dimAct which tracks max illumination per dimension this frame
+      let activity = dimAct[d];
+      // Per-dimension gain scaling: lower dims are more populous, scale down to prevent overwhelm
+      let dimScale = [0.4, 0.5, 0.65, 0.8, 1.0, 1.0, 1.0, 0.9, 0.8][d];
+      let targetGain = activity > 0.08 ? Math.pow(activity, 0.7) * 0.3 * dimScale : 0;
+
+      // Smoother transitions for lower dims (prevents rapid flicker-buzz)
+      let smoothTime = d <= 2 ? 0.25 : 0.08;
+      toneGains[d].gain.setTargetAtTime(targetGain, t, smoothTime);
+
+      // Shadow: detune and change waveform
+      let isShadow = shadowMode && shadowT > 0.3;
+      for (let h = 0; h < toneOscs[d].length; h++) {
+        let ho = toneOscs[d][h];
+        // Harmonic depth: fundamental always plays, higher harmonics fade in with slider
+        let hGainTarget;
+        if (h === 0) {
+          hGainTarget = 1;
+        } else {
+          // h=1 starts at depth>0.2, h=2 at depth>0.5, h=3 at depth>0.8
+          let threshold = 0.15 + h * 0.28;
+          hGainTarget = Math.max(0, Math.min(1, (harmonicDepth - threshold) / 0.25)) * (1 / (h + 1));
+        }
+        ho.gain.gain.setTargetAtTime(hGainTarget, t, 0.15);
+
+        // Frequency: base + shadow detune
+        let baseFreq = DIM_FREQ[d] * (h + 1);
+        ho.osc.detune.setTargetAtTime(isShadow ? SHADOW_DETUNE : 0, t, 0.2);
+        ho.osc.type = isShadow ? DIM_WAVE_SHADOW[d] : DIM_WAVE[d];
+      }
+    }
+  } else {
+    // Silence all tones when off
+    for (let d = 0; d < 9; d++) {
+      toneGains[d].gain.setTargetAtTime(0, t, 0.1);
+    }
+  }
+}
 
 // ─── Particles ───
 const BASE_COUNT = 280;
@@ -1059,6 +1271,10 @@ function resetField() {
   document.getElementById('sl-r').value=50;
   document.getElementById('sl-ch').value=30;
   document.getElementById('sl-time').value=85;
+  document.getElementById('sl-harm').value=35;
+  // Reset sound toggles (leave audio context alive)
+  if (bgSoundOn) { bgSoundOn=false; document.getElementById('tog-bg').classList.remove('on'); if(droneMaster)droneMaster.gain.setTargetAtTime(0,audioCtx.currentTime,0.3); }
+  if (tonesOn) { tonesOn=false; document.getElementById('tog-tone').classList.remove('on'); if(toneMaster)toneMaster.gain.setTargetAtTime(0,audioCtx.currentTime,0.3); }
 }
 
 // ─── Frontier Chaos — 9D signals from edges (Kernel §2: 9D=Frontier, Beyond) ───
@@ -1175,12 +1391,44 @@ function drawThreads() {
   }
 }
 
+// ── Click sound feedback ──
+function playLockSound(dimIdx) {
+  if (!soundInitialized || !audioCtx || (!tonesOn && !bgSoundOn)) return;
+  let osc = audioCtx.createOscillator();
+  let gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = DIM_FREQ[dimIdx];
+  gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.7);
+}
+
+function playShadowBreakSound() {
+  if (!soundInitialized || !audioCtx || (!tonesOn && !bgSoundOn)) return;
+  for (let i = 0; i < 2; i++) {
+    let osc = audioCtx.createOscillator();
+    let gain = audioCtx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.value = i === 0 ? 185 : 261;
+    gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.5);
+  }
+}
+
 // ─── Click: Signal Lock or Shadow Break ───
 C.addEventListener('click', e => {
   let cx=e.clientX, cy=e.clientY;
 
   if (shadowMode && shadowT > .3) {
     // SHADOW BREAK — explosive separation (Anti-Lock)
+    playShadowBreakSound();
     antiLocks.push({x:cx, y:cy, radius:180, force:4, life:30});
     // Visual burst
     for(let p of particles){
@@ -1228,6 +1476,7 @@ C.addEventListener('click', e => {
       }
 
       locked.push(best);
+      playLockSound(best.di);
       updateLockDisplay();
     }
   }
@@ -1324,6 +1573,9 @@ function loop(){
   X.fillRect(0,0,W,H);
 
   for(let i=0;i<9;i++)dimAct[i]*=.9;
+
+  // Sound engine update (throttled — audio smoothing handles the rest)
+  if (frame % 3 === 0) updateSound();
 
   // Frontier spawning
   frontierTimer += timeScale;
