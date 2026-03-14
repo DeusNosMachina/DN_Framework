@@ -9,318 +9,542 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:100%;height:100%;overflow:hidden;background:#060608;cursor:none;font-family:'Cormorant Garamond',serif}
   canvas{display:block}
-  #caption{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:50;text-align:center;pointer-events:none;width:90%;max-width:640px}
-  #captionText{font-size:clamp(15px,2vw,18px);font-weight:300;letter-spacing:.04em;line-height:1.6;color:rgba(255,255,255,0.65);transition:color 1.2s,opacity 1s}
+
+  #caption{
+    position:fixed;bottom:52px;left:50%;transform:translateX(-50%);
+    z-index:50;text-align:center;pointer-events:none;width:90%;max-width:640px;
+  }
+  #captionText{
+    font-size:clamp(15px,2vw,18px);font-weight:300;letter-spacing:.04em;line-height:1.6;
+    color:rgba(255,255,255,0.65);transition:color .8s,opacity .8s;
+  }
   #captionText.harmonized{color:rgba(212,160,23,0.9);text-shadow:0 0 20px rgba(212,160,23,0.2)}
   #captionText.shadow-active{color:rgba(204,41,54,0.75)}
-  .field-label{position:fixed;font-size:clamp(11px,1.4vw,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.3;z-index:50;pointer-events:none}
+
+  #hotkey{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    z-index:50;pointer-events:none;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(204,41,54,0.25);
+  }
+
+  .field-label{
+    position:fixed;font-size:clamp(11px,1.4vw,13px);letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;opacity:.25;z-index:50;pointer-events:none;
+  }
   #labelReality{bottom:56%;left:clamp(16px,4vw,48px);color:#2D8B46}
   #labelIdentity{bottom:56%;right:clamp(16px,4vw,48px);color:#E87C2E}
-  #hotkeys{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:50;pointer-events:none;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(204,41,54,0.3)}
-  #shadowIndicator{position:fixed;top:20px;right:20px;z-index:50;width:12px;height:12px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);background:transparent;transition:all 0.8s;pointer-events:none}
-  #shadowIndicator.active{background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5)}
+
+  #shadowIndicator{
+    position:fixed;top:20px;right:20px;z-index:50;
+    width:10px;height:10px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.1);background:transparent;
+    transition:all 0.8s;pointer-events:none;
+  }
+  #shadowIndicator.active{
+    background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5);
+  }
 </style>
 </head>
 <body>
+
 <div class="field-label" id="labelReality">Reality</div>
 <div class="field-label" id="labelIdentity">Identity</div>
 <div id="caption"><div id="captionText">Reality × Identity = Experience</div></div>
-<div id="hotkeys">S — shadow</div>
+<div id="hotkey">S — shadow &nbsp;&bull;&nbsp; click — attune</div>
 <div id="shadowIndicator"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
-const R_COL=[45,139,70],I_COL=[232,124,46],P_COL=[212,160,23],S_COL=[204,41,54];
-let rParts=[],iParts=[],pParts=[],bridges=[],crystals=[],clickBursts=[];
-let shadowMode=false,shadowT=0,smoothVel=0,smoothConv=0,breathPhase=0;
-let cumulativeEnergy=0,excitationLevel=0,fieldAge=0;
-let captionTarget='Reality × Identity = Experience',captionLocked=false,captionLockTimer=0;
-const R_COUNT=55,I_COUNT=55,P_MAX=35;
+// ═══════════════════════════════════════════════════════════════
+// THE RIP FIELD — DN Framework v3
+// Light is invisible. You see its effect on what it touches.
+// Gravity pulls structure and pattern together.
+// Where they bond, new signals are born.
+// ═══════════════════════════════════════════════════════════════
 
-function setup(){
-  createCanvas(windowWidth,windowHeight);pixelDensity(1);
-  let cx=width/2,cy=height/2,spread=min(width,height)*0.36;
-  for(let i=0;i<R_COUNT;i++){
-    let a=random(TWO_PI),r=random(spread*0.85);
-    let bx=cx-spread*0.26+cos(a)*r*0.7,by=cy+sin(a)*r*0.6;
-    rParts.push({x:bx,y:by,bx,by,phase:random(TWO_PI),freq:random(0.3,0.8),amp:random(1.5,3),size:random(2,4.5),alpha:random(40,100),axis:random()>0.5?0:1});
+const R_COL = [45, 139, 70];
+const I_COL = [232, 124, 46];
+const P_COL = [212, 160, 23];
+const S_COL = [204, 41, 54];
+
+let rParts = [], iParts = [];
+let bonds = [];          // persistent R↔I bonds (molecular connections)
+let signals = [];        // yellow perception signals born from collisions
+let clickPulse = 0;      // frames of boosted gravity after click
+
+let shadowMode = false, shadowT = 0;
+let smoothVel = 0, smoothConv = 0;
+let breathPhase = 0;
+let cumulativeEnergy = 0;
+let exciteLevel = 0;
+
+let captionTarget = 'Reality × Identity = Experience';
+let captionHoldTimer = 0;
+const CAPTION_HOLD = 150;
+
+const R_COUNT = 60, I_COUNT = 60;
+
+// ═══════════════════════════════════════════════════════════════
+// SETUP
+// ═══════════════════════════════════════════════════════════════
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
+
+  let cx = width / 2, cy = height / 2;
+  let spread = min(width, height) * 0.38;
+
+  for (let i = 0; i < R_COUNT; i++) {
+    let a = random(TWO_PI), r = random(spread * 0.9);
+    let bx = cx - spread * 0.24 + cos(a) * r * 0.7;
+    let by = cy + sin(a) * r * 0.6;
+    rParts.push({
+      x: bx, y: by, bx, by,
+      phase: random(TWO_PI), freq: random(0.3, 0.8), amp: random(1.5, 3),
+      size: random(1.8, 4), baseAlpha: random(25, 60),
+      illum: 0, tIllum: 0,  // illumination model
+      axis: random() > 0.5 ? 0 : 1,
+      id: 'r' + i,
+    });
   }
-  for(let i=0;i<I_COUNT;i++){
-    let a=random(TWO_PI),r=random(spread*0.85);
-    let bx=cx+spread*0.26+cos(a)*r*0.7,by=cy+sin(a)*r*0.6;
-    iParts.push({x:bx,y:by,bx,by,phase:random(TWO_PI),rate:random(0.4,0.8),amp:random(2,4),size:random(2,5),alpha:random(40,100)});
+
+  for (let i = 0; i < I_COUNT; i++) {
+    let a = random(TWO_PI), r = random(spread * 0.9);
+    let bx = cx + spread * 0.24 + cos(a) * r * 0.7;
+    let by = cy + sin(a) * r * 0.6;
+    iParts.push({
+      x: bx, y: by, bx, by,
+      phase: random(TWO_PI), rate: random(0.4, 0.8), amp: random(2, 4),
+      size: random(1.8, 4.5), baseAlpha: random(25, 60),
+      illum: 0, tIllum: 0,
+      id: 'i' + i,
+    });
   }
 }
 
-function draw(){
-  let bgA=30+excitationLevel*10;
-  background(shadowMode?12:6,shadowMode?5:6,shadowMode?8:10,bgA);
-  breathPhase+=0.015;fieldAge++;
+// ═══════════════════════════════════════════════════════════════
+// DRAW
+// ═══════════════════════════════════════════════════════════════
 
-  let mVel=dist(mouseX,mouseY,pmouseX,pmouseY);
-  smoothVel=lerp(smoothVel,mVel,0.15);
-  let mouseOn=mouseX>0&&mouseX<width&&mouseY>0&&mouseY<height;
-  if(mouseOn&&mVel>1)cumulativeEnergy+=mVel*0.03;
-  excitationLevel=lerp(excitationLevel,min(1,cumulativeEnergy/12000),0.01);
-  shadowT=lerp(shadowT,shadowMode?1:0,0.03);
+function draw() {
+  background(6, 6, 10, 28);
+  breathPhase += 0.015;
 
-  let attention=mouseOn?max(0,1-smoothVel/14):0;
-  let gStr=attention*(80+excitationLevel*40);
-  let gRad=min(width,height)*(0.22+excitationLevel*0.08);
-  let convR=gRad*0.6,sMult=shadowMode?-0.6:1;
-  let rNear=0,iNear=0;
+  let mVel = dist(mouseX, mouseY, pmouseX, pmouseY);
+  smoothVel = lerp(smoothVel, mVel, 0.12);
+  let mouseOn = mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height;
 
-  // Update Reality
-  for(let p of rParts){
-    let wave=sin(breathPhase*20*p.freq+p.phase)*p.amp;
-    let tx=p.bx+(p.axis===0?wave:0),ty=p.by+(p.axis===1?wave:0);
-    if(mouseOn&&gStr>0){
-      let dx=mouseX-tx,dy=mouseY-ty,d=sqrt(dx*dx+dy*dy);
-      if(d<gRad&&d>1){let f=(1-d/gRad)*gStr*0.012*sMult;tx+=dx/d*f;ty+=dy/d*f;if(d<convR)rNear++;}
+  shadowT = lerp(shadowT, shadowMode ? 1 : 0, 0.03);
+
+  // Excitation
+  if (mouseOn && mVel > 1) cumulativeEnergy += mVel * 0.03;
+  exciteLevel = lerp(exciteLevel, constrain(cumulativeEnergy / 3000, 0, 1), 0.008);
+
+  // Click pulse decay
+  if (clickPulse > 0) clickPulse--;
+
+  // ── Gravity ──
+  let attention = mouseOn ? max(0, 1 - smoothVel / 14) : 0;
+  let clickBoost = clickPulse > 0 ? 2.5 * (clickPulse / 30) : 0;
+  let gStr = attention * (70 + exciteLevel * 30) + clickBoost * 100;
+  let gRad = min(width, height) * (0.25 + clickBoost * 0.08);
+  let sMult = shadowMode ? -0.5 : 1;
+
+  // ── Illumination beam (invisible — just a radius) ──
+  let beam = min(width, height) * 0.4;
+  let ambient = 0.15 + exciteLevel * 0.1; // base visibility
+
+  let rNear = 0, iNear = 0;
+  let convR = gRad * 0.6;
+
+  // ── Update Reality particles ──
+  for (let p of rParts) {
+    let wave = sin(breathPhase * 20 * p.freq + p.phase) * p.amp;
+    let tx = p.bx + (p.axis === 0 ? wave : 0);
+    let ty = p.by + (p.axis === 1 ? wave : 0);
+
+    if (mouseOn && gStr > 0) {
+      let dx = mouseX - tx, dy = mouseY - ty;
+      let d = sqrt(dx * dx + dy * dy);
+      if (d < gRad && d > 1) {
+        let f = (1 - d / gRad) * gStr * 0.009 * sMult;
+        tx += (dx / d) * f;
+        ty += (dy / d) * f;
+        if (d < convR) rNear++;
+      }
     }
-    p.x=lerp(p.x,tx,0.07);p.y=lerp(p.y,ty,0.07);
+    p.x = lerp(p.x, tx, 0.07);
+    p.y = lerp(p.y, ty, 0.07);
+
+    // Illumination: particle brightens by proximity to cursor
+    let dMouse = mouseOn ? dist(p.x, p.y, mouseX, mouseY) : 9999;
+    if (dMouse < beam) {
+      p.tIllum = pow(1 - dMouse / beam, 0.6) * 0.85 + ambient;
+    } else {
+      p.tIllum = ambient;
+    }
+    if (shadowMode && dMouse < beam * 0.4) {
+      // Shadow: close = darker, far = brighter (inverted)
+      p.tIllum = lerp(p.tIllum, ambient * 0.3, shadowT * (1 - dMouse / (beam * 0.4)));
+    }
+    p.illum = lerp(p.illum, p.tIllum, 0.06);
   }
 
-  // Update Identity
-  for(let p of iParts){
-    let breath=sin(breathPhase*20*p.rate+p.phase)*p.amp;
-    let drift=cos(breathPhase*20*p.rate*0.3+p.phase*2)*p.amp*0.5;
-    let tx=p.bx+drift,ty=p.by+breath;
-    if(mouseOn&&gStr>0){
-      let dx=mouseX-tx,dy=mouseY-ty,d=sqrt(dx*dx+dy*dy);
-      if(d<gRad&&d>1){let f=(1-d/gRad)*gStr*0.012*sMult;tx+=dx/d*f;ty+=dy/d*f;if(d<convR)iNear++;}
+  // ── Update Identity particles ──
+  for (let p of iParts) {
+    let breath = sin(breathPhase * 20 * p.rate + p.phase) * p.amp;
+    let drift = cos(breathPhase * 20 * p.rate * 0.3 + p.phase * 2) * p.amp * 0.5;
+    let tx = p.bx + drift, ty = p.by + breath;
+
+    if (mouseOn && gStr > 0) {
+      let dx = mouseX - tx, dy = mouseY - ty;
+      let d = sqrt(dx * dx + dy * dy);
+      if (d < gRad && d > 1) {
+        let f = (1 - d / gRad) * gStr * 0.009 * sMult;
+        tx += (dx / d) * f;
+        ty += (dy / d) * f;
+        if (d < convR) iNear++;
+      }
     }
-    p.x=lerp(p.x,tx,0.055);p.y=lerp(p.y,ty,0.055);
+    p.x = lerp(p.x, tx, 0.05);
+    p.y = lerp(p.y, ty, 0.05);
+
+    let dMouse = mouseOn ? dist(p.x, p.y, mouseX, mouseY) : 9999;
+    if (dMouse < beam) {
+      p.tIllum = pow(1 - dMouse / beam, 0.6) * 0.85 + ambient;
+    } else {
+      p.tIllum = ambient;
+    }
+    if (shadowMode && dMouse < beam * 0.4) {
+      p.tIllum = lerp(p.tIllum, ambient * 0.3, shadowT * (1 - dMouse / (beam * 0.4)));
+    }
+    p.illum = lerp(p.illum, p.tIllum, 0.06);
   }
 
-  // Convergence
-  smoothConv=lerp(smoothConv,min(1,(rNear*iNear)/(10*10))*attention,0.05);
+  // ── Convergence ──
+  let rawConv = min(1, (rNear * iNear) / (10 * 10));
+  smoothConv = lerp(smoothConv, rawConv * attention, 0.04);
 
-  // Bridges between nearby R and I
-  bridges=[];
-  let bridgeR=min(width,height)*0.1;
-  if(mouseOn&&smoothConv>0.05){
-    for(let rp of rParts){
-      if(dist(rp.x,rp.y,mouseX,mouseY)>gRad)continue;
-      for(let ip of iParts){
-        if(dist(ip.x,ip.y,mouseX,mouseY)>gRad)continue;
-        let d=dist(rp.x,rp.y,ip.x,ip.y);
-        if(d>5&&d<bridgeR){
-          let s=(1-d/bridgeR)*smoothConv;
-          if(s>0.05)bridges.push({rp,ip,strength:s,d,mx:(rp.x+ip.x)/2,my:(rp.y+ip.y)/2});
+  // ═══════════════════════════════════════════════════════════════
+  // BONDING — R and I particles near each other form molecular bonds
+  // Bonds persist with decay. Connected bonds form chain structures.
+  // ═══════════════════════════════════════════════════════════════
+
+  let bondDist = 45 + exciteLevel * 15;
+  let scanR = min(width, height) * 0.2;
+
+  // Find new bonds near cursor
+  if (mouseOn && (smoothConv > 0.03 || clickPulse > 0)) {
+    for (let rp of rParts) {
+      if (rp.illum < 0.2) continue;
+      let drm = dist(rp.x, rp.y, mouseX, mouseY);
+      if (drm > scanR) continue;
+
+      for (let ip of iParts) {
+        if (ip.illum < 0.2) continue;
+        let d = dist(rp.x, rp.y, ip.x, ip.y);
+        if (d < bondDist && d > 3) {
+          // Check if bond already exists
+          let exists = bonds.find(b => b.rid === rp.id && b.iid === ip.id);
+          if (!exists) {
+            bonds.push({
+              rp, ip, rid: rp.id, iid: ip.id,
+              life: 0.8 + smoothConv * 0.2,
+              strength: (1 - d / bondDist),
+            });
+
+            // Bond formation: spawn a yellow signal at midpoint
+            if (d < bondDist * 0.6 && random() < 0.3) {
+              spawnSignal((rp.x + ip.x) / 2, (rp.y + ip.y) / 2, 0.5 + smoothConv);
+            }
+          } else {
+            // Refresh existing bond
+            exists.life = min(1, exists.life + 0.02);
+            exists.strength = lerp(exists.strength, 1 - d / bondDist, 0.1);
+          }
         }
       }
     }
-    if(bridges.length>40){bridges.sort((a,b)=>b.strength-a.strength);bridges.length=40;}
   }
 
-  // Spawn perception at bridge midpoints
-  if(!shadowMode&&bridges.length>0&&pParts.length<P_MAX){
-    for(let br of bridges){
-      if(br.strength>0.15&&random()<br.strength*0.3){
-        pParts.push({x:br.mx+random(-8,8),y:br.my+random(-8,8),vx:random(-0.3,0.3),vy:random(-0.4,-0.1),life:1,decay:random(0.003,0.007),size:1.5+br.strength*3,alpha:50+br.strength*80});
-        if(pParts.length>=P_MAX)break;
-      }
+  // Decay and update bonds
+  for (let i = bonds.length - 1; i >= 0; i--) {
+    let b = bonds[i];
+    let d = dist(b.rp.x, b.rp.y, b.ip.x, b.ip.y);
+
+    // Bonds weaken if particles drift apart or lose illumination
+    if (d > bondDist * 1.5 || (b.rp.illum < 0.1 && b.ip.illum < 0.1)) {
+      b.life -= 0.02;
+    } else {
+      b.life -= 0.003; // slow natural decay
+    }
+    b.strength = lerp(b.strength, max(0, 1 - d / bondDist), 0.05);
+
+    if (b.life <= 0) bonds.splice(i, 1);
+  }
+
+  // Cap bonds
+  while (bonds.length > 80) {
+    let oldest = bonds.reduce((a, b, i) => b.life < bonds[a].life ? i : a, 0);
+    bonds.splice(oldest, 1);
+  }
+
+  // ── Update signals ──
+  for (let i = signals.length - 1; i >= 0; i--) {
+    let s = signals[i];
+    s.vx *= 0.96; s.vy *= 0.96;
+    s.vy -= 0.005; // rises gently
+    s.x += s.vx; s.y += s.vy;
+    s.life -= 0.005;
+    if (s.life <= 0) signals.splice(i, 1);
+  }
+  while (signals.length > 35) signals.shift();
+
+  // ═══════════════════════════════════════════════════════════════
+  // DRAW — particles brighten themselves, no visible light source
+  // ═══════════════════════════════════════════════════════════════
+
+  noStroke();
+
+  // ── Bond lines (molecular connections) ──
+  for (let b of bonds) {
+    let a = b.life * b.strength * min(b.rp.illum, b.ip.illum);
+    if (a < 0.01) continue;
+    let col = shadowMode ? S_COL : P_COL;
+    stroke(col[0], col[1], col[2], a * 50);
+    strokeWeight(0.3 + a * 1.2);
+    line(b.rp.x, b.rp.y, b.ip.x, b.ip.y);
+
+    // Bond midpoint node — tiny dot where connection lives
+    if (a > 0.15) {
+      noStroke();
+      fill(col[0], col[1], col[2], a * 35);
+      let mx = (b.rp.x + b.ip.x) / 2;
+      let my = (b.rp.y + b.ip.y) / 2;
+      ellipse(mx, my, 2 + a * 2, 2 + a * 2);
+    }
+  }
+  noStroke();
+
+  // ── Reality particles (illumination-driven alpha) ──
+  let rr = shadowT > 0.3 ? lerp(R_COL[0], S_COL[0], shadowT * 0.4) : R_COL[0];
+  let rg = shadowT > 0.3 ? lerp(R_COL[1], S_COL[1], shadowT * 0.4) : R_COL[1];
+  let rb = shadowT > 0.3 ? lerp(R_COL[2], S_COL[2], shadowT * 0.4) : R_COL[2];
+
+  for (let p of rParts) {
+    let a = p.baseAlpha * p.illum;
+    if (a < 1) continue;
+
+    let breath = sin(breathPhase * 2 + p.phase) * 0.1 + 1;
+    let sz = p.size * breath;
+
+    // Soft glow (only when bright enough)
+    if (a > 8) {
+      fill(rr, rg, rb, a * 0.12);
+      ellipse(p.x, p.y, sz * 4, sz * 4);
+    }
+
+    // Core
+    fill(rr, rg, rb, a);
+    ellipse(p.x, p.y, sz, sz);
+
+    // Hot center at high illumination
+    if (p.illum > 0.6) {
+      fill(255, 255, 255, a * 0.2);
+      ellipse(p.x, p.y, sz * 0.3, sz * 0.3);
     }
   }
 
-  // Shadow perception
-  if(shadowMode&&mouseOn&&smoothVel<5&&random()<0.06&&pParts.length<P_MAX){
-    pParts.push({x:mouseX+random(-15,15),y:mouseY+random(-15,15),vx:random(-0.2,0.2),vy:random(-0.2,0.2),life:1,decay:0.01,size:2,alpha:70});
-  }
+  // ── Identity particles ──
+  let ir = shadowT > 0.3 ? lerp(I_COL[0], S_COL[0], shadowT * 0.4) : I_COL[0];
+  let ig = shadowT > 0.3 ? lerp(I_COL[1], S_COL[1], shadowT * 0.4) : I_COL[1];
+  let ib = shadowT > 0.3 ? lerp(I_COL[2], S_COL[2], shadowT * 0.4) : I_COL[2];
 
-  // Update perception
-  for(let i=pParts.length-1;i>=0;i--){
-    let p=pParts[i];
-    if(shadowMode){let dx=mouseX-p.x,dy=mouseY-p.y,d=max(2,sqrt(dx*dx+dy*dy));p.vx+=dx/d*0.03;p.vy+=dy/d*0.03;}
-    p.vx*=0.98;p.vy*=0.98;if(!shadowMode)p.vy-=0.006;
-    p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
-    if(p.life<=0)pParts.splice(i,1);
-  }
+  for (let p of iParts) {
+    let breathPulse = sin(breathPhase * 2 * p.rate + p.phase) * 0.1 + 1;
+    let a = p.baseAlpha * p.illum * breathPulse;
+    if (a < 1) continue;
 
-  // Crystals from sustained bridging
-  if(bridges.length>=4&&random()<bridges.length*0.003){
-    let top=bridges.slice(0,min(6,bridges.length));
-    let cx=0,cy=0;for(let b of top){cx+=b.mx;cy+=b.my;}cx/=top.length;cy/=top.length;
-    let nV=floor(random(3,7)),bR=10+bridges.length*1.5+excitationLevel*15,verts=[];
-    for(let v=0;v<nV;v++){let a=(TWO_PI/nV)*v+random(-0.3,0.3),r=bR*random(0.5,1.2);verts.push({x:cx+cos(a)*r,y:cy+sin(a)*r});}
-    crystals.push({verts,cx,cy,life:1,decay:0.003+random(0.002),rotation:random(TWO_PI),rotSpeed:random(-0.003,0.003),alpha:40+excitationLevel*30});
-  }
-  for(let i=crystals.length-1;i>=0;i--){let c=crystals[i];c.life-=c.decay;c.rotation+=c.rotSpeed;c.cy-=0.15;for(let v of c.verts)v.y-=0.15;if(c.life<=0)crystals.splice(i,1);}
-  while(crystals.length>20)crystals.shift();
+    let sz = p.size * breathPulse;
 
-  // Click bursts
-  for(let i=clickBursts.length-1;i>=0;i--){let p=clickBursts[i];p.x+=p.vx;p.y+=p.vy;p.vx*=0.96;p.vy*=0.96;p.vy-=0.01;p.life-=0.015;if(p.life<=0)clickBursts.splice(i,1);}
+    if (a > 8) {
+      fill(ir, ig, ib, a * 0.12);
+      ellipse(p.x, p.y, sz * 4, sz * 4);
+    }
 
-  // ═══════════ RENDER ═══════════
-  noStroke();
+    fill(ir, ig, ib, a);
+    ellipse(p.x, p.y, sz, sz);
 
-  // Ambient light — soft white haze, wide but gentle
-  if(mouseOn){
-    let ambR=gRad*2.5;
-    fill(255,255,255,2+attention*3);ellipse(mouseX,mouseY,ambR,ambR);
-    fill(255,255,255,1+attention*1.5);ellipse(mouseX,mouseY,ambR*1.8,ambR*1.8);
-  }
-
-  // Bridges (subtle gold connections)
-  for(let br of bridges){
-    let a=br.strength*18;
-    let cmx=br.mx+sin(breathPhase+br.rp.phase)*6,cmy=br.my+cos(breathPhase+br.ip.phase)*6;
-    stroke(P_COL[0],P_COL[1],P_COL[2],a);strokeWeight(0.3+br.strength*0.8);noFill();
-    bezier(br.rp.x,br.rp.y,cmx,cmy-5,cmx,cmy+5,br.ip.x,br.ip.y);
-  }
-  noStroke();
-
-  // Crystals
-  for(let c of crystals){
-    let a=c.alpha*c.life;if(a<1)continue;
-    push();translate(c.cx,c.cy);rotate(c.rotation);
-    noFill();stroke(P_COL[0],P_COL[1],P_COL[2],a*0.6);strokeWeight(0.5+excitationLevel*0.5);
-    beginShape();for(let v of c.verts)vertex(v.x-c.cx,v.y-c.cy);endShape(CLOSE);
-    stroke(255,255,255,a*0.2);strokeWeight(0.3);
-    let vs=c.verts;for(let vi=0;vi<vs.length;vi++)for(let vj=vi+2;vj<vs.length;vj++)line(vs[vi].x-c.cx,vs[vi].y-c.cy,vs[vj].x-c.cx,vs[vj].y-c.cy);
-    fill(P_COL[0],P_COL[1],P_COL[2],a*0.08);noStroke();beginShape();for(let v of c.verts)vertex(v.x-c.cx,v.y-c.cy);endShape(CLOSE);
-    pop();
-  }
-  noStroke();
-
-  // Reality particles
-  let rr=shadowT>0.3?lerp(R_COL[0],S_COL[0],shadowT*0.4):R_COL[0];
-  let rg=shadowT>0.3?lerp(R_COL[1],S_COL[1],shadowT*0.4):R_COL[1];
-  let rb=shadowT>0.3?lerp(R_COL[2],S_COL[2],shadowT*0.4):R_COL[2];
-  for(let p of rParts){
-    let a=p.alpha,breath=sin(breathPhase*2+p.phase)*0.12+1,sz=p.size*breath*(1+smoothConv*0.3);
-    fill(rr,rg,rb,a*0.06);ellipse(p.x,p.y,sz*5,sz*5);
-    fill(rr,rg,rb,a*0.7);ellipse(p.x,p.y,sz,sz);
-    fill(rr,rg,rb,a);ellipse(p.x,p.y,sz*0.5,sz*0.5);
-  }
-
-  // Identity particles
-  let ir=shadowT>0.3?lerp(I_COL[0],S_COL[0],shadowT*0.4):I_COL[0];
-  let ig=shadowT>0.3?lerp(I_COL[1],S_COL[1],shadowT*0.4):I_COL[1];
-  let ib=shadowT>0.3?lerp(I_COL[2],S_COL[2],shadowT*0.4):I_COL[2];
-  for(let p of iParts){
-    let breathPulse=sin(breathPhase*2*p.rate+p.phase)*0.12+1;
-    let a=p.alpha*breathPulse,sz=p.size*breathPulse*(1+smoothConv*0.3);
-    fill(ir,ig,ib,a*0.06);ellipse(p.x,p.y,sz*5,sz*5);
-    fill(ir,ig,ib,a*0.7);ellipse(p.x,p.y,sz,sz);
-    fill(ir,ig,ib,a);ellipse(p.x,p.y,sz*0.5,sz*0.5);
-  }
-
-  // Perception particles (gold, born from bridges)
-  let pc=shadowMode?S_COL:P_COL;
-  for(let p of pParts){
-    let a=p.alpha*p.life;if(a<1)continue;
-    let sz=p.size*(0.5+p.life*0.5);
-    fill(pc[0],pc[1],pc[2],a*0.1);ellipse(p.x,p.y,sz*5,sz*5);
-    fill(pc[0],pc[1],pc[2],a*0.7);ellipse(p.x,p.y,sz,sz);
-    if(a>25){fill(255,255,255,a*0.35);ellipse(p.x,p.y,sz*0.3,sz*0.3);}
-  }
-
-  // Click bursts
-  for(let p of clickBursts){
-    let a=p.life*120,sz=p.size*p.life;
-    fill(p.col[0],p.col[1],p.col[2],a*0.15);ellipse(p.x,p.y,sz*4,sz*4);
-    fill(p.col[0],p.col[1],p.col[2],a);ellipse(p.x,p.y,sz,sz);
-    fill(255,255,255,a*0.5);ellipse(p.x,p.y,sz*0.3,sz*0.3);
-  }
-
-  // Harmony ring
-  if(smoothConv>0.4&&!shadowMode){
-    let ph=(breathPhase*8)%TWO_PI,rA=(smoothConv-0.4)*35*(0.5+sin(ph)*0.5);
-    noFill();stroke(255,255,255,rA*0.5);strokeWeight(0.5);
-    ellipse(mouseX,mouseY,50+sin(ph)*40,50+sin(ph)*40);noStroke();
-  }
-
-  // Excitation pulse
-  if(excitationLevel>0.15){
-    let pulseA=(excitationLevel-0.15)*6*( sin(breathPhase*4)*0.5+0.5);
-    fill(255,255,255,pulseA);ellipse(width/2,height/2,width*0.5,height*0.5);
-  }
-
-  // Latent shadow
-  if(fieldAge>100){
-    let edgeA=(2+shadowT*12)*(sin(breathPhase*3)*0.5+0.5);
-    if(random()<0.03+shadowT*0.08){
-      let ex=random()<0.5?random(0,35):random(width-35,width);
-      fill(S_COL[0],S_COL[1],S_COL[2],edgeA);ellipse(ex,random(height),random(25,70),random(25,70));
+    if (p.illum > 0.6) {
+      fill(255, 255, 255, a * 0.2);
+      ellipse(p.x, p.y, sz * 0.3, sz * 0.3);
     }
   }
 
-  // Cursor — white/haze, subtle
-  if(mouseOn){
-    noFill();let ringR=25+smoothConv*15;
-    for(let r=ringR;r>5;r-=12){
-      let ra=map(r,5,ringR,18,4);
-      stroke(shadowMode?S_COL[0]:255,shadowMode?S_COL[1]:255,shadowMode?S_COL[2]:255,ra*(0.4+smoothConv*0.6));
-      strokeWeight(0.4);let w=sin(breathPhase*2+r*0.1)*2;
-      ellipse(mouseX,mouseY,(r+w)*2,(r+w)*2);
+  // ── Perception signals (golden, born from bond collisions) ──
+  for (let s of signals) {
+    let a = s.alpha * s.life;
+    if (a < 1) continue;
+    let sz = s.size * (0.3 + s.life * 0.7);
+    let col = s.shadow ? S_COL : P_COL;
+
+    if (a > 5) {
+      fill(col[0], col[1], col[2], a * 0.2);
+      ellipse(s.x, s.y, sz * 3.5, sz * 3.5);
+    }
+
+    fill(col[0], col[1], col[2], a);
+    ellipse(s.x, s.y, sz, sz);
+
+    // White center
+    if (a > 15 && !s.shadow) {
+      fill(255, 255, 255, a * 0.5);
+      ellipse(s.x, s.y, sz * 0.3, sz * 0.3);
+    }
+  }
+
+  // ── Latent shadow at edges ──
+  if (frameCount > 80) {
+    let edgePulse = sin(breathPhase * 3) * 0.5 + 0.5;
+    let edgeA = (1.5 + shadowT * 10) * edgePulse;
+    if (random() < 0.025 + shadowT * 0.07) {
+      let ex = random() < 0.5 ? random(0, 30) : random(width - 30, width);
+      fill(S_COL[0], S_COL[1], S_COL[2], edgeA);
+      ellipse(ex, random(height), random(20, 60), random(20, 60));
+    }
+  }
+
+  // ── Excitation glow: subtle edge warmth ──
+  if (exciteLevel > 0.2) {
+    let eA = (exciteLevel - 0.2) * 4;
+    fill(P_COL[0], P_COL[1], P_COL[2], eA);
+    noStroke();
+    ellipse(width / 2, height + 60, width * 1.1, 160);
+  }
+
+  // ── Cursor: minimal dot ──
+  if (mouseOn) {
+    let cPulse = sin(breathPhase * 2) * 0.15 + 1;
+    let cSize = 4 + smoothConv * 2;
+    if (shadowMode) {
+      fill(S_COL[0], S_COL[1], S_COL[2], 140);
+    } else {
+      fill(255, 250, 248, 120);
     }
     noStroke();
-    fill(shadowMode?S_COL[0]:255,shadowMode?S_COL[1]:255,shadowMode?S_COL[2]:255,shadowMode?160:130+smoothConv*50);
-    let cP=sin(breathPhase*2)*0.15+1,cS=5+smoothConv*3;
-    ellipse(mouseX,mouseY,cS*cP,cS*cP);
-    fill(255,255,255,100);ellipse(mouseX,mouseY,cS*cP*0.4,cS*cP*0.4);
+    ellipse(mouseX, mouseY, cSize * cPulse, cSize * cPulse);
+    fill(255, 255, 255, 70);
+    ellipse(mouseX, mouseY, cSize * cPulse * 0.3, cSize * cPulse * 0.3);
   }
 
-  document.getElementById('shadowIndicator').className=shadowMode?'active':'';
+  // ── Harmony ring at deep convergence ──
+  if (smoothConv > 0.45 && !shadowMode) {
+    let ph = (breathPhase * 8) % TWO_PI;
+    noFill();
+    stroke(P_COL[0], P_COL[1], P_COL[2], (smoothConv - 0.45) * 30 * (0.5 + sin(ph) * 0.5));
+    strokeWeight(0.5);
+    ellipse(mouseX, mouseY, 40 + sin(ph) * 30, 40 + sin(ph) * 30);
+    noStroke();
+  }
+
+  // ── Caption + UI ──
   updateCaption(mouseOn);
+  document.getElementById('shadowIndicator').className = shadowMode ? 'active' : '';
 }
 
-// Captions — stable with lockout timer
-const CAP={
-  equation:'Reality × Identity = Experience',
-  idle:'The field awaits. Structure and pattern hold their breath.',
-  approach:'Your attention draws the field inward...',
-  converging:'Where structure meets pattern, new signals emerge.',
-  deep:'The bridge holds. Reality recognizes itself through you.',
-  harmonized:'Coherence crystallizes from the convergence.',
-  shadow:'The bridge inverts — connection becomes consumption.',
-  shadowDeep:'Awareness that isolates rather than unites.',
+// ═══════════════════════════════════════════════════════════════
+// SIGNAL SPAWNING
+// ═══════════════════════════════════════════════════════════════
+
+function spawnSignal(x, y, intensity) {
+  signals.push({
+    x: x + random(-5, 5), y: y + random(-5, 5),
+    vx: random(-0.4, 0.4), vy: random(-0.3, -0.05),
+    life: 1, size: 1.5 + intensity * 2.5,
+    alpha: 40 + intensity * 50,
+    shadow: shadowMode,
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CAPTIONS
+// ═══════════════════════════════════════════════════════════════
+
+const CAP = {
+  idle:       'The field holds its breath. Structure and pattern await the bridge.',
+  approach:   'Structure stirs. Pattern awakens. Something is listening...',
+  converging: 'Where structure meets pattern, experience begins to form.',
+  deep:       'The bridge holds. Reality recognizes itself through you.',
+  harmonized: 'Reality × Identity = Experience',
+  shadow:     'The bridge inverts — connection becomes consumption.',
+  shadowDeep: 'Perception weaponized: awareness that isolates rather than unites.',
 };
 
-function updateCaption(mouseOn){
-  if(captionLocked){captionLockTimer--;if(captionLockTimer<=0)captionLocked=false;return;}
+function updateCaption(mouseOn) {
+  captionHoldTimer = max(0, captionHoldTimer - 1);
+
   let t;
-  if(shadowMode)t=smoothConv>0.25?CAP.shadowDeep:CAP.shadow;
-  else if(!mouseOn)t=CAP.equation;
-  else if(smoothConv>0.5)t=CAP.harmonized;
-  else if(smoothConv>0.25)t=CAP.deep;
-  else if(smoothConv>0.08)t=CAP.converging;
-  else if(smoothVel<3)t=CAP.approach;
-  else t=CAP.equation;
+  if (shadowMode) t = smoothConv > 0.3 ? CAP.shadowDeep : CAP.shadow;
+  else if (!mouseOn) t = CAP.idle;
+  else if (smoothConv > 0.5) t = CAP.harmonized;
+  else if (smoothConv > 0.25) t = CAP.deep;
+  else if (smoothConv > 0.08) t = CAP.converging;
+  else t = CAP.approach;
 
-  let ct=document.getElementById('captionText');
-  if(t!==captionTarget){
-    captionTarget=t;captionLocked=true;captionLockTimer=120;
-    ct.style.opacity='0';
-    setTimeout(()=>{ct.textContent=captionTarget;ct.style.opacity='1';},600);
+  if (t !== captionTarget && captionHoldTimer <= 0) {
+    captionTarget = t;
+    captionHoldTimer = CAPTION_HOLD;
+    let ct = document.getElementById('captionText');
+    ct.style.opacity = '0';
+    setTimeout(() => { ct.textContent = captionTarget; ct.style.opacity = '1'; }, 400);
   }
-  ct.classList.toggle('harmonized',smoothConv>0.4&&!shadowMode);
-  ct.classList.toggle('shadow-active',shadowMode);
+
+  let ct = document.getElementById('captionText');
+  ct.classList.toggle('harmonized', smoothConv > 0.5 && !shadowMode);
+  ct.classList.toggle('shadow-active', shadowMode);
 }
 
-function mousePressed(){
-  let burstCount=8+floor(excitationLevel*12);
-  for(let i=0;i<burstCount;i++){
-    let angle=(TWO_PI/burstCount)*i+random(-0.2,0.2),speed=random(1,3+excitationLevel*2);
-    let col;let r=random();if(r<0.33)col=[...R_COL];else if(r<0.66)col=[...I_COL];else col=[...P_COL];
-    clickBursts.push({x:mouseX,y:mouseY,vx:cos(angle)*speed,vy:sin(angle)*speed-1,life:1,size:random(2,5),col});
+// ═══════════════════════════════════════════════════════════════
+// INPUT
+// ═══════════════════════════════════════════════════════════════
+
+function mousePressed() {
+  // Click: excite — spike gravity, particles rush toward cursor
+  clickPulse = 30; // 30 frames of boosted gravity
+  cumulativeEnergy += 40;
+
+  // Spawn burst of signals at any existing bond midpoints near click
+  let burstCount = 0;
+  for (let b of bonds) {
+    let bx = (b.rp.x + b.ip.x) / 2;
+    let by = (b.rp.y + b.ip.y) / 2;
+    if (dist(mouseX, mouseY, bx, by) < 80) {
+      // Bridge collision burst
+      for (let k = 0; k < 2; k++) {
+        spawnSignal(bx, by, 0.6 + b.strength);
+      }
+      b.life = min(1, b.life + 0.3); // strengthen bond
+      burstCount++;
+      if (burstCount > 6) break;
+    }
   }
-  for(let i=0;i<3;i++){
-    if(pParts.length<P_MAX)pParts.push({x:mouseX+random(-15,15),y:mouseY+random(-15,15),vx:random(-0.5,0.5),vy:random(-0.8,-0.2),life:1,decay:random(0.004,0.008),size:2+excitationLevel*2,alpha:80});
-  }
-  cumulativeEnergy+=50;
-  if(bridges.length>=2){
-    let top=bridges.slice(0,min(4,bridges.length));
-    let cx=0,cy=0;for(let b of top){cx+=b.mx;cy+=b.my;}cx/=top.length;cy/=top.length;
-    let nV=floor(random(4,8)),bR=15+bridges.length*2,verts=[];
-    for(let v=0;v<nV;v++){let a=(TWO_PI/nV)*v+random(-0.25,0.25),r=bR*random(0.6,1.3);verts.push({x:cx+cos(a)*r,y:cy+sin(a)*r});}
-    crystals.push({verts,cx,cy,life:1,decay:0.002,rotation:random(TWO_PI),rotSpeed:random(-0.004,0.004),alpha:50+excitationLevel*30});
+
+  // If no bonds nearby, still create a small perception spark
+  if (burstCount === 0) {
+    for (let k = 0; k < 3; k++) {
+      spawnSignal(mouseX + random(-10, 10), mouseY + random(-10, 10), 0.3);
+    }
   }
 }
 
-function keyPressed(){if(key==='s'||key==='S')shadowMode=!shadowMode;}
-function windowResized(){resizeCanvas(windowWidth,windowHeight);}
+function keyPressed() {
+  if (key === 's' || key === 'S') shadowMode = !shadowMode;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 </script>
 </body>
 </html>
