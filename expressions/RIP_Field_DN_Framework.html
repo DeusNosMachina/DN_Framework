@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The RIP Field – DN Framework</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#060608;overflow:hidden;font-family:'Cormorant Garamond',serif;cursor:none;width:100vw;height:100vh}
+  canvas{display:block;position:fixed;top:0;left:0}
+
+  #customCursor{
+    position:fixed;pointer-events:none;z-index:100;
+    width:24px;height:24px;border-radius:50%;
+    border:1.5px solid rgba(212,160,23,0.6);
+    transform:translate(-50%,-50%);
+    transition:width .4s,height .4s,border-color .3s,background .4s,box-shadow .4s;
+  }
+  #customCursor.converging{
+    width:36px;height:36px;border-color:rgba(212,160,23,0.9);
+    background:radial-gradient(circle,rgba(212,160,23,0.15),transparent 70%);
+    box-shadow:0 0 20px rgba(212,160,23,0.3);
+  }
+  #customCursor.harmonized{
+    width:48px;height:48px;border-color:rgba(212,160,23,1);
+    background:radial-gradient(circle,rgba(212,160,23,0.25),transparent 70%);
+    box-shadow:0 0 40px rgba(212,160,23,0.5),0 0 80px rgba(45,139,70,0.2),0 0 80px rgba(232,124,46,0.2);
+  }
+  #customCursor.shadow{border-color:rgba(204,41,54,0.7);box-shadow:0 0 20px rgba(204,41,54,0.3)}
+
+  #caption{
+    position:fixed;bottom:48px;left:50%;transform:translateX(-50%);
+    z-index:50;text-align:center;pointer-events:none;width:90%;max-width:640px;
+  }
+  #captionText{
+    font-size:clamp(15px,2vw,18px);font-weight:300;letter-spacing:.04em;line-height:1.6;
+    color:rgba(255,255,255,0.7);transition:color .8s,opacity .8s;
+  }
+  #captionText.harmonized{color:rgba(212,160,23,0.95);text-shadow:0 0 30px rgba(212,160,23,0.3)}
+  #captionText.shadow-active{color:rgba(204,41,54,0.8)}
+  #hint{margin-top:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);transition:opacity 1s}
+
+  .field-label{
+    position:fixed;font-size:clamp(11px,1.4vw,13px);letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;opacity:.35;z-index:50;pointer-events:none;
+  }
+  #labelReality{bottom:56%;left:clamp(16px,4vw,48px);color:#2D8B46}
+  #labelIdentity{bottom:56%;right:clamp(16px,4vw,48px);color:#E87C2E}
+
+  #shadowIndicator{
+    position:fixed;top:20px;right:20px;z-index:50;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(204,41,54,0.7);opacity:0;transition:opacity .4s;pointer-events:none;
+  }
+  #shadowIndicator.visible{opacity:1}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div id="customCursor"></div>
+<div class="field-label" id="labelReality">Reality</div>
+<div class="field-label" id="labelIdentity">Identity</div>
+<div id="caption">
+  <div id="captionText">Move through the field. Your attention is the bridge.</div>
+  <div id="hint">S — shadow mode &bull; hover to perceive</div>
+</div>
+<div id="shadowIndicator">Shadow Active</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// THE RIP FIELD — DN Framework
+// Rendering strategy: illumination v7 pattern
+//   - NO globalCompositeOperation changes (source-over only)
+//   - NO globalAlpha changes (all alpha via rgba strings)
+//   - radialGradient glow ONLY for visible particles (early exit)
+//   - simple arc+fill for everything
+// ═══════════════════════════════════════════════════════════════
+
+const C = document.getElementById('c'), X = C.getContext('2d');
+const cursorEl = document.getElementById('customCursor');
+const captionText = document.getElementById('captionText');
+const hintEl = document.getElementById('hint');
+const shadowInd = document.getElementById('shadowIndicator');
+
+let W, H;
+
+// ── State ──
+let mx = -9999, my = -9999, mouseOn = false;
+let pmx = -9999, pmy = -9999;
+let smoothVel = 0;
+let smoothConv = 0;
+let shadowMode = false, shadowT = 0;
+let time = 0, frame = 0;
+let hintFade = 1;
+
+// ── DN Palette ──
+const R_COL = {r:45, g:139, b:70};   // Reality green
+const I_COL = {r:232,g:124, b:46};   // Identity orange
+const P_COL = {r:212,g:160, b:23};   // Perception gold
+const S_COL = {r:204,g:41,  b:54};   // Shadow red
+
+function lerp(a,b,t){return a+(b-a)*t}
+
+// ═══════════════════════════════════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════════════════════════════════
+
+const R_COUNT = 55, I_COUNT = 55, P_MAX = 30;
+let rParts=[], iParts=[], pParts=[];
+
+function initParticles(){
+  rParts=[]; iParts=[]; pParts=[];
+  const cx=W/2, cy=H/2, spread=Math.min(W,H)*0.36;
+
+  for(let i=0;i<R_COUNT;i++){
+    const a=Math.random()*6.28, r=Math.random()*spread*0.85;
+    const bx=cx-spread*0.26+Math.cos(a)*r*0.7;
+    const by=cy+Math.sin(a)*r*0.6;
+    rParts.push({
+      x:bx,y:by,bx,by,
+      phase:Math.random()*6.28, freq:0.3+Math.random()*0.5, amp:1.5+Math.random()*3,
+      size:2+Math.random()*3, alpha:0.2+Math.random()*0.35,
+      axis:Math.random()>0.5?0:1,
+    });
+  }
+
+  for(let i=0;i<I_COUNT;i++){
+    const a=Math.random()*6.28, r=Math.random()*spread*0.85;
+    const bx=cx+spread*0.26+Math.cos(a)*r*0.7;
+    const by=cy+Math.sin(a)*r*0.6;
+    iParts.push({
+      x:bx,y:by,bx,by,
+      phase:Math.random()*6.28, rate:0.4+Math.random()*0.8, amp:2+Math.random()*4,
+      size:2+Math.random()*3.5, alpha:0.2+Math.random()*0.35,
+    });
+  }
+}
+
+function resize() { W = C.width = innerWidth; H = C.height = innerHeight; initParticles(); }
+resize(); addEventListener('resize', resize);
+
+// ═══════════════════════════════════════════════════════════════
+// UPDATE — pure math, no draw calls
+// ═══════════════════════════════════════════════════════════════
+
+function update(dt){
+  time+=dt; frame++;
+
+  if(mouseOn&&hintFade>0){hintFade=Math.max(0,hintFade-0.008);hintEl.style.opacity=hintFade}
+
+  // Mouse velocity
+  if(mouseOn){
+    let dx=mx-pmx, dy=my-pmy;
+    smoothVel=smoothVel*0.85+Math.sqrt(dx*dx+dy*dy)*0.15;
+    pmx=mx; pmy=my;
+  } else { smoothVel*=0.93; }
+
+  shadowT+=((shadowMode?1:0)-shadowT)*0.04;
+
+  const attention=mouseOn?Math.max(0,1-smoothVel/12):0;
+  const gStr=attention*100;
+  const gRad=Math.min(W,H)*0.28;
+  const gRadSq=gRad*gRad;
+  const convR=gRad*0.65, convRSq=convR*convR;
+  const sMult=shadowMode?-0.6:1;
+  const mActive=mouseOn&&gStr>0;
+
+  let rNear=0, iNear=0;
+
+  // Reality particles
+  for(let i=0;i<rParts.length;i++){
+    const p=rParts[i];
+    const wave=Math.sin(time*p.freq+p.phase)*p.amp;
+    let tx=p.bx+(p.axis===0?wave:0);
+    let ty=p.by+(p.axis===1?wave:0);
+    if(mActive){
+      const dx=mx-tx, dy=my-ty, dSq=dx*dx+dy*dy;
+      if(dSq<gRadSq&&dSq>1){
+        const dist=Math.sqrt(dSq);
+        const f=(1-dist/gRad)*gStr*0.012*sMult;
+        tx+=dx/dist*f; ty+=dy/dist*f;
+        if(dSq<convRSq) rNear++;
+      }
+    }
+    p.x+=(tx-p.x)*0.08; p.y+=(ty-p.y)*0.08;
+  }
+
+  // Identity particles
+  for(let i=0;i<iParts.length;i++){
+    const p=iParts[i];
+    const breath=Math.sin(time*p.rate+p.phase)*p.amp;
+    const drift=Math.cos(time*p.rate*0.3+p.phase*2)*p.amp*0.5;
+    let tx=p.bx+drift, ty=p.by+breath;
+    if(mActive){
+      const dx=mx-tx, dy=my-ty, dSq=dx*dx+dy*dy;
+      if(dSq<gRadSq&&dSq>1){
+        const dist=Math.sqrt(dSq);
+        const f=(1-dist/gRad)*gStr*0.012*sMult;
+        tx+=dx/dist*f; ty+=dy/dist*f;
+        if(dSq<convRSq) iNear++;
+      }
+    }
+    p.x+=(tx-p.x)*0.06; p.y+=(ty-p.y)*0.06;
+  }
+
+  // Convergence
+  const rawConv=Math.min(1,(rNear*iNear)/(12*12));
+  const convTarget=rawConv*attention;
+  smoothConv+=(convTarget-smoothConv)*0.05;
+
+  // Perception spawn
+  if(mouseOn&&smoothConv>0.08&&!shadowMode&&pParts.length<P_MAX){
+    if(Math.random()<smoothConv*1.5){
+      pParts.push({
+        x:mx+(Math.random()-0.5)*30, y:my+(Math.random()-0.5)*30,
+        vx:(Math.random()-0.5)*0.5, vy:-0.2-Math.random()*0.3,
+        life:1, decay:0.004+Math.random()*0.005,
+        size:2.5+smoothConv*3, alpha:0.3+smoothConv*0.35,
+      });
+    }
+  }
+  // Shadow perception
+  if(mouseOn&&shadowMode&&smoothVel<5&&Math.random()<0.08&&pParts.length<P_MAX){
+    pParts.push({
+      x:mx+(Math.random()-0.5)*20, y:my+(Math.random()-0.5)*20,
+      vx:(Math.random()-0.5)*0.3, vy:(Math.random()-0.5)*0.3,
+      life:1, decay:0.009, size:2.5, alpha:0.35,
+    });
+  }
+
+  // Update perception
+  for(let i=pParts.length-1;i>=0;i--){
+    const p=pParts[i];
+    if(shadowMode){
+      const dx=mx-p.x, dy=my-p.y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d>2){p.vx+=dx/d*0.04;p.vy+=dy/d*0.04}
+      p.decay=0.009;
+    }
+    p.vx*=0.98; p.vy*=0.98;
+    if(!shadowMode) p.vy-=0.008;
+    p.x+=p.vx; p.y+=p.vy;
+    p.life-=p.decay;
+    if(p.life<=0) pParts.splice(i,1);
+  }
+
+  updateCaption();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CAPTIONS
+// ═══════════════════════════════════════════════════════════════
+
+let captionTarget='';
+const CAP={
+  idle:'The field holds its breath. Structure and pattern await the bridge.',
+  scattered:'Attention scatters — perception dissolves into noise.',
+  approach:'Structure stirs. Pattern awakens. Something is listening...',
+  converging:'Where structure meets pattern, experience begins to form.',
+  deep:'The bridge holds. Reality recognizes itself through you.',
+  harmonized:'Reality × Identity = Experience',
+  shadow:'The bridge inverts — connection becomes consumption.',
+  shadowDeep:'Perception weaponized: awareness that isolates rather than unites.',
+};
+
+function updateCaption(){
+  let t;
+  if(shadowMode) t=smoothConv>0.3?CAP.shadowDeep:CAP.shadow;
+  else if(!mouseOn) t=CAP.idle;
+  else if(smoothVel>8) t=CAP.scattered;
+  else if(smoothConv>0.55) t=CAP.harmonized;
+  else if(smoothConv>0.3) t=CAP.deep;
+  else if(smoothConv>0.1) t=CAP.converging;
+  else t=CAP.approach;
+
+  if(t!==captionTarget){
+    captionTarget=t;
+    captionText.style.opacity='0';
+    setTimeout(()=>{captionText.textContent=captionTarget;captionText.style.opacity='1'},400);
+  }
+  captionText.classList.toggle('harmonized',smoothConv>0.5&&!shadowMode);
+  captionText.classList.toggle('shadow-active',shadowMode);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER — illumination v7 pattern:
+//   source-over ONLY, all alpha via rgba(), early-exit,
+//   radialGradient only for glow (same technique that runs 280
+//   particles smoothly in illumination)
+// ═══════════════════════════════════════════════════════════════
+
+function render(){
+  // Solid background fill
+  X.fillStyle='#060608';
+  X.fillRect(0,0,W,H);
+
+  // ── Latent shadow corners (subtle red) ──
+  const edgeA=0.015+shadowT*0.05;
+  if(edgeA>0.01){
+    const cSize=W*0.4;
+    let g1=X.createRadialGradient(0,0,0,0,0,cSize);
+    g1.addColorStop(0,`rgba(204,41,54,${edgeA})`);
+    g1.addColorStop(1,'rgba(204,41,54,0)');
+    X.fillStyle=g1;X.fillRect(0,0,cSize,cSize);
+
+    let g2=X.createRadialGradient(W,H,0,W,H,cSize*0.9);
+    g2.addColorStop(0,`rgba(204,41,54,${edgeA*0.7})`);
+    g2.addColorStop(1,'rgba(204,41,54,0)');
+    X.fillStyle=g2;X.fillRect(W-cSize,H-cSize,cSize,cSize);
+  }
+
+  // ── Convergence glow at cursor ──
+  if(mouseOn&&smoothConv>0.05){
+    const gR=80+smoothConv*200;
+    const cr=shadowMode?S_COL:P_COL;
+    let grd=X.createRadialGradient(mx,my,0,mx,my,gR);
+    grd.addColorStop(0,`rgba(${cr.r},${cr.g},${cr.b},${smoothConv*0.15})`);
+    grd.addColorStop(0.5,`rgba(${cr.r},${cr.g},${cr.b},${smoothConv*0.04})`);
+    grd.addColorStop(1,`rgba(${cr.r},${cr.g},${cr.b},0)`);
+    X.fillStyle=grd;
+    X.beginPath();X.arc(mx,my,gR,0,6.28);X.fill();
+  }
+
+  // ── Connection threads (single batched stroke, no blend mode change) ──
+  if(mouseOn&&smoothConv>0.12){
+    const tR=Math.min(W,H)*0.13, tRSq=tR*tR;
+    const mxDSq=(tR*0.7)*(tR*0.7);
+
+    const nR=[], nI=[];
+    for(let i=0;i<rParts.length&&nR.length<10;i++){
+      const p=rParts[i], dx=p.x-mx, dy=p.y-my;
+      if(dx*dx+dy*dy<tRSq) nR.push(p);
+    }
+    for(let i=0;i<iParts.length&&nI.length<10;i++){
+      const p=iParts[i], dx=p.x-mx, dy=p.y-my;
+      if(dx*dx+dy*dy<tRSq) nI.push(p);
+    }
+
+    const tAlpha=smoothConv*0.1;
+    const tCol=shadowMode?S_COL:P_COL;
+    X.strokeStyle=`rgba(${tCol.r},${tCol.g},${tCol.b},${tAlpha})`;
+    X.lineWidth=0.5+smoothConv*1;
+    X.beginPath();
+    let tc=0;
+    for(let ri=0;ri<nR.length&&tc<30;ri++){
+      const rp=nR[ri];
+      for(let ii=0;ii<nI.length&&tc<30;ii++){
+        const ip=nI[ii];
+        const dx=rp.x-ip.x, dy=rp.y-ip.y, dSq=dx*dx+dy*dy;
+        if(dSq>25&&dSq<mxDSq){
+          X.moveTo(rp.x,rp.y); X.lineTo(ip.x,ip.y); tc++;
+        }
+      }
+    }
+    X.stroke();
+  }
+
+  // ── Harmony ring ──
+  if(smoothConv>0.45&&!shadowMode){
+    const ph=(time*2)%6.28;
+    const rA=(smoothConv-0.45)*0.25*(0.5+Math.sin(ph)*0.5);
+    X.strokeStyle=`rgba(${P_COL.r},${P_COL.g},${P_COL.b},${rA})`;
+    X.lineWidth=1;
+    X.beginPath();X.arc(mx,my,30+Math.sin(ph)*45,0,6.28);X.stroke();
+  }
+
+  // ── Draw Reality particles ──
+  // Exact same pattern as illumination v7 draw():
+  //   - early exit if too dim
+  //   - radialGradient glow only above threshold
+  //   - core dot always
+  //   - all alpha via rgba strings
+  const rr=shadowT>0.3?lerp(R_COL.r,S_COL.r,shadowT*0.4)|0:R_COL.r;
+  const rg=shadowT>0.3?lerp(R_COL.g,S_COL.g,shadowT*0.4)|0:R_COL.g;
+  const rb=shadowT>0.3?lerp(R_COL.b,S_COL.b,shadowT*0.4)|0:R_COL.b;
+
+  for(let i=0;i<rParts.length;i++){
+    const p=rParts[i];
+    const a=p.alpha;
+    if(a<0.02) continue;
+
+    const sz=p.size*(1+smoothConv*0.5);
+
+    // Glow (only if meaningfully visible)
+    if(a>0.1){
+      const gr=sz*4;
+      let grd=X.createRadialGradient(p.x,p.y,0,p.x,p.y,gr);
+      grd.addColorStop(0,`rgba(${rr},${rg},${rb},${a*0.12})`);
+      grd.addColorStop(0.4,`rgba(${rr},${rg},${rb},${a*0.04})`);
+      grd.addColorStop(1,`rgba(${rr},${rg},${rb},0)`);
+      X.fillStyle=grd;
+      X.beginPath();X.arc(p.x,p.y,gr,0,6.28);X.fill();
+    }
+
+    // Core
+    X.fillStyle=`rgba(${rr},${rg},${rb},${a*0.8})`;
+    X.beginPath();X.arc(p.x,p.y,sz,0,6.28);X.fill();
+  }
+
+  // ── Draw Identity particles ──
+  const ir=shadowT>0.3?lerp(I_COL.r,S_COL.r,shadowT*0.4)|0:I_COL.r;
+  const ig=shadowT>0.3?lerp(I_COL.g,S_COL.g,shadowT*0.4)|0:I_COL.g;
+  const ib=shadowT>0.3?lerp(I_COL.b,S_COL.b,shadowT*0.4)|0:I_COL.b;
+
+  for(let i=0;i<iParts.length;i++){
+    const p=iParts[i];
+    const breath=1+Math.sin(time*p.rate*2+p.phase)*0.12;
+    const a=p.alpha*breath;
+    if(a<0.02) continue;
+
+    const sz=p.size*(1+smoothConv*0.5)*breath;
+
+    if(a>0.1){
+      const gr=sz*4;
+      let grd=X.createRadialGradient(p.x,p.y,0,p.x,p.y,gr);
+      grd.addColorStop(0,`rgba(${ir},${ig},${ib},${a*0.12})`);
+      grd.addColorStop(0.4,`rgba(${ir},${ig},${ib},${a*0.04})`);
+      grd.addColorStop(1,`rgba(${ir},${ig},${ib},0)`);
+      X.fillStyle=grd;
+      X.beginPath();X.arc(p.x,p.y,gr,0,6.28);X.fill();
+    }
+
+    X.fillStyle=`rgba(${ir},${ig},${ib},${a*0.8})`;
+    X.beginPath();X.arc(p.x,p.y,sz,0,6.28);X.fill();
+  }
+
+  // ── Draw Perception particles ──
+  const pc=shadowMode?S_COL:P_COL;
+
+  for(let i=0;i<pParts.length;i++){
+    const p=pParts[i];
+    const a=p.alpha*p.life;
+    if(a<0.02) continue;
+
+    const sz=p.size*(0.5+p.life*0.5);
+
+    if(a>0.1){
+      const gr=sz*4;
+      let grd=X.createRadialGradient(p.x,p.y,0,p.x,p.y,gr);
+      grd.addColorStop(0,`rgba(${pc.r},${pc.g},${pc.b},${a*0.15})`);
+      grd.addColorStop(0.4,`rgba(${pc.r},${pc.g},${pc.b},${a*0.05})`);
+      grd.addColorStop(1,`rgba(${pc.r},${pc.g},${pc.b},0)`);
+      X.fillStyle=grd;
+      X.beginPath();X.arc(p.x,p.y,gr,0,6.28);X.fill();
+    }
+
+    X.fillStyle=`rgba(${pc.r},${pc.g},${pc.b},${a*0.9})`;
+    X.beginPath();X.arc(p.x,p.y,sz,0,6.28);X.fill();
+
+    // Bright center for strong perception
+    if(a>0.3){
+      X.fillStyle=`rgba(255,255,255,${a*0.2})`;
+      X.beginPath();X.arc(p.x,p.y,sz*0.3,0,6.28);X.fill();
+    }
+  }
+
+  // ── Cursor ──
+  cursorEl.style.left=mx+'px';
+  cursorEl.style.top=my+'px';
+  cursorEl.classList.toggle('converging',smoothConv>0.15&&smoothConv<=0.5&&!shadowMode);
+  cursorEl.classList.toggle('harmonized',smoothConv>0.5&&!shadowMode);
+  cursorEl.classList.toggle('shadow',shadowMode);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// LOOP
+// ═══════════════════════════════════════════════════════════════
+
+let last=performance.now();
+function loop(now){
+  const dt=Math.min((now-last)/1000,0.05);
+  last=now;
+  update(dt);
+  render();
+  requestAnimationFrame(loop);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INPUT
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('mousemove',e=>{
+  if(!mouseOn){pmx=e.clientX;pmy=e.clientY}
+  mx=e.clientX;my=e.clientY;mouseOn=true;
+});
+document.addEventListener('mouseleave',()=>{mouseOn=false;smoothVel*=0.5});
+
+document.addEventListener('touchmove',e=>{
+  e.preventDefault();
+  const t=e.touches[0];
+  if(!mouseOn){pmx=t.clientX;pmy=t.clientY}
+  mx=t.clientX;my=t.clientY;mouseOn=true;
+},{passive:false});
+document.addEventListener('touchend',()=>{mouseOn=false;smoothVel*=0.5});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='s'||e.key==='S'){
+    shadowMode=!shadowMode;
+    shadowInd.classList.toggle('visible',shadowMode);
+  }
+});
+
+// ── Init ──
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
