@@ -9,44 +9,19 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:100%;height:100%;overflow:hidden;background:#060608;cursor:none;font-family:'Cormorant Garamond',serif}
   canvas{display:block}
-
-  #caption{
-    position:fixed;bottom:52px;left:50%;transform:translateX(-50%);
-    z-index:50;text-align:center;pointer-events:none;width:90%;max-width:640px;
-  }
-  #captionText{
-    font-size:clamp(15px,2vw,18px);font-weight:300;letter-spacing:.04em;line-height:1.6;
-    color:rgba(255,255,255,0.65);transition:color .8s,opacity .8s;
-  }
-  #captionText.harmonized{color:rgba(212,160,23,0.9);text-shadow:0 0 20px rgba(212,160,23,0.2)}
-  #captionText.shadow-active{color:rgba(204,41,54,0.75)}
-
-  #hotkey{
-    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
-    z-index:50;pointer-events:none;font-size:11px;letter-spacing:.1em;
-    text-transform:uppercase;color:rgba(204,41,54,0.25);
-  }
-
-  .field-label{
-    position:fixed;font-size:clamp(11px,1.4vw,13px);letter-spacing:.12em;
-    text-transform:uppercase;font-weight:600;opacity:.25;z-index:50;pointer-events:none;
-  }
+  #caption{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:50;text-align:center;pointer-events:none;width:90%;max-width:640px}
+  #captionText{font-size:clamp(15px,2vw,18px);font-weight:300;letter-spacing:.04em;line-height:1.6;color:rgba(255,255,255,0.6);transition:color .8s,opacity .8s}
+  #captionText.harmonized{color:rgba(212,160,23,0.85);text-shadow:0 0 20px rgba(212,160,23,0.15)}
+  #captionText.shadow-active{color:rgba(204,41,54,0.7)}
+  #hotkey{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:50;pointer-events:none;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(204,41,54,0.22)}
+  .field-label{position:fixed;font-size:clamp(11px,1.4vw,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.22;z-index:50;pointer-events:none}
   #labelReality{bottom:56%;left:clamp(16px,4vw,48px);color:#2D8B46}
   #labelIdentity{bottom:56%;right:clamp(16px,4vw,48px);color:#E87C2E}
-
-  #shadowIndicator{
-    position:fixed;top:20px;right:20px;z-index:50;
-    width:10px;height:10px;border-radius:50%;
-    border:1px solid rgba(255,255,255,0.1);background:transparent;
-    transition:all 0.8s;pointer-events:none;
-  }
-  #shadowIndicator.active{
-    background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5);
-  }
+  #shadowIndicator{position:fixed;top:20px;right:20px;z-index:50;width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);background:transparent;transition:all 0.8s;pointer-events:none}
+  #shadowIndicator.active{background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5)}
 </style>
 </head>
 <body>
-
 <div class="field-label" id="labelReality">Reality</div>
 <div class="field-label" id="labelIdentity">Identity</div>
 <div id="caption"><div id="captionText">Reality × Identity = Experience</div></div>
@@ -56,79 +31,76 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
-// THE RIP FIELD — DN Framework v3
-// Light is invisible. You see its effect on what it touches.
-// Gravity pulls structure and pattern together.
-// Where they bond, new signals are born.
+// THE RIP FIELD — DN Framework v4
+// Spring-tethered particles. Cursor is gravity + light.
+// Green and Orange overlap ~15%. Bonds form under your attention.
+// Sustained focus = strong bonds. Haste = weak bonds that decay.
 // ═══════════════════════════════════════════════════════════════
 
-const R_COL = [45, 139, 70];
-const I_COL = [232, 124, 46];
-const P_COL = [212, 160, 23];
-const S_COL = [204, 41, 54];
+const R_COL = [45,139,70], I_COL = [232,124,46], P_COL = [212,160,23], S_COL = [204,41,54];
 
-let rParts = [], iParts = [];
-let bonds = [];          // persistent R↔I bonds (molecular connections)
-let signals = [];        // yellow perception signals born from collisions
-let clickPulse = 0;      // frames of boosted gravity after click
+let particles = [];  // all particles in one array, typed 'r' or 'i'
+let bonds = [];      // {a, b, strength, life, age}
+let signals = [];    // golden perception signals
+let clusters = [];   // detected bond clusters with persistence
 
 let shadowMode = false, shadowT = 0;
-let smoothVel = 0, smoothConv = 0;
-let breathPhase = 0;
-let cumulativeEnergy = 0;
-let exciteLevel = 0;
-
-let captionTarget = 'Reality × Identity = Experience';
-let captionHoldTimer = 0;
+let smoothVel = 0, smoothConv = 0, breathPhase = 0;
+let cumulativeEnergy = 0, exciteLevel = 0;
+let clickPulse = 0;
+let captionTarget = 'Reality × Identity = Experience', captionHoldTimer = 0;
 const CAPTION_HOLD = 150;
 
-const R_COUNT = 60, I_COUNT = 60;
+const R_COUNT = 65, I_COUNT = 65;
+const MAX_DRIFT = 80;       // max distance a particle can stray from home
+const SPRING_K = 0.0008;    // spring constant pulling home
+const DAMPING = 0.92;       // velocity damping
+const BOND_DIST = 38;       // distance threshold for bond formation
+const BOND_STRONG_TIME = 90; // frames of sustained attention to max-strength a bond
 
 // ═══════════════════════════════════════════════════════════════
-// SETUP
-// ═══════════════════════════════════════════════════════════════
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
 
-  let cx = width / 2, cy = height / 2;
-  let spread = min(width, height) * 0.38;
+  let cx = width/2, cy = height/2;
+  let fieldW = width * 0.42;  // each field's horizontal spread
+  let fieldH = height * 0.7;
+  // Reality: centered at cx - overlap, Identity: cx + overlap
+  // The 15% overlap means fields extend ~15% past center
+  let rCenter = cx - fieldW * 0.35;
+  let iCenter = cx + fieldW * 0.35;
 
   for (let i = 0; i < R_COUNT; i++) {
-    let a = random(TWO_PI), r = random(spread * 0.9);
-    let bx = cx - spread * 0.24 + cos(a) * r * 0.7;
-    let by = cy + sin(a) * r * 0.6;
-    rParts.push({
-      x: bx, y: by, bx, by,
-      phase: random(TWO_PI), freq: random(0.3, 0.8), amp: random(1.5, 3),
-      size: random(1.8, 4), baseAlpha: random(25, 60),
-      illum: 0, tIllum: 0,  // illumination model
-      axis: random() > 0.5 ? 0 : 1,
-      id: 'r' + i,
-    });
+    let hx = rCenter + random(-fieldW*0.5, fieldW*0.5);
+    let hy = cy + random(-fieldH*0.5, fieldH*0.5);
+    particles.push(makeParticle(hx, hy, 'r', i));
   }
-
   for (let i = 0; i < I_COUNT; i++) {
-    let a = random(TWO_PI), r = random(spread * 0.9);
-    let bx = cx + spread * 0.24 + cos(a) * r * 0.7;
-    let by = cy + sin(a) * r * 0.6;
-    iParts.push({
-      x: bx, y: by, bx, by,
-      phase: random(TWO_PI), rate: random(0.4, 0.8), amp: random(2, 4),
-      size: random(1.8, 4.5), baseAlpha: random(25, 60),
-      illum: 0, tIllum: 0,
-      id: 'i' + i,
-    });
+    let hx = iCenter + random(-fieldW*0.5, fieldW*0.5);
+    let hy = cy + random(-fieldH*0.5, fieldH*0.5);
+    particles.push(makeParticle(hx, hy, 'i', i));
   }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// DRAW
-// ═══════════════════════════════════════════════════════════════
+function makeParticle(hx, hy, type, idx) {
+  return {
+    type, id: type + idx,
+    hx, hy,           // home position (tethered)
+    x: hx, y: hy,     // actual position
+    vx: 0, vy: 0,     // velocity
+    phase: random(TWO_PI),
+    wobbleX: random(0.5, 1.5), wobbleY: random(0.5, 1.5),
+    wobbleAmp: random(1, 3),
+    size: random(1.8, 3.8),
+    baseAlpha: random(30, 55),
+    illum: 0, tIllum: 0,
+  };
+}
 
+// ═══════════════════════════════════════════════════════════════
 function draw() {
-  background(6, 6, 10, 28);
+  background(6, 6, 10, 26);
   breathPhase += 0.015;
 
   let mVel = dist(mouseX, mouseY, pmouseX, pmouseY);
@@ -136,333 +108,338 @@ function draw() {
   let mouseOn = mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height;
 
   shadowT = lerp(shadowT, shadowMode ? 1 : 0, 0.03);
-
-  // Excitation
-  if (mouseOn && mVel > 1) cumulativeEnergy += mVel * 0.03;
-  exciteLevel = lerp(exciteLevel, constrain(cumulativeEnergy / 3000, 0, 1), 0.008);
-
-  // Click pulse decay
+  if (mouseOn && mVel > 1) cumulativeEnergy += mVel * 0.02;
+  exciteLevel = lerp(exciteLevel, constrain(cumulativeEnergy / 4000, 0, 1), 0.006);
   if (clickPulse > 0) clickPulse--;
 
-  // ── Gravity ──
-  let attention = mouseOn ? max(0, 1 - smoothVel / 14) : 0;
-  let clickBoost = clickPulse > 0 ? 2.5 * (clickPulse / 30) : 0;
-  let gStr = attention * (70 + exciteLevel * 30) + clickBoost * 100;
-  let gRad = min(width, height) * (0.25 + clickBoost * 0.08);
-  let sMult = shadowMode ? -0.5 : 1;
+  // Attention quality: slow = focused = strong
+  let attention = mouseOn ? max(0, 1 - smoothVel / 16) : 0;
+  let clickBoost = clickPulse > 0 ? 3 * (clickPulse / 25) : 0;
 
-  // ── Illumination beam (invisible — just a radius) ──
-  let beam = min(width, height) * 0.4;
-  let ambient = 0.15 + exciteLevel * 0.1; // base visibility
+  // Gravity radius and strength
+  let gRad = min(width, height) * (0.18 + clickBoost * 0.06);
+  let gStr = (attention * 0.15 + clickBoost * 0.4) * (shadowMode ? -1 : 1);
 
-  let rNear = 0, iNear = 0;
-  let convR = gRad * 0.6;
+  // Illumination beam
+  let beam = min(width, height) * 0.35;
+  let ambient = 0.12 + exciteLevel * 0.08;
 
-  // ── Update Reality particles ──
-  for (let p of rParts) {
-    let wave = sin(breathPhase * 20 * p.freq + p.phase) * p.amp;
-    let tx = p.bx + (p.axis === 0 ? wave : 0);
-    let ty = p.by + (p.axis === 1 ? wave : 0);
+  let rNearCursor = 0, iNearCursor = 0;
+  let convR = gRad * 0.8;
 
-    if (mouseOn && gStr > 0) {
-      let dx = mouseX - tx, dy = mouseY - ty;
-      let d = sqrt(dx * dx + dy * dy);
-      if (d < gRad && d > 1) {
-        let f = (1 - d / gRad) * gStr * 0.009 * sMult;
-        tx += (dx / d) * f;
-        ty += (dy / d) * f;
-        if (d < convR) rNear++;
+  // ═══════════════════════════════════════════════════════════════
+  // PHYSICS: spring-tethered + cursor gravity + gentle wobble
+  // ═══════════════════════════════════════════════════════════════
+  for (let p of particles) {
+    // Wobble around home (gentle organic bob)
+    let wobX = sin(breathPhase * 20 * p.wobbleX * 0.05 + p.phase) * p.wobbleAmp;
+    let wobY = cos(breathPhase * 20 * p.wobbleY * 0.04 + p.phase * 1.3) * p.wobbleAmp;
+    let homeTargetX = p.hx + wobX;
+    let homeTargetY = p.hy + wobY;
+
+    // Spring force toward home
+    let dhx = homeTargetX - p.x;
+    let dhy = homeTargetY - p.y;
+    p.vx += dhx * SPRING_K;
+    p.vy += dhy * SPRING_K;
+
+    // Cursor gravity
+    if (mouseOn) {
+      let dx = mouseX - p.x, dy = mouseY - p.y;
+      let d = sqrt(dx*dx + dy*dy);
+      if (d < gRad && d > 2) {
+        let force = (1 - d/gRad) * gStr;
+        p.vx += (dx/d) * force;
+        p.vy += (dy/d) * force;
+      }
+      // Count near cursor for convergence
+      if (d < convR) {
+        if (p.type === 'r') rNearCursor++;
+        else iNearCursor++;
       }
     }
-    p.x = lerp(p.x, tx, 0.07);
-    p.y = lerp(p.y, ty, 0.07);
 
-    // Illumination: particle brightens by proximity to cursor
+    // Damping
+    p.vx *= DAMPING;
+    p.vy *= DAMPING;
+
+    // Apply velocity
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Drift limit: clamp distance from home
+    let distFromHome = dist(p.x, p.y, p.hx, p.hy);
+    if (distFromHome > MAX_DRIFT) {
+      let scale = MAX_DRIFT / distFromHome;
+      p.x = p.hx + (p.x - p.hx) * scale;
+      p.y = p.hy + (p.y - p.hy) * scale;
+      p.vx *= 0.5; p.vy *= 0.5;
+    }
+
+    // Illumination (invisible light — particles brighten by proximity)
     let dMouse = mouseOn ? dist(p.x, p.y, mouseX, mouseY) : 9999;
     if (dMouse < beam) {
-      p.tIllum = pow(1 - dMouse / beam, 0.6) * 0.85 + ambient;
+      p.tIllum = pow(1 - dMouse/beam, 0.55) * 0.88 + ambient;
     } else {
       p.tIllum = ambient;
     }
-    if (shadowMode && dMouse < beam * 0.4) {
-      // Shadow: close = darker, far = brighter (inverted)
-      p.tIllum = lerp(p.tIllum, ambient * 0.3, shadowT * (1 - dMouse / (beam * 0.4)));
+    if (shadowMode && dMouse < beam * 0.3) {
+      p.tIllum = lerp(p.tIllum, ambient * 0.2, shadowT * (1 - dMouse/(beam*0.3)));
     }
-    p.illum = lerp(p.illum, p.tIllum, 0.06);
+    p.illum = lerp(p.illum, p.tIllum, 0.08);
   }
 
-  // ── Update Identity particles ──
-  for (let p of iParts) {
-    let breath = sin(breathPhase * 20 * p.rate + p.phase) * p.amp;
-    let drift = cos(breathPhase * 20 * p.rate * 0.3 + p.phase * 2) * p.amp * 0.5;
-    let tx = p.bx + drift, ty = p.by + breath;
-
-    if (mouseOn && gStr > 0) {
-      let dx = mouseX - tx, dy = mouseY - ty;
-      let d = sqrt(dx * dx + dy * dy);
-      if (d < gRad && d > 1) {
-        let f = (1 - d / gRad) * gStr * 0.009 * sMult;
-        tx += (dx / d) * f;
-        ty += (dy / d) * f;
-        if (d < convR) iNear++;
-      }
-    }
-    p.x = lerp(p.x, tx, 0.05);
-    p.y = lerp(p.y, ty, 0.05);
-
-    let dMouse = mouseOn ? dist(p.x, p.y, mouseX, mouseY) : 9999;
-    if (dMouse < beam) {
-      p.tIllum = pow(1 - dMouse / beam, 0.6) * 0.85 + ambient;
-    } else {
-      p.tIllum = ambient;
-    }
-    if (shadowMode && dMouse < beam * 0.4) {
-      p.tIllum = lerp(p.tIllum, ambient * 0.3, shadowT * (1 - dMouse / (beam * 0.4)));
-    }
-    p.illum = lerp(p.illum, p.tIllum, 0.06);
-  }
-
-  // ── Convergence ──
-  let rawConv = min(1, (rNear * iNear) / (10 * 10));
+  // Convergence
+  let rawConv = min(1, (rNearCursor * iNearCursor) / (8*8));
   smoothConv = lerp(smoothConv, rawConv * attention, 0.04);
 
   // ═══════════════════════════════════════════════════════════════
-  // BONDING — R and I particles near each other form molecular bonds
-  // Bonds persist with decay. Connected bonds form chain structures.
+  // BONDING: only between illuminated R↔I particles near cursor
+  // Sustained attention strengthens. Haste weakens.
   // ═══════════════════════════════════════════════════════════════
+  let bondRange = BOND_DIST + exciteLevel * 10;
 
-  let bondDist = 45 + exciteLevel * 15;
-  let scanR = min(width, height) * 0.2;
+  for (let p of particles) {
+    if (p.type !== 'r' || p.illum < 0.25) continue;
 
-  // Find new bonds near cursor
-  if (mouseOn && (smoothConv > 0.03 || clickPulse > 0)) {
-    for (let rp of rParts) {
-      if (rp.illum < 0.2) continue;
-      let drm = dist(rp.x, rp.y, mouseX, mouseY);
-      if (drm > scanR) continue;
+    for (let q of particles) {
+      if (q.type !== 'i' || q.illum < 0.25) continue;
 
-      for (let ip of iParts) {
-        if (ip.illum < 0.2) continue;
-        let d = dist(rp.x, rp.y, ip.x, ip.y);
-        if (d < bondDist && d > 3) {
-          // Check if bond already exists
-          let exists = bonds.find(b => b.rid === rp.id && b.iid === ip.id);
-          if (!exists) {
-            bonds.push({
-              rp, ip, rid: rp.id, iid: ip.id,
-              life: 0.8 + smoothConv * 0.2,
-              strength: (1 - d / bondDist),
-            });
+      let d = dist(p.x, p.y, q.x, q.y);
+      if (d > bondRange || d < 2) continue;
 
-            // Bond formation: spawn a yellow signal at midpoint
-            if (d < bondDist * 0.6 && random() < 0.3) {
-              spawnSignal((rp.x + ip.x) / 2, (rp.y + ip.y) / 2, 0.5 + smoothConv);
-            }
-          } else {
-            // Refresh existing bond
-            exists.life = min(1, exists.life + 0.02);
-            exists.strength = lerp(exists.strength, 1 - d / bondDist, 0.1);
-          }
+      let existing = bonds.find(b => b.aid === p.id && b.bid === q.id);
+      if (existing) {
+        // Strengthen with sustained attention
+        let attGain = attention * 0.015;
+        existing.strength = min(1, existing.strength + attGain);
+        existing.life = min(1, existing.life + 0.01);
+        existing.age++;
+      } else if (bonds.length < 100) {
+        bonds.push({
+          a: p, b: q, aid: p.id, bid: q.id,
+          strength: 0.1 * (1 - d/bondRange),
+          life: 0.6,
+          age: 0,
+        });
+        // Bond birth: spawn signal
+        if (random() < 0.2) {
+          spawnSignal((p.x+q.x)/2, (p.y+q.y)/2, 0.4);
         }
       }
     }
   }
 
-  // Decay and update bonds
-  for (let i = bonds.length - 1; i >= 0; i--) {
+  // ── Detect clusters: groups of bonds sharing particles ──
+  // A cluster is bonds that form a connected graph
+  detectClusters();
+
+  // ── Decay bonds ──
+  for (let i = bonds.length-1; i >= 0; i--) {
     let b = bonds[i];
-    let d = dist(b.rp.x, b.rp.y, b.ip.x, b.ip.y);
+    let d = dist(b.a.x, b.a.y, b.b.x, b.b.y);
+    let bothLit = b.a.illum > 0.2 && b.b.illum > 0.2;
 
-    // Bonds weaken if particles drift apart or lose illumination
-    if (d > bondDist * 1.5 || (b.rp.illum < 0.1 && b.ip.illum < 0.1)) {
-      b.life -= 0.02;
-    } else {
-      b.life -= 0.003; // slow natural decay
+    if (!bothLit) {
+      // Not illuminated: decay based on cluster membership
+      let inCluster = b._clusterSize || 0;
+      let decayRate = inCluster >= 3 ? 0.002 : inCluster >= 2 ? 0.005 : 0.012;
+      b.life -= decayRate;
+      b.strength *= 0.998;
+    } else if (d > bondRange * 1.6) {
+      // Too far apart
+      b.life -= 0.015;
     }
-    b.strength = lerp(b.strength, max(0, 1 - d / bondDist), 0.05);
 
-    if (b.life <= 0) bonds.splice(i, 1);
-  }
+    // Weak bonds from hasty movement decay faster
+    if (b.strength < 0.2) b.life -= 0.005;
 
-  // Cap bonds
-  while (bonds.length > 80) {
-    let oldest = bonds.reduce((a, b, i) => b.life < bonds[a].life ? i : a, 0);
-    bonds.splice(oldest, 1);
+    if (b.life <= 0 || b.strength <= 0) bonds.splice(i, 1);
   }
 
   // ── Update signals ──
-  for (let i = signals.length - 1; i >= 0; i--) {
+  for (let i = signals.length-1; i >= 0; i--) {
     let s = signals[i];
-    s.vx *= 0.96; s.vy *= 0.96;
-    s.vy -= 0.005; // rises gently
+    s.vx *= 0.95; s.vy *= 0.95;
+    s.vy -= 0.004;
     s.x += s.vx; s.y += s.vy;
-    s.life -= 0.005;
+    s.life -= 0.006;
     if (s.life <= 0) signals.splice(i, 1);
   }
-  while (signals.length > 35) signals.shift();
+  while (signals.length > 30) signals.shift();
 
   // ═══════════════════════════════════════════════════════════════
-  // DRAW — particles brighten themselves, no visible light source
+  // DRAW
   // ═══════════════════════════════════════════════════════════════
-
   noStroke();
 
-  // ── Bond lines (molecular connections) ──
+  // ── Bond lines ──
   for (let b of bonds) {
-    let a = b.life * b.strength * min(b.rp.illum, b.ip.illum);
-    if (a < 0.01) continue;
-    let col = shadowMode ? S_COL : P_COL;
-    stroke(col[0], col[1], col[2], a * 50);
-    strokeWeight(0.3 + a * 1.2);
-    line(b.rp.x, b.rp.y, b.ip.x, b.ip.y);
+    let vis = b.life * b.strength * max(b.a.illum, b.b.illum) * 0.7;
+    if (vis < 0.01) continue;
 
-    // Bond midpoint node — tiny dot where connection lives
-    if (a > 0.15) {
+    let col = shadowMode ? S_COL : P_COL;
+    let alpha = vis * 60;
+    let wt = 0.3 + b.strength * 1.2;
+
+    // Stronger bonds glow slightly
+    if (b.strength > 0.5 && b.age > BOND_STRONG_TIME) {
+      fill(col[0], col[1], col[2], alpha * 0.08);
+      let mx = (b.a.x+b.b.x)/2, my = (b.a.y+b.b.y)/2;
+      ellipse(mx, my, 8 + b.strength*6, 8 + b.strength*6);
+    }
+
+    stroke(col[0], col[1], col[2], alpha);
+    strokeWeight(wt);
+    line(b.a.x, b.a.y, b.b.x, b.b.y);
+
+    // Node at midpoint for strong bonds
+    if (b.strength > 0.3) {
       noStroke();
-      fill(col[0], col[1], col[2], a * 35);
-      let mx = (b.rp.x + b.ip.x) / 2;
-      let my = (b.rp.y + b.ip.y) / 2;
-      ellipse(mx, my, 2 + a * 2, 2 + a * 2);
+      fill(col[0], col[1], col[2], alpha * 0.5);
+      let mx = (b.a.x+b.b.x)/2, my = (b.a.y+b.b.y)/2;
+      ellipse(mx, my, 1.5 + b.strength*1.5, 1.5 + b.strength*1.5);
     }
   }
   noStroke();
 
-  // ── Reality particles (illumination-driven alpha) ──
-  let rr = shadowT > 0.3 ? lerp(R_COL[0], S_COL[0], shadowT * 0.4) : R_COL[0];
-  let rg = shadowT > 0.3 ? lerp(R_COL[1], S_COL[1], shadowT * 0.4) : R_COL[1];
-  let rb = shadowT > 0.3 ? lerp(R_COL[2], S_COL[2], shadowT * 0.4) : R_COL[2];
-
-  for (let p of rParts) {
+  // ── Particles ──
+  for (let p of particles) {
     let a = p.baseAlpha * p.illum;
-    if (a < 1) continue;
+    if (a < 0.5) continue;
 
-    let breath = sin(breathPhase * 2 + p.phase) * 0.1 + 1;
+    let col = p.type === 'r'
+      ? (shadowT > 0.3 ? [lerp(R_COL[0],S_COL[0],shadowT*.4), lerp(R_COL[1],S_COL[1],shadowT*.4), lerp(R_COL[2],S_COL[2],shadowT*.4)] : R_COL)
+      : (shadowT > 0.3 ? [lerp(I_COL[0],S_COL[0],shadowT*.4), lerp(I_COL[1],S_COL[1],shadowT*.4), lerp(I_COL[2],S_COL[2],shadowT*.4)] : I_COL);
+
+    let breath = sin(breathPhase*2 + p.phase) * 0.08 + 1;
     let sz = p.size * breath;
 
-    // Soft glow (only when bright enough)
-    if (a > 8) {
-      fill(rr, rg, rb, a * 0.12);
-      ellipse(p.x, p.y, sz * 4, sz * 4);
+    // Glow
+    if (a > 4) {
+      fill(col[0], col[1], col[2], a*0.1);
+      ellipse(p.x, p.y, sz*4, sz*4);
     }
 
     // Core
-    fill(rr, rg, rb, a);
+    fill(col[0], col[1], col[2], a);
     ellipse(p.x, p.y, sz, sz);
 
     // Hot center at high illumination
-    if (p.illum > 0.6) {
-      fill(255, 255, 255, a * 0.2);
-      ellipse(p.x, p.y, sz * 0.3, sz * 0.3);
+    if (p.illum > 0.65) {
+      fill(255,255,255, a*0.15);
+      ellipse(p.x, p.y, sz*0.3, sz*0.3);
     }
   }
 
-  // ── Identity particles ──
-  let ir = shadowT > 0.3 ? lerp(I_COL[0], S_COL[0], shadowT * 0.4) : I_COL[0];
-  let ig = shadowT > 0.3 ? lerp(I_COL[1], S_COL[1], shadowT * 0.4) : I_COL[1];
-  let ib = shadowT > 0.3 ? lerp(I_COL[2], S_COL[2], shadowT * 0.4) : I_COL[2];
-
-  for (let p of iParts) {
-    let breathPulse = sin(breathPhase * 2 * p.rate + p.phase) * 0.1 + 1;
-    let a = p.baseAlpha * p.illum * breathPulse;
-    if (a < 1) continue;
-
-    let sz = p.size * breathPulse;
-
-    if (a > 8) {
-      fill(ir, ig, ib, a * 0.12);
-      ellipse(p.x, p.y, sz * 4, sz * 4);
-    }
-
-    fill(ir, ig, ib, a);
-    ellipse(p.x, p.y, sz, sz);
-
-    if (p.illum > 0.6) {
-      fill(255, 255, 255, a * 0.2);
-      ellipse(p.x, p.y, sz * 0.3, sz * 0.3);
-    }
-  }
-
-  // ── Perception signals (golden, born from bond collisions) ──
+  // ── Perception signals ──
   for (let s of signals) {
     let a = s.alpha * s.life;
-    if (a < 1) continue;
-    let sz = s.size * (0.3 + s.life * 0.7);
+    if (a < 0.5) continue;
+    let sz = s.size * (0.3 + s.life*0.7);
     let col = s.shadow ? S_COL : P_COL;
 
-    if (a > 5) {
-      fill(col[0], col[1], col[2], a * 0.2);
-      ellipse(s.x, s.y, sz * 3.5, sz * 3.5);
+    if (a > 4) {
+      fill(col[0],col[1],col[2], a*0.15);
+      ellipse(s.x, s.y, sz*3.5, sz*3.5);
     }
-
-    fill(col[0], col[1], col[2], a);
+    fill(col[0],col[1],col[2], a);
     ellipse(s.x, s.y, sz, sz);
-
-    // White center
-    if (a > 15 && !s.shadow) {
-      fill(255, 255, 255, a * 0.5);
-      ellipse(s.x, s.y, sz * 0.3, sz * 0.3);
+    if (a > 12 && !s.shadow) {
+      fill(255,255,255, a*0.4);
+      ellipse(s.x, s.y, sz*0.25, sz*0.25);
     }
   }
 
-  // ── Latent shadow at edges ──
-  if (frameCount > 80) {
-    let edgePulse = sin(breathPhase * 3) * 0.5 + 0.5;
-    let edgeA = (1.5 + shadowT * 10) * edgePulse;
-    if (random() < 0.025 + shadowT * 0.07) {
-      let ex = random() < 0.5 ? random(0, 30) : random(width - 30, width);
-      fill(S_COL[0], S_COL[1], S_COL[2], edgeA);
-      ellipse(ex, random(height), random(20, 60), random(20, 60));
+  // ── Edge shadow instability ──
+  if (frameCount > 60) {
+    let ep = sin(breathPhase*3)*0.5+0.5;
+    if (random() < 0.02 + shadowT*0.06) {
+      let ex = random()<0.5 ? random(0,25) : random(width-25,width);
+      fill(S_COL[0],S_COL[1],S_COL[2], (1+shadowT*8)*ep);
+      ellipse(ex, random(height), random(20,55), random(20,55));
     }
   }
 
-  // ── Excitation glow: subtle edge warmth ──
+  // ── Excitation warmth ──
   if (exciteLevel > 0.2) {
-    let eA = (exciteLevel - 0.2) * 4;
-    fill(P_COL[0], P_COL[1], P_COL[2], eA);
-    noStroke();
-    ellipse(width / 2, height + 60, width * 1.1, 160);
+    fill(P_COL[0],P_COL[1],P_COL[2], (exciteLevel-0.2)*3);
+    ellipse(width/2, height+60, width*1.1, 140);
   }
 
-  // ── Cursor: minimal dot ──
+  // ── Cursor: tiny dot ──
   if (mouseOn) {
-    let cPulse = sin(breathPhase * 2) * 0.15 + 1;
-    let cSize = 4 + smoothConv * 2;
-    if (shadowMode) {
-      fill(S_COL[0], S_COL[1], S_COL[2], 140);
-    } else {
-      fill(255, 250, 248, 120);
-    }
+    let cp = sin(breathPhase*2)*0.12+1;
+    let cs = 3.5 + smoothConv*1.5;
+    fill(shadowMode ? S_COL[0] : 255, shadowMode ? S_COL[1] : 248, shadowMode ? S_COL[2] : 245, shadowMode ? 130 : 90);
     noStroke();
-    ellipse(mouseX, mouseY, cSize * cPulse, cSize * cPulse);
-    fill(255, 255, 255, 70);
-    ellipse(mouseX, mouseY, cSize * cPulse * 0.3, cSize * cPulse * 0.3);
+    ellipse(mouseX, mouseY, cs*cp, cs*cp);
+    fill(255,255,255, 50);
+    ellipse(mouseX, mouseY, cs*cp*0.3, cs*cp*0.3);
   }
 
-  // ── Harmony ring at deep convergence ──
+  // ── Harmony ring ──
   if (smoothConv > 0.45 && !shadowMode) {
-    let ph = (breathPhase * 8) % TWO_PI;
+    let ph = (breathPhase*8) % TWO_PI;
     noFill();
-    stroke(P_COL[0], P_COL[1], P_COL[2], (smoothConv - 0.45) * 30 * (0.5 + sin(ph) * 0.5));
-    strokeWeight(0.5);
-    ellipse(mouseX, mouseY, 40 + sin(ph) * 30, 40 + sin(ph) * 30);
+    stroke(P_COL[0],P_COL[1],P_COL[2], (smoothConv-0.45)*25*(0.5+sin(ph)*0.5));
+    strokeWeight(0.4);
+    ellipse(mouseX, mouseY, 35+sin(ph)*25, 35+sin(ph)*25);
     noStroke();
   }
 
-  // ── Caption + UI ──
   updateCaption(mouseOn);
   document.getElementById('shadowIndicator').className = shadowMode ? 'active' : '';
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SIGNAL SPAWNING
+// CLUSTER DETECTION — find connected bond groups
+// Tag each bond with its cluster size for persistence logic
 // ═══════════════════════════════════════════════════════════════
+function detectClusters() {
+  // Reset
+  for (let b of bonds) b._clusterSize = 0;
 
+  // Simple union-find via adjacency
+  let visited = new Set();
+  for (let i = 0; i < bonds.length; i++) {
+    if (visited.has(i)) continue;
+
+    // BFS from this bond
+    let queue = [i];
+    let group = [i];
+    visited.add(i);
+
+    while (queue.length > 0) {
+      let ci = queue.shift();
+      let cb = bonds[ci];
+      // Find bonds sharing a particle with cb
+      for (let j = 0; j < bonds.length; j++) {
+        if (visited.has(j)) continue;
+        let ob = bonds[j];
+        if (ob.aid === cb.aid || ob.aid === cb.bid ||
+            ob.bid === cb.aid || ob.bid === cb.bid) {
+          visited.add(j);
+          queue.push(j);
+          group.push(j);
+        }
+      }
+    }
+
+    // Tag all bonds in this group with cluster size
+    for (let gi of group) {
+      bonds[gi]._clusterSize = group.length;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
 function spawnSignal(x, y, intensity) {
   signals.push({
-    x: x + random(-5, 5), y: y + random(-5, 5),
-    vx: random(-0.4, 0.4), vy: random(-0.3, -0.05),
-    life: 1, size: 1.5 + intensity * 2.5,
-    alpha: 40 + intensity * 50,
+    x: x+random(-4,4), y: y+random(-4,4),
+    vx: random(-0.3,0.3), vy: random(-0.2,-0.02),
+    life: 1, size: 1.5 + intensity*2,
+    alpha: 30 + intensity*40,
     shadow: shadowMode,
   });
 }
@@ -470,7 +447,6 @@ function spawnSignal(x, y, intensity) {
 // ═══════════════════════════════════════════════════════════════
 // CAPTIONS
 // ═══════════════════════════════════════════════════════════════
-
 const CAP = {
   idle:       'The field holds its breath. Structure and pattern await the bridge.',
   approach:   'Structure stirs. Pattern awakens. Something is listening...',
@@ -482,14 +458,13 @@ const CAP = {
 };
 
 function updateCaption(mouseOn) {
-  captionHoldTimer = max(0, captionHoldTimer - 1);
-
+  captionHoldTimer = max(0, captionHoldTimer-1);
   let t;
-  if (shadowMode) t = smoothConv > 0.3 ? CAP.shadowDeep : CAP.shadow;
+  if (shadowMode) t = smoothConv>0.3 ? CAP.shadowDeep : CAP.shadow;
   else if (!mouseOn) t = CAP.idle;
-  else if (smoothConv > 0.5) t = CAP.harmonized;
-  else if (smoothConv > 0.25) t = CAP.deep;
-  else if (smoothConv > 0.08) t = CAP.converging;
+  else if (smoothConv>0.5) t = CAP.harmonized;
+  else if (smoothConv>0.25) t = CAP.deep;
+  else if (smoothConv>0.08) t = CAP.converging;
   else t = CAP.approach;
 
   if (t !== captionTarget && captionHoldTimer <= 0) {
@@ -499,42 +474,32 @@ function updateCaption(mouseOn) {
     ct.style.opacity = '0';
     setTimeout(() => { ct.textContent = captionTarget; ct.style.opacity = '1'; }, 400);
   }
-
   let ct = document.getElementById('captionText');
-  ct.classList.toggle('harmonized', smoothConv > 0.5 && !shadowMode);
+  ct.classList.toggle('harmonized', smoothConv>0.5 && !shadowMode);
   ct.classList.toggle('shadow-active', shadowMode);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // INPUT
 // ═══════════════════════════════════════════════════════════════
-
 function mousePressed() {
-  // Click: excite — spike gravity, particles rush toward cursor
-  clickPulse = 30; // 30 frames of boosted gravity
-  cumulativeEnergy += 40;
+  clickPulse = 25;
+  cumulativeEnergy += 30;
 
-  // Spawn burst of signals at any existing bond midpoints near click
-  let burstCount = 0;
+  // Burst signals at bond midpoints near click
+  let count = 0;
   for (let b of bonds) {
-    let bx = (b.rp.x + b.ip.x) / 2;
-    let by = (b.rp.y + b.ip.y) / 2;
-    if (dist(mouseX, mouseY, bx, by) < 80) {
-      // Bridge collision burst
-      for (let k = 0; k < 2; k++) {
-        spawnSignal(bx, by, 0.6 + b.strength);
-      }
-      b.life = min(1, b.life + 0.3); // strengthen bond
-      burstCount++;
-      if (burstCount > 6) break;
+    let bx = (b.a.x+b.b.x)/2, by = (b.a.y+b.b.y)/2;
+    if (dist(mouseX, mouseY, bx, by) < 60) {
+      spawnSignal(bx, by, 0.5 + b.strength);
+      b.strength = min(1, b.strength + 0.2);
+      b.life = min(1, b.life + 0.15);
+      count++;
+      if (count > 5) break;
     }
   }
-
-  // If no bonds nearby, still create a small perception spark
-  if (burstCount === 0) {
-    for (let k = 0; k < 3; k++) {
-      spawnSignal(mouseX + random(-10, 10), mouseY + random(-10, 10), 0.3);
-    }
+  if (count === 0) {
+    for (let k = 0; k < 2; k++) spawnSignal(mouseX+random(-8,8), mouseY+random(-8,8), 0.25);
   }
 }
 
