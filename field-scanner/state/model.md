@@ -103,3 +103,21 @@ Add to Open Questions: Active inference (free energy principle) presents a unifi
 
 No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds a minor data point to the existing homogeneous-vs-qualitative-dimensions parsimony challenge but does not rise to the level of a new tension or confirmed parallel. The selection rationale's framing of HTRDN as validating dimensional progression and recursive refinement was assessed as a vocabulary-overlap trap per Charter §5 — hierarchical multi-scale decomposition and iterative diffusion refinement are generic engineering paradigms, not independent confirmations of DN's specific structural claims.
 
+
+
+---
+
+### Cycle Update — 2026-03-15
+
+**Pseudo-Coherence and Stochastic Synchronization: A Non-Normal Route to Collective Dynamics without Oscillators** (strain, strain: 6, validation: 2)
+
+Update the existing pseudo-coherence entry under Open Questions to reflect third-pass assessment: strain stable at 6, now precisely located at the dynamic level of the Resonance force (not just mechanism level) and at Axiom 3's universality scope. Note that DN's standard defense (forces = dynamics not mechanisms) does not fully apply here because the dynamic itself (top-down geometric imposition vs. lateral peer binding) differs from Resonance's structural description. Under Strain Sources, note that this is a compounding tension: pseudo-coherence + Kuramoto homogeneous dimensions + PDGC flow decomposition collectively pressure the five-force model's adequacy as a complete taxonomy of collective dynamics.
+
+**Synchronization of higher-dimensional Kuramoto oscillators on networks: from scalar to matrix-weighted couplings** (strain, strain: 6, validation: 1)
+
+Update the existing Gallo et al. entry under Open Questions to reflect deepened analysis on second pass. The parsimony challenge is now well-characterized across multiple papers (Quiroga property-conjunction, Gallo homogeneous-dimensions, active inference unification): DN faces compounding pressure to articulate what its structural multiplicity and qualitative dimensional hierarchy explain that simpler or differently-structured formal frameworks cannot. Note under Strain Sources that the formal exceeding pattern (mathematical frameworks achieving decomposable, predictive results in territory DN claims, using primitives DN lacks) is now the most consistent strain signal across the scanning corpus.
+
+**Dissecting Spectral Granger Causality through Partial Information Decomposition** (validation, strain: 6, validation: 1)
+
+Update the existing PDGC entry under Open Questions to note the frequency-domain deepening: PDGC's spectral extension reveals frequency-dependent compositional switching in causal interactions, adding a temporal-scale dimension to the flow-compositional-structure tension that DN's architecture cannot currently express. The physiological application demonstrates clinical relevance of compositional distinctions DN's Flow concept cannot make. Under domain tracking, note: Network Physiology/Autonomic Neuroscience — PDGC achieves clinically discriminative decomposition of inter-system causal dynamics at a resolution DN's descriptive apparatus cannot approach.
+

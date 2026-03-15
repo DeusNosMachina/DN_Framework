@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-13*
+*Last updated: 2026-03-15*
 
 
 
@@ -24,7 +24,7 @@
 **Sources:**
 - [2026-03-11] Properties for the Emergence of Consciousness in Humans and AI, an Interdisciplinary Review (strain: 4)
 
-### non-normal-transient-amplification-v2 | status: tracking | citations: 1
+### non-normal-transient-amplification-v2 | status: tracking | citations: 2
 
 **Maturity target:** recent
 **Kernel sections:** §2 Five Forces, §0.3 Axiom 3, §0.1 Domain Universality, §2 Dimensional Architecture, §1 Axiom 2 (Dimensional Progression)
@@ -32,8 +32,9 @@
 
 **Sources:**
 - [2026-03-11] Pseudo-Coherence and Stochastic Synchronization: A Non-Normal Route to Collective Dynamics without Oscillators (strain: 6)
+- [2026-03-15] Pseudo-Coherence and Stochastic Synchronization: A Non-Normal Route to Collective Dynamics without Oscillators (strain: 6)
 
-### homogeneous-vs-qualitative-dimensions | status: tracking | citations: 1
+### homogeneous-vs-qualitative-dimensions | status: tracking | citations: 2
 
 **Maturity target:** foundational
 **Kernel sections:** §2 Dimensional Architecture, §0.1 Domain Universality, §2 Five Forces, §1.5 Signal Lock, §0.3 Axiom 3 (Recursion), §2.2 Nested Dimensionality
@@ -41,6 +42,7 @@
 
 **Sources:**
 - [2026-03-11] Synchronization of higher-dimensional Kuramoto oscillators on networks: from scalar to matrix-weighted couplings (strain: 6)
+- [2026-03-15] Synchronization of higher-dimensional Kuramoto oscillators on networks: from scalar to matrix-weighted couplings (strain: 6)
 
 ### flow-compositional-structure | status: tracking | citations: 1
 
@@ -68,3 +70,12 @@
 
 **Sources:**
 - [2026-03-13] Active Inference for Micro-Gesture Recognition: EFE-Guided Temporal Sampling and Adaptive Learning (strain: 5)
+
+### update-existing-tension-flow-compositiona | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2.5 Flow, §0.3 Axiom 12, §2 Five Forces, §0.1 Domain Universality, §10 Field-to-field dynamics, §3 Pillar Metric
+**Description:** Update existing tension flow-compositional-structure: The frequency-domain extension of PDGC reveals that the same inter-system causal relationship can exhibit different compositional character (redundant vs. synergistic) across spectral bands simultaneously, with clinically meaningful distinctions residing in these frequency-dependent compositions. DN has no apparatus for frequency-dependent compositional switching in inter-field dynamics. This deepens the original tension beyond the static decomposition problem: it is not only that Flow lacks internal structure, but that the structure of inter-system influence is itself spectrally organized in ways DN's architecture cannot represent. tension_id: flow-compositional-structure-spectral
+
+**Sources:**
+- [2026-03-15] Dissecting Spectral Granger Causality through Partial Information Decomposition (strain: 6)
