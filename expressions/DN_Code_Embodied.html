@@ -29,6 +29,12 @@
 </head>
 <body>
 <div id="shadow-indicator"></div>
+<div id="shadow-hint" style="position:fixed;top:18px;right:38px;z-index:10;pointer-events:none;
+  font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(204,41,54,0);transition:color 1s,opacity 1s;opacity:0">
+  <span style="font-family:monospace;background:rgba(204,41,54,0.15);border:1px solid rgba(204,41,54,0.2);
+  border-radius:3px;padding:1px 5px;margin-right:4px;font-size:10px">S</span> shadow
+</div>
 <div id="pillar-glow">
   <div id="p-heart"></div>
   <div id="p-truth"></div>
@@ -94,6 +100,8 @@ let droneFilter=null;
 let lastHatTime=0;
 // Smoothed values for drone modulation
 let smoothMouseSpeed=0, smoothPhaseBlend=0;
+// Crescendo detection
+let recentSpeedPeak=0, crescendoCooldown=0;
 
 function initSound(){
   if(soundReady)return;
@@ -167,11 +175,11 @@ function playKick(dimIdx){
   }
 }
 
-// HI-HAT — filtered noise burst
-function playHat(){
+// HI-HAT — filtered noise burst, intensity and pitch vary
+function playHat(intensity, yPos){
   if(!soundReady||!audioCtx)return;
   let now=audioCtx.currentTime;
-  if(now-lastHatTime<0.06)return; // rate limit
+  if(now-lastHatTime<0.06)return;
   lastHatTime=now;
   let bufLen=Math.floor(audioCtx.sampleRate*0.05);
   let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
@@ -181,12 +189,118 @@ function playHat(){
   src.buffer=buf;
   let filt=audioCtx.createBiquadFilter();
   filt.type='highpass';
-  filt.frequency.value=shadowMode?4000:7000;
+  // Y position shifts pitch: bottom=darker(3000), top=brighter(10000)
+  let yNorm=1-constrain((yPos||0)/height,0,1);
+  let hpFreq=3000+yNorm*7000;
+  if(shadowMode) hpFreq*=0.6;
+  filt.frequency.value=hpFreq;
+  let vol=constrain((intensity||1)*0.008,0.02,0.08);
   let gain=audioCtx.createGain();
-  gain.gain.setValueAtTime(shadowMode?0.06:0.04,now);
+  gain.gain.setValueAtTime(vol,now);
   gain.gain.exponentialRampToValueAtTime(0.001,now+0.04);
   src.connect(filt);filt.connect(gain);gain.connect(audioCtx.destination);
   src.start(now);src.stop(now+0.05);
+}
+
+// SHADOW BREAK — dissonant crunch
+function playShadowBreak(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Low crunch
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.setValueAtTime(90,t);
+  osc.frequency.exponentialRampToValueAtTime(30,t+0.15);
+  g.gain.setValueAtTime(0.15,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.3);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.35);
+  // Noise burst
+  let bufLen=Math.floor(audioCtx.sampleRate*0.08);
+  let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  let dd=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) dd[i]=(Math.random()*2-1);
+  let src=audioCtx.createBufferSource();src.buffer=buf;
+  let fg=audioCtx.createGain();
+  fg.gain.setValueAtTime(0.08,t);
+  fg.gain.exponentialRampToValueAtTime(0.001,t+0.1);
+  src.connect(fg);fg.connect(audioCtx.destination);
+  src.start(t);src.stop(t+0.12);
+}
+
+// OFF-KEY BELL — shadow signal lock sound (detuned, ugly)
+function playShadowBell(dimIdx){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  let freq=DIM_NOTES[constrain(dimIdx-1,0,8)]*2;
+  // Detune by ~quarter tone + add tritone
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='triangle';
+  osc.frequency.value=freq*1.035; // sharp
+  g.gain.setValueAtTime(0.08,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.6);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.7);
+  // Tritone ghost
+  let osc2=audioCtx.createOscillator();
+  let g2=audioCtx.createGain();
+  osc2.type='sawtooth';
+  osc2.frequency.value=freq*1.414; // tritone
+  g2.gain.setValueAtTime(0.03,t);
+  g2.gain.exponentialRampToValueAtTime(0.001,t+0.4);
+  osc2.connect(g2);g2.connect(audioCtx.destination);
+  osc2.start(t);osc2.stop(t+0.5);
+}
+
+// SNARE — noise burst with body
+function playSnare(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Body
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='triangle';
+  osc.frequency.setValueAtTime(180,t);
+  osc.frequency.exponentialRampToValueAtTime(80,t+0.06);
+  g.gain.setValueAtTime(0.12,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.12);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.15);
+  // Snap
+  let bufLen=Math.floor(audioCtx.sampleRate*0.06);
+  let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  let dd=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) dd[i]=(Math.random()*2-1);
+  let src=audioCtx.createBufferSource();src.buffer=buf;
+  let filt=audioCtx.createBiquadFilter();
+  filt.type='bandpass';filt.frequency.value=3500;filt.Q.value=1.5;
+  let fg=audioCtx.createGain();
+  fg.gain.setValueAtTime(0.1,t);
+  fg.gain.exponentialRampToValueAtTime(0.001,t+0.08);
+  src.connect(filt);filt.connect(fg);fg.connect(audioCtx.destination);
+  src.start(t);src.stop(t+0.1);
+}
+
+// CRESCENDO — double kick + snare + flash (big payoff)
+function playCrescendo(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Double kick
+  for(let k=0;k<2;k++){
+    let osc=audioCtx.createOscillator();
+    let g=audioCtx.createGain();
+    osc.type='sine';
+    osc.frequency.setValueAtTime(120,t+k*0.12);
+    osc.frequency.exponentialRampToValueAtTime(30,t+k*0.12+0.15);
+    g.gain.setValueAtTime(0.2,t+k*0.12);
+    g.gain.exponentialRampToValueAtTime(0.001,t+k*0.12+0.3);
+    osc.connect(g);g.connect(audioCtx.destination);
+    osc.start(t+k*0.12);osc.stop(t+k*0.12+0.35);
+  }
+  // Delayed snare
+  setTimeout(()=>playSnare(),180);
 }
 
 // SIGNAL LOCK BELL — tuned sine with long decay
@@ -234,14 +348,17 @@ function playPhaseGong(phaseNum){
 function updateForgeSound(){
   if(!soundReady||!audioCtx)return;
   let t=audioCtx.currentTime;
-  // Drone filter opens with phase progression (forge gets louder/brighter as you work)
-  let targetFreq=60+phase*25+interactionEnergy*15;
-  if(shadowMode) targetFreq=40+phase*10; // shadow: darker, tighter
-  droneFilter.frequency.setTargetAtTime(targetFreq,t,0.5);
+  // Drone filter: Y position + phase + activity
+  // Bottom (1D) = dark rumble(50Hz), Top (9D) = bright hiss(200Hz)
+  let yNorm=1-constrain(mouseY/height,0,1);
+  let posFreq=50+yNorm*150;
+  let targetFreq=posFreq+phase*15+interactionEnergy*10;
+  if(shadowMode) targetFreq=max(30,targetFreq*0.5);
+  droneFilter.frequency.setTargetAtTime(targetFreq,t,0.4);
   // LFO speed: activity drives breath speed
   let lfoFreq=0.1+constrain(smoothMouseSpeed/15,0,0.4);
   droneLfo.frequency.setTargetAtTime(lfoFreq,t,0.3);
-  // Shadow: drone gets louder and more resonant
+  // Volume: shadow louder, phase progression adds warmth
   let droneVol=shadowMode?0.45:0.3+phase*0.03;
   droneGain.gain.setTargetAtTime(droneVol,t,1.0);
   droneFilter.Q.setTargetAtTime(shadowMode?12:5+phase*2,t,0.8);
@@ -486,7 +603,8 @@ function draw() {
     playPhaseGong(phase);
     // Phase burst
     for (let i = 0; i < 15 + phase * 10; i++) {
-      let p = new Particle(mouseX + random(-80, 80), mouseY + random(-80, 80), min(phase * 2 + 1, 9));
+      let burstDim = random() < 0.6 ? floor(random(1, 4)) : min(phase + 1, 4);
+      let p = new Particle(mouseX + random(-80, 80), mouseY + random(-80, 80), burstDim);
       p.vx = random(-3, 3);
       p.vy = random(-5, -1);
       p.baseSize = random(3, 8);
@@ -498,33 +616,130 @@ function draw() {
   // Shadow transition
   shadowTransition = lerp(shadowTransition, shadowMode ? 1 : 0, 0.03);
 
-  // Passive particle generation — fire never stops
+  // Passive particle generation — 1D always rises from the bottom
   if (frameCount % max(3, 10 - phase * 2) === 0) {
-    let dim = weightedDimForPhase(phase);
-    let spawnX, spawnY;
-    if (phase < 2) {
-      // Early: embers rise from bottom
-      spawnX = width / 2 + random(-width * 0.3, width * 0.3);
-      spawnY = height + 10;
-    } else {
-      // Later: from cursor's gravitational field
-      spawnX = mouseX + random(-150, 150);
-      spawnY = mouseY + random(-150, 150);
-    }
-    let p = new Particle(spawnX, spawnY, dim);
+    let spawnX = width / 2 + random(-width * 0.4, width * 0.4);
+    let p = new Particle(spawnX, height + 10, 1); // ALWAYS 1D from bottom
+    p.vy = random(-2.5, -0.5);
     if (shadowMode && random() < 0.3) p.shadowTagged = true;
     particles.push(p);
+    // Occasional 2D "blocker" spawns in mid-field
+    if (random() < 0.3) {
+      let bx = random(width * 0.1, width * 0.9);
+      let by = height * random(0.5, 0.75);
+      let bp = new Particle(bx, by, 2);
+      bp.vy = random(0.2, 0.8); // drifts DOWN toward 1D
+      bp.baseSize = random(3, 5);
+      bp.maxLife = random(300, 500);
+      particles.push(bp);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // 1D/2D COLLISION PHYSICS — 2D "fire tests" 1D signals
+  // When they collide: sometimes produces 3D, sometimes destroys 1D
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 2 === 0) {
+    for (let i = particles.length - 1; i >= 0; i--) {
+      let a = particles[i];
+      if (a.dim !== 1 || a.locked || a.life < 0.2) continue;
+      for (let j = particles.length - 1; j >= 0; j--) {
+        let b = particles[j];
+        if (b.dim !== 2 || b.locked || b === a) continue;
+        let d = dist(a.x, a.y, b.x, b.y);
+        if (d < 25 && d > 1) {
+          // COLLISION — fire test
+          if (random() < 0.25) {
+            // SUCCESS: birth a 3D Context signal at the midpoint
+            let mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+            let np = new Particle(mx, my, 3, true);
+            np.vx = random(-1, 1);
+            np.vy = random(-2, -0.5);
+            np.baseSize = random(3, 6);
+            np.resonance = 0.15;
+            particles.push(np);
+            // Both parent signals consumed
+            a.life = 0;
+            b.life *= 0.5; // 2D survives but weakened
+          } else {
+            // FAIL: 1D destroyed, 2D persists
+            a.life = 0;
+            // Small ember burst
+            for (let k = 0; k < 3; k++) {
+              let ep = new Particle(a.x + random(-5, 5), a.y + random(-5, 5), 1, true);
+              ep.vx = random(-1.5, 1.5);
+              ep.vy = random(-2, 0);
+              ep.baseSize = 1.5;
+              ep.maxLife = 60;
+              particles.push(ep);
+            }
+          }
+          break; // one collision per 1D per frame
+        }
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // HIGHER-DIM EMERGENCE — 3D+ clusters birth 5D-9D signals
+  // The higher dims are never clicked into existence, only earned.
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 30 === 0 && !shadowMode) {
+    for (let p of particles) {
+      if (p.dim < 3 || p.locked || p.life < 0.3 || p.resonance < 0.05) continue;
+      let clusterCount = 0;
+      for (let q of particles) {
+        if (q === p || q.dim < 3) continue;
+        if (dist(p.x, p.y, q.x, q.y) < 50) clusterCount++;
+      }
+      if (clusterCount >= 2 && random() < 0.08 * clusterCount) {
+        let newDim = min(9, p.dim + floor(random(2, 4)));
+        let np = new Particle(p.x + random(-10, 10), p.y - 15, newDim, true);
+        np.vx = random(-0.5, 0.5);
+        np.vy = random(-2, -0.5);
+        np.baseSize = random(3, 6);
+        np.resonance = 0.1;
+        particles.push(np);
+        break; // max one emergence per frame
+      }
+    }
   }
 
   // Cursor trail (you ARE the fire)
   if (mouseSpeed > 2) {
     cursorTrail.push({ x: mouseX, y: mouseY, life: 1.0, speed: mouseSpeed });
-    if(mouseSpeed > 8) playHat(); // Fast movement = hi-hat ticks
+    if(mouseSpeed > 8) playHat(mouseSpeed, mouseY); // intensity + position
+  }
+
+  // Crescendo detection — sustained high speed triggers payoff
+  recentSpeedPeak = lerp(recentSpeedPeak, mouseSpeed, 0.15);
+  if (crescendoCooldown > 0) crescendoCooldown--;
+  if (recentSpeedPeak > 35 && crescendoCooldown <= 0) {
+    // BIG PAYOFF — the screen lights up
+    crescendoCooldown = 120; // ~2 sec cooldown at 60fps
+    playCrescendo();
+    phaseTransition = max(phaseTransition, 0.8); // visual flash
+    // Particle burst across the field
+    for (let i = 0; i < 20; i++) {
+      let p = new Particle(random(width), random(height), floor(random(1,5)), true);
+      p.vx = random(-3, 3);
+      p.vy = random(-4, -1);
+      p.baseSize = random(4, 8);
+      particles.push(p);
+    }
   }
 
   // Sound engine update
   smoothMouseSpeed = lerp(smoothMouseSpeed, mouseSpeed, 0.08);
   if(soundReady && frameCount%3===0) updateForgeSound();
+
+  // Shadow hint visibility — appears when cursor nears top-right
+  let hintEl = document.getElementById('shadow-hint');
+  if (hintEl) {
+    let nearHint = mouseX > width - 200 && mouseY < 80;
+    hintEl.style.opacity = nearHint ? '1' : '0';
+    hintEl.style.color = shadowMode ? 'rgba(204,41,54,0.7)' : 'rgba(255,255,255,0.45)';
+  }
 
   // Update and draw
 
@@ -698,73 +913,121 @@ function drawCursor(speed) {
   ellipse(mouseX, mouseY, baseSize * pulse * 0.4, baseSize * pulse * 0.4);
 }
 
-function weightedDimForPhase(ph) {
-  // Phase 0 (wonder): 1D-2D
-  // Phase 1 (humor): 2D-4D
-  // Phase 2 (challenge): 3D-6D
-  // Phase 3 (revelation): 5D-8D
-  // Phase 4 (transformation): 7D-9D
-  let minD = [1, 2, 3, 5, 7][ph];
-  let maxD = [3, 5, 7, 9, 9][ph];
-  return floor(random(minD, maxD + 1));
+function dimForPosition(yPos) {
+  // Click spawns ONLY 1D-3D (trace 4D). Higher dims emerge from physics.
+  // Bottom of screen = mostly 1D, middle = 2D-3D, upper-mid = 3D w/trace 4D
+  let yNorm = constrain(yPos / height, 0, 1); // 0=top, 1=bottom
+  if (yNorm > 0.7) return 1; // bottom third: pure Spark
+  if (yNorm > 0.45) return random() < 0.7 ? 1 : 2; // lower-mid: mostly 1D, some 2D
+  if (yNorm > 0.25) return random() < 0.5 ? 2 : 3; // mid: 2D/3D mix
+  // upper zone: 3D with trace 4D
+  return random() < 0.8 ? 3 : 4;
 }
 
 function mousePressed() {
   if(!soundReady) initSound();
-  // Signal Lock — conscious attestation
-  // Find convergence candidate near click
-  let best = null;
-  let bestDist = 50;
-  for (let p of particles) {
-    if (p.locked) continue;
-    let d = dist(mouseX, mouseY, p.x, p.y);
-    if (d < bestDist && p.resonance > 0.1) {
-      best = p;
-      bestDist = d;
+
+  if (shadowMode) {
+    // ═══ SHADOW CLICK: DESTRUCTION ═══
+    // Break nearby locked signals + fling particles
+    let brokeAny = false;
+    let breakRadius = 120;
+    for (let i = lockedSignals.length - 1; i >= 0; i--) {
+      let ls = lockedSignals[i];
+      let d = dist(mouseX, mouseY, ls.x, ls.y);
+      if (d < breakRadius) {
+        brokeAny = true;
+        playShadowBell(ls.dim);
+        // Spawn entropy shrapnel
+        for (let k = 0; k < 6; k++) {
+          let angle = random(TWO_PI);
+          let p = new Particle(ls.x + cos(angle)*10, ls.y + sin(angle)*10, ls.dim, true);
+          p.vx = cos(angle) * random(2, 4);
+          p.vy = sin(angle) * random(2, 4);
+          p.shadowTagged = true;
+          p.baseSize = random(2, 5);
+          particles.push(p);
+        }
+        lockedSignals.splice(i, 1);
+      }
     }
-  }
-
-  if (best) {
-    // Lock it
-    best.locked = true;
-    best.lockPulse = 1;
-    playLockBell(best.dim);
-    lockedSignals.push({
-      x: best.x, y: best.y,
-      col: [...best.col],
-      dim: best.dim,
-      birthFrame: frameCount
-    });
-
-    // Burst of particles around the lock
-    for (let i = 0; i < 8; i++) {
-      let angle = (TWO_PI / 8) * i;
-      let p = new Particle(best.x + cos(angle) * 15, best.y + sin(angle) * 15, best.dim, true);
-      p.vx = cos(angle) * 2;
-      p.vy = sin(angle) * 2 - 1;
-      p.baseSize = 3;
-      p.pillar = best.pillar;
-      particles.push(p);
+    // Also unlock particle objects
+    for (let p of particles) {
+      if (p.locked && dist(mouseX, mouseY, p.x, p.y) < breakRadius) {
+        p.locked = false;
+        p.shadowTagged = true;
+        let angle = atan2(p.y - mouseY, p.x - mouseX);
+        p.vx += cos(angle) * 3;
+        p.vy += sin(angle) * 3;
+      }
+    }
+    if (brokeAny) {
+      playShadowBreak();
+    } else {
+      // Click in empty shadow space — dark fire
+      let clickDim = dimForPosition(mouseY);
+      playKick(clickDim);
+      for (let i = 0; i < 4; i++) {
+        let p = new Particle(mouseX + random(-25, 25), mouseY + random(-25, 25), clickDim, true);
+        p.vx = random(-2, 2);
+        p.vy = random(-3, 1);
+        p.shadowTagged = true;
+        particles.push(p);
+      }
     }
   } else {
-    // Click in empty space — create new fire
-    let clickDim = weightedDimForPhase(phase);
-    playKick(clickDim);
-    for (let i = 0; i < 5 + phase * 3; i++) {
-      let p = new Particle(
-        mouseX + random(-30, 30),
-        mouseY + random(-30, 30),
-        clickDim,
-        true
-      );
-      p.vx = random(-2, 2);
-      p.vy = random(-4, -1);
-      p.baseSize = random(3, 7);
-      if (shadowMode) p.shadowTagged = random() < 0.5;
-      particles.push(p);
+    // ═══ LIGHT CLICK: CREATION ═══
+    // Try to lock a resonant signal
+    let best = null;
+    let bestDist = 50;
+    for (let p of particles) {
+      if (p.locked) continue;
+      let d = dist(mouseX, mouseY, p.x, p.y);
+      if (d < bestDist && p.resonance > 0.1) {
+        best = p;
+        bestDist = d;
+      }
+    }
+
+    if (best) {
+      best.locked = true;
+      best.lockPulse = 1;
+      playLockBell(best.dim);
+      lockedSignals.push({
+        x: best.x, y: best.y,
+        col: [...best.col],
+        dim: best.dim,
+        birthFrame: frameCount
+      });
+      for (let i = 0; i < 8; i++) {
+        let angle = (TWO_PI / 8) * i;
+        let p = new Particle(best.x + cos(angle) * 15, best.y + sin(angle) * 15, best.dim, true);
+        p.vx = cos(angle) * 2;
+        p.vy = sin(angle) * 2 - 1;
+        p.baseSize = 3;
+        p.pillar = best.pillar;
+        particles.push(p);
+      }
+    } else {
+      // Click in empty space — position-based fire
+      let clickDim = dimForPosition(mouseY);
+      playKick(clickDim);
+      for (let i = 0; i < 5 + phase * 3; i++) {
+        let p = new Particle(
+          mouseX + random(-30, 30),
+          mouseY + random(-30, 30),
+          clickDim,
+          true
+        );
+        p.vx = random(-2, 2);
+        p.vy = random(-4, -1);
+        p.baseSize = random(3, 7);
+        particles.push(p);
+      }
     }
   }
 
+  cumulativeEnergy += 20;
   lastClickTime = millis();
 }
 
