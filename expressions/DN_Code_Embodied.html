@@ -102,6 +102,8 @@ let lastHatTime=0;
 let smoothMouseSpeed=0, smoothPhaseBlend=0;
 // Crescendo detection
 let recentSpeedPeak=0, crescendoCooldown=0;
+// 9D Frontier violin
+let frontier9D=null;
 
 function initSound(){
   if(soundReady)return;
@@ -143,6 +145,34 @@ function initSound(){
 
     // Fade in drone
     droneGain.gain.setTargetAtTime(0.35,audioCtx.currentTime,3.0);
+
+    // 9D Frontier violin — always-ready oscillators, gain-gated
+    frontier9D = { oscs: [], gains: [], master: audioCtx.createGain() };
+    frontier9D.master.gain.value = 0;
+    frontier9D.master.connect(audioCtx.destination);
+    // 3 voices: high, dissonant, choppy via LFO
+    let fVoices = [392, 415.3, 466.16]; // G4, Ab4, Bb4 — clustered tension
+    for (let i = 0; i < 3; i++) {
+      let osc = audioCtx.createOscillator();
+      let g = audioCtx.createGain();
+      osc.type = 'sawtooth'; // raw string sound
+      osc.frequency.value = fVoices[i];
+      g.gain.value = [0.04, 0.025, 0.02][i];
+      // Chop LFO — makes it staccato/choppy
+      let chopLfo = audioCtx.createOscillator();
+      let chopGain = audioCtx.createGain();
+      chopLfo.type = 'square';
+      chopLfo.frequency.value = 4 + i * 1.5; // different chop speeds
+      chopGain.gain.value = g.gain.value * 0.8;
+      chopLfo.connect(chopGain);
+      chopGain.connect(g.gain);
+      chopLfo.start();
+      osc.connect(g);
+      g.connect(frontier9D.master);
+      osc.start();
+      frontier9D.oscs.push(osc);
+      frontier9D.gains.push(g);
+    }
   }catch(e){console.warn('Audio unavailable:',e);}
 }
 
@@ -362,6 +392,19 @@ function updateForgeSound(){
   let droneVol=shadowMode?0.45:0.3+phase*0.03;
   droneGain.gain.setTargetAtTime(droneVol,t,1.0);
   droneFilter.Q.setTargetAtTime(shadowMode?12:5+phase*2,t,0.8);
+
+  // 9D Frontier violin — fades in as cursor reaches the top of the screen
+  if(frontier9D){
+    let topProximity = constrain(1 - mouseY / (height * 0.15), 0, 1); // 1 at very top, 0 below 15%
+    let frontierVol = topProximity * topProximity * 0.6; // squared for steeper onset
+    if(shadowMode) frontierVol *= 1.3; // ominous in shadow
+    frontier9D.master.gain.setTargetAtTime(frontierVol, t, 0.4);
+    // Slight pitch drift — chaos
+    for(let i = 0; i < frontier9D.oscs.length; i++){
+      let drift = Math.sin(t * (0.5 + i * 0.3)) * 4; // ±4Hz wobble
+      frontier9D.oscs[i].frequency.setTargetAtTime([392,415.3,466.16][i] + drift, t, 0.1);
+    }
+  }
 }
 
 // Phase thresholds based on cumulative interaction
@@ -649,25 +692,51 @@ function draw() {
       if (p.dim === 1 && !p.locked && p.life > 0.2) ones.push(p);
       else if (p.dim === 2 && !p.locked) twos.push(p);
     }
+    // Near cursor = more collisions (commotion factor)
+    let cursorBoost = 1;
     let checks = 0;
     for (let a of ones) {
-      if (checks > 40) break; // hard cap on checks per frame
+      if (checks > 50) break;
       for (let b of twos) {
         checks++;
         let dx = a.x - b.x, dy = a.y - b.y;
         let d2 = dx * dx + dy * dy;
-        if (d2 < 625 && d2 > 1) { // 25²
-          if (random() < 0.25) {
+        if (d2 < 900 && d2 > 1) { // 30² — slightly wider for visibility
+          let dToCursor = dist(a.x, a.y, mouseX, mouseY);
+          cursorBoost = dToCursor < 150 ? 2.0 : 1.0; // double rate near cursor
+          if (random() < 0.2 * cursorBoost) {
+            // ═══ SUCCESS: TRANSMUTATION ═══
             let mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
             let np = new Particle(mx, my, 3, true);
             np.vx = random(-1, 1);
-            np.vy = random(-2, -0.5);
-            np.baseSize = random(3, 6);
+            np.vy = random(-2.5, -0.5);
+            np.baseSize = random(4, 7);
             np.resonance = 0.15;
             particles.push(np);
+            // Visual burst at collision point
+            for (let k = 0; k < 4; k++) {
+              let angle = random(TWO_PI);
+              let ep = new Particle(mx + cos(angle)*5, my + sin(angle)*5, 3, true);
+              ep.vx = cos(angle) * 1.5;
+              ep.vy = sin(angle) * 1.5 - 1;
+              ep.baseSize = 2;
+              ep.maxLife = 40;
+              particles.push(ep);
+            }
             a.life = 0;
             b.life *= 0.5;
           } else {
+            // ═══ FAIL: 1D DESTROYED ═══
+            // Ember burst — the spark dies visibly
+            for (let k = 0; k < 3; k++) {
+              let angle = random(TWO_PI);
+              let ep = new Particle(a.x + cos(angle)*4, a.y + sin(angle)*4, 1, true);
+              ep.vx = cos(angle) * random(1, 2.5);
+              ep.vy = sin(angle) * random(1, 2.5);
+              ep.baseSize = 1.5;
+              ep.maxLife = 30;
+              particles.push(ep);
+            }
             a.life = 0;
           }
           break;
@@ -706,6 +775,87 @@ function draw() {
     }
   }
 
+  // ═══════════════════════════════════════════════════════════════
+  // LOCKED CLUSTER → 5D RECOGNITION CORE
+  // When 3+ locked signals from 1D-3D cluster, birth a 5D core
+  // that pulls the whole cluster upward. Your touch = recognition.
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 45 === 0 && !shadowMode && lockedSignals.length >= 3) {
+    // Find clusters of locked signals
+    for (let i = 0; i < lockedSignals.length; i++) {
+      let ls = lockedSignals[i];
+      if (ls.dim > 4) continue; // only lower-order cores form 5D
+      let nearby = 0;
+      for (let j = 0; j < lockedSignals.length; j++) {
+        if (i === j) continue;
+        let dx = ls.x - lockedSignals[j].x, dy = ls.y - lockedSignals[j].y;
+        if (dx * dx + dy * dy < 10000 && lockedSignals[j].dim <= 4) nearby++; // 100²
+      }
+      if (nearby >= 2 && random() < 0.12) {
+        // Birth 5D recognition core above the cluster
+        let np = new Particle(ls.x + random(-15, 15), ls.y - 30, 5, true);
+        np.vx = 0;
+        np.vy = -1.5;
+        np.baseSize = random(5, 8);
+        np.resonance = 0.3;
+        np.gravity = 1.2; // extra gravitational pull
+        particles.push(np);
+        // Pull nearby locked signals upward toward recognition
+        for (let p of particles) {
+          if (!p.locked || p.dim > 4) continue;
+          let d2 = (p.x - ls.x) * (p.x - ls.x) + (p.y - ls.y) * (p.y - ls.y);
+          if (d2 < 12000) {
+            p.vy -= 0.3; // gentle upward nudge
+            // Transmute locked particles toward higher dims
+            if (p.dim < 4 && random() < 0.3) {
+              p.dim = min(5, p.dim + 1);
+              p.col = lerpColor3(p.col, DIM_COLORS[p.dim], 0.3);
+            }
+          }
+        }
+        break;
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // SHADOW 5D — DARK RECOGNITION CLUSTERS
+  // In shadow mode, 5D signals form isolationist gravity wells
+  // that pull neighbors in and cage them at controlled distances.
+  // Intelligence oriented toward domination, not connection.
+  // ═══════════════════════════════════════════════════════════════
+  if (shadowMode) {
+    for (let p of particles) {
+      if (p.dim !== 5 || p.life < 0.3) continue;
+      p.shadowTagged = true; // 5D always shadow-tagged in shadow mode
+      // Dark gravity: pull everything nearby into controlled orbit
+      let sampleCount = min(particles.length, 12);
+      for (let si = 0; si < sampleCount; si++) {
+        let other = particles[floor(random(particles.length))];
+        if (other === p || other.dim === 5) continue;
+        let dx = p.x - other.x, dy = p.y - other.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 14400 && d2 > 400) { // 120² outer, 20² inner
+          let d = sqrt(d2);
+          // Pull in but maintain distance — orbit, not absorb
+          let pullF = 0.08 / d;
+          other.vx += (dx / d) * pullF;
+          other.vy += (dy / d) * pullF;
+          // Slow them down near the well — caging
+          if (d2 < 3600) { // 60²
+            other.vx *= 0.95;
+            other.vy *= 0.95;
+            other.shadowTagged = true;
+          }
+        } else if (d2 < 400 && d2 > 4) { // too close — repel to maintain structure
+          let d = sqrt(d2);
+          other.vx -= (dx / d) * 0.15;
+          other.vy -= (dy / d) * 0.15;
+        }
+      }
+    }
+  }
+
   // Cursor trail (you ARE the fire)
   if (mouseSpeed > 2) {
     cursorTrail.push({ x: mouseX, y: mouseY, life: 1.0, speed: mouseSpeed });
@@ -713,11 +863,11 @@ function draw() {
   }
 
   // Crescendo detection — sustained high speed triggers payoff
-  recentSpeedPeak = lerp(recentSpeedPeak, mouseSpeed, 0.15);
+  recentSpeedPeak = lerp(recentSpeedPeak, mouseSpeed, 0.12);
   if (crescendoCooldown > 0) crescendoCooldown--;
-  if (recentSpeedPeak > 35 && crescendoCooldown <= 0) {
+  if (recentSpeedPeak > 42 && crescendoCooldown <= 0) {
     // BIG PAYOFF — the screen lights up
-    crescendoCooldown = 120; // ~2 sec cooldown at 60fps
+    crescendoCooldown = 180; // ~3 sec cooldown
     playCrescendo();
     phaseTransition = max(phaseTransition, 0.8); // visual flash
     // Particle burst across the field
