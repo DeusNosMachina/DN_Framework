@@ -450,14 +450,42 @@ class Particle {
     let dx = mx - this.x;
     let dy = my - this.y;
     let dist = sqrt(dx * dx + dy * dy);
-    let gravityStrength = shadowMode ? -0.15 : 0.12;
 
     // YOU are the gravity
-    if (dist > 5 && dist < 400) {
-      let force = (gravityStrength * this.gravity) / (dist * 0.08);
-      force = constrain(force, -0.5, 0.5);
-      this.vx += (dx / dist) * force;
-      this.vy += (dy / dist) * force;
+    if (dist > 3 && dist < 450) {
+      if (!shadowMode) {
+        // LIGHT: gentle outer pull, intense when directly over a signal
+        // Force curve: strong at close range, tapers at distance
+        let proximity = 1 - dist / 450; // 1=touching, 0=edge
+        let force = this.gravity * proximity * proximity * 0.25; // squared = steep near, gentle far
+        // Extra intensity boost when very close (<40px)
+        if (dist < 40) force += this.gravity * (1 - dist / 40) * 0.35;
+        force = constrain(force, 0, 0.7);
+        this.vx += (dx / dist) * force;
+        this.vy += (dy / dist) * force;
+      } else {
+        // SHADOW: blanket-bulge repulsion — displaces the field around you
+        // Strongest near cursor, creating a visible deformation wake
+        let proximity = 1 - dist / 350;
+        if (proximity > 0) {
+          // Radial repulsion (the bulge)
+          let repulse = proximity * proximity * 0.4 * this.gravity;
+          this.vx -= (dx / dist) * repulse;
+          this.vy -= (dy / dist) * repulse;
+          // Lateral displacement — push particles sideways too (blanket effect)
+          // Perpendicular to the cursor→particle vector
+          let perpX = -dy / dist, perpY = dx / dist;
+          let lateralForce = proximity * 0.08 * sin(this.wobble * 2);
+          this.vx += perpX * lateralForce;
+          this.vy += perpY * lateralForce;
+          // Close range: extra sharp push (the peak of the bulge)
+          if (dist < 60) {
+            let sharpPush = (1 - dist / 60) * 0.5;
+            this.vx -= (dx / dist) * sharpPush;
+            this.vy -= (dy / dist) * sharpPush;
+          }
+        }
+      }
     }
 
     // Fire rises against gravity
@@ -1083,7 +1111,7 @@ function mousePressed() {
     // ═══ SHADOW CLICK: DESTRUCTION ═══
     // Break nearby locked signals + fling particles
     let brokeAny = false;
-    let breakRadius = 120;
+    let breakRadius = 80;
     for (let i = lockedSignals.length - 1; i >= 0; i--) {
       let ls = lockedSignals[i];
       let d = dist(mouseX, mouseY, ls.x, ls.y);
