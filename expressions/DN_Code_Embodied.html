@@ -425,13 +425,16 @@ class Particle {
     let dimTarget = map(this.dim, 1, 9, height * 0.85, height * 0.15);
     this.vy += (dimTarget - this.y) * 0.0003;
 
-    // Resonance between nearby particles
-    for (let other of particles) {
+    // Resonance between nearby particles (sampled, not exhaustive)
+    let sampleCount = min(particles.length, 8);
+    for (let si = 0; si < sampleCount; si++) {
+      let other = particles[floor(random(particles.length))];
       if (other === this || other.locked) continue;
       let odx = other.x - this.x;
       let ody = other.y - this.y;
-      let odist = sqrt(odx * odx + ody * ody);
-      if (odist < 60 && odist > 5) {
+      let odist2 = odx * odx + ody * ody;
+      if (odist2 < 3600 && odist2 > 25) { // 60² and 5²
+        let odist = sqrt(odist2);
         let compatible = (this.pillar === other.pillar) || (abs(this.dim - other.dim) <= 2);
         let rForce = compatible ? 0.005 : -0.003;
         if (shadowMode) rForce *= -1;
@@ -579,10 +582,11 @@ function draw() {
   breathPhase += 0.015;
   bgPulse += 0.01;
 
-  // Mouse velocity
+  // Mouse velocity (guard first frames — p5 mouse starts at 0,0)
   mouseVelX = mouseX - prevMouseX;
   mouseVelY = mouseY - prevMouseY;
-  let mouseSpeed = sqrt(mouseVelX * mouseVelX + mouseVelY * mouseVelY);
+  let mouseSpeed = (fieldAge < 10) ? 0 : sqrt(mouseVelX * mouseVelX + mouseVelY * mouseVelY);
+  mouseSpeed = min(mouseSpeed, 80); // cap absurd values
   prevMouseX = mouseX;
   prevMouseY = mouseY;
 
@@ -637,20 +641,23 @@ function draw() {
 
   // ═══════════════════════════════════════════════════════════════
   // 1D/2D COLLISION PHYSICS — 2D "fire tests" 1D signals
-  // When they collide: sometimes produces 3D, sometimes destroys 1D
+  // Pre-filtered and throttled for performance
   // ═══════════════════════════════════════════════════════════════
-  if (frameCount % 2 === 0) {
-    for (let i = particles.length - 1; i >= 0; i--) {
-      let a = particles[i];
-      if (a.dim !== 1 || a.locked || a.life < 0.2) continue;
-      for (let j = particles.length - 1; j >= 0; j--) {
-        let b = particles[j];
-        if (b.dim !== 2 || b.locked || b === a) continue;
-        let d = dist(a.x, a.y, b.x, b.y);
-        if (d < 25 && d > 1) {
-          // COLLISION — fire test
+  if (frameCount % 8 === 0) {
+    let ones = [], twos = [];
+    for (let p of particles) {
+      if (p.dim === 1 && !p.locked && p.life > 0.2) ones.push(p);
+      else if (p.dim === 2 && !p.locked) twos.push(p);
+    }
+    let checks = 0;
+    for (let a of ones) {
+      if (checks > 40) break; // hard cap on checks per frame
+      for (let b of twos) {
+        checks++;
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 625 && d2 > 1) { // 25²
           if (random() < 0.25) {
-            // SUCCESS: birth a 3D Context signal at the midpoint
             let mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
             let np = new Particle(mx, my, 3, true);
             np.vx = random(-1, 1);
@@ -658,23 +665,12 @@ function draw() {
             np.baseSize = random(3, 6);
             np.resonance = 0.15;
             particles.push(np);
-            // Both parent signals consumed
             a.life = 0;
-            b.life *= 0.5; // 2D survives but weakened
+            b.life *= 0.5;
           } else {
-            // FAIL: 1D destroyed, 2D persists
             a.life = 0;
-            // Small ember burst
-            for (let k = 0; k < 3; k++) {
-              let ep = new Particle(a.x + random(-5, 5), a.y + random(-5, 5), 1, true);
-              ep.vx = random(-1.5, 1.5);
-              ep.vy = random(-2, 0);
-              ep.baseSize = 1.5;
-              ep.maxLife = 60;
-              particles.push(ep);
-            }
           }
-          break; // one collision per 1D per frame
+          break;
         }
       }
     }
@@ -685,12 +681,17 @@ function draw() {
   // The higher dims are never clicked into existence, only earned.
   // ═══════════════════════════════════════════════════════════════
   if (frameCount % 30 === 0 && !shadowMode) {
-    for (let p of particles) {
-      if (p.dim < 3 || p.locked || p.life < 0.3 || p.resonance < 0.05) continue;
+    // Sample up to 10 candidates rather than scanning all
+    let candidates = particles.filter(p => p.dim >= 3 && !p.locked && p.life > 0.3 && p.resonance > 0.05);
+    let checked = 0;
+    for (let p of candidates) {
+      if (checked++ > 10) break;
       let clusterCount = 0;
-      for (let q of particles) {
-        if (q === p || q.dim < 3) continue;
-        if (dist(p.x, p.y, q.x, q.y) < 50) clusterCount++;
+      for (let q of candidates) {
+        if (q === p) continue;
+        let dx = p.x - q.x, dy = p.y - q.y;
+        if (dx * dx + dy * dy < 2500) clusterCount++; // 50²
+        if (clusterCount >= 3) break; // no need to count further
       }
       if (clusterCount >= 2 && random() < 0.08 * clusterCount) {
         let newDim = min(9, p.dim + floor(random(2, 4)));
@@ -700,7 +701,7 @@ function draw() {
         np.baseSize = random(3, 6);
         np.resonance = 0.1;
         particles.push(np);
-        break; // max one emergence per frame
+        break;
       }
     }
   }
@@ -743,28 +744,33 @@ function draw() {
 
   // Update and draw
 
-  // --- Dimensional horizon lines (very subtle) ---
-  for (let d = 1; d <= 9; d++) {
+  // --- Dimensional horizon lines (very subtle, sparse) ---
+  for (let d = 1; d <= 9; d += 2) { // only odd dims for performance
     let yPos = map(d, 1, 9, height * 0.85, height * 0.15);
     let c = DIM_COLORS[d];
     let horizonAlpha = 14 + phase * 3;
     if (shadowMode) horizonAlpha *= 0.3;
     stroke(c[0], c[1], c[2], horizonAlpha);
     strokeWeight(0.5);
-    // Not a solid line — breathing dashes
-    for (let x = 0; x < width; x += 30) {
-      let dashLen = 10 + sin(x * 0.01 + breathPhase + d) * 8;
-      line(x, yPos + sin(x * 0.005 + breathPhase) * 3, x + dashLen, yPos + sin((x + dashLen) * 0.005 + breathPhase) * 3);
+    for (let x = 0; x < width; x += 60) {
+      let dashLen = 15 + sin(x * 0.01 + breathPhase + d) * 8;
+      line(x, yPos, x + dashLen, yPos);
     }
   }
 
-  // --- Connection lines between resonant particles ---
+  // --- Connection lines between resonant particles (optimized) ---
   connectionLines = [];
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      let a = particles[i], b = particles[j];
-      let d = dist(a.x, a.y, b.x, b.y);
-      if (d < 80 && d > 5 && (a.pillar === b.pillar || abs(a.dim - b.dim) <= 1)) {
+  let maxConns = 60; // hard cap on visible connections
+  for (let i = 0; i < particles.length && connectionLines.length < maxConns; i++) {
+    let a = particles[i];
+    if (a.life < 0.3) continue;
+    for (let j = i + 1; j < particles.length && connectionLines.length < maxConns; j++) {
+      let b = particles[j];
+      if (b.life < 0.3) continue;
+      let dx = a.x - b.x, dy = a.y - b.y;
+      let d2 = dx * dx + dy * dy;
+      if (d2 < 6400 && d2 > 25 && (a.pillar === b.pillar || abs(a.dim - b.dim) <= 1)) {
+        let d = sqrt(d2);
         let strength = (1 - d / 80) * min(a.life, b.life);
         if (strength > 0.15) {
           connectionLines.push({ a, b, strength });
@@ -781,11 +787,7 @@ function draw() {
     let alpha = cl.strength * 65 * (shadowMode ? 0.4 : 1);
     stroke(mr, mg, mb, alpha);
     strokeWeight(cl.strength * 2);
-    noFill();
-    // Slight curve — bridges, not rigid lines
-    let mx = (cl.a.x + cl.b.x) / 2 + sin(breathPhase + cl.a.x * 0.01) * 10;
-    let my = (cl.a.y + cl.b.y) / 2 + cos(breathPhase + cl.b.y * 0.01) * 10;
-    bezier(cl.a.x, cl.a.y, mx, my - 10, mx, my + 10, cl.b.x, cl.b.y);
+    line(cl.a.x, cl.a.y, cl.b.x, cl.b.y);
   }
 
   // --- Particles ---
@@ -798,7 +800,7 @@ function draw() {
   particles = particles.filter(p => p.life > 0);
 
   // Cap particles
-  while (particles.length > 350) {
+  while (particles.length > 250) {
     // Remove oldest non-locked
     let idx = particles.findIndex(p => !p.locked);
     if (idx >= 0) particles.splice(idx, 1);
