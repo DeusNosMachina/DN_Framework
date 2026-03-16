@@ -87,3 +87,13 @@
 **Kernel sections engaged:** §2.5 Flow, §0.3 Axiom 12, §2 Five Forces, §0.1 Domain Universality, §10 Field-to-field dynamics, §3 Pillar Metric
 **Tension:** Update existing tension flow-compositional-structure: The frequency-domain extension of PDGC reveals that the same inter-system causal relationship can exhibit different compositional character (redundant vs. synergistic) across spectral bands simultaneously, with clinically meaningful distinctions residing in these frequency-dependent compositions. DN has no apparatus for frequency-dependent compositional switching in inter-field dynamics. This deepens the original tension beyond the static decomposition problem: it is not only that Flow lacks internal structure, but that the structure of inter-system influence is itself spectrally organized in ways DN's architecture cannot represent. tension_id: flow-compositional-structure-spectral
 
+
+
+---
+
+### New Tensions — 2026-03-16
+
+**Source:** Dual-Laws Model for a theory of artificial consciousness (strain: 5)
+**Kernel sections engaged:** §0.1 Domain Universality, §2 Dimensional Architecture, §4 Shadow Dimension Map, §3 Pillar Metric, §2.2 Nested Dimensionality, §1 Axiom 2 (Dimensional Progression)
+**Tension:** cognitive-decoupling-as-positive-structure: DLM (Ohmura & Kuniyoshi 2025) identifies cognitive decoupling from external stimuli as a defining feature of conscious systems — a positive, generative capacity for deliberate disconnection that enables autonomous internal state construction. DN's architecture treats increasing integration and connection as the direction of dimensional progression, with separation/disconnection assigned to Shadow (§4). If cognitive decoupling is structurally necessary for consciousness (not merely a shadow expression), DN must account for productive disconnection as a positive structural feature within its dimensional architecture rather than relegating all disconnection to the shadow pole. This also compounds the parsimony challenge: DLM achieves comprehensive consciousness-theoretic coverage through seven functional questions and dual-law dynamics without dimensional hierarchy, pillars, or forces — another alternative structural framework operating in territory DN claims. tension_id: cognitive-decoupling-as-positive-structure
+

@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-15*
+*Last updated: 2026-03-16*
 
 
 
@@ -79,3 +79,12 @@
 
 **Sources:**
 - [2026-03-15] Dissecting Spectral Granger Causality through Partial Information Decomposition (strain: 6)
+
+### cognitive-decoupling-as-positive-structur | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1 Domain Universality, §2 Dimensional Architecture, §4 Shadow Dimension Map, §3 Pillar Metric, §2.2 Nested Dimensionality, §1 Axiom 2 (Dimensional Progression)
+**Description:** cognitive-decoupling-as-positive-structure: DLM (Ohmura & Kuniyoshi 2025) identifies cognitive decoupling from external stimuli as a defining feature of conscious systems — a positive, generative capacity for deliberate disconnection that enables autonomous internal state construction. DN's architecture treats increasing integration and connection as the direction of dimensional progression, with separation/disconnection assigned to Shadow (§4). If cognitive decoupling is structurally necessary for consciousness (not merely a shadow expression), DN must account for productive disconnection as a positive structural feature within its dimensional architecture rather than relegating all disconnection to the shadow pole. This also compounds the parsimony challenge: DLM achieves comprehensive consciousness-theoretic coverage through seven functional questions and dual-law dynamics without dimensional hierarchy, pillars, or forces — another alternative structural framework operating in territory DN claims. tension_id: cognitive-decoupling-as-positive-structure
+
+**Sources:**
+- [2026-03-16] Dual-Laws Model for a theory of artificial consciousness (strain: 5)

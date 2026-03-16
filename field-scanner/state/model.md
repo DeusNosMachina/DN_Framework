@@ -121,3 +121,21 @@ Update the existing Gallo et al. entry under Open Questions to reflect deepened 
 
 Update the existing PDGC entry under Open Questions to note the frequency-domain deepening: PDGC's spectral extension reveals frequency-dependent compositional switching in causal interactions, adding a temporal-scale dimension to the flow-compositional-structure tension that DN's architecture cannot currently express. The physiological application demonstrates clinical relevance of compositional distinctions DN's Flow concept cannot make. Under domain tracking, note: Network Physiology/Autonomic Neuroscience — PDGC achieves clinically discriminative decomposition of inter-system causal dynamics at a resolution DN's descriptive apparatus cannot approach.
 
+
+
+---
+
+### Cycle Update — 2026-03-16
+
+**Dual-Laws Model for a theory of artificial consciousness** (strain, strain: 5, validation: 2)
+
+Add to Open Questions: Ohmura & Kuniyoshi (2025) Dual-Laws Model compounds the parsimony challenge from Quiroga, active inference, and Gallo et al. — another comprehensive consciousness framework built without dimensional hierarchy, pillars, or forces. Additionally raises a specific architectural question: DN treats separation/disconnection as Shadow-pole phenomena, but DLM identifies cognitive decoupling as a positive prerequisite for consciousness. DN must determine whether productive disconnection can be accounted for within its positive dimensional architecture or whether the Shadow assignment of all disconnection is structurally incomplete. Add to domain tracking: Consciousness Studies/Artificial Consciousness — DLM as alternative structural framework at comparable descriptive formalization level to DN, using functional-question and dual-law primitives.
+
+**The Impact of Market Integration Construction on the Innovation of Key Core Technologies of Enterprises: From the Perspective of Complex Adaptive System Theory** (strain, strain: 3, validation: 1)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds a minor data point to the existing parsimony challenge (CAS as alternative descriptive framework for emergence without dimensional hierarchy) but does not rise to the level of a new tension. The selection rationale's framing of CAS as using 'fundamentally different structural primitives' was assessed and found to apply only in principle — the paper uses CAS vocabulary descriptively rather than formally, operating at the same level of rigor as DN itself, which neutralizes the claimed structural challenge.
+
+**Internal experience of an aging self: A grounded theory study on women's aging awareness beyond midlife.** (validation, strain: 2, validation: 2)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It reinforces the existing falsifiability-of-dimensional-mapping tension (from GPIF and death reflection studies): DN's dimensional progression can be projected onto this staged developmental model, but the mapping is not forced and the same findings are equally compatible with multiple non-DN frameworks. This adds another data point to the pattern but does not constitute a new tension or confirmed parallel.
+
