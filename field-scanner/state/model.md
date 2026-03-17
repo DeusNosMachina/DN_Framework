@@ -139,3 +139,17 @@ No update warranted. The paper does not generate sufficient strain or validation
 
 No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It reinforces the existing falsifiability-of-dimensional-mapping tension (from GPIF and death reflection studies): DN's dimensional progression can be projected onto this staged developmental model, but the mapping is not forced and the same findings are equally compatible with multiple non-DN frameworks. This adds another data point to the pattern but does not constitute a new tension or confirmed parallel.
 
+
+
+---
+
+### Cycle Update — 2026-03-17
+
+**A Reinforcement Learning-Based Framework for Multi-Criteria Decision-Making** (strain, strain: 2, validation: 1)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. The selection rationale's framing of RL-based MCDM as challenging DN's pillar-based metric system was assessed as a category error — rank-optimization techniques operate at a different level than structural accounts of intelligence organization. The paper's finding that adaptive weights outperform fixed weights is a methodological observation about MCDM implementation, not a structural challenge to pillar independence or dimensional architecture.
+
+**Review of indicators and multi-criteria decision-making methods for assessing the sustainability of urban mobility** (strain, strain: 2, validation: 1)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. The selection rationale's framing of the five-dimensional indicator taxonomy as a competing structural architecture was assessed and found to be a category error — domain-specific thematic indicator groupings operate at a different level of abstraction than DN's structural primitives. The paper adds a negligible data point to the existing parsimony challenge but does not rise to the level of a new tension or confirmed parallel.
+
