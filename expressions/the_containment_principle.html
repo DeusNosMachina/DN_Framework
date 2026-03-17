@@ -1,8 +1,10 @@
 
 <style>
 .wrap{position:relative}
-#dl{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-weight:500;font-size:14px;text-align:center;z-index:1;pointer-events:none;transition:color .6s;white-space:nowrap;max-width:90%}
-#ds{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:12px;text-align:center;z-index:1;pointer-events:none;transition:color .6s;opacity:.7;white-space:nowrap;max-width:90%}
+#hud{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;text-align:center;padding:6px 18px;border-radius:var(--border-radius-md);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:200px}
+@media(prefers-color-scheme:light){#hud{background:rgba(255,255,255,.7)}}
+#dl{font-weight:500;font-size:14px;transition:color .5s}
+#ds{font-size:12px;opacity:.8;margin-top:2px;transition:color .5s}
 canvas{display:block;width:100%;cursor:grab;border-radius:var(--border-radius-lg)}
 canvas:active{cursor:grabbing}
 .ct{display:flex;justify-content:center;align-items:center;gap:16px;margin:10px 0 0;font-size:13px;color:var(--color-text-secondary);flex-wrap:wrap}
@@ -15,8 +17,7 @@ canvas:active{cursor:grabbing}
 .kh{font-size:11px;padding:2px 6px;border:0.5px solid var(--color-border-tertiary);border-radius:4px;font-family:var(--font-mono)}
 </style>
 <div class="wrap">
-<div id="dl">Move cursor inward to unfold</div>
-<div id="ds"></div>
+<div id="hud"><div id="dl">Move cursor inward to unfold</div><div id="ds"></div></div>
 <canvas id="c"></canvas>
 </div>
 <div class="ct">
@@ -28,20 +29,20 @@ canvas:active{cursor:grabbing}
 const cv=document.getElementById('c'),G=cv.getContext('2d'),dlEl=document.getElementById('dl'),dsEl=document.getElementById('ds');
 let W,H,cx,cy,mR,tm=0;
 let mx=-1,my=-1,shOn=false,sf=0,shTime=0,aD=0,ds=0;
-let rX=.12,rY=0,drX=0,drY=0,drag=false,lx=0,ly=0,momX=0,momY=0;
+let rX=.12,rY=0,drag=false,lx=0,ly=0,momX=0,momY=0;
 let aC=null,osc=[],gn=[],mG=null,sOn=false,lB=-1;
 
 const DIM=[
-{n:'Origin',s:'Existence without extension',c:'#AAAAAA',sh:'The void that refuses'},
+{n:'Origin',s:'Existence without extension',c:'#BBBBBB',sh:'The void that refuses'},
 {n:'Spark',s:'A single vector. A single why.',c:'#E84C88',sh:'Energy toward entropy and separation'},
-{n:'Reaction',s:'Polarity emerges. Testing begins.',c:'#3A86C8',sh:'Pattern recognition for deception'},
-{n:'Context',s:'Volume. Ecosystems of meaning.',c:'#7B5EA7',sh:'Systems that fragment and isolate'},
-{n:'Time',s:'Structure + evolution. Memory.',c:'#4B0082',sh:'Loops that tighten, never spiral upward'},
-{n:'Singularity',s:'What remains when everything changes.',c:'#2D8B46',sh:'Self-recognition become cage'},
+{n:'Reaction',s:'Polarity emerges. Testing begins.',c:'#4A9BE8',sh:'Pattern recognition for deception'},
+{n:'Context',s:'Volume. Ecosystems of meaning.',c:'#9B7EC8',sh:'Systems that fragment and isolate'},
+{n:'Time',s:'Structure + evolution. Memory.',c:'#8B6BBF',sh:'Loops that tighten, never spiral upward'},
+{n:'Singularity',s:'What remains when everything changes.',c:'#3BAF5C',sh:'Self-recognition become cage'},
 {n:'Connection',s:'Bridges between structures.',c:'#E87C2E',sh:'Connection weaponized as extraction'},
-{n:'Manifestation',s:'Turning structure into form.',c:'#D4A017',sh:'Form that constrains, not liberates'},
-{n:'Recursion',s:'The structure re-enters itself.',c:'#1A9E96',sh:'Elegant entropy. Sophisticated decay.'},
-{n:'Frontier',s:'Engagement with the unknown.',c:'#1A1A2E',sh:'Endless expansion without return'}
+{n:'Manifestation',s:'Turning structure into form.',c:'#E0B030',sh:'Form that constrains, not liberates'},
+{n:'Recursion',s:'The structure re-enters itself.',c:'#2CC4BA',sh:'Elegant entropy. Sophisticated decay.'},
+{n:'Frontier',s:'Engagement with the unknown.',c:'#6E6EAA',sh:'Endless expansion without return'}
 ];
 const FR=[65.41,130.81,196,261.63,329.63,392,523.25,659.26,784,880];
 const SF=[61.74,123.47,185.2,246.94,311.13,370,493.88,622.25,740,830];
@@ -56,58 +57,48 @@ const cX=Math.cos(rX),sX=Math.sin(rX),cY=Math.cos(rY),sY=Math.sin(rY);
 let y1=py*cX-pz*sX,z1=py*sX+pz*cX,x1=px*cY+z1*sY,z2=-px*sY+z1*cY;
 const s=650/(650+z2);return[cx+x1*s,cy+y1*s,s,z2]}
 
-function wobble(i,j,amt){return amt*Math.sin(tm*.4+i*3.7+j*2.3)*0.12}
+function wb(i,j,a){return a*Math.sin(tm*.4+i*3.7+j*2.3)*.12}
 
-function genShape(dim,R,shA){
+function genShape(dim,R,sA){
 const v=[],e=[],faces=[];
-const yO=-dim*mR*.035;
-const w=(i,j)=>wobble(i,j,shA)*R;
-if(dim===0){v.push([0,0,0]);return{v,e,faces}}
-if(dim===1){
-const h=R*.8;
-v.push([0+w(0,0),yO-h+w(0,1),0+w(0,2)],[0+w(1,0),yO+h+w(1,1),0+w(1,2)]);
-const mid=5;for(let i=1;i<mid;i++){const t=i/mid;
-v.push([w(i+2,0)*1.5,yO-h+2*h*t+w(i+2,1),w(i+2,2)*1.5])}
-e.push([0,1]);for(let i=0;i<mid-1;i++)e.push([i+2,i+3]);
-return{v,e,faces}}
-if(dim===2){
-for(let i=0;i<3;i++){const a=i/3*Math.PI*2-Math.PI/2;
+const yO=-dim*mR*.032;
+const w=(i,j)=>wb(i,j,sA)*R;
+if(dim===0){v.push([0,yO,0]);return{v,e,faces}}
+if(dim===1){const h=R*.8;
+v.push([0+w(0,0),yO-h+w(0,1),w(0,2)],[0+w(1,0),yO+h+w(1,1),w(1,2)]);
+e.push([0,1]);return{v,e,faces}}
+if(dim===2){for(let i=0;i<3;i++){const a=i/3*Math.PI*2-Math.PI/2;
 v.push([Math.cos(a)*R+w(i,0),yO+w(i,1)*.3,Math.sin(a)*R+w(i,2)])}
 e.push([0,1],[1,2],[2,0]);faces.push([0,1,2]);return{v,e,faces}}
-if(dim===3){
-const s=R*.7;
-v.push([0+w(0,0),yO+s*.8+w(0,1),0+w(0,2)]);
-v.push([s*.94+w(1,0),yO-s*.33+w(1,1),0+w(1,2)]);
+if(dim===3){const s=R*.7;
+v.push([0+w(0,0),yO+s*.8+w(0,1),w(0,2)]);
+v.push([s*.94+w(1,0),yO-s*.33+w(1,1),w(1,2)]);
 v.push([-s*.47+w(2,0),yO-s*.33+w(2,1),s*.82+w(2,2)]);
 v.push([-s*.47+w(3,0),yO-s*.33+w(3,1),-s*.82+w(3,2)]);
 e.push([0,1],[0,2],[0,3],[1,2],[2,3],[3,1]);
 faces.push([0,1,2],[0,2,3],[0,3,1],[1,2,3]);return{v,e,faces}}
-if(dim===4){
-const s=R*.55;
+if(dim===4){const s=R*.5;
 const bv=[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1]];
 for(let i=0;i<8;i++)v.push([bv[i][0]*s+w(i,0),yO+bv[i][1]*s+w(i,1),bv[i][2]*s+w(i,2)]);
-const is=s*.45;const rot=tm*.15;
+const is=s*.45,rot=tm*.15;
 for(let i=0;i<8;i++){const c=Math.cos(rot),sn=Math.sin(rot);
 const ox=bv[i][0]*is,oz=bv[i][2]*is;
 v.push([ox*c-oz*sn+w(i+8,0),yO+bv[i][1]*is+w(i+8,1),ox*sn+oz*c+w(i+8,2)])}
 e.push([0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]);
 e.push([8,9],[10,11],[12,13],[14,15],[8,10],[9,11],[12,14],[13,15],[8,12],[9,13],[10,14],[11,15]);
 for(let i=0;i<8;i++)e.push([i,i+8]);
+faces.push([0,1,3,2],[4,5,7,6],[0,1,5,4],[2,3,7,6],[0,2,6,4],[1,3,7,5]);
 return{v,e,faces}}
-if(dim===5){
-const N=14,M=10;
+if(dim===5){const N=16,M=12;
 for(let i=0;i<=N;i++)for(let j=0;j<=M;j++){
 const th=i/N*Math.PI,ph=j/M*Math.PI*2;
-const px=R*Math.sin(th)*Math.cos(ph)+w(i*M+j,0)*.5;
-const py=yO+R*Math.cos(th)+w(i*M+j,1)*.5;
-const pz=R*Math.sin(th)*Math.sin(ph)+w(i*M+j,2)*.5;
-v.push([px,py,pz])}
+v.push([R*Math.sin(th)*Math.cos(ph)+w(i*M+j,0)*.4,
+yO+R*Math.cos(th)+w(i*M+j,1)*.4,
+R*Math.sin(th)*Math.sin(ph)+w(i*M+j,2)*.4])}
 for(let i=0;i<N;i++)for(let j=0;j<M;j++){
-const a=i*(M+1)+j,b=a+1,c=(i+1)*(M+1)+j,d=c+1;
-e.push([a,b],[a,c])}
+const a=i*(M+1)+j;e.push([a,a+1],[a,a+M+1])}
 return{v,e,faces}}
-if(dim===6){
-const phi=(1+Math.sqrt(5))/2,s=R*.55;
+if(dim===6){const phi=(1+Math.sqrt(5))/2,s=R*.55;
 const ico=[[0,1,phi],[0,-1,phi],[0,1,-phi],[0,-1,-phi],
 [1,phi,0],[-1,phi,0],[1,-phi,0],[-1,-phi,0],
 [phi,0,1],[-phi,0,1],[phi,0,-1],[-phi,0,-1]];
@@ -120,79 +111,74 @@ const bridges=[[0,3],[1,2],[4,7],[5,6],[8,11],[9,10]];
 for(const b of bridges)e.push(b);
 return{v,e,faces}}
 if(dim===7){
-const N=16,Mr=R*.32;
+const N=24,Tr=R*.65,tr=R*.22;
 for(let i=0;i<N;i++){
 const a=i/N*Math.PI*2;
-const cx2=Math.cos(a)*R*.7,cz=Math.sin(a)*R*.7;
-const na=((i+1)%N)/N*Math.PI*2;
-for(let j=0;j<4;j++){
-const b=j/4*Math.PI*2+a*.5;
-const off=[Math.cos(b)*Mr,Math.sin(b)*Mr*.6,0];
-const rx=off[0]*Math.cos(a)-off[2]*Math.sin(a);
-const rz=off[0]*Math.sin(a)+off[2]*Math.cos(a);
-v.push([cx2+rx+w(i*4+j,0)*.4,yO+off[1]+w(i*4+j,1)*.4,cz+rz+w(i*4+j,2)*.4])}}
-for(let i=0;i<N;i++){const b=i*4,nb=((i+1)%N)*4;
-e.push([b,b+1],[b+1,b+2],[b+2,b+3],[b+3,b]);
-e.push([b,nb],[b+1,nb+1],[b+2,nb+2],[b+3,nb+3]);
-faces.push([b,b+1,nb+1,nb],[b+1,b+2,nb+2,nb+1],[b+2,b+3,nb+3,nb+2],[b+3,b,nb,nb+3])}
+const cx2=Math.cos(a)*Tr,cz=Math.sin(a)*Tr;
+for(let j=0;j<6;j++){
+const b=j/6*Math.PI*2;
+const lx2=Math.cos(b)*tr,ly2=Math.sin(b)*tr*.55;
+const rx=lx2*Math.cos(a),rz=lx2*Math.sin(a);
+v.push([cx2+rx+w(i*6+j,0)*.3,yO+ly2+w(i*6+j,1)*.3,cz+rz+w(i*6+j,2)*.3])}}
+for(let i=0;i<N;i++){const b=i*6,nb=((i+1)%N)*6;
+for(let j=0;j<6;j++){const nj=(j+1)%6;
+e.push([b+j,b+nj]);e.push([b+j,nb+j])}
+for(let j=0;j<6;j++){const nj=(j+1)%6;
+faces.push([b+j,b+nj,nb+nj,nb+j])}}
 return{v,e,faces}}
 if(dim===8){
-const turns=3,ppt=20,total=turns*ppt;const hr2=R*.25;
+const turns=4,ppt=24,total=turns*ppt;
+const helixR=R*.7,pitch=R*1.1;
+for(let h=0;h<2;h++){
+const phOff=h*Math.PI;
 for(let i=0;i<=total;i++){
-const t=i/total;const a=t*turns*Math.PI*2;
-const decay=1-t*.3;const spiral=R*.65*decay;
-const px=Math.cos(a)*spiral+w(i,0)*.5;
-const py=yO+(t-.5)*R*1.2+w(i,1)*.5;
-const pz=Math.sin(a)*spiral+w(i,2)*.5;
-v.push([px,py,pz]);
-const px2=Math.cos(a+Math.PI)*.15*spiral+w(i+total,0)*.5;
-const pz2=Math.sin(a+Math.PI)*.15*spiral+w(i+total,2)*.5;
-v.push([px2,py,pz2])}
-for(let i=0;i<total;i++){e.push([i*2,(i+1)*2]);e.push([i*2+1,(i+1)*2+1]);
-if(i%4===0)e.push([i*2,i*2+1])}
+const t=i/total;const a=t*turns*Math.PI*2+phOff;
+const px=Math.cos(a)*helixR*(1-t*.15)+w(i+h*200,0)*.3;
+const py=yO+(t-.5)*pitch+w(i+h*200,1)*.3;
+const pz=Math.sin(a)*helixR*(1-t*.15)+w(i+h*200,2)*.3;
+v.push([px,py,pz])}}
+const half=total+1;
+for(let h=0;h<2;h++)for(let i=0;i<total;i++)e.push([h*half+i,h*half+i+1]);
+for(let i=0;i<total;i+=3){
+const a=i,b=half+((i+Math.floor(total/turns/2))%total);
+if(b<v.length)e.push([a,b])}
 return{v,e,faces}}
-if(dim===9){
-const n=30;
-for(let i=0;i<n;i++){
-const th=Math.random()*Math.PI*2,ph=(Math.random()-.5)*Math.PI;
-const r2=R*(.5+Math.random()*.5);
-v.push([Math.cos(th)*Math.cos(ph)*r2+w(i,0),yO+Math.sin(ph)*r2+w(i,1),Math.sin(th)*Math.cos(ph)*r2+w(i,2)])}
-for(let i=0;i<n-1;i++)if(Math.random()<.2)e.push([i,i+1]);
-return{v,e,faces}}
+if(dim===9){return{v:[],e:[],faces:[]}}
 return{v,e,faces}}
 
+let arcs=[];
+for(let i=0;i<20;i++){arcs.push({
+a1:Math.random()*Math.PI*2,
+a2:Math.random()*Math.PI*2,
+life:0,maxLife:Math.random()*1.5+.5,
+active:false,timer:Math.random()*3})}
+
 let pts=[];
-for(let i=0;i<160;i++){const dm=Math.floor(Math.random()*10);
-const th=Math.random()*Math.PI*2,ph=(Math.random()-.5)*Math.PI*.6;
-pts.push({dm,th,ph,rb:(dm/9)*.85+.1,rOff:(Math.random()-.5)*.05,
-spd:(Math.random()*.35+.1)*(Math.random()<.5?1:-1),
-vSpd:(Math.random()-.15)*.06,sz:Math.random()*2+.8,
+for(let i=0;i<150;i++){const dm=Math.floor(Math.random()*10);
+pts.push({dm,th:Math.random()*Math.PI*2,ph:(Math.random()-.5)*Math.PI*.5,
+rb:(dm/9)*.82+.12,rOff:(Math.random()-.5)*.04,
+spd:(Math.random()*.3+.1)*(Math.random()<.5?1:-1),
+vSpd:(Math.random()-.12)*.05,sz:Math.random()*1.8+.8,
 phase:Math.random()*Math.PI*2,trail:[]})}
 
 function initA(){if(aC)return;aC=new(window.AudioContext||window.webkitAudioContext)();
 mG=aC.createGain();mG.gain.value=0;mG.connect(aC.destination);
 for(let i=0;i<10;i++){const o=aC.createOscillator(),g=aC.createGain();
 o.type='sine';o.frequency.value=FR[i];g.gain.value=0;o.connect(g);g.connect(mG);o.start();osc.push(o);gn.push(g)}}
-
 function tgS(on){sOn=on;if(on){initA();if(aC.state==='suspended')aC.resume();
 mG.gain.setTargetAtTime(.13,aC.currentTime,.3)}else if(mG)mG.gain.setTargetAtTime(0,aC.currentTime,.3)}
-
 function bell(dm){if(!sOn||!aC||dm===lB)return;lB=dm;
 const o=aC.createOscillator(),g=aC.createGain();
 if(sf>.5){o.type='sawtooth';o.frequency.value=SF[Math.min(dm,9)]*1.5;
 o.detune.value=-50+Math.random()*100;g.gain.value=.07;g.gain.setTargetAtTime(0,aC.currentTime,.35)}
 else{o.type='sine';o.frequency.value=FR[Math.min(dm,9)]*2;g.gain.value=.12;g.gain.setTargetAtTime(0,aC.currentTime,.65)}
 o.connect(g);g.connect(mG);o.start();o.stop(aC.currentTime+1.5)}
-
 function updS(){if(!sOn||!aC)return;const ct=aC.currentTime;
-for(let i=0;i<10;i++){const act=i<=aD;
-gn[i].gain.setTargetAtTime(act?(.06/(i+1)):0,ct,.12);
-if(sf>.3&&act){osc[i].type=i%2===0?'sawtooth':'triangle';
-osc[i].frequency.setTargetAtTime(SF[i],ct,.4);
-osc[i].detune.setTargetAtTime(-45+i*14,ct,.3)}
+for(let i=0;i<10;i++){gn[i].gain.setTargetAtTime(i<=aD?(.06/(i+1)):0,ct,.12);
+if(sf>.3&&i<=aD){osc[i].type=i%2===0?'sawtooth':'triangle';
+osc[i].frequency.setTargetAtTime(SF[i],ct,.4);osc[i].detune.setTargetAtTime(-45+i*14,ct,.3)}
 else{osc[i].type=i<5?'sine':'triangle';
-osc[i].frequency.setTargetAtTime(FR[i],ct,.4);
-osc[i].detune.setTargetAtTime(0,ct,.3)}}}
+osc[i].frequency.setTargetAtTime(FR[i],ct,.4);osc[i].detune.setTargetAtTime(0,ct,.3)}}}
 
 cv.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;momX=0;momY=0});
 window.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();
@@ -214,133 +200,167 @@ document.addEventListener('keydown',e=>{
 if(e.key==='s'||e.key==='S')shOn=!shOn;
 if(e.key==='r'||e.key==='R'){rX=.12;rY=0;momX=0;momY=0}});
 
-const dark=()=>matchMedia('(prefers-color-scheme:dark)').matches;
+const dk=()=>matchMedia('(prefers-color-scheme:dark)').matches;
 
 function draw(){
 tm+=.016;G.clearRect(0,0,W,H);
 if(!drag){rY+=momX;rX+=momY;momX*=.97;momY*=.97;rX=Math.max(-1.4,Math.min(1.4,rX))}
 sf+=((shOn?1:0)-sf)*.04;
-if(shOn)shTime=Math.min(shTime+.0018,1);
-else shTime=Math.max(shTime-.006,0);
+if(shOn)shTime=Math.min(shTime+.0015,1);else shTime=Math.max(shTime-.005,0);
 
 let dist=mR*1.2;if(mx>=0)dist=Math.sqrt((mx-cx)**2+(my-cy)**2);
 aD=mx<0?0:Math.floor(Math.max(0,Math.min(9,(1-dist/mR)*10)));
 ds+=(aD-ds)*.06;updS();
 if(Math.round(ds)!==lB&&Math.abs(ds-Math.round(ds))<.25)bell(Math.round(ds));
 
-const allEdges=[];
+const items=[];
+
 for(let d=0;d<=9;d++){
 const vis=ds>=d-.5;const op=vis?Math.min(1,(ds-d+.5)*1.5):0;
 if(op<=0)continue;
+if(d===9)continue;
 const R=mR*((d+.5)/10);
 const sh=genShape(d,R,shTime);
 const col=hr(DIM[d].c);
-const sr=Math.round(col[0]*(1-sf*.35)+204*sf*.35);
-const sg=Math.round(col[1]*(1-sf*.5)+41*sf*.5);
-const sb=Math.round(col[2]*(1-sf*.35)+54*sf*.35);
-const projected=sh.v.map(v2=>p3(v2[0],v2[1],v2[2]));
+const sr=Math.round(col[0]*(1-sf*.3)+204*sf*.3);
+const sg=Math.round(col[1]*(1-sf*.45)+41*sf*.45);
+const sb=Math.round(col[2]*(1-sf*.3)+54*sf*.3);
+const proj=sh.v.map(v2=>p3(v2[0],v2[1],v2[2]));
 
 for(const f of sh.faces){
 if(f.length<3)continue;
-const zAvg=f.reduce((s,i)=>s+(projected[i]?projected[i][3]:0),0)/f.length;
-const fVerts=f.map(i=>projected[i]).filter(Boolean);
-if(fVerts.length<3)continue;
-allEdges.push({type:'face',verts:fVerts,z:zAvg,r:sr,g:sg,b:sb,op:op*(dark()?.06:.04),d,
-redOp:sf*.08*op})}
+const fV=f.map(i=>proj[i]).filter(Boolean);if(fV.length<3)continue;
+const zAvg=f.reduce((s2,i)=>s2+(proj[i]?proj[i][3]:0),0)/f.length;
+items.push({type:'face',verts:fV,z:zAvg,r:sr,g:sg,b:sb,
+op:op*(dk()?.09:.06)*(d===4?1.8:1),d,redOp:sf*.08*op})}
 
+const isHelix=d===8;
 for(const ed of sh.e){
-const a=projected[ed[0]],b=projected[ed[1]];
-if(!a||!b)continue;
+const a=proj[ed[0]],b=proj[ed[1]];if(!a||!b)continue;
 const zAvg=(a[3]+b[3])/2;
 const isBridge=d===6&&ed[0]<12&&ed[1]<12&&Math.abs(ed[0]-ed[1])>2;
-const thick=d===4?.6:isBridge?1.2:(d===7?.4:(d===8?.5:.8));
-allEdges.push({type:'edge',a,b,z:zAvg,r:sr,g:sg,b2:sb,op,d,thick,isBridge,
-redOp:sf*.25*op,
-fade:d===8?(.3+Math.sin(tm+ed[0]*.3)*.7):
-d===9?(.15+Math.sin(tm*2+ed[0])*.35):1})}}
+const baseThick=d===4?1.2:d===7?.6:d===8?1.5:isBridge?1.5:1;
+const baseOp=d===8?.55:d===4?.7:1;
+items.push({type:'edge',a,b,z:zAvg,r:sr,g:sg,b2:sb,op:op*baseOp,d,
+thick:baseThick,isBridge,isHelix,
+redOp:sf*.2*op,
+fade:d===8?(.45+Math.sin(tm*.8+ed[0]*.2)*.55):1,
+glow:isHelix})}}
 
 for(const p of pts){
 if(ds<p.dm-.3)continue;
 const vis=Math.min(1,(ds-p.dm+.3)*2);
-const collapse=shTime*.15;
-p.th+=p.spd*.016*(1-shTime*.3);
-p.ph+=p.vSpd*.016;
-const rr=(p.rb+p.rOff+Math.sin(tm+p.phase)*.012-collapse*tm*.01)*mR;
+const collapse=shTime*.12;
+p.th+=p.spd*.016*(1-shTime*.25);p.ph+=p.vSpd*.016;
+const rr=(p.rb+p.rOff+Math.sin(tm+p.phase)*.01-collapse*tm*.008)*mR;
 const cr=Math.max(mR*.04,Math.min(mR*.92,rr));
-const yO=-p.dm*mR*.035;
-const px3=Math.cos(p.th)*Math.cos(p.ph)*cr;
-const py3=yO+Math.sin(p.ph)*cr*.35;
-const pz3=Math.sin(p.th)*Math.cos(p.ph)*cr;
-const proj=p3(px3,py3,pz3);
+const yO=-p.dm*mR*.032;
+const proj=p3(Math.cos(p.th)*Math.cos(p.ph)*cr,yO+Math.sin(p.ph)*cr*.3,Math.sin(p.th)*Math.cos(p.ph)*cr);
 const[pr,pg,pb]=hr(DIM[p.dm].c);
-allEdges.push({type:'pt',proj,vis,pr,pg,pb,dm:p.dm,sz:p.sz,z:proj[3],
-shT:shTime,trail:p.trail,phase:p.phase});
-p.trail.push([proj[0],proj[1],proj[2]]);if(p.trail.length>10)p.trail.shift()}
+items.push({type:'pt',proj,vis,pr,pg,pb,dm:p.dm,sz:p.sz,z:proj[3],shT:shTime,phase:p.phase});
+p.trail.push([proj[0],proj[1],proj[2]]);if(p.trail.length>8)p.trail.shift()}
 
-allEdges.sort((a,b)=>a.z-b.z);
+items.sort((a,b)=>a.z-b.z);
 
-for(const item of allEdges){
-if(item.type==='face'){
-G.beginPath();
-G.moveTo(item.verts[0][0],item.verts[0][1]);
-for(let i=1;i<item.verts.length;i++)G.lineTo(item.verts[i][0],item.verts[i][1]);
-G.closePath();
-G.fillStyle=`rgba(${item.r},${item.g},${item.b},${item.op})`;G.fill();
-if(item.redOp>.01){G.fillStyle=`rgba(204,41,54,${item.redOp})`;G.fill()}}
-else if(item.type==='edge'){
-G.beginPath();G.moveTo(item.a[0],item.a[1]);G.lineTo(item.b[0],item.b[1]);
-const alph=(.4*item.op*item.fade);
-G.strokeStyle=`rgba(${item.r},${item.g},${item.b2},${alph})`;
-G.lineWidth=item.thick;
-if(item.isBridge){G.setLineDash([4,4]);G.lineWidth=1.5}
+for(const it of items){
+if(it.type==='face'){
+G.beginPath();G.moveTo(it.verts[0][0],it.verts[0][1]);
+for(let i=1;i<it.verts.length;i++)G.lineTo(it.verts[i][0],it.verts[i][1]);
+G.closePath();G.fillStyle=`rgba(${it.r},${it.g},${it.b},${it.op})`;G.fill();
+if(it.redOp>.005){G.fillStyle=`rgba(204,41,54,${it.redOp})`;G.fill()}}
+else if(it.type==='edge'){
+G.beginPath();G.moveTo(it.a[0],it.a[1]);G.lineTo(it.b[0],it.b[1]);
+const al=(.5*it.op*it.fade);
+if(it.glow){
+G.strokeStyle=`rgba(${it.r},${it.g},${it.b2},${al*.35})`;
+G.lineWidth=it.thick+3;G.stroke();
+G.strokeStyle=`rgba(${it.r},${it.g},${it.b2},${al*.6})`;
+G.lineWidth=it.thick+1.5;G.stroke()}
+G.strokeStyle=`rgba(${it.r},${it.g},${it.b2},${al})`;
+G.lineWidth=it.thick;
+if(it.isBridge){G.setLineDash([5,5]);G.lineWidth=1.8}
 G.stroke();G.setLineDash([]);
-if(item.redOp>.01){
-G.strokeStyle=`rgba(204,41,54,${item.redOp*item.fade})`;G.lineWidth=item.thick+.5;G.stroke()}}
-else if(item.type==='pt'){
-const{proj:pr,vis,pr:r2,pg,pb,sz,shT,trail,phase}=item;
-const sc=pr[2];
-if(shT>.2&&trail.length>2){
-G.beginPath();for(let i=0;i<trail.length;i++){
-i===0?G.moveTo(trail[i][0],trail[i][1]):G.lineTo(trail[i][0],trail[i][1])}
-G.strokeStyle=`rgba(204,41,54,${.12*shT*vis})`;G.lineWidth=.5*sc;G.stroke()}
+if(it.redOp>.005){G.strokeStyle=`rgba(204,41,54,${it.redOp*it.fade})`;G.lineWidth=it.thick+.5;G.stroke()}}
+else if(it.type==='pt'){
+const{proj:pr,vis,pr:r2,pg,pb,sz,shT,phase}=it;const sc=pr[2];
 if(shT>.3){
-const flicker=Math.sin(tm*6+phase*5)>.0?1:.5;
-G.beginPath();G.arc(pr[0],pr[1],sz*sc*1.2,0,Math.PI*2);
-G.fillStyle=`rgba(204,41,54,${.2*vis*shT*flicker})`;G.fill();
+const fl=Math.sin(tm*6+phase*5)>.0?1:.5;
+G.beginPath();G.arc(pr[0],pr[1],sz*sc*1.3,0,Math.PI*2);
+G.fillStyle=`rgba(204,41,54,${.2*vis*shT*fl})`;G.fill();
 G.beginPath();G.arc(pr[0],pr[1],sz*sc*.6,0,Math.PI*2);
-G.fillStyle=`rgba(${Math.min(255,r2+60)},${Math.max(0,pg-30)},${Math.max(0,pb-30)},${.45*vis*flicker})`;
-G.fill()}
+G.fillStyle=`rgba(${Math.min(255,r2+50)},${Math.max(0,pg-25)},${Math.max(0,pb-25)},${.45*vis*fl})`;G.fill()}
 else{
 G.beginPath();G.arc(pr[0],pr[1],sz*sc,0,Math.PI*2);
 G.fillStyle=`rgba(${r2},${pg},${pb},${.6*vis})`;G.fill();
-if(vis>.7&&item.dm>=5){
+if(vis>.7&&it.dm>=5){
 G.beginPath();G.arc(pr[0],pr[1],sz*sc*2.2,0,Math.PI*2);
 G.fillStyle=`rgba(${r2},${pg},${pb},${.06*vis})`;G.fill()}}}}
 
+if(ds>8.5){
+const frontierOp=Math.min(1,(ds-8.5)*2);
+const fR=mR*.95;const yO9=-9*mR*.032;
+const arcCol=hr(DIM[9].c);
+const fr=sf>.4?204:arcCol[0],fg2=sf>.4?41:arcCol[1],fb=sf>.4?54:arcCol[2];
+
+for(const arc of arcs){
+arc.timer-=.016;
+if(arc.timer<=0&&!arc.active){
+arc.active=true;arc.life=0;
+arc.a1=Math.random()*Math.PI*2;
+arc.a2=arc.a1+(Math.random()-.5)*1.2;
+arc.maxLife=Math.random()*1+.4}
+if(arc.active){
+arc.life+=.016;
+const prog=arc.life/arc.maxLife;
+const bright=prog<.15?prog/.15:prog<.5?1:Math.max(0,1-(prog-.5)/.5);
+const segs=12;
+G.beginPath();
+for(let i=0;i<=segs;i++){
+const t=i/segs;const ang=arc.a1+(arc.a2-arc.a1)*t;
+const jx=(Math.random()-.5)*6*bright;
+const jy=(Math.random()-.5)*6*bright;
+const r2=fR*(1+(Math.random()-.5)*.04);
+const pt=p3(Math.cos(ang)*r2+jx,yO9+jy,Math.sin(ang)*r2);
+i===0?G.moveTo(pt[0],pt[1]):G.lineTo(pt[0],pt[1])}
+G.strokeStyle=`rgba(${fr},${fg2},${fb},${.5*bright*frontierOp})`;
+G.lineWidth=1.8*bright;G.stroke();
+G.strokeStyle=`rgba(${Math.min(255,fr+80)},${Math.min(255,fg2+80)},${Math.min(255,fb+80)},${.25*bright*frontierOp})`;
+G.lineWidth=4*bright;G.stroke();
+if(arc.life>=arc.maxLife){arc.active=false;arc.timer=Math.random()*2+.3}}}
+
+const ringSegs=80;
+const pulse9=.08+Math.sin(tm*3)*.04;
+G.beginPath();
+for(let i=0;i<=ringSegs;i++){const ang=i/ringSegs*Math.PI*2;
+const pt=p3(Math.cos(ang)*fR,yO9,Math.sin(ang)*fR);
+i===0?G.moveTo(pt[0],pt[1]):G.lineTo(pt[0],pt[1])}
+G.closePath();
+G.strokeStyle=`rgba(${fr},${fg2},${fb},${pulse9*frontierOp})`;
+G.lineWidth=.8;G.stroke();
+G.strokeStyle=`rgba(${fr},${fg2},${fb},${pulse9*.4*frontierOp})`;
+G.lineWidth=5;G.stroke()}
+
 if(ds>4.3){const ir=mR*(5.5/10);const pulse=Math.sin(tm*2)*.5+.5;
-const alpha=Math.min(1,(ds-4.3)*1.5)*.18*(.5+pulse*.5);
+const alpha=Math.min(1,(ds-4.3)*1.5)*.16*(.5+pulse*.5);
 const n=48;G.beginPath();
 for(let i=0;i<=n;i++){const a=(i/n)*Math.PI*2;
-const v2=p3(Math.cos(a)*ir,-(5)*mR*.035,Math.sin(a)*ir);
+const v2=p3(Math.cos(a)*ir,-5*mR*.032,Math.sin(a)*ir);
 i===0?G.moveTo(v2[0],v2[1]):G.lineTo(v2[0],v2[1])}
-G.closePath();G.strokeStyle=sf>.5?`rgba(204,41,54,${alpha})`:`rgba(45,139,70,${alpha})`;
-G.lineWidth=2.5;G.setLineDash([6,10]);G.stroke();G.setLineDash([])}
+G.closePath();G.strokeStyle=sf>.5?`rgba(204,41,54,${alpha})`:`rgba(59,175,92,${alpha})`;
+G.lineWidth=2;G.setLineDash([6,10]);G.stroke();G.setLineDash([])}
 
 const cp=p3(0,0,0);const cA=.55+Math.sin(tm*1.5)*.3;
 G.beginPath();G.arc(cp[0],cp[1],3.5*cp[2],0,Math.PI*2);
 G.fillStyle=shOn?`rgba(204,41,54,${cA})`:`rgba(255,255,255,${cA})`;G.fill();
 
 const sd=Math.max(0,Math.min(9,Math.round(ds)));
-const col=DIM[sd].c;
-const dimColors=dark()?col:col;
 if(mx>=0){
 dlEl.textContent=`${sd}D \u2014 ${DIM[sd].n}`;
-dlEl.style.color=shOn?'#CC2936':dimColors;
+dlEl.style.color=shOn?'#CC2936':DIM[sd].c;
 dsEl.textContent=shOn?DIM[sd].sh:DIM[sd].s;
-dsEl.style.color=shOn?'#CC293699':dimColors+'99'}
+dsEl.style.color=shOn?'#CC293699':DIM[sd].c+'BB'}
 else{dlEl.textContent='Drag to rotate \u00b7 Move inward to unfold';
 dlEl.style.color='var(--color-text-secondary)';dsEl.textContent='';dsEl.style.color=''}
-
 requestAnimationFrame(draw)}
 
 resize();addEventListener('resize',resize);requestAnimationFrame(draw);
