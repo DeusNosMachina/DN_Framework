@@ -17,12 +17,16 @@
   #hotkey span{color:rgba(204,41,54,0.7)}
   #shadowIndicator{position:fixed;top:16px;right:16px;z-index:50;width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);background:transparent;transition:all 0.8s;pointer-events:none}
   #shadowIndicator.active{background:#CC2936;border-color:#CC2936;box-shadow:0 0 12px rgba(204,41,54,0.5)}
+  #shadowBtn{position:fixed;bottom:12px;right:16px;z-index:60;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,border-color .2s}
+  #shadowBtn.active{background:rgba(204,41,54,0.15);border-color:rgba(204,41,54,0.5);color:#CC2936}
+  #shadowBtn:active{transform:scale(0.96)}
 </style>
 </head>
 <body>
 <div id="caption"><div id="captionText">Reality × Identity = Experience</div></div>
 <div id="hotkey"><span>S</span> shadow &nbsp;&bull;&nbsp; click — bridge / destroy &nbsp;&bull;&nbsp; hold &amp; drag — trail</div>
 <div id="shadowIndicator"></div>
+<button id="shadowBtn" onclick="shadowMode=!shadowMode;this.classList.toggle('active',shadowMode)">Shadow <span style="font-family:monospace;font-size:10px;opacity:.5;margin-left:3px">S</span></button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
@@ -793,7 +797,7 @@ function mousePressed(){
 }
 
 function mouseReleased(){holding=false;holdFrames=0;}
-function keyPressed(){if(key==='s'||key==='S')shadowMode=!shadowMode;}
+function keyPressed(){if(key==='s'||key==='S'){shadowMode=!shadowMode;document.getElementById('shadowBtn').classList.toggle('active',shadowMode);}}
 function windowResized(){resizeCanvas(windowWidth,windowHeight);layoutField();}
 </script>
 </body>
