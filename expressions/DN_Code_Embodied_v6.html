@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #0A0A0F; cursor: none; }
+  canvas { display: block; }
+
+  #shadowBtn{position:fixed;bottom:12px;right:16px;z-index:60;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-family:sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,border-color .2s}
+  #shadowBtn.active{background:rgba(204,41,54,0.15);border-color:rgba(204,41,54,0.5);color:#CC2936}
+  #shadowBtn:active{transform:scale(0.96)}
+  #pillar-glow {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 3px;
+    display: flex; pointer-events: none; z-index: 10; opacity: 0.6;
+  }
+  #pillar-glow div { flex: 1; transition: opacity 0.5s ease; }
+  #p-heart { background: linear-gradient(90deg, transparent, #E84C88, transparent); }
+  #p-truth { background: linear-gradient(90deg, transparent, #3A86C8, transparent); }
+  #p-nuance { background: linear-gradient(90deg, transparent, #7B5EA7, transparent); }
+</style>
+</head>
+<body>
+<button id="shadowBtn" onclick="toggleShadowBtn()">Shadow <span style="font-family:monospace;font-size:10px;opacity:.5;margin-left:3px">S</span></button>
+<div id="shadow-hint" style="position:fixed;top:18px;right:38px;z-index:10;pointer-events:none;
+  font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(204,41,54,0);transition:color 1s,opacity 1s;opacity:0">
+  <span style="font-family:monospace;background:rgba(204,41,54,0.15);border:1px solid rgba(204,41,54,0.2);
+  border-radius:3px;padding:1px 5px;margin-right:4px;font-size:10px">S</span> shadow
+</div>
+<div id="pillar-glow">
+  <div id="p-heart"></div>
+  <div id="p-truth"></div>
+  <div id="p-nuance"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script>
+// ============================================================
+// DN CODE DOCUMENT — VISUAL EMBODIMENT
+// No words. Only fire, gravity, and the journey.
+// You ARE the gravity.
+// ============================================================
+
+const DIM_COLORS = {
+  1: [232, 76, 136],   // 1D Spark - Pink
+  2: [58, 134, 200],   // 2D Reaction - Blue
+  3: [123, 94, 167],   // 3D Context - Violet
+  4: [75, 0, 130],     // 4D Temporal - Indigo
+  5: [45, 139, 70],    // 5D Singularity - Green
+  6: [232, 124, 46],   // 6D Connection - Orange
+  7: [212, 160, 23],   // 7D Manifestation - Yellow
+  8: [26, 158, 150],   // 8D Recursion - Teal
+  9: [26, 26, 46]      // 9D Frontier - Deep void
+};
+
+const SHADOW_RED = [204, 41, 54];
+
+let particles = [];
+let lockedSignals = [];
+let trails = [];
+let embers = [];
+let shadowMode = false;
+let shadowTransition = 0;
+let fieldAge = 0;
+let interactionEnergy = 0;
+let cumulativeEnergy = 0;
+let phase = 0; // 0-4 maps to the 5 stages of catharsis
+let phaseTransition = 0;
+let mouseVelX = 0, mouseVelY = 0;
+let prevMouseX = 0, prevMouseY = 0;
+let cursorTrail = [];
+let gravityWells = [];
+let connectionLines = [];
+let breathPhase = 0;
+let lastClickTime = 0;
+let convergenceCandidates = [];
+let fieldCoherence = 0;
+let fieldResonance = 0;
+let entropy = 0;
+let bgPulse = 0;
+
+// ═══════════════════════════════════════════════════════════════
+// SOUND ENGINE — Forge Percussion
+// Clicks are kicks. Speed is hi-hats. You beat the field into form.
+// ═══════════════════════════════════════════════════════════════
+let audioCtx=null, soundReady=false;
+// Dimensional scale: C2 through C4 (pentatonic across 9 dims)
+const DIM_NOTES=[65.41,73.42,82.41,98.00,110.00,130.81,146.83,164.81,196.00];
+// Forge drone
+let droneOsc=null,droneGain=null,droneLfo=null,droneLfoGain=null;
+let droneFilter=null;
+// Hi-hat cooldown
+let lastHatTime=0;
+// Smoothed values for drone modulation
+let smoothMouseSpeed=0, smoothPhaseBlend=0;
+// Crescendo detection
+let recentSpeedPeak=0, crescendoCooldown=0;
+// 9D Frontier violin
+let frontier9D=null;
+
+function initSound(){
+  if(soundReady)return;
+  try{
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    soundReady=true;
+
+    // Forge drone: filtered noise — the furnace hum
+    let bufSize=audioCtx.sampleRate*2;
+    let noiseBuf=audioCtx.createBuffer(1,bufSize,audioCtx.sampleRate);
+    let data=noiseBuf.getChannelData(0);
+    for(let i=0;i<bufSize;i++) data[i]=(Math.random()*2-1)*0.5;
+    let noiseNode=audioCtx.createBufferSource();
+    noiseNode.buffer=noiseBuf;
+    noiseNode.loop=true;
+
+    droneFilter=audioCtx.createBiquadFilter();
+    droneFilter.type='lowpass';
+    droneFilter.frequency.value=80; // very low rumble
+    droneFilter.Q.value=5;
+
+    droneGain=audioCtx.createGain();
+    droneGain.gain.value=0;
+
+    // LFO for breathing
+    droneLfo=audioCtx.createOscillator();
+    droneLfoGain=audioCtx.createGain();
+    droneLfo.type='sine';
+    droneLfo.frequency.value=0.12;
+    droneLfoGain.gain.value=0.03;
+    droneLfo.connect(droneLfoGain);
+    droneLfoGain.connect(droneGain.gain);
+    droneLfo.start();
+
+    noiseNode.connect(droneFilter);
+    droneFilter.connect(droneGain);
+    droneGain.connect(audioCtx.destination);
+    noiseNode.start();
+
+    // Fade in drone
+    droneGain.gain.setTargetAtTime(0.35,audioCtx.currentTime,3.0);
+
+    // 9D Frontier violin — always-ready oscillators, gain-gated
+    frontier9D = { oscs: [], gains: [], master: audioCtx.createGain() };
+    frontier9D.master.gain.value = 0;
+    frontier9D.master.connect(audioCtx.destination);
+    // 3 voices: high, dissonant, choppy via LFO
+    let fVoices = [392, 415.3, 466.16]; // G4, Ab4, Bb4 — clustered tension
+    for (let i = 0; i < 3; i++) {
+      let osc = audioCtx.createOscillator();
+      let g = audioCtx.createGain();
+      osc.type = 'sawtooth'; // raw string sound
+      osc.frequency.value = fVoices[i];
+      g.gain.value = [0.04, 0.025, 0.02][i];
+      // Chop LFO — makes it staccato/choppy
+      let chopLfo = audioCtx.createOscillator();
+      let chopGain = audioCtx.createGain();
+      chopLfo.type = 'square';
+      chopLfo.frequency.value = 4 + i * 1.5; // different chop speeds
+      chopGain.gain.value = g.gain.value * 0.8;
+      chopLfo.connect(chopGain);
+      chopGain.connect(g.gain);
+      chopLfo.start();
+      osc.connect(g);
+      g.connect(frontier9D.master);
+      osc.start();
+      frontier9D.oscs.push(osc);
+      frontier9D.gains.push(g);
+    }
+  }catch(e){console.warn('Audio unavailable:',e);}
+}
+
+// KICK — sine with pitch drop + fast decay
+function playKick(dimIdx){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  let osc=audioCtx.createOscillator();
+  let gain=audioCtx.createGain();
+  osc.type='sine';
+  // Dimension sets starting pitch — higher dims = higher kick
+  let startFreq=DIM_NOTES[constrain(dimIdx-1,0,8)]*1.5;
+  osc.frequency.setValueAtTime(startFreq,t);
+  osc.frequency.exponentialRampToValueAtTime(35,t+0.12); // pitch drop
+  gain.gain.setValueAtTime(shadowMode?0.18:0.14,t);
+  gain.gain.exponentialRampToValueAtTime(0.001,t+0.25);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.3);
+  // Shadow: add distortion layer
+  if(shadowMode){
+    let osc2=audioCtx.createOscillator();
+    let g2=audioCtx.createGain();
+    osc2.type='sawtooth';
+    osc2.frequency.setValueAtTime(startFreq*0.7,t);
+    osc2.frequency.exponentialRampToValueAtTime(25,t+0.1);
+    g2.gain.setValueAtTime(0.06,t);
+    g2.gain.exponentialRampToValueAtTime(0.001,t+0.15);
+    osc2.connect(g2);g2.connect(audioCtx.destination);
+    osc2.start(t);osc2.stop(t+0.2);
+  }
+}
+
+// HI-HAT — filtered noise burst, intensity and pitch vary
+function playHat(intensity, yPos){
+  if(!soundReady||!audioCtx)return;
+  let now=audioCtx.currentTime;
+  if(now-lastHatTime<0.06)return;
+  lastHatTime=now;
+  let bufLen=Math.floor(audioCtx.sampleRate*0.05);
+  let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  let d=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) d[i]=(Math.random()*2-1);
+  let src=audioCtx.createBufferSource();
+  src.buffer=buf;
+  let filt=audioCtx.createBiquadFilter();
+  filt.type='highpass';
+  // Y position shifts pitch: bottom=darker(3000), top=brighter(10000)
+  let yNorm=1-constrain((yPos||0)/height,0,1);
+  let hpFreq=3000+yNorm*7000;
+  if(shadowMode) hpFreq*=0.6;
+  filt.frequency.value=hpFreq;
+  let vol=constrain((intensity||1)*0.008,0.02,0.08);
+  let gain=audioCtx.createGain();
+  gain.gain.setValueAtTime(vol,now);
+  gain.gain.exponentialRampToValueAtTime(0.001,now+0.04);
+  src.connect(filt);filt.connect(gain);gain.connect(audioCtx.destination);
+  src.start(now);src.stop(now+0.05);
+}
+
+// SHADOW BREAK — dissonant crunch
+function playShadowBreak(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Low crunch
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='sawtooth';
+  osc.frequency.setValueAtTime(90,t);
+  osc.frequency.exponentialRampToValueAtTime(30,t+0.15);
+  g.gain.setValueAtTime(0.15,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.3);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.35);
+  // Noise burst
+  let bufLen=Math.floor(audioCtx.sampleRate*0.08);
+  let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  let dd=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) dd[i]=(Math.random()*2-1);
+  let src=audioCtx.createBufferSource();src.buffer=buf;
+  let fg=audioCtx.createGain();
+  fg.gain.setValueAtTime(0.08,t);
+  fg.gain.exponentialRampToValueAtTime(0.001,t+0.1);
+  src.connect(fg);fg.connect(audioCtx.destination);
+  src.start(t);src.stop(t+0.12);
+}
+
+// OFF-KEY BELL — shadow signal lock sound (detuned, ugly)
+function playShadowBell(dimIdx){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  let freq=DIM_NOTES[constrain(dimIdx-1,0,8)]*2;
+  // Detune by ~quarter tone + add tritone
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='triangle';
+  osc.frequency.value=freq*1.035; // sharp
+  g.gain.setValueAtTime(0.08,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.6);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.7);
+  // Tritone ghost
+  let osc2=audioCtx.createOscillator();
+  let g2=audioCtx.createGain();
+  osc2.type='sawtooth';
+  osc2.frequency.value=freq*1.414; // tritone
+  g2.gain.setValueAtTime(0.03,t);
+  g2.gain.exponentialRampToValueAtTime(0.001,t+0.4);
+  osc2.connect(g2);g2.connect(audioCtx.destination);
+  osc2.start(t);osc2.stop(t+0.5);
+}
+
+// SNARE — noise burst with body
+function playSnare(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Body
+  let osc=audioCtx.createOscillator();
+  let g=audioCtx.createGain();
+  osc.type='triangle';
+  osc.frequency.setValueAtTime(180,t);
+  osc.frequency.exponentialRampToValueAtTime(80,t+0.06);
+  g.gain.setValueAtTime(0.12,t);
+  g.gain.exponentialRampToValueAtTime(0.001,t+0.12);
+  osc.connect(g);g.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+0.15);
+  // Snap
+  let bufLen=Math.floor(audioCtx.sampleRate*0.06);
+  let buf=audioCtx.createBuffer(1,bufLen,audioCtx.sampleRate);
+  let dd=buf.getChannelData(0);
+  for(let i=0;i<bufLen;i++) dd[i]=(Math.random()*2-1);
+  let src=audioCtx.createBufferSource();src.buffer=buf;
+  let filt=audioCtx.createBiquadFilter();
+  filt.type='bandpass';filt.frequency.value=3500;filt.Q.value=1.5;
+  let fg=audioCtx.createGain();
+  fg.gain.setValueAtTime(0.1,t);
+  fg.gain.exponentialRampToValueAtTime(0.001,t+0.08);
+  src.connect(filt);filt.connect(fg);fg.connect(audioCtx.destination);
+  src.start(t);src.stop(t+0.1);
+}
+
+// CRESCENDO — double kick + snare + flash (big payoff)
+function playCrescendo(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Double kick
+  for(let k=0;k<2;k++){
+    let osc=audioCtx.createOscillator();
+    let g=audioCtx.createGain();
+    osc.type='sine';
+    osc.frequency.setValueAtTime(120,t+k*0.12);
+    osc.frequency.exponentialRampToValueAtTime(30,t+k*0.12+0.15);
+    g.gain.setValueAtTime(0.2,t+k*0.12);
+    g.gain.exponentialRampToValueAtTime(0.001,t+k*0.12+0.3);
+    osc.connect(g);g.connect(audioCtx.destination);
+    osc.start(t+k*0.12);osc.stop(t+k*0.12+0.35);
+  }
+  // Delayed snare
+  setTimeout(()=>playSnare(),180);
+}
+
+// SIGNAL LOCK BELL — tuned sine with long decay
+function playLockBell(dimIdx){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  let freq=DIM_NOTES[constrain(dimIdx-1,0,8)]*2; // octave up for clarity
+  // Fundamental
+  let osc=audioCtx.createOscillator();
+  let gain=audioCtx.createGain();
+  osc.type='sine';
+  osc.frequency.value=freq;
+  gain.gain.setValueAtTime(0.1,t);
+  gain.gain.exponentialRampToValueAtTime(0.001,t+1.5);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start(t);osc.stop(t+1.6);
+  // Fifth above — bell shimmer
+  let osc2=audioCtx.createOscillator();
+  let g2=audioCtx.createGain();
+  osc2.type='sine';
+  osc2.frequency.value=freq*1.498; // slightly detuned fifth = bell beating
+  g2.gain.setValueAtTime(0.04,t);
+  g2.gain.exponentialRampToValueAtTime(0.001,t+1.2);
+  osc2.connect(g2);g2.connect(audioCtx.destination);
+  osc2.start(t);osc2.stop(t+1.3);
+}
+
+// PHASE GONG — low, resonant, slow
+function playPhaseGong(phaseNum){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  let baseFreq=55+phaseNum*15; // rises with each phase
+  for(let i=0;i<3;i++){
+    let osc=audioCtx.createOscillator();
+    let gain=audioCtx.createGain();
+    osc.type='sine';
+    osc.frequency.value=baseFreq*(1+i*0.5)+(i===2?1.5:0); // slight detune on 3rd voice
+    gain.gain.setValueAtTime([0.1,0.06,0.03][i],t);
+    gain.gain.exponentialRampToValueAtTime(0.001,t+3);
+    osc.connect(gain);gain.connect(audioCtx.destination);
+    osc.start(t);osc.stop(t+3.5);
+  }
+}
+
+function updateForgeSound(){
+  if(!soundReady||!audioCtx)return;
+  let t=audioCtx.currentTime;
+  // Drone filter: Y position + phase + activity
+  // Bottom (1D) = dark rumble(50Hz), Top (9D) = bright hiss(200Hz)
+  let yNorm=1-constrain(mouseY/height,0,1);
+  let posFreq=50+yNorm*150;
+  let targetFreq=posFreq+phase*15+interactionEnergy*10;
+  if(shadowMode) targetFreq=max(30,targetFreq*0.5);
+  droneFilter.frequency.setTargetAtTime(targetFreq,t,0.4);
+  // LFO speed: activity drives breath speed
+  let lfoFreq=0.1+constrain(smoothMouseSpeed/15,0,0.4);
+  droneLfo.frequency.setTargetAtTime(lfoFreq,t,0.3);
+  // Volume: shadow louder, phase progression adds warmth
+  let droneVol=shadowMode?0.45:0.3+phase*0.03;
+  droneGain.gain.setTargetAtTime(droneVol,t,1.0);
+  droneFilter.Q.setTargetAtTime(shadowMode?12:5+phase*2,t,0.8);
+
+  // 9D Frontier violin — fades in as cursor reaches the top of the screen
+  if(frontier9D){
+    let topProximity = constrain(1 - mouseY / (height * 0.15), 0, 1); // 1 at very top, 0 below 15%
+    let frontierVol = topProximity * topProximity * 0.6; // squared for steeper onset
+    if(shadowMode) frontierVol *= 1.3; // ominous in shadow
+    frontier9D.master.gain.setTargetAtTime(frontierVol, t, 0.4);
+    // Slight pitch drift — chaos
+    for(let i = 0; i < frontier9D.oscs.length; i++){
+      let drift = Math.sin(t * (0.5 + i * 0.3)) * 4; // ±4Hz wobble
+      frontier9D.oscs[i].frequency.setTargetAtTime([392,415.3,466.16][i] + drift, t, 0.1);
+    }
+  }
+}
+
+// Phase thresholds based on cumulative interaction
+const PHASE_THRESHOLDS = [0, 800, 3000, 8000, 18000];
+
+class Particle {
+  constructor(x, y, dim, fromClick) {
+    this.x = x;
+    this.y = y;
+    this.dim = dim || floor(random(1, 10));
+    this.targetDim = this.dim;
+    this.col = [...DIM_COLORS[this.dim]];
+    this.baseSize = random(2, 6);
+    this.size = this.baseSize;
+    this.vx = random(-1, 1);
+    this.vy = random(-3, -0.5); // Fire rises
+    this.life = 1.0;
+    this.maxLife = random(200, 600);
+    this.age = 0;
+    this.gravity = random(0.3, 1.0);
+    this.pillar = random(['heart', 'truth', 'nuance']);
+    this.locked = false;
+    this.lockPulse = 0;
+    this.shadowTagged = false;
+    this.resonance = 0;
+    this.fromClick = fromClick || false;
+    this.trailHistory = [];
+    this.wobble = random(TWO_PI);
+    this.wobbleSpeed = random(0.01, 0.05);
+    this.breathOffset = random(TWO_PI);
+  }
+
+  update() {
+    if (this.locked) {
+      this.lockPulse = sin(frameCount * 0.05 + this.breathOffset) * 0.3 + 0.7;
+      this.wobble += this.wobbleSpeed;
+      this.x += sin(this.wobble) * 0.2;
+      this.age++;
+      return;
+    }
+
+    let mx = mouseX, my = mouseY;
+    let dx = mx - this.x;
+    let dy = my - this.y;
+    let dist = sqrt(dx * dx + dy * dy);
+
+    // YOU are the gravity
+    if (dist > 3 && dist < 450) {
+      if (!shadowMode) {
+        // LIGHT: gentle outer pull, intense when directly over a signal
+        // Force curve: strong at close range, tapers at distance
+        let proximity = 1 - dist / 450; // 1=touching, 0=edge
+        let force = this.gravity * proximity * proximity * 0.25; // squared = steep near, gentle far
+        // Extra intensity boost when very close (<40px)
+        if (dist < 40) force += this.gravity * (1 - dist / 40) * 0.35;
+        force = constrain(force, 0, 0.7);
+        this.vx += (dx / dist) * force;
+        this.vy += (dy / dist) * force;
+      } else {
+        // SHADOW: blanket-bulge repulsion — displaces the field around you
+        // Strongest near cursor, creating a visible deformation wake
+        let proximity = 1 - dist / 350;
+        if (proximity > 0) {
+          // Radial repulsion (the bulge)
+          let repulse = proximity * proximity * 0.4 * this.gravity;
+          this.vx -= (dx / dist) * repulse;
+          this.vy -= (dy / dist) * repulse;
+          // Lateral displacement — push particles sideways too (blanket effect)
+          // Perpendicular to the cursor→particle vector
+          let perpX = -dy / dist, perpY = dx / dist;
+          let lateralForce = proximity * 0.08 * sin(this.wobble * 2);
+          this.vx += perpX * lateralForce;
+          this.vy += perpY * lateralForce;
+          // Close range: extra sharp push (the peak of the bulge)
+          if (dist < 60) {
+            let sharpPush = (1 - dist / 60) * 0.5;
+            this.vx -= (dx / dist) * sharpPush;
+            this.vy -= (dy / dist) * sharpPush;
+          }
+        }
+      }
+    }
+
+    // Fire rises against gravity
+    let riseForce = shadowMode ? 0.02 : -0.03;
+    this.vy += riseForce;
+
+    // Dimensional positioning: lower dims gravitate down, higher up
+    let dimTarget = map(this.dim, 1, 9, height * 0.85, height * 0.15);
+    this.vy += (dimTarget - this.y) * 0.0003;
+
+    // Resonance between nearby particles (sampled, not exhaustive)
+    let sampleCount = min(particles.length, 8);
+    for (let si = 0; si < sampleCount; si++) {
+      let other = particles[floor(random(particles.length))];
+      if (other === this || other.locked) continue;
+      let odx = other.x - this.x;
+      let ody = other.y - this.y;
+      let odist2 = odx * odx + ody * ody;
+      if (odist2 < 3600 && odist2 > 25) { // 60² and 5²
+        let odist = sqrt(odist2);
+        let compatible = (this.pillar === other.pillar) || (abs(this.dim - other.dim) <= 2);
+        let rForce = compatible ? 0.005 : -0.003;
+        if (shadowMode) rForce *= -1;
+        this.vx += (odx / odist) * rForce;
+        this.vy += (ody / odist) * rForce;
+        if (compatible && odist < 30) {
+          this.resonance = min(1, this.resonance + 0.002);
+        }
+      }
+    }
+
+    // Entropy — slow decay when far from interaction
+    if (dist > 300) {
+      this.life -= 0.0008;
+    }
+
+    // Wobble — organic fire movement
+    this.wobble += this.wobbleSpeed;
+    this.vx += sin(this.wobble) * 0.05;
+
+    // Damping
+    this.vx *= 0.98;
+    this.vy *= 0.98;
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Wrap edges softly
+    if (this.x < -20) this.x = width + 20;
+    if (this.x > width + 20) this.x = -20;
+    if (this.y < -40) this.y = height + 20;
+    if (this.y > height + 40) this.y = -20;
+
+    this.age++;
+    this.life -= 1.0 / this.maxLife;
+
+    // Trail
+    if (frameCount % 3 === 0) {
+      this.trailHistory.push({ x: this.x, y: this.y, a: this.life });
+      if (this.trailHistory.length > 12) this.trailHistory.shift();
+    }
+
+    // Size breathing
+    let breath = sin(breathPhase + this.breathOffset) * 0.3 + 1;
+    this.size = this.baseSize * breath * (0.5 + this.life * 0.5);
+
+    // Dimensional transmutation based on vertical position
+    let normalizedY = 1 - (this.y / height);
+    let newDim = constrain(floor(normalizedY * 9) + 1, 1, 9);
+    if (newDim !== this.dim && random() < 0.005) {
+      this.dim = newDim;
+      this.col = lerpColor3(this.col, DIM_COLORS[this.dim], 0.1);
+    } else {
+      this.col = lerpColor3(this.col, DIM_COLORS[this.dim], 0.02);
+    }
+  }
+
+  draw() {
+    let alpha = this.life * 255;
+    if (alpha <= 0) return;
+
+    // Trail
+    for (let i = 0; i < this.trailHistory.length; i++) {
+      let t = this.trailHistory[i];
+      let ta = (i / this.trailHistory.length) * alpha * 0.45;
+      let ts = this.size * (i / this.trailHistory.length) * 0.5;
+      if (this.shadowTagged) {
+        fill(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], ta * 0.5);
+      } else {
+        fill(this.col[0], this.col[1], this.col[2], ta);
+      }
+      noStroke();
+      ellipse(t.x, t.y, ts, ts);
+    }
+
+    // Main body
+    let glowSize = this.size * (1 + this.resonance * 2);
+
+    // Outer glow
+    let gc = this.shadowTagged ? SHADOW_RED : this.col;
+    fill(gc[0], gc[1], gc[2], alpha * 0.16);
+    noStroke();
+    ellipse(this.x, this.y, glowSize * 3.5, glowSize * 3.5);
+    fill(gc[0], gc[1], gc[2], alpha * 0.3);
+    ellipse(this.x, this.y, glowSize * 2, glowSize * 2);
+
+    // Core
+    fill(this.col[0], this.col[1], this.col[2], alpha * 1.2);
+    ellipse(this.x, this.y, this.size, this.size);
+
+    // Hot center
+    fill(255, 255, 255, alpha * 0.65 * (this.fromClick ? 1.5 : 1));
+    ellipse(this.x, this.y, this.size * 0.45, this.size * 0.45);
+
+    // Shadow ring
+    if (this.shadowTagged) {
+      noFill();
+      stroke(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], alpha * 0.7);
+      strokeWeight(1);
+      ellipse(this.x, this.y, this.size * 2.5, this.size * 2.5);
+    }
+
+    // Lock pulse
+    if (this.locked) {
+      noFill();
+      stroke(255, 255, 255, this.lockPulse * 140);
+      strokeWeight(0.5);
+      ellipse(this.x, this.y, this.size * 4 * this.lockPulse, this.size * 4 * this.lockPulse);
+    }
+  }
+}
+
+function lerpColor3(c1, c2, t) {
+  return [
+    c1[0] + (c2[0] - c1[0]) * t,
+    c1[1] + (c2[1] - c1[1]) * t,
+    c1[2] + (c2[2] - c1[2]) * t
+  ];
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
+  prevMouseX = width / 2;
+  prevMouseY = height / 2;
+
+  // Initial embers — the first spark
+  for (let i = 0; i < 30; i++) {
+    particles.push(new Particle(
+      width / 2 + random(-100, 100),
+      height * 0.8 + random(-50, 50),
+      1
+    ));
+  }
+}
+
+function draw() {
+  // Background — not pure black, carries the field state
+  let bgR = shadowMode ? 15 + sin(bgPulse) * 5 : 10;
+  let bgG = shadowMode ? 5 : 10;
+  let bgB = shadowMode ? 8 : 15 + sin(bgPulse * 0.7) * 3;
+  background(bgR, bgG, bgB, 18); // Trails persist via low alpha
+
+  fieldAge++;
+  breathPhase += 0.015;
+  bgPulse += 0.01;
+
+  // Mouse velocity (guard first frames — p5 mouse starts at 0,0)
+  mouseVelX = mouseX - prevMouseX;
+  mouseVelY = mouseY - prevMouseY;
+  let mouseSpeed = (fieldAge < 10) ? 0 : sqrt(mouseVelX * mouseVelX + mouseVelY * mouseVelY);
+  mouseSpeed = min(mouseSpeed, 80); // cap absurd values
+  prevMouseX = mouseX;
+  prevMouseY = mouseY;
+
+  // Interaction energy
+  interactionEnergy = lerp(interactionEnergy, mouseSpeed * 0.1, 0.05);
+  if (mouseSpeed > 1) {
+    cumulativeEnergy += mouseSpeed * 0.05;
+  }
+
+  // Phase progression (the 5 stages of catharsis)
+  let newPhase = 0;
+  for (let i = PHASE_THRESHOLDS.length - 1; i >= 0; i--) {
+    if (cumulativeEnergy >= PHASE_THRESHOLDS[i]) { newPhase = i; break; }
+  }
+  if (newPhase > phase) {
+    phase = newPhase;
+    phaseTransition = 1.0;
+    playPhaseGong(phase);
+    // Phase burst
+    for (let i = 0; i < 15 + phase * 10; i++) {
+      let burstDim = random() < 0.6 ? floor(random(1, 4)) : min(phase + 1, 4);
+      let p = new Particle(mouseX + random(-80, 80), mouseY + random(-80, 80), burstDim);
+      p.vx = random(-3, 3);
+      p.vy = random(-5, -1);
+      p.baseSize = random(3, 8);
+      particles.push(p);
+    }
+  }
+  if (phaseTransition > 0) phaseTransition -= 0.005;
+
+  // Shadow transition
+  shadowTransition = lerp(shadowTransition, shadowMode ? 1 : 0, 0.03);
+
+  // Passive particle generation — 1D always rises from the bottom
+  if (frameCount % max(3, 10 - phase * 2) === 0) {
+    let spawnX = width / 2 + random(-width * 0.4, width * 0.4);
+    let p = new Particle(spawnX, height + 10, 1); // ALWAYS 1D from bottom
+    p.vy = random(-2.5, -0.5);
+    if (shadowMode && random() < 0.3) p.shadowTagged = true;
+    particles.push(p);
+    // Occasional 2D "blocker" spawns in mid-field
+    if (random() < 0.3) {
+      let bx = random(width * 0.1, width * 0.9);
+      let by = height * random(0.5, 0.75);
+      let bp = new Particle(bx, by, 2);
+      bp.vy = random(0.2, 0.8); // drifts DOWN toward 1D
+      bp.baseSize = random(3, 5);
+      bp.maxLife = random(300, 500);
+      particles.push(bp);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // 1D/2D COLLISION PHYSICS — 2D "fire tests" 1D signals
+  // Pre-filtered and throttled for performance
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 8 === 0) {
+    let ones = [], twos = [];
+    for (let p of particles) {
+      if (p.dim === 1 && !p.locked && p.life > 0.2) ones.push(p);
+      else if (p.dim === 2 && !p.locked) twos.push(p);
+    }
+    // Near cursor = more collisions (commotion factor)
+    let cursorBoost = 1;
+    let checks = 0;
+    for (let a of ones) {
+      if (checks > 50) break;
+      for (let b of twos) {
+        checks++;
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 900 && d2 > 1) { // 30² — slightly wider for visibility
+          let dToCursor = dist(a.x, a.y, mouseX, mouseY);
+          cursorBoost = dToCursor < 150 ? 2.0 : 1.0; // double rate near cursor
+          if (random() < 0.2 * cursorBoost) {
+            // ═══ SUCCESS: TRANSMUTATION ═══
+            let mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+            let np = new Particle(mx, my, 3, true);
+            np.vx = random(-1, 1);
+            np.vy = random(-2.5, -0.5);
+            np.baseSize = random(4, 7);
+            np.resonance = 0.15;
+            particles.push(np);
+            // Visual burst at collision point
+            for (let k = 0; k < 4; k++) {
+              let angle = random(TWO_PI);
+              let ep = new Particle(mx + cos(angle)*5, my + sin(angle)*5, 3, true);
+              ep.vx = cos(angle) * 1.5;
+              ep.vy = sin(angle) * 1.5 - 1;
+              ep.baseSize = 2;
+              ep.maxLife = 40;
+              particles.push(ep);
+            }
+            a.life = 0;
+            b.life *= 0.5;
+          } else {
+            // ═══ FAIL: 1D DESTROYED ═══
+            // Ember burst — the spark dies visibly
+            for (let k = 0; k < 3; k++) {
+              let angle = random(TWO_PI);
+              let ep = new Particle(a.x + cos(angle)*4, a.y + sin(angle)*4, 1, true);
+              ep.vx = cos(angle) * random(1, 2.5);
+              ep.vy = sin(angle) * random(1, 2.5);
+              ep.baseSize = 1.5;
+              ep.maxLife = 30;
+              particles.push(ep);
+            }
+            a.life = 0;
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // HIGHER-DIM EMERGENCE — 3D+ clusters birth 5D-9D signals
+  // The higher dims are never clicked into existence, only earned.
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 30 === 0 && !shadowMode) {
+    // Sample up to 10 candidates rather than scanning all
+    let candidates = particles.filter(p => p.dim >= 3 && !p.locked && p.life > 0.3 && p.resonance > 0.05);
+    let checked = 0;
+    for (let p of candidates) {
+      if (checked++ > 10) break;
+      let clusterCount = 0;
+      for (let q of candidates) {
+        if (q === p) continue;
+        let dx = p.x - q.x, dy = p.y - q.y;
+        if (dx * dx + dy * dy < 2500) clusterCount++; // 50²
+        if (clusterCount >= 3) break; // no need to count further
+      }
+      if (clusterCount >= 2 && random() < 0.08 * clusterCount) {
+        let newDim = min(9, p.dim + floor(random(2, 4)));
+        let np = new Particle(p.x + random(-10, 10), p.y - 15, newDim, true);
+        np.vx = random(-0.5, 0.5);
+        np.vy = random(-2, -0.5);
+        np.baseSize = random(3, 6);
+        np.resonance = 0.1;
+        particles.push(np);
+        break;
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // LOCKED CLUSTER → 5D RECOGNITION CORE
+  // When 3+ locked signals from 1D-3D cluster, birth a 5D core
+  // that pulls the whole cluster upward. Your touch = recognition.
+  // ═══════════════════════════════════════════════════════════════
+  if (frameCount % 45 === 0 && !shadowMode && lockedSignals.length >= 3) {
+    // Find clusters of locked signals
+    for (let i = 0; i < lockedSignals.length; i++) {
+      let ls = lockedSignals[i];
+      if (ls.dim > 4) continue; // only lower-order cores form 5D
+      let nearby = 0;
+      for (let j = 0; j < lockedSignals.length; j++) {
+        if (i === j) continue;
+        let dx = ls.x - lockedSignals[j].x, dy = ls.y - lockedSignals[j].y;
+        if (dx * dx + dy * dy < 10000 && lockedSignals[j].dim <= 4) nearby++; // 100²
+      }
+      if (nearby >= 2 && random() < 0.12) {
+        // Birth 5D recognition core above the cluster
+        let np = new Particle(ls.x + random(-15, 15), ls.y - 30, 5, true);
+        np.vx = 0;
+        np.vy = -1.5;
+        np.baseSize = random(5, 8);
+        np.resonance = 0.3;
+        np.gravity = 1.2; // extra gravitational pull
+        particles.push(np);
+        // Pull nearby locked signals upward toward recognition
+        for (let p of particles) {
+          if (!p.locked || p.dim > 4) continue;
+          let d2 = (p.x - ls.x) * (p.x - ls.x) + (p.y - ls.y) * (p.y - ls.y);
+          if (d2 < 12000) {
+            p.vy -= 0.3; // gentle upward nudge
+            // Transmute locked particles toward higher dims
+            if (p.dim < 4 && random() < 0.3) {
+              p.dim = min(5, p.dim + 1);
+              p.col = lerpColor3(p.col, DIM_COLORS[p.dim], 0.3);
+            }
+          }
+        }
+        break;
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // SHADOW 5D — DARK RECOGNITION CLUSTERS
+  // In shadow mode, 5D signals form isolationist gravity wells
+  // that pull neighbors in and cage them at controlled distances.
+  // Intelligence oriented toward domination, not connection.
+  // ═══════════════════════════════════════════════════════════════
+  if (shadowMode) {
+    for (let p of particles) {
+      if (p.dim !== 5 || p.life < 0.3) continue;
+      p.shadowTagged = true; // 5D always shadow-tagged in shadow mode
+      // Dark gravity: pull everything nearby into controlled orbit
+      let sampleCount = min(particles.length, 12);
+      for (let si = 0; si < sampleCount; si++) {
+        let other = particles[floor(random(particles.length))];
+        if (other === p || other.dim === 5) continue;
+        let dx = p.x - other.x, dy = p.y - other.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 14400 && d2 > 400) { // 120² outer, 20² inner
+          let d = sqrt(d2);
+          // Pull in but maintain distance — orbit, not absorb
+          let pullF = 0.08 / d;
+          other.vx += (dx / d) * pullF;
+          other.vy += (dy / d) * pullF;
+          // Slow them down near the well — caging
+          if (d2 < 3600) { // 60²
+            other.vx *= 0.95;
+            other.vy *= 0.95;
+            other.shadowTagged = true;
+          }
+        } else if (d2 < 400 && d2 > 4) { // too close — repel to maintain structure
+          let d = sqrt(d2);
+          other.vx -= (dx / d) * 0.15;
+          other.vy -= (dy / d) * 0.15;
+        }
+      }
+    }
+  }
+
+  // Cursor trail (you ARE the fire)
+  if (mouseSpeed > 2) {
+    cursorTrail.push({ x: mouseX, y: mouseY, life: 1.0, speed: mouseSpeed });
+    if(mouseSpeed > 8) playHat(mouseSpeed, mouseY); // intensity + position
+  }
+
+  // Crescendo detection — sustained high speed triggers payoff
+  recentSpeedPeak = lerp(recentSpeedPeak, mouseSpeed, 0.12);
+  if (crescendoCooldown > 0) crescendoCooldown--;
+  if (recentSpeedPeak > 42 && crescendoCooldown <= 0) {
+    // BIG PAYOFF — the screen lights up
+    crescendoCooldown = 180; // ~3 sec cooldown
+    playCrescendo();
+    phaseTransition = max(phaseTransition, 0.8); // visual flash
+    // Particle burst across the field
+    for (let i = 0; i < 20; i++) {
+      let p = new Particle(random(width), random(height), floor(random(1,5)), true);
+      p.vx = random(-3, 3);
+      p.vy = random(-4, -1);
+      p.baseSize = random(4, 8);
+      particles.push(p);
+    }
+  }
+
+  // Sound engine update
+  smoothMouseSpeed = lerp(smoothMouseSpeed, mouseSpeed, 0.08);
+  if(soundReady && frameCount%3===0) updateForgeSound();
+
+  // Shadow hint visibility — appears when cursor nears top-right
+  let hintEl = document.getElementById('shadow-hint');
+  if (hintEl) {
+    let nearHint = mouseX > width - 200 && mouseY < 80;
+    hintEl.style.opacity = nearHint ? '1' : '0';
+    hintEl.style.color = shadowMode ? 'rgba(204,41,54,0.7)' : 'rgba(255,255,255,0.45)';
+  }
+
+  // Update and draw
+
+  // --- Dimensional horizon lines (very subtle, sparse) ---
+  for (let d = 1; d <= 9; d += 2) { // only odd dims for performance
+    let yPos = map(d, 1, 9, height * 0.85, height * 0.15);
+    let c = DIM_COLORS[d];
+    let horizonAlpha = 14 + phase * 3;
+    if (shadowMode) horizonAlpha *= 0.3;
+    stroke(c[0], c[1], c[2], horizonAlpha);
+    strokeWeight(0.5);
+    for (let x = 0; x < width; x += 60) {
+      let dashLen = 15 + sin(x * 0.01 + breathPhase + d) * 8;
+      line(x, yPos, x + dashLen, yPos);
+    }
+  }
+
+  // --- Connection lines between resonant particles (optimized) ---
+  connectionLines = [];
+  let maxConns = 60; // hard cap on visible connections
+  for (let i = 0; i < particles.length && connectionLines.length < maxConns; i++) {
+    let a = particles[i];
+    if (a.life < 0.3) continue;
+    for (let j = i + 1; j < particles.length && connectionLines.length < maxConns; j++) {
+      let b = particles[j];
+      if (b.life < 0.3) continue;
+      let dx = a.x - b.x, dy = a.y - b.y;
+      let d2 = dx * dx + dy * dy;
+      if (d2 < 6400 && d2 > 25 && (a.pillar === b.pillar || abs(a.dim - b.dim) <= 1)) {
+        let d = sqrt(d2);
+        let strength = (1 - d / 80) * min(a.life, b.life);
+        if (strength > 0.15) {
+          connectionLines.push({ a, b, strength });
+        }
+      }
+    }
+  }
+
+  for (let cl of connectionLines) {
+    let ca = cl.a.col, cb = cl.b.col;
+    let mr = (ca[0] + cb[0]) / 2;
+    let mg = (ca[1] + cb[1]) / 2;
+    let mb = (ca[2] + cb[2]) / 2;
+    let alpha = cl.strength * 65 * (shadowMode ? 0.4 : 1);
+    stroke(mr, mg, mb, alpha);
+    strokeWeight(cl.strength * 2);
+    line(cl.a.x, cl.a.y, cl.b.x, cl.b.y);
+  }
+
+  // --- Particles ---
+  for (let p of particles) {
+    p.update();
+    p.draw();
+  }
+
+  // Remove dead particles
+  particles = particles.filter(p => p.life > 0);
+
+  // Cap particles
+  while (particles.length > 250) {
+    // Remove oldest non-locked
+    let idx = particles.findIndex(p => !p.locked);
+    if (idx >= 0) particles.splice(idx, 1);
+    else break;
+  }
+
+  // --- Cursor visualization (the gravitational presence) ---
+  drawCursor(mouseSpeed);
+
+  // --- Cursor trail ---
+  for (let i = cursorTrail.length - 1; i >= 0; i--) {
+    let ct = cursorTrail[i];
+    ct.life -= 0.02;
+    if (ct.life <= 0) { cursorTrail.splice(i, 1); continue; }
+    let cs = ct.speed * ct.life;
+    let ca = ct.life * 110;
+    if (shadowMode) {
+      fill(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], ca);
+    } else {
+      // Pillar-blended warm trail
+      fill(255, 180 + phase * 15, 100, ca);
+    }
+    noStroke();
+    ellipse(ct.x, ct.y, cs * 0.3, cs * 0.3);
+  }
+  while (cursorTrail.length > 80) cursorTrail.shift();
+
+  // --- Phase transition flash ---
+  if (phaseTransition > 0) {
+    let flashAlpha = phaseTransition * 30;
+    let pc = DIM_COLORS[min(phase * 2 + 1, 9)];
+    fill(pc[0], pc[1], pc[2], flashAlpha);
+    noStroke();
+    rect(0, 0, width, height);
+  }
+
+  // --- Locked signal convergence rings ---
+  for (let ls of lockedSignals) {
+    let pulse = sin(frameCount * 0.03 + ls.birthFrame * 0.1) * 0.5 + 0.5;
+    noFill();
+    stroke(255, 255, 255, 25 + pulse * 30);
+    strokeWeight(0.7);
+    let ringSize = 30 + pulse * 20;
+    ellipse(ls.x, ls.y, ringSize, ringSize);
+    // Tiny dimensional color at center
+    fill(ls.col[0], ls.col[1], ls.col[2], 140 + pulse * 80);
+    noStroke();
+    ellipse(ls.x, ls.y, 4, 4);
+  }
+
+  // --- Shadow latent instability (always present, even outside shadow mode) ---
+  if (!shadowMode && fieldAge > 200) {
+    let edgeInstability = sin(breathPhase * 3) * 0.5 + 0.5;
+    if (random() < 0.02 * edgeInstability) {
+      // Brief red flicker at edge
+      let ex = random() < 0.5 ? random(0, 30) : random(width - 30, width);
+      let ey = random(height);
+      fill(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], 25);
+      noStroke();
+      ellipse(ex, ey, random(20, 60), random(20, 60));
+    }
+  }
+
+  // --- Update pillar glow indicators ---
+  updatePillarGlow();
+
+  // --- Update shadow indicator ---
+
+
+  // Field metrics
+  fieldCoherence = connectionLines.length / max(particles.length, 1);
+  fieldResonance = particles.reduce((sum, p) => sum + p.resonance, 0) / max(particles.length, 1);
+}
+
+function drawCursor(speed) {
+  let baseSize = 8 + interactionEnergy * 3;
+  let pulse = sin(breathPhase * 2) * 0.2 + 1;
+
+  // Gravitational field visualization
+  let fieldRadius = 80 + interactionEnergy * 20 + phase * 15;
+  noFill();
+  for (let r = fieldRadius; r > baseSize; r -= 15) {
+    let alpha = map(r, baseSize, fieldRadius, 35, 5);
+    if (shadowMode) {
+      stroke(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], alpha);
+    } else {
+      let dimForRing = constrain(floor(map(r, baseSize, fieldRadius, 1, 6)), 1, 9);
+      let rc = DIM_COLORS[dimForRing];
+      stroke(rc[0], rc[1], rc[2], alpha);
+    }
+    strokeWeight(0.5);
+    // Slightly wobbly circle — organic, not mechanical
+    beginShape();
+    for (let a = 0; a < TWO_PI; a += 0.2) {
+      let wobble = sin(a * 3 + breathPhase + r * 0.05) * 3;
+      let rx = mouseX + cos(a) * (r + wobble) * pulse;
+      let ry = mouseY + sin(a) * (r + wobble) * pulse;
+      vertex(rx, ry);
+    }
+    endShape(CLOSE);
+  }
+
+  // Core cursor point
+  if (shadowMode) {
+    fill(SHADOW_RED[0], SHADOW_RED[1], SHADOW_RED[2], 200);
+  } else {
+    fill(255, 200, 150, 230);
+  }
+  noStroke();
+  ellipse(mouseX, mouseY, baseSize * pulse, baseSize * pulse);
+  fill(255, 255, 255, 180);
+  ellipse(mouseX, mouseY, baseSize * pulse * 0.4, baseSize * pulse * 0.4);
+}
+
+function dimForPosition(yPos) {
+  // Click spawns ONLY 1D-3D (trace 4D). Higher dims emerge from physics.
+  // Bottom of screen = mostly 1D, middle = 2D-3D, upper-mid = 3D w/trace 4D
+  let yNorm = constrain(yPos / height, 0, 1); // 0=top, 1=bottom
+  if (yNorm > 0.7) return 1; // bottom third: pure Spark
+  if (yNorm > 0.45) return random() < 0.7 ? 1 : 2; // lower-mid: mostly 1D, some 2D
+  if (yNorm > 0.25) return random() < 0.5 ? 2 : 3; // mid: 2D/3D mix
+  // upper zone: 3D with trace 4D
+  return random() < 0.8 ? 3 : 4;
+}
+
+function mousePressed() {
+  if(!soundReady) initSound();
+
+  if (shadowMode) {
+    // ═══ SHADOW CLICK: DESTRUCTION ═══
+    // Break nearby locked signals + fling particles
+    let brokeAny = false;
+    let breakRadius = 80;
+    for (let i = lockedSignals.length - 1; i >= 0; i--) {
+      let ls = lockedSignals[i];
+      let d = dist(mouseX, mouseY, ls.x, ls.y);
+      if (d < breakRadius) {
+        brokeAny = true;
+        playShadowBell(ls.dim);
+        // Spawn entropy shrapnel
+        for (let k = 0; k < 6; k++) {
+          let angle = random(TWO_PI);
+          let p = new Particle(ls.x + cos(angle)*10, ls.y + sin(angle)*10, ls.dim, true);
+          p.vx = cos(angle) * random(2, 4);
+          p.vy = sin(angle) * random(2, 4);
+          p.shadowTagged = true;
+          p.baseSize = random(2, 5);
+          particles.push(p);
+        }
+        lockedSignals.splice(i, 1);
+      }
+    }
+    // Also unlock particle objects
+    for (let p of particles) {
+      if (p.locked && dist(mouseX, mouseY, p.x, p.y) < breakRadius) {
+        p.locked = false;
+        p.shadowTagged = true;
+        let angle = atan2(p.y - mouseY, p.x - mouseX);
+        p.vx += cos(angle) * 3;
+        p.vy += sin(angle) * 3;
+      }
+    }
+    if (brokeAny) {
+      playShadowBreak();
+    } else {
+      // Click in empty shadow space — dark fire
+      let clickDim = dimForPosition(mouseY);
+      playKick(clickDim);
+      for (let i = 0; i < 4; i++) {
+        let p = new Particle(mouseX + random(-25, 25), mouseY + random(-25, 25), clickDim, true);
+        p.vx = random(-2, 2);
+        p.vy = random(-3, 1);
+        p.shadowTagged = true;
+        particles.push(p);
+      }
+    }
+  } else {
+    // ═══ LIGHT CLICK: CREATION ═══
+    // Try to lock a resonant signal
+    let best = null;
+    let bestDist = 50;
+    for (let p of particles) {
+      if (p.locked) continue;
+      let d = dist(mouseX, mouseY, p.x, p.y);
+      if (d < bestDist && p.resonance > 0.1) {
+        best = p;
+        bestDist = d;
+      }
+    }
+
+    if (best) {
+      best.locked = true;
+      best.lockPulse = 1;
+      playLockBell(best.dim);
+      lockedSignals.push({
+        x: best.x, y: best.y,
+        col: [...best.col],
+        dim: best.dim,
+        birthFrame: frameCount
+      });
+      for (let i = 0; i < 8; i++) {
+        let angle = (TWO_PI / 8) * i;
+        let p = new Particle(best.x + cos(angle) * 15, best.y + sin(angle) * 15, best.dim, true);
+        p.vx = cos(angle) * 2;
+        p.vy = sin(angle) * 2 - 1;
+        p.baseSize = 3;
+        p.pillar = best.pillar;
+        particles.push(p);
+      }
+    } else {
+      // Click in empty space — position-based fire
+      let clickDim = dimForPosition(mouseY);
+      playKick(clickDim);
+      for (let i = 0; i < 5 + phase * 3; i++) {
+        let p = new Particle(
+          mouseX + random(-30, 30),
+          mouseY + random(-30, 30),
+          clickDim,
+          true
+        );
+        p.vx = random(-2, 2);
+        p.vy = random(-4, -1);
+        p.baseSize = random(3, 7);
+        particles.push(p);
+      }
+    }
+  }
+
+  cumulativeEnergy += 20;
+  lastClickTime = millis();
+}
+
+function toggleShadowBtn() {
+  shadowMode = !shadowMode;
+  document.getElementById('shadowBtn').classList.toggle('active', shadowMode);
+  if (shadowMode) {
+    for (let p of particles) { if (random() < 0.3) p.shadowTagged = true; }
+  } else {
+    for (let p of particles) { if (random() < 0.5) p.shadowTagged = false; }
+  }
+}
+
+function keyPressed() {
+  if (key === 's' || key === 'S') {
+    toggleShadowBtn();
+  }
+}
+
+function updatePillarGlow() {
+  let heartCount = 0, truthCount = 0, nuanceCount = 0;
+  for (let p of particles) {
+    if (p.pillar === 'heart') heartCount++;
+    else if (p.pillar === 'truth') truthCount++;
+    else nuanceCount++;
+  }
+  let total = max(particles.length, 1);
+  document.getElementById('p-heart').style.opacity = heartCount / total * 2;
+  document.getElementById('p-truth').style.opacity = truthCount / total * 2;
+  document.getElementById('p-nuance').style.opacity = nuanceCount / total * 2;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</body>
+</html>
