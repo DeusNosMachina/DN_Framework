@@ -1,36 +1,48 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>The Containment Principle — DN Concept to Canvas</title>
 <style>
-.wrap{position:relative}
-#hud{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;text-align:center;padding:6px 18px;border-radius:var(--border-radius-md);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:200px}
-@media(prefers-color-scheme:light){#hud{background:rgba(255,255,255,.72)}}
-#dl{font-weight:500;font-size:14px;transition:color .5s}
-#ds{font-size:12px;opacity:.8;margin-top:2px;transition:color .5s}
-canvas{display:block;width:100%;cursor:grab;border-radius:var(--border-radius-lg);touch-action:none}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#ccc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;overflow:hidden}
+.wrap{position:relative;width:100%;max-width:900px}
+#hud{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;text-align:center;padding:6px 20px;border-radius:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:220px}
+#dl{font-weight:500;font-size:15px;transition:color .5s}
+#ds{font-size:12px;opacity:.78;margin-top:2px;transition:color .5s}
+canvas{display:block;width:100%;cursor:grab;border-radius:12px;background:#0a0a0f}
 canvas:active{cursor:grabbing}
-.ct{display:flex;justify-content:center;align-items:center;gap:10px;margin:10px 0 0;font-size:13px;color:var(--color-text-secondary);flex-wrap:wrap}
+.ct{display:flex;justify-content:center;align-items:center;gap:12px;padding:12px 0;font-size:13px;color:#888;flex-wrap:wrap}
 .ct label{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
-.tt{position:relative;width:32px;height:18px;background:var(--color-border-secondary);border-radius:9px;transition:background .2s;display:inline-block}
-.tt:has(input:checked){background:var(--color-text-info)}
+.tt{position:relative;width:32px;height:18px;background:#444;border-radius:9px;transition:background .2s;display:inline-block}
+.tt.on{background:#4A9BE8}
 .tt input{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;margin:0}
 .tt span.tk{position:absolute;top:2px;left:2px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .2s;pointer-events:none}
-.tt:has(input:checked) span.tk{transform:translateX(14px)}
-.btn{padding:4px 14px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary);font-size:13px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;user-select:none;font-family:inherit;-webkit-tap-highlight-color:transparent}
-.btn:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.tt.on span.tk{transform:translateX(14px)}
+.btn{padding:5px 16px;border:1px solid #444;border-radius:8px;background:transparent;color:#999;font-size:13px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;user-select:none;font-family:inherit;-webkit-tap-highlight-color:transparent}
+.btn:hover{background:#1a1a24;color:#ddd}
 .btn:active{transform:scale(.97)}
-.btn.active{background:rgba(204,41,54,.12);border-color:rgba(204,41,54,.4);color:#CC2936}
-.kh{font-size:10px;opacity:.5;margin-left:3px;font-family:var(--font-mono)}
+.btn.active{background:rgba(204,41,54,.15);border-color:rgba(204,41,54,.5);color:#CC2936}
+.kh{font-size:10px;opacity:.45;margin-left:3px;font-family:monospace}
+.credit{font-size:11px;color:#555;margin-top:8px;text-align:center}
+.credit a{color:#666;text-decoration:none}
+.credit a:hover{color:#999}
 </style>
+</head>
+<body>
 <div class="wrap">
 <div id="hud"><div id="dl">Move cursor inward to unfold</div><div id="ds"></div></div>
 <canvas id="c"></canvas>
 </div>
 <div class="ct">
-<label><span class="tt"><input type="checkbox" id="snd" onchange="tgS(this.checked)"><span class="tk"></span></span>Sound</label>
+<label><span class="tt" id="sndTrk"><input type="checkbox" id="snd" onchange="tgS(this.checked)"><span class="tk"></span></span>Sound</label>
 <button class="btn" id="shBtn" onclick="toggleShadow()">Shadow<span class="kh">S</span></button>
 <button class="btn" id="rstBtn" onclick="resetView()">Reset<span class="kh">R</span></button>
 </div>
+<div class="credit">The Containment Principle &mdash; <a href="https://github.com/DeusNosMachina/DN_Framework" target="_blank">DN Framework</a> Concept&ndash;to&ndash;Canvas</div>
 <script>
-const cv=document.getElementById('c'),G=cv.getContext('2d'),dlEl=document.getElementById('dl'),dsEl=document.getElementById('ds'),shBtn=document.getElementById('shBtn');
+const cv=document.getElementById('c'),G=cv.getContext('2d'),dlEl=document.getElementById('dl'),dsEl=document.getElementById('ds'),shBtn=document.getElementById('shBtn'),sndTrk=document.getElementById('sndTrk');
 let W,H,cx,cy,mR,tm=0;
 let mx=-1,my=-1,shOn=false,sf=0,shTime=0,aD=0,ds=0;
 let rX=.12,rY=0,drag=false,lx=0,ly=0,momX=0,momY=0;
@@ -38,6 +50,9 @@ let aC=null,osc=[],gn=[],mG=null,sOn=false,lB=-1;
 
 function toggleShadow(){shOn=!shOn;shBtn.classList.toggle('active',shOn)}
 function resetView(){rX=.12;rY=0;momX=0;momY=0}
+
+document.getElementById('snd').addEventListener('change',function(){
+sndTrk.classList.toggle('on',this.checked)});
 
 const DIM=[
 {n:'Origin',s:'Existence without extension',c:'#BBBBBB',sh:'The void that refuses'},
@@ -80,38 +95,21 @@ if(dim===6){const phi=(1+Math.sqrt(5))/2,s=R*.55;const ico=[[0,1,phi],[0,-1,phi]
 if(dim===7){const N=24,Tr=R*.65,tr=R*.22;for(let i=0;i<N;i++){const a=i/N*Math.PI*2;const cx2=Math.cos(a)*Tr,cz=Math.sin(a)*Tr;for(let j=0;j<6;j++){const b=j/6*Math.PI*2;const lx2=Math.cos(b)*tr,ly2=Math.sin(b)*tr*.55;const rx=lx2*Math.cos(a),rz=lx2*Math.sin(a);v.push([cx2+rx+w(i*6+j,0)*.3,yO+ly2+w(i*6+j,1)*.3,cz+rz+w(i*6+j,2)*.3])}}for(let i=0;i<N;i++){const b=i*6,nb=((i+1)%N)*6;for(let j=0;j<6;j++){e.push([b+j,b+(j+1)%6]);e.push([b+j,nb+j])}for(let j=0;j<6;j++)faces.push([b+j,b+(j+1)%6,nb+(j+1)%6,nb+j])}return{v,e,faces}}
 return{v:[],e:[],faces:[]}}
 
-// 8D double vortex cloud particles
-let vortexPts=[];
-const VN=280;
-for(let i=0;i<VN;i++){
-const half=i<VN/2?-1:1; // top cone or bottom cone
-const t=Math.random(); // 0=waist, 1=mouth
-const coneR=t*.85+.05; // radius grows from waist to mouth
-const ang=Math.random()*Math.PI*2;
-const spread=(Math.random()-.5)*.2*coneR; // radial scatter
-const ySpread=(Math.random()-.5)*.08;
-vortexPts.push({half,t,ang,spread,ySpread,
-sz:Math.random()*3+1.5,
-al:Math.random()*.25+.2,
-phase:Math.random()*Math.PI*2,
-spinSpd:(Math.random()*.3+.2)*(half>0?1:-1)})}
+let vortexPts=[];const VN=280;
+for(let i=0;i<VN;i++){const half=i<VN/2?-1:1;const t=Math.random();
+vortexPts.push({half,t,ang:Math.random()*Math.PI*2,spread:(Math.random()-.5)*.2*t,ySpread:(Math.random()-.5)*.08,
+sz:Math.random()*3+1.5,al:Math.random()*.25+.2,phase:Math.random()*Math.PI*2,spinSpd:(Math.random()*.3+.2)*(half>0?1:-1)})}
 
-// 8D wireframe rings for structure
 let vortexRings=[];
-for(let half=-1;half<=1;half+=2){
-for(let ring=0;ring<6;ring++){
-const t=(ring+1)/7;
-vortexRings.push({half,t,segs:20})}}
+for(let half=-1;half<=1;half+=2)for(let ring=0;ring<6;ring++)vortexRings.push({half,t:(ring+1)/7,segs:20});
 
-let sparks=[];
-for(let i=0;i<50;i++){sparks.push({x:0,y:0,z:0,life:0,maxLife:0,active:false,timer:Math.random()*4,sz:0})}
+let sparks=[];for(let i=0;i<50;i++)sparks.push({x:0,y:0,z:0,life:0,maxLife:0,active:false,timer:Math.random()*4,sz:0});
 
-let pts=[];
-for(let i=0;i<140;i++){const dm=Math.floor(Math.random()*10);
+let pts=[];for(let i=0;i<140;i++){const dm=Math.floor(Math.random()*10);
 pts.push({dm,th:Math.random()*Math.PI*2,ph:(Math.random()-.5)*Math.PI*.5,rb:(dm/9)*.82+.12,rOff:(Math.random()-.5)*.04,spd:(Math.random()*.3+.1)*(Math.random()<.5?1:-1),vSpd:(Math.random()-.12)*.05,sz:Math.random()*1.8+.8,phase:Math.random()*Math.PI*2})}
 
 function initA(){if(aC)return;aC=new(window.AudioContext||window.webkitAudioContext)();mG=aC.createGain();mG.gain.value=0;mG.connect(aC.destination);for(let i=0;i<10;i++){const o=aC.createOscillator(),g=aC.createGain();o.type='sine';o.frequency.value=FR[i];g.gain.value=0;o.connect(g);g.connect(mG);o.start();osc.push(o);gn.push(g)}}
-function tgS(on){sOn=on;if(on){initA();if(aC.state==='suspended')aC.resume();mG.gain.setTargetAtTime(.13,aC.currentTime,.3)}else if(mG)mG.gain.setTargetAtTime(0,aC.currentTime,.3)}
+function tgS(on){sOn=on;sndTrk.classList.toggle('on',on);if(on){initA();if(aC.state==='suspended')aC.resume();mG.gain.setTargetAtTime(.13,aC.currentTime,.3)}else if(mG)mG.gain.setTargetAtTime(0,aC.currentTime,.3)}
 function bell(dm){if(!sOn||!aC||dm===lB)return;lB=dm;const o=aC.createOscillator(),g=aC.createGain();if(sf>.5){o.type='sawtooth';o.frequency.value=SF[Math.min(dm,9)]*1.5;o.detune.value=-50+Math.random()*100;g.gain.value=.07;g.gain.setTargetAtTime(0,aC.currentTime,.35)}else{o.type='sine';o.frequency.value=FR[Math.min(dm,9)]*2;g.gain.value=.12;g.gain.setTargetAtTime(0,aC.currentTime,.65)}o.connect(g);g.connect(mG);o.start();o.stop(aC.currentTime+1.5)}
 function updS(){if(!sOn||!aC)return;const ct=aC.currentTime;for(let i=0;i<10;i++){gn[i].gain.setTargetAtTime(i<=aD?(.06/(i+1)):0,ct,.12);if(sf>.3&&i<=aD){osc[i].type=i%2===0?'sawtooth':'triangle';osc[i].frequency.setTargetAtTime(SF[i],ct,.4);osc[i].detune.setTargetAtTime(-45+i*14,ct,.3)}else{osc[i].type=i<5?'sine':'triangle';osc[i].frequency.setTargetAtTime(FR[i],ct,.4);osc[i].detune.setTargetAtTime(0,ct,.3)}}}
 
@@ -124,10 +122,8 @@ cv.addEventListener('touchmove',e=>{e.preventDefault();if(e.touches.length>=2){c
 cv.addEventListener('touchend',e=>{if(e.touches.length===0){drag=false;mx=-1;my=-1}});
 document.addEventListener('keydown',e=>{if(e.key==='s'||e.key==='S')toggleShadow();if(e.key==='r'||e.key==='R')resetView()});
 
-const dk=()=>matchMedia('(prefers-color-scheme:dark)').matches;
-
 function draw(){
-tm+=.016;G.clearRect(0,0,W,H);
+tm+=.016;G.fillStyle='#0a0a0f';G.fillRect(0,0,W,H);
 if(!drag){rY+=momX;rX+=momY;momX*=.97;momY*=.97;rX=Math.max(-1.4,Math.min(1.4,rX))}
 sf+=((shOn?1:0)-sf)*.04;
 if(shOn)shTime=Math.min(shTime+.0015,1);else shTime=Math.max(shTime-.005,0);
@@ -144,58 +140,36 @@ const R=mR*((d+.5)/10);const sh=genShape(d,R,shTime);const col=hr(DIM[d].c);
 const sr=Math.round(col[0]*(1-sf*.3)+204*sf*.3),sg=Math.round(col[1]*(1-sf*.45)+41*sf*.45),sb=Math.round(col[2]*(1-sf*.3)+54*sf*.3);
 const proj=sh.v.map(v2=>p3(v2[0],v2[1],v2[2]));
 for(const f of sh.faces){if(f.length<3)continue;const fV=f.map(i=>proj[i]).filter(Boolean);if(fV.length<3)continue;
-items.push({type:'face',verts:fV,z:f.reduce((s2,i)=>s2+(proj[i]?proj[i][3]:0),0)/f.length,r:sr,g:sg,b:sb,op:op*(dk()?.09:.06)*(d===4?1.8:1),redOp:sf*.08*op})}
+items.push({type:'face',verts:fV,z:f.reduce((s2,i)=>s2+(proj[i]?proj[i][3]:0),0)/f.length,r:sr,g:sg,b:sb,op:op*.09*(d===4?1.8:1),redOp:sf*.08*op})}
 for(const ed of sh.e){const a=proj[ed[0]],b=proj[ed[1]];if(!a||!b)continue;
 const isBridge=d===6&&ed[0]<12&&ed[1]<12&&Math.abs(ed[0]-ed[1])>2;
 items.push({type:'edge',a,b,z:(a[3]+b[3])/2,r:sr,g:sg,b2:sb,op,d,thick:d===4?1.2:d===7?.6:isBridge?1.5:1,isBridge,redOp:sf*.2*op})}}
 
-// 8D double vortex
 if(ds>=7.5){
-const op8=Math.min(1,(ds-7.5)*2);
-const tc=hr(DIM[8].c);
+const op8=Math.min(1,(ds-7.5)*2);const tc=hr(DIM[8].c);
 const r8=Math.round(tc[0]*(1-sf*.3)+204*sf*.3),g8=Math.round(tc[1]*(1-sf*.4)+41*sf*.4),b8=Math.round(tc[2]*(1-sf*.3)+54*sf*.3);
-const vH=mR*.65;const vW=mR*.55;const yC=-8*mR*.032;
+const vH=mR*.65,vW=mR*.55,yC=-8*mR*.032;
 
-// wireframe rings for structural visibility
 for(const ring of vortexRings){
-const t=ring.t;const coneR=(t*.8+.08)*vW;const yPos=yC+ring.half*t*vH;
-const ringPts=[];
-for(let i=0;i<=ring.segs;i++){
-const a=i/ring.segs*Math.PI*2+tm*.3*ring.half;
-const px=Math.cos(a)*coneR+wb(ring.t*10,0,shTime)*mR*.15;
-const pz=Math.sin(a)*coneR+wb(ring.t*10,2,shTime)*mR*.15;
-ringPts.push(p3(px,yPos+wb(ring.t*10,1,shTime)*mR*.1,pz))}
-const zAvg=ringPts.reduce((s,p)=>s+p[3],0)/ringPts.length;
-items.push({type:'vring',pts:ringPts,z:zAvg,r:r8,g:g8,b:b8,op:op8*(.2+t*.15),redOp:sf*.1*op8})}
+const t=ring.t;const coneR=(t*.8+.08)*vW;const yPos=yC+ring.half*t*vH;const ringPts=[];
+for(let i=0;i<=ring.segs;i++){const a=i/ring.segs*Math.PI*2+tm*.3*ring.half;
+ringPts.push(p3(Math.cos(a)*coneR+wb(ring.t*10,0,shTime)*mR*.15,yPos+wb(ring.t*10,1,shTime)*mR*.1,Math.sin(a)*coneR+wb(ring.t*10,2,shTime)*mR*.15))}
+items.push({type:'vring',pts:ringPts,z:ringPts.reduce((s,p)=>s+p[3],0)/ringPts.length,r:r8,g:g8,b:b8,op:op8*(.2+t*.15),redOp:sf*.1*op8})}
 
-// spiral guide lines (two helices along the cone surface)
-for(let strand=0;strand<2;strand++){
-for(let half=-1;half<=1;half+=2){
+for(let strand=0;strand<2;strand++){for(let half=-1;half<=1;half+=2){
 const segs=30;const sPts=[];
-for(let i=0;i<=segs;i++){
-const t=i/segs;const coneR=(t*.8+.08)*vW;
-const yPos=yC+half*t*vH;
+for(let i=0;i<=segs;i++){const t=i/segs;const coneR=(t*.8+.08)*vW;const yPos=yC+half*t*vH;
 const a=t*Math.PI*4+strand*Math.PI+tm*.4*half;
-const px=Math.cos(a)*coneR+wb(strand*50+i,0,shTime)*mR*.12;
-const pz=Math.sin(a)*coneR+wb(strand*50+i,2,shTime)*mR*.12;
-sPts.push(p3(px,yPos+wb(strand*50+i,1,shTime)*mR*.08,pz))}
-const zAvg=sPts.reduce((s,p)=>s+p[3],0)/sPts.length;
-items.push({type:'vspiral',pts:sPts,z:zAvg,r:r8,g:g8,b:b8,op:op8*.45,redOp:sf*.15*op8})}}
+sPts.push(p3(Math.cos(a)*coneR+wb(strand*50+i,0,shTime)*mR*.12,yPos+wb(strand*50+i,1,shTime)*mR*.08,Math.sin(a)*coneR+wb(strand*50+i,2,shTime)*mR*.12))}
+items.push({type:'vspiral',pts:sPts,z:sPts.reduce((s,p)=>s+p[3],0)/sPts.length,r:r8,g:g8,b:b8,op:op8*.45,redOp:sf*.15*op8})}}
 
-// cloud particles filling the volume
 for(const vp of vortexPts){
-vp.ang+=vp.spinSpd*.016;
-const t=vp.t;const coneR=(t*.8+.08)*vW;
-const yPos=yC+vp.half*t*vH+vp.ySpread*vH;
-const r2=(coneR+vp.spread*vW);
-const px=Math.cos(vp.ang)*r2+wb(Math.floor(vp.phase*100),0,shTime)*mR*.12;
-const py=yPos+wb(Math.floor(vp.phase*100),1,shTime)*mR*.08;
-const pz=Math.sin(vp.ang)*r2+wb(Math.floor(vp.phase*100),2,shTime)*mR*.12;
-const pr=p3(px,py,pz);
+vp.ang+=vp.spinSpd*.016;const t=vp.t;const coneR=(t*.8+.08)*vW;
+const yPos=yC+vp.half*t*vH+vp.ySpread*vH;const r2=coneR+vp.spread*vW;
+const pr=p3(Math.cos(vp.ang)*r2+wb(Math.floor(vp.phase*100),0,shTime)*mR*.12,yPos+wb(Math.floor(vp.phase*100),1,shTime)*mR*.08,Math.sin(vp.ang)*r2+wb(Math.floor(vp.phase*100),2,shTime)*mR*.12);
 const breathe=.6+Math.sin(tm*.7+vp.phase)*.4;
 items.push({type:'vcloud',proj:pr,z:pr[3],r:r8,g:g8,b:b8,op:op8*vp.al*breathe,sz:vp.sz,redOp:sf*.12*op8*vp.al})}}
 
-// particles
 for(const p of pts){
 if(ds<p.dm-.3)continue;const vis=Math.min(1,(ds-p.dm+.3)*2);
 p.th+=p.spd*.016*(1-shTime*.25);p.ph+=p.vSpd*.016;
@@ -228,10 +202,8 @@ G.strokeStyle=`rgba(${it.r},${it.g},${it.b},${it.op*.3})`;G.lineWidth=4;G.stroke
 if(it.redOp>.005){G.strokeStyle=`rgba(204,41,54,${it.redOp})`;G.lineWidth=2;G.stroke()}}
 else if(it.type==='vcloud'){
 const pr=it.proj,sc=pr[2];
-G.beginPath();G.arc(pr[0],pr[1],it.sz*sc,0,Math.PI*2);
-G.fillStyle=`rgba(${it.r},${it.g},${it.b},${it.op*.5})`;G.fill();
-G.beginPath();G.arc(pr[0],pr[1],it.sz*sc*2.2,0,Math.PI*2);
-G.fillStyle=`rgba(${it.r},${it.g},${it.b},${it.op*.12})`;G.fill();
+G.beginPath();G.arc(pr[0],pr[1],it.sz*sc,0,Math.PI*2);G.fillStyle=`rgba(${it.r},${it.g},${it.b},${it.op*.5})`;G.fill();
+G.beginPath();G.arc(pr[0],pr[1],it.sz*sc*2.2,0,Math.PI*2);G.fillStyle=`rgba(${it.r},${it.g},${it.b},${it.op*.12})`;G.fill();
 if(it.redOp>.005){G.beginPath();G.arc(pr[0],pr[1],it.sz*sc*1.5,0,Math.PI*2);G.fillStyle=`rgba(204,41,54,${it.redOp})`;G.fill()}}
 else if(it.type==='pt'){
 const{proj:pr,vis,pr:r2,pg,pb,sz,shT,phase}=it;const sc=pr[2];
@@ -241,7 +213,6 @@ G.beginPath();G.arc(pr[0],pr[1],sz*sc*.6,0,Math.PI*2);G.fillStyle=`rgba(${Math.m
 else{G.beginPath();G.arc(pr[0],pr[1],sz*sc,0,Math.PI*2);G.fillStyle=`rgba(${r2},${pg},${pb},${.6*vis})`;G.fill();
 if(vis>.7&&it.dm>=5){G.beginPath();G.arc(pr[0],pr[1],sz*sc*2.2,0,Math.PI*2);G.fillStyle=`rgba(${r2},${pg},${pb},${.06*vis})`;G.fill()}}}}
 
-// 9D sparks
 if(ds>8.5){const fOp=Math.min(1,(ds-8.5)*2);const sc9=hr(DIM[9].c);
 const fr=sf>.4?220:sc9[0],fg=sf>.4?80:sc9[1],fb=sf>.4?90:sc9[2];
 for(const sp of sparks){sp.timer-=.016;
@@ -256,21 +227,20 @@ G.beginPath();G.arc(pr[0],pr[1],sp.sz*pr[2]*bright,0,Math.PI*2);G.fillStyle=`rgb
 G.beginPath();G.arc(pr[0],pr[1],sp.sz*pr[2]*.3*bright,0,Math.PI*2);G.fillStyle=`rgba(255,255,255,${.4*bright*fOp})`;G.fill()}
 if(sp.life>=sp.maxLife){sp.active=false;sp.timer=Math.random()*1.5+.2}}}}
 
-// 5D inflection ring
 if(ds>4.3){const ir=mR*(5.5/10);const pulse=Math.sin(tm*2)*.5+.5;const alpha=Math.min(1,(ds-4.3)*1.5)*.16*(.5+pulse*.5);
 const n=48;G.beginPath();for(let i=0;i<=n;i++){const a=(i/n)*Math.PI*2;const v2=p3(Math.cos(a)*ir,-5*mR*.032,Math.sin(a)*ir);i===0?G.moveTo(v2[0],v2[1]):G.lineTo(v2[0],v2[1])}G.closePath();
 G.strokeStyle=sf>.5?`rgba(204,41,54,${alpha})`:`rgba(59,175,92,${alpha})`;G.lineWidth=2;G.setLineDash([6,10]);G.stroke();G.setLineDash([])}
 
-// origin point
 const cp=p3(0,0,0);const cA=.55+Math.sin(tm*1.5)*.3;
 G.beginPath();G.arc(cp[0],cp[1],3.5*cp[2],0,Math.PI*2);G.fillStyle=shOn?`rgba(204,41,54,${cA})`:`rgba(255,255,255,${cA})`;G.fill();
 
-// HUD
 const sd=Math.max(0,Math.min(9,Math.round(ds)));
 if(mx>=0){dlEl.textContent=`${sd}D \u2014 ${DIM[sd].n}`;dlEl.style.color=shOn?'#CC2936':DIM[sd].c;
 dsEl.textContent=shOn?DIM[sd].sh:DIM[sd].s;dsEl.style.color=shOn?'#CC293699':DIM[sd].c+'BB'}
-else{dlEl.textContent='Drag to rotate \u00b7 Move inward to unfold';dlEl.style.color='var(--color-text-secondary)';dsEl.textContent='';dsEl.style.color=''}
+else{dlEl.textContent='Drag to rotate \u00b7 Move inward to unfold';dlEl.style.color='#888';dsEl.textContent='';dsEl.style.color=''}
 requestAnimationFrame(draw)}
 
 resize();addEventListener('resize',resize);requestAnimationFrame(draw);
 </script>
+</body>
+</html>
