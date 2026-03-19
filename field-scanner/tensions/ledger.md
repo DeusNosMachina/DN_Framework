@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-16*
+*Last updated: 2026-03-19*
 
 
 
@@ -88,3 +88,12 @@
 
 **Sources:**
 - [2026-03-16] Dual-Laws Model for a theory of artificial consciousness (strain: 5)
+
+### platform-mediated-topology-restructuring | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2 Five Forces, §2.5 Flow, §0.3 Axiom 3, §0.3 Axiom 12, §10 Field-to-field dynamics, §4 Shadow Dimension Map, §2 Dimensional Architecture
+**Description:** platform-mediated-topology-restructuring: Wu, Abebe & Mendler-Dunner (2025) demonstrate that a performative learning platform creates influence coupling between structurally disconnected agents — spillover effects that bypass the social network entirely. This is a collective-organization dynamic where a mediating system restructures the effective coupling topology between agents, manufacturing influence channels where none existed in the underlying network. DN's five-force model has no clean category for topology-restructuring mediation: it is not Resonance (no lateral peer binding), not Gravity (no meaning-density attractor), and exceeds Flow-as-transport (the platform creates new coupling, not just transporting existing influence). This compounds the force-model completeness pressure from pseudo-coherence, PDGC, and Kuramoto tensions. Additionally, the paper's formal apparatus (equilibrium proofs, convergence analysis, intervention response characterization) for recursive co-evolutionary dynamics exceeds DN's descriptive capacity for the same phenomena, adding to the formal-exceeding pattern. tension_id: platform-mediated-topology-restructuring
+
+**Sources:**
+- [2026-03-19] Opinion Dynamics in Learning Systems (strain: 5)

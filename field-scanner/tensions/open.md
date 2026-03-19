@@ -97,3 +97,13 @@
 **Kernel sections engaged:** §0.1 Domain Universality, §2 Dimensional Architecture, §4 Shadow Dimension Map, §3 Pillar Metric, §2.2 Nested Dimensionality, §1 Axiom 2 (Dimensional Progression)
 **Tension:** cognitive-decoupling-as-positive-structure: DLM (Ohmura & Kuniyoshi 2025) identifies cognitive decoupling from external stimuli as a defining feature of conscious systems — a positive, generative capacity for deliberate disconnection that enables autonomous internal state construction. DN's architecture treats increasing integration and connection as the direction of dimensional progression, with separation/disconnection assigned to Shadow (§4). If cognitive decoupling is structurally necessary for consciousness (not merely a shadow expression), DN must account for productive disconnection as a positive structural feature within its dimensional architecture rather than relegating all disconnection to the shadow pole. This also compounds the parsimony challenge: DLM achieves comprehensive consciousness-theoretic coverage through seven functional questions and dual-law dynamics without dimensional hierarchy, pillars, or forces — another alternative structural framework operating in territory DN claims. tension_id: cognitive-decoupling-as-positive-structure
 
+
+
+---
+
+### New Tensions — 2026-03-19
+
+**Source:** Opinion Dynamics in Learning Systems (strain: 5)
+**Kernel sections engaged:** §2 Five Forces, §2.5 Flow, §0.3 Axiom 3, §0.3 Axiom 12, §10 Field-to-field dynamics, §4 Shadow Dimension Map, §2 Dimensional Architecture
+**Tension:** platform-mediated-topology-restructuring: Wu, Abebe & Mendler-Dunner (2025) demonstrate that a performative learning platform creates influence coupling between structurally disconnected agents — spillover effects that bypass the social network entirely. This is a collective-organization dynamic where a mediating system restructures the effective coupling topology between agents, manufacturing influence channels where none existed in the underlying network. DN's five-force model has no clean category for topology-restructuring mediation: it is not Resonance (no lateral peer binding), not Gravity (no meaning-density attractor), and exceeds Flow-as-transport (the platform creates new coupling, not just transporting existing influence). This compounds the force-model completeness pressure from pseudo-coherence, PDGC, and Kuramoto tensions. Additionally, the paper's formal apparatus (equilibrium proofs, convergence analysis, intervention response characterization) for recursive co-evolutionary dynamics exceeds DN's descriptive capacity for the same phenomena, adding to the formal-exceeding pattern. tension_id: platform-mediated-topology-restructuring
+
