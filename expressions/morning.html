@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning — DN Concept to Canvas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a12; overflow: hidden; font-family: 'Courier New', monospace; }
+  canvas { display: block; }
+  #info-toggle {
+    position: fixed; bottom: 16px; right: 16px; z-index: 100;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.5); padding: 6px 12px; font-size: 11px;
+    cursor: pointer; border-radius: 3px; font-family: 'Courier New', monospace;
+    transition: all 0.3s;
+  }
+  #info-toggle:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+  #info-panel {
+    position: fixed; bottom: 48px; right: 16px; z-index: 100;
+    background: rgba(10,10,18,0.92); border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.55); padding: 16px 20px; font-size: 11px;
+    line-height: 1.7; max-width: 320px; border-radius: 4px;
+    display: none; backdrop-filter: blur(8px);
+  }
+  #info-panel .dim-tag { font-weight: bold; }
+  #info-panel .heart { color: #E84C88; }
+  #info-panel .truth { color: #3A86C8; }
+  #info-panel .nuance { color: #7B5EA7; }
+  #info-panel .shadow-tag { color: #CC2936; }
+  #mode-indicator {
+    position: fixed; top: 16px; left: 16px; z-index: 100;
+    color: rgba(255,255,255,0.3); font-size: 11px; font-family: 'Courier New', monospace;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.8s;
+  }
+  #shadow-indicator {
+    position: fixed; top: 34px; left: 16px; z-index: 100;
+    color: rgba(204,41,54,0); font-size: 10px; font-family: 'Courier New', monospace;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.6s;
+  }
+  #controls-hint {
+    position: fixed; bottom: 16px; left: 16px; z-index: 100;
+    color: rgba(255,255,255,0.18); font-size: 10px; font-family: 'Courier New', monospace;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<div id="mode-indicator">spark (1D)</div>
+<div id="shadow-indicator">shadow</div>
+<div id="controls-hint">
+  [1] spark &nbsp; [2] forge &nbsp; [3] field<br>
+  [S] shadow &nbsp; [mouse] you are the gravity
+</div>
+<button id="info-toggle" onclick="toggleInfo()">DN</button>
+<div id="info-panel">
+  <strong>Morning</strong> — DN Concept to Canvas<br><br>
+  <span class="dim-tag heart">Heart-led</span> / <span class="dim-tag truth">Truth-stabilized</span><br><br>
+  <strong>Dynamics:</strong><br>
+  &nbsp; Darkness ↔ Light <span class="dim-tag heart">(1D↔7D)</span><br>
+  &nbsp; Stillness ↔ Waking <span class="dim-tag truth">(4D↔5D)</span><br>
+  &nbsp; Solitude ↔ World <span class="dim-tag nuance">(5D↔6D)</span><br><br>
+  <strong>Shadow:</strong> <span class="shadow-tag">False Dawn (4D̅)</span><br>
+  <em>Repetition that traps rather than renews</em><br><br>
+  Dimensional home: 1D Spark → 5D Singularity<br>
+  Pillar: Visioning with rigor<br>
+  <em style="color:rgba(255,255,255,0.3)">You are the gravity.</em>
+</div>
+
+<canvas id="c"></canvas>
+
+<script>
+// ========================
+// MORNING — DN CONCEPT TO CANVAS
+// Heart-led / Truth-stabilized
+// ========================
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// --- STATE ---
+let mouse = { x: W / 2, y: H * 0.7 };
+let shadowMode = false;
+let currentMode = 'spark'; // spark, forge, field
+let modeTransition = 0;
+let targetModeTransition = 0;
+let globalTime = 0;
+let awakening = 0; // 0 = deep night, 1 = full morning — driven by mouse Y
+
+// DN dimensional colors
+const DIM_COLORS = {
+  '1D': '#E84C88', '2D': '#3A86C8', '3D': '#7B5EA7', '4D': '#4B0082',
+  '5D': '#2D8B46', '6D': '#E87C2E', '7D': '#D4A017', '8D': '#1A9E96', '9D': '#1A1A2E'
+};
+const SHADOW_RED = '#CC2936';
+
+// --- PARTICLES ---
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.horizonY = H * 0.62;
+    this.x = Math.random() * W;
+    this.y = this.horizonY + Math.random() * 4 - 2;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = -Math.random() * 1.2 - 0.2;
+    this.life = 1;
+    this.maxLife = 200 + Math.random() * 400;
+    this.age = 0;
+    this.size = Math.random() * 2.5 + 0.5;
+    this.warmth = Math.random(); // 0 = cool (truth), 1 = warm (heart)
+    this.dim = Math.random(); // dimensional position — low = grounded, high = emergent
+    this.driftPhase = Math.random() * Math.PI * 2;
+    this.connectionRadius = 30 + Math.random() * 60;
+    this.awake = false;
+    this.awakenTime = 0;
+  }
+  update(dt) {
+    this.age += dt;
+    this.life = 1 - (this.age / this.maxLife);
+    if (this.life <= 0) { this.reset(); return; }
+
+    // Dynamic 1: Darkness ↔ Light (mouse Y drives awakening globally)
+    let lightInfluence = awakening;
+
+    // Dynamic 2: Stillness ↔ Waking (proximity to mouse)
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let dist = Math.sqrt(dx * dx + dy * dy);
+    let wakingForce = Math.max(0, 1 - dist / 300);
+
+    if (wakingForce > 0.3 && !this.awake) {
+      this.awake = true;
+      this.awakenTime = globalTime;
+    }
+
+    // Gravity — you are the gravity
+    let gravityStr = 0.00015 * wakingForce;
+    if (shadowMode) {
+      // Shadow: gravity repels — false dawn pushes away
+      gravityStr *= -2.5;
+    }
+    this.vx += dx * gravityStr;
+    this.vy += dy * gravityStr * 0.5;
+
+    // Buoyancy — light rises
+    let buoyancy = -0.008 * lightInfluence * (1 + this.warmth);
+    if (shadowMode) buoyancy *= -0.6; // shadow: light sinks
+
+    this.vy += buoyancy;
+
+    // Organic drift
+    this.driftPhase += 0.01;
+    this.vx += Math.sin(this.driftPhase + this.y * 0.003) * 0.015;
+
+    // Mode-specific behavior
+    if (currentMode === 'spark') {
+      // Primal — raw upward impulse, minimal structure
+      this.vy -= 0.003;
+      this.vx *= 0.998;
+      this.vy *= 0.998;
+    } else if (currentMode === 'forge') {
+      // Stress test — binary collisions, friction
+      this.vx *= 0.99;
+      this.vy *= 0.99;
+      // Geometric tendency — particles seek vertical columns
+      let columnCenter = Math.round(this.x / 80) * 80;
+      this.vx += (columnCenter - this.x) * 0.0003 * lightInfluence;
+    } else if (currentMode === 'field') {
+      // Full emergence — clustering, connection
+      this.vx *= 0.995;
+      this.vy *= 0.995;
+    }
+
+    // Entropy — slow decay without attention (DN Axiom 9)
+    if (wakingForce < 0.05) {
+      this.life -= 0.0008;
+    }
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Wrap horizontal
+    if (this.x < -20) this.x = W + 20;
+    if (this.x > W + 20) this.x = -20;
+    if (this.y < -50) this.reset();
+    if (this.y > H + 20) this.reset();
+  }
+  draw() {
+    let alpha = this.life * (0.15 + awakening * 0.65);
+
+    // Color: blend from 1D pink through 7D gold based on awakening + warmth
+    let r, g, b;
+    if (shadowMode) {
+      // Shadow: colors drain toward red-gray, repetitive, trapped
+      let shadowPulse = Math.sin(globalTime * 0.003 + this.driftPhase) * 0.15;
+      r = 180 + shadowPulse * 40;
+      g = 50 + shadowPulse * 20;
+      b = 60 + shadowPulse * 15;
+      alpha *= 0.7;
+    } else {
+      // Creative morning — dimensional color journey
+      let colorProgress = this.warmth * 0.5 + awakening * 0.5;
+      // 1D pink → 6D orange → 7D gold
+      if (colorProgress < 0.4) {
+        let t = colorProgress / 0.4;
+        r = 232 + (232 - 232) * t;
+        g = 76 + (124 - 76) * t;
+        b = 136 + (46 - 136) * t;
+      } else if (colorProgress < 0.7) {
+        let t = (colorProgress - 0.4) / 0.3;
+        r = 232 + (212 - 232) * t;
+        g = 124 + (160 - 124) * t;
+        b = 46 + (23 - 46) * t;
+      } else {
+        let t = (colorProgress - 0.7) / 0.3;
+        r = 212 + (255 - 212) * t;
+        g = 160 + (210 - 160) * t;
+        b = 23 + (80 - 23) * t;
+      }
+    }
+
+    // Awake particles glow
+    let glowSize = this.size;
+    if (this.awake && !shadowMode) {
+      let awakeDuration = (globalTime - this.awakenTime) * 0.001;
+      let pulse = 1 + Math.sin(awakeDuration * 3) * 0.3 * Math.min(1, awakeDuration);
+      glowSize *= pulse;
+      alpha = Math.min(1, alpha * 1.4);
+
+      // Glow halo
+      let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowSize * 8);
+      gradient.addColorStop(0, `rgba(${r|0},${g|0},${b|0},${alpha * 0.15})`);
+      gradient.addColorStop(1, `rgba(${r|0},${g|0},${b|0},0)`);
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, glowSize * 8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Core
+    ctx.fillStyle = `rgba(${r|0},${g|0},${b|0},${alpha})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, glowSize, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Shadow mode: red outline (DN shadow visual register)
+    if (shadowMode) {
+      ctx.strokeStyle = `rgba(204,41,54,${alpha * 0.5})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+  }
+}
+
+// Dynamic 3: Solitude ↔ World — connections between nearby particles
+function drawConnections(particles) {
+  if (currentMode !== 'field') return;
+
+  let connectionAlpha = awakening * 0.12;
+  if (shadowMode) connectionAlpha *= 0.3;
+
+  for (let i = 0; i < particles.length; i++) {
+    if (!particles[i].awake) continue;
+    for (let j = i + 1; j < particles.length; j++) {
+      if (!particles[j].awake) continue;
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+      let threshold = particles[i].connectionRadius;
+      if (dist < threshold) {
+        let strength = (1 - dist / threshold) * connectionAlpha * particles[i].life * particles[j].life;
+        if (shadowMode) {
+          // Shadow connections: one-directional, extractive (6D̅ Anti-Bridge)
+          ctx.strokeStyle = `rgba(204,41,54,${strength})`;
+        } else {
+          // Creative: warm bridges — 6D orange
+          ctx.strokeStyle = `rgba(232,124,46,${strength})`;
+        }
+        ctx.lineWidth = strength * 2;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// --- HORIZON ---
+function drawHorizon() {
+  let horizonY = H * 0.62;
+
+  // Sky gradient — driven by awakening (Dynamic 1)
+  let skyGrad = ctx.createLinearGradient(0, 0, 0, horizonY);
+  if (shadowMode) {
+    // False dawn: the sky pretends to lighten but never truly does
+    let fakeBright = awakening * 0.15;
+    skyGrad.addColorStop(0, `rgba(20,10,15,1)`);
+    skyGrad.addColorStop(0.6, `rgba(${45 + fakeBright * 30|0},${15 + fakeBright * 10|0},${25 + fakeBright * 10|0},1)`);
+    skyGrad.addColorStop(1, `rgba(${80 + fakeBright * 40|0},${25 + fakeBright * 15|0},${30 + fakeBright * 10|0},1)`);
+  } else {
+    let a = awakening;
+    // Deep night → pre-dawn purple → dawn pink → morning gold
+    let topR = 10 + a * 40;
+    let topG = 10 + a * 30;
+    let topB = 18 + a * 50;
+    let midR = 30 + a * 150;
+    let midG = 15 + a * 80;
+    let midB = 40 + a * 60;
+    let botR = 50 + a * 200;
+    let botG = 30 + a * 130;
+    let botB = 50 + a * 40;
+    skyGrad.addColorStop(0, `rgb(${topR|0},${topG|0},${topB|0})`);
+    skyGrad.addColorStop(0.5, `rgb(${midR|0},${midG|0},${midB|0})`);
+    skyGrad.addColorStop(1, `rgb(${botR|0},${botG|0},${botB|0})`);
+  }
+  ctx.fillStyle = skyGrad;
+  ctx.fillRect(0, 0, W, horizonY + 2);
+
+  // Ground — dark, grounding, 1D territory
+  let groundGrad = ctx.createLinearGradient(0, horizonY, 0, H);
+  if (shadowMode) {
+    groundGrad.addColorStop(0, 'rgba(30,12,18,1)');
+    groundGrad.addColorStop(1, 'rgba(8,5,8,1)');
+  } else {
+    let a = awakening;
+    groundGrad.addColorStop(0, `rgb(${20 + a * 30|0},${12 + a * 15|0},${18 + a * 8|0})`);
+    groundGrad.addColorStop(1, `rgb(${8 + a * 8|0},${6 + a * 5|0},${10 + a * 4|0})`);
+  }
+  ctx.fillStyle = groundGrad;
+  ctx.fillRect(0, horizonY, W, H - horizonY);
+
+  // Horizon glow
+  if (!shadowMode) {
+    let glowIntensity = awakening * 0.6;
+    let horizonGlow = ctx.createRadialGradient(W / 2, horizonY, 0, W / 2, horizonY, W * 0.6);
+    horizonGlow.addColorStop(0, `rgba(232,76,136,${glowIntensity * 0.25})`); // 1D pink
+    horizonGlow.addColorStop(0.3, `rgba(232,124,46,${glowIntensity * 0.15})`); // 6D orange
+    horizonGlow.addColorStop(0.6, `rgba(212,160,23,${glowIntensity * 0.08})`); // 7D gold
+    horizonGlow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = horizonGlow;
+    ctx.fillRect(0, horizonY - H * 0.3, W, H * 0.6);
+  } else {
+    // Shadow: a dull red smear — the false dawn
+    let shadowGlow = ctx.createRadialGradient(W / 2, horizonY, 0, W / 2, horizonY, W * 0.4);
+    let pulse = 0.08 + Math.sin(globalTime * 0.001) * 0.03;
+    shadowGlow.addColorStop(0, `rgba(204,41,54,${pulse})`);
+    shadowGlow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = shadowGlow;
+    ctx.fillRect(0, horizonY - H * 0.2, W, H * 0.4);
+  }
+
+  // Horizon line — Truth structure
+  ctx.strokeStyle = shadowMode
+    ? `rgba(204,41,54,${0.08 + Math.sin(globalTime * 0.002) * 0.04})`
+    : `rgba(212,160,23,${0.05 + awakening * 0.15})`;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, horizonY);
+  ctx.lineTo(W, horizonY);
+  ctx.stroke();
+}
+
+// --- LIGHT RAYS (forge mode: geometric fire paths) ---
+function drawLightRays() {
+  if (currentMode !== 'forge' && currentMode !== 'field') return;
+  let horizonY = H * 0.62;
+  let rayCount = currentMode === 'forge' ? 12 : 6;
+  let rayAlpha = awakening * (currentMode === 'forge' ? 0.06 : 0.03);
+  if (shadowMode) rayAlpha *= 0.2;
+
+  for (let i = 0; i < rayCount; i++) {
+    let angle = (i / rayCount) * Math.PI - Math.PI / 2;
+    angle += Math.sin(globalTime * 0.0005 + i) * 0.05;
+    let length = H * 0.8;
+    let x1 = W / 2 + Math.cos(Math.PI + angle * 0.3) * W * 0.1;
+    let y1 = horizonY;
+    let x2 = x1 + Math.cos(angle - Math.PI / 2) * length;
+    let y2 = y1 + Math.sin(angle - Math.PI / 2) * length;
+
+    let grad = ctx.createLinearGradient(x1, y1, x2, y2);
+    if (shadowMode) {
+      grad.addColorStop(0, `rgba(204,41,54,${rayAlpha})`);
+      grad.addColorStop(1, 'rgba(204,41,54,0)');
+    } else {
+      grad.addColorStop(0, `rgba(232,124,46,${rayAlpha})`);
+      grad.addColorStop(0.5, `rgba(212,160,23,${rayAlpha * 0.5})`);
+      grad.addColorStop(1, 'rgba(212,160,23,0)');
+    }
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 2 + awakening * 3;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+}
+
+// --- PILLAR BALANCE (ambient, not dashboard) ---
+function drawPillarAmbient() {
+  // Heart warmth — bottom-left warm vignette
+  let heartPresence = 0.4 + awakening * 0.4;
+  if (shadowMode) heartPresence *= 0.2;
+  let heartGrad = ctx.createRadialGradient(0, H, 0, 0, H, H * 0.6);
+  heartGrad.addColorStop(0, `rgba(232,76,136,${heartPresence * 0.04})`);
+  heartGrad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = heartGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Truth clarity — top-right subtle blue
+  let truthPresence = 0.2 + awakening * 0.3;
+  if (shadowMode) truthPresence *= 0.15;
+  let truthGrad = ctx.createRadialGradient(W, 0, 0, W, 0, H * 0.5);
+  truthGrad.addColorStop(0, `rgba(58,134,200,${truthPresence * 0.03})`);
+  truthGrad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = truthGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Nuance depth — center subtle violet
+  if (currentMode === 'field') {
+    let nuancePresence = awakening * 0.15;
+    let nuanceGrad = ctx.createRadialGradient(W / 2, H * 0.4, 0, W / 2, H * 0.4, H * 0.5);
+    nuanceGrad.addColorStop(0, `rgba(123,94,167,${nuancePresence * 0.03})`);
+    nuanceGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = nuanceGrad;
+    ctx.fillRect(0, 0, W, H);
+  }
+}
+
+// --- SHADOW LOOP INDICATOR ---
+function drawShadowLoop() {
+  if (!shadowMode) return;
+  // 4D̅ Anti-Temporal: a tightening loop visible at horizon
+  let horizonY = H * 0.62;
+  let loopPhase = globalTime * 0.001;
+  let loopRadius = 40 + Math.sin(loopPhase) * 15;
+
+  ctx.strokeStyle = `rgba(204,41,54,${0.12 + Math.sin(loopPhase * 2) * 0.05})`;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let a = 0; a < Math.PI * 4; a += 0.05) {
+    let r = loopRadius * (1 - a / (Math.PI * 6));
+    let lx = W / 2 + Math.cos(a + loopPhase) * r;
+    let ly = horizonY + Math.sin(a + loopPhase) * r * 0.3;
+    if (a === 0) ctx.moveTo(lx, ly);
+    else ctx.lineTo(lx, ly);
+  }
+  ctx.stroke();
+}
+
+// --- INIT ---
+const NUM_PARTICLES = 280;
+const particles = [];
+for (let i = 0; i < NUM_PARTICLES; i++) {
+  particles.push(new Particle());
+}
+
+// Spawn particles from horizon periodically
+let spawnTimer = 0;
+
+// --- INPUT ---
+canvas.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  mouse.x = e.touches[0].clientX;
+  mouse.y = e.touches[0].clientY;
+}, { passive: false });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 's' || e.key === 'S') {
+    shadowMode = !shadowMode;
+    document.getElementById('shadow-indicator').style.color =
+      shadowMode ? 'rgba(204,41,54,0.6)' : 'rgba(204,41,54,0)';
+  }
+  if (e.key === '1') setMode('spark');
+  if (e.key === '2') setMode('forge');
+  if (e.key === '3') setMode('field');
+});
+
+function setMode(mode) {
+  currentMode = mode;
+  let label = {
+    'spark': 'spark (1D)',
+    'forge': 'forge (2D→7D)',
+    'field': 'field (5D→6D)'
+  }[mode];
+  document.getElementById('mode-indicator').textContent = label;
+}
+
+function toggleInfo() {
+  let panel = document.getElementById('info-panel');
+  panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+}
+
+// --- MAIN LOOP ---
+let lastTime = performance.now();
+
+function animate(now) {
+  let dt = Math.min(now - lastTime, 32);
+  lastTime = now;
+  globalTime = now;
+
+  // Dynamic 1: Darkness ↔ Light — mouse Y maps awakening
+  // High mouse = dark (top of screen = night sky), low mouse = bright (near horizon = dawn)
+  // Invert: moving mouse DOWN toward horizon = more light
+  let targetAwakening = Math.max(0, Math.min(1, (mouse.y) / (H * 0.62)));
+  awakening += (targetAwakening - awakening) * 0.02;
+
+  // Clear
+  ctx.clearRect(0, 0, W, H);
+
+  // Layers
+  drawHorizon();
+  drawLightRays();
+  drawPillarAmbient();
+  drawShadowLoop();
+
+  // Connections (Dynamic 3: Solitude ↔ World)
+  drawConnections(particles);
+
+  // Particles
+  for (let p of particles) {
+    p.update(dt * 0.06);
+    p.draw();
+  }
+
+  // Spawn new particles from horizon
+  spawnTimer += dt;
+  if (spawnTimer > 80) {
+    spawnTimer = 0;
+    // Find a dead or nearly-dead particle and reset it
+    for (let p of particles) {
+      if (p.life < 0.1) {
+        p.reset();
+        break;
+      }
+    }
+  }
+
+  // Latent shadow — even in creative mode, a slight instability
+  if (!shadowMode && Math.random() < 0.002) {
+    // Occasional micro-flicker — shadow is always present as potential
+    ctx.fillStyle = 'rgba(204,41,54,0.01)';
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
