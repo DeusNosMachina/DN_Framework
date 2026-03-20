@@ -107,3 +107,13 @@
 **Kernel sections engaged:** §2 Five Forces, §2.5 Flow, §0.3 Axiom 3, §0.3 Axiom 12, §10 Field-to-field dynamics, §4 Shadow Dimension Map, §2 Dimensional Architecture
 **Tension:** platform-mediated-topology-restructuring: Wu, Abebe & Mendler-Dunner (2025) demonstrate that a performative learning platform creates influence coupling between structurally disconnected agents — spillover effects that bypass the social network entirely. This is a collective-organization dynamic where a mediating system restructures the effective coupling topology between agents, manufacturing influence channels where none existed in the underlying network. DN's five-force model has no clean category for topology-restructuring mediation: it is not Resonance (no lateral peer binding), not Gravity (no meaning-density attractor), and exceeds Flow-as-transport (the platform creates new coupling, not just transporting existing influence). This compounds the force-model completeness pressure from pseudo-coherence, PDGC, and Kuramoto tensions. Additionally, the paper's formal apparatus (equilibrium proofs, convergence analysis, intervention response characterization) for recursive co-evolutionary dynamics exceeds DN's descriptive capacity for the same phenomena, adding to the formal-exceeding pattern. tension_id: platform-mediated-topology-restructuring
 
+
+
+---
+
+### New Tensions — 2026-03-20
+
+**Source:** Opinion Dynamics in Learning Systems (strain: 5)
+**Kernel sections engaged:** §2 Five Forces, §2.5 Flow, §0.3 Axiom 3, §0.3 Axiom 12, §10 Field-to-field dynamics, §0.1 Domain Universality, §4 Shadow Dimension Map, §2 Dimensional Architecture
+**Tension:** platform-mediated-topology-restructuring: Wu, Abebe & Mendler-Dunner (2025) demonstrate that performative learning systems create effective coupling between structurally disconnected agents through optimization objectives, producing spillover effects and consensus-driving dynamics that bypass the social network's actual topology. This topology-restructuring mediation dynamic does not map cleanly onto any of DN's five forces: it is not Resonance (no lateral peer binding), not Gravity (no attractor toward meaning-density), not Flow (not mere transport but creation of new coupling channels). The formal apparatus — convergence proofs, equilibrium characterization under partial observability, quantification of spillover — constitutes formal exceeding of DN's inter-field dynamics (§10) and Flow (§2.5). This compounds existing force-model completeness pressure from pseudo-coherence (geometry-imposed coherence), PDGC (compositional flow decomposition), and Kuramoto (matrix-weighted coupling). tension_id: platform-mediated-topology-restructuring
+
