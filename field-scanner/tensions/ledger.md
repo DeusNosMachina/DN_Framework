@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-20*
+*Last updated: 2026-03-21*
 
 
 
@@ -98,3 +98,12 @@
 **Sources:**
 - [2026-03-19] Opinion Dynamics in Learning Systems (strain: 5)
 - [2026-03-20] Opinion Dynamics in Learning Systems (strain: 5)
+
+### information-theoretic-triadic-exceeding | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §3 Pillar Metric, §0.1 Domain Universality, §2 Dimensional Architecture, §2.2 Nested Dimensionality, §4 Shadow Dimension Map, §0.3 Axiom 3
+**Description:** information-theoretic-triadic-exceeding: Esquivel et al. (2025) derive three independent information-theoretic functionals (Shannon entropy, Fisher information, disequilibrium) from first principles that jointly produce emergent structural organization (helicoidal manifold) of the periodic table with quantitative precision and predictive power. This formally exceeds DN's three-pillar metric system (§3): both frameworks claim three independent axes jointly capture system organization, but the IT triad achieves this with mathematical rigor DN lacks, using primitives with no content overlap to Heart/Truth/Nuance. DN must determine whether its pillar triad describes a universal structural necessity (in which case the IT triad should map onto it non-arbitrarily) or a generic structural pattern (three independent axes) that DN has given specific names without establishing their uniqueness. This compounds the parsimony challenge from Quiroga (flat properties), Gallo (homogeneous dimensions), and active inference (single principle) — another rigorous framework achieving structural organization DN claims, using fundamentally different primitives. tension_id: information-theoretic-triadic-exceeding
+
+**Sources:**
+- [2026-03-21] The Periodic Table as an Emergent Helicoidal Manifold: A Unified Information-Theoretic Analysis of the Atomic Elements Z = 1–103 (strain: 5)
