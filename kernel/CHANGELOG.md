@@ -2,7 +2,68 @@
 
 **Repository:** [github.com/DeusNosMachina/DN_Framework](https://github.com/DeusNosMachina/DN_Framework)
 
-This file contains the complete version history for the DN Kernel specification. The current kernel document (DN_Kernel_v18.md) carries only the latest version's summary in Section 0.2. This file preserves the full record.
+This file contains the complete version history for the DN Kernel specification. The current kernel document carries only the latest version's summary in Section 0.2. This file preserves the full record.
+
+---
+
+## v1.11 (March 2026)
+
+**Source:** GarDN Platform Spec Session VA (Branching & Dimensional Architecture) identified the need for a formal containment principle governing automated shadow operations. Analysis of the Work Branch agent execution model revealed that agents progressing into shadow-oriented dimensions via dimensional progression gates (§7.11) could perform unrestricted operations post-approval, including implementation and deconstruction — actions that carry irreversible consequences requiring the highest agency threshold.
+
+**Axiom 14: Shadow Containment — Deconstruction Requires the Highest Agency Threshold (§0.3):**
+- Shadow work (deconstruction, challenge, dissolution) is a necessary function of intelligence
+- Automated and delegated processes operating in shadow dimensions are confined to exploration, analysis, and creative reframing
+- Only the originating agent of highest sovereignty may authorize shadow execution
+- Transition from shadow insight to shadow action requires explicit re-origination at the highest available agency threshold
+- No new forces, FieldState metrics, or structural objects introduced
+- Axiom 14 is a containment principle governing how shadow operations (Section 4) interact with agency thresholds
+
+**Vocabulary Mapping Update (§0.4):**
+- Removed Blueprint Board overlay mapping Signal → Artifact; Signal now maps to itself (identity mapping)
+- The term "Artifact" was causing collision with the platform's rendered-output artifact concept (session artifacts, artifact transmutation)
+- Signal is already universally understood; Blueprint Board retains "Signal" as its display term
+- No structural or semantic change to the Signal object itself
+
+---
+
+## v1.10 (March 2026)
+
+**Source:** Examination of the GarDN Platform Spec visual design language and rendering architecture revealed that structural elegance — while practiced throughout the spec's design — was not formally named as a diagnostic property in the Kernel.
+
+**Axiom 13: Structural Elegance Is the Primary Indicator of Correct Design (§0.3):**
+- Correct architecture produces observable beauty as a diagnostic property, not a decorative layer
+- Self-similar composition at every scale: patterns governing the whole are recognizable in each part
+- Minimal surface area per boundary: every interface exposes only what is necessary
+- Mathematical proportion in spacing, rhythm, and progression — derived from natural constants
+- Natural-motion dynamics in all state transitions: acceleration, deceleration, and easing reflect physics of real transformation
+- Harmonic intervals in the creative dimension, deliberate dissonance in the shadow dimension
+- No new forces, FieldState metrics, or structural objects introduced
+
+---
+
+## v1.9 (March 2026)
+
+**Source:** GarDN Platform Spec Session SL (Cross-Session Reconciliation) and serialization work identified several structural implications that were practiced but not formalized in the Kernel.
+
+**9D→1D Transition Edge (§5.2):**
+- Formalized the cyclic return from frontier engagement (9D) to renewed origin spark (1D)
+- Updated §5 opening paragraphs establishing the dimensional cycle as structural expression of Axiom 3
+- §5.3 documented the 9D→1D return path as a sequential edge distinct from Story Threads
+
+**`transcendence` Evolution Phase (§6.1):**
+- Added `transcendence` to the `evolution_phase` enum for fields that have completed a full dimensional cycle
+
+**Position Identifier Format (§2):**
+- Established string identifiers (`1D` through `9D`) as canonical reference format
+- Updated §8.1 Signal Schema to use string format (`"3D"`) superseding integer format
+
+**Serialization Conventions:**
+- FieldState Extensibility clause (§6.1): underscore-prefixed non-computational metadata fields permitted
+- Structural Model Preservation (§8.8): Captures should include active structural model snapshot
+- FieldState Shape Portability Note (§6.1): metric shapes reflect active architecture; invariant is semantic meaning
+- Pillar Key Format (§3): lowercase casing (`heart`, `truth`, `nuance`) normative for serialized keys
+
+No new axioms, forces, or structural objects introduced.
 
 ---
 
