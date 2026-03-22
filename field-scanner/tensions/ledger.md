@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-21*
+*Last updated: 2026-03-22*
 
 
 
@@ -107,3 +107,12 @@
 
 **Sources:**
 - [2026-03-21] The Periodic Table as an Emergent Helicoidal Manifold: A Unified Information-Theoretic Analysis of the Atomic Elements Z = 1–103 (strain: 5)
+
+### helicoidal-manifold-triadic-parsimony | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1 Domain Universality, §3 Pillar Metric, §2 Dimensional Architecture, §0.3 Axiom 1, §0.3 Axiom 2, §2.4 Cross-Domain Progression
+**Description:** helicoidal-manifold-triadic-parsimony: Esquivel et al. (2025) demonstrate that the periodic table emerges as a helicoidal manifold in a 3D information-theoretic space (Shannon entropy, Fisher information, disequilibrium) — a mathematically rigorous, empirically complete triadic system that organizes a fundamental domain without dimensional hierarchy, pillar-like evaluation axes, or force dynamics. This compounds the parsimony challenge at the foundational level: DN's pillar triad (§3) is not the only rigorous three-axis organizational system, and the helicoidal manifold's continuous geometric structure resists dimensional mapping (§2) not through contradiction but through vacuity — the mapping adds no explanatory value. DN must either articulate what its architecture captures about fundamental physical organization that information-theoretic manifold analysis misses, or qualify the domain universality claim (§0.1) to exclude domains fully described by formal information-theoretic frameworks. tension_id: helicoidal-manifold-triadic-parsimony
+
+**Sources:**
+- [2026-03-22] The Periodic Table as an Emergent Helicoidal Manifold: A Unified Information-Theoretic Analysis of the Atomic Elements Z = 1–103 (strain: 6)
