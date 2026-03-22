@@ -4,7 +4,7 @@ subtitle: "The Constitution Between Philosophy and Code"
 author: "Travis Kahn"
 framework: "DN Framework"
 date: "March 2026"
-version: "1.10"
+version: "1.11"
 license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
 repository: "https://github.com/DeusNosMachina/DN_Framework"
 website: "https://dnframework.ai"
@@ -12,7 +12,7 @@ website: "https://dnframework.ai"
 
 # DN KERNEL
 
-**v1.10**
+**v1.11**
 
 *The Constitution Between Philosophy and Code*
 
@@ -109,9 +109,11 @@ The kernel does not privilege any domain. A DN-compliant cooking tool and a DN-c
 
 ### 0.2 Versioning
 
-This is v1.10. The complete version history (v0.1 through v1.10) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
+This is v1.11. The complete version history (v0.1 through v1.11) is maintained in the [CHANGELOG](https://github.com/DeusNosMachina/DN_Framework/blob/main/CHANGELOG.md).
 
-Changes in v1.10 (current): Added Axiom 13 (Structural Elegance) establishing that correct architecture produces observable beauty as a diagnostic property, not a decorative layer. Defines self-similar composition at every scale, minimal surface area per boundary, mathematical proportion derived from natural constants, natural-motion dynamics in state transitions, and harmonic/dissonant sensory expression aligned with creative/shadow orientation (Section 4). No new forces, FieldState metrics, or structural objects introduced. Axiom 13 is a design principle that governs how the existing architecture is expressed, not a new structural constraint.
+Changes in v1.11 (current): Added Axiom 14 (Shadow Containment) establishing that shadow work — deconstruction, challenge, dissolution — is a necessary function of intelligence, but that automated and delegated processes operating in shadow dimensions are confined to exploration, analysis, and creative reframing. Only the originating agent of highest sovereignty may authorize shadow execution; transition from shadow insight to shadow action requires explicit re-origination at the highest available agency threshold. No new forces, FieldState metrics, or structural objects introduced. Axiom 14 is a containment principle governing how shadow operations (Section 4) interact with agency thresholds. Vocabulary mapping update (Section 0.4): removed the Blueprint Board overlay mapping Signal → Artifact; Signal now maps to itself (identity mapping). The term "Artifact" was causing collision with the platform's rendered-output artifact concept (session artifacts, artifact transmutation). Signal is already universally understood; Blueprint Board retains "Signal" as its display term.
+
+Changes in v1.10: Added Axiom 13 (Structural Elegance) establishing that correct architecture produces observable beauty as a diagnostic property, not a decorative layer. Defines self-similar composition at every scale, minimal surface area per boundary, mathematical proportion derived from natural constants, natural-motion dynamics in state transitions, and harmonic/dissonant sensory expression aligned with creative/shadow orientation (Section 4). No new forces, FieldState metrics, or structural objects introduced. Axiom 13 is a design principle that governs how the existing architecture is expressed, not a new structural constraint.
 
 Changes in v1.9: Added 9D→1D Transition Edge (Section 5.2) formalizing the cyclic return from frontier engagement to renewed origin spark, with corresponding updates to Section 5 opening paragraphs establishing the dimensional cycle as the structural expression of Axiom 3, and to Section 5.3 documenting the 9D→1D return path as a sequential edge distinct from Story Threads. Added `transcendence` to the `evolution_phase` enum (Section 6.1) for fields that have completed a full dimensional cycle and are operating beyond their established structural frame, with derivation criteria from existing FieldState metrics. Added Position Identifier Format paragraph (Section 2) establishing string identifiers (`1D` through `9D`) as the canonical reference for dimensional positions in serialized objects, validation rules, and cross-system data exchange; updated Section 8.1 Signal Schema to use string format (`"3D"`) superseding the integer format from earlier versions. Added FieldState Extensibility clause (Section 6.1) permitting implementation layers to include underscore-prefixed, non-computational metadata fields in serialized FieldState objects. Added Structural Model Preservation best practice (Section 8.8) recommending that Captures include a snapshot of the active structural model's interpretive properties when the system supports multiple structural models. Added FieldState Shape Portability Note (Section 6.1) clarifying that FieldState metric shapes reflect the active architecture and that the invariant is semantic meaning and computation method, not element count. Added Pillar Key Format normative statement (Section 3) establishing lowercase casing (`heart`, `truth`, `nuance`) as normative for serialized pillar and quality-dimension keys. No new axioms, forces, or structural objects were introduced. All additions are formalization of existing structural implications, serialization conventions, and extensibility patterns.
 
@@ -163,6 +165,8 @@ Gravity and entropy are opposing temporal forces (construction vs. decay). Reson
 
 **AXIOM 13: Structural Elegance Is the Primary Indicator of Correct Design.** A well-structured intelligence system exhibits beauty — not as ornament, but as evidence that its architecture is correctly organized. Self-similar composition at every scale: the patterns that govern the whole are recognizable in each constituent part, just as biological systems repeat structural motifs from cellular to organismic to ecological levels. Minimal surface area per boundary: every interface exposes only what is necessary, and the simplicity of the boundary is proportional to the depth of the design behind it. Mathematical proportion in spacing, rhythm, and progression — derived from natural constants, not arbitrary choice. Natural-motion dynamics in all transitions between states: nothing in a well-structured system moves linearly; acceleration, deceleration, and easing reflect the physics of real transformation. Sonic and sensory expression follows the same principle: harmonic intervals in the creative dimension, deliberate dissonance in the shadow dimension, where the departure from consonance is itself the signal (see Section 4, Shadow Symmetry). Structural elegance is not a layer applied after design is complete. It is the diagnostic surface of correct architecture. When the structure is right, beauty is the observable result. When beauty is absent, the structure warrants examination.
 
+**AXIOM 14: Shadow Containment — Deconstruction Requires the Highest Agency Threshold.** Shadow work is a necessary function of intelligence — deconstruction, challenge, and dissolution create space for new structure. Without shadow, systems accumulate dead weight, resist necessary change, and mistake preservation for health (see Axiom 5, Section 4). However, the execution of shadow intent — the act of dismantling, dissolving, or redirecting existing structure — carries irreversible consequences that demand the highest available agency threshold. Automated and delegated processes operating in shadow dimensions are confined to exploration, analysis, and creative reframing. They may identify what needs to be deconstructed, articulate why, and propose what could replace it — but they may not initiate the deconstruction itself. Only the originating agent of highest sovereignty may authorize shadow execution. Transition from shadow insight to shadow action requires explicit re-origination at the highest available agency threshold: the insight must be restated as intent by the agent who bears responsibility for the consequences. This is not a limitation on shadow work. It is the recognition that destruction, like creation, must be owned — and that the distance between seeing what should fall and deciding to push it is the space where wisdom operates.
+
 ### 0.4 Vocabulary Mapping Reference
 
 The Kernel uses domain-agnostic structural terms for its core objects. Each implementation maps its own vocabulary to these Kernel terms. The following table documents the Kernel's universal vocabulary alongside its structural role and the first implementation mapping (Blueprint Board product).
@@ -175,7 +179,7 @@ The Kernel uses domain-agnostic structural terms for its core objects. Each impl
 | **Domain** | Major structural division of a field | Section |
 | **Region** | Bounded context within a domain; carries prompt and dimensional constraints | Zone |
 | **Process** | Unit of structured activity that produces Signals | Exercise |
-| **Signal** | Atomic intelligence unit; the fundamental element | Artifact |
+| **Signal** | Atomic intelligence unit; the fundamental element | Signal |
 | **Link** | Connection between any two structural elements; carries semantic rationale | Bridge |
 | **Capture** | Immutable state snapshot of a Field at a labeled inflection point | Snapshot |
 | **Template** | Structural blueprint for Field instantiation | Template |
@@ -1779,4 +1783,4 @@ When two fields interact, the interaction itself generates observable field heal
 
 ---
 
-*DN Kernel v1.10 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
+*DN Kernel v1.11 · © Travis Kahn · [DN Framework](https://dnframework.ai) · [GitHub](https://github.com/DeusNosMachina/DN_Framework) · Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)*
