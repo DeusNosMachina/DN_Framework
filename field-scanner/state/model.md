@@ -239,3 +239,13 @@ No update warranted. The paper generates moderate strain (4) through formal exce
 
 No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds another data point to the existing falsifiability-of-dimensional-mapping tension (DN can narrate iterative rehabilitation through its vocabulary, but the mapping is not forced and the spiral model is a well-established generic methodology, not an independent confirmation of DN's specific structural claims). The selection rationale's framing of this as validating Axiom 3 was assessed as a vocabulary-overlap trap per Charter §5.
 
+
+
+---
+
+### Cycle Update — 2026-03-27
+
+**“We’re like peers now”: academic identity development of international postgraduate taught students in Scotland** (validation, strain: 2, validation: 1)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds another data point to the existing falsifiability-of-dimensional-mapping tension (from GPIF, death reflection, aging awareness, and intercultural sensitivity studies): DN's dimensional progression and pillar structure can be projected onto this qualitative developmental study, but the mapping is not forced and the same findings are equally compatible with multiple non-DN frameworks. The selection rationale's framing of three inductively derived themes as independently mirroring DN's three-pillar structure was assessed as a vocabulary-overlap trap per Charter §5.
+
