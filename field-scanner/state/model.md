@@ -249,3 +249,21 @@ No update warranted. The paper does not generate sufficient strain or validation
 
 No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds another data point to the existing falsifiability-of-dimensional-mapping tension (from GPIF, death reflection, aging awareness, and intercultural sensitivity studies): DN's dimensional progression and pillar structure can be projected onto this qualitative developmental study, but the mapping is not forced and the same findings are equally compatible with multiple non-DN frameworks. The selection rationale's framing of three inductively derived themes as independently mirroring DN's three-pillar structure was assessed as a vocabulary-overlap trap per Charter §5.
 
+
+
+---
+
+### Cycle Update — 2026-03-28
+
+**Reimagining Piaget: Technology, social dynamics, and changing patterns of cognitive and emotional development in the 21st century — A perspective review** (strain, strain: 3, validation: 2)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It adds a minor data point to the existing falsifiability-of-dimensional-mapping tension (from GPIF, death reflection, aging awareness, and intercultural sensitivity studies): DN's dimensional architecture accommodates non-linear, context-dependent, technologically scaffolded development without contradiction, reinforcing the need for falsification criteria. The selection rationale's premise that non-linear development challenges DN's sequential architecture was assessed and found to target a claim DN does not make (sequential climbing) rather than the claim DN does make (structural mapping).
+
+**Targeting in Multi-Criteria Decision Making** (strain, strain: 2, validation: 0)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. The selection rationale's framing of axiomatic MCDM targeting as a competing structural architecture was assessed as a category error — formal decision-theoretic optimization tools operate at a different level of abstraction than DN's structural account of intelligence organization. The paper adds a negligible data point to the existing formal-exceeding pattern (mathematical frameworks achieving precise results where DN operates narratively) but does not constitute a new tension or confirmed parallel.
+
+**The spiral model as a methodological basis for the rehabilitation of individuals with cognitive disorders living in a social psychoneurological residential institution** (validation, strain: 2, validation: 1)
+
+No update warranted. The paper does not generate sufficient strain or validation to modify the standing model. It reinforces the existing falsifiability-of-dimensional-mapping tension (from GPIF, death reflection, aging awareness studies): DN's recursive architecture can be projected onto this iterative rehabilitation model, but the mapping is not forced and the same findings are equally compatible with multiple non-DN frameworks. The selection rationale's framing of the spiral model as validating 8D Recursion was assessed as a vocabulary-overlap trap per Charter §5 — Boehm's iterative spiral is a generic engineering paradigm, not an independent confirmation of DN's specific structural claims about recursion.
+
