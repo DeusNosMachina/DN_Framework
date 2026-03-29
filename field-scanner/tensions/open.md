@@ -137,3 +137,13 @@
 **Kernel sections engaged:** §0.1 Domain Universality, §3 Pillar Metric, §2 Dimensional Architecture, §0.3 Axiom 1, §0.3 Axiom 2, §2.4 Cross-Domain Progression
 **Tension:** helicoidal-manifold-triadic-parsimony: Esquivel et al. (2025) demonstrate that the periodic table emerges as a helicoidal manifold in a 3D information-theoretic space (Shannon entropy, Fisher information, disequilibrium) — a mathematically rigorous, empirically complete triadic system that organizes a fundamental domain without dimensional hierarchy, pillar-like evaluation axes, or force dynamics. This compounds the parsimony challenge at the foundational level: DN's pillar triad (§3) is not the only rigorous three-axis organizational system, and the helicoidal manifold's continuous geometric structure resists dimensional mapping (§2) not through contradiction but through vacuity — the mapping adds no explanatory value. DN must either articulate what its architecture captures about fundamental physical organization that information-theoretic manifold analysis misses, or qualify the domain universality claim (§0.1) to exclude domains fully described by formal information-theoretic frameworks. tension_id: helicoidal-manifold-triadic-parsimony
 
+
+
+---
+
+### New Tensions — 2026-03-29
+
+**Source:** Uncertainty Principle of Dual Entropy and the Minimum Accessible Entropy-Area: Experimental Validation in Irradiated Reactor Pressure Vessel Steels (strain: 6)
+**Kernel sections engaged:** §2 Five Forces, §0.3 Axiom 12 (Flow), §2.5 Flow, §0.1 Domain Universality, §2 Dimensional Architecture
+**Tension:** dual-entropy-geometric-constraint: UFODE (Wu 2025) demonstrates that entropy has internal compositional geometry — structurally distinct entropy measures (structural S_E, optical S_O) coupled through a product inequality (S_E × S_O ≥ C_min) that generates a geometrically bounded inaccessible region (MAEA) in entropy configuration space. This compounds existing tensions (FAURAS hard impossibility, PDGC compositional flow structure) in a specific way: not only does Entropy create hard limits, but the limits emerge from internal coupling between entropy components that DN's unitary Entropy force cannot express. Additionally, the constraint is stage-dependent (non-binding early, binding near failure), implying Entropy has internal phase structure — qualitatively different constraining behavior at different system states — that DN's continuous-force treatment cannot capture. The five-force model faces pressure to either decompose Entropy into sub-components or acknowledge that force-level description misses structurally generative internal architecture within individual forces. tension_id: dual-entropy-geometric-constraint
+

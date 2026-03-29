@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-22*
+*Last updated: 2026-03-29*
 
 
 
@@ -116,3 +116,12 @@
 
 **Sources:**
 - [2026-03-22] The Periodic Table as an Emergent Helicoidal Manifold: A Unified Information-Theoretic Analysis of the Atomic Elements Z = 1–103 (strain: 6)
+
+### dual-entropy-geometric-constraint | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2 Five Forces, §0.3 Axiom 12 (Flow), §2.5 Flow, §0.1 Domain Universality, §2 Dimensional Architecture
+**Description:** dual-entropy-geometric-constraint: UFODE (Wu 2025) demonstrates that entropy has internal compositional geometry — structurally distinct entropy measures (structural S_E, optical S_O) coupled through a product inequality (S_E × S_O ≥ C_min) that generates a geometrically bounded inaccessible region (MAEA) in entropy configuration space. This compounds existing tensions (FAURAS hard impossibility, PDGC compositional flow structure) in a specific way: not only does Entropy create hard limits, but the limits emerge from internal coupling between entropy components that DN's unitary Entropy force cannot express. Additionally, the constraint is stage-dependent (non-binding early, binding near failure), implying Entropy has internal phase structure — qualitatively different constraining behavior at different system states — that DN's continuous-force treatment cannot capture. The five-force model faces pressure to either decompose Entropy into sub-components or acknowledge that force-level description misses structurally generative internal architecture within individual forces. tension_id: dual-entropy-geometric-constraint
+
+**Sources:**
+- [2026-03-29] Uncertainty Principle of Dual Entropy and the Minimum Accessible Entropy-Area: Experimental Validation in Irradiated Reactor Pressure Vessel Steels (strain: 6)
