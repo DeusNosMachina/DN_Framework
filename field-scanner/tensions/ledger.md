@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-03-29*
+*Last updated: 2026-03-31*
 
 
 
@@ -125,3 +125,12 @@
 
 **Sources:**
 - [2026-03-29] Uncertainty Principle of Dual Entropy and the Minimum Accessible Entropy-Area: Experimental Validation in Irradiated Reactor Pressure Vessel Steels (strain: 6)
+
+### context-governance-operator-decomposition | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §2.5 Flow, §0.3 Axiom 12, §2 Five Forces, §3 Pillar Metric, §4 Shadow Dimension Map, §0.3 Axiom 5, §0.1 Domain Universality, §2 Dimensional Architecture
+**Description:** context-governance-operator-decomposition: Wu & Gartner (2025) demonstrate that contextual space governance in LLM systems requires a decomposition of information transport into seven qualitatively distinct cartographic operators (reconnaissance, selection, simplification, aggregation, projection, displacement, layering), each with specific structural properties, failure modes, and zone-transition scopes. DN's Flow transport principle (§2.5, Axiom 12) treats transport as undifferentiated, providing no apparatus to distinguish between these structurally distinct modes of contextual governance. This compounds the flow-compositional-structure tension (PDGC) and pattern-entropy-causal-asymmetry tension (DPE): the accumulating pattern across multiple papers shows that information transport/flow has rich internal compositional structure that DN's single-concept treatment cannot express. Additionally, the paper's entropy accumulation analysis shows architecture-specific entropy patterns requiring operator-specific compensations, adding specificity to the entropy-event-horizon open question — entropy's constraining character depends on the structural properties of the system in which it accumulates, not just its magnitude. tension_id: context-governance-operator-decomposition
+
+**Sources:**
+- [2026-03-31] Context Cartography: Toward Structured Governance of Contextual Space in Large Language Model Systems (strain: 5)
