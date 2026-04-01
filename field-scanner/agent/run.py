@@ -5,9 +5,9 @@ DN Field Scanner — Autonomous Research Agent
 
 Daily cycle:
   1. Fetch recent papers from Semantic Scholar across target domains
-  2. Select 2 strain candidates + 1 validation candidate
-  3. Interpret each through the DN Framework's dimensional architecture
-  4. Score on strain/validation axes (0–10 each)
+  2. Select 1 strain + 1 lens + 1 high-dimensional candidate
+  3. Interpret each through the DN Framework's dimensional architecture (lens test)
+  4. Score on strain/lens-yield axes (0–10 each)
   5. Update state/model.md and tensions/open.md
   6. Output cycle file to cycles/YYYY-MM-DD.md
   7. Append scores to scoring/scores.jsonl
@@ -180,7 +180,7 @@ def classify_domain(paper: dict) -> str:
 # ---------------------------------------------------------------------------
 
 def build_selection_prompt(papers: list[dict]) -> str:
-    """Build the prompt that asks Claude to select 2 strain + 1 validation candidates."""
+    """Build the prompt that asks Claude to select 1 strain + 1 lens + 1 high-dimensional candidate."""
     paper_summaries = []
     for i, p in enumerate(papers):
         authors = ", ".join(a.get("name", "Unknown") for a in (p.get("authors") or [])[:3])
@@ -197,32 +197,37 @@ def build_selection_prompt(papers: list[dict]) -> str:
 
     papers_block = "\n".join(paper_summaries)
 
-    return f"""You are the selection engine for the DN Field Scanner, an autonomous research system that stress-tests the DN Framework against external academic research.
+    return f"""You are the selection engine for the DN Field Scanner, an autonomous research system that tests whether the DN Framework functions as a useful structural LENS across domains.
 
 Below are {len(papers)} recent papers. Select exactly 3:
-- 2 STRAIN candidates: papers most likely to CHALLENGE the DN Framework. Prioritize:
-  • Research that formalizes something DN handles informally (e.g., mathematical models exceeding DN's metric precision)
-  • Findings suggesting intelligence does NOT follow a dimensional progression
+- 1 STRAIN candidate: the paper most likely to CHALLENGE the DN Framework. Prioritize:
+  • Research that formalizes something DN handles informally (formal exceeding)
+  • Findings suggesting intelligence does NOT follow dimensional organization
   • Evidence of successful frameworks using fundamentally different structural primitives
   • Cross-disciplinary integration achieved without anything resembling pillars, dimensions, or fields
-- 1 VALIDATION candidate: the paper most likely to INDEPENDENTLY CONFIRM DN's structural claims. Prioritize:
-  • Research independently arriving at three-axis evaluation systems
-  • Evidence of natural dimensional progression in learning, development, or growth
-  • Findings about information fidelity loss in transmission (flow parallels)
-  • Studies confirming recursive refinement outperforms linear accumulation
+- 1 LENS candidate: the paper most likely to yield STRUCTURAL INSIGHT when viewed through DN's dimensional architecture. Prioritize:
+  • Research on multi-phase or multi-stage phenomena where dimensional mapping should add explanatory value
+  • Papers dealing with hierarchical organization, emergence, or phase transitions
+  • Findings where the paper's own framing seems incomplete and DN's lens might reveal unnoticed structure
+  • Studies where Heart/Truth/Nuance decomposition could illuminate what the paper treats as a single dimension
+- 1 HIGH-DIMENSIONAL candidate: the paper most likely to engage UNDERSERVED framework territory. Prioritize:
+  • Research engaging with Connection (6D), Manifestation (7D), Recursion (8D), or Frontier (9D)
+  • Papers where Heart pillar leads (meaning, purpose, motivation as primary analytical axis)
+  • Shadow engagement: absence, hesitancy, structural inversions, productive disconnection
+  • Papers from domains where DN's unique contributions (shadow symmetry, five forces, pillar triad) have the most traction
 
 THE DN FRAMEWORK IN BRIEF (for selection context):
-- 1D–9D dimensional progression: Spark → Reaction → Context → Temporal → Singularity → Connection → Manifestation → Recursion → Frontier
+- 1D–9D dimensional architecture: Spark → Reaction → Context → Temporal → Singularity → Connection → Manifestation → Recursion → Frontier
 - Three pillar metrics: Heart (motivational force), Truth (structural integrity), Nuance (contextual sensitivity)
 - Five forces: Gravity, Resonance, Transmutation, Entropy, Shadow
 - Flow as transport principle (not a sixth force)
-- Domain universality claim: the architecture does not change across domains
+- Meta-positional claim: DN is a structural lens for decomposing how intelligence organizes across ANY domain
 
 Respond ONLY with valid JSON (no markdown, no explanation):
 {{
-  "strain_1": {{ "index": <int>, "rationale": "<why this paper strains DN>" }},
-  "strain_2": {{ "index": <int>, "rationale": "<why this paper strains DN>" }},
-  "validation": {{ "index": <int>, "rationale": "<why this paper validates DN>" }}
+  "strain": {{ "index": <int>, "rationale": "<why this paper strains DN>" }},
+  "lens": {{ "index": <int>, "rationale": "<why DN's lens should yield insight for this paper>" }},
+  "high_dimensional": {{ "index": <int>, "rationale": "<what underserved DN territory this paper engages>" }}
 }}
 
 PAPERS:
@@ -231,7 +236,7 @@ PAPERS:
 
 def select_papers(papers: list[dict], client: anthropic.Anthropic) -> list[dict]:
     """
-    Use Claude to select 2 strain candidates and 1 validation candidate.
+    Use Claude to select 1 strain + 1 lens + 1 high-dimensional candidate.
     Returns list of 3 paper dicts with selection metadata attached.
     """
     if len(papers) < 3:
@@ -268,7 +273,7 @@ def select_papers(papers: list[dict], client: anthropic.Anthropic) -> list[dict]
     selection = json.loads(raw)
 
     selected = []
-    for role_key, role_label in [("strain_1", "strain"), ("strain_2", "strain"), ("validation", "validation")]:
+    for role_key, role_label in [("strain", "strain"), ("lens", "lens"), ("high_dimensional", "high-dimensional")]:
         idx = selection[role_key]["index"]
         paper = papers_for_selection[idx].copy()
         paper["_selection_role"] = role_label
@@ -372,16 +377,14 @@ def build_interpretation_prompt(paper: dict, dn_context: str, current_state: str
     elif arxiv:
         source_url = f"https://arxiv.org/abs/{arxiv}"
 
-    return f"""You are the interpretive engine for the DN Field Scanner. Your job is to honestly assess how this paper relates to the DN Framework's structural claims. Prioritize honesty about the framework's limits over smooth narrative. Comfortable coherence is failure. Productive tension is success.
+    return f"""You are the interpretive engine for the DN Field Scanner v3. Your job is to apply DN's dimensional architecture as a LENS to this paper's findings and honestly assess whether the lens produces structural insight the paper's own framing does not articulate.
 
-CRITICAL: You have been provided an Interpretation Charter alongside the Kernel and Glossary. The Charter teaches you HOW to read the Kernel. Follow its guidance on:
-- What "dimensional progression" actually means (structural mapping, NOT sequential climbing)
-- Nested dimensionality and the depth defense against falsifiability claims
-- The maturity weighting of Kernel sections (foundational vs. recent)
-- The "describing DN back to itself" trap (narrative flexibility ≠ validation)
-- What genuine strain looks like vs. vocabulary differences
-- Force model interpretation (dynamics vs. mechanisms)
-- The entropy event horizon open question
+CRITICAL: You have been provided an Interpretation Charter (v3 — The Lens Charter) alongside the Kernel and Glossary. The Charter teaches you HOW to apply DN as a lens. Follow its guidance on:
+- The Lens Test (§1): perform BOTH a Native Reading and a Lens Application. The Lens Yield is the delta.
+- The "describing DN back to itself" trap (§6): narrating findings in DN vocabulary is NOT lens yield
+- What genuine strain looks like (§7): structural incompatibility, formal exceeding, successful alternatives
+- Embodiment vs. Application (§9): think THROUGH the architecture, not WITH the vocabulary
+- The Meta-Positional Claim (§13): DN is a lens, not a competing theory
 
 {dn_context}
 
@@ -395,34 +398,38 @@ Selection role: {role} (rationale: {selection_rationale})
 URL: {source_url}
 Abstract: {abstract}
 
-INTERPRETATION PRINCIPLES:
-1. DN is descriptive, not prescriptive. The 1D-9D architecture is a MAP OF STRUCTURE, not a sequential climbing mandate. Ask "does this system resist MAPPING?" not "does this system fail to PROGRESS?"
-2. Domain universality is the big claim. Does this paper's domain exhibit dimensional structure when mapped, or does the mapping produce contradictions?
-3. Pillar independence matters. Papers showing evaluation systems collapsing into fewer axes (or requiring more) are structurally significant.
-4. Mathematical rigor outranks narrative elegance. If this paper formalizes something DN handles only narratively, that's productive tension — note it as "formal exceeding."
-5. Shadow is load-bearing. Papers engaging with absence, hesitancy, uncertainty, negative space test Section 4 of the Kernel. Papers treating absence as mere deficiency (to fix) create tension; papers treating absence as structurally generative (shaping the system) align.
-6. Recursion is the mechanism. Papers showing recursive approaches outperform linear ones validate Axiom 3. Papers showing linear approaches working fine strain it.
-7. Forces describe DYNAMICS, not mechanisms. A paper showing coherence through a novel mechanism is not contradicting Resonance unless the structural DYNAMIC (lateral binding between peer intelligence) is absent. Ask: "Is the dynamic absent, or just the expected mechanism?"
-8. Maturity matters. Strain against foundational claims (dimensional architecture, pillar independence, domain universality) is categorically more significant than strain against recent formalizations (five-force naming, transport properties, thermodynamic regime note). Note which you are testing.
+INTERPRETATION INSTRUCTIONS:
+
+STEP 1 — NATIVE READING: Read the paper on its own terms. What does it claim? What structural framework does it use? What does its own framing illuminate? What does its own framing miss or leave implicit?
+
+STEP 2 — LENS APPLICATION: Now read the paper through DN's dimensional architecture. Map its findings onto dimensional positions. Apply the pillar triad. Identify forces operating. Look for shadow structures. Assess dimensional engagement.
+
+STEP 3 — LENS YIELD ASSESSMENT: What is the delta between steps 1 and 2? Does DN's lens reveal structural relationships the paper's own framing does not articulate? If so, name them specifically.
 
 SCORING RULES:
 - Strain (0–10): How much this paper resists DN interpretation. Scores above 5 require identification of a specific DN claim (Kernel section, axiom, or invariant) that is challenged.
-- Validation (0–10): How specifically this paper validates DN — not just consistency but structural specificity. Scores above 3 require articulable structural specificity: name WHICH axiom, invariant, or architectural claim the paper independently confirms. "Compatible with DN" is not validation. Before scoring above 3, ask: "If DN did not exist, would I still recognize this paper as arriving at the same structural principle?"
+- Lens Yield (0–10): How much structural insight DN's lens produces BEYOND the paper's own framing.
+  0 = DN adds nothing. 3 = DN can narrate but adds no new clarity (the trap). 5 = DN reveals a structural relationship the paper doesn't name. 7 = DN reorganizes findings to produce genuinely new insight. 10 = DN illuminates structural properties the paper's methodology missed entirely.
+  Scores above 3 require articulating WHAT DN revealed that the paper's framing missed. Scores above 5 require identifying the specific DN architectural element that produced the insight.
+- Independent Confirmation: If the paper independently arrives at a structural principle DN specifically claims, note it. This is a bonus signal, not the primary metric.
 
 Respond ONLY with valid JSON (no markdown fences, no explanation outside the JSON):
 {{
-  "interpretation": "<Your full interpretive analysis. 3-5 paragraphs. Be specific about dimensional mapping, pillar engagement, force dynamics. Identify exactly where the framework handles this paper well and where it strains or fails. Follow the Charter's guidance throughout.>",
+  "native_reading": "<2-3 paragraphs: the paper's claims, framework, findings, and what its own framing illuminates and misses.>",
+  "lens_application": "<2-3 paragraphs: the paper's findings viewed through DN's architecture. Dimensional mapping, pillar engagement, force dynamics, shadow structures.>",
+  "lens_delta": "<1-2 paragraphs: what DN's lens revealed that the native reading did not. Be specific. If nothing, say so honestly.>",
   "strain": <integer 0-10>,
-  "validation": <integer 0-10>,
+  "lens_yield": <integer 0-10>,
   "strain_rationale": "<What specific DN claim is challenged and how. If strain <= 5, what general tension exists. If strain > 5, name the Kernel section/axiom.>",
-  "validation_rationale": "<What specific DN structural principle is independently confirmed. If validation <= 3, note that compatibility alone is not validation. If validation > 3, name the axiom/invariant.>",
-  "maturity_target": "<Which maturity tier does this paper's strain/validation primarily engage? One of: 'foundational', 'mature', 'recent'. See Charter §4.>",
-  "dn_sections_engaged": ["<list of Kernel sections, e.g., '§0.3 Axiom 3', '§3 Pillar Metric', '§4.1 Shadow Dimension Map'>"],
+  "lens_yield_rationale": "<What structural insight DN's lens produced that the paper's own framing did not. If lens_yield <= 3, note that narration is not insight.>",
+  "independent_confirmation": "<Which DN axiom/invariant the paper independently confirms, or null if none. Apply the v2 threshold: 'If DN did not exist, would I still recognize this?'>",
+  "maturity_target": "<Which maturity tier does this primarily engage? One of: 'foundational', 'mature', 'recent'.>",
+  "dn_sections_engaged": ["<list of Kernel sections>"],
   "dimensions_engaged": ["<list of dimensions engaged, e.g., '2D', '5D', '8D'>"],
   "pillars_engaged": ["<subset of: 'Heart', 'Truth', 'Nuance'>"],
   "forces_engaged": ["<subset of: 'Gravity', 'Resonance', 'Transmutation', 'Entropy', 'Shadow', 'Flow'>"],
-  "tension_generated": "<Description of a new tension to add to the tension ledger, or null if none. Include a short tension_id slug for tracking, e.g., 'entropy-impossibility-conditions'>",
-  "model_update": "<Brief description of any update warranted to state/model.md, or null if none>"
+  "tension_generated": "<Description of a new tension, or null. Include a tension_id slug.>",
+  "model_update": "<Brief description of any update warranted to state/model.md, or null.>"
 }}"""
 
 
@@ -491,10 +498,10 @@ def update_model_state(results: list[dict]) -> None:
         title = r["paper"]["title"]
         role = r.get("selection_role", "unknown")
         strain = r.get("strain", 0)
-        validation = r.get("validation", 0)
+        lens_yield = r.get("lens_yield", 0)
         update_text = r["model_update"]
         section += (
-            f"**{title}** ({role}, strain: {strain}, validation: {validation})\n\n"
+            f"**{title}** ({role}, strain: {strain}, lens_yield: {lens_yield})\n\n"
             f"{update_text}\n\n"
         )
 
@@ -694,17 +701,16 @@ def write_cycle_file(results: list[dict]) -> Path:
     cycle_path = CYCLES_DIR / f"{TODAY}.md"
 
     lines = [
-        f"# DN Field Scanner — Cycle {TODAY}\n",
+        f"# DN Field Scanner — Cycle {TODAY} (v3)\n",
         f"\n**Papers processed:** {len(results)}\n",
-        f"**Strain candidates:** {sum(1 for r in results if r.get('selection_role') == 'strain')}",
-        f"**Validation candidates:** {sum(1 for r in results if r.get('selection_role') == 'validation')}",
+        f"**Selection:** {', '.join(r.get('selection_role', '?') for r in results)}",
         "",
     ]
 
     # Summary statistics
     avg_strain = sum(r.get("strain", 0) for r in results) / max(len(results), 1)
-    avg_validation = sum(r.get("validation", 0) for r in results) / max(len(results), 1)
-    lines.append(f"**Average strain:** {avg_strain:.1f} | **Average validation:** {avg_validation:.1f}\n")
+    avg_lens = sum(r.get("lens_yield", 0) for r in results) / max(len(results), 1)
+    lines.append(f"**Average strain:** {avg_strain:.1f} | **Average lens yield:** {avg_lens:.1f}\n")
 
     lines.append("---\n")
 
@@ -721,10 +727,14 @@ def write_cycle_file(results: list[dict]) -> Path:
         lines.append(f"| Metric | Score |")
         lines.append(f"|--------|-------|")
         lines.append(f"| Strain | {r.get('strain', 'N/A')} / 10 |")
-        lines.append(f"| Validation | {r.get('validation', 'N/A')} / 10 |\n")
+        lines.append(f"| Lens Yield | {r.get('lens_yield', 'N/A')} / 10 |\n")
 
         lines.append(f"**Strain rationale:** {r.get('strain_rationale', 'N/A')}\n")
-        lines.append(f"**Validation rationale:** {r.get('validation_rationale', 'N/A')}\n")
+        lines.append(f"**Lens yield rationale:** {r.get('lens_yield_rationale', 'N/A')}\n")
+
+        ic = r.get("independent_confirmation")
+        if ic:
+            lines.append(f"**Independent confirmation:** {ic}\n")
 
         lines.append(f"### DN Engagement\n")
         lines.append(f"- **Sections:** {', '.join(r.get('dn_sections_engaged', []))}")
@@ -732,8 +742,16 @@ def write_cycle_file(results: list[dict]) -> Path:
         lines.append(f"- **Pillars:** {', '.join(r.get('pillars_engaged', []))}")
         lines.append(f"- **Forces:** {', '.join(r.get('forces_engaged', []))}\n")
 
-        lines.append(f"### Interpretation\n")
-        lines.append(r.get("interpretation", "No interpretation produced."))
+        lines.append(f"### Native Reading\n")
+        lines.append(r.get("native_reading", "No native reading produced."))
+        lines.append("")
+
+        lines.append(f"### Lens Application\n")
+        lines.append(r.get("lens_application", "No lens application produced."))
+        lines.append("")
+
+        lines.append(f"### Lens Delta\n")
+        lines.append(r.get("lens_delta", "No lens delta produced."))
         lines.append("")
 
         if r.get("tension_generated"):
@@ -754,16 +772,16 @@ def write_cycle_file(results: list[dict]) -> Path:
                  f"{', '.join(set(r.get('paper', {}).get('domain', 'unknown') for r in results))}.\n")
 
     high_strain = [r for r in results if r.get("strain", 0) >= 5]
-    high_val = [r for r in results if r.get("validation", 0) >= 5]
+    high_lens = [r for r in results if r.get("lens_yield", 0) >= 5]
     if high_strain:
         lines.append(f"**High-strain findings ({len(high_strain)}):** These papers produced genuine structural "
                      f"tension with the DN Framework and may warrant Kernel-level attention.\n")
-    if high_val:
-        lines.append(f"**Strong validation findings ({len(high_val)}):** These papers independently confirmed "
-                     f"specific DN structural claims with articulable specificity.\n")
-    if not high_strain and not high_val:
-        lines.append("**Assessment:** This cycle produced moderate findings without extreme strain or validation. "
-                     "The framework handled these papers within its existing architecture.\n")
+    if high_lens:
+        lines.append(f"**High lens yield findings ({len(high_lens)}):** These papers produced genuine structural "
+                     f"insight when viewed through DN's architecture — insight the papers' own framings did not articulate.\n")
+    if not high_strain and not high_lens:
+        lines.append("**Assessment:** This cycle produced moderate findings without extreme strain or lens yield. "
+                     "Review paper selection — Neutral Territory dominance may indicate targeting issues.\n")
 
     cycle_path.write_text("\n".join(lines), encoding="utf-8")
     log.info(f"Wrote cycle file: {cycle_path}")
@@ -784,9 +802,10 @@ def append_scores(results: list[dict]) -> None:
                 "date": r.get("date", TODAY),
                 "paper": r.get("paper", {}),
                 "strain": r.get("strain", 0),
-                "validation": r.get("validation", 0),
+                "lens_yield": r.get("lens_yield", 0),
                 "strain_rationale": r.get("strain_rationale", ""),
-                "validation_rationale": r.get("validation_rationale", ""),
+                "lens_yield_rationale": r.get("lens_yield_rationale", ""),
+                "independent_confirmation": r.get("independent_confirmation"),
                 "dn_sections_engaged": r.get("dn_sections_engaged", []),
                 "dimensions_engaged": r.get("dimensions_engaged", []),
                 "pillars_engaged": r.get("pillars_engaged", []),
@@ -820,7 +839,7 @@ def regenerate_distribution_plot() -> None:
         return
 
     strains = [s.get("strain", 0) for s in scores]
-    validations = [s.get("validation", 0) for s in scores]
+    lens_yields = [s.get("lens_yield", 0) for s in scores]
     domains = [s.get("paper", {}).get("domain", "unknown") for s in scores]
 
     # Color map by domain
@@ -831,7 +850,7 @@ def regenerate_distribution_plot() -> None:
 
     fig, ax = plt.subplots(1, 1, figsize=(10, 8))
 
-    ax.scatter(strains, validations, c=colors, s=60, alpha=0.7, edgecolors="white", linewidth=0.5)
+    ax.scatter(strains, lens_yields, c=colors, s=60, alpha=0.7, edgecolors="white", linewidth=0.5)
 
     # Quadrant lines
     ax.axhline(y=5, color="gray", linestyle="--", alpha=0.4)
@@ -839,13 +858,13 @@ def regenerate_distribution_plot() -> None:
 
     # Quadrant labels
     ax.text(7.5, 7.5, "Productive\nfriction", ha="center", va="center", fontsize=9, alpha=0.5, style="italic")
-    ax.text(2.5, 7.5, "Genuine\nconfirmation", ha="center", va="center", fontsize=9, alpha=0.5, style="italic")
+    ax.text(2.5, 7.5, "Lens\nconfirmation", ha="center", va="center", fontsize=9, alpha=0.5, style="italic")
     ax.text(7.5, 2.5, "Hard\nresistance", ha="center", va="center", fontsize=9, alpha=0.5, style="italic")
     ax.text(2.5, 2.5, "Neutral\nterritory", ha="center", va="center", fontsize=9, alpha=0.5, style="italic")
 
     ax.set_xlabel("Strain →", fontsize=11)
-    ax.set_ylabel("Validation →", fontsize=11)
-    ax.set_title(f"DN Field Scanner — Score Distribution ({len(scores)} papers)", fontsize=13)
+    ax.set_ylabel("Lens Yield →", fontsize=11)
+    ax.set_title(f"DN Field Scanner v3 — Score Distribution ({len(scores)} papers)", fontsize=13)
     ax.set_xlim(-0.5, 10.5)
     ax.set_ylim(-0.5, 10.5)
     ax.set_aspect("equal")
@@ -892,7 +911,7 @@ def run_cycle() -> None:
         sys.exit(1)
 
     # Step 2: Select papers
-    log.info("Step 2: Selecting strain and validation candidates...")
+    log.info("Step 2: Selecting strain, lens, and high-dimensional candidates...")
     selected = select_papers(papers, client)
 
     # Step 3: Load DN context
@@ -909,7 +928,7 @@ def run_cycle() -> None:
             results.append(result)
             log.info(
                 f"  → {paper.get('title', '')[:60]}: "
-                f"strain={result.get('strain', '?')}, validation={result.get('validation', '?')}"
+                f"strain={result.get('strain', '?')}, lens_yield={result.get('lens_yield', '?')}"
             )
         except Exception as e:
             log.error(f"Failed to interpret paper '{paper.get('title', '')}': {e}")
@@ -938,10 +957,10 @@ def run_cycle() -> None:
 
     # Summary
     avg_strain = sum(r.get("strain", 0) for r in results) / len(results)
-    avg_validation = sum(r.get("validation", 0) for r in results) / len(results)
+    avg_lens = sum(r.get("lens_yield", 0) for r in results) / len(results)
     log.info(f"=== Cycle complete ===")
     log.info(f"Papers interpreted: {len(results)}")
-    log.info(f"Average strain: {avg_strain:.1f}, Average validation: {avg_validation:.1f}")
+    log.info(f"Average strain: {avg_strain:.1f}, Average lens yield: {avg_lens:.1f}")
     log.info(f"Cycle file: {cycle_path}")
 
 

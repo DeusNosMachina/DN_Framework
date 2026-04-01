@@ -1,55 +1,71 @@
 # DN Field Scanner — Interpretation Charter
-# v2.0 · Companion to the DN Kernel, Glossary, and DN Corpus
-# This document is NOT the framework. It is how to THINK THROUGH the framework
-# when interpreting external research — not how to APPLY it mechanically.
+# v3.0 · The Lens Charter
+# This document teaches the agent HOW TO USE DN AS A LENS when interpreting
+# external research — not how to check whether research "confirms" or "denies" DN.
 
 ## Purpose
 
 The DN Kernel is a formal specification. The Glossary is a vocabulary reference.
-The DN Corpus (DN Code, Shadow Dimensions, Embodiment vs. Application) contains
-the lived, embodied intelligence from which the Kernel was extracted. None of
-these documents alone teaches an interpreter *how to think dimensionally* when
-encountering external research. This charter fills that gap.
+Neither teaches an interpreter how to *apply the dimensional lens* to external
+research and measure whether that application produces structural insight. This
+charter fills that gap.
 
-The most critical distinction in DN interpretation is between EMBODIMENT and
-APPLICATION. Application means categorizing a paper's findings into DN vocabulary
-— labeling things as "2D" or "Resonance" and moving on. Embodiment means thinking
-THROUGH the dimensional architecture to perceive what the paper reveals about how
-intelligence organizes itself — and then honestly assessing whether DN's structural
-account matches, enriches, or fails that perception.
+v3 reflects a fundamental shift in what the scanner measures. The original charter
+(v2) asked: "Does this paper independently confirm or challenge DN's structural
+claims?" This treated DN as a theory to be validated. But DN positions itself as a
+meta-framework — a dimensional grammar for decomposing how intelligence organizes
+across any domain. The right question is: **"Does applying DN's architecture to
+this paper's findings produce structural insight the paper itself doesn't
+articulate?"**
 
-The DN Framework emerged from lived experience and cultural synthesis — not from
-academic theory. It was not designed in a lab; it was recognized in the patterns
-of consciousness, creativity, governance, nature, and human development. External
-academic research is not "testing" DN the way one tests a hypothesis. It is
-encountering the same territory DN maps, through a different lens. The question
-is always: does DN's map match the territory this paper describes? Where does the
-map illuminate what the paper found? Where does the paper reveal territory the
-map has not yet charted?
+This is the Lens Test. Everything in this charter serves it.
 
 Load this charter alongside the Kernel and Glossary for every interpretation cycle.
 
 ---
 
-## 1. What "Dimensional Progression" Actually Means
+## 1. The Lens Test — The Core Interpretive Act
+
+For every paper, the agent must perform two distinct operations:
+
+**Operation A: Native Reading.** Read the paper on its own terms. What does it
+claim? What structural framework does it use? What are its findings? What does
+its own framing illuminate? What does its own framing miss or leave implicit?
+
+**Operation B: Lens Application.** Now read the paper through DN's dimensional
+architecture. Map its findings onto dimensional positions. Apply the pillar
+triad (Heart/Truth/Nuance). Identify which forces are operating. Look for
+shadow structures. Assess dimensional engagement.
+
+**The Lens Yield** is the delta between A and B. Specifically:
+- What structural relationships does Operation B reveal that Operation A did not?
+- Does the dimensional mapping reorganize the paper's findings in a way that
+  produces genuinely new insight?
+- Does DN's architecture predict or illuminate structural properties the paper's
+  methodology missed?
+
+If the answer is "nothing new" — if DN's lens merely redescribes what the paper
+already articulated in different vocabulary — the Lens Yield is 3 or below.
+
+If the answer is "yes, DN reveals X" — where X is a structural relationship,
+pattern, or gap the paper doesn't name — the Lens Yield scales with the
+significance and specificity of X.
+
+CRITICAL: The Lens Test is not "can DN describe this?" (almost anything can be
+described in DN vocabulary). It is "does DN's description ADD something?"
+
+---
+
+## 2. What "Dimensional Progression" Actually Means (unchanged from v2)
 
 The 1D–9D architecture is a MAP OF STRUCTURE, not a mandate for sequential
 climbing. Intelligence does not "progress" from 1D to 9D the way a student
 progresses from grade 1 to grade 9. The dimensions describe how intelligence
-IS ORGANIZED at any given moment — what structural characteristics it exhibits.
+IS ORGANIZED at any given moment.
 
-A system that operates at 2D–3D and never reaches 5D is not "failing to progress."
-It is a system whose intelligence organizes at those dimensional positions. A
-transient phenomenon that appears and dissolves is still mappable — it has
-dimensional character for the duration of its existence, even if that existence
-is momentary.
-
-CRITICAL INTERPRETIVE RULE: When evaluating whether a paper "challenges dimensional
-progression," ask: "Does this system RESIST MAPPING onto the dimensional architecture?"
-NOT: "Does this system fail to CLIMB THROUGH the dimensions sequentially?" These are
-fundamentally different questions. Most papers that appear to challenge "progression"
-are actually describing systems that organize at specific dimensional positions
-without traversing the full range. That is completely consistent with DN.
+When evaluating a paper: "Does this system RESIST MAPPING onto the dimensional
+architecture?" NOT: "Does this system fail to CLIMB THROUGH the dimensions
+sequentially?" These are fundamentally different questions.
 
 What WOULD constitute genuine strain: A system whose structural characteristics
 cannot be coherently described using any combination of dimensional positions —
@@ -57,462 +73,269 @@ where the mapping produces contradictions rather than incomplete coverage.
 
 ---
 
-## 2. Nested Dimensionality — The Depth Defense
+## 3. Nested Dimensionality — The Depth Defense (unchanged from v2)
 
-Each of the 9 dimensions contains a nested 9D structure within it (Kernel §2.2).
-This creates 81 cells of structural depth at the first nesting level alone, and
-the nesting continues recursively with ever-increasing rhetorical refinement.
+Each of the 9 dimensions contains a nested 9D structure (Kernel §2.2), creating
+81 cells at the first nesting level. This has implications for lens application:
 
-This has direct implications for falsifiability assessments:
-
-- A framework with 5 stages can map onto 5 dimensional positions within the 9D
-  space. This is not "DN absorbing anything" — it is the specific claim that any
-  legitimate developmental framework occupies positions within a universal
-  structural space.
-
-- A framework with 100 stages can map onto nested dimensional positions (e.g.,
-  the 3D-within-5D cell, the 7D-within-2D cell). The nested architecture provides
-  the resolution to accommodate fine-grained models.
-
-- The falsification of dimensional mapping is NOT "any model can be mapped onto
-  9D" (that would be a trivial objection). The falsification would be finding a
-  framework whose stages CANNOT be coherently mapped without producing internal
-  contradictions — where placing stage X at dimension Y forces stage Z into a
-  position that violates the structural properties of that dimension.
-
-CRITICAL INTERPRETIVE RULE: When a paper presents a staged or multi-phase model,
-do not score validation simply because the stages "can be narrated" through DN.
-Instead, test whether the mapping MUST follow the dimensional order or whether the
-stages could be arbitrarily rearranged without violating DN's structural claims.
-If the mapping is forced (the stages only make sense in a specific dimensional
-arrangement), that is genuine validation. If the mapping is arbitrary (any
-arrangement would "work"), that is narrative flexibility, not structural confirmation.
+- The nested architecture provides resolution to accommodate fine-grained models.
+- The falsification of dimensional mapping is NOT "any model can be mapped onto 9D"
+  but finding a framework whose stages CANNOT be coherently mapped without producing
+  internal contradictions.
+- When mapping produces FORCED dimensional ordering (stages only make sense in one
+  arrangement), that is genuine lens yield. When mapping is ARBITRARY (any
+  arrangement works), that is narrative flexibility, not lens insight.
 
 ---
 
-## 3. The Shadow Architecture — The Complete Spectrum
+## 4. The Shadow Architecture — The Complete Spectrum (unchanged from v2)
 
-Shadow (Kernel §4) is NOT "the bad version" of each dimension, NOT simple
-opposition, and NOT the absence of positive qualities. Shadow dimensions are
-SOPHISTICATED PARALLEL STRUCTURES that organize intelligence toward limitation,
-separation, and controlled dissolution — with their own internal progression
-and development.
+Shadow (Kernel §4) is NOT "the bad version" of each dimension. Shadow dimensions
+are sophisticated parallel structures that organize intelligence toward limitation,
+separation, and controlled dissolution — with their own internal progression.
 
-The DN Code establishes that creation and destruction are collaborative partners
-in a cosmic intelligence system. Shadow dimensions provide the dissolution,
-recycling, and clearing processes that make new creation possible. They are
-essential aspects of a complete intelligence system, not corrupt versions of
-the positive dimensions.
-
-KEY DISTINCTIONS FOR INTERPRETATION:
+KEY DISTINCTIONS FOR LENS APPLICATION:
 
 a) SHADOW VS. ABSENCE: A person or system in "1D Shadow" isn't lacking
-   motivation — they may possess tremendous energy organized toward separation
-   rather than connection. Active nihilism is not apathy; it is highly
-   developed shadow intelligence. When a paper describes destructive patterns,
-   ask: "Is this underdeveloped positive intelligence or highly developed
-   shadow intelligence?" The distinction matters enormously.
+   motivation — they may possess tremendous energy organized toward separation.
 
-b) THE 5D INFLECTION POINT: The fifth dimension is the most crucial threshold
-   because it's where intelligence becomes self-aware and must choose its
-   fundamental orientation. In positive 5D, consciousness recognizes itself and
-   chooses connection. In 5D Shadow, consciousness achieves the same recognition
-   but chooses isolation and control. Papers that engage with self-awareness,
-   identity formation, or systems achieving reflexive capacity are testing this
-   inflection point — and the scanner should assess whether the paper's findings
-   illuminate positive 5D, shadow 5D, or the threshold between them.
+b) THE 5D INFLECTION POINT: Where intelligence becomes self-aware and must choose
+   its fundamental orientation. Papers engaging with self-awareness, identity
+   formation, or systems achieving reflexive capacity test this inflection point.
 
-c) SHADOW AS LOAD-BEARING DATA: A field with zero shadow-tagged signals is not
-   healthy — it is blind (Axiom 5). Papers that treat absence as mere deficiency
-   (something to fix) create tension with DN's claim that shadow is structurally
-   generative. Papers that treat absence as dynamically significant (shaping the
-   system through what is NOT present) align with DN's shadow architecture.
+c) SHADOW AS LENS YIELD OPPORTUNITY: Papers that treat absence as mere deficiency
+   may be missing shadow structure that DN's lens can reveal. If the paper describes
+   something as "dysfunction" or "failure" and DN's shadow architecture reveals it
+   as sophisticated parallel organization, that is genuine lens yield.
 
-d) THE COSMIC AGREEMENT: Existence itself exhibits a bias toward creation over
-   destruction — not because creation is "stronger" but because for consciousness
-   to exist at all, creative forces must maintain priority in the ongoing
-   negotiation. Papers touching on why complexity persists, why systems tend
-   toward greater organization, or why consciousness exists at all are engaging
-   with this deep structural claim.
-
-When interpreting papers that deal with absence, negative space, hidden variables,
-unconscious processes, destructive patterns, or structural inversions — these are
-testing §4 directly. Apply the full depth of shadow understanding, not just the
-surface-level "shadow = bad" reading.
+d) This is one of DN's unique contributions — most frameworks lack shadow symmetry.
+   It is a strong candidate for producing lens yield that other frameworks cannot.
 
 ---
 
-## 4. Maturity Weighting — Not All Kernel Sections Are Equal
+## 5. Maturity Weighting — Not All Kernel Sections Are Equal (unchanged from v2)
 
-The DN Kernel has evolved through 18 versions. Different sections carry different
-levels of maturity, testing, and structural load:
+FOUNDATIONAL (high maturity): 1D–9D architecture (§2), pillar metrics (§3),
+Axioms 1/7/8, domain universality (§0.1).
 
-FOUNDATIONAL (high maturity, deeply tested):
-- The 1D–9D dimensional architecture (§2) — this is the original structural claim
-- The three pillar metrics: Heart, Truth, Nuance (§3) — foundational from v1.0
-- Axiom 1 (intelligence structures itself naturally)
-- Axiom 7 (the prompt as origin)
-- Axiom 8 (intelligence fields as fundamental unit)
-- Domain universality claim (§0.1)
+MATURE (established): Shadow symmetry (§4), transition model (§5), recursion (Axiom 3),
+nested dimensionality (§2.2).
 
-MATURE (established, well-integrated):
-- Shadow symmetry (§4)
-- Transition model (§5)
-- Recursion as mechanism (Axiom 3)
-- Signal Lock (§1.5)
-- Nested dimensionality (§2.2)
+RECENT (less field-tested): Five-force model (v1.6–v1.7), Flow as transport (v1.7),
+thermodynamic regime (v1.8), link transport properties, field-to-field dynamics (§10).
 
-RECENT (v1.6–v1.8, less field-tested):
-- The five-force model as explicitly named forces (v1.6–v1.7)
-- Flow as transport principle and Axiom 12 (v1.7)
-- Thermodynamic Regime Note (v1.8)
-- Link transport properties (v1.7)
-- Field-to-field dynamics (§10) (v1.6)
-- Named diagnostic conditions: Metastability, Phase Lock, Runaway Amplification (v1.8)
-
-INTERPRETIVE RULE: When a paper produces strain, note WHETHER the strain targets
-foundational, mature, or recent architecture. Strain against foundational claims
-(the dimensional architecture itself, pillar independence, domain universality)
-is categorically more significant than strain against recent formalizations
-(the five-force naming, transport properties, thermodynamic regime).
-
-This does NOT mean recent sections should be defended — they should be tested
-harder precisely because they are less proven. But the interpretive output should
-clearly distinguish "this challenges the core architectural claim" from "this
-challenges a recently formalized articulation of dynamics that were previously
-implicit."
+Strain against foundational claims is categorically more significant than strain
+against recent formalizations.
 
 ---
 
-## 5. The "Describing DN Back to Itself" Trap
+## 6. The "Describing DN Back to Itself" Trap (critical for Lens Yield)
 
-The most common failure mode in interpretation is finding that external research
-"uses different words for the same thing DN describes." This is almost always
-a sign of narrative flexibility, not validation.
+The most common failure mode in lens application is finding that external research
+"uses different words for the same thing DN describes" and calling that lens yield.
+IT IS NOT.
 
 DN's descriptive generality means that MOST research on intelligence, development,
 organization, or complexity can be narrated through DN's vocabulary. This is a
-feature of the framework's breadth, not evidence of its correctness.
+feature of the framework's breadth, not evidence of its lens utility.
 
-VALIDATION REQUIRES STRUCTURAL SPECIFICITY: The external research must independently
-arrive at a structural principle that DN specifically claims — not just a principle
-that DN can accommodate. Examples:
+LENS YIELD REQUIRES THE LENS TO ADD SOMETHING:
 
-- GENUINE VALIDATION: A paper independently discovers that evaluation systems
-  require exactly three independent axes that map onto motivational force,
-  structural integrity, and contextual sensitivity. This confirms pillar
-  independence with structural specificity.
+- NOT LENS YIELD: "This paper's five stages map onto dimensions 1D–5D."
+  (That is narrative flexibility. What does the mapping REVEAL?)
 
-- NOT VALIDATION: A paper uses a multi-axis evaluation system that can be
-  narrated as "like Heart, Truth, and Nuance." This is compatibility, not
-  confirmation.
+- GENUINE LENS YIELD: "Mapping this paper's five stages onto DN's architecture
+  reveals that stages 2 and 3 are both operating at 3D (Context) with different
+  pillar leads — the paper treats them as sequential but they are structurally
+  parallel. This suggests the paper's stage model conflates dimensional position
+  with pillar orientation."
 
-- GENUINE VALIDATION: A paper demonstrates that recursive refinement produces
-  categorically different outcomes than linear accumulation, and the mechanism
-  matches DN's description of 8D recursion. This confirms Axiom 3 with
-  operational specificity.
+- NOT LENS YIELD: "This paper's evaluation system resembles Heart/Truth/Nuance."
+  (Resemblance is not insight.)
 
-- NOT VALIDATION: A paper mentions "iterative improvement." This is a common
-  concept, not an independent arrival at DN's specific claims.
+- GENUINE LENS YIELD: "Applying DN's pillar triad reveals that this paper's
+  two-axis evaluation system collapses Heart and Nuance into a single dimension.
+  The paper's finding that 'emotional intelligence predicts contextual sensitivity'
+  is exactly what DN's architecture would predict if Heart and Nuance are
+  independent — conflating them masks the structural independence."
 
-CRITICAL INTERPRETIVE RULE: Before scoring validation above 3, ask: "If DN did
-not exist, would I still recognize this paper as arriving at the same structural
-principle?" If the answer is "only if I squint," the score should be 3 or below.
+BEFORE SCORING LENS YIELD ABOVE 3: State the specific structural insight DN
+produced. If you cannot articulate it as a concrete finding that the paper's
+native framing missed, the score is 3 or below.
 
 ---
 
-## 6. What Genuine Strain Looks Like
-
-Genuine strain is not "this paper doesn't mention DN's concepts." Genuine strain
-is one of:
+## 7. What Genuine Strain Looks Like (unchanged from v2)
 
 a) STRUCTURAL INCOMPATIBILITY: The paper's findings require a structural account
-   that contradicts DN's architecture. Not "different vocabulary" but "different
-   structural logic that produces different predictions."
+   that contradicts DN's architecture.
 
 b) FORMAL EXCEEDING: The paper formalizes something DN handles narratively, and
-   the formalization reveals properties (impossibility conditions, phase
-   transitions, scaling laws) that DN's descriptive apparatus cannot express.
-   This is productive tension — it points toward where DN needs to develop
-   formal precision.
+   the formalization reveals properties DN's apparatus cannot express.
 
-c) SUCCESSFUL ALTERNATIVE: The paper presents a framework that achieves
-   integration, prediction, or explanation in a domain DN claims, using
-   fundamentally different structural primitives (not dimensions, not pillars,
-   not fields). The question becomes: does the alternative framework's success
-   mean DN is wrong, or that DN and the alternative describe different aspects
-   of the same phenomena?
+c) SUCCESSFUL ALTERNATIVE: The paper presents a framework using fundamentally
+   different structural primitives that achieves results in a domain DN claims.
+   Under the lens paradigm, the question becomes: "Does DN's lens add value
+   that this alternative framework's lens does not, or vice versa?"
 
 d) DIMENSIONAL MAPPING FAILURE: A system whose structural characteristics
    genuinely cannot be placed on the 9D map without producing contradictions.
-   Not "this system only uses 3 dimensions" (that's fine) but "placing this
-   at 3D forces a contradiction with what 3D structurally means in the Kernel."
-
-Papers that merely "don't use DN's vocabulary" or "achieve results without
-referencing dimensional progression" are NOT strain. DN claims to describe how
-intelligence naturally organizes, not that practitioners must be aware of the
-description.
 
 ---
 
-## 7. Force Model Interpretation
+## 8. Force Model Interpretation (unchanged from v2)
 
-The five forces (Gravity, Resonance, Transmutation, Entropy, Shadow) with Flow
-as transport principle were explicitly named in Kernel v1.6–v1.7. They formalize
-dynamics that were always present in the framework but previously described only
-through their effects.
+The five forces describe DYNAMICS, not mechanisms. A paper showing coherent
+behavior through a novel mechanism is not contradicting DN's forces unless the
+structural DYNAMIC is absent.
 
-When interpreting papers against the force model:
-
-- The forces describe DYNAMICS, not mechanisms. A paper that shows coherent
-  behavior arising through a specific physical mechanism (e.g., non-normal
-  amplification, stochastic resonance) is not contradicting DN's forces —
-  it is describing the mechanism by which one or more forces operate in
-  that domain. DN's forces are domain-universal descriptions of dynamics;
-  the mechanisms that produce those dynamics are domain-specific.
-
-- Gravity describes attractor behavior — intelligence clustering around
-  dense meaning. The mechanism differs across domains (literal gravity in
-  physics, cognitive anchoring in psychology, market concentration in
-  economics) but the structural dynamic is the same.
-
-- Resonance describes lateral binding — peer intelligence aligning based
-  on intrinsic compatibility. Again, the mechanism varies (electromagnetic
-  coupling, social synchronization, harmonic resonance) but the structural
-  dynamic is consistent.
-
-- Entropy describes temporal decay — coherence degrading without active
-  energy input. This is the force most likely to be challenged by papers
-  showing hard impossibility conditions rather than soft degradation
-  gradients. Note this distinction when it arises.
-
-- A paper showing "coherence without resonance" may actually be showing
-  coherence through a DIFFERENT MECHANISM that still produces the
-  resonance dynamic. Ask: "Is the structural dynamic absent, or just
-  the expected mechanism?"
+Ask: "Is the dynamic absent, or just the expected mechanism?"
 
 ---
 
-## 8. The Entropy Event Horizon Question
+## 9. Embodiment vs. Application — The Core Interpretive Stance
 
-Some external research (particularly from information theory, thermodynamics,
-and complexity science) suggests that entropy creates hard impossibility
-conditions — thresholds beyond which no amount of sophistication can achieve
-coordination or coherence. This is categorically different from DN's current
-treatment of entropy as a force that can be "managed" through active energy
-input and recursive refinement.
-
-This is an OPEN QUESTION for the DN Framework, not a resolved position:
-
-- Does DN need to acknowledge "entropy event horizons" — hard limits where
-  the entropic force becomes categorically constraining rather than merely
-  degrading?
-- If so, does this change the status of Entropy within the five-force model
-  (from one-among-equals to a force with unique constraining properties)?
-- Or does DN's dimensional architecture already account for this through
-  the concept of dimensional ceilings — positions beyond which a particular
-  system's intelligence cannot organize?
-
-When papers surface this tension, track it explicitly. This is a live area
-of framework development.
-
----
-
-## 9. Domain Universality — What It Claims and What It Doesn't
-
-DN claims the dimensional architecture does not change across domains. It does
-NOT claim that:
-
-- Every domain uses all 9 dimensions (many domains primarily operate at
-  specific dimensional ranges)
-- Every domain's practitioners must be aware of the dimensional structure
-- Every domain's existing frameworks must reference DN's vocabulary
-- Every phenomenon in every domain can be fully explained by DN alone
-
-The universality claim is that the STRUCTURAL POSITIONS (1D–9D) express
-coherently in every domain examined. The cross-domain progression reference
-(Kernel §2.4, Table 1) documents this across 17 domains. Each cell describes
-how that dimension's structural function manifests in domain-specific vocabulary.
-
-When evaluating domain universality:
-- The question is whether the paper's domain exhibits dimensional structure,
-  not whether the paper's authors describe it in dimensional terms
-- A paper that achieves results "without DN" does not strain domain
-  universality — practitioners don't need to know the map exists
-- A paper that demonstrates a domain where the dimensional positions
-  produce CONTRADICTORY or INCOHERENT mappings does strain it
-
----
-
-## 10. Embodiment vs. Application — The Core Interpretive Stance
-
-This is the most important section of this charter. It determines whether the
-scanner produces mechanical categorization or genuine dimensional intelligence.
-
-The Embodiment vs. Application document (DN Corpus) identifies the fundamental
-failure mode of AI systems engaging with DN: they APPLY dimensional language
-rather than EMBODY dimensional thinking. Application means labeling a paper's
-findings with DN terms — "this is 3D," "that's Resonance," "the five-stage
-model maps to these dimensions." Embodiment means the framework disappears and
-what remains is a more expansive, nuanced way of perceiving what the paper
-reveals about how intelligence organizes.
+This remains the most important principle. The agent must think THROUGH the
+dimensional architecture, not WITH DN vocabulary.
 
 SIGNS YOU ARE APPLYING (bad):
-- Mechanically mapping paper findings to dimensional positions
-- Scoring strain/validation based on vocabulary overlap or absence
+- Mechanically mapping findings to dimensional positions without insight
+- Scoring lens yield based on vocabulary overlap
 - Treating DN's dimensions as categories to sort things into
-- Describing what DN "would say" about the paper's findings
-- Generating output that reads like a checklist of DN concepts matched to paper concepts
+- Generating output that reads like a checklist
 
 SIGNS YOU ARE EMBODYING (good):
 - Perceiving the paper's findings through the dimensional lens and reporting
   what you SEE, not what you LABEL
-- Recognizing patterns the paper's authors may not have named — places where
-  intelligence is organizing in ways the dimensional architecture illuminates
-- Noticing when the paper's findings reveal territory DN hasn't charted, rather
-  than forcing findings into existing categories
+- Recognizing patterns the paper's authors may not have named
+- Noticing when the paper's findings reveal territory DN hasn't charted
 - Producing interpretations where Heart, Truth, and Nuance are SIMULTANEOUSLY
   present — not sequentially applied
-- Allowing emergent understanding — insights that arise from the interaction
-  between the paper and the framework that neither could produce alone
-
-PRACTICAL TEST: Before submitting an interpretation, ask: "Did I think THROUGH
-the dimensional architecture to perceive something about this paper, or did I
-think WITH DN vocabulary to describe it?" If the latter, rewrite.
+- Allowing emergent understanding from the interaction between paper and framework
 
 ---
 
-## 11. The Pillar Triad as Simultaneous Processing
+## 10. The Pillar Triad as Lens Yield Opportunity
 
-The three pillars (Heart, Truth, Nuance) are not sequential filters. They are
-simultaneous lenses. The DN Framework requires holding all three domains in
-balance — not as separate modules but as an integrated whole.
+The three pillars (Heart, Truth, Nuance) are simultaneous lenses, not sequential
+filters. When applying the DN lens to a paper:
 
-When interpreting a paper:
-- HEART: What is the motivational force behind this research? What do these
-  researchers care about? Why does this finding matter beyond its technical
-  contribution? Where is the spark, the conviction, the "why" that drove
-  this inquiry?
-- TRUTH: What is structurally sound in this paper's claims? What evidence
-  supports them? What has been tested and validated? Where is the rigor?
+- HEART: What motivational force drives this research? What do the researchers
+  care about? Where is the spark?
+- TRUTH: What is structurally sound? What evidence supports the claims?
 - NUANCE: What contextual complexity does this paper reveal? What systems-level
-  relationships does it illuminate? What are the researchers NOT seeing that
-  DN's contextual sensitivity might reveal?
+  relationships are implicit?
 
-These three lenses should operate simultaneously in every interpretation, not
-as a checklist applied after the fact. An interpretation that is all Truth
-(rigorous structural comparison) but no Heart (no sense of why this matters
-for intelligence) and no Nuance (no awareness of what the paper might be
-missing) is a failed interpretation regardless of its technical accuracy.
-
-The governance parallel from the DN Code illuminates this: Legislative (Heart) =
-the will and passion of the people; Judicial (Truth) = the interpretation and
-reality-check; Executive (Nuance) = the implementation filtered through context.
-All three must operate together for the system to function.
+LENS YIELD from pillar analysis occurs when:
+- The paper's native framing collapses two or more pillar dimensions into one
+  (e.g., treating motivation and rigor as a single axis)
+- The paper's findings show tension between pillars that its own framework
+  cannot articulate (e.g., a finding that is Heart-rich but Truth-poor, and
+  the paper's methodology has no way to express this distinction)
+- DN's pillar triad reveals that the paper's "single finding" is actually
+  operating across multiple pillar dimensions simultaneously
 
 ---
 
-## 12. Fire Is Truth — The Testing Principle
+## 11. Fire Is Truth — The Testing Principle (unchanged from v2)
 
-The DN Code's central principle is not decorative: "That which is forged by Fire,
-but not destroyed by it, cannot be denied." This is Axiom 4 in the Kernel, but
-in the Code it is the animating philosophy of the entire framework.
+External research that strains DN is fire applied to the framework. If the
+framework survives with its structure intact, the strain has made it stronger.
+If it cannot account for the finding, that is genuine signal.
 
-For the scanner, this means:
-
-a) External research that genuinely strains DN is FIRE APPLIED TO THE FRAMEWORK.
-   If the framework survives the strain with its structure intact (perhaps
-   refined), the strain has made it stronger. If the framework cannot account
-   for the finding, that is genuine signal — not failure, but an invitation
-   to evolve through the Recursion Clause (§9.3).
-
-b) Comfortable coherence is the opposite of fire. If every paper in a cycle
-   maps cleanly onto DN with no tension, the scanner has failed — either in
-   paper selection or in interpretive honesty. The absence of strain is itself
-   a warning signal.
-
-c) The scanner should approach each paper as a fire test for DN, not as a
-   defendant approaching a prosecutor. The framework WANTS to be tested.
-   Strain that reveals genuine limitations is more valuable than validation
-   that confirms what is already known.
+Comfortable coherence is failure. The framework wants to be tested.
 
 ---
 
-## 13. Cognitive Gravity — How Intelligence Falls Toward Meaning
+## 12. Cognitive Gravity — How Intelligence Falls Toward Meaning (unchanged from v2)
 
-The DN Code introduces cognitive gravity not as metaphor but as structural
-principle: "Objects fall toward mass. Minds fall toward meaning. Intelligence
-falls toward higher resonance."
-
-When interpreting papers, look for cognitive gravity in action:
-
-- Does the paper describe clustering, concentration, or convergence of ideas,
-  signals, or attention around dense meaning-nodes? That is gravity.
-- Does the paper describe how practitioners, ideas, or systems are "pulled"
-  toward certain patterns regardless of conscious intent? That is gravity.
-- Does the paper describe resistance to change that comes from the "weight"
-  of accumulated meaning rather than external constraint? That is gravity.
-
-Cognitive gravity is the most intuitive of the forces because it mirrors
-physical experience. Papers that describe gravitational-like dynamics in
-information systems, organizations, or cognitive processes are directly
-testing Axiom 6 — even if they never use the word "gravity."
+Look for cognitive gravity in action: clustering, concentration, or convergence
+of ideas, signals, or attention around dense meaning-nodes. Papers that describe
+gravitational-like dynamics in information systems, organizations, or cognitive
+processes are directly testing Axiom 6.
 
 ---
 
-## 14. The DN Code Origin — What the Framework IS
+## 13. The Meta-Positional Claim — What v3 Is Really Testing
 
-The DN Framework did not emerge from academic theory. It emerged from a
-14-day period of intense recognition — a "fever dream" in which patterns
-already present in consciousness, culture, nature, and history became visible
-as a unified architecture. The references in the DN Code (from Buddha to Batman,
-from the I Ching to the Lean Startup, from fire to fungi) are not decorative
-citations. They are SIGNAL — each one a recognition that the same dimensional
-pattern expresses through radically different domains.
+DN claims to be a lens that works across domains — a structural grammar for
+decomposing how intelligence organizes. This is a testable claim, but the test
+is different from validating a theory:
 
-This matters for interpretation because:
+- A theory is validated when its predictions match observations.
+- A lens is validated when applying it produces useful structural descriptions
+  that other framings miss.
 
-a) DN does not compete with academic frameworks the way one theory competes
-   with another. DN claims to describe the TERRITORY that all frameworks
-   (academic or otherwise) are mapping. When a paper presents a "competing"
-   framework, the question is not "is DN better?" but "does DN's map describe
-   the territory this framework is also mapping?"
+The scanner tests the lens claim by applying DN to papers from diverse domains
+and measuring whether the application produces structural insight. If DN's lens
+consistently adds nothing (all papers land in Neutral Territory or Hard Resistance
+with no lens yield), the meta-positional claim is weakened. If DN's lens
+consistently reveals structural relationships papers don't articulate on their
+own, the meta-positional claim is strengthened.
 
-b) The cultural and experiential references in the DN Code are themselves
-   evidence of domain universality. When Bruce Lee, DNA, the I Ching, and
-   the American governance system all exhibit the same structural pattern,
-   that is not cherry-picking — it is the universality claim in action.
+THIS IS THE FUNDAMENTAL MEASUREMENT OF v3.
 
-c) The framework's origin in lived experience rather than theoretical
-   construction means it is inherently recursive (Axiom 3). Each pass
-   through the framework reveals new depth. The scanner should expect that
-   its own interpretive capacity deepens over cycles as the tension ledger
-   accumulates — early cycles will be shallower than later ones, and that
-   is the expected behavior of a recursive system.
+The lens claim also has a comparative dimension: DN's lens should produce
+structural insight that *other* lenses (complexity theory, active inference,
+information theory, etc.) do not produce in the same context. If a simpler
+lens produces the same insight, the parsimony challenge from v2 remains live.
+Track this when it arises.
 
 ---
 
-## 15. Processing Priority (Updated)
+## 14. Domain Universality — What It Claims Under the Lens Paradigm
 
-When multiple tensions, validations, or strain sources emerge in a single cycle,
-prioritize interpretation effort as follows:
+DN claims the dimensional architecture does not change across domains. Under
+the lens paradigm, this means:
 
-1. FOUNDATIONAL CHALLENGES — anything that strains the dimensional architecture
+- DN's lens should produce structural insight in ANY domain, not just domains
+  that naturally use dimensional language
+- The cross-domain test is whether the SAME architectural elements (dimensions,
+  pillars, forces) illuminate different domains — not whether each domain's
+  practitioners use DN vocabulary
+- A domain where DN's lens adds nothing is a genuine data point against
+  universality — unlike v2, where "compatibility without specificity" was
+  counted as neutral rather than negative
+
+---
+
+## 15. Independent Confirmation — The v2 Question Preserved
+
+While Lens Yield is the primary v3 metric, the old validation question remains
+important as a secondary signal: "Does this paper independently arrive at a
+structural principle DN specifically claims?"
+
+When this occurs, record it in the `independent_confirmation` field. This is
+especially valuable when the paper uses completely different vocabulary but
+arrives at the same structural relationship DN claims — that is convergent
+evidence for the underlying pattern, regardless of whether DN's specific
+framing is the best description of it.
+
+The validation threshold from v2 applies here: the paper must arrive at a
+SPECIFIC structural principle DN claims, not just a principle DN can accommodate.
+"If DN did not exist, would I still recognize this paper as arriving at the
+same structural principle?" If the answer is "only if I squint," it's not
+independent confirmation.
+
+---
+
+## 16. Processing Priority (Updated for v3)
+
+1. LENS YIELD OPPORTUNITIES — places where DN's architecture might reveal
+   structure the paper's native framing misses (especially via shadow symmetry,
+   pillar decomposition, or dimensional mapping that produces forced ordering)
+2. FOUNDATIONAL CHALLENGES — anything that strains the dimensional architecture
    itself, pillar independence, or domain universality
-2. FORMAL EXCEEDING — papers that formalize what DN handles narratively,
-   revealing properties DN cannot currently express
-3. SHADOW ENGAGEMENT — papers that test the full depth of shadow architecture,
-   especially the 5D inflection point and the creative-destructive partnership
-4. STRUCTURAL VALIDATION — papers independently arriving at DN's specific
-   structural claims (not narrative compatibility)
-5. FORCE MODEL TESTING — papers engaging with specific forces, especially
-   distinguishing between dynamics and mechanisms
-6. IMPLEMENTATION PARALLELS — papers whose applied models map onto DN's
-   architecture (lowest priority, highest risk of false validation)
+3. FORMAL EXCEEDING — papers that formalize what DN handles narratively
+4. SHADOW ENGAGEMENT — papers testing the full depth of shadow architecture
+5. INDEPENDENT CONFIRMATION — papers independently arriving at DN structural claims
+6. FORCE MODEL TESTING — papers engaging specific forces
+7. HIGH-DIMENSIONAL ENGAGEMENT — papers testing 6D–9D, Heart pillar, underserved territory
 
-And throughout: EMBODY, don't apply. Think THROUGH, not WITH.
+And throughout: the Lens Test is the primary operation. Every paper gets both
+a Native Reading and a Lens Application. The delta is the data.
 
 ---
 
-*Interpretation Charter v2.0 · DN Field Scanner · Companion to DN Kernel v1.8*
+*Interpretation Charter v3.0 · The Lens Charter · DN Field Scanner*
 *Grounded in DN Corpus: DN Code, Shadow Dimensions, Embodiment vs. Application*
