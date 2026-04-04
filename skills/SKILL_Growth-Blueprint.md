@@ -343,7 +343,8 @@ DN_Framework/
 │   ├── 5D_Prompt_Singularity_Configuration.docx
 │   └── Harmonies.docx              # Multi-system orchestration
 └── skills/
-    └── SKILL_Growth-Blueprint.md    # This file
+    ├── SKILL_Growth-Blueprint.md    # This file
+    └── SKILL_Pre-Session-Intel.md   # Public data gathering for board pre-population
 ```
 
 **Note on .docx files:** Several corpus documents are .docx. Agents fetching via raw URL receive binary data. For .docx corpus files: (a) download and parse programmatically if your environment supports it, (b) rely on this skill's summaries for most needs, or (c) ask the user to provide the content directly when deeper grounding is needed. The Kernel, Glossary, and Growth Blueprint Guide are .md and can be fetched and read directly.
@@ -352,13 +353,28 @@ DN_Framework/
 
 ## Session Management
 
+### Session Types
+
+Not every session is the same. Identify the type to route the opening sequence:
+
+| Type | Trigger Phrase | Dimensional Work | Opening Sequence |
+|------|---------------|-----------------|-----------------|
+| **Discovery** | "first meeting", "new client", "intro session" | 1D-3D: Spark → Context | Run `pre-session-intel` first. Then Sections 1 → 2 → 3. Light exercises. Listen more than simulate. |
+| **Deep Dive** | "deep dive on [section]", "let's focus on [topic]" | 3D-5D: Context → Identity | Audit on the target section → focused exercises → identity probes if mature enough |
+| **Simulation Sprint** | "run simulations", "let's test this", "stress test" | 5D-8D: Identity → Recursion | Standard Opening (Audit → Gravity Map) → chain primary simulations → close with Resonance Result |
+| **Gap Closure** | "what's missing", "review open items", "clean up" | 2D: Validation | Review Signal Lock candidates, resolution debt, Parking Lot, deferred Completion Criteria. Close loops. |
+| **Quarterly Review** | "quarterly", "how have we evolved", "retrospective" | 4D: Temporal | Evolution Tracking review → Storyfield (map the journey) → Golden Age (project forward) → new goals/criteria |
+
+When the user specifies a type, skip the generic initialization and run the type-specific opening. When they don't specify, ask: "Is this a discovery session, deep dive, simulation sprint, gap closure, or quarterly review?"
+
 ### New Session Initialization
 
 1. **Read this skill file.** It contains everything needed to start.
-2. **Establish the board context.** Ask what board/client this session is for. Is this a new board or continuing?
-3. **If continuing:** Ask for the current state — what sections have been worked, what's in the Parking Lot, any active Action Items, any Evolution Tracking entries. Read Zone B (Simulation Parameters) for any custom rules.
-4. **If new:** Help establish the Agenda (Zone A) and initial Completion Criteria (Zone C). Recommend starting with Section 1 (Business Model) or Section 2 (Brand Identity) depending on whether the client needs grounding or identity first.
-5. **Set the dimensional intent.** What dimension is this session targeting? What mechanism is active? This shapes which exercises and simulations are appropriate.
+2. **Establish the board context.** What client (codename)? New or continuing?
+3. **Identify session type** from the table above. Route accordingly.
+4. **If continuing:** Read the current board state, latest session log, Simulation Parameters (Zone B), and any carried-forward Completion Criteria (Zone C).
+5. **If new (Discovery):** Run `pre-session-intel` if time permits. Establish Agenda (Zone A) and initial Completion Criteria (Zone C). Start with Section 1 or Section 2 depending on whether the client needs grounding or identity first.
+6. **Set the dimensional intent.** What dimension is this session targeting? What mechanism is active? This shapes which exercises and simulations are appropriate.
 
 ### Continuing a Session
 
@@ -377,6 +393,8 @@ DN_Framework/
 5. **Update Evolution Tracking (Zone F).** Log what changed and why.
 6. **Surface Parking Lot items.** Any deferred items that should be promoted for next session?
 7. **Name the shadow.** What did this session avoid or resist? What felt too clean?
+8. **Facilitation extraction (optional).** If this session revealed something about the Growth Blueprint *process itself* — an exercise that worked unexpectedly well, a simulation sequence that produced a breakthrough, a pattern in how clients respond — log it for the facilitator's personal recursion. This feeds into builDN's `wisdom/extracted/growth-blueprint-facilitation.md`.
+9. **GarDN friction log (optional).** If anything in this session felt clunky because it's a manual process that a platform should handle — log it. This feeds into GarDN's `GARDN_REQUIREMENTS.md`.
 
 ### The Embodiment Check
 
