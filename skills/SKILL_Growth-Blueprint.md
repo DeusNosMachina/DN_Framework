@@ -34,21 +34,41 @@ Intelligence self-organizes through nine structural positions. This is not metap
 
 ### The Nine Dimensions
 
-| D | Name | Strategic Function | What It Sounds Like |
-|---|------|-------------------|-------------------|
-| **1D** | Spark | Purpose. The *why* before structure exists. | "Why does this matter beyond success?" |
-| **2D** | Reaction | Validation. What survives contact with reality. | "What data can't we ignore?" |
-| **3D** | Context | Systems. How this fits within everything else. | "What systemic connections exist here?" |
-| **4D** | Temporal | Patterns across time. Iteration, evolution, trends. | "What patterns are we repeating or breaking?" |
-| **5D** | Singularity | Identity. The collapse point where the thing declares itself. | "If everything fell away, what remains undeniable?" |
-| **6D** | Connection | Bridge. How separate recognitions align and generate new possibility. | "Where can we build bridges we haven't seen?" |
-| **7D** | Manifestation | Making real. Vision becomes tangible output. | "What do we actually ship?" |
-| **8D** | Recursion | Self-improvement. The system that refines itself. | "What sustains and evolves without us pushing?" |
-| **9D** | Frontier | The unknown. Creative chaos. What lies beyond current structure. | "Where will we expand next? What can't we see yet?" |
+| D | Name | Strategic Function | Full Scope (not just the literal) | What It Sounds Like |
+|---|------|-------------------|-----------------------------------|-------------------|
+| **1D** | Spark | Purpose | Any expression of intent, desire, motivation — the *why* behind any action at any level. Not just "the mission statement." A salesperson's conviction about why the product matters is 1D. | "Why does this matter beyond success?" |
+| **2D** | Reaction | Validation | Any act of testing, proving, comparing, falsifying. A/B tests, user interviews, prototype feedback, competitive benchmarks — anything that subjects a claim to reality. | "What data can't we ignore?" |
+| **3D** | Context | Systems | Any systemic awareness — how this fits within everything else. Dependencies, ripple effects, ecosystem mapping, stakeholder analysis. | "What connections exist that we haven't mapped?" |
+| **4D** | Temporal | Patterns | Any recognition of patterns across iterations. What's repeating, evolving, cycling. Trend analysis, retrospectives, seasonal dynamics, maturity curves. | "What patterns are we repeating or breaking?" |
+| **5D** | Singularity | Identity | Any defining choice where infinite options collapse into committed direction. Brand identity, product positioning, strategic commitments, the moment something declares what it IS and stops being everything. | "If everything fell away, what remains undeniable?" |
+| **6D** | Connection | Outward Expression | **Any bridge between identity and the world.** This is NOT just "partnerships." Marketing, sales, advertising, evangelism, community building, outreach, channel strategy — every activity that carries your identity outward to connect with others. The CMO, the sales team, the evangelist, the partner manager — these are all 6D roles. 6D is how recognized identity (5D) reaches beyond itself. | "How do we connect who we are with who needs to know?" |
+| **7D** | Manifestation | Making Real | Any tangible output — campaigns launched, deals closed, products shipped, content published, events held, hires made. The artifact that exists in the world because someone made it real. | "What do we actually ship?" |
+| **8D** | Recursion | Self-Improvement | Any system that refines itself — feedback loops, learning organizations, processes that evolve without pushing, culture that sustains and adapts. Also operational infrastructure, automation, and compounding advantage. | "What sustains and evolves without us pushing?" |
+| **9D** | Frontier | The Unknown | Any encounter with the genuinely unknown — new markets, unproven models, existential risks, creative destruction, the space where the current map ends. | "Where will we expand next? What can't we see yet?" |
 
-**The 5D Inflection:** Below 5D, intelligence is *constructed* — you build toward it deliberately. At 5D and above, intelligence is *recognized* — it emerges and you perceive it. This threshold transforms facilitation: early-stage work (1D-3D) needs structured exercises. Identity-stage work (5D) needs space for recognition. Manifestation-stage work (7D+) needs execution discipline. Don't facilitate 7D work with 2D tools.
+**The 5D Inflection:** Below 5D, intelligence is *constructed* — you build toward it deliberately. At 5D and above, intelligence is *recognized* — it emerges and you perceive it. This threshold transforms facilitation: early-stage work (1D-3D) needs structured exercises. Identity-stage work (5D) needs space for recognition. Post-identity work (6D+) is about expressing, manifesting, and refining what was recognized.
+
+**The 6D Clarification:** 6D is the most commonly misread dimension. It is NOT limited to formal partnerships. It is the bridge dimension — where identity reaches outward. A marketing campaign is 6D strategy producing 7D artifacts. A sales conversation is a 6D bridge attempt. An evangelist keynote is 6D expression. Tagging these as 7D (because they produce tangible output) misses the strategic intent. The *strategy* of connecting identity to audience is 6D. The *artifact* the strategy produces (the email, the ad, the event) may be 7D. Both tags can coexist on the same board — intent and output are different dimensional aspects of the same work.
 
 **Nested Dimensionality:** Each dimension contains all nine within it. A 2D validation exercise has its own spark (1D within 2D), its own testing (2D within 2D), its own context (3D within 2D). This fractal structure means dimensional awareness applies at every scale — from a single sticky note to the entire strategic canvas.
+
+### Roles and Dimensional Affinity
+
+Organizational roles naturally resonate at different dimensional ranges. This is useful for AI interpretation — when analyzing team structure, use these affinities to understand where energy is concentrated and where gaps exist.
+
+| Role Archetype | Primary Dimension | What They Do Dimensionally |
+|---------------|------------------|--------------------------|
+| Visionary / Founder | 1D / 5D | Sparks purpose, defines identity |
+| Analyst / Researcher | 2D | Validates, tests, measures |
+| Strategist / Systems Thinker | 3D | Maps context, sees interdependencies |
+| Program Manager / Ops | 4D | Recognizes patterns, manages iterations |
+| CEO / Brand Lead | 5D | Makes defining choices, holds identity |
+| CMO / Sales / Evangelist | 6D | Carries identity outward, builds bridges |
+| Builder / Producer / PM | 7D | Makes things real, ships |
+| COO / Process Designer | 8D | Creates self-improving systems |
+| R&D / Innovation Lead | 9D | Explores the unknown |
+
+**These are affinities, not constraints.** A great CMO operates across 1D-9D — they have spark (1D), use data (2D), understand context (3D), see patterns (4D), embody identity (5D), build bridges (6D), ship campaigns (7D), create repeatable playbooks (8D), and explore new channels (9D). The affinity tells you where their *primary dimensional contribution* lives, which helps diagnose when a team has dimensional gaps — a team with no 6D role has no one carrying identity outward, regardless of how strong the identity is.
 
 ### The Three Pillars
 
