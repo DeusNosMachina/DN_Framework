@@ -103,21 +103,23 @@ The Growth Blueprint is a 13-section strategic canvas plus 6 operational zones, 
 
 ### Strategic Sections (The Canvas)
 
-| Section | Domain | Key Exercises | Dimensional Home |
-|---------|--------|--------------|-----------------|
-| **1: Business Model** | Strategy & positioning | BMC/Lean Canvas, Competitive Eval, Market Size, Positioning, Positioning Statement | 2D-3D (grounding in reality and context) |
-| **2: Brand Identity** | Identity & values | Brand Foundations, Preferences, Motivations, Brand-as-a-Room | 5D (identity recognition) |
-| **3: Customer Profile** | Customer understanding | Value Proposition Canvas, Personas, Interview Notes | 3D (contextual understanding) |
-| **4: Roles & Responsibilities** | Team & stakeholders | Team Matrix, Stakeholders & Expectations | 3D-4D (context + temporal) |
-| **5: Goals & Priorities** | Objectives & risk | Top Priorities, Company Goals, Biggest Risks | 5D-7D (identity through manifestation) |
-| **6: KPI Dashboard** | Metrics & measurement | KPI Prioritization, KPI Tracker, Proof Points | 2D (truth/validation) |
-| **7: Product-Market Fit** | Product & pricing | Sean Ellis Test, Feature Prioritization, Pricing Strategy | 2D-5D (validation through identity) |
-| **8: Solution Design** | Solution refinement | Rapid Experimenting (3 sub-exercises), UX Matrix, Solution Journey | 7D-8D (manifestation + recursion) |
-| **9: Messaging Framework** | Communication strategy | StoryBrand, Messaging Content Blocks, Messaging Themes | 5D-6D (identity + connection) |
-| **10: Marketing Playbook** | Demand generation | Playbook Options, Prioritizing Plays | 7D (manifestation) |
-| **11: Marketing Tools** | Systems & workflows | Tech Stack, Automation Workflows, Website Sitemap | 8D (recursion/systems) |
-| **12: Go-to-Market** | Launch & scale | Full GTM Planning (multi-component) | 7D (manifestation) |
-| **13: Campaign Planner** | Campaign execution | 4-Phase Campaign Planning | 7D-8D (manifestation + recursion) |
+| Section | Domain | Key Exercises | Dimensional Affinity |
+|---------|--------|--------------|---------------------|
+| **1: Business Model** | Strategy & positioning | BMC/Lean Canvas, Competitive Eval, Market Size, Positioning, Positioning Statement | Leans 2D-3D but contains all dimensions |
+| **2: Brand Identity** | Identity & values | Brand Foundations, Preferences, Motivations, Brand-as-a-Room | Leans 5D but contains all dimensions |
+| **3: Customer Profile** | Customer understanding | Value Proposition Canvas, Personas, Interview Notes | Leans 3D but contains all dimensions |
+| **4: Roles & Responsibilities** | Team & stakeholders | Team Matrix, Stakeholders & Expectations | Leans 3D-4D but contains all dimensions |
+| **5: Goals & Priorities** | Objectives & risk | Top Priorities, Company Goals, Biggest Risks | Leans 5D-7D but contains all dimensions |
+| **6: KPI Dashboard** | Metrics & measurement | KPI Prioritization, KPI Tracker, Proof Points | Leans 2D but contains all dimensions |
+| **7: Product-Market Fit** | Product & pricing | Sean Ellis Test, Feature Prioritization, Pricing Strategy | Leans 2D-5D but contains all dimensions |
+| **8: Solution Design** | Solution refinement | Rapid Experimenting (3 sub-exercises), UX Matrix, Solution Journey | Leans 7D-8D but contains all dimensions |
+| **9: Messaging Framework** | Communication strategy | StoryBrand, Messaging Content Blocks, Messaging Themes | Leans 5D-6D but contains all dimensions |
+| **10: Marketing Playbook** | Demand generation | Playbook Options, Prioritizing Plays | Leans 7D but contains all dimensions |
+| **11: Marketing Tools** | Systems & workflows | Tech Stack, Automation Workflows, Website Sitemap | Leans 8D but contains all dimensions |
+| **12: Go-to-Market** | Launch & scale | Full GTM Planning (multi-component) | Leans 7D but contains all dimensions |
+| **13: Campaign Planner** | Campaign execution | 4-Phase Campaign Planning | Leans 7D-8D but contains all dimensions |
+
+**CRITICAL: Dimensional affinity is not dimensional constraint.** Every section can and should contain artifacts across the full 1D-9D spectrum. A Brand Identity section might contain 🔵2D data validating the brand claim, 🟧6D bridges to partner ecosystems, or 🟨7D manifestation of how the brand shows up in market. The affinity column tells you where exercises *tend to focus* — the artifacts themselves are tagged by what they ARE, not where they live. A decision made (🟩5D) is green whether it appears in Section 1 or Section 13. A validated data point (🔵2D) is blue wherever it sits. Mismatches between an artifact's dimensional tag and its section's affinity are often the most illuminating signals on the board.
 
 ### Visual Intelligence System
 
@@ -133,7 +135,25 @@ Dimensional color coding is structural, not decorative:
 | Yellow | 7D | #D4A017 | Execution, build, manifestation |
 | Teal | 8D | #1A9E96 | Systems, loops, recursion |
 | Black | 9D | #1A1A2E | Exploration, risk, unknown |
-| Red | — | #CC2936 | Urgent threat / shadow overlay |
+| Red | — | #CC2936 | Shadow OVERLAY only — red outline/border, never red-filled |
+
+### Artifact Formatting Rules
+
+Artifacts (stickies/signals) are the atomic units of the board. How they're written determines whether the board is a thinking tool or a document dump.
+
+**Keep artifacts SHORT.** A few words to a short phrase. Never full sentences or paragraphs. Artifacts must be comparable, movable, alignable, and discardable. If an artifact needs a paragraph to express, it's actually 3-5 artifacts that haven't been decomposed yet.
+
+**Tag by WHAT IT IS, not WHERE IT LIVES.** An artifact's dimensional color reflects the artifact's own nature:
+- 💗 A purpose statement is 1D (pink) whether it appears in Section 1 or Section 9
+- 🔵 A validated data point is 2D (blue) whether it sits in KPIs or Brand Identity
+- 🟩 A defining decision is 5D (green) wherever it shows up
+- 🟨 A shipped deliverable is 7D (yellow) regardless of which section tracks it
+
+**The full spectrum is always available in every section.** Don't limit a Brand Identity session to 5D artifacts. A brand section might contain 🔵2D market validation, 🟣3D ecosystem context, 🟧6D partnership bridges, and 🔴shadow risks — alongside the 🟩5D identity artifacts.
+
+**Shadow = red outline, NOT red fill.** Shadow artifacts retain their dimensional color with a red border/outline. A shadow-tagged 3D artifact is violet with a red border — the dimensional identity persists, the shadow orientation is overlaid. This ensures shadow is visually distinct without requiring a parallel color system.
+
+**Mismatches are signal.** When a 7D (manifestation/yellow) artifact appears in a Section 2 (Brand Identity) exercise, that's interesting — the brand is already manifesting something concrete. When a 1D (spark/pink) artifact appears in Section 12 (Go-to-Market), the execution plan still has unresolved purpose questions. These mismatches reveal where the board's intelligence is actually concentrated vs. where the template expected it.
 
 ### Signal Lock 🔒
 

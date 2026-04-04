@@ -31,18 +31,26 @@ Before a client session, deploy this skill to gather public intelligence and pre
 
 ## Where It Maps on the Board
 
-| Data Found | Board Section | Dimension | Pillar |
-|-----------|---------------|-----------|--------|
-| Mission statement, values | Section 2: Brand Identity | 💗1D / 🟩5D | Heart |
-| Revenue, financials, metrics | Section 6: KPI Dashboard | 🔵2D | Truth |
-| Competitive landscape | Section 1: Business Model (Zone 1.2) | 🔵2D / 🟣3D | Truth / Nuance |
-| Market size, TAM | Section 1: Business Model (Zone 1.3) | 🔵2D | Truth |
-| Product/service description | Section 7: Product-Market Fit | 🟣3D | Nuance |
-| Customer descriptions (from website) | Section 3: Customer Profile | 🟣3D | Nuance |
-| Job postings → team structure | Section 4: Roles & Responsibilities | 🟣3D | Nuance |
-| Strategic announcements | Section 5: Goals & Priorities | 🟩5D | Heart / Truth |
-| Risk factors (10-K) | Section 5: Biggest Risks (Zone 5.3) | 🔴Shadow | Truth |
-| Industry trends | Parking Lot (Zone D) | 🟣3D / ⬛9D | Nuance |
+**Tag each artifact by what it IS, not which section it lands in.** The full color spectrum applies everywhere. Research often reveals artifacts across many dimensions — decisions already made (🟩5D), partnerships cultivated (🟧6D), products shipped (🟨7D), self-improving processes (🟦8D). Don't flatten pre-populated boards to just 🔵2D and 🟣3D.
+
+| Data Found | Likely Section | Dimension Tag | Why This Tag |
+|-----------|---------------|--------------|-------------|
+| Mission statement, founding purpose | Section 2: Brand Identity | 💗1D | It's the spark — the why |
+| Stated values, identity language | Section 2: Brand Identity | 🟩5D | They've declared what they are |
+| Revenue, financials, metrics | Section 6: KPI Dashboard | 🔵2D | Validated data |
+| Competitive landscape | Section 1: Business Model | 🔵2D / 🟣3D | Data (2D) in systemic context (3D) |
+| Market size, TAM estimates | Section 1: Business Model | 🔵2D | Quantified evidence |
+| Product/service descriptions | Section 7: Product-Market Fit | 🟨7D | They've manifested these — they exist |
+| Named partnerships, integrations | Any relevant section | 🟧6D | Bridges already built |
+| Customer descriptions | Section 3: Customer Profile | 🟣3D | Contextual understanding |
+| Job postings → team priorities | Section 4: Roles | 🟣3D / 💗1D | Context (3D) + reveals what they care about (1D) |
+| Strategic announcements, goals | Section 5: Goals | 🟩5D | Decisions declared |
+| Acquisition history, launches | Any relevant section | 🟨7D | Things manifested |
+| Recurring processes, systems | Section 11: Tools | 🟦8D | Self-sustaining loops |
+| Risk factors (10-K) | Section 5: Biggest Risks | 🔴 outline on dimensional color | Shadow intelligence — tag the dimension AND add red outline |
+| Industry trends, unknowns | Parking Lot (Zone D) | ⬛9D | Frontier — not yet integrated |
+
+**Artifact format:** Keep each artifact SHORT — a few words to a short phrase. Never full sentences. These must be comparable and movable on the board. "Revenue: $4.2B, +12% YoY" not "The company reported revenue of $4.2 billion, representing a 12% year-over-year increase."
 
 ## Execution Protocol
 
