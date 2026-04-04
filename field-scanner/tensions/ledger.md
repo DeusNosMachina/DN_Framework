@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-03*
+*Last updated: 2026-04-04*
 
 
 
@@ -59,3 +59,30 @@
 
 **Sources:**
 - [2026-04-03] From diagnosis to dynamics: complex systems, transdiagnostics, and networks in forensic psychiatry (strain: 2)
+
+### emergent-vs-prescribed-dimensionality | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4
+**Description:** emergent-vs-prescribed-dimensionality: The paper's Bayesian framework automatically determines effective dimensionality from data, discovering that a single latent dimension captures the dominant structure of multi-modal AD progression. This creates a tension with DN's §2 (dimensional architecture) and §2.2 (nested dimensionality): DN prescribes a specific 9D hierarchy as the structural grammar for how intelligence/complexity organizes, but VPPCA demonstrates that in at least one complex domain, the effective dimensionality is emergent from data and may be far lower than any a priori framework assumes. The tension is not that DN's dimensions are wrong, but that the question 'how many dimensions does this system need?' may be better answered empirically than architecturally. This connects to the existing parsimony challenge and topology-as-alternative-structural-grammar tensions but adds a new edge: statistical dimensionality reduction as a formal method for determining structural complexity, against which any prescribed dimensional architecture must justify its additional structure. tension_id: emergent-vs-prescribed-dimensionality
+
+**Sources:**
+- [2026-04-04] Disease progression modeling of Alzheimer’s disease based on variational probability principal component analysis (strain: 5)
+
+### shadow-vs-absence-in-biological-developme | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §3, §4, §5, §0.1
+**Description:** shadow-vs-absence-in-biological-development: DN's shadow architecture predicts that when developmental potential is denied its intended channel, it should organize toward coherent alternative states (shadow structure) rather than producing random failure (mere absence). This paper's finding of 'altered cell population composition' in MSLc-null embryos is consistent with shadow organization, but the paper does not test whether the alternative states are coherently organized or stochastically distributed. This generates a broader tension: does DN's shadow concept make empirically distinguishable predictions in biological development, or does it merely relabel any non-intended outcome as 'shadow'? If MSLc-null cells show random transcriptional noise rather than coherent alternative programs, the shadow-as-organized-alternative claim would face strain in the biological domain. tension_id: shadow-biological-testability
+
+**Sources:**
+- [2026-04-04] Stage-specific epigenetic priming amplifies gene activation during lineage commitment (strain: 2)
+
+### ptg-dimensional-ordering-vs-network-dynam | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** ptg-dimensional-ordering-vs-network-dynamics: The paper's process model describes PTG as non-linear, fluctuating, and context-dependent—properties that map naturally onto network/dynamic-systems frameworks (where growth is an emergent property of interacting nodes without hierarchical ordering). DN's dimensional lens imposes a structural hierarchy on the PROSPER domains that produces genuine insight (forced ordering reveals structural dependencies), but the participants' lived experience of PTG as fluid and non-hierarchical may be better captured by network models. This raises the question: does DN's dimensional hierarchy add structural insight that network models miss (by revealing hidden ordering), or does it impose false structure on genuinely non-hierarchical phenomena? This connects to the existing topology-as-alternative-structural-grammar tension but from the opposite direction—here DN's hierarchy may be adding insight that flat network models miss, rather than being outperformed by formal alternatives. tension_id: ptg-dimensional-ordering-vs-network-dynamics
+
+**Sources:**
+- [2026-04-04] Development of a process model of posttraumatic growth in psychosis: a qualitative study (strain: 2)
