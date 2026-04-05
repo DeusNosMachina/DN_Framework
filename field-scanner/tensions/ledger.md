@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-04*
+*Last updated: 2026-04-05*
 
 
 
@@ -86,3 +86,30 @@
 
 **Sources:**
 - [2026-04-04] Development of a process model of posttraumatic growth in psychosis: a qualitative study (strain: 2)
+
+### energy-landscape-vs-dimensional-hierarchy | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** energy-landscape-vs-dimensional-hierarchy: EBRM demonstrates that multi-step reasoning can be formally modeled as continuous energy minimization over latent trajectories, where 'progress' is measured by scalar energy decrease rather than dimensional advancement. The three energy terms (compatibility, consistency, smoothness) operate as simultaneous constraints rather than hierarchical stages, and the gradient-based optimization produces structured trajectories without discrete dimensional transitions. This creates a tension with §2 (dimensional architecture): if reasoning progress can be captured by continuous energy decrease in a learned landscape, what structural work does DN's discrete dimensional hierarchy perform that energy landscapes do not? The tension is sharpened by the paper's partial failure—energy minimization works for relational/contextual tasks but fails for arithmetic and suffers distribution mismatch on logic, suggesting that continuous energy landscapes may capture some but not all structural registers of reasoning. DN's dimensional architecture might account for this by positing that different reasoning domains operate at different dimensional positions, but this requires DN to explain why energy landscapes are structurally adequate for some dimensions and not others. tension_id: energy-landscape-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
+
+### heart-as-missing-orchestration-component | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** heart-as-missing-orchestration-component: The paper identifies 'strategic orchestration' as a central challenge for place-based social innovation ecosystems but cannot structurally explain why orchestration is difficult. DN's pillar decomposition reveals that the paper's four components are entirely Truth-Nuance in character, with Heart (motivational alignment, shared purpose orientation) structurally absent from the component model. This generates a broader tension: do ecosystem and innovation frameworks systematically exclude the orientational/motivational dimension because it is methodologically intractable (qualitative, subjective, hard to measure), or because their structural primitives (components, stakeholders, flows) cannot represent it? This parallels the heart-formal-absence-network-models tension from forensic psychiatry but in an organizational/ecosystem domain, suggesting a cross-domain pattern where Heart is the pillar most consistently excluded from formal models. If DN's identification of this gap is genuinely productive (predicting orchestration failure modes that component-based models miss), it strengthens DN's lens claim in organizational domains. If the gap is already well-recognized in the social innovation literature under different vocabulary (e.g., 'shared vision,' 'collective purpose'), then DN's contribution is relabeling rather than revealing. tension_id: heart-as-missing-orchestration-component
+
+**Sources:**
+- [2026-04-05] Place-based social innovation ecosystems: components, emergence and the challenge of strategic orchestration (strain: 2)
+
+### symmetry-as-shadow-mechanism | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** symmetry-as-shadow-mechanism: The paper demonstrates that symmetry preservation is the specific mechanism by which memorization (shadow structure) maintains its coherence, and symmetry-breaking is the specific mechanism by which generalization (light structure) emerges. This creates a tension with DN's shadow architecture: DN treats shadow as 'intelligence organized toward limitation' but does not formalize the mechanism of shadow maintenance. This paper suggests that in at least one domain, the mechanism is symmetry preservation—shadow states are stable precisely because they respect the full symmetry of the surface structure, and breaking out of shadow requires breaking symmetry. If this generalizes, it would give DN's shadow concept a formal mechanism it currently lacks, but it would also mean that group theory and spectral analysis provide a more precise description of shadow dynamics than DN's narrative apparatus. This connects to the existing formal-exceeding tension and shadow-biological-testability tension: can DN's shadow predictions be formalized through symmetry/group-theoretic language? tension_id: symmetry-as-shadow-mechanism
+
+**Sources:**
+- [2026-04-05] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 4)
