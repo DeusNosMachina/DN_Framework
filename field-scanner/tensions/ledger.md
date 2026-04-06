@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-05*
+*Last updated: 2026-04-06*
 
 
 
@@ -113,3 +113,30 @@
 
 **Sources:**
 - [2026-04-05] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 4)
+
+### algebraic-symmetry-vs-dimensional-transit | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** algebraic-symmetry-vs-dimensional-transition: The paper demonstrates that the critical organizational transition (memorization → generalization) is governed by algebraic symmetry-breaking within group-theoretic structure, not by progression through dimensional positions. This creates a specific tension with §2 and §5: DN's transition model describes organizational transitions as movements between dimensional positions, but this paper shows a transition that occurs within a fixed algebraic framework where the relevant structural change is a symmetry property of the data, not a dimensional property of the system. The tension is sharpened by the paper's precision—the exact algebraic condition for transition is formally specified (coset representation imbalance), which is a level of mechanistic specificity DN's transition model cannot match. This connects to but is distinct from the existing energy-landscape-vs-dimensional-hierarchy tension: where EBRM showed continuous energy minimization as an alternative to discrete dimensional steps, this paper shows discrete algebraic symmetry-breaking as the transition mechanism. Together they suggest that DN's dimensional transition model may be a narrative description of phenomena whose actual mechanisms are algebraic/geometric rather than dimensional. tension_id: algebraic-symmetry-vs-dimensional-transition
+
+**Sources:**
+- [2026-04-06] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 5)
+
+### heart-absence-as-performance-ceiling-in-d | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §3, §4, §0.1
+**Description:** heart-absence-as-performance-ceiling-in-detection: The paper achieves strong results through purely Truth-Nuance architectural optimization (feature refinement, contextual fusion) without any Heart-analog (motivational prioritization, object-level salience, detection purpose). DN's pillar triad predicts this should produce a performance ceiling on tasks requiring structural understanding of WHAT is being detected (not just WHERE boundaries are). The paper's own results partially support this—performance gains are smallest on the CAMO dataset with structurally complex objects—but the paper attributes this to feature difficulty rather than missing architectural dimension. This connects to the heart-formal-absence-network-models tension but in a computer vision domain: is Heart's absence a systematic ceiling in detection architectures, or is the performance gap better explained by engineering factors (more training data, better features) without invoking an orientational dimension? tension_id: heart-absence-performance-ceiling-detection
+
+**Sources:**
+- [2026-04-06] Weakly-Supervised Camouflaged Object Detection via SAM-Guided Resolution Iteration Learning (strain: 2)
+
+### cross-modal-translation-as-dimensional-sk | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** cross-modal-translation-as-dimensional-skip: AromaGen's pipeline translates from semantic space (3D-4D) directly to physical manifestation (7D), skipping the Connection layer (6D) that constitutes the experiential significance of the target modality. DN's dimensional hierarchy predicts this skip should produce outputs that are perceptually accurate but experientially impoverished—a testable prediction. This generates a broader tension: do cross-modal AI systems that skip intermediate dimensional layers systematically produce outputs that are technically correct but phenomenologically flat? If so, DN's dimensional ordering would provide a structural explanation for a widely observed but poorly theorized phenomenon in generative AI (the 'uncanny valley' of AI-generated sensory content). If cross-modal systems can produce experientially rich outputs without engaging the Connection layer, the dimensional ordering claim faces strain. tension_id: cross-modal-dimensional-skip
+
+**Sources:**
+- [2026-04-06] AromaGen: Interactive Generation of Rich Olfactory Experiences with Multimodal Language Models (strain: 2)
