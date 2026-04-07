@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-06*
+*Last updated: 2026-04-07*
 
 
 
@@ -140,3 +140,30 @@
 
 **Sources:**
 - [2026-04-06] AromaGen: Interactive Generation of Rich Olfactory Experiences with Multimodal Language Models (strain: 2)
+
+### optimal-disorder-without-dimensional-prog | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** optimal-disorder-without-dimensional-progression: The paper demonstrates that the transition from disorder to emergent order (phase synchronization) is achieved by navigating a continuous entropy landscape via ML optimization, without any dimensional hierarchy or staged progression. The 'optimal disorder' configurations are found by gradient-based search through parameter space, not by ascending through structural levels. This creates a tension with §2 (dimensional architecture) and §5 (transition model): if emergent coherence can be achieved by optimizing within a single continuous landscape rather than transitioning between discrete dimensional levels, what structural work does DN's dimensional hierarchy perform in domains where continuous optimization is available? This connects to the energy-landscape-vs-dimensional-hierarchy tension from EBRM but with a sharper edge: here the continuous landscape approach fully succeeds (unlike EBRM's partial failure), and the domain (coupled oscillators/synchronization) is one where DN's Resonance force is directly engaged. The tension is moderated by the system's relative simplicity—coupled pendulums may not engage the full complexity DN's architecture addresses—but it adds to the accumulating evidence that continuous optimization frameworks can achieve emergent order without dimensional staging. tension_id: optimal-disorder-without-dimensional-progression
+
+**Sources:**
+- [2026-04-07] Optimizing disorder with machine learning to harness phase synchronization (strain: 5)
+
+### synchronization-as-shadow-vulnerable | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** synchronization-as-shadow-vulnerable: The paper's adaptive synchronization controller assumes that bringing H-M-E subsystems into coordinated alignment is the correct control objective. DN's shadow architecture reveals that synchronization has both light and shadow forms: light-synchronization produces coordinated adaptive response, while shadow-synchronization produces correlated failure modes where all subsystems collapse together. The paper's dynamical model cannot distinguish these because it lacks an orientational dimension—it measures synchronization magnitude but not synchronization quality. This generates a broader tension: do control-theoretic frameworks for complex coupled systems systematically conflate coordination with safety by treating synchronization as inherently desirable? If DN's shadow distinction between light and shadow synchronization is structurally real, it predicts specific failure modes in synchronized emergency systems (correlated collapse under novel perturbations) that synchronization-focused control strategies cannot detect. This connects to the heart-formal-absence pattern: the missing orientational dimension is what would distinguish adaptive coordination from correlated vulnerability. tension_id: synchronization-as-shadow-vulnerable
+
+**Sources:**
+- [2026-04-07] Dynamic Risk Evolution and Adaptive Synchronization Control for Human–Machine–Environment Coupled Nuclear Emergency System: Based on Comprehensive On-Site Emergency Drills of Nuclear Power Plants (strain: 3)
+
+### weak-coupling-generativity-vs-resonance-f | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** weak-coupling-generativity-vs-resonance-force: The paper demonstrates that infinitesimal coupling—near-absence of interaction—generates the most complex and extreme dynamical phenomena, while strong coupling suppresses them and restores simple synchronization. This creates a tension with DN's Resonance force: if Resonance describes the dynamic by which systems achieve productive coupling, the paper suggests that maximal Resonance (strong coupling → synchronization) produces structural simplification, while minimal Resonance (weak coupling → torus breakdown → EEs) produces structural complexification. DN's architecture does not currently distinguish between coupling strength and coupling productivity, nor does it predict that shadow-Resonance (near-absence of coupling) could be more generatively productive than full Resonance. This connects to the existing cognitive-decoupling tension from v2 but with a sharper formal edge: the paper provides a precise mathematical demonstration that productive disconnection generates phenomena that productive connection suppresses. tension_id: weak-coupling-generativity-vs-resonance
+
+**Sources:**
+- [2026-04-07] Emergence of Extreme Events in Weakly Coupled Autonomous Bonhoeffer–van der Pol Systems (strain: 3)
