@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-07*
+*Last updated: 2026-04-08*
 
 
 
@@ -159,7 +159,7 @@
 **Sources:**
 - [2026-04-07] Dynamic Risk Evolution and Adaptive Synchronization Control for Human–Machine–Environment Coupled Nuclear Emergency System: Based on Comprehensive On-Site Emergency Drills of Nuclear Power Plants (strain: 3)
 
-### weak-coupling-generativity-vs-resonance-f | status: tracking | citations: 1
+### weak-coupling-generativity-vs-resonance-f | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
@@ -167,3 +167,22 @@
 
 **Sources:**
 - [2026-04-07] Emergence of Extreme Events in Weakly Coupled Autonomous Bonhoeffer–van der Pol Systems (strain: 3)
+- [2026-04-08] Emergence of Extreme Events in Weakly Coupled Autonomous Bonhoeffer–van der Pol Systems (strain: 3)
+
+### continuous-optimization-as-alternative-to | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** continuous-optimization-as-alternative-to-dimensional-progression: The paper demonstrates that emergent coherence can be achieved through continuous gradient-based optimization over a learned landscape, where the path from disorder to synchronization is a smooth trajectory in parameter space rather than a progression through discrete structural stages. This joins EBRM (energy minimization for reasoning) and EPO (geometric unification for numerical stability) as a third data point suggesting that continuous optimization over learned or geometric landscapes is a viable alternative structural grammar for achieving complex organization—one that bypasses DN's discrete dimensional hierarchy entirely. The tension is sharpened here because the domain (coupled oscillator synchronization) directly engages DN's Resonance force, yet the mechanism of achieving resonance is continuous optimization rather than dimensional progression. If continuous optimization consistently achieves emergent organization across domains without requiring discrete structural stages, DN's dimensional hierarchy faces a systematic alternative that is both simpler and more computationally productive. tension_id: continuous-optimization-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-08] Optimizing disorder with machine learning to harness phase synchronization (strain: 5)
+
+### shadow-as-institutional-architecture | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** shadow-as-institutional-architecture: The paper demonstrates that shadow organization can be empirically quantified in institutional/infrastructural systems through network metrics (reciprocity, Gini, flow directionality). This creates a productive tension: DN's shadow concept is typically applied to psychological or developmental contexts, but this paper shows shadow structure operating at the level of global institutional infrastructure—where the 'intelligence organized toward limitation' is not a cognitive pattern but a material arrangement of buildings, funding streams, permit structures, and expertise concentrations. This raises the question of whether DN's shadow architecture, which was developed primarily for psychological/developmental contexts, can be formally extended to institutional/material systems without losing its structural specificity. If shadow applies equally to a person's defensive patterns and to a global specimen custody network, is the concept too broad to be structurally useful? Or does the structural parallel (both involve organized-toward-separation rather than mere absence) reveal a genuine cross-scale invariant? The Felidae exception provides a test case: if Heart-driven engagement can partially overcome shadow organization at the institutional level (as DN predicts), this would support the cross-scale claim. tension_id: shadow-institutional-infrastructure-scale
+
+**Sources:**
+- [2026-04-08] Global Geography of Natural History Museum Specimen Holdings: A Time-Resolved Network Analysis of Mammal Collections, 1900–2020 (strain: 2)
