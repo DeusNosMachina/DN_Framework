@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-08*
+*Last updated: 2026-04-09*
 
 
 
@@ -186,3 +186,30 @@
 
 **Sources:**
 - [2026-04-08] Global Geography of Natural History Museum Specimen Holdings: A Time-Resolved Network Analysis of Mammal Collections, 1900–2020 (strain: 2)
+
+### conceptual-manifesto-vs-formal-alternativ | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** conceptual-manifesto-vs-formal-alternative: The manifesto was selected as a strain paper expecting it to present a 'successful alternative' (§7c) to DN's meta-positional claim. Instead, it reveals a different tension: conceptual frameworks that operate in DN's claimed territory (meaning, purpose, organizational intelligence, transformation) but without formal structural specification are readily absorbed by DN's lens rather than challenging it. The strain hypothesis assumed SpKM's spiritual/ethical/cognitive/aesthetic dimensions would be orthogonal to DN's architecture, but without formalization these 'dimensions' function as thematic clusters rather than structural primitives. This suggests DN's meta-positional claim is most vulnerable not to conceptual alternatives (which DN can absorb) but to formal alternatives (topology, EPO, EBRM) that achieve structural specification DN lacks. The tension connects to the existing parsimony challenge and geometric-unification-without-dimensional-grammar tensions: DN's lens produces genuine yield when applied to conceptual frameworks (by revealing structural properties they leave implicit) but faces genuine strain from formal frameworks (which achieve structural specification DN cannot match). This asymmetry—strong lens yield on conceptual work, weak lens yield on formal work—may define the actual boundary of DN's meta-positional claim. tension_id: conceptual-absorption-vs-formal-resistance
+
+**Sources:**
+- [2026-04-09] The Joching Manifesto of Spiritual Knowledge Management (strain: 3)
+
+### geometric-minimum-as-structural-integrati | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §5
+**Description:** geometric-minimum-as-structural-integration: EPO's minimum-radius operation achieves structural integration of multiple constraints through a single scalar comparison—the tightest constraint wins. This is a fundamentally different integration mechanism than DN's dimensional hierarchy (where higher dimensions integrate lower ones) or pillar triad (where three independent dimensions operate simultaneously). The minimum operation is non-hierarchical (any constraint can be tightest depending on local state), non-triadic (it works for any finite number of constraints), and produces a single scalar output rather than a multi-dimensional structural description. This raises the question: in domains where structural integration is achievable through constraint minimization, what additional structural work does DN's more complex integration architecture perform? This connects to the existing geometric-unification-without-dimensional-grammar tension but sharpens it by identifying the specific integration mechanism (minimum over constraint radii) that serves as an alternative to DN's dimensional integration. tension_id: geometric-minimum-as-structural-integration
+
+**Sources:**
+- [2026-04-09] EPO: A Unified Framework for Entropy Stability, Positivity, and Oscillation Suppression (strain: 6)
+
+### shadow-coherence-as-classifiability | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** shadow-coherence-as-classifiability: The paper's finding that AD gradient signatures are highly classifiable (~90% accuracy) raises a tension with how 'loss' and 'degradation' are typically framed in neurodegenerative disease research. DN's shadow architecture predicts that disease-state disintegration should show coherent alternative organization rather than random degradation—and high classifiability is indirect evidence for this. The tension is: does the classifiability of disease-state gradient patterns constitute evidence for shadow coherence (organized alternative states), or is it merely evidence that degradation follows consistent pathways without implying the degraded state has its own organizational logic? This is empirically testable: if AD gradient patterns show consistent alternative topological structure (not just consistent reduction from normal topology), that would support shadow coherence. If they show only consistent magnitude reduction along the same organizational axes, that would support 'consistent degradation pathway' without shadow organization. This connects to shadow-biological-testability but sharpens it with a specific empirical test. tension_id: shadow-coherence-as-classifiability
+
+**Sources:**
+- [2026-04-09] Cross entropy gradient analysis for Alzheimer's disease assessment (strain: 3)
