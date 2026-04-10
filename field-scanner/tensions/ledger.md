@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-09*
+*Last updated: 2026-04-10*
 
 
 
@@ -213,3 +213,30 @@
 
 **Sources:**
 - [2026-04-09] Cross entropy gradient analysis for Alzheimer's disease assessment (strain: 3)
+
+### metatheory-as-alternative-universal-gramm | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** metatheory-as-alternative-universal-grammar: Mamardashvili-Pyatigorsky's 'metatheory of consciousness' attempts the same structural project as DN—a universal grammar for how consciousness organizes—using fundamentally different primitives (symbol, content/form synthesis, metatheoretical observation vs. dimensions, pillars, forces). Unlike the topology and EPO tensions, this alternative operates at the same level of formality as DN (narrative/philosophical rather than mathematical), making it a direct competitor for the meta-positional claim rather than a formal exceeding. The tension is sharpened by the metatheory's own failure to maintain unity (the Mamardashvili/Pyatigorsky split), which DN's architecture can structurally explain—suggesting DN may be a more complete meta-grammar even if the metatheory's primitives are legitimate. However, the metatheory's 'symbology' offers a structural primitive (the symbol as content/form synthesis) that has no direct DN analog and that may capture aspects of consciousness DN's architecture does not address. tension_id: metatheory-as-alternative-universal-grammar
+
+**Sources:**
+- [2026-04-10] The Problems of Consciousness in the Studies of M.K. Mamardashvili and A.M. Pyatigorsky (strain: 4)
+
+### spherical-vs-hierarchical-topology | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** spherical-vs-hierarchical-topology: The paper's 'spherical life-flow' metaphor implies a closed, self-returning topology of consciousness where development curves back on itself, contrasting with DN's dimensional architecture which is fundamentally progressive (1D→9D) even when recursive. DN accommodates cyclicality through Axiom 3 (recursion) and nested dimensionality, but the spherical metaphor suggests something stronger: that consciousness has no privileged direction, that 'higher' dimensions are not structurally above 'lower' ones but are different positions on a surface of equal topological status. If taken seriously as a structural claim rather than a metaphor, this would challenge §2's hierarchical ordering. The tension is mild because the paper does not formalize the spherical claim, but it connects to the existing topology-as-alternative-structural-grammar tension: topological frameworks that treat dimensional positions as equivalent (rather than hierarchically ordered) would be more natural homes for the spherical metaphor than DN's progressive architecture. tension_id: spherical-vs-hierarchical-topology
+
+**Sources:**
+- [2026-04-10] “Conscius sum, ergo sum?”: Phenomenal Manifestations of Human Self-Determination in the Context of Consciousness (strain: 2)
+
+### literary-phenomenology-as-dn-natural-doma | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** literary-phenomenology-as-dn-natural-domain: This paper produces the highest lens yield (7) in a domain (literary criticism / historical poetics) that is methodologically informal, qualitative, and Heart-led. Combined with previous high-yield papers (PTG in psychosis: 7, aesthetics: 5, forensic psychiatry: 6), a pattern emerges: DN's lens produces its strongest yields in domains that are qualitative, meaning-oriented, and concerned with human interiority — precisely the domains where formal alternatives (topology, energy landscapes, statistical dimensionality reduction) have least traction. This generates a tension: is DN's lens yield an artifact of domain selection (DN adds most where formal alternatives are weakest, and adds least where they are strongest), or does it reveal that DN's unique structural contributions (shadow symmetry, pillar independence, dimensional hierarchy) are genuinely most productive in meaning-laden domains? If the former, DN's meta-positional claim of domain universality is weakened — it would be a lens for humanistic/qualitative domains rather than a universal structural grammar. If the latter, DN may have identified a structural register (the orientational/meaning-making register) that formal frameworks systematically miss, which would be a significant contribution even if domain-specific. tension_id: dn-lens-yield-domain-dependence
+
+**Sources:**
+- [2026-04-10] A Self-Elegy of a Ming Courtesan: The Emotional Structure and Aesthetic Self-Consciousness in the Ci Poetry of Ma Shouzhen(馬守眞) (strain: 2)
