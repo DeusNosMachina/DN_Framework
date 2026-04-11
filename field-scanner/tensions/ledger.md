@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-10*
+*Last updated: 2026-04-11*
 
 
 
@@ -240,3 +240,30 @@
 
 **Sources:**
 - [2026-04-10] A Self-Elegy of a Ming Courtesan: The Emotional Structure and Aesthetic Self-Consciousness in the Ci Poetry of Ma Shouzhen(馬守眞) (strain: 2)
+
+### posthumanist-flat-ontology-vs-dimensional | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** posthumanist-flat-ontology-vs-dimensional-hierarchy: The paper's posthumanist framing explicitly rejects hierarchical ordering of agency — all actors (human, algorithmic, institutional) participate in distributed assemblages without structural ranking. DN's dimensional architecture imposes a hierarchy (1D-9D) that distinguishes between different depths of organizational complexity. The tension is not that posthumanism disproves DN's hierarchy, but that posthumanism's flat ontology represents a principled philosophical alternative that achieves certain analytical goals (recognizing non-human agency, dissolving subject/object boundaries) that DN's hierarchy does not prioritize. However, DN's lens reveals that flat ontology pays a structural cost: it cannot distinguish between configurations organized toward integration and those organized toward limitation. The question is whether this cost is inherent to flat ontology or whether a non-hierarchical framework could incorporate evaluative differentiation without reintroducing hierarchy. This connects to the existing parsimony challenge and heart-as-missing-orchestration-component tensions. tension_id: posthumanist-flat-ontology-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
+
+### sem-flat-mediation-vs-dimensional-orderin | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** sem-flat-mediation-vs-dimensional-ordering: The paper's SEM architecture treats KMC and OR as parallel mediators of equivalent structural status, and this parallel model achieves acceptable fit. DN's dimensional lens predicts they are sequentially ordered (3D→4D). This generates a testable tension: if parallel mediation models consistently achieve good fit in organizational research despite DN predicting sequential ordering, this would suggest that DN's dimensional hierarchy imposes false structure on genuinely parallel organizational processes. Conversely, if sequential models consistently outperform parallel models when tested, this would be evidence for DN's dimensional ordering claim in organizational domains. This connects to the existing ptg-dimensional-ordering-vs-network-dynamics tension but in a quantitative organizational context where the ordering prediction is directly testable via SEM model comparison. tension_id: sem-flat-mediation-vs-dimensional-ordering
+
+**Sources:**
+- [2026-04-11] Digital Capabilities as Drivers of Competitive Innovation: The Interplay of Knowledge Management, Organizational Resilience, and Environmental Dynamism (strain: 2)
+
+### trust-deficit-vs-shadow-organization | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** trust-deficit-vs-shadow-organization: The paper treats institutional distrust as a deficit (absence of trust) to be remedied through evidence-based interventions. DN's shadow architecture reframes distrust as organized-toward-separation—a coherent parallel structure with its own stability and internal logic. This generates a broader tension: do organizational and institutional frameworks systematically misdiagnose shadow structures as deficits because their structural primitives (trust levels, confidence metrics, satisfaction scores) can only represent scalar quantities on a single axis (more/less trust) rather than qualitative orientational differences (trust-organized vs. distrust-organized)? If DN's shadow reframing is correct, it predicts that deficit-model interventions will consistently underperform because they address the wrong structural level—providing information to an orientation problem. This is testable: organizations that implement transparency and procedural justice interventions should show different trust recovery trajectories depending on whether public distrust is disorganized (information deficit) or organized (coherent separation orientation). This connects to the existing heart-formal-absence-network-models tension but from an organizational rather than clinical domain, and adds a new edge: the distinction between scalar deficit and organized shadow as competing structural accounts of the same phenomenon. tension_id: trust-deficit-vs-shadow-organization
+
+**Sources:**
+- [2026-04-11] Institutional Distrust in the Age of AI: Evidence-Based Organizational Responses to Eroding Public Confidence (strain: 2)
