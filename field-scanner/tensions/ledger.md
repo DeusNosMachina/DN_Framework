@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-11*
+*Last updated: 2026-04-12*
 
 
 
@@ -78,7 +78,7 @@
 **Sources:**
 - [2026-04-04] Stage-specific epigenetic priming amplifies gene activation during lineage commitment (strain: 2)
 
-### ptg-dimensional-ordering-vs-network-dynam | status: tracking | citations: 1
+### ptg-dimensional-ordering-vs-network-dynam | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
@@ -86,6 +86,7 @@
 
 **Sources:**
 - [2026-04-04] Development of a process model of posttraumatic growth in psychosis: a qualitative study (strain: 2)
+- [2026-04-12] A Network Approach to Developmental Differences and Disorders (strain: 5)
 
 ### energy-landscape-vs-dimensional-hierarchy | status: tracking | citations: 1
 
@@ -267,3 +268,21 @@
 
 **Sources:**
 - [2026-04-11] Institutional Distrust in the Age of AI: Evidence-Based Organizational Responses to Eroding Public Confidence (strain: 2)
+
+### ahp-pillar-bias-in-developmental-models | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** ahp-pillar-bias-in-developmental-models: The AHP methodology assumes that expert pairwise comparison can rank developmental stages as independent units. DN's pillar decomposition reveals that AHP is structurally Truth-led (quantitative priority ranking) with no Heart representation (motivational orientation, purpose alignment). DN's dimensional nesting reveals that AHP's independence assumption is structurally invalid for hierarchically nested developmental stages. This generates a broader tension: do quantitative priority-ranking methodologies (AHP, multi-criteria decision analysis) systematically produce pillar-biased and stage-independence-assuming results when applied to developmental phenomena? If so, DN's lens identifies a methodological limitation that extends beyond this paper to the entire class of AHP-based developmental assessments. However, this tension must be tested against the parsimony challenge: organizational development literature already recognizes that stages are interdependent and that quantitative methods miss motivational dimensions—DN's contribution may be providing a structural vocabulary for an already-recognized limitation rather than revealing a genuinely new one. tension_id: ahp-pillar-bias-in-developmental-models
+
+**Sources:**
+- [2026-04-12] Stage-based Priority Analysis of Key Activities for the Sustainable Growth of Village Education Communities: An AHP Application (strain: 2)
+
+### spanner-shadow-maintenance-incentive | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5, §10
+**Description:** spanner-shadow-maintenance-incentive: The paper's structural hole spanners derive systemic importance from the disconnection they are tasked with bridging, creating an incentive structure where shadow maintenance (preserving structural holes) is rewarded by the very framework designed to achieve connection. DN's shadow architecture identifies this as a specific structural prediction: spanner-mediated consensus systems will exhibit systematic bias toward partial bridging. This generates a broader tension for DN: if shadow maintenance can be formally modeled as an incentive-alignment problem (as game theory and mechanism design would frame it), does DN's shadow architecture add structural insight beyond what incentive theory already provides? The shadow lens identified the problem, but the formal tools to address it (mechanism design, incentive compatibility) exist outside DN's architecture. This connects to the heart-formal-absence-network-models tension: the missing Heart pillar is precisely what would distinguish genuine bridging from strategic partial-bridging, but DN offers no formal mechanism to measure or enforce this distinction. tension_id: spanner-shadow-maintenance-incentive
+
+**Sources:**
+- [2026-04-12] Bilevel Consensus in Large-Scale Group Decision Making: Integrating Structural Holes and Community Dynamics (strain: 3)
