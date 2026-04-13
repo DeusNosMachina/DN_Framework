@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-12*
+*Last updated: 2026-04-13*
 
 
 
@@ -88,7 +88,7 @@
 - [2026-04-04] Development of a process model of posttraumatic growth in psychosis: a qualitative study (strain: 2)
 - [2026-04-12] A Network Approach to Developmental Differences and Disorders (strain: 5)
 
-### energy-landscape-vs-dimensional-hierarchy | status: tracking | citations: 1
+### energy-landscape-vs-dimensional-hierarchy | status: tracking | citations: 2
 
 **Maturity target:** foundational
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
@@ -96,6 +96,7 @@
 
 **Sources:**
 - [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
+- [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 
 ### heart-as-missing-orchestration-component | status: tracking | citations: 1
 
@@ -286,3 +287,21 @@
 
 **Sources:**
 - [2026-04-12] Bilevel Consensus in Large-Scale Group Decision Making: Integrating Structural Holes and Community Dynamics (strain: 3)
+
+### linear-causal-chain-vs-dimensional-discon | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** linear-causal-chain-vs-dimensional-discontinuity: The paper treats causation→entropy→time→information→knowledge as a continuous linear chain where each step follows mechanistically from the previous. DN's dimensional architecture identifies at least one qualitative discontinuity in this chain (the 4D→5D transition from temporal process to reflexive observation) that cannot be bridged by the same causal mechanism (energy/momentum transfer) that drives the earlier steps. This generates a broader tension: do frameworks that model knowledge generation as continuous causal chains systematically miss structural discontinuities that dimensional or phase-transition frameworks can identify? If so, DN's dimensional hierarchy adds genuine structural insight in epistemology. If the discontinuity can be resolved within the causal chain framework (e.g., by treating observation as just another causal process), then DN's dimensional discontinuity claim faces a reductionist challenge. This connects to the energy-landscape-vs-dimensional-hierarchy tension: continuous optimization/causation frameworks vs. discrete dimensional transitions. tension_id: linear-causal-chain-vs-dimensional-discontinuity
+
+**Sources:**
+- [2026-04-13] Sources of knowledge—causation begets entropy increase, time progression, and information flow (strain: 2)
+
+### shadow-entropy-metric-collapse | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** shadow-entropy-metric-collapse: The paper's cross-entropy measure treats gradient flattening as a unitary phenomenon, but DN's architecture distinguishes between shadow (organized toward limitation—regions coordinating toward restricted patterns) and entropy (dissolution—loss of organizational structure). Both produce gradient flattening in the CRBEN framework, but they represent structurally different processes with different implications for intervention and prognosis. This generates a broader tension: do information-theoretic biomarkers in neurodegeneration systematically conflate organized reorganization with dissolution because their metrics cannot distinguish the two? If DN's shadow-entropy distinction is structurally real in neural systems, it predicts that gradient-flattened regions should show bimodal character (some uniformly reorganized, some randomly degraded) rather than the uniform degradation the paper implicitly assumes. This is testable using the paper's existing data by examining the variance structure within flattened gradients. tension_id: shadow-entropy-metric-collapse
+
+**Sources:**
+- [2026-04-13] Cross entropy gradient analysis for Alzheimer's disease assessment (strain: 3)
