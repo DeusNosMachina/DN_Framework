@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-13*
+*Last updated: 2026-04-14*
 
 
 
@@ -116,7 +116,7 @@
 **Sources:**
 - [2026-04-05] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 4)
 
-### algebraic-symmetry-vs-dimensional-transit | status: tracking | citations: 1
+### algebraic-symmetry-vs-dimensional-transit | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
@@ -124,6 +124,7 @@
 
 **Sources:**
 - [2026-04-06] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 5)
+- [2026-04-14] Complexity Theory meets Ordinary Differential Equations (strain: 6)
 
 ### heart-absence-as-performance-ceiling-in-d | status: tracking | citations: 1
 
@@ -305,3 +306,21 @@
 
 **Sources:**
 - [2026-04-13] Cross entropy gradient analysis for Alzheimer's disease assessment (strain: 3)
+
+### heart-as-independent-leadership-dimension | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** heart-as-independent-leadership-dimension: The paper's treatment of emotional intelligence as one variable among many in leadership emergence, combined with DN's pillar decomposition revealing Heart as an independent structural dimension, generates a testable tension. If Heart (motivational orientation) is genuinely independent of Truth (structural competence) and Nuance (contextual sensitivity) in leadership contexts, then leadership research that treats emotional intelligence as a predictor variable within a single regression model is committing a category error—conflating an independent structural dimension with a dependent variable. This connects to the existing heart-formal-absence-network-models and heart-as-missing-orchestration-component tensions but in a leadership/organizational domain. The tension is whether DN's pillar independence claim produces testable predictions in leadership research (e.g., that Heart-led vs. Truth-led vs. Nuance-led leadership produce structurally different organizational outcomes that cannot be captured by a single 'leadership effectiveness' measure) or whether it merely relabels existing multidimensional leadership models (transformational, servant, authentic) in DN vocabulary. tension_id: heart-as-independent-leadership-dimension
+
+**Sources:**
+- [2026-04-14] A Systems Theory Perspective on Leadership: The Symbiotic Relationship between Nature and Nurture (strain: 2)
+
+### truth-architecture-on-heart-domain-ceilin | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** truth-architecture-on-heart-domain-ceiling: The DLM demonstrates a pattern where a formally rigorous analytical framework (cybernetics/systems theory) is applied to a domain fundamentally driven by motivational orientation, emotional investment, and meaning-making. DN's pillar decomposition predicts that such Truth-architectures will hit a specific analytical ceiling: they can describe the structural dynamics of the domain but cannot distinguish between structurally identical systems with different orientational qualities (e.g., a TRPG session where players are genuinely invested vs. one where they are going through the motions). This connects to the heart-formal-absence-network-models tension but from a different angle: here the Heart dimension is not merely absent from the model but is the primary driver of the phenomenon being modeled, making the analytical ceiling more consequential. If this pattern generalizes, it suggests that DN's Heart pillar identifies a systematic blind spot in cybernetic/systems-theoretic frameworks when applied to meaning-driven domains—a blind spot that is structural rather than merely methodological. tension_id: truth-architecture-heart-domain-ceiling
+
+**Sources:**
+- [2026-04-14] The Dynamic Loop Model: A Systemic-Cybernetic Meta-Theoretical Framework for Understanding Tabletop Role-Playing Games (strain: 2)
