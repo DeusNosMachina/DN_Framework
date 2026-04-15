@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-14*
+*Last updated: 2026-04-15*
 
 
 
@@ -324,3 +324,30 @@
 
 **Sources:**
 - [2026-04-14] The Dynamic Loop Model: A Systemic-Cybernetic Meta-Theoretical Framework for Understanding Tabletop Role-Playing Games (strain: 2)
+
+### creativity-orientation-blindspot | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** creativity-orientation-blindspot: The paper's integrative framework for creativity factors treats creativity as inherently positive (novel and valuable), with no structural account of creativity organized toward limitation, manipulation, or destruction. DN's shadow architecture identifies this as a systematic orientation blindspot that affects the entire field of creativity research: if creativity is defined by novelty + value, and value is determined by the field (Csikszentmihalyi), then the framework has no mechanism for distinguishing fields that validate creativity-toward-flourishing from fields that validate creativity-toward-limitation. This connects to the existing heart-as-missing-orchestration-component tension (creativity research acknowledges motivation but does not structurally integrate orientation) and the shadow-biological-testability tension (does shadow organization produce empirically distinguishable predictions in creativity research?). The tension is whether DN's shadow architecture reveals a genuine structural gap in creativity research or merely adds a moral/evaluative overlay that creativity researchers deliberately exclude as outside their empirical scope. tension_id: creativity-orientation-blindspot
+
+**Sources:**
+- [2026-04-15] An Integrative Multidimensional Analysis of the Factors Influencing the Formation and Development of Creativity: Cognitive, Motivational, Socio-Cultural, and Educational Perspectives (strain: 2)
+
+### pillar-decomposition-of-unitary-construct | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** pillar-decomposition-of-unitary-constructs-in-organizational-research: DN's pillar triad consistently decomposes constructs that organizational/management research treats as unitary (here: leadership emergence and behavioral integration) into structurally independent components with different predicted dynamics. This raises a tension: is the pillar decomposition producing genuinely new structural insight, or is it recapitulating a well-known problem in organizational psychology (construct proliferation, jingle-jangle fallacy) using different vocabulary? If the latter, DN's contribution is relabeling. If the former — specifically, if the Heart/Truth/Nuance decomposition cuts across existing construct decompositions at a different angle and generates novel testable predictions — then DN's pillar architecture has genuine lens value in organizational domains. The test case here is whether the predicted differential inverted-U inflection points across pillar-led BI components would be empirically distinguishable from existing decompositions of BI (e.g., task vs. relational integration). tension_id: pillar-decomposition-organizational-constructs
+
+**Sources:**
+- [2026-04-15] The cross-level effects of leadership emergence on teamwork effectiveness: the roles of behavioral integration and task uncertainty (strain: 2)
+
+### historiographic-linearity-vs-shadow-persi | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** historiographic-linearity-vs-shadow-persistence: Rozin's paper, like most history-of-ideas scholarship, treats intellectual development as sequential supersession (Plato's approach is replaced by Aristotle's, which is later corrected by mathematical science). DN's shadow architecture predicts that shadow structures are not superseded but persist as parallel organizations alongside their light counterparts. This generates a testable tension: if DN's shadow persistence claim is correct, Platonic 'desired-object' thinking should persist as a coherent parallel mode within and alongside Aristotelian science, not merely as a historical precursor. This is empirically addressable—the persistence of normative/ideal-projective modes within scientific practice (paradigm idealization, thought experiments, normative frameworks in science policy) would confirm shadow persistence, while evidence that these modes are genuinely vestigial rather than structurally active would strain it. This connects to the existing shadow-biological-testability tension but in an intellectual/epistemological domain. tension_id: historiographic-linearity-vs-shadow-persistence
+
+**Sources:**
+- [2026-04-15] The emergence of science (reconstruction of the modes of thinking and knowledge of the founders of ancient discursivity) (strain: 2)
