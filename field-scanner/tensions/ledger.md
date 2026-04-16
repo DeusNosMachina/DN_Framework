@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-15*
+*Last updated: 2026-04-16*
 
 
 
@@ -351,3 +351,30 @@
 
 **Sources:**
 - [2026-04-15] The emergence of science (reconstruction of the modes of thinking and knowledge of the founders of ancient discursivity) (strain: 2)
+
+### causation-as-unifying-primitive-vs-dimens | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** causation-as-unifying-primitive-vs-dimensional-distribution: Weber demonstrates that a single physical mechanism (conserved-quantity transfer) can generate entropy increase, time progression, and information flow as consequences rather than as independent structural dimensions. This challenges DN's §2 by suggesting that what DN distributes across dimensions 1D-4D may be consequences of a single generative process rather than structurally independent organizational levels. The tension is sharpest at the 4D/3D boundary: Weber's physics-grounded argument places temporal ordering before contextual structure, directly inverting DN's prescribed dimensional hierarchy. If Weber's ordering is physically correct (time emerges from causation before context is organized), DN's dimensional ordering at the 3D-4D boundary requires justification beyond narrative coherence. This connects to the existing energy-landscape-vs-dimensional-hierarchy tension but from a different angle: where EBRM showed continuous optimization as an alternative to dimensional progression, Weber shows a single causal mechanism as an alternative to dimensional distribution. tension_id: causation-primitive-vs-dimensional-distribution
+
+**Sources:**
+- [2026-04-16] Sources of knowledge—causation begets entropy increase, time progression, and information flow (strain: 5)
+
+### spectral-as-meta-operation-vs-parallel-ax | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4
+**Description:** spectral-as-meta-operation-vs-parallel-axis: The paper achieves SOTA results by treating spatial, temporal, and spectral as parallel mixing branches, but DN's dimensional mapping reveals spectral decomposition as structurally dependent on (operating at a higher dimensional position than) spatial representation. The paper's success with symmetric mixing despite structural non-equivalence creates a tension: does structural hierarchy need to be architecturally respected for optimal performance, or can symmetric mixing compensate through learned attention weights? If the latter, DN's dimensional hierarchy claim is weakened in engineering contexts—systems can achieve high performance without respecting the hierarchy DN identifies. If the former, the paper's architecture is suboptimal and hierarchy-respecting alternatives should outperform. This is testable. tension_id: spectral-hierarchy-vs-symmetric-mixing
+
+**Sources:**
+- [2026-04-16] STS-Mixer: Spatio-Temporal-Spectral Mixer for 4D Point Cloud Video Understanding (strain: 2)
+
+### entropy-as-precursor-vs-shadow-as-organiz | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** entropy-as-precursor-vs-shadow-as-organized: The paper demonstrates that entropy elevation preceding extreme events is a measurable, statistically significant precursor signal — entropy increase is empirically informative about future system behavior. DN's shadow architecture would frame this as shadow-adjacent organization (the system organizing toward dissolution as a precursor to extreme reorganization). But the paper's information-theoretic framework provides a simpler and more precise account: entropy increase reflects loss of temporal correlations in the permutation structure, which is a necessary condition for extreme events because it indicates the breakdown of the system's normal organizational constraints. The tension is whether DN's shadow framing adds structural insight beyond what information theory already provides in characterizing pre-extreme-event dynamics. If the shadow framing predicts specific qualitative features of the precursor (not just 'entropy goes up' but 'entropy goes up in a specific shadow-structured way'), it adds value. If it merely relabels the entropy increase as 'shadow-adjacent,' it does not. This connects to the existing shadow-biological-testability tension but in a geophysical domain. tension_id: shadow-precursor-vs-information-theoretic-precursor
+
+**Sources:**
+- [2026-04-16] Unveiling Hidden Patterns in Monsoon Rainfall: A Complexity‐Entropy Analysis of Tropical Precipitation Dynamics in Northeast India—A Case Study of Agartala, Tripura (2012–2024) (strain: 3)
