@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-16*
+*Last updated: 2026-04-17*
 
 
 
@@ -244,7 +244,7 @@
 **Sources:**
 - [2026-04-10] A Self-Elegy of a Ming Courtesan: The Emotional Structure and Aesthetic Self-Consciousness in the Ci Poetry of Ma Shouzhen(馬守眞) (strain: 2)
 
-### posthumanist-flat-ontology-vs-dimensional | status: tracking | citations: 1
+### posthumanist-flat-ontology-vs-dimensional | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §3, §4, §5
@@ -252,6 +252,7 @@
 
 **Sources:**
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
+- [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 
 ### sem-flat-mediation-vs-dimensional-orderin | status: tracking | citations: 1
 
@@ -378,3 +379,21 @@
 
 **Sources:**
 - [2026-04-16] Unveiling Hidden Patterns in Monsoon Rainfall: A Complexity‐Entropy Analysis of Tropical Precipitation Dynamics in Northeast India—A Case Study of Agartala, Tripura (2012–2024) (strain: 3)
+
+### engineering-optimization-as-lens-floor | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4
+**Description:** engineering-optimization-as-lens-floor: This paper represents a near-zero lens yield case in a pure systems-engineering optimization domain. DN's dimensional grammar, pillar decomposition, and shadow architecture all fail to produce structural insight beyond what the paper's own engineering framing provides. This establishes a clearer boundary condition for DN's domain universality claim (§0.1): in domains where the structural primitives are quantitative performance metrics, hardware-software interfaces, and throughput optimization, DN's lens appears to have no traction. This is distinct from the formal-mathematical domain limitation (EPO, VPPCA) because the limitation here is not about formal rigor exceeding DN's expressiveness—it is about the domain's structural organization being genuinely flat (no emergent hierarchy, no qualitative transitions, no orientational complexity) in a way that makes dimensional decomposition vacuous. The question is whether this represents a domain where DN correctly identifies low-dimensional operation (2D-3D) or a domain where DN's architecture is simply inapplicable. tension_id: engineering-optimization-lens-floor
+
+**Sources:**
+- [2026-04-17] Ultra-Low Latency Video Pipeline Optimization for Perception-Centric Autonomous Systems (strain: 4)
+
+### heart-motivation-truth-measurement-gap | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §3, §4, §5, §0.1
+**Description:** heart-motivation-truth-measurement-gap: The paper's entire design motivation is Heart-led (participant agency, meaningful engagement, connection to purpose in cancer research) but its evaluation methodology is exclusively Truth-led (enrollment rates, completion percentages, Likert acceptability scales). DN's pillar independence predicts this gap should produce a specific failure mode: the project cannot determine whether its primary goal was achieved because it has no metrics aligned with its primary motivation. This extends the heart-formal-absence pattern into a sharper form: not just Heart being absent from formal models, but Heart being the explicit stated purpose while being absent from the measurement architecture. If this pattern generalizes—that applied health interventions motivated by Heart concerns systematically evaluate themselves through Truth metrics—it would represent a structural blind spot in implementation science that DN's pillar decomposition uniquely identifies. The question is whether implementation science already recognizes this gap under different vocabulary (e.g., 'patient-centered outcomes' vs. 'process outcomes') or whether DN's framing reveals something the field's own frameworks miss. tension_id: heart-motivation-truth-measurement-gap
+
+**Sources:**
+- [2026-04-17] Digitally engaging participants in cancer clinical trials: Design and pilot of the alliance participant engagement portal (PEP) (strain: 2)
