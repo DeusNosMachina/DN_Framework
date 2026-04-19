@@ -3,9 +3,27 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-17*
+*Last updated: 2026-04-19*
 
 
+---
+
+## REVIEW QUEUE
+
+*These tensions have been independently surfaced by 3+ papers.*
+*They warrant human review for potential Kernel revision.*
+
+
+### energy-landscape-vs-dimensional-hierarchy | status: review | citations: 3
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** energy-landscape-vs-dimensional-hierarchy: EBRM demonstrates that multi-step reasoning can be formally modeled as continuous energy minimization over latent trajectories, where 'progress' is measured by scalar energy decrease rather than dimensional advancement. The three energy terms (compatibility, consistency, smoothness) operate as simultaneous constraints rather than hierarchical stages, and the gradient-based optimization produces structured trajectories without discrete dimensional transitions. This creates a tension with §2 (dimensional architecture): if reasoning progress can be captured by continuous energy decrease in a learned landscape, what structural work does DN's discrete dimensional hierarchy perform that energy landscapes do not? The tension is sharpened by the paper's partial failure—energy minimization works for relational/contextual tasks but fails for arithmetic and suffers distribution mismatch on logic, suggesting that continuous energy landscapes may capture some but not all structural registers of reasoning. DN's dimensional architecture might account for this by positing that different reasoning domains operate at different dimensional positions, but this requires DN to explain why energy landscapes are structurally adequate for some dimensions and not others. tension_id: energy-landscape-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
+- [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
+- [2026-04-19] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 
 
 ---
@@ -51,7 +69,7 @@
 **Sources:**
 - [2026-04-03] Temporal Discontinuity in Continuous Glucose Monitoring: How Midnight Segmentation Generates Systematic Measurement Artifact. (strain: 2)
 
-### heart-pillar-formal-absence-in-network-mo | status: tracking | citations: 1
+### heart-pillar-formal-absence-in-network-mo | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §3, §4, §5, §10
@@ -59,6 +77,7 @@
 
 **Sources:**
 - [2026-04-03] From diagnosis to dynamics: complex systems, transdiagnostics, and networks in forensic psychiatry (strain: 2)
+- [2026-04-19] Digitally engaging participants in cancer clinical trials: Design and pilot of the alliance participant engagement portal (PEP) (strain: 2)
 
 ### emergent-vs-prescribed-dimensionality | status: tracking | citations: 1
 
@@ -87,16 +106,6 @@
 **Sources:**
 - [2026-04-04] Development of a process model of posttraumatic growth in psychosis: a qualitative study (strain: 2)
 - [2026-04-12] A Network Approach to Developmental Differences and Disorders (strain: 5)
-
-### energy-landscape-vs-dimensional-hierarchy | status: tracking | citations: 2
-
-**Maturity target:** foundational
-**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
-**Description:** energy-landscape-vs-dimensional-hierarchy: EBRM demonstrates that multi-step reasoning can be formally modeled as continuous energy minimization over latent trajectories, where 'progress' is measured by scalar energy decrease rather than dimensional advancement. The three energy terms (compatibility, consistency, smoothness) operate as simultaneous constraints rather than hierarchical stages, and the gradient-based optimization produces structured trajectories without discrete dimensional transitions. This creates a tension with §2 (dimensional architecture): if reasoning progress can be captured by continuous energy decrease in a learned landscape, what structural work does DN's discrete dimensional hierarchy perform that energy landscapes do not? The tension is sharpened by the paper's partial failure—energy minimization works for relational/contextual tasks but fails for arithmetic and suffers distribution mismatch on logic, suggesting that continuous energy landscapes may capture some but not all structural registers of reasoning. DN's dimensional architecture might account for this by positing that different reasoning domains operate at different dimensional positions, but this requires DN to explain why energy landscapes are structurally adequate for some dimensions and not others. tension_id: energy-landscape-vs-dimensional-hierarchy
-
-**Sources:**
-- [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
-- [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 
 ### heart-as-missing-orchestration-component | status: tracking | citations: 1
 
@@ -380,7 +389,7 @@
 **Sources:**
 - [2026-04-16] Unveiling Hidden Patterns in Monsoon Rainfall: A Complexity‐Entropy Analysis of Tropical Precipitation Dynamics in Northeast India—A Case Study of Agartala, Tripura (2012–2024) (strain: 3)
 
-### engineering-optimization-as-lens-floor | status: tracking | citations: 1
+### engineering-optimization-as-lens-floor | status: tracking | citations: 2
 
 **Maturity target:** foundational
 **Kernel sections:** §0.1, §2, §3, §4
@@ -388,6 +397,7 @@
 
 **Sources:**
 - [2026-04-17] Ultra-Low Latency Video Pipeline Optimization for Perception-Centric Autonomous Systems (strain: 4)
+- [2026-04-19] Ultra-Low Latency Video Pipeline Optimization for Perception-Centric Autonomous Systems (strain: 4)
 
 ### heart-motivation-truth-measurement-gap | status: tracking | citations: 1
 
