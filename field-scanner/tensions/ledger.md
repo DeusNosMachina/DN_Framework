@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-19*
+*Last updated: 2026-04-20*
 
 
 ---
@@ -24,6 +24,13 @@
 - [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
 - [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-19] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -407,3 +414,30 @@
 
 **Sources:**
 - [2026-04-17] Digitally engaging participants in cancer clinical trials: Design and pilot of the alliance participant engagement portal (PEP) (strain: 2)
+
+### ownership-primitives-vs-dimensional-decom | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** ownership-primitives-vs-dimensional-decomposition: Serrahima's framework decomposes self-consciousness using ownership relations (ψ-ownership, φ-ownership) and epistemic properties (IEM, phenomenology) as structural primitives. These primitives are orthogonal to DN's dimensional hierarchy—they don't require dimensional positions to function and they cut across DN's architecture at a different angle (the ψ-φ distinction is within DN's 5D, not across dimensions). This generates a tension: in domains where the structural question is 'how does X relate to itself?' (reflexive domains), ownership-based decomposition may be a more natural and more precise structural grammar than dimensional progression. DN's lens still produced yield here (via pillar decomposition and shadow architecture), but the yield came from DN's evaluative apparatus, not from its dimensional hierarchy. This reinforces the emerging pattern that DN's unique value lies in its evaluative/orientational dimensions (pillars, shadow) rather than in its organizational detection claims (dimensional hierarchy), which face alternatives from topology, energy landscapes, and now ownership-based analytical frameworks. tension_id: ownership-primitives-vs-dimensional-decomposition
+
+**Sources:**
+- [2026-04-20] Self-consciousness, ψ and φ (strain: 4)
+
+### heart-inaccessibility-in-consciousness-re | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** heart-inaccessibility-in-consciousness-reconstruction: The paper's reconstruction methodology operates entirely in Truth-Nuance space (signal decoding, contextual validation) but its ethical framework implicitly requires Heart-level access (the patient's orientational relationship to their own experience, which grounds autonomy claims). DN's pillar decomposition reveals this as a structural mismatch: the technology cannot access the dimension its ethical justification depends on. This generates a broader tension for DN: if Heart is structurally inaccessible to third-person measurement methodologies, does DN's pillar architecture predict a fundamental limit on consciousness reconstruction that the field has not yet confronted? Or does DN's claim that Heart is an independent structural dimension overstate the separability of experiential orientation from the neural correlates that Truth-based methods can detect? This connects to the existing heart-formal-absence-network-models tension but sharpens it: in consciousness research specifically, the Heart gap may not be a methodological limitation but a structural impossibility—the orientational dimension may be constitutively first-personal in a way that no reconstruction technology can bridge. tension_id: heart-inaccessibility-in-consciousness-reconstruction
+
+**Sources:**
+- [2026-04-20] Neural Reconstruction in Disorders of Consciousness: Prospects and Emerging Challenges (strain: 2)
+
+### heart-methodology-mismatch-in-development | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** heart-methodology-mismatch-in-developmental-psychology: The paper applies Truth-pillar methodology (hierarchical regression, variance decomposition) to Heart-pillar phenomena (purpose, hope, orientational motivation). DN's pillar decomposition predicts that this creates a systematic measurement limitation: synergistic relationships between Heart-pillar constructs may operate through mutual amplification of meaning and resonant alignment of orientation—dynamics that additive statistical models cannot capture. This generates a broader tension: do quantitative developmental psychology methods systematically underdetect Heart-pillar interactions because their statistical primitives (linear additivity, variance partitioning) are structurally Truth-pillar instruments? If so, DN's lens predicts that null interaction findings in motivation/meaning research may be methodological artifacts rather than substantive findings. This connects to the heart-formal-absence-network-models tension but from a different angle: there, Heart was absent from the model; here, Heart is present in the constructs but absent from the measurement methodology. tension_id: heart-methodology-mismatch-in-developmental-psychology
+
+**Sources:**
+- [2026-04-20] Integrating purpose, hope, and critical consciousness with the 7C model of positive youth development: a holistic approach to understanding contribution (strain: 2)
