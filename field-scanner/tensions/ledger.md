@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-20*
+*Last updated: 2026-04-21*
 
 
 ---
@@ -24,6 +24,13 @@
 - [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
 - [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-19] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -142,7 +149,7 @@
 - [2026-04-06] Breaking Data Symmetry is Needed For Generalization in Feature Learning Kernels (strain: 5)
 - [2026-04-14] Complexity Theory meets Ordinary Differential Equations (strain: 6)
 
-### heart-absence-as-performance-ceiling-in-d | status: tracking | citations: 1
+### heart-absence-as-performance-ceiling-in-d | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §2, §3, §4, §0.1
@@ -150,6 +157,7 @@
 
 **Sources:**
 - [2026-04-06] Weakly-Supervised Camouflaged Object Detection via SAM-Guided Resolution Iteration Learning (strain: 2)
+- [2026-04-21] Optimization of Campus Distributed Energy System Based on Multi-Criteria Decision-Making: A Case Study of Kitakyushu Science and Research Park (strain: 2)
 
 ### cross-modal-translation-as-dimensional-sk | status: tracking | citations: 1
 
@@ -441,3 +449,21 @@
 
 **Sources:**
 - [2026-04-20] Integrating purpose, hope, and critical consciousness with the 7C model of positive youth development: a holistic approach to understanding contribution (strain: 2)
+
+### evolutionary-optimization-as-dimensionles | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4
+**Description:** evolutionary-optimization-as-dimensionless-intelligence-design: The paper demonstrates that neural architecture synthesis—a form of intelligence organization—can be systematically achieved through multi-objective evolutionary optimization in discrete hyperparameter spaces, using structural primitives (Pareto frontiers, island-model evolution, NSGA-II selection) that have no dimensional, pillar, or force-based analog. This extends the parsimony challenge and formal-productive-alternative pattern but with a specific edge: the paper's methodology is explicitly about designing intelligent systems (neural networks) rather than merely modeling complex phenomena, making it a more direct test of DN's claim that intelligence organization follows dimensional architecture. The paper's incompleteness (Heart gap in decision support) partially mitigates the tension—the optimization framework succeeds at generating options but not at selecting among them, suggesting that dimensionless optimization may be necessary but not sufficient for complete intelligence organization. tension_id: evolutionary-optimization-as-dimensionless-intelligence-design
+
+**Sources:**
+- [2026-04-21] Multi-criteria evolutionary design of neural network architectures for decision-making based on tabular data under uncertainty (strain: 4)
+
+### meta-framework-recursion-ceiling | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** meta-framework-recursion-ceiling: The paper demonstrates that a practically useful meta-framework can operate without genuine recursive self-application—it selects among methods using fixed criteria without applying its own selection logic to those criteria. DN's 8D architecture identifies this as a structural ceiling, but the paper's practical success without recursion raises the question: does DN's dimensional hierarchy overvalue recursive self-application in applied domains? If a 3D meta-framework produces 'effective and fathomable' results, the additional structural work of 8D engagement must justify itself against the practical sufficiency of lower-dimensional operation. This connects to the energy-landscape-vs-dimensional-hierarchy tension (where continuous optimization succeeds without dimensional progression) and the emergent-vs-prescribed-dimensionality tension (where effective dimensionality may be lower than DN prescribes). tension_id: meta-framework-recursion-ceiling
+
+**Sources:**
+- [2026-04-21] A framework to select multi criteria decision making (MCDM) methods for either ranking or choosing problem (strain: 3)
