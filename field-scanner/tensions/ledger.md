@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-21*
+*Last updated: 2026-04-22*
 
 
 ---
@@ -24,6 +24,13 @@
 - [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
 - [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-19] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -467,3 +474,30 @@
 
 **Sources:**
 - [2026-04-21] A framework to select multi criteria decision making (MCDM) methods for either ranking or choosing problem (strain: 3)
+
+### distributed-modular-vs-dimensional-hierar | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** distributed-modular-vs-dimensional-hierarchy: Cognitive Hives proposes that intelligence coordinates through structural distribution (specialized autonomous modules with conflict-arbitration protocols) rather than through dimensional progression. This is a mechanism-level alternative to DN's §2 dimensional architecture: if effective multimodal intelligence can be achieved through flat modular distribution with procedural conflict management, what structural work does DN's dimensional hierarchy uniquely perform? The tension is bounded by the paper's theoretical-only status and its domain specificity (AI systems), but it connects to the broader parsimony challenge and the energy-landscape-vs-dimensional-hierarchy tension: multiple frameworks now propose that intelligence coordinates through non-hierarchical mechanisms (energy minimization, modular distribution, topological invariants) rather than dimensional progression. DN's response that these are all operating at specific dimensional positions (3D-4D) is coherent but risks being unfalsifiable if any non-hierarchical mechanism can be described as 'operating at a dimensional position.' tension_id: distributed-modular-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-22] Cognitive Hives: A Distributed Systems Theory for Conflict-Aware Multimodal Intelligence (strain: 4)
+
+### attractor-monolithism-vs-pillar-decomposi | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** attractor-monolithism-vs-pillar-decomposition: CCST treats attractor states as monolithic emergent phenomena differentiated by content but not by structural type. DN's pillar decomposition predicts that attractors have at least three structurally independent stabilization mechanisms (Heart/Truth/Nuance) with qualitatively different dynamics and intervention profiles. This generates a testable tension: if empirical CCSA analysis reveals that conceptual networks cluster into sub-networks with different topological properties corresponding to value-laden, evidence-based, and context-sensitive idea types, DN's pillar decomposition would be independently confirmed in the network-analytic domain. If conceptual networks show no such sub-structure—if all ideas stabilize through the same network-dynamic mechanism regardless of their Heart/Truth/Nuance character—then DN's pillar decomposition faces strain in the collective-conceptualization domain. This tension connects to the existing pillar-biopsychosocial-mapping tension (DN's pillars cutting across domain-standard decompositions) and heart-as-missing-orchestration-component tension (Heart being the pillar most consistently excluded from formal models). tension_id: attractor-monolithism-vs-pillar-decomposition
+
+**Sources:**
+- [2026-04-22] Why We Stay Stuck: A Complex Conceptual Systems Theory for Wicked Problems (strain: 2)
+
+### closure-ordering-vs-co-requirement | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** closure-ordering-vs-co-requirement: The paper presents informational, causal, and computational closure as co-requirements for autonomy (all three must be satisfied simultaneously for proto-software to emerge). DN's dimensional hierarchy predicts these are not co-requirements but hierarchically ordered: informational closure is a lower-dimensional achievement than causal closure, which is lower than computational closure. This generates a testable tension: if prebiotic systems can achieve informational closure without causal closure (DN predicts yes, the paper's framework is agnostic), DN's dimensional ordering adds genuine structural content. If the three closures are empirically inseparable (always co-occurring or co-failing), DN's hierarchical ordering is imposed rather than discovered, and the co-requirement framing is more parsimonious. This connects to the emergent-vs-prescribed-dimensionality tension: the question of whether structural hierarchy is a property of the system or a property of the lens. tension_id: closure-ordering-vs-co-requirement
+
+**Sources:**
+- [2026-04-22] Emergent Information Formation in Prebiotic Protocell Clusters: A Computational Mechanics Framework of $\epsilon$-Machines and Attractor Memory (strain: 3)
