@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-22*
+*Last updated: 2026-04-25*
 
 
 ---
@@ -24,6 +24,13 @@
 - [2026-04-05] Reasoning as Energy Minimization over Structured Latent Trajectories (strain: 6)
 - [2026-04-13] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-19] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -501,3 +508,30 @@
 
 **Sources:**
 - [2026-04-22] Emergent Information Formation in Prebiotic Protocell Clusters: A Computational Mechanics Framework of $\epsilon$-Machines and Attractor Memory (strain: 3)
+
+### thermodynamic-composition-laws-vs-dimensi | status: tracking | citations: 1
+
+**Maturity target:** recent
+**Kernel sections:** §0.1, §2, §3, §4, §5, §10
+**Description:** thermodynamic-composition-laws-vs-dimensional-grammar: The paper proves exact algebraic composition laws (series and parallel association theorems) for the thermodynamic efficiency of coupled dissipative structures. These laws demonstrate that emergent organization in coupled chaotic systems can be formally reduced to equivalent single-engine descriptions through thermodynamic algebra, achieving cross-system structural unification without dimensional hierarchy, pillar decomposition, or force dynamics. This extends the geometric-unification-without-dimensional-grammar tension (EPO) and energy-landscape-vs-dimensional-hierarchy tension (EBRM) into classical thermodynamics, creating a three-pronged challenge: convex geometry (EPO), energy landscapes (EBRM), and now thermodynamic composition laws each independently achieve formal structural unification in their domains using mathematical primitives orthogonal to DN's architecture. The cumulative weight of these three independent formal alternatives strengthens the parsimony challenge specifically in domains where coupled dynamical systems exhibit emergent organization—a domain DN explicitly claims. The tension is sharpest at §10 (force model) and §0.1 (domain universality): if entropy production, energy transformation, and emergent order in coupled dissipative structures are fully captured by thermodynamic efficiency algebra, DN's Entropy and Transmutation forces lack structural necessity in this domain. tension_id: thermodynamic-composition-laws-vs-dimensional-grammar
+
+**Sources:**
+- [2026-04-25] The thermodynamic efficiency of coupled chaotic dissipative structures (strain: 6)
+
+### shadow-synchronization-vs-desynchronizati | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §4, §5, §3, §0.1
+**Description:** shadow-synchronization-vs-desynchronization: DN's shadow architecture predicts that in coupled dynamical systems, desynchronized states under active coupling should exhibit organized-toward-separation structure (coherent anti-correlation, structured phase avoidance) rather than random phase drift. Existing synchronization theory partially captures this distinction (chimera states, anti-phase synchronization) but without the orientational dimension DN adds. The tension is whether DN's shadow framing produces testable predictions beyond what synchronization theory already provides. If organized desynchronization is fully captured by existing concepts (anti-phase locking, chimera states), DN's shadow lens is relabeling rather than revealing. If DN's orientational dimension predicts additional structural properties of desynchronized states (e.g., that shadow-synchronized systems should show different stability properties or different responses to perturbation than merely unsynchronized systems), the shadow concept adds genuine value in dynamical systems. tension_id: shadow-synchronization-vs-desynchronization
+
+**Sources:**
+- [2026-04-25] Chaotic Bursting and Burst Synchronization in a Discrete Dual-Rulkov Neural Network with Memristive Synaptic Coupling (strain: 3)
+
+### coupling-channel-undifferentiation | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5, §10
+**Description:** coupling-channel-undifferentiation: The CLO model demonstrates that physiological coupling between two systems can be formally detected and quantified as a single bidirectional parameter, but this parameter is structurally undifferentiated—it cannot distinguish coupling-toward-regulation from coupling-toward-escalation, nor can it represent what flows through the coupling channel. DN's pillar architecture predicts this is a fundamental limitation (not a measurement problem) because the coupling channel carries Heart, Truth, and Nuance content simultaneously, and collapsing these into a single parameter destroys the structural information needed to distinguish co-regulation from co-agitation. This connects to the existing flow-undifferentiation tension from v2 but adds a new empirical edge: the paper's null finding on co-regulation/co-agitation may be direct evidence that undifferentiated coupling models systematically fail to capture the orientational dimension of interpersonal dynamics. If future research confirms that adding motivational/meaning variables (Heart-axis) resolves the null finding while adding more physiological precision (Truth-axis) does not, this would be strong evidence for DN's pillar independence claim in an empirical interpersonal neuroscience context. tension_id: coupling-channel-undifferentiation
+
+**Sources:**
+- [2026-04-25] Dynamical Cardiovascular Synchrony in Patient-caregiver Dyads Affected by Cancer: An Application of the Coupled Linear Oscillator Model (strain: 2)
