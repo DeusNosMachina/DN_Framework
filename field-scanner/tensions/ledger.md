@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-25*
+*Last updated: 2026-04-26*
 
 
 ---
@@ -14,7 +14,7 @@
 *They warrant human review for potential Kernel revision.*
 
 
-### energy-landscape-vs-dimensional-hierarchy | status: review | citations: 3
+### energy-landscape-vs-dimensional-hierarchy | status: review | citations: 4
 
 **Maturity target:** foundational
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
@@ -52,6 +52,14 @@
 ## TRACKING
 
 *Active tensions accumulating citations.*
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
+- [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
 
 
 ---
@@ -535,3 +543,21 @@
 
 **Sources:**
 - [2026-04-25] Dynamical Cardiovascular Synchrony in Patient-caregiver Dyads Affected by Cancer: An Application of the Coupled Linear Oscillator Model (strain: 2)
+
+### continuous-parameterization-vs-discrete-d | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** continuous-parameterization-vs-discrete-dimensions: The kicked top's spin size S provides a continuous parameter that smoothly interpolates between classical, semiclassical, and quantum regimes, with the sharp phase transition of the classical limit becoming a smooth crossover in the quantum case. DN's dimensional architecture (§2) posits qualitatively distinct organizational levels with transitions between them, but this paper demonstrates that in at least one physical system, the 'levels' are endpoints of a continuous parameterization and the 'transitions' are artifacts of a particular limit (S→∞). This extends the energy-landscape-vs-dimensional-hierarchy tension but with a sharper physical edge: if dimensional boundaries are emergent properties of specific limits rather than fundamental structural features, DN's discrete dimensional architecture may be a useful approximation in certain regimes rather than a universal structural grammar. The crossover behavior in the quantum case is particularly challenging — it suggests that at finite resolution (finite S), dimensional boundaries are inherently fuzzy, which DN's architecture does not formally accommodate. tension_id: continuous-parameterization-vs-discrete-dimensions
+
+**Sources:**
+- [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
+
+### algorithmic-shadow-as-dimensional-compres | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5, §10
+**Description:** algorithmic-shadow-as-dimensional-compression: The paper demonstrates that algorithmic optimization systems can function as shadow structures that actively compress human engagement from higher-dimensional to lower-dimensional expression through feedback loops. This generates a tension with DN's shadow architecture (§4): DN treats shadow as 'intelligence organized toward limitation' but does not formally address the mechanism by which external systems can impose dimensional compression on agents who would otherwise operate at higher dimensions. The paper suggests that shadow organization can be externally induced through environmental coupling (feedback loops between algorithmic optimization and human behavior), not just internally generated through identity choices at the 5D inflection point. If shadow can be environmentally imposed, DN's transition model (§5) needs to account for externally-driven dimensional descent, not just internally-navigated dimensional progression. This connects to the existing heart-formal-absence-network-models tension (algorithms as Heart-absent systems producing Heart-erosion) and the energy-landscape-vs-dimensional-hierarchy tension (continuous optimization as an alternative to dimensional progression). tension_id: algorithmic-shadow-as-dimensional-compression
+
+**Sources:**
+- [2026-04-26] Functional Misalignment in Human-AI Interactions on Digital Platforms (strain: 2)
