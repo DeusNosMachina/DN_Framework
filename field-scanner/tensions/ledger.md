@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-27*
+*Last updated: 2026-04-28*
 
 
 ---
@@ -60,6 +60,13 @@
 
 *Active tensions accumulating citations.*
 - [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -595,3 +602,30 @@
 
 **Sources:**
 - [2026-04-27] Why We Stay Stuck: A Complex Conceptual Systems Theory for Wicked Problems (strain: 2)
+
+### spatial-separation-of-dimensional-constru | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** spatial-separation-of-dimensional-construction: The paper demonstrates that complex organization can be progressively assembled in one spatial compartment (VAC) and then bulk-delivered to a different site (AMIS) for deployment. DN's dimensional architecture (§2) and transition model (§5) implicitly assume that dimensional progression occurs at the site where it will be expressed — that construction and deployment are co-located. This paper shows they can be spatially separated, with the construction site serving as a protected 'dimensional incubator.' This creates a tension: does DN's transition model need to account for spatial separation of dimensional work from dimensional expression? If so, the model requires a new concept (dimensional transplantation or dimensional incubation) that is not currently in the architecture. This connects to the existing energy-landscape-vs-dimensional-hierarchy tension in that both suggest DN's dimensional progression model may be too tightly coupled to a single mode of organizational unfolding. tension_id: spatial-separation-of-dimensional-construction
+
+**Sources:**
+- [2026-04-28] Bulk delivery of a preassembled apical surface initiates epithelial lumen formation (strain: 4)
+
+### pillar-desynchronization-in-development | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** pillar-desynchronization-in-development: DN's pillar independence (§3) predicts that Heart, Truth, and Nuance dimensions of a developmental process can desynchronize — a child may develop linguistic self-reference (Truth) before emotional self-direction (Heart), or social calibration (Nuance) before either. The paper's 'emotion-language co-development model' treats these as a unified bundle, but DN's architecture predicts that desynchronization should be observable and clinically significant. This generates a testable tension: if empirical developmental data consistently shows tight synchronization of emotional, linguistic, and social-calibration milestones (as this paper's single case suggests), DN's pillar independence claim would face strain in the developmental domain. If desynchronization is common (as clinical literature on developmental disorders suggests), DN's pillar decomposition produces genuine predictive value. tension_id: pillar-desynchronization-in-development
+
+**Sources:**
+- [2026-04-28] Patterns of emotional expression during the formation of egocentric awareness in early childhood: a case study (strain: 2)
+
+### psychoanalytic-structural-decomposition-v | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** psychoanalytic-structural-decomposition-vs-dn-architecture: The paper's psychoanalytic framework (id/ego/superego) offers a structural decomposition of psychological forces that is neither equivalent to DN's dimensional hierarchy nor to DN's pillar triad. The id contains both 1D Impulse energy and shadow-organized desire; the ego spans 3D-5D (contextual navigation through self-awareness); the superego encodes both 3D categorical norms and 6D collective standards. This creates a mapping that is coherent but non-trivial—the psychoanalytic structures cross-cut DN's dimensions rather than aligning with them. This parallels the pillar-biopsychosocial-mapping tension: DN's decomposition cuts across established psychological decompositions at a different angle. The question is whether DN's cross-cutting angle reveals structure the psychoanalytic decomposition misses (in which case the lens yield is genuine) or merely redescribes the same structure with different boundaries (in which case it is vocabulary substitution). The folk tale domain provides a test case: DN's dimensional ordering of the three analytical lenses (psychoanalytic = 1D-4D, cognitive-developmental = 2D-5D, Jungian = 5D-8D) is a structural claim that could be tested by examining whether insights from each lens are indeed dimensionally bounded in the way DN predicts. tension_id: psychoanalytic-decomposition-vs-dn-dimensions
+
+**Sources:**
+- [2026-04-28] Psychological Foundations of Russian Folk Tales (strain: 2)
