@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-28*
+*Last updated: 2026-04-30*
 
 
 ---
@@ -60,6 +60,13 @@
 
 *Active tensions accumulating citations.*
 - [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -567,7 +574,7 @@
 **Sources:**
 - [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
 
-### algorithmic-shadow-as-dimensional-compres | status: tracking | citations: 1
+### algorithmic-shadow-as-dimensional-compres | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5, §10
@@ -575,6 +582,7 @@
 
 **Sources:**
 - [2026-04-26] Functional Misalignment in Human-AI Interactions on Digital Platforms (strain: 2)
+- [2026-04-30] ARTIFICIAL INTELLIGENCE IN ORGANIZATIONAL MANAGEMENT: FROM A TOOL TO AN ELEMENT OF COGNITIVE INFRASTRUCTURE (strain: 3)
 
 ### distributed-conflict-resolution-vs-dimens | status: tracking | citations: 1
 
@@ -629,3 +637,21 @@
 
 **Sources:**
 - [2026-04-28] Psychological Foundations of Russian Folk Tales (strain: 2)
+
+### heart-absence-as-adoption-failure-predict | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** heart-absence-as-adoption-failure-predictor: DN's pillar decomposition predicts that organizational AI adoption strategies that are Nuance-rich but Heart-absent will systematically fail to achieve sustainable implementation, because they address contextual complexity without addressing orientational alignment. This paper's findings are consistent with this prediction but do not test it directly. The tension is whether this is a genuinely productive DN prediction or whether it merely relabels what organizational change literature already knows as 'shared vision' or 'purpose alignment.' If DN's Heart concept adds structural precision beyond existing organizational constructs (by specifying Heart as independent from Nuance rather than a component of 'stakeholder engagement'), the prediction is genuinely novel. If Heart collapses into existing constructs under scrutiny, the lens yield here is inflated. tension_id: heart-absence-as-adoption-failure-predictor
+
+**Sources:**
+- [2026-04-30] Beyond adoption: unpacking the trust-ethics-decision trade-offs in healthcare AI strategy (strain: 2)
+
+### cultural-modulation-of-dimensional-expres | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** cultural-modulation-of-dimensional-expression: The paper's findings suggest that cultural context (Indonesian collectivism, Javanese paternalism) does not change which dimensions are structurally present but significantly modulates how they are expressed and which are dominant. In this context, Heart-led dimensions (1D, 2D) and shadow structures dominate over Truth-led formal systems in ways that may be culturally specific. DN's §0.1 claims domain universality but does not formalize how cultural context modulates dimensional expression. This creates a tension: if the same dimensional architecture produces radically different organizational configurations depending on cultural context, DN needs a mechanism for cultural modulation that it currently lacks. This is distinct from the existing parsimony challenge because it does not question whether DN's dimensions exist but whether DN's architecture can account for the variance in how they manifest across cultural contexts. tension_id: cultural-modulation-of-dimensional-expression
+
+**Sources:**
+- [2026-04-30] When Informal Communication Replaces Formal Systems: The Influence of Family Values on Marketing Decision-Making in Indonesian Family Firms (strain: 2)
