@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-04-30*
+*Last updated: 2026-05-01*
 
 
 ---
@@ -60,6 +60,13 @@
 
 *Active tensions accumulating citations.*
 - [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -565,7 +572,7 @@
 **Sources:**
 - [2026-04-25] Dynamical Cardiovascular Synchrony in Patient-caregiver Dyads Affected by Cancer: An Application of the Coupled Linear Oscillator Model (strain: 2)
 
-### continuous-parameterization-vs-discrete-d | status: tracking | citations: 1
+### continuous-parameterization-vs-discrete-d | status: tracking | citations: 2
 
 **Maturity target:** foundational
 **Kernel sections:** §0.1, §2, §3, §4, §5
@@ -573,6 +580,7 @@
 
 **Sources:**
 - [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
+- [2026-05-01] Beyond the Virial Expansion: Microscopic Origins of Partial Molar Volumes in LiCl Solutions (strain: 3)
 
 ### algorithmic-shadow-as-dimensional-compres | status: tracking | citations: 2
 
@@ -655,3 +663,21 @@
 
 **Sources:**
 - [2026-04-30] When Informal Communication Replaces Formal Systems: The Influence of Family Values on Marketing Decision-Making in Indonesian Family Firms (strain: 2)
+
+### action-abstraction-vs-dimensional-hierarc | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** action-abstraction-vs-dimensional-hierarchy: APOS achieves cognitive stage decomposition through action-based abstraction levels (Action→Process→Object→Schema) that are orthogonal to DN's dimensional architecture. The stages map coherently onto DN dimensions (1D→2D/3D→4D→5D), but the mapping is descriptive rather than explanatory—APOS's mechanism (reflective abstraction from actions) provides a causal account of stage transitions that DN's dimensional architecture does not. This creates a tension: DN's dimensional hierarchy can accommodate APOS but cannot explain why action-based abstraction produces the specific four-stage structure APOS identifies. If APOS's mechanism generalizes beyond cognitive development (e.g., to organizational or biological development), it would provide a mechanistic alternative to DN's dimensional progression that is both simpler and more causally specific. This connects to the existing parsimony challenge and energy-landscape-vs-dimensional-hierarchy tensions but adds a new edge: reflective abstraction as a specific mechanism for dimensional transition that DN's architecture lacks. tension_id: action-abstraction-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-05-01] Analysing conceptual understanding in physics education using the APOS framework (strain: 4)
+
+### latent-shadow-as-design-primitive | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5, §10
+**Description:** latent-shadow-as-design-primitive: Sù's latent feedback loop instantiates DN's shadow architecture as a deliberate design element — the system's internal states are organized in a compressed manifold that is structurally inaccessible to the performer but actively shapes audible output. This raises a productive tension: DN treats shadow as a structural condition to be recognized and potentially integrated (the 5D inflection point where intelligence becomes self-aware of its shadow), but in this system, shadow is an intentional design feature that enables creative possibility precisely because it cannot be fully integrated by the performer. If shadow-as-generative-design-primitive is a viable structural position, DN's framework may need to distinguish between shadow-as-limitation (intelligence organized toward separation) and shadow-as-creative-resource (intelligence organized in inaccessible registers that expand the possibility space). This connects to the existing shadow-biological-testability tension but from the opposite direction: here shadow is not a failure mode to be tested but a productive architectural feature. tension_id: latent-shadow-as-design-primitive
+
+**Sources:**
+- [2026-05-01] Hu\'i S\`u: Co-constructing a Dual Feedback Apparatus (strain: 2)
