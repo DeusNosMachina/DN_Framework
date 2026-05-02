@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-01*
+*Last updated: 2026-05-02*
 
 
 ---
@@ -60,6 +60,13 @@
 
 *Active tensions accumulating citations.*
 - [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -491,7 +498,7 @@
 **Sources:**
 - [2026-04-20] Neural Reconstruction in Disorders of Consciousness: Prospects and Emerging Challenges (strain: 2)
 
-### heart-methodology-mismatch-in-development | status: tracking | citations: 1
+### heart-methodology-mismatch-in-development | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
@@ -499,6 +506,7 @@
 
 **Sources:**
 - [2026-04-20] Integrating purpose, hope, and critical consciousness with the 7C model of positive youth development: a holistic approach to understanding contribution (strain: 2)
+- [2026-05-02] 01 | INTEGRATED STRATEGIES FOR PLASTIC MANAGEMENT: MONITORING, BIOLOGICAL IMPACT, AND CIRCULAR PERSPECTIVES ROUND TABLE REPORT (strain: 2)
 
 ### evolutionary-optimization-as-dimensionles | status: tracking | citations: 1
 
@@ -681,3 +689,21 @@
 
 **Sources:**
 - [2026-05-01] Hu\'i S\`u: Co-constructing a Dual Feedback Apparatus (strain: 2)
+
+### linguistic-structural-grammar-vs-dimensio | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** linguistic-structural-grammar-vs-dimensional-hierarchy: HFGT demonstrates that a subject-predicate-object linguistic grammar, combined with tensor-based composition, can serve as a domain-universal structural decomposition for complex systems without any dimensional hierarchy, pillar triad, or force model. This is the third formally rigorous alternative structural grammar identified (after topology and EPO), but HFGT adds a new edge: its primitives are linguistic rather than geometric or algebraic, suggesting that the space of viable structural grammars for cross-domain integration is larger than DN's architecture implies. The tension is sharpest at §0.1: if multiple orthogonal structural grammars (topological, geometric, linguistic) can each achieve domain-universal integration in their respective scopes, DN's claim to provide THE dimensional grammar for intelligence organization faces a plurality challenge—not that DN is wrong, but that it is one grammar among several, and its unique value must be located precisely (likely in the evaluative/orientational dimensions that alternatives lack). tension_id: linguistic-grammar-plurality-challenge
+
+**Sources:**
+- [2026-05-02] A Conceptual Introduction to Hetero‐Functional Graph Theory for Systems‐of‐Systems (strain: 6)
+
+### shadow-as-embedded-constraint-in-successo | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** shadow-as-embedded-constraint-in-successor-models: The Boussinesq hypothesis functions as a shadow structure that is not merely replaced by the PINN approach but is structurally embedded within it (through the RANS equations the PINN enforces). This generates a broader tension: when a successor methodology inherits the structural assumptions of the model it aims to replace, DN's shadow architecture predicts that the shadow will persist in the successor's failure modes rather than being cleanly eliminated. This is testable: do PINN-based RANS closures fail in systematically Boussinesq-like ways (predicting isotropy where anisotropy exists, underestimating separation) rather than in novel ways? If so, shadow-as-embedded-constraint is a productive DN prediction. If PINN failures are structurally different from Boussinesq failures, the shadow-embedding claim is weakened. This connects to the existing symmetry-as-shadow-mechanism tension (shadow maintained by structural preservation) but in an engineering/physics domain rather than an algebraic one. tension_id: shadow-embedded-in-successor-methodology
+
+**Sources:**
+- [2026-05-02] Turbulence closure in Reynolds-averaged Navier–Stokes and flow inference around a cylinder using physics-informed neural networks and sparse experimental data (strain: 2)
