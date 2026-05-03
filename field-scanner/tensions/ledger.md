@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-02*
+*Last updated: 2026-05-03*
 
 
 ---
@@ -60,6 +60,13 @@
 
 *Active tensions accumulating citations.*
 - [2026-04-26] Codex Relatio: A Descriptive Framework for Analyzing Relational Dynamics in Human–AI Interaction (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -707,3 +714,30 @@
 
 **Sources:**
 - [2026-05-02] Turbulence closure in Reynolds-averaged Navier–Stokes and flow inference around a cylinder using physics-informed neural networks and sparse experimental data (strain: 2)
+
+### single-pillar-diagnostic-distortion | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** single-pillar-diagnostic-distortion: APOS is a formally successful cognitive development framework that operates entirely within DN's Truth pillar. Its acknowledged limitations (excluding affective, social, contextual factors) correspond precisely to DN's Heart and Nuance pillars. This generates a tension: if APOS achieves genuine diagnostic and instructional power as a single-pillar framework, does this validate DN's claim that pillars are independent (APOS succeeds precisely because Truth-domain cognition can be isolated) or challenge it (if pillars were truly independent, single-pillar diagnosis should not produce the coherent hierarchical pattern APOS finds—the pattern should be disrupted by uncontrolled Heart/Nuance variation)? The empirical data showing consistent drop-off patterns across three physics domains could be read either way: consistency suggests Truth-pillar cognition is indeed isolable (supporting pillar independence), but the high variance within each stage could reflect uncontrolled Heart/Nuance factors (also supporting pillar independence but suggesting APOS's diagnostic precision is lower than it appears). This tension connects to the existing heart-formal-absence-network-models and heart-as-missing-orchestration-component tensions as another instance of the cross-domain pattern where Truth-led frameworks systematically exclude Heart. tension_id: single-pillar-diagnostic-distortion
+
+**Sources:**
+- [2026-05-03] Analysing conceptual understanding in physics education using the APOS framework (strain: 4)
+
+### temporal-inference-from-atemporal-data | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** temporal-inference-from-atemporal-data: TEMPO demonstrates that temporal structure (4D) can be reliably inferred from cross-sectional snapshots (3D) through learned simulation-to-inference mappings. This creates a tension with DN's dimensional hierarchy (§2): if higher-dimensional structure is recoverable from lower-dimensional data through sufficiently powerful inference, are dimensional positions properties of the phenomenon itself or of the analytical framework? DN's architecture treats dimensions as structural properties of how intelligence/complexity organizes, but TEMPO suggests that what appears to be 3D data (cross-sectional snapshots) contains latent 4D structure that can be extracted — meaning the dimensional position was always 4D, just observed through a 3D measurement window. This is compatible with DN's nested dimensionality (§2.2) but raises the question of whether dimensional position is an intrinsic property or an observer-dependent one. This connects to the existing emergent-vs-prescribed-dimensionality tension but from a different angle: not 'how many dimensions does the system need?' but 'at what dimension does the system actually operate when observed through a lower-dimensional lens?' tension_id: temporal-inference-from-atemporal-data
+
+**Sources:**
+- [2026-05-03] TEMPO: Transformers for Temporal Disease Progression from Cross-Sectional Data (strain: 3)
+
+### shadow-aspiration-vs-diminished-aspiratio | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** shadow-aspiration-vs-diminished-aspiration-testability: DN's shadow architecture predicts that foreclosed career aspirations reorganize into coherent alternative structures (shadow aspirations) rather than simply diminishing. This paper's engagement with Gottfredson's circumscription and compromise provides a domain where this prediction is empirically testable: do women who 'compromise' their aspirations show coherent alternative career orientations with their own internal logic and stability, or do they show reduced motivational engagement across the board? If the latter, DN's shadow-as-organized-alternative claim faces strain in the career development domain. If the former, it provides empirical grounding for shadow architecture in a social science context. This connects to the existing shadow-biological-testability tension but in a human developmental/social domain rather than molecular biology. tension_id: shadow-aspiration-testability
+
+**Sources:**
+- [2026-05-03] Unpacking career aspirations: a critical scoping review of undergraduate women’s career development (strain: 2)
