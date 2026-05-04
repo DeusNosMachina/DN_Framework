@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-03*
+*Last updated: 2026-05-04*
 
 
 ---
@@ -102,6 +102,24 @@
 ## TRACKING
 
 *Active tensions accumulating citations.*
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
+
+### continuous-parameterization-vs-discrete-d | status: review | citations: 3
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** continuous-parameterization-vs-discrete-dimensions: The kicked top's spin size S provides a continuous parameter that smoothly interpolates between classical, semiclassical, and quantum regimes, with the sharp phase transition of the classical limit becoming a smooth crossover in the quantum case. DN's dimensional architecture (§2) posits qualitatively distinct organizational levels with transitions between them, but this paper demonstrates that in at least one physical system, the 'levels' are endpoints of a continuous parameterization and the 'transitions' are artifacts of a particular limit (S→∞). This extends the energy-landscape-vs-dimensional-hierarchy tension but with a sharper physical edge: if dimensional boundaries are emergent properties of specific limits rather than fundamental structural features, DN's discrete dimensional architecture may be a useful approximation in certain regimes rather than a universal structural grammar. The crossover behavior in the quantum case is particularly challenging — it suggests that at finite resolution (finite S), dimensional boundaries are inherently fuzzy, which DN's architecture does not formally accommodate. tension_id: continuous-parameterization-vs-discrete-dimensions
+
+**Sources:**
+- [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
+- [2026-05-01] Beyond the Virial Expansion: Microscopic Origins of Partial Molar Volumes in LiCl Solutions (strain: 3)
+- [2026-05-04] Measuring Temporal Linguistic Emergence in Diffusion Language Models (strain: 5)
 
 
 ---
@@ -587,16 +605,6 @@
 **Sources:**
 - [2026-04-25] Dynamical Cardiovascular Synchrony in Patient-caregiver Dyads Affected by Cancer: An Application of the Coupled Linear Oscillator Model (strain: 2)
 
-### continuous-parameterization-vs-discrete-d | status: tracking | citations: 2
-
-**Maturity target:** foundational
-**Kernel sections:** §0.1, §2, §3, §4, §5
-**Description:** continuous-parameterization-vs-discrete-dimensions: The kicked top's spin size S provides a continuous parameter that smoothly interpolates between classical, semiclassical, and quantum regimes, with the sharp phase transition of the classical limit becoming a smooth crossover in the quantum case. DN's dimensional architecture (§2) posits qualitatively distinct organizational levels with transitions between them, but this paper demonstrates that in at least one physical system, the 'levels' are endpoints of a continuous parameterization and the 'transitions' are artifacts of a particular limit (S→∞). This extends the energy-landscape-vs-dimensional-hierarchy tension but with a sharper physical edge: if dimensional boundaries are emergent properties of specific limits rather than fundamental structural features, DN's discrete dimensional architecture may be a useful approximation in certain regimes rather than a universal structural grammar. The crossover behavior in the quantum case is particularly challenging — it suggests that at finite resolution (finite S), dimensional boundaries are inherently fuzzy, which DN's architecture does not formally accommodate. tension_id: continuous-parameterization-vs-discrete-dimensions
-
-**Sources:**
-- [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
-- [2026-05-01] Beyond the Virial Expansion: Microscopic Origins of Partial Molar Volumes in LiCl Solutions (strain: 3)
-
 ### algorithmic-shadow-as-dimensional-compres | status: tracking | citations: 2
 
 **Maturity target:** mature
@@ -741,3 +749,21 @@
 
 **Sources:**
 - [2026-05-03] Unpacking career aspirations: a critical scoping review of undergraduate women’s career development (strain: 2)
+
+### shadow-as-active-production-vs-passive-ab | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** shadow-as-active-production-vs-passive-absence: The paper's 'irreducible blind spot' reveals a structural question about DN's shadow concept: during the blind period, the system produces governance artifacts that have the form of valid evidence but lack ground-truth foundation. DN's shadow architecture frames this as 'intelligence organized toward limitation,' but the paper's framing suggests a more specific mechanism—shadow is not just organized limitation but active production of structurally misleading outputs that institutional processes treat as valid. This raises the question: does DN's shadow concept adequately distinguish between (a) organized absence (the system lacks information), (b) organized misdirection (the system produces false-positive governance evidence), and (c) organized dissolution (the system's governance framework actively degrades)? These three shadow modes have different operational implications and may require different responses, but DN's current shadow architecture treats them as a single phenomenon. If the distinction between shadow-as-absence and shadow-as-active-production generalizes across domains, DN's shadow concept may need internal differentiation analogous to the pillar decomposition. tension_id: shadow-active-production-vs-passive-absence
+
+**Sources:**
+- [2026-05-04] Label-Free Detection of Governance Evidence Degradation in Risk Decision Systems (strain: 2)
+
+### shadow-as-structural-absence-in-materials | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** shadow-as-structural-absence-in-materials: The paper demonstrates that organized structural absences (vacancies, grain boundaries, stacking faults) are constitutive features of material identity that can be transformed from stabilizing to destabilizing by hydrogen occupation. DN's shadow architecture maps productively onto this—shadow structures in materials science are literal organized absences that serve structural functions. However, this raises a tension: in materials science, these 'shadow structures' are fully formalizable (trap energies, binding sites, defect concentrations) and their transformation is quantitatively predictable, whereas DN's shadow architecture remains narrative. If shadow structures in materials can be completely characterized by trap energies and defect thermodynamics, what additional structural work does DN's shadow concept perform? The tension is whether DN's shadow architecture adds a generalizable structural principle (organized absence as constitutive identity feature whose transformation produces orientation shifts) or merely relabels well-understood defect physics. This connects to the existing shadow-biological-testability tension but in a harder-science domain where the 'shadow structures' are more precisely characterized. tension_id: shadow-as-structural-absence-in-materials
+
+**Sources:**
+- [2026-05-04] Multiscale simulations elucidate the mechanism of hydrogen embrittlement in high-entropy alloys: from hydrogen trapping and dislocation interaction to microcrack initiation (strain: 3)
