@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-04*
+*Last updated: 2026-05-05*
 
 
 ---
@@ -120,6 +120,13 @@
 - [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
 - [2026-05-01] Beyond the Virial Expansion: Microscopic Origins of Partial Molar Volumes in LiCl Solutions (strain: 3)
 - [2026-05-04] Measuring Temporal Linguistic Emergence in Diffusion Language Models (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -767,3 +774,30 @@
 
 **Sources:**
 - [2026-05-04] Multiscale simulations elucidate the mechanism of hydrogen embrittlement in high-entropy alloys: from hydrogen trapping and dislocation interaction to microcrack initiation (strain: 3)
+
+### heart-absent-relational-improvement | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** heart-absent-relational-improvement: The paper demonstrates that an AI system with no Heart (no authentic voice, no motivational orientation, no identity) can improve relational outcomes in power-imbalanced groups. DN's pillar architecture assumes Heart presence is necessary for relational health (§3), but AC succeeds precisely because the AI is Heart-absent—it serves as a structural buffer that preserves others' Heart integrity by not having its own. This generates a tension: can Heart-absence in one agent be structurally productive for Heart-preservation in others? If so, DN's pillar model may need to account for relational pillar dynamics (where one participant's pillar absence enables another's pillar integrity) rather than treating pillar presence as uniformly necessary. This connects to the heart-formal-absence-network-models tension but inverts it: here Heart-absence is not a gap but a feature. tension_id: heart-absent-relational-improvement
+
+**Sources:**
+- [2026-05-05] Rethinking AI-Mediated Minority Support in Power-Imbalanced Group Decision-Making: From Anonymity To Authenticity (strain: 3)
+
+### heart-rhetorical-vs-architectural | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** heart-rhetorical-vs-architectural: The paper explicitly names Heart-analog constructs (compassion, inclusiveness) as design goals but implements them entirely as Truth-pillar operations (computational metrics, coverage scores). This generates a tension for DN's lens claim: DN's pillar decomposition identifies the collapse, but does this identification produce actionable insight or merely relabel a well-known problem in computational ethics (the gap between ethical intent and algorithmic implementation)? If the Heart-Truth collapse is already well-recognized in the AI ethics literature under different vocabulary (value alignment, ethical operationalization), DN's contribution is relabeling rather than revealing. If DN's specific prediction—that the consensus layer will reproduce the bias the data layer corrects—is structurally novel, the lens yield is genuine. This connects to the heart-formal-absence-network-models and heart-as-missing-orchestration-component tensions but adds a new edge: here Heart is not merely absent but actively claimed and then structurally negated. tension_id: heart-rhetorical-vs-architectural
+
+**Sources:**
+- [2026-05-05] Harnessing the Hybrid Intelligence of Crowd and Artificial Intelligence in Group Decision Making for Uncertain Disaster Response (strain: 2)
+
+### shadow-internalization-vs-muting-mechanis | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §2.2, §3, §4, §5, §0.1
+**Description:** shadow-internalization-vs-muting-mechanism: MGT provides a specific communicative mechanism for how dominant groups generate the norms that subordinate groups must accommodate (language structure reflects dominant experience), while DN's shadow architecture describes the structural outcome (identity organized toward limitation) without specifying the communicative mechanism. This creates a productive tension: DN's shadow concept may need to incorporate mechanism-level specificity about HOW shadow structures are maintained through communicative norms, not just THAT they exist as organized alternatives. If MGT's muting mechanism generalizes beyond gendered communication to other shadow-maintenance contexts (organizational silencing, epistemic marginalization, cultural norm enforcement), it could provide DN's shadow architecture with the mechanistic specificity it currently lacks. Conversely, DN's shadow architecture provides MGT with structural depth it lacks—MGT identifies muting but does not theorize the organized alternative states that muting produces. tension_id: shadow-internalization-vs-muting-mechanism
+
+**Sources:**
+- [2026-05-05] Silent Legitimacy: How Breadwinner Norms and Communicative Accommodation Shape Food Decision-Making in Low-Income Households Through a Muted Group Theory Lens (strain: 2)
