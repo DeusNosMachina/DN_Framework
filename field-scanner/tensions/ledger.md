@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-05*
+*Last updated: 2026-05-06*
 
 
 ---
@@ -120,6 +120,13 @@
 - [2026-04-26] Measurement and feedback-driven adaptive dynamics in the classical and quantum kicked top (strain: 4)
 - [2026-05-01] Beyond the Virial Expansion: Microscopic Origins of Partial Molar Volumes in LiCl Solutions (strain: 3)
 - [2026-05-04] Measuring Temporal Linguistic Emergence in Diffusion Language Models (strain: 5)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -801,3 +808,30 @@
 
 **Sources:**
 - [2026-05-05] Silent Legitimacy: How Breadwinner Norms and Communicative Accommodation Shape Food Decision-Making in Low-Income Households Through a Muted Group Theory Lens (strain: 2)
+
+### phenomenological-primitives-vs-dimensiona | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** phenomenological-primitives-vs-dimensional-abstraction: The paper's phenomenological framework decomposes consciousness using experiential-structural primitives (natural attitude, intentional arc, vital contact, hyper-reflexivity) that have no direct DN analog but map coherently onto DN's dimensional positions. This raises a level-of-description tension: phenomenology provides richer experiential content at each structural position than DN's abstract dimensional labels, while DN provides cross-domain structural organization that phenomenology's domain-specific vocabulary cannot. The tension is whether these are complementary levels of the same architecture (phenomenology as the experiential content of dimensional positions) or competing structural grammars that happen to be compatible in this domain. If complementary, DN gains a rich experiential vocabulary for its dimensional positions in the consciousness domain. If competing, phenomenology's century of clinical and philosophical development gives it far more empirical grounding in this specific domain, and DN's contribution reduces to cross-domain generalization that phenomenology does not attempt. This connects to the topology-as-alternative-structural-grammar tension but from the humanities rather than mathematics: both represent domain-specific structural grammars that are more detailed than DN within their domains but less general across domains. tension_id: phenomenological-primitives-vs-dimensional-abstraction
+
+**Sources:**
+- [2026-05-06] Schizophrenic Consciousness in the Light of the Phenomenological Epoché: A Foundational Map for Psychiatry (strain: 4)
+
+### pillar-integration-vs-sequential-developm | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** pillar-integration-vs-sequential-development: The paper's CC continuum (reflection→self-efficacy→action) treats its three components as sequential developmental stages, while DN's pillar architecture treats the analogous structures (Truth, Heart, Nuance) as structurally independent dimensions requiring simultaneous integration. This generates a broader tension: do developmental models in education and psychology systematically conflate pillar independence with sequential staging? If DN's pillar decomposition is correct, many 'stage' models may be misidentifying pillar-integration thresholds as developmental sequences—predicting that intervention should target the 'next stage' when it should target the missing pillar. This connects to the ptg-dimensional-ordering-vs-network-dynamics tension but from the education domain, and to the pillar-biopsychosocial-mapping tension in that it questions whether standard triadic decompositions in social science align with or cut across DN's pillar structure. tension_id: pillar-integration-vs-sequential-staging
+
+**Sources:**
+- [2026-05-06] “Taking Off the Rose‐Colored Glasses”: How Justice‐Centered Science Curricula Engages Prehealth Undergraduates' in Critical Consciousness (strain: 2)
+
+### empowerment-fragmentation-as-pillar-indep | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** empowerment-fragmentation-as-pillar-independence: The paper's finding of 'fragmented empowerment' (individual empowerment succeeds while societal empowerment stalls) may be better explained by pillar independence than by dimensional transition difficulty. If Heart-empowerment, Truth-empowerment, and Nuance-empowerment are structurally independent processes that happen to be conflated under the 'empowerment' label, then 'fragmentation' is not a failure of progression but a natural consequence of independent processes advancing at different rates. This creates a tension within DN's own architecture: does the dimensional hierarchy (which predicts transition difficulty at specific thresholds) or pillar independence (which predicts differential advancement across independent axes) better explain the observed pattern? Both are DN concepts, but they generate different structural predictions, and the paper's data cannot distinguish between them. tension_id: empowerment-fragmentation-pillar-vs-dimensional
+
+**Sources:**
+- [2026-05-06] Operation and Efficacy of Self-Expression by Disadvantaged Groups on Douyin: An Empirical Study Based on Representative Accounts (strain: 2)
