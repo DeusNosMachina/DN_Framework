@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-06*
+*Last updated: 2026-05-07*
 
 
 ---
@@ -134,6 +134,24 @@
 ## TRACKING
 
 *Active tensions accumulating citations.*
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
+
+### posthumanist-flat-ontology-vs-dimensional | status: review | citations: 3
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** posthumanist-flat-ontology-vs-dimensional-hierarchy: The paper's posthumanist framing explicitly rejects hierarchical ordering of agency — all actors (human, algorithmic, institutional) participate in distributed assemblages without structural ranking. DN's dimensional architecture imposes a hierarchy (1D-9D) that distinguishes between different depths of organizational complexity. The tension is not that posthumanism disproves DN's hierarchy, but that posthumanism's flat ontology represents a principled philosophical alternative that achieves certain analytical goals (recognizing non-human agency, dissolving subject/object boundaries) that DN's hierarchy does not prioritize. However, DN's lens reveals that flat ontology pays a structural cost: it cannot distinguish between configurations organized toward integration and those organized toward limitation. The question is whether this cost is inherent to flat ontology or whether a non-hierarchical framework could incorporate evaluative differentiation without reintroducing hierarchy. This connects to the existing parsimony challenge and heart-as-missing-orchestration-component tensions. tension_id: posthumanist-flat-ontology-vs-dimensional-hierarchy
+
+**Sources:**
+- [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
+- [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
+- [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
 
 
 ---
@@ -363,16 +381,6 @@
 
 **Sources:**
 - [2026-04-10] A Self-Elegy of a Ming Courtesan: The Emotional Structure and Aesthetic Self-Consciousness in the Ci Poetry of Ma Shouzhen(馬守眞) (strain: 2)
-
-### posthumanist-flat-ontology-vs-dimensional | status: tracking | citations: 2
-
-**Maturity target:** mature
-**Kernel sections:** §0.1, §2, §3, §4, §5
-**Description:** posthumanist-flat-ontology-vs-dimensional-hierarchy: The paper's posthumanist framing explicitly rejects hierarchical ordering of agency — all actors (human, algorithmic, institutional) participate in distributed assemblages without structural ranking. DN's dimensional architecture imposes a hierarchy (1D-9D) that distinguishes between different depths of organizational complexity. The tension is not that posthumanism disproves DN's hierarchy, but that posthumanism's flat ontology represents a principled philosophical alternative that achieves certain analytical goals (recognizing non-human agency, dissolving subject/object boundaries) that DN's hierarchy does not prioritize. However, DN's lens reveals that flat ontology pays a structural cost: it cannot distinguish between configurations organized toward integration and those organized toward limitation. The question is whether this cost is inherent to flat ontology or whether a non-hierarchical framework could incorporate evaluative differentiation without reintroducing hierarchy. This connects to the existing parsimony challenge and heart-as-missing-orchestration-component tensions. tension_id: posthumanist-flat-ontology-vs-dimensional-hierarchy
-
-**Sources:**
-- [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
-- [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 
 ### sem-flat-mediation-vs-dimensional-orderin | status: tracking | citations: 1
 
@@ -835,3 +843,21 @@
 
 **Sources:**
 - [2026-05-06] Operation and Efficacy of Self-Expression by Disadvantaged Groups on Douyin: An Empirical Study Based on Representative Accounts (strain: 2)
+
+### algebraic-uncertainty-unification-without | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4
+**Description:** algebraic-uncertainty-unification-without-dimensions: The NIFS framework achieves structural unification of two independent uncertainty dimensions (topological nearness and intuitionistic fuzzy indeterminacy) through algebraic lattice operations and De Morgan algebras, producing a coherent mathematical foundation with systematic properties (commutativity, associativity, distributivity) and practical decision-support applications. This unification uses primitives (equivalence classes, membership/non-membership/hesitancy triples, lattice operations) that are orthogonal to DN's dimensional hierarchy and pillar decomposition. The tension engages §0.1 and §2: if multi-layered uncertainty can be structurally integrated through algebraic-topological operations without dimensional progression or pillar independence, DN's claim to provide a universal structural grammar faces another formal alternative in the uncertainty-reasoning domain. This connects to but is distinct from geometric-unification-without-dimensional-grammar (EPO) and topology-as-alternative-structural-grammar: here the alternative grammar specifically handles indeterminacy and similarity—concepts close to DN's Nuance pillar and shadow architecture—through formal mechanisms DN cannot match. The tension is partially mitigated by the framework's narrow scope (static classification, no developmental or orientational dynamics), but it is sharpened by the observation that DN's hesitancy-analog (shadow/indeterminacy) is treated as a derived residual in the formal framework while DN treats it as carrying independent organized structure—a testable divergence. tension_id: algebraic-uncertainty-unification-without-dimensions
+
+**Sources:**
+- [2026-05-07] A Framework of Near-Intuitionistic Fuzzy Soft Sets with Applications to Uncertainty-Based Diagnosis (strain: 5)
+
+### pillar-character-as-coupling-predictor | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4
+**Description:** pillar-character-as-coupling-predictor: The paper's finding that production-side indicators couple more strongly to carbon emissions than socioeconomic indicators, when read through DN's pillar decomposition, suggests that the pillar character of a measure (Truth-dominant vs. Heart-carrying) may predict its structural coupling to other measures of the same pillar character. If this generalizes, it would mean that cross-pillar coupling is systematically weaker than within-pillar coupling—a structural prediction DN's architecture implies but does not explicitly state. This connects to the existing tension-pillar-biopsychosocial-mapping tension: if pillars predict coupling patterns, then decompositions that conflate pillar characters (as the biopsychosocial model does) would systematically miss coupling asymmetries. tension_id: pillar-character-as-coupling-predictor
+
+**Sources:**
+- [2026-05-07] An Integrated Analysis of Labor-Environment Interactions Using Econometric Inference and Multi Criteria Decision Making Frameworks (strain: 2)
