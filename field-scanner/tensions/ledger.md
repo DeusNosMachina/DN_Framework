@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-07*
+*Last updated: 2026-05-09*
 
 
 ---
@@ -152,6 +152,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -861,3 +868,30 @@
 
 **Sources:**
 - [2026-05-07] An Integrated Analysis of Labor-Environment Interactions Using Econometric Inference and Multi Criteria Decision Making Frameworks (strain: 2)
+
+### attractor-equivalence-vs-shadow-asymmetry | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** attractor-equivalence-vs-shadow-asymmetry: The paper's mathematical framework treats all stable states as structurally equivalent attractors distinguished only by basin properties and parameter ranges. DN's shadow architecture claims a qualitative asymmetry between states organized toward integration (light) and states organized toward limitation (shadow), predicting that these should exhibit structurally different properties (feedback type, internal differentiation, perturbation response). This generates a testable tension: if degraded ecological states can be shown to have systematically different structural properties from complex states beyond what basin-of-attraction analysis captures (e.g., different feedback topology, lower internal information integration, different response signatures to perturbation), DN's shadow asymmetry claim gains empirical support in an ecological domain. If all attractors are genuinely structurally equivalent and the 'degraded' label is purely observer-imposed, DN's shadow architecture faces strain in this domain. This connects to shadow-biological-testability and symmetry-as-shadow-mechanism tensions. tension_id: attractor-equivalence-vs-shadow-asymmetry
+
+**Sources:**
+- [2026-05-09] Towards a unified framework for multiple stable states in ecological systems (strain: 5)
+
+### shadow-dissolution-threshold-testability | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** shadow-dissolution-threshold-testability: DN's shadow architecture predicts a categorical distinction between landscapes where native ecosystem shadow structure persists (seed banks, soil microbiome, remnant populations) and landscapes where shadow structure has been fully dissolved. The paper's restoration framework implicitly depends on this distinction but does not formalize it. The tension is whether this categorical distinction is empirically real and structurally productive, or whether restoration difficulty varies continuously with remnant population density without a discrete threshold. If restoration difficulty is continuous, DN's shadow concept (which implies coherent organizational structure that is either present or absent) faces strain in ecological domains. If there is a genuine threshold effect—a point at which restoration shifts from 're-activation' to 'reconstruction'—this would be independent empirical support for DN's shadow architecture in a new domain. This connects to the existing shadow-biological-testability tension but in an ecological rather than molecular context. tension_id: shadow-dissolution-threshold-ecological
+
+**Sources:**
+- [2026-05-09] Integrated Management of Fire-Adapted Invasive Plants That Change Wildfire Regimes (strain: 2)
+
+### structural-opposition-as-light-mechanism | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** structural-opposition-as-light-mechanism: The antithetic controller uses structural opposition (z₁ vs z₂, producing a difference signal) as the mechanism for achieving homeostasis—a light-side purpose achieved through shadow-like structural inversion. DN's shadow architecture defines shadow by orientation (toward limitation/separation), but the antithetic mechanism demonstrates that structural inversion/opposition can serve integrative purposes. This raises the question: does DN's shadow concept conflate mechanism (opposition, inversion) with orientation (toward limitation)? If structural opposition can serve either shadow or light purposes depending on context, then shadow is not identifiable by structural signature alone—it requires orientational assessment, which DN claims but does not formalize. This connects to the symmetry-as-shadow-mechanism tension but from the opposite direction: there, symmetry preservation was the mechanism of shadow maintenance; here, structural opposition is the mechanism of light-side regulation. tension_id: structural-opposition-as-light-mechanism
+
+**Sources:**
+- [2026-05-09] Boundedness of solutions in feedback systems with antithetic controllers (strain: 4)
