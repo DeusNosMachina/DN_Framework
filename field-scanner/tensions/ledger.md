@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-09*
+*Last updated: 2026-05-10*
 
 
 ---
@@ -152,6 +152,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -506,7 +513,7 @@
 **Sources:**
 - [2026-04-16] STS-Mixer: Spatio-Temporal-Spectral Mixer for 4D Point Cloud Video Understanding (strain: 2)
 
-### entropy-as-precursor-vs-shadow-as-organiz | status: tracking | citations: 1
+### entropy-as-precursor-vs-shadow-as-organiz | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §3, §4, §5
@@ -514,6 +521,7 @@
 
 **Sources:**
 - [2026-04-16] Unveiling Hidden Patterns in Monsoon Rainfall: A Complexity‐Entropy Analysis of Tropical Precipitation Dynamics in Northeast India—A Case Study of Agartala, Tripura (2012–2024) (strain: 3)
+- [2026-05-10] Frequency synchronization facilitated by frequency differences: Dynamics of coupled-oscillator systems with damaged elements (strain: 3)
 
 ### engineering-optimization-as-lens-floor | status: tracking | citations: 2
 
@@ -895,3 +903,21 @@
 
 **Sources:**
 - [2026-05-09] Boundedness of solutions in feedback systems with antithetic controllers (strain: 4)
+
+### lyapunov-stability-vs-dimensional-coheren | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** lyapunov-stability-vs-dimensional-coherence: The paper demonstrates that system stability and coherent organization can be rigorously guaranteed through Lyapunov-Krasovskii functionals and LMI feasibility conditions—mathematical objects that have no analog in DN's architecture. DN's dimensional framework describes organizational coherence narratively (systems 'hold' at dimensional positions, transitions require sufficient structural support), but the Persidskii framework achieves the same structural guarantee through convex optimization over matrix inequalities. This extends the geometric-unification-without-dimensional-grammar tension (from EPO) and the energy-landscape-vs-dimensional-hierarchy tension (from EBRM) into a new domain: control-theoretic stability. The specific challenge is that Lyapunov stability theory provides a complete, formally verifiable account of when and why systems maintain organizational coherence under perturbation—precisely the structural question DN's dimensional architecture addresses narratively. If Lyapunov methods can guarantee coherence without dimensional grammar, DN's dimensional architecture must justify what structural work it performs beyond what stability theory already provides. tension_id: lyapunov-stability-vs-dimensional-coherence
+
+**Sources:**
+- [2026-05-10] Stability Analysis and Data-Driven State Estimation for Generalized Persidskii Systems with Time Delays: Theory and Experimental Validation on PMSM Drives (strain: 6)
+
+### mathematical-vs-organizational-dimensiona | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §4, §5, §10
+**Description:** mathematical-vs-organizational-dimensionality: The paper uses 'dimension' (Lyapunov dimension) in a precise mathematical sense that is decoupled from organizational complexity—a system can be high-dimensional dynamically while being organizationally simple (perfect synchronization). DN's dimensional architecture (§2) uses 'dimension' to describe organizational complexity levels, but the vocabulary overlap creates ambiguity. This tension asks: when DN claims a system operates at a particular dimensional position, is it describing the system's phase-space complexity, its organizational complexity, or something else entirely? In domains where mathematical dimensionality is precisely defined, DN's dimensional vocabulary faces a disambiguation challenge. This connects to the emergent-vs-prescribed-dimensionality tension but from a different angle: there, the question was how many dimensions a system needs; here, the question is what 'dimension' even means across frameworks. tension_id: mathematical-vs-organizational-dimensionality
+
+**Sources:**
+- [2026-05-10] Permanent and Transient Synchronized Chaos in Large Arrays of Complex-Coupled Semiconductor Lasers (strain: 4)
