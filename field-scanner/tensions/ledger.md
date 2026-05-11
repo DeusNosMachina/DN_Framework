@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-10*
+*Last updated: 2026-05-11*
 
 
 ---
@@ -152,6 +152,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -921,3 +928,30 @@
 
 **Sources:**
 - [2026-05-10] Permanent and Transient Synchronized Chaos in Large Arrays of Complex-Coupled Semiconductor Lasers (strain: 4)
+
+### criteria-weighting-without-dimensional-gr | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** criteria-weighting-without-dimensional-grammar: The MCDM field achieves formal cross-criteria integration through mathematical optimization (entropy methods, CRITIC, AI-based learning) without any dimensional architecture, pillar decomposition, or force dynamics. This creates a tension with §0.1 and §2: if criteria importance can be formally structured through optimization primitives alone, what unique structural work does DN's dimensional grammar perform? The tension is partially resolved by the observation that MCDM methods face persistent unsolved problems (rank reversal, criteria-for-criteria recursion, orientation-blindness) that DN's architecture can structurally characterize—suggesting DN's lens adds value precisely where optimization-only approaches break down. But this also means DN's lens yield in decision methodology is concentrated in the failure modes rather than the successes, which is a specific and limited form of utility. tension_id: criteria-weighting-without-dimensional-grammar
+
+**Sources:**
+- [2026-05-11] A Comprehensive Review: The Novel Weighting Methods For Multi-Criteria Decision-Making (MCDM) (strain: 4)
+
+### evaluation-dimensional-gap-in-workforce-s | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §3, §4
+**Description:** evaluation-dimensional-gap-in-workforce-systems: The paper's framework evaluates workforce competencies at 1D-2D (foundational skills, hands-on experience) while identifying resilience-enhancing competencies at 5D (adaptability, continuous learning). DN's dimensional lens predicts that this gap between evaluation position and resilience requirement is a structural feature of workforce assessment systems generally—organizations optimize for the dimensions they can measure (lower-dimensional, Truth-led) while resilience depends on dimensions they cannot easily measure (higher-dimensional, Heart-involved). This connects to the heart-formal-absence pattern across domains but adds a specific organizational prediction: the evaluation-resilience dimensional gap should correlate with system fragility under novel disruption. The tension is whether this is a genuine structural prediction or a restatement of the well-known 'teaching to the test' problem in organizational science. tension_id: evaluation-resilience-dimensional-gap
+
+**Sources:**
+- [2026-05-11] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+### hesitation-scalar-collapse-vs-pillar-deco | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §3, §4
+**Description:** hesitation-scalar-collapse-vs-pillar-decomposition: The paper's treatment of hesitation as a single scalar (hesitation degree = count difference in membership values) collapses structurally distinct sources of uncertainty that DN's pillar triad would separate. This is a minor instance of a broader pattern: applied decision-making frameworks systematically reduce multi-dimensional uncertainty to scalar quantities for computational tractability. The tension is whether DN's pillar decomposition of hesitation produces testable predictions that scalar hesitation measures miss, or whether the decomposition is structurally correct but practically irrelevant in MCDM contexts. This connects to the existing heart-formal-absence pattern but in a weaker form—here Heart is not just absent from the formal model but absent from the domain engagement entirely. tension_id: hesitation-scalar-collapse-vs-pillar-decomposition
+
+**Sources:**
+- [2026-05-11] An Integrated Hesitant Fuzzy Decision-Making Framework with a Novel Distance Measure for Used Aircraft Selection (strain: 2)
