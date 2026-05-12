@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-11*
+*Last updated: 2026-05-12*
 
 
 ---
@@ -152,6 +152,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -955,3 +962,30 @@
 
 **Sources:**
 - [2026-05-11] An Integrated Hesitant Fuzzy Decision-Making Framework with a Novel Distance Measure for Used Aircraft Selection (strain: 2)
+
+### necessity-hierarchy-vs-independent-bottle | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** necessity-hierarchy-vs-independent-bottlenecks: NCA treats each antecedent's necessity status as independently testable against the outcome variable. DN's dimensional architecture predicts that necessary conditions should be hierarchically ordered—some necessary conditions are prerequisites for other necessary conditions, creating cascading bottleneck structures rather than independent threshold constraints. This generates a testable tension: if NCA were applied to antecedents that map onto different dimensional levels, would the necessity structure show hierarchical dependency (as DN predicts) or independence (as NCA's current methodology assumes)? If hierarchical dependency is found, DN's dimensional ordering adds structural insight to NCA. If independence is found, it suggests that necessity structures in creativity are genuinely flat rather than hierarchically organized, which would strain DN's foundational claim that dimensional progression follows a prerequisite ordering. This tension connects to the existing ptg-dimensional-ordering-vs-network-dynamics tension (hierarchical vs. flat structural organization) but from a formal-methodological rather than clinical direction. tension_id: necessity-hierarchy-vs-independent-bottlenecks
+
+**Sources:**
+- [2026-05-12] Beyond Sufficiency: The Methodological Value of Necessary Condition Analysis for Creativity and Innovation Research (strain: 4)
+
+### micro-change-type-blindness-in-cas | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5, §10
+**Description:** micro-change-type-blindness-in-CAS: CAS theory treats micro-perturbations as structurally undifferentiated — any small change can potentially catalyze macro-emergence through sensitivity to initial conditions. DN's pillar decomposition suggests that micro-perturbations have qualitatively different structural characters (orientational/Heart, structural/Truth, contextual/Nuance) that determine their propagation mechanism and threshold dynamics. This generates a tension: if CAS theory is correct that the specific character of micro-perturbations is less important than the system's state-space topology (attractor basins, bifurcation points), then DN's pillar decomposition of micro-changes adds false specificity. If DN's decomposition is correct that pillar character matters, then CAS models that treat all micro-perturbations equivalently are systematically missing a structural variable. This is empirically testable: do Heart-led, Truth-led, and Nuance-led leadership micro-changes show different propagation patterns and threshold dynamics in organizational CAS? The paper's methodology could test this if it coded micro-changes by pillar type, but its CAS framing provides no basis for this coding. tension_id: micro-change-pillar-type-vs-CAS-equivalence
+
+**Sources:**
+- [2026-05-12] Micro-change as Macro-Catalysts: Non-linear Dynamics of Leadership Behaviour, Cultural Emergence, and System Outcomes in Adaptive Organisations (strain: 2)
+
+### heart-pillar-institutional-receptivity | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** heart-pillar-institutional-receptivity: The paper reveals that organizations lack structural receptors for Heart-pillar input—their decision architectures are built for Truth (data, metrics) and Nuance (strategy, stakeholder management), and the CPO role is attempting to insert a third structural dimension into systems that have no formal slot for it. This extends the heart-formal-absence pattern (now confirmed in forensic psychiatry, Alzheimer's research, social innovation, computational reasoning, computer vision, olfactory HCI, and organizational management) but adds a new edge: the CPO case shows that even when organizations deliberately create a Heart-pillar role, the institutional architecture resists integration because it lacks the structural grammar to process Heart-type input. This suggests that Heart-formal-absence is not merely a methodological oversight but a deep structural property of how formal organizational systems are built. The tension for DN is whether its pillar architecture can explain why Heart is systematically excluded (which would strengthen the lens claim) or whether it merely labels the exclusion without explaining it (which would be narration, not insight). tension_id: heart-pillar-institutional-receptivity
+
+**Sources:**
+- [2026-05-12] Lost in translation? The emergence of chief philosophy officers (strain: 2)
