@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-12*
+*Last updated: 2026-05-13*
 
 
 ---
@@ -14,7 +14,7 @@
 *They warrant human review for potential Kernel revision.*
 
 
-### energy-landscape-vs-dimensional-hierarchy | status: review | citations: 4
+### energy-landscape-vs-dimensional-hierarchy | status: review | citations: 5
 
 **Maturity target:** foundational
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
@@ -109,6 +109,7 @@
 ## TRACKING
 
 *Active tensions accumulating citations.*
+- [2026-05-13] An Interpretation of Toddler Play through Deleuze and Guattari’s Theory of ‘Partial Objects’: From Representation to Production (strain: 5)
 
 ### continuous-parameterization-vs-discrete-d | status: review | citations: 3
 
@@ -152,6 +153,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -428,7 +436,7 @@
 **Sources:**
 - [2026-04-11] Institutional Distrust in the Age of AI: Evidence-Based Organizational Responses to Eroding Public Confidence (strain: 2)
 
-### ahp-pillar-bias-in-developmental-models | status: tracking | citations: 1
+### ahp-pillar-bias-in-developmental-models | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
@@ -436,6 +444,7 @@
 
 **Sources:**
 - [2026-04-12] Stage-based Priority Analysis of Key Activities for the Sustainable Growth of Village Education Communities: An AHP Application (strain: 2)
+- [2026-05-13] Supports and Barriers in the Talent Development of Socio-Economically Disadvantaged Gifted Students: A Retrospective Narrative Inquiry (strain: 2)
 
 ### spanner-shadow-maintenance-incentive | status: tracking | citations: 1
 
@@ -765,7 +774,7 @@
 **Sources:**
 - [2026-05-02] A Conceptual Introduction to Hetero‐Functional Graph Theory for Systems‐of‐Systems (strain: 6)
 
-### shadow-as-embedded-constraint-in-successo | status: tracking | citations: 1
+### shadow-as-embedded-constraint-in-successo | status: tracking | citations: 2
 
 **Maturity target:** mature
 **Kernel sections:** §0.1, §2, §3, §4, §5
@@ -773,6 +782,7 @@
 
 **Sources:**
 - [2026-05-02] Turbulence closure in Reynolds-averaged Navier–Stokes and flow inference around a cylinder using physics-informed neural networks and sparse experimental data (strain: 2)
+- [2026-05-13] Towards a Frugal Photosynthesis Sensing Toolkit for Data-Driven Plant Science Education and Exploration (strain: 2)
 
 ### single-pillar-diagnostic-distortion | status: tracking | citations: 1
 
