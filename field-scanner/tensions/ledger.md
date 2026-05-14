@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-13*
+*Last updated: 2026-05-14*
 
 
 ---
@@ -153,6 +153,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -999,3 +1006,21 @@
 
 **Sources:**
 - [2026-05-12] Lost in translation? The emergence of chief philosophy officers (strain: 2)
+
+### architectural-scaling-vs-dimensional-orga | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §0.1, §2, §2.2, §3
+**Description:** architectural-scaling-vs-dimensional-organization: The paper demonstrates that in multi-scale physical dynamics modeling, performance is governed by architectural scaling laws (width-depth Pareto tradeoffs within encoder-decoder structures) that constitute a complete structural account without dimensional hierarchy, pillar decomposition, or force dynamics. This extends the energy-landscape-vs-dimensional-hierarchy and geometric-unification-without-dimensional-grammar tensions into a new domain (neural architecture engineering for physical simulation). The specific edge: the 'wave' structure achieves multi-scale integration through iterative compression-decompression cycles that are structurally analogous to DN's recursive dimensional traversal but are fully specified by architectural parameters (number of waves, channels per wave, skip topology) without any need for DN's qualitative dimensional distinctions. If architectural scaling laws provide sufficient structural grammar for multi-scale organization in physical systems, DN's dimensional architecture faces a parsimony challenge in engineering domains where quantitative scaling replaces qualitative dimensional progression. tension_id: architectural-scaling-vs-dimensional-organization
+
+**Sources:**
+- [2026-05-14] Deep Wave Network for Modeling Multi-Scale Physical Dynamics (strain: 5)
+
+### flow-as-weapon-vs-flow-as-transport | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §2, §3, §4, §5, §10
+**Description:** flow-as-weapon-vs-flow-as-transport: DN's Flow concept (§10, Axiom 7) describes Flow as a transport principle enabling coherence and dimensional traversal. This paper demonstrates Flow being deliberately manipulated as an attack vector—controlled bandwidth perturbation injected into traffic to deanonymize users. The tension is not that Flow can be misused (DN's shadow architecture accommodates that), but that the paper reveals Flow has an adversarial modality DN does not formalize: Flow can be weaponized precisely because it is a real transport mechanism, and any system that relies on Flow for its operation (including shadow structures) is vulnerable to Flow-based attacks. This suggests DN's Flow concept needs a formal treatment of adversarial Flow—Flow manipulated to reveal rather than transport, to expose rather than connect. This connects to the existing shadow-as-organized-alternative pattern but from the attacker's perspective: if shadow structures must use Flow, and Flow can be marked, then shadow structures have an inherent vulnerability DN's current architecture does not address. tension_id: flow-as-weapon-vs-flow-as-transport
+
+**Sources:**
+- [2026-05-14] ActiveFlowMark: Assessing Tor Anonymity under Active Bandwidth Watermarking (strain: 2)
