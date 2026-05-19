@@ -3,7 +3,7 @@
 *Structured tracking of tensions across cycles. Tensions are promoted to*
 *the Review Queue when they accumulate 3+ independent citations.*
 
-*Last updated: 2026-05-14*
+*Last updated: 2026-05-19*
 
 
 ---
@@ -153,6 +153,13 @@
 - [2026-04-11] Algorithmic Agency and the Posthuman Economy: Artificial Intelligence and the Transformation of Economic Decision-Making (strain: 3)
 - [2026-04-17] Where Numbers Meet People: Defining and Leading the Strategy-Execution Interface (SEI) (strain: 2)
 - [2026-05-07] A Multi-Criteria Analysis of Workforce Competencies in Data-Driven Decision-Making for Supply Chain Resilience Under Uncertainty (strain: 2)
+
+
+---
+
+## TRACKING
+
+*Active tensions accumulating citations.*
 
 
 ---
@@ -1024,3 +1031,30 @@
 
 **Sources:**
 - [2026-05-14] ActiveFlowMark: Assessing Tor Anonymity under Active Bandwidth Watermarking (strain: 2)
+
+### statistical-mimicry-as-shadow-architectur | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §2.2, §3, §4, §5
+**Description:** statistical-mimicry-as-shadow-architecture: LLMs integrated into MCDM frameworks produce outputs with the formal structure of multi-dimensional judgment through mechanisms that are structurally lower-dimensional (token-prediction pattern completion). DN's shadow architecture provides a structural account of this (shadow judgment: coherent organization toward producing judgment-like outputs without dimensional depth), but the mechanism is novel—statistical pattern completion over massive corpora rather than any of the shadow mechanisms DN has previously engaged. This raises a tension: is DN's shadow concept elastic enough to encompass statistical mimicry alongside its existing applications (developmental limitation, adversarial concealment, symmetry preservation), or does the statistical-mimicry case represent a fundamentally different phenomenon that DN's shadow architecture merely appears to describe? The paper's finding that LLM biases are systematic rather than random supports the shadow-as-organized-alternative interpretation, but the mechanism (statistical correlation in training data) is so different from DN's existing shadow examples that the concept may be stretched beyond its structural specificity. This connects to the symmetry-as-shadow-mechanism tension: if shadow maintenance requires symmetry preservation (per the kernel learning paper), does LLM statistical mimicry preserve symmetry in the relevant sense? tension_id: statistical-mimicry-as-shadow-architecture
+
+**Sources:**
+- [2026-05-19] Large Language Models in Multi Criteria Decision Making: A Systematic Review, Taxonomy, and Future Research Agenda (strain: 4)
+
+### fuzzy-membership-as-collapsed-pillar-stru | status: tracking | citations: 1
+
+**Maturity target:** foundational
+**Kernel sections:** §2, §3, §4, §5, §0.1
+**Description:** fuzzy-membership-as-collapsed-pillar-structure: The T-spherical fuzzy membership structure (membership, abstinence, non-membership, refusal) encodes what DN's pillar triad would treat as structurally independent epistemological dimensions into a unified mathematical formalism. If DN's pillar decomposition is correct that Heart-type signals (motivational engagement/disengagement) and Nuance-type signals (contextual complexity recognition) are structurally independent, then fuzzy set generalizations that treat abstinence and refusal as mathematically interchangeable parameters are systematically losing structural information. This tension is testable: expert panels where disagreement stems primarily from motivational disengagement should produce different aggregation outcomes than panels where disagreement stems from contextual complexity, and T-SF methods should fail to distinguish these cases. This connects to the existing Heart-formal-absence pattern but adds a specific mathematical mechanism through which Heart information is lost. tension_id: fuzzy-membership-as-collapsed-pillar-structure
+
+**Sources:**
+- [2026-05-19] A Multi-Stage T-SF MCDM Framework for Assessing Vulnerabilities in Cross-Border Logistics Chains (strain: 2)
+
+### entropy-weighting-as-pillar-collapse | status: tracking | citations: 1
+
+**Maturity target:** mature
+**Kernel sections:** §0.1, §2, §3, §4, §5
+**Description:** entropy-weighting-as-pillar-collapse: Shannon entropy-based objective weighting in MCDM frameworks conflates statistical informativeness (Truth: which criteria differentiate alternatives) with human priority (Heart: which criteria matter most to affected populations). DN's pillar independence predicts this produces systematic misweighting—criteria with low variance but high human importance receive low weight. This is a specific, testable instance of the broader Heart-formal-absence pattern, but with a novel edge: the entropy method does not merely exclude Heart, it actively replaces Heart with a Truth-derived proxy while claiming objectivity. This connects to the existing heart-formal-absence-network-models tension but adds a concrete mechanism (entropy weighting) through which the replacement occurs. If this pattern generalizes to other MCDM applications (healthcare resource allocation, urban planning, humanitarian logistics), it would strengthen DN's claim that pillar independence reveals structural gaps in optimization frameworks. tension_id: entropy-weighting-as-pillar-collapse
+
+**Sources:**
+- [2026-05-19] Human-Centered Shelter Selection: A Multi-Criteria Decision-Making Framework for Post-Disaster Response (strain: 2)
