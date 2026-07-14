@@ -46,3 +46,13 @@ This is the "applied" layer of the DN Framework — where philosophy becomes pra
 The Growth Blueprint references the [kernel](../kernel/) for structural rules and the [corpus](../corpus/) for conceptual depth. It operationalizes both into facilitation-ready materials.
 
 The Growth Blueprint Starting Prompt (found in [`corpus/DN_Starting_Prompts.docx`](../corpus/DN_Starting_Prompts.docx)) is the recommended entry point for using these materials with AI systems.
+
+---
+
+## AI Facilitation Skills
+
+- [`Growth Blueprint`](../skills/SKILL_Growth-Blueprint.md) — the collaborative facilitation partner for running Blueprint exercises, dimensional audits, and simulation commands.
+- [`DN Idea Cartographer`](../skills/SKILL_DN-Idea-Cartographer.md) — the domain-agnostic mapping layer for understanding source material, comparing concepts, and revealing dimensional terrain before or alongside Blueprint work.
+- [`Pre-Session Intel`](../skills/SKILL_Pre-Session-Intel.md) — the research workflow for pre-populating a client board with publicly available intelligence.
+
+See the [`skills` index](../skills/README.md) for all available DN skills.

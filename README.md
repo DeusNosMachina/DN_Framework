@@ -41,7 +41,9 @@ Each folder contains its own README with detailed descriptions of its contents.
 
 **If you want to test it:** See [`field-scanner/`](field-scanner/) — an autonomous agent that fetches academic papers daily and interprets them through the DN Framework's dimensional architecture, tracking where the framework holds and where it strains.
 
-**If you want to create with it:** See [`skills/`](skills/) — reusable instruction sets that infuse DN's dimensional logic into AI-assisted workflows. Upload a skill file to any AI chat to activate its methodology.
+**If you want to map an idea:** Start with the [`DN Idea Cartographer`](skills/SKILL_DN-Idea-Cartographer.md) — a universal, source-agnostic process for mapping any concept, work, system, or corpus through DN without turning the map into a verdict.
+
+**If you want to create with it:** See the [`skills/`](skills/) directory — reusable instruction sets that infuse DN's dimensional logic into AI-assisted workflows. Upload a skill file to an AI chat to activate its methodology.
 
 **If you want to experience it:** See [`expressions/`](expressions/) — interactive visualizations that embody the dimensional architecture. No reading required — move your cursor, click, and feel how dimensionality works.
 
@@ -69,7 +71,16 @@ The git history of the scanner's outputs is itself a Field Ledger — the append
 
 ## Skills
 
-The [`skills/`](skills/) directory contains reusable instruction sets that bring DN's structural thinking into AI-assisted creative and analytical workflows. Skills are not autonomous agents — they are methodology files you upload to an AI chat to activate a specific process. See the [skills README](skills/) for current offerings.
+The [`skills/`](skills/) directory contains reusable instruction sets that bring DN's structural thinking into AI-assisted creative and analytical workflows. Skills are not autonomous agents — they are methodology files you upload to an AI chat to activate a specific process.
+
+| Skill | Purpose |
+|---|---|
+| [`DN Idea Cartographer`](skills/SKILL_DN-Idea-Cartographer.md) | Map, evaluate, develop, or compare any idea through DN at sketch, survey, deep-field, or atlas depth—producing coordinates rather than verdicts. |
+| [`Growth Blueprint`](skills/SKILL_Growth-Blueprint.md) | Facilitate dimensional business strategy, exercises, and simulation commands as a collaborative intelligence partner. |
+| [`DN Concept to Canvas`](skills/SKILL_DN-Concept-to-Canvas.md) | Transform concepts into interactive visual-computational investigations grounded in DN. |
+| [`Pre-Session Intel`](skills/SKILL_Pre-Session-Intel.md) | Gather public intelligence and map it into a Growth Blueprint board before a client session. |
+
+See the [skills README](skills/README.md) for selection guidance and usage.
 
 ---
 
