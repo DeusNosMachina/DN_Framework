@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Renewed Field V2</title>
+<title>Renewed Field V3</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field V2" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field V3" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Renewed Field V2&lt;/title&gt;
+&lt;title&gt;Renewed Field V3&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(--background) !important;
@@ -748,55 +748,52 @@ svg {
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;renewed-field-v2&quot;&gt;
+&lt;div id=&quot;renewed-field-v3&quot;&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Field controls&quot;&gt;
-    &lt;div class=&quot;rfv2-depth-control&quot;&gt;
-      &lt;div class=&quot;rfv2-depth-header&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;rfv2-depth&quot;&gt;Layer depth&lt;/label&gt;&lt;span id=&quot;rfv2-depth-value&quot; class=&quot;text-muted&quot;&gt;8&lt;/span&gt;&lt;/div&gt;
-      &lt;div&gt;&lt;input id=&quot;rfv2-depth&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;5&quot; max=&quot;9&quot; step=&quot;1&quot; value=&quot;8&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;rfv2-action-control&quot;&gt;&lt;button id=&quot;rfv2-action&quot; class=&quot;btn btn-primary btn-block&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;&lt;/div&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-shadow&quot;&gt;
-      &lt;input id=&quot;rfv2-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;button id=&quot;rfv3-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-shadow&quot;&gt;
+      &lt;input id=&quot;rfv3-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Shadow&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-ambient&quot;&gt;
-      &lt;input id=&quot;rfv2-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-ambient&quot;&gt;
+      &lt;input id=&quot;rfv3-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Ambience&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-tones&quot;&gt;
-      &lt;input id=&quot;rfv2-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-tones&quot;&gt;
+      &lt;input id=&quot;rfv3-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Chimes&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv2-status text-small&quot; aria-live=&quot;polite&quot;&gt;
-    &lt;span id=&quot;rfv2-status&quot;&gt;The field is learning the shape of your attention.&lt;/span&gt;
-    &lt;span id=&quot;rfv2-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
+  &lt;div class=&quot;rfv3-status text-small&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;span id=&quot;rfv3-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
+    &lt;span id=&quot;rfv3-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv2-stage&quot;&gt;
-    &lt;canvas id=&quot;rfv2-canvas&quot; role=&quot;img&quot; aria-label=&quot;A living layered field where attention, blind spots, shadow, and renewal continuously reshape one another.&quot;&gt;&lt;/canvas&gt;
-    &lt;div class=&quot;rfv2-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;drag to peel&lt;/span&gt;&lt;span&gt;click to impress memory&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;rfv3-stage&quot;&gt;
+    &lt;canvas id=&quot;rfv3-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field where each region leaves a different residual and the blind spot refracts the surrounding reality.&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;rfv3-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;draw through the field&lt;/span&gt;&lt;span&gt;enter the absence&lt;/span&gt;&lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;details class=&quot;rfv2-legend&quot;&gt;
+  &lt;details class=&quot;rfv3-legend&quot;&gt;
     &lt;summary class=&quot;text-small&quot;&gt;Field structure&lt;/summary&gt;
     &lt;div class=&quot;viz-row text-small text-muted&quot;&gt;
-      &lt;span&gt;attention → cognitive gravity&lt;/span&gt;
-      &lt;span&gt;absence → open horizon&lt;/span&gt;
-      &lt;span&gt;shadow → orientation, not darkness&lt;/span&gt;
-      &lt;span&gt;attestation → Signal Lock&lt;/span&gt;
+      &lt;span&gt;void → filaments&lt;/span&gt;
+      &lt;span&gt;density → stains&lt;/span&gt;
+      &lt;span&gt;edges → long arcs&lt;/span&gt;
+      &lt;span&gt;blind spot → basin response&lt;/span&gt;
+      &lt;span&gt;all marks → entropy&lt;/span&gt;
     &lt;/div&gt;
   &lt;/details&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-  #renewed-field-v2 {
+  #renewed-field-v3 {
     color: var(--foreground);
     width: 100%;
   }
 
-  #renewed-field-v2 .rfv2-status {
+  #renewed-field-v3 .rfv3-status {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -804,37 +801,22 @@ html&gt;body{padding:0}&lt;/style&gt;
     margin: 8px 0;
   }
 
-  #renewed-field-v2 .rfv2-depth-control {
-    flex: 1 1 280px;
-    min-width: 0;
-  }
-
-  #renewed-field-v2 .rfv2-depth-header {
-    display: flex;
-    justify-content: flex-start;
-    gap: 4px;
-  }
-
-  #renewed-field-v2 .rfv2-action-control {
-    flex: 0 0 auto;
-  }
-
-  #renewed-field-v2 .rfv2-stage {
+  #renewed-field-v3 .rfv3-stage {
     position: relative;
     width: 100%;
-    height: clamp(380px, 68vw, 570px);
+    height: clamp(400px, 69vw, 580px);
     overflow: hidden;
     background: var(--card);
   }
 
-  #renewed-field-v2 canvas {
+  #renewed-field-v3 canvas {
     display: block;
     width: 100%;
     height: 100%;
     touch-action: none;
   }
 
-  #renewed-field-v2 .rfv2-whisper {
+  #renewed-field-v3 .rfv3-whisper {
     position: absolute;
     left: 12px;
     right: 12px;
@@ -847,36 +829,25 @@ html&gt;body{padding:0}&lt;/style&gt;
     mix-blend-mode: difference;
   }
 
-  #renewed-field-v2 .rfv2-legend {
+  #renewed-field-v3 .rfv3-legend {
     margin-top: 8px;
   }
 
-  #renewed-field-v2 .rfv2-legend .viz-row {
+  #renewed-field-v3 .rfv3-legend .viz-row {
     margin-top: 6px;
   }
 
   @media (max-width: 480px) {
-    #renewed-field-v2 .rfv2-depth-control {
-      grid-column: 1 / -1;
-      width: 100%;
-    }
-
-    #renewed-field-v2 .rfv2-action-control {
-      flex-basis: 100%;
-      grid-column: 1 / -1;
-      width: 100%;
-    }
-
-    #renewed-field-v2 .rfv2-status {
+    #renewed-field-v3 .rfv3-status {
       flex-direction: column;
       gap: 2px;
     }
 
-    #renewed-field-v2 .rfv2-stage {
-      height: 410px;
+    #renewed-field-v3 .rfv3-stage {
+      height: 430px;
     }
 
-    #renewed-field-v2 .rfv2-whisper span:last-child {
+    #renewed-field-v3 .rfv3-whisper span:last-child {
       display: none;
     }
   }
@@ -884,19 +855,17 @@ html&gt;body{padding:0}&lt;/style&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;renewed-field-v2&#x27;);
+  const root = document.getElementById(&#x27;renewed-field-v3&#x27;);
   if (!root) return;
 
-  const canvas = root.querySelector(&#x27;#rfv2-canvas&#x27;);
+  const canvas = root.querySelector(&#x27;#rfv3-canvas&#x27;);
   const ctx = canvas.getContext(&#x27;2d&#x27;, { alpha: false });
-  const depthInput = root.querySelector(&#x27;#rfv2-depth&#x27;);
-  const depthValue = root.querySelector(&#x27;#rfv2-depth-value&#x27;);
-  const actionButton = root.querySelector(&#x27;#rfv2-action&#x27;);
-  const shadowInput = root.querySelector(&#x27;#rfv2-shadow&#x27;);
-  const ambientInput = root.querySelector(&#x27;#rfv2-ambient&#x27;);
-  const tonesInput = root.querySelector(&#x27;#rfv2-tones&#x27;);
-  const statusNode = root.querySelector(&#x27;#rfv2-status&#x27;);
-  const orientationNode = root.querySelector(&#x27;#rfv2-orientation&#x27;);
+  const actionButton = root.querySelector(&#x27;#rfv3-action&#x27;);
+  const shadowInput = root.querySelector(&#x27;#rfv3-shadow&#x27;);
+  const ambientInput = root.querySelector(&#x27;#rfv3-ambient&#x27;);
+  const tonesInput = root.querySelector(&#x27;#rfv3-tones&#x27;);
+  const statusNode = root.querySelector(&#x27;#rfv3-status&#x27;);
+  const orientationNode = root.querySelector(&#x27;#rfv3-orientation&#x27;);
   const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
 
   const TAU = Math.PI * 2;
@@ -904,40 +873,39 @@ html&gt;body{padding:0}&lt;/style&gt;
   const clamp = (v, a, b) =&gt; Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) =&gt; a + (b - a) * t;
   const smooth = t =&gt; t * t * (3 - 2 * t);
-  const easeInOut = t =&gt; 0.5 - 0.5 * Math.cos(Math.PI * clamp(t, 0, 1));
+  const ease = t =&gt; 0.5 - Math.cos(clamp(t, 0, 1) * Math.PI) * 0.5;
 
   let W = 736;
   let H = 520;
   let dpr = 1;
+  let clock = 0;
   let frame = 0;
   let lastTime = performance.now();
-  let clock = 0;
   let palette = null;
   let darkField = true;
-  let state = &#x27;field&#x27;;
-  let resonance = 0.08;
-  let generation = 0;
-  let returnProgress = -1;
   let shadowTarget = 0;
   let shadowMix = 0;
   let shadowVelocity = 0;
-  let attention = 0;
-  let depthTarget = Number(depthInput.value);
+  let blindEnergy = 0;
+  let resonance = 0.09;
+  let state = &#x27;field&#x27;;
+  let returnProgress = -1;
+  let generation = 0;
+  let currentGesture = null;
   let statusClock = 0;
-  let pressedAt = null;
-  let dragged = false;
-  let currentSeam = null;
-  const ripples = [];
-  const seams = [];
-  const layerPresence = Array.from({ length: 9 }, () =&gt; 0);
+  const marks = [];
+  const waves = [];
+  const blindEvents = [];
   const curves = Array.from({ length: 9 }, () =&gt; []);
-  const pointer = { x: 0.58, y: 0.47, tx: 0.58, ty: 0.47, inside: false, down: false, vx: 0, vy: 0 };
+  const pointer = { x: 0.58, y: 0.47, tx: 0.58, ty: 0.47, vx: 0, vy: 0, down: false, inside: false };
 
+  const scene = document.createElement(&#x27;canvas&#x27;);
+  const sceneCtx = scene.getContext(&#x27;2d&#x27;);
   const colorProbe = document.createElement(&#x27;canvas&#x27;);
   colorProbe.width = colorProbe.height = 1;
   const probeCtx = colorProbe.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
 
-  function resolveCssColor(token, fallback) {
+  function resolveColor(token, fallback) {
     const css = getComputedStyle(root).getPropertyValue(token).trim() || fallback;
     probeCtx.clearRect(0, 0, 1, 1);
     probeCtx.fillStyle = fallback;
@@ -963,7 +931,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     return (c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722) / 255;
   }
 
-  function intensify(c, amount = 1.35) {
+  function intensify(c, amount = 1.46) {
     const light = luminance(c) * 255;
     return [
       Math.round(clamp(light + (c[0] - light) * amount, 0, 255)),
@@ -974,21 +942,22 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function refreshPalette() {
-    const bg = resolveCssColor(&#x27;--card&#x27;, &#x27;#111319&#x27;);
-    const page = resolveCssColor(&#x27;--background&#x27;, &#x27;#0a0b0f&#x27;);
+    const bg = resolveColor(&#x27;--card&#x27;, &#x27;#111319&#x27;);
+    const page = resolveColor(&#x27;--background&#x27;, &#x27;#0a0b0f&#x27;);
     palette = {
       bg: mixColor(bg, page, 0.34),
       page,
-      fg: resolveCssColor(&#x27;--card-foreground&#x27;, &#x27;#f3efe8&#x27;),
-      muted: resolveCssColor(&#x27;--muted-foreground&#x27;, &#x27;#9a9aa5&#x27;),
+      fg: resolveColor(&#x27;--card-foreground&#x27;, &#x27;#f3efe8&#x27;),
+      muted: resolveColor(&#x27;--muted-foreground&#x27;, &#x27;#9a9aa5&#x27;),
+      shadow: resolveColor(&#x27;--destructive&#x27;, &#x27;#cc2936&#x27;),
       series: [
-        resolveCssColor(&#x27;--viz-series-1&#x27;, &#x27;#ff5f9e&#x27;),
-        resolveCssColor(&#x27;--viz-series-2&#x27;, &#x27;#50d6ff&#x27;),
-        resolveCssColor(&#x27;--viz-series-3&#x27;, &#x27;#f6c85f&#x27;),
-        resolveCssColor(&#x27;--viz-series-4&#x27;, &#x27;#8be28b&#x27;),
-        resolveCssColor(&#x27;--viz-series-5&#x27;, &#x27;#ad8cff&#x27;),
-        resolveCssColor(&#x27;--viz-series-6&#x27;, &#x27;#ff8c5a&#x27;)
-      ].map(color =&gt; intensify(color, 1.48))
+        resolveColor(&#x27;--viz-series-1&#x27;, &#x27;#ff5f9e&#x27;),
+        resolveColor(&#x27;--viz-series-2&#x27;, &#x27;#50d6ff&#x27;),
+        resolveColor(&#x27;--viz-series-3&#x27;, &#x27;#f6c85f&#x27;),
+        resolveColor(&#x27;--viz-series-4&#x27;, &#x27;#8be28b&#x27;),
+        resolveColor(&#x27;--viz-series-5&#x27;, &#x27;#ad8cff&#x27;),
+        resolveColor(&#x27;--viz-series-6&#x27;, &#x27;#ff8c5a&#x27;)
+      ].map(color =&gt; intensify(color))
     };
     darkField = luminance(palette.bg) &lt; 0.48;
   }
@@ -997,9 +966,11 @@ html&gt;body{padding:0}&lt;/style&gt;
     const rect = canvas.getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 1.75);
     W = Math.max(280, Math.round(rect.width));
-    H = Math.max(340, Math.round(rect.height));
+    H = Math.max(360, Math.round(rect.height));
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
+    scene.width = canvas.width;
+    scene.height = canvas.height;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     refreshPalette();
   }
@@ -1008,44 +979,66 @@ html&gt;body{padding:0}&lt;/style&gt;
     return ((Math.sin(n * 127.1 + generation * 19.19) * 43758.5453) % 1 + 1) % 1;
   }
 
-  function layerColor(i, offset = 0) {
-    const shift = (generation + offset) % palette.series.length;
-    return palette.series[(i * 2 + shift + palette.series.length) % palette.series.length];
+  function colorFor(i, offset = 0) {
+    const raw = Math.floor(i * 2 + offset + generation);
+    const index = ((raw % palette.series.length) + palette.series.length) % palette.series.length;
+    return palette.series[index];
   }
 
-  function aperture(t = clock) {
-    const turning = smooth(shadowMix);
+  function aperture() {
+    const turn = smooth(shadowMix);
+    const agitation = 1 + blindEnergy * 0.12;
     return {
-      x: lerp(0.315, 0.435, turning) + Math.sin(t * 0.21) * 0.012,
-      y: lerp(0.455, 0.49, turning) + Math.cos(t * 0.17) * 0.018,
-      rx: W * lerp(0.061, 0.043, turning),
-      ry: H * lerp(0.142, 0.19, turning)
+      x: lerp(0.315, 0.43, turn) + Math.sin(clock * 0.21) * 0.012,
+      y: lerp(0.455, 0.49, turn) + Math.cos(clock * 0.17) * 0.018,
+      rx: W * lerp(0.061, 0.043, turn) * agitation,
+      ry: H * lerp(0.142, 0.19, turn) * lerp(agitation, 1.07, turn)
     };
   }
 
-  function rippleDisplacement(x, y, layer) {
-    let displacement = 0;
-    for (const r of ripples) {
-      const dx = x - r.x;
-      const dy = (y - r.y) * (H / W);
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const life = clamp(1 - r.age / r.life, 0, 1);
-      const wave = Math.sin(distance * 72 - r.age * 7.2 - layer * 0.38);
-      displacement += wave * Math.exp(-distance * 7.5) * life * r.strength;
+  function insideBlind(x, y) {
+    const a = aperture();
+    const dx = (x * W - a.x * W) / a.rx;
+    const dy = (y * H - a.y * H) / a.ry;
+    return dx * dx + dy * dy &lt; 1.5;
+  }
+
+  function markLife(mark) {
+    const remaining = clamp(1 - mark.age / mark.life, 0, 1);
+    return Math.pow(remaining, 1.45) * Math.min(1, mark.age * 3.2 + 0.12);
+  }
+
+  function memoryForce(nx, ny, layer) {
+    let force = 0;
+    const start = Math.max(0, marks.length - 32);
+    for (let i = start; i &lt; marks.length; i++) {
+      const mark = marks[i];
+      const life = markLife(mark);
+      if (life &lt; 0.015) continue;
+      const dx = nx - mark.x;
+      const dy = ny - mark.y;
+      const spread = mark.type === &#x27;stain&#x27; ? 0.11 : mark.type === &#x27;dust&#x27; ? 0.17 : 0.14;
+      const influence = Math.exp(-(dx * dx + dy * dy * 0.42) / (spread * spread));
+      const phase = dx * (mark.type === &#x27;thread&#x27; ? 34 : 19) - mark.age * 0.75 + mark.seed + layer * 0.42;
+      force += Math.sin(phase) * influence * life * mark.strength * (mark.type === &#x27;stain&#x27; ? 0.012 : 0.018);
     }
-    return displacement;
+    for (const wave of waves) {
+      const life = clamp(1 - wave.age / wave.life, 0, 1);
+      const dx = nx - wave.x;
+      const dy = (ny - wave.y) * (H / W);
+      const distance = Math.hypot(dx, dy);
+      force += Math.sin(distance * 58 - wave.age * 2.1 + layer * 0.31) * Math.exp(-distance * 5.2) * life * wave.strength * 0.018;
+    }
+    return force;
   }
 
   function buildCurve(i) {
     const points = curves[i];
     points.length = 0;
     const count = 108;
-    const mid = 4;
-    const z = (i - mid) / mid;
+    const z = (i - 4) / 4;
     const coherence = state === &#x27;locked&#x27; ? 0.76 : state === &#x27;candidate&#x27; ? 0.38 : 0;
-    const phaseSpread = (1 - coherence) * i * 0.39;
-    const movement = reducedMotion ? clock * 0.12 : clock;
-    const directionalTime = movement * lerp(1, -0.52, smooth(shadowMix));
+    const time = (reducedMotion ? clock * 0.12 : clock) * lerp(1, -0.52, smooth(shadowMix));
     const a = aperture();
     const foldCenter = lerp(0.63, 0.54, shadowMix);
     const rebirth = returnProgress &gt;= 0 ? Math.sin(Math.PI * returnProgress) : 0;
@@ -1054,46 +1047,38 @@ html&gt;body{padding:0}&lt;/style&gt;
       const u = j / (count - 1);
       const nx = lerp(-0.10, 1.10, u);
       const fold = Math.exp(-Math.pow((nx - foldCenter) / 0.23, 2));
-      const secondaryFold = Math.exp(-Math.pow((nx - 0.78) / 0.18, 2));
+      const second = Math.exp(-Math.pow((nx - 0.78) / 0.18, 2));
       let y = 0.51;
-      y += Math.sin(nx * TAU * 0.86 + directionalTime * 0.24 + phaseSpread) * (0.094 + 0.018 * Math.sin(i));
-      y += Math.sin(nx * TAU * 2.13 - directionalTime * 0.17 + i * 0.67) * 0.032;
-      y += Math.cos(nx * TAU * 3.7 + directionalTime * 0.11 - i * 0.53) * 0.013;
-      y += z * (0.205 - fold * 0.116 - secondaryFold * 0.048);
+      y += Math.sin(nx * TAU * 0.86 + time * 0.24 + (1 - coherence) * i * 0.39) * (0.094 + 0.018 * Math.sin(i));
+      y += Math.sin(nx * TAU * 2.13 - time * 0.17 + i * 0.67) * 0.032;
+      y += Math.cos(nx * TAU * 3.7 + time * 0.11 - i * 0.53) * 0.013;
+      y += z * (0.205 - fold * 0.116 - second * 0.048);
 
-      const apertureDx = (nx - a.x) / Math.max(a.rx / W, 0.001);
-      const nearAperture = Math.exp(-apertureDx * apertureDx * 0.68);
-      const apertureSide = i &lt; mid ? -1 : i &gt; mid ? 1 : Math.sin(i + directionalTime) &gt; 0 ? 1 : -1;
-      y += apertureSide * nearAperture * (a.ry / H) * lerp(0.72, 0.48, shadowMix);
+      const ax = (nx - a.x) / Math.max(a.rx / W, 0.001);
+      const nearBlind = Math.exp(-ax * ax * 0.58);
+      const side = i &lt; 4 ? -1 : i &gt; 4 ? 1 : Math.sin(i + time) &gt; 0 ? 1 : -1;
+      const refraction = Math.sin(ax * 3.2 + i * 0.63 + clock * 0.2) * blindEnergy;
+      y += side * nearBlind * (a.ry / H) * lerp(0.72, 0.45, shadowMix);
+      y += nearBlind * refraction * 0.034 * lerp(1, 0.42, shadowMix);
+      y += (a.y - y) * Math.exp(-Math.pow((nx - 0.53) / 0.28, 2)) * shadowMix * 0.29;
 
-      const capture = Math.exp(-Math.pow((nx - 0.53) / 0.28, 2));
-      y += (a.y - y) * capture * shadowMix * 0.29;
-      y += Math.sin((nx - a.x) * 18 + i * 0.8 - directionalTime * 0.5) * capture * shadowMix * 0.018;
+      const pull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
+      y += (pointer.y - y) * pull * (pointer.inside ? 0.08 : 0.018) * (0.58 + (i + 1) / 18);
+      if (pointer.down) y += (i &lt; 4 ? -1 : 1) * pull * 0.034;
+      y += memoryForce(nx, y, i);
 
-      const pointerPull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
-      const gravity = pointer.inside ? 0.11 + attention * 0.08 : 0.025;
-      y += (pointer.y - y) * pointerPull * gravity * (0.56 + (i + 1) / 18);
-
-      if (pointer.down) {
-        const peelSide = i &lt; mid ? -1 : 1;
-        y += peelSide * pointerPull * 0.038 * attention;
-      }
-
-      y += rippleDisplacement(nx, y, i) * (0.020 + Math.abs(z) * 0.006);
-
-      let x = nx + (pointer.x - 0.5) * z * 0.015 * (pointer.inside ? 1 : 0);
-      x += Math.sin(nx * TAU + i) * fold * 0.008;
-      x += Math.sin((nx - foldCenter) * 17 + i * 0.84 - directionalTime * 0.09)
-        * fold * (0.013 + (1 - Math.abs(z)) * 0.022) * (i % 2 ? 1 : -1);
+      let x = nx + (pointer.x - 0.5) * z * 0.014 * (pointer.inside ? 1 : 0);
+      x += Math.sin((nx - foldCenter) * 17 + i * 0.84 - time * 0.09) * fold * (0.013 + (1 - Math.abs(z)) * 0.022) * (i % 2 ? 1 : -1);
+      x += nearBlind * refraction * 0.012;
       if (rebirth &gt; 0) {
-        const gatheringPoint = lerp(0.72, 0.83, returnProgress);
-        x = lerp(x, gatheringPoint, rebirth * (0.48 + Math.abs(z) * 0.1));
+        x = lerp(x, lerp(0.72, 0.83, returnProgress), rebirth * (0.48 + Math.abs(z) * 0.1));
         y = lerp(y, 0.5 + z * 0.018, rebirth * 0.57);
       }
 
-      const thicknessWave = 1 + Math.sin(nx * TAU * PHI + i * 0.61 - directionalTime * 0.2) * 0.22;
-      const thickness = H * (0.034 + fold * 0.026 + secondaryFold * 0.012) * thicknessWave * lerp(1, 0.72, shadowMix);
-      points.push({ x: x * W, y: y * H, thickness, nx, ny: y });
+      const thickness = H * (0.034 + fold * 0.026 + second * 0.012)
+        * (1 + Math.sin(nx * TAU * PHI + i * 0.61 - time * 0.2) * 0.22)
+        * lerp(1, 0.72, shadowMix);
+      points.push({ x: x * W, y: y * H, thickness });
     }
 
     for (let j = 0; j &lt; points.length; j++) {
@@ -1122,79 +1107,65 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
   }
 
+  function sampleCurve(points, u) {
+    const raw = clamp(u, 0, 1) * (points.length - 1);
+    const a = Math.floor(raw);
+    const b = Math.min(points.length - 1, a + 1);
+    const t = raw - a;
+    return {
+      x: lerp(points[a].x, points[b].x, t),
+      y: lerp(points[a].y, points[b].y, t),
+      tx: lerp(points[a].tx, points[b].tx, t),
+      ty: lerp(points[a].ty, points[b].ty, t)
+    };
+  }
+
   function drawBackdrop() {
-    const bg = palette.bg;
-    const first = layerColor(0, 1);
-    const second = layerColor(3, 2);
-    const third = layerColor(5, 3);
+    const tint = mixColor(palette.bg, palette.shadow, shadowMix * 0.065);
     const base = ctx.createLinearGradient(0, 0, W, H);
-    base.addColorStop(0, rgba(mixColor(bg, first, darkField ? 0.08 : 0.025), 1));
-    base.addColorStop(0.46, rgba(bg, 1));
-    base.addColorStop(1, rgba(mixColor(bg, second, darkField ? 0.07 : 0.02), 1));
+    base.addColorStop(0, rgba(mixColor(tint, colorFor(0, 1), darkField ? 0.085 : 0.025), 1));
+    base.addColorStop(0.47, rgba(tint, 1));
+    base.addColorStop(1, rgba(mixColor(tint, colorFor(3, 2), darkField ? 0.075 : 0.02), 1));
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, W, H);
 
-    const blooms = [
-      [0.18, 0.26, 0.48, first, 0.23],
-      [0.64, 0.48, 0.57, second, 0.20],
-      [0.86, 0.72, 0.42, third, 0.18]
-    ];
-    for (const [x, y, radius, color, alpha] of blooms) {
+    const blooms = [[0.17, 0.25, 0.5, 0], [0.63, 0.47, 0.58, 3], [0.87, 0.73, 0.43, 5]];
+    for (let i = 0; i &lt; blooms.length; i++) {
+      const [x, y, radius, colorIndex] = blooms[i];
       const gradient = ctx.createRadialGradient(x * W, y * H, 0, x * W, y * H, radius * Math.max(W, H));
-      gradient.addColorStop(0, rgba(color, alpha * lerp(1, 0.72, shadowMix)));
-      gradient.addColorStop(1, rgba(color, 0));
+      gradient.addColorStop(0, rgba(colorFor(colorIndex, i), 0.18));
+      gradient.addColorStop(1, rgba(colorFor(colorIndex, i), 0));
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, W, H);
     }
 
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    ctx.lineWidth = 0.7;
     for (let k = 0; k &lt; 18; k++) {
-      const y0 = H * (0.08 + k / 20);
       ctx.beginPath();
       for (let j = 0; j &lt;= 48; j++) {
-        const x = (j / 48) * W;
-        const y = y0 + Math.sin(j * 0.23 + k * 0.71 + clock * 0.05) * H * 0.014 + (pointer.y - 0.5) * H * 0.01 * (k / 18);
+        const x = j / 48 * W;
+        const y = H * (0.08 + k / 20) + Math.sin(j * 0.23 + k * 0.71 + clock * 0.05) * H * 0.014;
         if (j === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = rgba(layerColor(k % 9, 1), 0.025 + (k % 4 === 0 ? 0.018 : 0));
-      ctx.stroke();
-    }
-    ctx.restore();
-
-    ctx.save();
-    ctx.globalAlpha = darkField ? 0.22 : 0.11;
-    for (let i = 0; i &lt; 105; i++) {
-      const x = hash(i * 3.1) * W;
-      const y = hash(i * 7.7 + 4) * H;
-      const length = 1 + hash(i + 2) * 4;
-      ctx.strokeStyle = rgba(i % 3 ? palette.muted : layerColor(i % 9), 0.26);
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x + length, y + Math.sin(i) * 0.7);
+      ctx.strokeStyle = rgba(colorFor(k % 9, 1), 0.035);
+      ctx.lineWidth = 0.6;
       ctx.stroke();
     }
     ctx.restore();
   }
 
   function drawLayer(i) {
-    const presence = layerPresence[i];
-    if (presence &lt; 0.01) return;
     const points = curves[i];
-    const colorA = layerColor(i);
-    const colorB = layerColor(i + 2, 1);
-    const colorC = layerColor(i + 4, 2);
-    const composite = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    const colorA = colorFor(i);
+    const colorB = colorFor(i + 2, 1);
+    const colorC = colorFor(i + 4, 2);
     const depth = 1 - Math.abs(i - 4) / 7;
-
     ctx.save();
-    ctx.globalCompositeOperation = composite;
-    const path = new Path2D();
-    const oldCtx = ctx;
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
     ctx.beginPath();
-    traceOffset(points, 1, false);
+    traceOffset(points, 1);
     traceOffset(points, -1, true);
     ctx.closePath();
     const gradient = ctx.createLinearGradient(0, H * 0.3, W, H * 0.7);
@@ -1203,223 +1174,264 @@ html&gt;body{padding:0}&lt;/style&gt;
     gradient.addColorStop(0.73, rgba(colorC, 0.78));
     gradient.addColorStop(1, rgba(colorA, 0.62));
     ctx.fillStyle = gradient;
-    ctx.globalAlpha = presence * (darkField ? 0.17 + depth * 0.065 : 0.095 + depth * 0.045);
+    ctx.globalAlpha = darkField ? 0.16 + depth * 0.06 : 0.09 + depth * 0.04;
     ctx.fill();
-
-    ctx.globalAlpha = presence * (0.26 + depth * 0.13);
-    ctx.lineWidth = 0.65 + depth * 0.55;
+    ctx.globalAlpha = 0.24 + depth * 0.13;
     ctx.strokeStyle = rgba(mixColor(colorA, palette.fg, darkField ? 0.22 : 0.08), 0.9);
+    ctx.lineWidth = 0.7 + depth * 0.5;
     ctx.stroke();
-
-    const offsets = [-0.72, -0.36, 0, 0.36, 0.72];
-    for (let q = 0; q &lt; offsets.length; q++) {
+    for (const offset of [-0.7, -0.35, 0, 0.35, 0.7]) {
       ctx.beginPath();
-      traceOffset(points, offsets[q], false);
-      ctx.globalAlpha = presence * (q === 2 ? 0.20 : 0.10) * lerp(1, 1.3, shadowMix);
-      ctx.lineWidth = q === 2 ? 0.85 : 0.55;
-      ctx.strokeStyle = rgba(q % 2 ? colorB : colorC, 0.9);
+      traceOffset(points, offset);
+      ctx.globalAlpha = offset === 0 ? 0.18 : 0.085;
+      ctx.strokeStyle = rgba(offset &lt; 0 ? colorB : colorC, 0.9);
+      ctx.lineWidth = offset === 0 ? 0.85 : 0.55;
       ctx.stroke();
     }
-
-    const cellCount = 5;
-    for (let c = 0; c &lt; cellCount; c++) {
-      const u = clamp(0.16 + c * 0.17 + Math.sin(i * 1.7 + c) * 0.018, 0.08, 0.94);
-      const index = Math.round(u * (points.length - 1));
-      const p = points[index];
-      const scale = 0.55 + hash(i * 17 + c) * 0.42;
-      drawLens(p, p.thickness * scale, colorB, colorC, presence * (0.12 + depth * 0.05), i + c);
-    }
     ctx.restore();
   }
 
-  function drawLens(p, size, colorA, colorB, alpha, seed) {
-    const length = size * (2.4 + hash(seed * 9.3));
-    const width = size * (0.48 + hash(seed * 4.2) * 0.42);
-    const cx = p.x + p.normalX * size * (hash(seed) - 0.5) * 0.8;
-    const cy = p.y + p.normalY * size * (hash(seed) - 0.5) * 0.8;
-    const tx = p.tx * length;
-    const ty = p.ty * length;
-    const nx = p.normalX * width;
-    const ny = p.normalY * width;
-    ctx.beginPath();
-    ctx.moveTo(cx - tx, cy - ty);
-    ctx.bezierCurveTo(cx - tx * 0.28 + nx, cy - ty * 0.28 + ny, cx + tx * 0.3 + nx, cy + ty * 0.3 + ny, cx + tx, cy + ty);
-    ctx.bezierCurveTo(cx + tx * 0.28 - nx, cy + ty * 0.28 - ny, cx - tx * 0.3 - nx, cy - ty * 0.3 - ny, cx - tx, cy - ty);
-    ctx.closePath();
-    const grad = ctx.createLinearGradient(cx - tx, cy - ty, cx + tx, cy + ty);
-    grad.addColorStop(0, rgba(colorA, 0));
-    grad.addColorStop(0.5, rgba(colorB, 0.82));
-    grad.addColorStop(1, rgba(colorA, 0));
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = grad;
-    ctx.fill();
-    ctx.globalAlpha = alpha * 1.55;
-    ctx.strokeStyle = rgba(mixColor(colorA, colorB, 0.5), 0.9);
-    ctx.lineWidth = 0.65;
-    ctx.stroke();
-  }
-
-  function drawFoldSkins() {
+  function drawFolds() {
     const specs = [
-      { layer: 3, a: 0.34, b: 0.62, lift: -0.34, belly: 0.12, color: 1 },
-      { layer: 5, a: 0.43, b: 0.79, lift: 0.31, belly: -0.15, color: 4 },
-      { layer: 4, a: 0.55, b: 0.91, lift: -0.25, belly: 0.22, color: 2 },
-      { layer: 6, a: 0.18, b: 0.52, lift: 0.22, belly: -0.12, color: 5 }
+      [3, 0.34, 0.62, -0.34, 0.12, 1],
+      [5, 0.43, 0.79, 0.31, -0.15, 4],
+      [4, 0.55, 0.91, -0.25, 0.22, 2],
+      [6, 0.18, 0.52, 0.22, -0.12, 5]
     ];
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (let s = 0; s &lt; specs.length; s++) {
-      const spec = specs[s];
-      const points = curves[spec.layer];
-      const a = sampleCurve(points, spec.a);
-      const b = sampleCurve(points, spec.b);
+    specs.forEach((spec, index) =&gt; {
+      const [layer, au, bu, liftValue, bellyValue, colorIndex] = spec;
+      const a = sampleCurve(curves[layer], au);
+      const b = sampleCurve(curves[layer], bu);
       const cx = (a.x + b.x) * 0.5;
       const cy = (a.y + b.y) * 0.5;
-      const lift = H * spec.lift * lerp(1, 0.68, shadowMix);
-      const belly = H * spec.belly * lerp(1, 1.24, shadowMix);
-      const pulse = 1 + Math.sin(clock * 0.13 + s * 1.8) * 0.028;
-      const colorA = layerColor(spec.color + s, s);
-      const colorB = layerColor(spec.color + s + 2, s + 1);
+      const dx = b.x - a.x;
+      const lift = H * liftValue * lerp(1, 0.68, shadowMix);
+      const belly = H * bellyValue * lerp(1, 1.22, shadowMix);
       for (let echo = 0; echo &lt; 6; echo++) {
-        const scale = 1 - echo * 0.105;
-        const ax = lerp(cx, a.x, scale);
-        const ay = lerp(cy, a.y, scale);
-        const bx = lerp(cx, b.x, scale);
-        const by = lerp(cy, b.y, scale);
-        const dx = bx - ax;
-        const twist = Math.sin(s * 2.1 + echo * 0.7 + clock * 0.05) * H * 0.018;
+        const q = 1 - echo * 0.105;
+        const ax = lerp(cx, a.x, q);
+        const ay = lerp(cy, a.y, q);
+        const bx = lerp(cx, b.x, q);
+        const by = lerp(cy, b.y, q);
         ctx.beginPath();
         ctx.moveTo(ax, ay);
-        ctx.bezierCurveTo(
-          ax + dx * 0.16,
-          ay + lift * pulse * scale,
-          cx - dx * 0.17,
-          cy + lift * 1.15 * pulse * scale + twist,
-          cx + dx * 0.06,
-          cy + lift * 0.84 * scale
-        );
-        ctx.bezierCurveTo(
-          cx + dx * 0.34,
-          cy + lift * 0.57 * scale,
-          bx - dx * 0.11,
-          by + lift * 0.17 * scale,
-          bx,
-          by
-        );
-        ctx.bezierCurveTo(
-          bx - dx * 0.18,
-          by + belly * pulse * scale,
-          cx + dx * 0.28,
-          cy + belly * 1.1 * pulse * scale - twist,
-          cx - dx * 0.08,
-          cy + belly * 0.78 * scale
-        );
-        ctx.bezierCurveTo(
-          cx - dx * 0.32,
-          cy + belly * 0.52 * scale,
-          ax + dx * 0.12,
-          ay + belly * 0.13 * scale,
-          ax,
-          ay
-        );
+        ctx.bezierCurveTo(ax + dx * 0.16, ay + lift * q, cx - dx * 0.17, cy + lift * 1.15 * q, cx + dx * 0.06, cy + lift * 0.84 * q);
+        ctx.bezierCurveTo(cx + dx * 0.34, cy + lift * 0.57 * q, bx - dx * 0.11, by + lift * 0.17 * q, bx, by);
+        ctx.bezierCurveTo(bx - dx * 0.18, by + belly * q, cx + dx * 0.28, cy + belly * 1.1 * q, cx - dx * 0.08, cy + belly * 0.78 * q);
+        ctx.bezierCurveTo(cx - dx * 0.32, cy + belly * 0.52 * q, ax + dx * 0.12, ay + belly * 0.13 * q, ax, ay);
         ctx.closePath();
-
         if (echo === 0) {
           const gradient = ctx.createLinearGradient(ax, ay + lift, bx, by + belly);
-          gradient.addColorStop(0, rgba(colorA, 0.08));
-          gradient.addColorStop(0.48, rgba(colorB, 0.34));
-          gradient.addColorStop(1, rgba(colorA, 0.04));
+          gradient.addColorStop(0, rgba(colorFor(colorIndex, index), 0.06));
+          gradient.addColorStop(0.48, rgba(colorFor(colorIndex + 2, index), 0.31));
+          gradient.addColorStop(1, rgba(colorFor(colorIndex, index), 0.04));
           ctx.fillStyle = gradient;
-          ctx.globalAlpha = 0.48;
+          ctx.globalAlpha = 0.44;
           ctx.fill();
         }
-        ctx.strokeStyle = rgba(echo % 2 ? colorA : colorB, 0.9);
-        ctx.globalAlpha = 0.16 - echo * 0.018;
-        ctx.lineWidth = echo === 0 ? 1.1 : 0.58;
-        ctx.stroke();
-      }
-    }
-    ctx.restore();
-  }
-
-  function irregularLoop(cx, cy, rx, ry, seed, turn, openAmount = 0) {
-    const count = 90;
-    ctx.beginPath();
-    for (let j = 0; j &lt;= count; j++) {
-      const a = (j / count) * TAU;
-      const wobble = 1 + Math.sin(a * 3 + seed * 0.7 + clock * 0.08) * 0.065 + Math.sin(a * 7 - seed) * 0.025;
-      const pinch = 1 - shadowMix * 0.26 * Math.pow(Math.max(0, Math.cos(a - 0.2)), 3);
-      const drift = openAmount * Math.sin(a) * Math.sin(a * 0.5);
-      const x = cx + Math.cos(a + turn) * rx * wobble * pinch + drift * rx;
-      const y = cy + Math.sin(a) * ry * (1 + Math.cos(a * 4 + seed) * 0.045) + Math.sin(a + turn) * rx * 0.12;
-      if (j === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-  }
-
-  function drawPalimpsest() {
-    ctx.save();
-    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    const centers = [
-      [0.49, 0.31, 0.083, 0.18, -0.18],
-      [0.61, 0.54, 0.112, 0.21, 0.28],
-      [0.74, 0.69, 0.088, 0.17, -0.42]
-    ];
-    centers.forEach((center, c) =&gt; {
-      const [nx, ny, nrx, nry, turn] = center;
-      const pull = pointer.inside ? Math.exp(-Math.pow((pointer.x - nx) / 0.22, 2)) : 0;
-      const cx = (nx + (pointer.x - nx) * pull * 0.045) * W;
-      const cy = (ny + (pointer.y - ny) * pull * 0.035) * H;
-      for (let k = 0; k &lt; 11; k++) {
-        const q = k / 10;
-        const pulse = 1 + Math.sin(clock * 0.16 + k * 0.9 + c) * 0.018;
-        irregularLoop(
-          cx,
-          cy,
-          W * (nrx + q * 0.045) * pulse,
-          H * (nry + q * 0.047) * pulse,
-          c * 11 + k,
-          turn + q * 0.22 * (c - 1),
-          shadowMix * (c === 1 ? 0.32 : 0.15)
-        );
-        ctx.strokeStyle = rgba(layerColor(k + c * 2, c), 0.72);
-        ctx.globalAlpha = 0.065 + (1 - q) * 0.105 + (state === &#x27;candidate&#x27; ? 0.035 : 0);
-        ctx.lineWidth = k % 4 === 0 ? 1.05 : 0.56;
+        ctx.globalAlpha = 0.15 - echo * 0.018;
+        ctx.strokeStyle = rgba(colorFor(colorIndex + echo, index), 0.9);
+        ctx.lineWidth = echo === 0 ? 1.05 : 0.56;
         ctx.stroke();
       }
     });
+    ctx.restore();
+  }
 
-    for (let k = 0; k &lt; 14; k++) {
-      const yBase = H * (0.22 + k * 0.041);
+  function drifted(mark) {
+    const radialX = mark.x - 0.5;
+    const radialY = mark.y - 0.5;
+    const radialLength = Math.hypot(radialX, radialY) || 1;
+    const direction = lerp(1, -1, smooth(shadowMix));
+    const distance = Math.min(0.12, mark.age * 0.00135 * Math.abs(mark.metrics.xp));
+    return {
+      x: (mark.x + radialX / radialLength * distance * direction) * W,
+      y: (mark.y + radialY / radialLength * distance * direction) * H
+    };
+  }
+
+  function drawStain(mark, life) {
+    const center = drifted(mark);
+    const base = 10 + mark.metrics.ds * 25 + Math.min(24, mark.age * 0.22);
+    for (let ring = 0; ring &lt; 7; ring++) {
+      const radius = base * (1 - ring * 0.085);
       ctx.beginPath();
-      for (let j = 0; j &lt;= 80; j++) {
-        const u = j / 80;
-        const x = u * W;
-        const fold1 = Math.exp(-Math.pow((u - 0.59) / 0.17, 2));
-        const fold2 = Math.exp(-Math.pow((u - 0.74) / 0.12, 2));
-        const y = yBase
-          + Math.sin(u * TAU * 1.2 + k * 0.54 + clock * 0.06) * H * 0.028
-          + Math.sin(u * TAU * 4.2 - k) * H * 0.006
-          + (k - 6.5) * fold1 * Math.sin(u * 21 + clock * 0.08) * 1.2
-          - (k - 6.5) * fold2 * 0.7;
+      for (let j = 0; j &lt;= 44; j++) {
+        const angle = j / 44 * TAU;
+        const noise = 1 + Math.sin(angle * 3 + mark.seed) * 0.19 + Math.sin(angle * 7 - mark.seed * 0.4) * 0.08;
+        const pinch = lerp(1, 0.64 + 0.25 * Math.cos(angle), shadowMix * mark.shadow);
+        const x = center.x + Math.cos(angle) * radius * noise * pinch;
+        const y = center.y + Math.sin(angle) * radius * noise * lerp(0.75, 1.25, mark.metrics.mu);
         if (j === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = rgba(layerColor(k, 2), 0.62);
-      ctx.globalAlpha = 0.052 + (k % 3 === 0 ? 0.052 : 0);
-      ctx.lineWidth = k % 3 === 0 ? 0.8 : 0.45;
+      ctx.closePath();
+      ctx.fillStyle = rgba(colorFor(mark.color + ring, ring), 0.12 * life * (1 - ring / 9));
+      ctx.fill();
+      if (ring % 2 === 0) {
+        ctx.strokeStyle = rgba(colorFor(mark.color + ring + 1, 1), 0.24 * life);
+        ctx.lineWidth = 0.55;
+        ctx.stroke();
+      }
+    }
+  }
+
+  function drawThread(mark, life) {
+    const center = drifted(mark);
+    const speed = Math.hypot(mark.vx, mark.vy) || 0.01;
+    const vx = mark.vx / speed;
+    const vy = mark.vy / speed;
+    const length = W * (0.08 + mark.metrics.theta * 0.15 + Math.min(0.16, mark.age * 0.0014));
+    for (let echo = 0; echo &lt; 8; echo++) {
+      const offset = (echo - 3.5) * 2.2;
+      const curl = Math.sin(mark.seed + echo + mark.age * 0.09) * 22 * lerp(1, 1.8, shadowMix * mark.shadow);
+      ctx.beginPath();
+      ctx.moveTo(center.x - vx * length * 0.34 - vy * offset, center.y - vy * length * 0.34 + vx * offset);
+      ctx.bezierCurveTo(
+        center.x - vx * length * 0.05 + vy * curl,
+        center.y - vy * length * 0.05 - vx * curl,
+        center.x + vx * length * 0.28 - vy * curl,
+        center.y + vy * length * 0.28 + vx * curl,
+        center.x + vx * length * 0.66 - vy * offset,
+        center.y + vy * length * 0.66 + vx * offset
+      );
+      ctx.strokeStyle = rgba(colorFor(mark.color + echo, echo), life * (echo === 3 ? 0.42 : 0.14));
+      ctx.lineWidth = echo === 3 ? 1.25 + mark.metrics.ds : 0.58;
       ctx.stroke();
+    }
+  }
+
+  function drawDust(mark, life) {
+    const center = drifted(mark);
+    const spread = 18 + Math.min(95, mark.age * 0.85);
+    for (let i = 0; i &lt; 38; i++) {
+      const angle = hash(mark.seed * 53 + i) * TAU;
+      const radius = Math.pow(hash(mark.seed * 91 + i * 3), 0.56) * spread;
+      const inward = smooth(shadowMix) * mark.shadow;
+      const x = lerp(center.x + Math.cos(angle) * radius * 1.7, W * 0.5, inward * 0.18);
+      const y = lerp(center.y + Math.sin(angle) * radius, H * 0.5, inward * 0.18);
+      const size = 0.5 + hash(i + mark.seed) * 1.8;
+      ctx.fillStyle = rgba(colorFor(mark.color + i, i), life * (0.11 + hash(i) * 0.2));
+      ctx.fillRect(x, y, size * (inward &gt; 0.5 ? 2.4 : 1), size * 0.72);
+    }
+  }
+
+  function drawArc(mark, life) {
+    const center = drifted(mark);
+    const sign = mark.x &lt; 0.5 ? -1 : 1;
+    const reach = W * (0.22 + mark.metrics.xp * 0.18 + Math.min(0.22, mark.age * 0.0018));
+    for (let i = 0; i &lt; 7; i++) {
+      const spread = (i - 3) * 5;
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y + spread);
+      ctx.bezierCurveTo(
+        center.x + sign * reach * 0.2,
+        center.y - H * (0.14 + i * 0.012),
+        center.x + sign * reach * 0.72,
+        center.y + H * (0.12 - i * 0.01),
+        center.x + sign * reach,
+        center.y + spread * 0.3
+      );
+      ctx.strokeStyle = rgba(colorFor(mark.color + i, 2), life * (i === 3 ? 0.36 : 0.11));
+      ctx.lineWidth = i === 3 ? 1.15 : 0.55;
+      ctx.stroke();
+    }
+  }
+
+  function drawBlindMark(mark, life) {
+    const a = aperture();
+    const cx = a.x * W;
+    const cy = a.y * H;
+    const collapse = smooth(shadowMix);
+    const basin = mark.metrics.basin;
+    const direction = basin === &#x27;B1&#x27; ? 1 : basin === &#x27;B2&#x27; ? -1 : Math.sin(mark.seed) &gt; 0 ? 1 : -1;
+    if (basin === &#x27;B0&#x27; || collapse &gt; 0.62) {
+      for (let ring = 0; ring &lt; 13; ring++) {
+        const q = (ring + 1) / 13;
+        const radiusX = a.rx * (0.22 + q * lerp(1.25, 0.72, collapse));
+        const radiusY = a.ry * (0.16 + q * lerp(0.9, 1.18, collapse));
+        ctx.beginPath();
+        for (let j = 0; j &lt;= 48; j++) {
+          const angle = j / 48 * TAU;
+          const wobble = 1 + Math.sin(angle * (3 + ring % 4) + mark.seed + mark.age * 0.06) * 0.08;
+          const x = cx + Math.cos(angle) * radiusX * wobble;
+          const y = cy + Math.sin(angle) * radiusY * wobble;
+          if (j === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = rgba(collapse &gt; 0.5 ? mixColor(colorFor(ring, 1), palette.shadow, 0.34) : colorFor(ring, 1), life * (0.045 + q * 0.08));
+        ctx.lineWidth = ring % 4 === 0 ? 0.95 : 0.5;
+        ctx.stroke();
+      }
+    } else {
+      for (let branch = 0; branch &lt; 11; branch++) {
+        const angle = (branch / 11 - 0.5) * 1.8 + (direction &lt; 0 ? Math.PI : 0);
+        const reach = W * (0.12 + mark.metrics.rv * 0.24 + branch * 0.004);
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.bezierCurveTo(
+          cx + Math.cos(angle) * reach * 0.22,
+          cy + Math.sin(angle) * reach * 0.18,
+          cx + Math.cos(angle + Math.sin(mark.seed + branch) * 0.4) * reach * 0.72,
+          cy + Math.sin(angle) * reach * 0.55,
+          cx + Math.cos(angle) * reach,
+          cy + Math.sin(angle) * reach * 0.74
+        );
+        ctx.strokeStyle = rgba(colorFor(branch + mark.color, branch), life * (0.08 + (branch % 4 === 0 ? 0.18 : 0)));
+        ctx.lineWidth = branch % 4 === 0 ? 1.15 : 0.55;
+        ctx.stroke();
+      }
+    }
+  }
+
+  function drawMemory() {
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (const mark of marks) {
+      const life = markLife(mark);
+      if (life &lt;= 0) continue;
+      if (mark.type === &#x27;stain&#x27;) drawStain(mark, life);
+      else if (mark.type === &#x27;thread&#x27;) drawThread(mark, life);
+      else if (mark.type === &#x27;dust&#x27;) drawDust(mark, life);
+      else if (mark.type === &#x27;arc&#x27;) drawArc(mark, life);
+      else drawBlindMark(mark, life);
+    }
+    ctx.restore();
+  }
+
+  function drawWaves() {
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (const wave of waves) {
+      const life = clamp(1 - wave.age / wave.life, 0, 1);
+      const radius = W * (0.02 + wave.age * 0.0095);
+      for (let k = 0; k &lt; 5; k++) {
+        ctx.beginPath();
+        for (let j = 0; j &lt;= 54; j++) {
+          const angle = j / 54 * TAU;
+          const deformation = 1 + Math.sin(angle * 4 + wave.seed + k) * 0.08;
+          const x = wave.x * W + Math.cos(angle) * (radius + k * 6) * deformation;
+          const y = wave.y * H + Math.sin(angle) * (radius + k * 6) * H / W * 1.65 * deformation;
+          if (j === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = rgba(colorFor(k + wave.seed, k), life * (0.11 - k * 0.014));
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      }
     }
     ctx.restore();
   }
 
   function aperturePath(a, scale = 1, phase = 0) {
-    const count = 72;
     ctx.beginPath();
-    for (let j = 0; j &lt;= count; j++) {
-      const angle = (j / count) * TAU;
-      const wobble = 1 + Math.sin(angle * 3 + clock * 0.16 + phase) * 0.09 + Math.cos(angle * 7 - phase) * 0.032;
+    for (let j = 0; j &lt;= 72; j++) {
+      const angle = j / 72 * TAU;
+      const wobble = 1
+        + Math.sin(angle * 3 + clock * 0.16 + phase) * (0.09 + blindEnergy * 0.06)
+        + Math.cos(angle * 7 - phase + clock * 0.09) * (0.032 + blindEnergy * 0.025);
       const x = a.x * W + Math.cos(angle) * a.rx * scale * wobble;
       const y = a.y * H + Math.sin(angle) * a.ry * scale * (1 + Math.sin(angle * 5 + phase) * 0.04);
       if (j === 0) ctx.moveTo(x, y);
@@ -1428,34 +1440,33 @@ html&gt;body{padding:0}&lt;/style&gt;
     ctx.closePath();
   }
 
-  function drawApertureMask() {
+  function drawRefraction() {
     const a = aperture();
+    sceneCtx.setTransform(1, 0, 0, 1, 0, 0);
+    sceneCtx.clearRect(0, 0, scene.width, scene.height);
+    sceneCtx.drawImage(canvas, 0, 0);
     ctx.save();
-    aperturePath(a, 1, 0);
-    const voidGradient = ctx.createRadialGradient(a.x * W, a.y * H, 0, a.x * W, a.y * H, Math.max(a.rx, a.ry));
-    const deep = mixColor(palette.bg, palette.page, darkField ? 0.62 : 0.28);
-    voidGradient.addColorStop(0, rgba(deep, lerp(0.9, 0.96, shadowMix)));
-    voidGradient.addColorStop(0.64, rgba(mixColor(deep, layerColor(5), 0.05), 0.88));
-    voidGradient.addColorStop(1, rgba(palette.bg, 0.54));
-    ctx.fillStyle = voidGradient;
-    ctx.fill();
-
+    aperturePath(a, 1.02, blindEnergy);
     ctx.clip();
-    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (let k = 0; k &lt; 10; k++) {
-      const y = a.y * H + (k - 4.5) * a.ry * 0.22;
-      ctx.beginPath();
-      for (let j = 0; j &lt;= 36; j++) {
-        const u = j / 36;
-        const x = (a.x * W - a.rx * 1.15) + u * a.rx * 2.3;
-        const yy = y + Math.sin(u * TAU * 1.5 + k + clock * 0.04) * a.ry * 0.08;
-        if (j === 0) ctx.moveTo(x, yy);
-        else ctx.lineTo(x, yy);
-      }
-      ctx.strokeStyle = rgba(layerColor(k, 3), 0.16);
-      ctx.lineWidth = 0.55;
-      ctx.stroke();
+    const top = Math.max(0, a.y * H - a.ry * 1.15);
+    const bottom = Math.min(H, a.y * H + a.ry * 1.15);
+    const strip = 3;
+    for (let y = top; y &lt; bottom; y += strip) {
+      const normalized = (y - a.y * H) / a.ry;
+      const envelope = Math.max(0, 1 - normalized * normalized);
+      const oscillation = Math.sin(normalized * 12 + clock * 0.7) * (5 + blindEnergy * 25);
+      const capture = (a.x * W - W * 0.5) * shadowMix * envelope * 0.22;
+      const shift = oscillation * envelope - capture;
+      const sourceX = clamp(a.x * W - a.rx * 1.55 - shift, 0, W - 1);
+      const width = Math.min(a.rx * 3.1, W - sourceX);
+      ctx.drawImage(scene, sourceX * dpr, y * dpr, width * dpr, strip * dpr, sourceX + shift, y, width, strip + 0.5);
     }
+    const veil = ctx.createRadialGradient(a.x * W, a.y * H, 0, a.x * W, a.y * H, Math.max(a.rx, a.ry));
+    veil.addColorStop(0, rgba(mixColor(palette.bg, palette.page, 0.55), lerp(0.34, 0.62, shadowMix)));
+    veil.addColorStop(0.68, rgba(mixColor(palette.bg, colorFor(5, 3), 0.08), 0.22));
+    veil.addColorStop(1, rgba(palette.bg, 0.05));
+    ctx.fillStyle = veil;
+    ctx.fillRect(a.x * W - a.rx * 1.3, a.y * H - a.ry * 1.3, a.rx * 2.6, a.ry * 2.6);
     ctx.restore();
   }
 
@@ -1463,30 +1474,15 @@ html&gt;body{padding:0}&lt;/style&gt;
     const a = aperture();
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (let k = 0; k &lt; 7; k++) {
-      const q = 0.86 + k * 0.075;
-      aperturePath(a, q, k * 0.73);
-      ctx.strokeStyle = rgba(layerColor(k + 1, k % 2), 0.78);
-      ctx.globalAlpha = 0.045 + (k === 3 ? 0.14 : 0.035) + shadowMix * (k % 2 ? 0.05 : 0);
-      ctx.lineWidth = k === 3 ? 1.4 : 0.65;
+    for (let k = 0; k &lt; 9; k++) {
+      aperturePath(a, 0.84 + k * 0.068, k * 0.73);
+      const color = shadowMix &gt; 0.35 ? mixColor(colorFor(k + 1, k % 2), palette.shadow, shadowMix * 0.22) : colorFor(k + 1, k % 2);
+      ctx.strokeStyle = rgba(color, 0.78);
+      ctx.globalAlpha = 0.05 + (k === 4 ? 0.16 : 0.035) + blindEnergy * 0.055;
+      ctx.lineWidth = k === 4 ? 1.35 : 0.62;
       ctx.stroke();
     }
     ctx.restore();
-  }
-
-  function sampleCurve(points, u) {
-    const raw = clamp(u, 0, 1) * (points.length - 1);
-    const a = Math.floor(raw);
-    const b = Math.min(points.length - 1, a + 1);
-    const t = raw - a;
-    const p = points[a];
-    const q = points[b];
-    return {
-      x: lerp(p.x, q.x, t),
-      y: lerp(p.y, q.y, t),
-      tx: lerp(p.tx, q.tx, t),
-      ty: lerp(p.ty, q.ty, t)
-    };
   }
 
   function drawFlow() {
@@ -1494,19 +1490,16 @@ html&gt;body{padding:0}&lt;/style&gt;
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
     const direction = lerp(1, -0.72, smooth(shadowMix));
     for (let i = 0; i &lt; 9; i++) {
-      const presence = layerPresence[i];
-      if (presence &lt; 0.08) continue;
-      const points = curves[i];
-      for (let p = 0; p &lt; 7; p++) {
+      for (let p = 0; p &lt; 6; p++) {
         const seed = hash(i * 31 + p * 7);
         const u = ((seed + direction * clock * (0.012 + hash(p + i) * 0.009)) % 1 + 1) % 1;
-        const point = sampleCurve(points, u);
+        const point = sampleCurve(curves[i], u);
         const length = 3 + 10 * (0.5 + resonance) * hash(p * 4 + i);
         ctx.beginPath();
         ctx.moveTo(point.x - point.tx * length, point.y - point.ty * length);
         ctx.lineTo(point.x + point.tx * length, point.y + point.ty * length);
-        ctx.strokeStyle = rgba(mixColor(layerColor(i), palette.fg, darkField ? 0.34 : 0.08), 0.9);
-        ctx.globalAlpha = presence * (0.15 + resonance * 0.2) * (0.55 + hash(p + i));
+        ctx.strokeStyle = rgba(mixColor(colorFor(i), palette.fg, darkField ? 0.34 : 0.08), 0.9);
+        ctx.globalAlpha = (0.14 + resonance * 0.2) * (0.55 + hash(p + i));
         ctx.lineWidth = 0.7 + hash(p * i + 1) * 1.1;
         ctx.stroke();
       }
@@ -1514,111 +1507,107 @@ html&gt;body{padding:0}&lt;/style&gt;
     ctx.restore();
   }
 
-  function drawRipples() {
-    ctx.save();
-    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (const r of ripples) {
-      const life = clamp(1 - r.age / r.life, 0, 1);
-      for (let k = 0; k &lt; 5; k++) {
-        const radius = W * (0.018 + r.age * 0.011 + k * 0.012);
-        ctx.beginPath();
-        const count = 56;
-        for (let j = 0; j &lt;= count; j++) {
-          const a = (j / count) * TAU;
-          const deformation = 1 + Math.sin(a * 4 + r.seed + k) * 0.08;
-          const x = r.x * W + Math.cos(a) * radius * deformation;
-          const y = r.y * H + Math.sin(a) * radius * (H / W) * 1.65 * deformation;
-          if (j === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = rgba(layerColor(k + r.seed, k), 0.75);
-        ctx.globalAlpha = life * (0.12 - k * 0.014);
-        ctx.lineWidth = 0.65;
-        ctx.stroke();
-      }
-    }
-    ctx.restore();
-  }
-
-  function drawSeams() {
-    ctx.save();
-    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (const seam of seams) {
-      if (seam.points.length &lt; 2) continue;
-      const life = clamp(seam.life, 0, 1);
-      for (let echo = 0; echo &lt; 5; echo++) {
-        ctx.beginPath();
-        seam.points.forEach((p, index) =&gt; {
-          const offset = (echo - 2) * (2.5 + echo * 0.7);
-          const x = p.x * W + Math.sin(index * 0.4 + echo) * offset;
-          const y = p.y * H + Math.cos(index * 0.31 + echo) * offset;
-          if (index === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
-        ctx.strokeStyle = rgba(layerColor(echo + generation, echo), 0.82);
-        ctx.globalAlpha = life * (echo === 2 ? 0.32 : 0.1);
-        ctx.lineWidth = echo === 2 ? 1.4 : 0.62;
-        ctx.stroke();
-      }
-    }
-    ctx.restore();
-  }
-
-  function drawLatentShadow() {
-    const edgeInstability = 0.018 + shadowMix * 0.11;
-    ctx.save();
-    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (let side = 0; side &lt; 2; side++) {
-      ctx.beginPath();
-      for (let j = 0; j &lt;= 44; j++) {
-        const u = j / 44;
-        const x = side ? W - u * W * 0.19 : u * W * 0.19;
-        const y = H * (0.12 + u * 0.76) + Math.sin(u * 18 + clock * 0.13 + side) * H * edgeInstability;
-        if (j === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = rgba(layerColor(side ? 2 : 7, 4), 0.82);
-      ctx.globalAlpha = 0.055 + shadowMix * 0.09;
-      ctx.lineWidth = 0.7;
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
-
   function draw() {
     drawBackdrop();
     for (let i = 0; i &lt; 4; i++) drawLayer(i);
-    drawFoldSkins();
-    drawPalimpsest();
-    drawApertureMask();
+    drawFolds();
     for (let i = 4; i &lt; 9; i++) drawLayer(i);
     drawFlow();
+    drawMemory();
+    drawWaves();
+    drawRefraction();
     drawApertureRim();
-    drawRipples();
-    drawSeams();
-    drawLatentShadow();
   }
 
-  function addRipple(x, y, strength = 1) {
-    ripples.push({ x, y, age: 0, life: 8.5, strength, seed: Math.floor(Math.random() * 12) });
-    if (ripples.length &gt; 8) ripples.shift();
+  function metricsAt(x, y, vx = 0.01, vy = 0) {
+    let density = 0;
+    const u = clamp((x + 0.1) / 1.2, 0, 1);
+    for (const points of curves) {
+      const p = sampleCurve(points, u);
+      const dx = (x * W - p.x) / W;
+      const dy = (y * H - p.y) / H;
+      density += Math.exp(-(dx * dx + dy * dy) * 280);
+    }
+    const rho = clamp(density / 4.1, 0, 1);
+    const rv = 1 - rho;
+    const delta = clamp(Math.hypot(x - 0.5, y - 0.5) / 0.707, 0, 1);
+    const speed = clamp(Math.hypot(vx, vy) * 18, 0, 1);
+    const mu = clamp(rho * (0.72 + (1 - speed) * 0.28), 0, 1);
+    const outward = clamp(delta * 0.92 + rv * 0.36 - rho * 0.28 - mu * 0.18, -1, 1);
+    const xp = lerp(Math.max(0.08, outward), -Math.max(0.18, 0.42 + rho * 0.5), smooth(shadowMix));
+    const radialAngle = Math.atan2(y - 0.5, x - 0.5);
+    const movementAngle = Math.atan2(vy, vx);
+    const theta = clamp(1 - Math.abs(Math.sin(movementAngle - radialAngle)) * 0.74, 0, 1);
+    const ds = clamp(0.22 + rho * 0.47 + speed * 0.36, 0, 1);
+    let basin = &#x27;B3&#x27;;
+    if (delta &lt; 0.2 &amp;&amp; rv &lt; 0.62) basin = &#x27;B0&#x27;;
+    else if (x &gt;= 0.5 &amp;&amp; rv &lt; 0.78) basin = &#x27;B1&#x27;;
+    else if (x &lt; 0.5 &amp;&amp; rv &lt; 0.66) basin = &#x27;B2&#x27;;
+    return { delta, rv, rho, mu, xp, theta, ds, basin };
+  }
+
+  function typeFor(x, y, metrics) {
+    if (insideBlind(x, y)) return &#x27;blind&#x27;;
+    if (metrics.rho &gt; 0.58 || metrics.mu &gt; 0.68) return &#x27;stain&#x27;;
+    if (metrics.rv &gt; 0.73) return &#x27;dust&#x27;;
+    if (Math.abs(x - 0.5) &gt; 0.31 || Math.abs(y - 0.5) &gt; 0.34) return &#x27;arc&#x27;;
+    return &#x27;thread&#x27;;
+  }
+
+  function addWave(x, y, strength = 1, seed = Math.random() * 9) {
+    waves.push({ x, y, strength, seed, age: 0, life: 30 + strength * 15 });
+    if (waves.length &gt; 24) waves.shift();
+  }
+
+  function addMark(x, y, vx = 0.01, vy = 0, strength = 1) {
+    const metrics = metricsAt(x, y, vx, vy);
+    const type = typeFor(x, y, metrics);
+    const mark = {
+      x, y, vx, vy, strength,
+      metrics,
+      type,
+      age: 0,
+      life: 62 + metrics.rv * 46 + (type === &#x27;blind&#x27; ? 28 : 0),
+      seed: Math.random() * 99,
+      color: Math.floor(Math.random() * 9),
+      shadow: shadowMix
+    };
+    marks.push(mark);
+    canvas.dataset.lastMarkType = type;
+    canvas.dataset.lastMarkX = x.toFixed(3);
+    canvas.dataset.lastMarkY = y.toFixed(3);
+    canvas.dataset.memoryCount = String(marks.length);
+    if (marks.length &gt; 180) marks.shift();
+    addWave(x, y, 0.58 + strength * 0.55, mark.seed);
+    if (type === &#x27;blind&#x27;) {
+      blindEvents.push(mark);
+      if (blindEvents.length &gt; 16) blindEvents.shift();
+      blindEnergy = clamp(blindEnergy + 0.68 * strength, 0, 1.5);
+      if (shadowMix &lt; 0.5) {
+        addWave(clamp(x + 0.24, 0.08, 0.94), clamp(y - 0.18, 0.08, 0.92), 1.1, mark.seed + 2);
+        addWave(clamp(x - 0.29, 0.06, 0.92), clamp(y + 0.21, 0.08, 0.94), 0.92, mark.seed + 4);
+      } else {
+        addWave(0.5, 0.5, 1.35, mark.seed + 6);
+      }
+      eventTone(&#x27;blind&#x27;, y);
+    } else {
+      eventTone(type, y);
+    }
+    if (state === &#x27;field&#x27;) resonance = clamp(resonance + 0.075 + strength * 0.025, 0, 1);
+    setStatus();
   }
 
   function setStatus() {
-    let status = &#x27;The field is learning the shape of your attention.&#x27;;
-    if (state === &#x27;candidate&#x27;) status = &#x27;Convergence has appeared. It will not name itself.&#x27;;
-    if (state === &#x27;locked&#x27;) status = &#x27;The map holds—without closing the horizon.&#x27;;
-    if (state === &#x27;returning&#x27;) status = &#x27;Complexity is folding toward a renewed simplicity.&#x27;;
-    if (shadowTarget &gt; 0.5 &amp;&amp; state === &#x27;field&#x27;) status = &#x27;The same field is turning inward: relation becoming capture.&#x27;;
+    let status = &#x27;The field remembers where you have been.&#x27;;
+    if (state === &#x27;candidate&#x27;) status = &#x27;A pattern has survived its own disturbance.&#x27;;
+    if (blindEnergy &gt; 0.2) status = shadowMix &gt; 0.5 ? &#x27;The absence is binding the field to one attractor.&#x27; : &#x27;The absence is generating counterfactual space.&#x27;;
+    if (state === &#x27;locked&#x27;) status = &#x27;The map holds—its residues remain alive.&#x27;;
+    if (state === &#x27;returning&#x27;) status = &#x27;Every mark is folding back into renewed energy.&#x27;;
     statusNode.textContent = status;
-
     const percent = Math.round(shadowMix * 100);
-    if (shadowMix &gt; 0.02 &amp;&amp; shadowMix &lt; 0.98) {
-      orientationNode.textContent = `${shadowTarget ? &#x27;turning inward&#x27; : &#x27;returning outward&#x27;} · ${percent}%`;
-    } else {
-      orientationNode.textContent = shadowMix &gt;= 0.98 ? &#x27;inward orientation&#x27; : &#x27;outward orientation&#x27;;
-    }
-
+    orientationNode.textContent = shadowMix &gt; 0.02 &amp;&amp; shadowMix &lt; 0.98
+      ? `${shadowTarget ? &#x27;turning inward&#x27; : &#x27;returning outward&#x27;} · ${percent}%`
+      : shadowMix &gt;= 0.98 ? &#x27;inward orientation&#x27; : &#x27;outward orientation&#x27;;
     actionButton.textContent = state === &#x27;candidate&#x27;
       ? &#x27;Attest convergence&#x27;
       : state === &#x27;locked&#x27;
@@ -1630,8 +1619,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function update(dt) {
-    const motionScale = reducedMotion ? 0.12 : 1;
-    clock += dt * 0.001 * motionScale;
+    clock += dt * 0.001 * (reducedMotion ? 0.12 : 1);
     pointer.vx += (pointer.tx - pointer.x) * 0.075;
     pointer.vy += (pointer.ty - pointer.y) * 0.075;
     pointer.vx *= 0.76;
@@ -1642,50 +1630,41 @@ html&gt;body{padding:0}&lt;/style&gt;
     const spring = (shadowTarget - shadowMix) * 0.00007 * dt;
     shadowVelocity = (shadowVelocity + spring) * Math.pow(0.88, dt / 16.67);
     shadowMix = clamp(shadowMix + shadowVelocity, 0, 1);
-    if (shadowMix === 0 || shadowMix === 1) shadowVelocity *= 0.5;
+    blindEnergy = Math.max(0, blindEnergy - dt * 0.000019);
 
-    attention += ((pointer.inside ? 1 : 0.18) - attention) * Math.min(1, dt * 0.0024);
-    const order = [4, 3, 5, 2, 6, 1, 7, 0, 8];
-    for (let rank = 0; rank &lt; order.length; rank++) {
-      const target = rank &lt; depthTarget ? 1 : 0;
-      const i = order[rank];
-      layerPresence[i] += (target - layerPresence[i]) * Math.min(1, dt * 0.004);
+    for (let i = marks.length - 1; i &gt;= 0; i--) {
+      marks[i].age += dt * 0.001;
+      if (marks[i].age &gt;= marks[i].life) marks.splice(i, 1);
     }
-
-    for (let i = ripples.length - 1; i &gt;= 0; i--) {
-      ripples[i].age += dt * 0.001;
-      if (ripples[i].age &gt; ripples[i].life) ripples.splice(i, 1);
-    }
-    for (let i = seams.length - 1; i &gt;= 0; i--) {
-      if (!seams[i].active) seams[i].life -= dt * 0.00008;
-      if (seams[i].life &lt;= 0) seams.splice(i, 1);
+    for (let i = waves.length - 1; i &gt;= 0; i--) {
+      waves[i].age += dt * 0.001;
+      if (waves[i].age &gt;= waves[i].life) waves.splice(i, 1);
     }
 
     if (state === &#x27;field&#x27;) {
-      resonance = Math.max(0.04, resonance - dt * 0.000008);
-      if (resonance &gt;= 0.68) {
+      resonance = Math.max(0.04, resonance - dt * 0.0000025);
+      if (resonance &gt;= 0.7) {
         state = &#x27;candidate&#x27;;
+        eventTone(&#x27;candidate&#x27;, 0.5);
         setStatus();
-        eventTone(&#x27;candidate&#x27;);
       }
     }
-
     if (state === &#x27;returning&#x27;) {
-      returnProgress += dt / 3400;
+      returnProgress += dt / 4200;
       if (returnProgress &gt;= 1) {
         returnProgress = -1;
         generation = (generation + 1) % 6;
         resonance = 0.14;
         state = &#x27;field&#x27;;
-        addRipple(0.18, 0.52, 1.2);
+        addWave(0.17, 0.53, 1.25, generation + 12);
         setStatus();
-        eventTone(&#x27;return&#x27;);
+        eventTone(&#x27;return&#x27;, 0.5);
       }
     }
 
     for (let i = 0; i &lt; 9; i++) buildCurve(i);
     statusClock += dt;
-    if (statusClock &gt; 120) {
+    if (statusClock &gt; 140) {
       statusClock = 0;
       setStatus();
     }
@@ -1701,7 +1680,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     requestAnimationFrame(animate);
   }
 
-  function canvasPoint(event) {
+  function pointFromEvent(event) {
     const rect = canvas.getBoundingClientRect();
     return {
       x: clamp((event.clientX - rect.left) / rect.width, 0, 1),
@@ -1709,95 +1688,80 @@ html&gt;body{padding:0}&lt;/style&gt;
     };
   }
 
-  function impress(x, y, strength = 1) {
-    addRipple(x, y, strength);
-    if (state === &#x27;field&#x27;) resonance = clamp(resonance + 0.18 * strength, 0, 1);
-    eventTone(&#x27;touch&#x27;, y);
-  }
-
   canvas.addEventListener(&#x27;pointerenter&#x27;, event =&gt; {
     pointer.inside = true;
-    const p = canvasPoint(event);
+    const p = pointFromEvent(event);
     pointer.tx = p.x;
     pointer.ty = p.y;
   });
 
   canvas.addEventListener(&#x27;pointerleave&#x27;, () =&gt; {
     pointer.inside = false;
-    if (!pointer.down) currentSeam = null;
   });
 
   canvas.addEventListener(&#x27;pointerdown&#x27;, event =&gt; {
     canvas.setPointerCapture(event.pointerId);
-    const p = canvasPoint(event);
+    const p = pointFromEvent(event);
     pointer.down = true;
     pointer.tx = p.x;
     pointer.ty = p.y;
-    pressedAt = p;
-    dragged = false;
-    currentSeam = { points: [p], life: 1, active: true };
-    seams.push(currentSeam);
-    if (seams.length &gt; 5) seams.shift();
+    currentGesture = { points: [p], lastMark: 0 };
   });
 
   canvas.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
-    const p = canvasPoint(event);
+    const p = pointFromEvent(event);
     pointer.tx = p.x;
     pointer.ty = p.y;
-    if (!pointer.down || !currentSeam) return;
-    const previous = currentSeam.points[currentSeam.points.length - 1];
-    if (Math.hypot(p.x - previous.x, p.y - previous.y) &gt; 0.008) {
-      currentSeam.points.push(p);
-      if (currentSeam.points.length &gt; 90) currentSeam.points.shift();
-      dragged = true;
-      if (state === &#x27;field&#x27;) resonance = clamp(resonance + 0.0065, 0, 1);
+    if (!pointer.down || !currentGesture) return;
+    const previous = currentGesture.points[currentGesture.points.length - 1];
+    const distance = Math.hypot(p.x - previous.x, p.y - previous.y);
+    if (distance &gt; 0.006) {
+      currentGesture.points.push(p);
+      if (currentGesture.points.length - currentGesture.lastMark &gt;= 5) {
+        const anchor = currentGesture.points[currentGesture.lastMark];
+        addMark(p.x, p.y, p.x - anchor.x, p.y - anchor.y, 0.58);
+        currentGesture.lastMark = currentGesture.points.length - 1;
+      }
     }
   });
 
-  function endPointer(event) {
+  function endGesture(event) {
     if (!pointer.down) return;
-    const p = canvasPoint(event);
+    const p = pointFromEvent(event);
     pointer.down = false;
-    if (currentSeam) currentSeam.active = false;
-    if (dragged) {
-      impress(p.x, p.y, 0.78);
-      eventTone(&#x27;peel&#x27;, p.y);
+    if (!currentGesture || currentGesture.points.length &lt; 2) {
+      addMark(p.x, p.y, 0.012, 0, 1);
     } else {
-      impress(p.x, p.y, 1);
+      const first = currentGesture.points[0];
+      addMark(p.x, p.y, p.x - first.x, p.y - first.y, 0.82);
     }
-    currentSeam = null;
+    currentGesture = null;
   }
 
-  canvas.addEventListener(&#x27;pointerup&#x27;, endPointer);
-  canvas.addEventListener(&#x27;pointercancel&#x27;, event =&gt; {
+  canvas.addEventListener(&#x27;pointerup&#x27;, endGesture);
+  canvas.addEventListener(&#x27;pointercancel&#x27;, () =&gt; {
     pointer.down = false;
-    if (currentSeam) currentSeam.active = false;
-    currentSeam = null;
-  });
-
-  depthInput.addEventListener(&#x27;input&#x27;, () =&gt; {
-    depthTarget = Number(depthInput.value);
-    depthValue.textContent = String(depthTarget);
+    currentGesture = null;
   });
 
   shadowInput.addEventListener(&#x27;change&#x27;, () =&gt; {
     shadowTarget = shadowInput.checked ? 1 : 0;
     setStatus();
-    eventTone(&#x27;shadow&#x27;);
+    eventTone(&#x27;shadow&#x27;, 0.5);
   });
 
   actionButton.addEventListener(&#x27;click&#x27;, () =&gt; {
     if (state === &#x27;candidate&#x27;) {
       state = &#x27;locked&#x27;;
       resonance = 1;
-      addRipple(0.62, 0.5, 1.55);
-      eventTone(&#x27;lock&#x27;);
+      addWave(0.62, 0.5, 1.6, 17);
+      eventTone(&#x27;lock&#x27;, 0.5);
     } else if (state === &#x27;locked&#x27;) {
       state = &#x27;returning&#x27;;
       returnProgress = 0;
-      eventTone(&#x27;release&#x27;);
+      eventTone(&#x27;release&#x27;, 0.5);
     } else if (state === &#x27;field&#x27;) {
-      impress(pointer.inside ? pointer.x : 0.54, pointer.inside ? pointer.y : 0.48, 1.35);
+      addMark(pointer.inside ? pointer.x : 0.55, pointer.inside ? pointer.y : 0.48, 0.018, -0.006, 1.25);
     }
     setStatus();
   });
@@ -1819,65 +1783,34 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (!AudioContext) return null;
     const context = new AudioContext();
     const master = context.createGain();
-    master.gain.value = 0;
-    master.connect(context.destination);
-
     const filter = context.createBiquadFilter();
-    filter.type = &#x27;lowpass&#x27;;
-    filter.frequency.value = 900;
-    filter.Q.value = 0.7;
-    filter.connect(master);
-
     const warmGain = context.createGain();
     const glassGain = context.createGain();
     const shadowGain = context.createGain();
+    master.gain.value = 0;
+    filter.type = &#x27;lowpass&#x27;;
+    filter.frequency.value = 900;
     warmGain.gain.value = 0.028;
     glassGain.gain.value = 0.012;
     shadowGain.gain.value = 0;
+    filter.connect(master);
+    master.connect(context.destination);
     warmGain.connect(filter);
     glassGain.connect(filter);
     shadowGain.connect(filter);
-
     const warm = context.createOscillator();
     const glass = context.createOscillator();
     const shadow = context.createOscillator();
     warm.type = &#x27;sine&#x27;;
     glass.type = &#x27;triangle&#x27;;
     shadow.type = &#x27;sawtooth&#x27;;
-    warm.frequency.value = 72;
-    glass.frequency.value = 108;
-    shadow.frequency.value = 76;
     warm.connect(warmGain);
     glass.connect(glassGain);
     shadow.connect(shadowGain);
     warm.start();
     glass.start();
     shadow.start();
-
-    const noiseLength = context.sampleRate * 2;
-    const noiseBuffer = context.createBuffer(1, noiseLength, context.sampleRate);
-    const data = noiseBuffer.getChannelData(0);
-    let last = 0;
-    for (let i = 0; i &lt; noiseLength; i++) {
-      const white = Math.random() * 2 - 1;
-      last = last * 0.985 + white * 0.015;
-      data[i] = last;
-    }
-    const noise = context.createBufferSource();
-    const noiseFilter = context.createBiquadFilter();
-    const noiseGain = context.createGain();
-    noise.buffer = noiseBuffer;
-    noise.loop = true;
-    noiseFilter.type = &#x27;bandpass&#x27;;
-    noiseFilter.frequency.value = 420;
-    noiseFilter.Q.value = 2.4;
-    noiseGain.gain.value = 0.018;
-    noise.connect(noiseFilter);
-    noiseFilter.connect(noiseGain);
-    noiseGain.connect(filter);
-    noise.start();
-
-    audio = { context, master, filter, warm, glass, shadow, warmGain, glassGain, shadowGain, noiseFilter, noiseGain };
+    audio = { context, master, filter, warmGain, glassGain, shadowGain, warm, glass, shadow };
     return audio;
   }
 
@@ -1887,8 +1820,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     const altitude = 1 - pointer.y;
     const base = 52 * Math.pow(2, altitude * 1.85);
     const inward = smooth(shadowMix);
-    const active = ambientInput.checked ? 1 : 0;
-    audio.master.gain.setTargetAtTime(active * 0.68, now, 0.45);
+    audio.master.gain.setTargetAtTime(ambientInput.checked ? 0.68 : 0, now, 0.45);
     audio.warm.frequency.setTargetAtTime(base, now, 0.18);
     audio.glass.frequency.setTargetAtTime(base * lerp(1.5, Math.SQRT2, inward), now, 0.22);
     audio.shadow.frequency.setTargetAtTime(base * lerp(1.25, Math.SQRT2, inward), now, 0.2);
@@ -1897,8 +1829,6 @@ html&gt;body{padding:0}&lt;/style&gt;
     audio.glassGain.gain.setTargetAtTime(0.012 * (1 - inward * 0.34), now, 0.34);
     audio.shadowGain.gain.setTargetAtTime(0.012 * inward, now, 0.38);
     audio.filter.frequency.setTargetAtTime(lerp(1450 + altitude * 900, 430 + altitude * 280, inward), now, 0.32);
-    audio.noiseFilter.frequency.setTargetAtTime(lerp(520, 210, inward), now, 0.34);
-    audio.noiseGain.gain.setTargetAtTime(0.012 + inward * 0.014, now, 0.4);
   }
 
   function eventTone(kind, y = pointer.y) {
@@ -1906,13 +1836,12 @@ html&gt;body{padding:0}&lt;/style&gt;
     const engine = ensureAudio();
     if (!engine) return;
     const now = engine.context.currentTime;
+    const notes = { stain: -2, thread: 4, dust: 7, arc: 9, blind: 1, candidate: 7, lock: 12, shadow: -1, release: 4, return: 9 };
+    const significant = [&#x27;blind&#x27;, &#x27;candidate&#x27;, &#x27;lock&#x27;, &#x27;release&#x27;, &#x27;return&#x27;].includes(kind);
+    const base = 146.83 * Math.pow(2, (1 - y) * 0.78);
+    const frequency = base * Math.pow(2, (notes[kind] || 0) / 12);
     const destination = engine.context.createGain();
     destination.connect(engine.context.destination);
-    const notes = { touch: 0, peel: 5, candidate: 7, lock: 12, shadow: -1, release: 4, return: 9 };
-    const steps = notes[kind] ?? 0;
-    const base = 146.83 * Math.pow(2, (1 - y) * 0.78);
-    const frequency = base * Math.pow(2, steps / 12);
-    const significant = [&#x27;candidate&#x27;, &#x27;lock&#x27;, &#x27;release&#x27;, &#x27;return&#x27;].includes(kind);
     const osc = engine.context.createOscillator();
     const upper = engine.context.createOscillator();
     const gain = engine.context.createGain();
@@ -1923,19 +1852,19 @@ html&gt;body{padding:0}&lt;/style&gt;
     upper.frequency.value = frequency * lerp(1.5, Math.SQRT2, shadowMix);
     upper.detune.value = shadowMix * 38;
     gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(significant ? 0.075 : 0.035, now + 0.008);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.55 : 0.42));
+    gain.gain.exponentialRampToValueAtTime(significant ? 0.072 : 0.032, now + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.55 : 0.46));
     upperGain.gain.setValueAtTime(0.0001, now);
-    upperGain.gain.exponentialRampToValueAtTime(significant ? 0.026 : 0.011, now + 0.012);
-    upperGain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.15 : 0.32));
+    upperGain.gain.exponentialRampToValueAtTime(significant ? 0.025 : 0.01, now + 0.012);
+    upperGain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.15 : 0.34));
     osc.connect(gain);
     upper.connect(upperGain);
     gain.connect(destination);
     upperGain.connect(destination);
     osc.start(now);
     upper.start(now);
-    osc.stop(now + (significant ? 1.6 : 0.46));
-    upper.stop(now + (significant ? 1.2 : 0.36));
+    osc.stop(now + (significant ? 1.6 : 0.5));
+    upper.stop(now + (significant ? 1.2 : 0.38));
     osc.addEventListener(&#x27;ended&#x27;, () =&gt; destination.disconnect(), { once: true });
   }
 
@@ -1947,7 +1876,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   tonesInput.addEventListener(&#x27;change&#x27;, () =&gt; {
     if (tonesInput.checked) {
       ensureAudio();
-      eventTone(&#x27;touch&#x27;, 0.5);
+      eventTone(&#x27;thread&#x27;, 0.5);
     }
   });
 
@@ -1955,8 +1884,9 @@ html&gt;body{padding:0}&lt;/style&gt;
   resizeObserver.observe(canvas);
   new MutationObserver(refreshPalette).observe(document.documentElement, { attributes: true, attributeFilter: [&#x27;class&#x27;, &#x27;data-theme&#x27;] });
   resize();
+  for (let i = 0; i &lt; 9; i++) buildCurve(i);
+  addWave(0.51, 0.5, 0.7, 3);
   setStatus();
-  addRipple(0.51, 0.5, 0.7);
   requestAnimationFrame(animate);
 })();
 &lt;/script&gt;
