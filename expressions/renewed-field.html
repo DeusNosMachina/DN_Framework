@@ -1,180 +1,22 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>renewed-field.html</title>
+<title>Renewed Field V2</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="renewed-field.html" data-srcdoc="&lt;!doctype html&gt;
-&lt;html lang=&quot;en-US&quot;&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field V2" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
-&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
-&lt;title&gt;renewed-field.html&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;script&gt;(() =&gt; {
-  const root = document.documentElement;
-  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
-  const apply = Reflect.apply;
-  const isArray = Array.isArray;
-  const parentWindow = globalThis.parent;
-  /**
-   * @param {object} prototype
-   * @param {string} property
-   */
-  const getPrototypeGetter = (prototype, property) =&gt; {
-    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
-    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
-    if (getter == null) {
-      throw new Error(`Missing ${property} getter`);
-    }
-    return getter;
-  };
-  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
-  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
-  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const addHostMessageListener = MessagePort.prototype.addEventListener;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const postHostMessage = MessagePort.prototype.postMessage;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const startHostPort = MessagePort.prototype.start;
-  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
-  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
-  /** @type {MessagePort | null} */
-  let hostPort = null;
-  const postToHost = (type, payload) =&gt; {
-    if (hostPort != null) {
-      apply(postHostMessage, hostPort, [{ type, ...payload }]);
-    }
-  };
-  const openExternal = ({ href }) =&gt; {
-    if (globalThis.navigator.userActivation?.isActive === true) {
-      postToHost(&quot;open-external&quot;, { href });
-    }
-  };
-  const sendFollowUpMessage = ({ prompt, title }) =&gt; {
-    if (globalThis.navigator.userActivation?.isActive === true) {
-      postToHost(&quot;follow-up&quot;, { prompt, title });
-    }
-    return Promise.resolve();
-  };
-  const syncTheme = () =&gt; {
-    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
-    root.dataset.theme = theme;
-    globalThis.openai = {
-      ...globalThis.openai,
-      openExternal,
-      sendFollowUpMessage,
-      theme,
-      visualizationStyleVariables: {},
-      visualizationTheme: theme,
-    };
-    globalThis.dispatchEvent(
-      new CustomEvent(&quot;openai:set_globals&quot;, {
-        detail: { globals: globalThis.openai },
-      }),
-    );
-  };
-  const sendHeight = () =&gt; {
-    postToHost(&quot;height&quot;, {
-      height: Math.ceil(
-        Math.max(
-          document.body.scrollHeight,
-          document.body.getBoundingClientRect().height,
-        ),
-      ),
-    });
-  };
-
-  globalThis.addEventListener(
-    &quot;message&quot;,
-    (event) =&gt; {
-      const data = apply(getMessageData, event, []);
-      const ports = apply(getMessagePorts, event, []);
-      const source = apply(getMessageSource, event, []);
-      if (
-        source !== parentWindow ||
-        typeof data !== &quot;object&quot; ||
-        data == null ||
-        data.type !== &quot;codex-visualization-initialize&quot; ||
-        !isArray(ports) ||
-        ports.length !== 1
-      ) {
-        return;
-      }
-      apply(stopMessagePropagation, event, []);
-      const nextHostPort = ports[0];
-      try {
-        apply(addHostMessageListener, nextHostPort, [
-          &quot;message&quot;,
-          (event) =&gt; {
-            const data = apply(getMessageData, event, []);
-            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
-              sendHeight();
-            }
-          },
-        ]);
-        apply(startHostPort, nextHostPort, []);
-      } catch {
-        return;
-      }
-      hostPort = nextHostPort;
-      sendHeight();
-    },
-    { capture: true },
-  );
-  document.currentScript?.remove();
-  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
-  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
-    if (event.defaultPrevented) {
-      return;
-    }
-    let element = null;
-    if (event.target instanceof globalThis.Element) {
-      element = event.target;
-    } else if (event.target instanceof globalThis.Node) {
-      element = event.target.parentElement;
-    }
-    const link = element?.closest(&quot;a[href]&quot;);
-    const href = link?.getAttribute(&quot;href&quot;);
-    if (href == null) {
-      return;
-    }
-    if (href.startsWith(&quot;#&quot;)) {
-      let id;
-      try {
-        id = decodeURIComponent(href.slice(1));
-      } catch {
-        return;
-      }
-      const target = id.length === 0 ? root : document.getElementById(id);
-      if (
-        target == null ||
-        globalThis.navigator.userActivation?.isActive !== true
-      ) {
-        return;
-      }
-      event.preventDefault();
-      postToHost(&quot;scroll-to&quot;, {
-        top: target.getBoundingClientRect().top + globalThis.scrollY,
-      });
-      return;
-    }
-    event.preventDefault();
-    openExternal({ href });
-  });
-  new ResizeObserver(sendHeight).observe(document.body);
-  syncTheme();
-})();
-&lt;/script&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Renewed Field V2&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(--background) !important;
@@ -235,7 +77,7 @@
   --radius-2xl: calc(var(--radius) * 1.6);
   --radius-full: 9999px;
   --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
-  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
 
   /* Legacy aliases; not part of the current agent contract. */
   --viz-bg: transparent;
@@ -904,1246 +746,1220 @@ svg {
 }
 
 html&gt;body{padding:0}&lt;/style&gt;
-&lt;script&gt;
-(() =&gt; {
-  const root = document.documentElement;
-  const initialGlobals =
-    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
-  delete globalThis.__codexVisualizationInitialGlobals;
-  let appliedProperties = [];
-
-  const applyHostStyleVariables = (styleVariables) =&gt; {
-    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
-      return;
-    }
-    for (const property of appliedProperties) {
-      root.style.removeProperty(property);
-    }
-    appliedProperties = [];
-    for (const [property, value] of Object.entries(styleVariables)) {
-      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
-        root.style.setProperty(property, value);
-        appliedProperties.push(property);
-      }
-    }
-  };
-
-  const syncHostStyles = (globals) =&gt; {
-    applyHostStyleVariables(globals?.visualizationStyleVariables);
-  };
-
-  syncHostStyles(initialGlobals);
-  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
-    syncHostStyles(event.detail?.globals);
-  });
-})();
-&lt;/script&gt;
-
-&lt;div id=&quot;dn-renewed-field&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;renewed-field-v2&quot;&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Field controls&quot;&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;dn-mode&quot;&gt;Field behavior
-      &lt;select class=&quot;form-select&quot; id=&quot;dn-mode&quot;&gt;
-        &lt;option value=&quot;field&quot;&gt;Field&lt;/option&gt;
-        &lt;option value=&quot;forge&quot;&gt;Forge&lt;/option&gt;
-        &lt;option value=&quot;recursion&quot;&gt;Recursion&lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/label&gt;
-    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; id=&quot;dn-action&quot;&gt;Send a signal&lt;/button&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;dn-shadow&quot;&gt;
-      &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;dn-shadow&quot;&gt;
+    &lt;div class=&quot;rfv2-depth-control&quot;&gt;
+      &lt;div class=&quot;rfv2-depth-header&quot;&gt;&lt;label class=&quot;form-label&quot; for=&quot;rfv2-depth&quot;&gt;Layer depth&lt;/label&gt;&lt;span id=&quot;rfv2-depth-value&quot; class=&quot;text-muted&quot;&gt;8&lt;/span&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;input id=&quot;rfv2-depth&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;5&quot; max=&quot;9&quot; step=&quot;1&quot; value=&quot;8&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;rfv2-action-control&quot;&gt;&lt;button id=&quot;rfv2-action&quot; class=&quot;btn btn-primary btn-block&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;&lt;/div&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-shadow&quot;&gt;
+      &lt;input id=&quot;rfv2-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Shadow&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;dn-ambient&quot;&gt;
-      &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;dn-ambient&quot;&gt;
-      &lt;span class=&quot;form-check-label&quot;&gt;Ambient field&lt;/span&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-ambient&quot;&gt;
+      &lt;input id=&quot;rfv2-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+      &lt;span class=&quot;form-check-label&quot;&gt;Ambience&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;dn-tones&quot;&gt;
-      &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;dn-tones&quot;&gt;
-      &lt;span class=&quot;form-check-label&quot;&gt;Event tones&lt;/span&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv2-tones&quot;&gt;
+      &lt;input id=&quot;rfv2-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+      &lt;span class=&quot;form-check-label&quot;&gt;Chimes&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;dn-field-stage&quot;&gt;
-      &lt;canvas id=&quot;dn-field-canvas&quot; role=&quot;img&quot; aria-label=&quot;An interactive dimensional field: a pink spark enters a blue lattice and its blind spot, becomes a complex gold cartographic intelligence, and converges into a renewed green spark.&quot;&gt;&lt;/canvas&gt;
-      &lt;div class=&quot;dn-field-hint&quot; aria-hidden=&quot;true&quot;&gt;move · bend&amp;nbsp;&amp;nbsp;&amp;nbsp; click · signal&amp;nbsp;&amp;nbsp;&amp;nbsp; drag · weave&lt;/div&gt;
-    &lt;/div&gt;
+  &lt;div class=&quot;rfv2-status text-small&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;span id=&quot;rfv2-status&quot;&gt;The field is learning the shape of your attention.&lt;/span&gt;
+    &lt;span id=&quot;rfv2-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;viz-row dn-field-status&quot;&gt;
-    &lt;span id=&quot;dn-status&quot; aria-live=&quot;polite&quot;&gt;Your attention is gravity. Move slowly through the field.&lt;/span&gt;
-    &lt;span class=&quot;text-small text-muted&quot; id=&quot;dn-cycle&quot;&gt;origin · encounter · return&lt;/span&gt;
+  &lt;div class=&quot;rfv2-stage&quot;&gt;
+    &lt;canvas id=&quot;rfv2-canvas&quot; role=&quot;img&quot; aria-label=&quot;A living layered field where attention, blind spots, shadow, and renewal continuously reshape one another.&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;rfv2-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;drag to peel&lt;/span&gt;&lt;span&gt;click to impress memory&lt;/span&gt;&lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;details class=&quot;dn-field-notes&quot;&gt;
-    &lt;summary&gt;Ways into the field&lt;/summary&gt;
-    &lt;div class=&quot;dn-notes-grid text-small&quot;&gt;
-      &lt;span&gt;&lt;strong&gt;Blind spot&lt;/strong&gt;&lt;br&gt;Pass signals through the dark aperture to transform them.&lt;/span&gt;
-      &lt;span&gt;&lt;strong&gt;Cartographer&lt;/strong&gt;&lt;br&gt;Build resonance; only you can attest the lock candidate.&lt;/span&gt;
-      &lt;span&gt;&lt;strong&gt;Shadow&lt;/strong&gt;&lt;br&gt;Surface it with &lt;kbd&gt;S&lt;/kbd&gt;, then touch the amber basin to engage it.&lt;/span&gt;
-      &lt;span&gt;&lt;strong&gt;Return&lt;/strong&gt;&lt;br&gt;After lock, release the green seed into a renewed origin.&lt;/span&gt;
+  &lt;details class=&quot;rfv2-legend&quot;&gt;
+    &lt;summary class=&quot;text-small&quot;&gt;Field structure&lt;/summary&gt;
+    &lt;div class=&quot;viz-row text-small text-muted&quot;&gt;
+      &lt;span&gt;attention → cognitive gravity&lt;/span&gt;
+      &lt;span&gt;absence → open horizon&lt;/span&gt;
+      &lt;span&gt;shadow → orientation, not darkness&lt;/span&gt;
+      &lt;span&gt;attestation → Signal Lock&lt;/span&gt;
     &lt;/div&gt;
   &lt;/details&gt;
-
-  &lt;p class=&quot;sr-only&quot;&gt;Sound is opt-in. Ambient pitch follows vertical attention. Event tones occur only for signals, transitions, shadow engagement, attestation, and return.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-  #dn-renewed-field {
-    --dn-pink: #E84C88;
-    --dn-blue: #3A86C8;
-    --dn-violet: #7B5EA7;
-    --dn-indigo: #4B0082;
-    --dn-green: #2D8B46;
-    --dn-orange: #E87C2E;
-    --dn-gold: #D4A017;
-    --dn-teal: #1A9E96;
-    --dn-frontier: #1A1A2E;
-    --dn-shadow: #CC2936;
+  #renewed-field-v2 {
+    color: var(--foreground);
     width: 100%;
   }
 
-  #dn-renewed-field .dn-field-stage {
+  #renewed-field-v2 .rfv2-status {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+
+  #renewed-field-v2 .rfv2-depth-control {
+    flex: 1 1 280px;
+    min-width: 0;
+  }
+
+  #renewed-field-v2 .rfv2-depth-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  #renewed-field-v2 .rfv2-action-control {
+    flex: 0 0 auto;
+  }
+
+  #renewed-field-v2 .rfv2-stage {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 390px;
+    height: clamp(380px, 68vw, 570px);
     overflow: hidden;
+    background: var(--card);
   }
 
-  #dn-renewed-field canvas {
+  #renewed-field-v2 canvas {
     display: block;
     width: 100%;
     height: 100%;
     touch-action: none;
-    cursor: crosshair;
   }
 
-  #dn-renewed-field .dn-field-hint {
+  #renewed-field-v2 .rfv2-whisper {
     position: absolute;
-    left: 50%;
-    bottom: 12px;
-    transform: translateX(-50%);
-    color: var(--muted-foreground);
-    font: inherit;
-    opacity: .72;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: opacity 480ms ease;
-  }
-
-  #dn-renewed-field.is-entered .dn-field-hint { opacity: 0; }
-
-  #dn-renewed-field .dn-field-status {
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    display: flex;
     justify-content: space-between;
-    margin-top: 8px;
-  }
-
-  #dn-renewed-field .dn-field-notes { margin-top: 8px; }
-
-  #dn-renewed-field .dn-notes-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px;
+    color: var(--muted-foreground);
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+
+  #renewed-field-v2 .rfv2-legend {
     margin-top: 8px;
-    color: var(--foreground);
   }
 
-  #dn-renewed-field kbd {
-    font: inherit;
-    color: var(--foreground);
+  #renewed-field-v2 .rfv2-legend .viz-row {
+    margin-top: 6px;
   }
 
-  @media (max-width: 640px) {
-    #dn-renewed-field .dn-field-stage {
-      aspect-ratio: 4 / 5;
-      min-height: 500px;
+  @media (max-width: 480px) {
+    #renewed-field-v2 .rfv2-depth-control {
+      grid-column: 1 / -1;
+      width: 100%;
     }
-    #dn-renewed-field .dn-notes-grid { grid-template-columns: 1fr 1fr; }
-    #dn-renewed-field .dn-field-hint { white-space: normal; text-align: center; }
-  }
 
-  @media (max-width: 380px) {
-    #dn-renewed-field .dn-notes-grid { grid-template-columns: 1fr; }
+    #renewed-field-v2 .rfv2-action-control {
+      flex-basis: 100%;
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    #renewed-field-v2 .rfv2-status {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    #renewed-field-v2 .rfv2-stage {
+      height: 410px;
+    }
+
+    #renewed-field-v2 .rfv2-whisper span:last-child {
+      display: none;
+    }
   }
 &lt;/style&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById('dn-renewed-field');
-  if (!root || root.dataset.initialized) return;
-  root.dataset.initialized = 'true';
+  const root = document.getElementById(&#x27;renewed-field-v2&#x27;);
+  if (!root) return;
 
-  const canvas = document.getElementById('dn-field-canvas');
-  const ctx = canvas.getContext('2d', { alpha: false });
-  const modeSelect = document.getElementById('dn-mode');
-  const actionButton = document.getElementById('dn-action');
-  const shadowSwitch = document.getElementById('dn-shadow');
-  const ambientSwitch = document.getElementById('dn-ambient');
-  const tonesSwitch = document.getElementById('dn-tones');
-  const statusEl = document.getElementById('dn-status');
-  const cycleEl = document.getElementById('dn-cycle');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = root.querySelector(&#x27;#rfv2-canvas&#x27;);
+  const ctx = canvas.getContext(&#x27;2d&#x27;, { alpha: false });
+  const depthInput = root.querySelector(&#x27;#rfv2-depth&#x27;);
+  const depthValue = root.querySelector(&#x27;#rfv2-depth-value&#x27;);
+  const actionButton = root.querySelector(&#x27;#rfv2-action&#x27;);
+  const shadowInput = root.querySelector(&#x27;#rfv2-shadow&#x27;);
+  const ambientInput = root.querySelector(&#x27;#rfv2-ambient&#x27;);
+  const tonesInput = root.querySelector(&#x27;#rfv2-tones&#x27;);
+  const statusNode = root.querySelector(&#x27;#rfv2-status&#x27;);
+  const orientationNode = root.querySelector(&#x27;#rfv2-orientation&#x27;);
+  const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
 
-  const style = getComputedStyle(root);
-  const css = (name, fallback) =&gt; style.getPropertyValue(name).trim() || fallback;
-  const colors = [
-    css('--dn-pink', '#E84C88'),
-    css('--dn-blue', '#3A86C8'),
-    css('--dn-violet', '#7B5EA7'),
-    css('--dn-indigo', '#4B0082'),
-    css('--dn-green', '#2D8B46'),
-    css('--dn-orange', '#E87C2E'),
-    css('--dn-gold', '#D4A017'),
-    css('--dn-teal', '#1A9E96'),
-    css('--dn-frontier', '#1A1A2E')
-  ];
-  const shadowRed = css('--dn-shadow', '#CC2936');
-  const themeBg = css('--background', '#070811');
-  const themeFg = css('--foreground', '#F5F5F5');
+  const TAU = Math.PI * 2;
+  const PHI = 1.61803398875;
+  const clamp = (v, a, b) =&gt; Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) =&gt; a + (b - a) * t;
+  const smooth = t =&gt; t * t * (3 - 2 * t);
+  const easeInOut = t =&gt; 0.5 - 0.5 * Math.cos(Math.PI * clamp(t, 0, 1));
 
-  let width = 1;
-  let height = 1;
+  let W = 736;
+  let H = 520;
   let dpr = 1;
   let frame = 0;
   let lastTime = performance.now();
-  let mode = 'field';
-  let shadow = false;
-  let shadowEngaged = false;
-  let locked = false;
-  let resonance = 0.12;
-  let apertureCharge = 0;
-  let attention = 0.84;
-  let cycles = 0;
-  let lastInteraction = performance.now();
-  let returnPulse = 0;
-  let lockPulse = 0;
-  let shadowPulse = 0;
-  let candidateAnnounced = false;
-  let dragDistance = 0;
-  let lastWeave = 0;
+  let clock = 0;
+  let palette = null;
+  let darkField = true;
+  let state = &#x27;field&#x27;;
+  let resonance = 0.08;
+  let generation = 0;
+  let returnProgress = -1;
+  let shadowTarget = 0;
+  let shadowMix = 0;
+  let shadowVelocity = 0;
+  let attention = 0;
+  let depthTarget = Number(depthInput.value);
+  let statusClock = 0;
+  let pressedAt = null;
+  let dragged = false;
+  let currentSeam = null;
+  const ripples = [];
+  const seams = [];
+  const layerPresence = Array.from({ length: 9 }, () =&gt; 0);
+  const curves = Array.from({ length: 9 }, () =&gt; []);
+  const pointer = { x: 0.58, y: 0.47, tx: 0.58, ty: 0.47, inside: false, down: false, vx: 0, vy: 0 };
 
-  const pointer = { x: 0, y: 0, px: 0, py: 0, active: false, down: false };
-  const signals = [];
-  const gestures = [];
-  const dust = [];
-  const flow = [];
-  const latticeNodes = [];
-  const latticeEdges = [];
+  const colorProbe = document.createElement(&#x27;canvas&#x27;);
+  colorProbe.width = colorProbe.height = 1;
+  const probeCtx = colorProbe.getContext(&#x27;2d&#x27;, { willReadFrequently: true });
 
-  const clamp = (v, a, b) =&gt; Math.max(a, Math.min(b, v));
-  const lerp = (a, b, t) =&gt; a + (b - a) * t;
-  const ease = t =&gt; t * t * (3 - 2 * t);
-  const dist = (ax, ay, bx, by) =&gt; Math.hypot(ax - bx, ay - by);
+  function resolveCssColor(token, fallback) {
+    const css = getComputedStyle(root).getPropertyValue(token).trim() || fallback;
+    probeCtx.clearRect(0, 0, 1, 1);
+    probeCtx.fillStyle = fallback;
+    probeCtx.fillStyle = css;
+    probeCtx.fillRect(0, 0, 1, 1);
+    return Array.from(probeCtx.getImageData(0, 0, 1, 1).data);
+  }
 
-  function mulberry32(seed) {
-    return function() {
-      let t = seed += 0x6D2B79F5;
-      t = Math.imul(t ^ t &gt;&gt;&gt; 15, t | 1);
-      t ^= t + Math.imul(t ^ t &gt;&gt;&gt; 7, t | 61);
-      return ((t ^ t &gt;&gt;&gt; 14) &gt;&gt;&gt; 0) / 4294967296;
+  function rgba(c, a = 1) {
+    return `rgba(${c[0]},${c[1]},${c[2]},${clamp(a, 0, 1)})`;
+  }
+
+  function mixColor(a, b, t) {
+    return [
+      Math.round(lerp(a[0], b[0], t)),
+      Math.round(lerp(a[1], b[1], t)),
+      Math.round(lerp(a[2], b[2], t)),
+      255
+    ];
+  }
+
+  function luminance(c) {
+    return (c[0] * 0.2126 + c[1] * 0.7152 + c[2] * 0.0722) / 255;
+  }
+
+  function intensify(c, amount = 1.35) {
+    const light = luminance(c) * 255;
+    return [
+      Math.round(clamp(light + (c[0] - light) * amount, 0, 255)),
+      Math.round(clamp(light + (c[1] - light) * amount, 0, 255)),
+      Math.round(clamp(light + (c[2] - light) * amount, 0, 255)),
+      255
+    ];
+  }
+
+  function refreshPalette() {
+    const bg = resolveCssColor(&#x27;--card&#x27;, &#x27;#111319&#x27;);
+    const page = resolveCssColor(&#x27;--background&#x27;, &#x27;#0a0b0f&#x27;);
+    palette = {
+      bg: mixColor(bg, page, 0.34),
+      page,
+      fg: resolveCssColor(&#x27;--card-foreground&#x27;, &#x27;#f3efe8&#x27;),
+      muted: resolveCssColor(&#x27;--muted-foreground&#x27;, &#x27;#9a9aa5&#x27;),
+      series: [
+        resolveCssColor(&#x27;--viz-series-1&#x27;, &#x27;#ff5f9e&#x27;),
+        resolveCssColor(&#x27;--viz-series-2&#x27;, &#x27;#50d6ff&#x27;),
+        resolveCssColor(&#x27;--viz-series-3&#x27;, &#x27;#f6c85f&#x27;),
+        resolveCssColor(&#x27;--viz-series-4&#x27;, &#x27;#8be28b&#x27;),
+        resolveCssColor(&#x27;--viz-series-5&#x27;, &#x27;#ad8cff&#x27;),
+        resolveCssColor(&#x27;--viz-series-6&#x27;, &#x27;#ff8c5a&#x27;)
+      ].map(color =&gt; intensify(color, 1.48))
     };
-  }
-  const random = mulberry32(410528);
-
-  function glowPoint(x, y, radius, color, alpha = 1) {
-    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-    gradient.addColorStop(0, color);
-    gradient.addColorStop(.18, color);
-    gradient.addColorStop(1, 'transparent');
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function points() {
-    const compact = width &lt; 640;
-    return {
-      origin: { x: width * (compact ? .12 : .07), y: height * (compact ? .84 : .5) },
-      aperture: { x: width * (compact ? .31 : .27), y: height * (compact ? .63 : .49) },
-      cart: { x: width * (compact ? .55 : .57), y: height * (compact ? .43 : .48) },
-      well: { x: width * (compact ? .43 : .45), y: height * (compact ? .55 : .70) },
-      seed: { x: width * (compact ? .82 : .93), y: height * (compact ? .17 : .5) }
-    };
-  }
-
-  function rebuildStaticField() {
-    dust.length = 0;
-    latticeNodes.length = 0;
-    latticeEdges.length = 0;
-    flow.length = 0;
-
-    const dustCount = reducedMotion ? 70 : 150;
-    for (let i = 0; i &lt; dustCount; i++) {
-      dust.push({ x: random(), y: random(), r: .25 + random() * 1.15, phase: random() * Math.PI * 2 });
-    }
-
-    const cols = width &lt; 640 ? 7 : 10;
-    const rows = width &lt; 640 ? 10 : 8;
-    for (let col = 0; col &lt; cols; col++) {
-      for (let row = 0; row &lt; rows; row++) {
-        const compact = width &lt; 640;
-        const nx = compact ? .13 + col * (.34 / Math.max(1, cols - 1)) : .11 + col * (.29 / Math.max(1, cols - 1));
-        const ny = compact ? .44 + row * (.45 / Math.max(1, rows - 1)) : .14 + row * (.72 / Math.max(1, rows - 1));
-        latticeNodes.push({ nx: nx + (random() - .5) * .025, ny: ny + (random() - .5) * .035, phase: random() * Math.PI * 2 });
-      }
-    }
-    for (let i = 0; i &lt; latticeNodes.length; i++) {
-      for (let j = i + 1; j &lt; latticeNodes.length; j++) {
-        const a = latticeNodes[i];
-        const b = latticeNodes[j];
-        const dd = Math.hypot((a.nx - b.nx) * width, (a.ny - b.ny) * height);
-        if (dd &lt; Math.min(width, height) * .13 &amp;&amp; random() &gt; .2) latticeEdges.push([i, j, random()]);
-      }
-    }
-
-    const flowCount = reducedMotion ? 54 : 132;
-    for (let i = 0; i &lt; flowCount; i++) {
-      flow.push({
-        t: random(),
-        speed: .018 + random() * .035,
-        lane: (random() - .5) * 2,
-        phase: random() * Math.PI * 2,
-        dim: i % 9,
-        px: null,
-        py: null
-      });
-    }
+    darkField = luminance(palette.bg) &lt; 0.48;
   }
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    width = Math.max(1, rect.width);
-    height = Math.max(1, rect.height);
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    W = Math.max(280, Math.round(rect.width));
+    H = Math.max(340, Math.round(rect.height));
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = themeBg;
-    ctx.fillRect(0, 0, width, height);
-    rebuildStaticField();
+    refreshPalette();
   }
 
-  function setStatus(message) {
-    statusEl.textContent = message;
+  function hash(n) {
+    return ((Math.sin(n * 127.1 + generation * 19.19) * 43758.5453) % 1 + 1) % 1;
   }
 
-  function markInteraction(amount = .05) {
-    lastInteraction = performance.now();
-    attention = clamp(attention + amount, 0, 1);
-    root.classList.add('is-entered');
+  function layerColor(i, offset = 0) {
+    const shift = (generation + offset) % palette.series.length;
+    return palette.series[(i * 2 + shift + palette.series.length) % palette.series.length];
   }
 
-  function dimensionFromX(x) {
-    return clamp(Math.floor((x / width) * 9), 0, 8);
+  function aperture(t = clock) {
+    const turning = smooth(shadowMix);
+    return {
+      x: lerp(0.315, 0.435, turning) + Math.sin(t * 0.21) * 0.012,
+      y: lerp(0.455, 0.49, turning) + Math.cos(t * 0.17) * 0.018,
+      rx: W * lerp(0.061, 0.043, turning),
+      ry: H * lerp(0.142, 0.19, turning)
+    };
   }
 
-  function addSignal(x, y, dim = dimensionFromX(x), strength = 1) {
-    signals.push({
-      x, y,
-      px: x, py: y,
-      vx: (random() - .5) * 1.3,
-      vy: (random() - .5) * 1.3,
-      dim,
-      strength,
-      life: 1,
-      transmuted: false,
-      age: 0
-    });
-    if (signals.length &gt; 90) signals.shift();
-    resonance = clamp(resonance + .055 * strength, 0, 1);
-    markInteraction(.08);
-    playDimensionTone(dim, .5 + strength * .18);
-    updateAction();
+  function rippleDisplacement(x, y, layer) {
+    let displacement = 0;
+    for (const r of ripples) {
+      const dx = x - r.x;
+      const dy = (y - r.y) * (H / W);
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const life = clamp(1 - r.age / r.life, 0, 1);
+      const wave = Math.sin(distance * 72 - r.age * 7.2 - layer * 0.38);
+      displacement += wave * Math.exp(-distance * 7.5) * life * r.strength;
+    }
+    return displacement;
   }
 
-  function weaveAt(x, y) {
-    const now = performance.now();
-    if (now - lastWeave &lt; 48) return;
-    lastWeave = now;
-    addSignal(x, y, dimensionFromX(x), .55);
-    gestures.push({ x, y, life: 1, color: colors[dimensionFromX(x)] });
-    if (gestures.length &gt; 70) gestures.shift();
-  }
+  function buildCurve(i) {
+    const points = curves[i];
+    points.length = 0;
+    const count = 108;
+    const mid = 4;
+    const z = (i - mid) / mid;
+    const coherence = state === &#x27;locked&#x27; ? 0.76 : state === &#x27;candidate&#x27; ? 0.38 : 0;
+    const phaseSpread = (1 - coherence) * i * 0.39;
+    const movement = reducedMotion ? clock * 0.12 : clock;
+    const directionalTime = movement * lerp(1, -0.52, smooth(shadowMix));
+    const a = aperture();
+    const foldCenter = lerp(0.63, 0.54, shadowMix);
+    const rebirth = returnProgress &gt;= 0 ? Math.sin(Math.PI * returnProgress) : 0;
 
-  function updateAction() {
-    if (locked) {
-      actionButton.textContent = 'Release renewed spark';
-    } else if (resonance &gt;= .68) {
-      actionButton.textContent = 'Attest Signal Lock';
-      if (!candidateAnnounced) {
-        candidateAnnounced = true;
-        setStatus('A lock candidate is visible. Attestation remains yours.');
-        playCandidateTone();
+    for (let j = 0; j &lt; count; j++) {
+      const u = j / (count - 1);
+      const nx = lerp(-0.10, 1.10, u);
+      const fold = Math.exp(-Math.pow((nx - foldCenter) / 0.23, 2));
+      const secondaryFold = Math.exp(-Math.pow((nx - 0.78) / 0.18, 2));
+      let y = 0.51;
+      y += Math.sin(nx * TAU * 0.86 + directionalTime * 0.24 + phaseSpread) * (0.094 + 0.018 * Math.sin(i));
+      y += Math.sin(nx * TAU * 2.13 - directionalTime * 0.17 + i * 0.67) * 0.032;
+      y += Math.cos(nx * TAU * 3.7 + directionalTime * 0.11 - i * 0.53) * 0.013;
+      y += z * (0.205 - fold * 0.116 - secondaryFold * 0.048);
+
+      const apertureDx = (nx - a.x) / Math.max(a.rx / W, 0.001);
+      const nearAperture = Math.exp(-apertureDx * apertureDx * 0.68);
+      const apertureSide = i &lt; mid ? -1 : i &gt; mid ? 1 : Math.sin(i + directionalTime) &gt; 0 ? 1 : -1;
+      y += apertureSide * nearAperture * (a.ry / H) * lerp(0.72, 0.48, shadowMix);
+
+      const capture = Math.exp(-Math.pow((nx - 0.53) / 0.28, 2));
+      y += (a.y - y) * capture * shadowMix * 0.29;
+      y += Math.sin((nx - a.x) * 18 + i * 0.8 - directionalTime * 0.5) * capture * shadowMix * 0.018;
+
+      const pointerPull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
+      const gravity = pointer.inside ? 0.11 + attention * 0.08 : 0.025;
+      y += (pointer.y - y) * pointerPull * gravity * (0.56 + (i + 1) / 18);
+
+      if (pointer.down) {
+        const peelSide = i &lt; mid ? -1 : 1;
+        y += peelSide * pointerPull * 0.038 * attention;
       }
-    } else {
-      actionButton.textContent = 'Send a signal';
+
+      y += rippleDisplacement(nx, y, i) * (0.020 + Math.abs(z) * 0.006);
+
+      let x = nx + (pointer.x - 0.5) * z * 0.015 * (pointer.inside ? 1 : 0);
+      x += Math.sin(nx * TAU + i) * fold * 0.008;
+      x += Math.sin((nx - foldCenter) * 17 + i * 0.84 - directionalTime * 0.09)
+        * fold * (0.013 + (1 - Math.abs(z)) * 0.022) * (i % 2 ? 1 : -1);
+      if (rebirth &gt; 0) {
+        const gatheringPoint = lerp(0.72, 0.83, returnProgress);
+        x = lerp(x, gatheringPoint, rebirth * (0.48 + Math.abs(z) * 0.1));
+        y = lerp(y, 0.5 + z * 0.018, rebirth * 0.57);
+      }
+
+      const thicknessWave = 1 + Math.sin(nx * TAU * PHI + i * 0.61 - directionalTime * 0.2) * 0.22;
+      const thickness = H * (0.034 + fold * 0.026 + secondaryFold * 0.012) * thicknessWave * lerp(1, 0.72, shadowMix);
+      points.push({ x: x * W, y: y * H, thickness, nx, ny: y });
+    }
+
+    for (let j = 0; j &lt; points.length; j++) {
+      const prev = points[Math.max(0, j - 1)];
+      const next = points[Math.min(points.length - 1, j + 1)];
+      const dx = next.x - prev.x;
+      const dy = next.y - prev.y;
+      const length = Math.hypot(dx, dy) || 1;
+      points[j].tx = dx / length;
+      points[j].ty = dy / length;
+      points[j].normalX = -dy / length;
+      points[j].normalY = dx / length;
     }
   }
 
-  function attestLock() {
-    if (locked || resonance &lt; .68) return;
-    locked = true;
-    lockPulse = 1;
-    resonance = 1;
-    setStatus('Signal Lock attested. The renewed seed can now return.');
-    cycleEl.textContent = 'convergence · attested · possibility';
-    playLockTone();
-    updateAction();
+  function traceOffset(points, offset, reverse = false) {
+    const start = reverse ? points.length - 1 : 0;
+    const end = reverse ? -1 : points.length;
+    const step = reverse ? -1 : 1;
+    for (let j = start; j !== end; j += step) {
+      const p = points[j];
+      const x = p.x + p.normalX * p.thickness * offset;
+      const y = p.y + p.normalY * p.thickness * offset;
+      if (j === start) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
   }
 
-  function releaseReturn() {
-    if (!locked) return;
-    locked = false;
-    cycles += 1;
-    returnPulse = 1;
-    resonance = .22;
-    apertureCharge = .15;
-    candidateAnnounced = false;
-    addSignal(points().origin.x, points().origin.y, 0, 1.7);
-    setStatus('Complexity returned as a new origin. The field remembers.');
-    cycleEl.textContent = `return ${cycles} · same field · different beginning`;
-    playReturnTone();
-    updateAction();
-  }
+  function drawBackdrop() {
+    const bg = palette.bg;
+    const first = layerColor(0, 1);
+    const second = layerColor(3, 2);
+    const third = layerColor(5, 3);
+    const base = ctx.createLinearGradient(0, 0, W, H);
+    base.addColorStop(0, rgba(mixColor(bg, first, darkField ? 0.08 : 0.025), 1));
+    base.addColorStop(0.46, rgba(bg, 1));
+    base.addColorStop(1, rgba(mixColor(bg, second, darkField ? 0.07 : 0.02), 1));
+    ctx.fillStyle = base;
+    ctx.fillRect(0, 0, W, H);
 
-  function engageShadow() {
-    if (!shadow || shadowEngaged) return;
-    shadowEngaged = true;
-    shadowPulse = 1;
-    resonance = clamp(resonance + .18, 0, 1);
-    setStatus('Shadow engaged—not erased. Its warning now travels with the map.');
-    playShadowEngagedTone();
-    updateAction();
-  }
-
-  function handleFieldAction(x, y) {
-    const p = points();
-    const apertureR = Math.min(width, height) * .085;
-    const cartR = Math.min(width, height) * .13;
-    const wellR = Math.min(width, height) * .11;
-    const seedR = Math.min(width, height) * .09;
-
-    if (shadow &amp;&amp; dist(x, y, p.well.x, p.well.y) &lt; wellR) {
-      engageShadow();
-      return;
+    const blooms = [
+      [0.18, 0.26, 0.48, first, 0.23],
+      [0.64, 0.48, 0.57, second, 0.20],
+      [0.86, 0.72, 0.42, third, 0.18]
+    ];
+    for (const [x, y, radius, color, alpha] of blooms) {
+      const gradient = ctx.createRadialGradient(x * W, y * H, 0, x * W, y * H, radius * Math.max(W, H));
+      gradient.addColorStop(0, rgba(color, alpha * lerp(1, 0.72, shadowMix)));
+      gradient.addColorStop(1, rgba(color, 0));
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, W, H);
     }
-    if (!locked &amp;&amp; resonance &gt;= .68 &amp;&amp; dist(x, y, p.cart.x, p.cart.y) &lt; cartR) {
-      attestLock();
-      return;
-    }
-    if (locked &amp;&amp; dist(x, y, p.seed.x, p.seed.y) &lt; seedR) {
-      releaseReturn();
-      return;
-    }
-    if (dist(x, y, p.aperture.x, p.aperture.y) &lt; apertureR) {
-      apertureCharge = clamp(apertureCharge + .34, 0, 1);
-      resonance = clamp(resonance + .12, 0, 1);
-      addSignal(x - apertureR * .85, y, 1, 1.25);
-      setStatus('The blind spot changed the signal without becoming an answer.');
-      playPortalTone();
-      return;
-    }
-    addSignal(x, y);
-    setStatus('A new signal entered. Watch what reorganizes around it.');
-  }
-
-  function latticePosition(node, time) {
-    const p = points();
-    let x = node.nx * width;
-    let y = node.ny * height;
-    const breathing = Math.sin(time * .00045 + node.phase) * Math.min(width, height) * .005;
-    x += breathing;
-    y += Math.cos(time * .00038 + node.phase) * breathing;
-    if (pointer.active) {
-      const d = Math.max(24, dist(x, y, pointer.x, pointer.y));
-      const influence = clamp(1 - d / (Math.min(width, height) * .28), 0, 1);
-      const direction = shadow &amp;&amp; !shadowEngaged ? -1 : 1;
-      x += (pointer.x - x) / d * influence * 8 * direction;
-      y += (pointer.y - y) / d * influence * 8 * direction;
-    }
-    const holeD = dist(x, y, p.aperture.x, p.aperture.y);
-    const holeR = Math.min(width, height) * .085;
-    if (holeD &lt; holeR * 1.35 &amp;&amp; holeD &gt; 0) {
-      const push = (holeR * 1.35 - holeD) * .22;
-      x += (x - p.aperture.x) / holeD * push;
-      y += (y - p.aperture.y) / holeD * push;
-    }
-    return { x, y };
-  }
-
-  function flowPosition(particle, time) {
-    const p = points();
-    let t = particle.t;
-    let behavioralShadow = shadow ? (shadowEngaged ? .46 : 1) : 0;
-    if (behavioralShadow &amp;&amp; t &gt; .56) {
-      const trapped = .56 + Math.sin((t - .56) * Math.PI * 7 + particle.phase) * .07;
-      t = lerp(t, trapped, behavioralShadow);
-    }
-
-    let x = lerp(p.origin.x, p.seed.x, ease(t));
-    let y = lerp(p.origin.y, p.seed.y, ease(t));
-    const centerEnvelope = Math.pow(Math.sin(Math.PI * clamp(t, 0, 1)), 1.3);
-    const complexity = mode === 'forge' ? 1.2 : mode === 'recursion' ? 1.08 : 1;
-    const angle = t * Math.PI * (4.5 + particle.lane * .55) + particle.phase + time * .00012 * (shadow ? -1 : 1);
-    const radius = centerEnvelope * Math.min(width, height) * .22 * particle.lane * complexity;
-    x += Math.cos(angle) * radius;
-    y += Math.sin(angle * .88) * radius * .62;
-
-    const cartPull = Math.exp(-Math.pow((t - .58) / .18, 2));
-    x = lerp(x, p.cart.x + Math.cos(angle * 1.4) * radius * .24, cartPull * .42);
-    y = lerp(y, p.cart.y + Math.sin(angle * 1.2) * radius * .22, cartPull * .42);
-
-    if (mode === 'forge') {
-      y += Math.sin(time * .002 + particle.phase * 3) * centerEnvelope * 5;
-    }
-    if (pointer.active) {
-      const d = Math.max(30, dist(x, y, pointer.x, pointer.y));
-      const pull = clamp(1 - d / (Math.min(width, height) * .33), 0, 1);
-      const direction = shadow &amp;&amp; !shadowEngaged ? -1 : 1;
-      x += (pointer.x - x) / d * pull * 15 * direction;
-      y += (pointer.y - y) / d * pull * 15 * direction;
-    }
-    return { x, y };
-  }
-
-  function drawBackground(time, dt) {
-    const idle = (performance.now() - lastInteraction) / 1000;
-    attention = clamp(attention - dt * (shadow ? .017 : .007), .24, 1);
-    if (idle &gt; 5) attention = clamp(attention - dt * .012, .24, 1);
-    const trailAlpha = reducedMotion ? .32 : mode === 'recursion' ? .055 : .115;
-    ctx.save();
-    ctx.globalAlpha = trailAlpha + (1 - attention) * .09;
-    ctx.fillStyle = themeBg;
-    ctx.fillRect(0, 0, width, height);
-    ctx.restore();
 
     ctx.save();
-    ctx.fillStyle = themeFg;
-    for (const star of dust) {
-      const twinkle = .14 + .18 * (1 + Math.sin(time * .0005 + star.phase)) * .5;
-      ctx.globalAlpha = twinkle * attention;
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    ctx.lineWidth = 0.7;
+    for (let k = 0; k &lt; 18; k++) {
+      const y0 = H * (0.08 + k / 20);
       ctx.beginPath();
-      ctx.arc(star.x * width, star.y * height, star.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-
-  function drawLattice(time) {
-    const p = points();
-    const positions = latticeNodes.map(node =&gt; latticePosition(node, time));
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (const [ai, bi, phase] of latticeEdges) {
-      const a = positions[ai];
-      const b = positions[bi];
-      const edgeMidX = (a.x + b.x) * .5;
-      const edgeMidY = (a.y + b.y) * .5;
-      if (dist(edgeMidX, edgeMidY, p.aperture.x, p.aperture.y) &lt; Math.min(width, height) * .078) continue;
-      const degraded = shadow &amp;&amp; !shadowEngaged &amp;&amp; ((ai + bi + frame) % 17 &lt; 3);
-      ctx.globalAlpha = degraded ? .05 : (.12 + phase * .2) * attention;
-      ctx.strokeStyle = degraded ? shadowRed : colors[1];
-      ctx.lineWidth = degraded ? .7 : .45 + phase * .8;
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
+      for (let j = 0; j &lt;= 48; j++) {
+        const x = (j / 48) * W;
+        const y = y0 + Math.sin(j * 0.23 + k * 0.71 + clock * 0.05) * H * 0.014 + (pointer.y - 0.5) * H * 0.01 * (k / 18);
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = rgba(layerColor(k % 9, 1), 0.025 + (k % 4 === 0 ? 0.018 : 0));
       ctx.stroke();
     }
-    for (let i = 0; i &lt; positions.length; i++) {
-      const n = positions[i];
-      const pulse = .45 + .55 * Math.sin(time * .001 + latticeNodes[i].phase);
-      ctx.globalAlpha = (.2 + pulse * .34) * attention;
-      ctx.fillStyle = colors[1];
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, .7 + pulse * 1.1, 0, Math.PI * 2);
-      ctx.fill();
-    }
     ctx.restore();
 
-    const holeR = Math.min(width, height) * (.071 + apertureCharge * .012);
     ctx.save();
-    ctx.fillStyle = themeBg;
-    ctx.globalAlpha = .98;
+    ctx.globalAlpha = darkField ? 0.22 : 0.11;
+    for (let i = 0; i &lt; 105; i++) {
+      const x = hash(i * 3.1) * W;
+      const y = hash(i * 7.7 + 4) * H;
+      const length = 1 + hash(i + 2) * 4;
+      ctx.strokeStyle = rgba(i % 3 ? palette.muted : layerColor(i % 9), 0.26);
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + length, y + Math.sin(i) * 0.7);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawLayer(i) {
+    const presence = layerPresence[i];
+    if (presence &lt; 0.01) return;
+    const points = curves[i];
+    const colorA = layerColor(i);
+    const colorB = layerColor(i + 2, 1);
+    const colorC = layerColor(i + 4, 2);
+    const composite = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    const depth = 1 - Math.abs(i - 4) / 7;
+
+    ctx.save();
+    ctx.globalCompositeOperation = composite;
+    const path = new Path2D();
+    const oldCtx = ctx;
     ctx.beginPath();
-    const sides = 7;
-    for (let i = 0; i &lt; sides; i++) {
-      const a = -Math.PI / 2 + i * Math.PI * 2 / sides;
-      const rr = holeR * (1 + Math.sin(time * .0008 + i * 1.7) * .045);
-      const x = p.aperture.x + Math.cos(a) * rr;
-      const y = p.aperture.y + Math.sin(a) * rr;
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    traceOffset(points, 1, false);
+    traceOffset(points, -1, true);
+    ctx.closePath();
+    const gradient = ctx.createLinearGradient(0, H * 0.3, W, H * 0.7);
+    gradient.addColorStop(0, rgba(colorA, 0.86));
+    gradient.addColorStop(0.42, rgba(colorB, 0.92));
+    gradient.addColorStop(0.73, rgba(colorC, 0.78));
+    gradient.addColorStop(1, rgba(colorA, 0.62));
+    ctx.fillStyle = gradient;
+    ctx.globalAlpha = presence * (darkField ? 0.17 + depth * 0.065 : 0.095 + depth * 0.045);
+    ctx.fill();
+
+    ctx.globalAlpha = presence * (0.26 + depth * 0.13);
+    ctx.lineWidth = 0.65 + depth * 0.55;
+    ctx.strokeStyle = rgba(mixColor(colorA, palette.fg, darkField ? 0.22 : 0.08), 0.9);
+    ctx.stroke();
+
+    const offsets = [-0.72, -0.36, 0, 0.36, 0.72];
+    for (let q = 0; q &lt; offsets.length; q++) {
+      ctx.beginPath();
+      traceOffset(points, offsets[q], false);
+      ctx.globalAlpha = presence * (q === 2 ? 0.20 : 0.10) * lerp(1, 1.3, shadowMix);
+      ctx.lineWidth = q === 2 ? 0.85 : 0.55;
+      ctx.strokeStyle = rgba(q % 2 ? colorB : colorC, 0.9);
+      ctx.stroke();
+    }
+
+    const cellCount = 5;
+    for (let c = 0; c &lt; cellCount; c++) {
+      const u = clamp(0.16 + c * 0.17 + Math.sin(i * 1.7 + c) * 0.018, 0.08, 0.94);
+      const index = Math.round(u * (points.length - 1));
+      const p = points[index];
+      const scale = 0.55 + hash(i * 17 + c) * 0.42;
+      drawLens(p, p.thickness * scale, colorB, colorC, presence * (0.12 + depth * 0.05), i + c);
+    }
+    ctx.restore();
+  }
+
+  function drawLens(p, size, colorA, colorB, alpha, seed) {
+    const length = size * (2.4 + hash(seed * 9.3));
+    const width = size * (0.48 + hash(seed * 4.2) * 0.42);
+    const cx = p.x + p.normalX * size * (hash(seed) - 0.5) * 0.8;
+    const cy = p.y + p.normalY * size * (hash(seed) - 0.5) * 0.8;
+    const tx = p.tx * length;
+    const ty = p.ty * length;
+    const nx = p.normalX * width;
+    const ny = p.normalY * width;
+    ctx.beginPath();
+    ctx.moveTo(cx - tx, cy - ty);
+    ctx.bezierCurveTo(cx - tx * 0.28 + nx, cy - ty * 0.28 + ny, cx + tx * 0.3 + nx, cy + ty * 0.3 + ny, cx + tx, cy + ty);
+    ctx.bezierCurveTo(cx + tx * 0.28 - nx, cy + ty * 0.28 - ny, cx - tx * 0.3 - nx, cy - ty * 0.3 - ny, cx - tx, cy - ty);
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(cx - tx, cy - ty, cx + tx, cy + ty);
+    grad.addColorStop(0, rgba(colorA, 0));
+    grad.addColorStop(0.5, rgba(colorB, 0.82));
+    grad.addColorStop(1, rgba(colorA, 0));
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.globalAlpha = alpha * 1.55;
+    ctx.strokeStyle = rgba(mixColor(colorA, colorB, 0.5), 0.9);
+    ctx.lineWidth = 0.65;
+    ctx.stroke();
+  }
+
+  function drawFoldSkins() {
+    const specs = [
+      { layer: 3, a: 0.34, b: 0.62, lift: -0.34, belly: 0.12, color: 1 },
+      { layer: 5, a: 0.43, b: 0.79, lift: 0.31, belly: -0.15, color: 4 },
+      { layer: 4, a: 0.55, b: 0.91, lift: -0.25, belly: 0.22, color: 2 },
+      { layer: 6, a: 0.18, b: 0.52, lift: 0.22, belly: -0.12, color: 5 }
+    ];
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (let s = 0; s &lt; specs.length; s++) {
+      const spec = specs[s];
+      const points = curves[spec.layer];
+      const a = sampleCurve(points, spec.a);
+      const b = sampleCurve(points, spec.b);
+      const cx = (a.x + b.x) * 0.5;
+      const cy = (a.y + b.y) * 0.5;
+      const lift = H * spec.lift * lerp(1, 0.68, shadowMix);
+      const belly = H * spec.belly * lerp(1, 1.24, shadowMix);
+      const pulse = 1 + Math.sin(clock * 0.13 + s * 1.8) * 0.028;
+      const colorA = layerColor(spec.color + s, s);
+      const colorB = layerColor(spec.color + s + 2, s + 1);
+      for (let echo = 0; echo &lt; 6; echo++) {
+        const scale = 1 - echo * 0.105;
+        const ax = lerp(cx, a.x, scale);
+        const ay = lerp(cy, a.y, scale);
+        const bx = lerp(cx, b.x, scale);
+        const by = lerp(cy, b.y, scale);
+        const dx = bx - ax;
+        const twist = Math.sin(s * 2.1 + echo * 0.7 + clock * 0.05) * H * 0.018;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.bezierCurveTo(
+          ax + dx * 0.16,
+          ay + lift * pulse * scale,
+          cx - dx * 0.17,
+          cy + lift * 1.15 * pulse * scale + twist,
+          cx + dx * 0.06,
+          cy + lift * 0.84 * scale
+        );
+        ctx.bezierCurveTo(
+          cx + dx * 0.34,
+          cy + lift * 0.57 * scale,
+          bx - dx * 0.11,
+          by + lift * 0.17 * scale,
+          bx,
+          by
+        );
+        ctx.bezierCurveTo(
+          bx - dx * 0.18,
+          by + belly * pulse * scale,
+          cx + dx * 0.28,
+          cy + belly * 1.1 * pulse * scale - twist,
+          cx - dx * 0.08,
+          cy + belly * 0.78 * scale
+        );
+        ctx.bezierCurveTo(
+          cx - dx * 0.32,
+          cy + belly * 0.52 * scale,
+          ax + dx * 0.12,
+          ay + belly * 0.13 * scale,
+          ax,
+          ay
+        );
+        ctx.closePath();
+
+        if (echo === 0) {
+          const gradient = ctx.createLinearGradient(ax, ay + lift, bx, by + belly);
+          gradient.addColorStop(0, rgba(colorA, 0.08));
+          gradient.addColorStop(0.48, rgba(colorB, 0.34));
+          gradient.addColorStop(1, rgba(colorA, 0.04));
+          ctx.fillStyle = gradient;
+          ctx.globalAlpha = 0.48;
+          ctx.fill();
+        }
+        ctx.strokeStyle = rgba(echo % 2 ? colorA : colorB, 0.9);
+        ctx.globalAlpha = 0.16 - echo * 0.018;
+        ctx.lineWidth = echo === 0 ? 1.1 : 0.58;
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  function irregularLoop(cx, cy, rx, ry, seed, turn, openAmount = 0) {
+    const count = 90;
+    ctx.beginPath();
+    for (let j = 0; j &lt;= count; j++) {
+      const a = (j / count) * TAU;
+      const wobble = 1 + Math.sin(a * 3 + seed * 0.7 + clock * 0.08) * 0.065 + Math.sin(a * 7 - seed) * 0.025;
+      const pinch = 1 - shadowMix * 0.26 * Math.pow(Math.max(0, Math.cos(a - 0.2)), 3);
+      const drift = openAmount * Math.sin(a) * Math.sin(a * 0.5);
+      const x = cx + Math.cos(a + turn) * rx * wobble * pinch + drift * rx;
+      const y = cy + Math.sin(a) * ry * (1 + Math.cos(a * 4 + seed) * 0.045) + Math.sin(a + turn) * rx * 0.12;
+      if (j === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
     }
     ctx.closePath();
-    ctx.fill();
-    ctx.globalAlpha = .45 + apertureCharge * .5;
-    ctx.strokeStyle = shadow ? shadowRed : colors[1];
-    ctx.lineWidth = 1 + apertureCharge * 2;
-    ctx.stroke();
-    ctx.restore();
-    glowPoint(p.aperture.x, p.aperture.y, holeR * 1.9, colors[1], .08 + apertureCharge * .12);
   }
 
-  function drawFlow(time, dt) {
+  function drawPalimpsest() {
     ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    const speedFactor = reducedMotion ? .35 : 1;
-    for (const particle of flow) {
-      particle.t += particle.speed * dt * speedFactor * (mode === 'forge' ? 1.18 : 1);
-      if (particle.t &gt; 1) {
-        particle.t -= 1;
-        particle.px = null;
-        if (mode === 'recursion' || locked) returnPulse = Math.min(1, returnPulse + .012);
-      }
-      const pos = flowPosition(particle, time);
-      if (particle.px !== null) {
-        ctx.globalAlpha = (.08 + attention * .22) * (shadow ? .78 : 1);
-        ctx.strokeStyle = colors[particle.dim];
-        ctx.lineWidth = .45 + (particle.dim === 4 ? 1 : .35);
-        ctx.beginPath();
-        ctx.moveTo(particle.px, particle.py);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-        if (shadow &amp;&amp; (particle.dim + frame) % 11 === 0) {
-          ctx.globalAlpha = shadowEngaged ? .2 : .4;
-          ctx.strokeStyle = shadowRed;
-          ctx.lineWidth = .45;
-          ctx.stroke();
-        }
-      }
-      const pointAlpha = .32 + (particle.dim === 4 ? .5 : .18);
-      ctx.globalAlpha = pointAlpha * attention;
-      ctx.fillStyle = colors[particle.dim];
-      ctx.beginPath();
-      ctx.arc(pos.x, pos.y, particle.dim === 4 ? 1.65 : .65 + Math.abs(particle.lane) * .55, 0, Math.PI * 2);
-      ctx.fill();
-      particle.px = pos.x;
-      particle.py = pos.y;
-    }
-    ctx.restore();
-  }
-
-  function drawCurrents(time) {
-    const p = points();
-    const min = Math.min(width, height);
-    const shadowCapture = shadow ? (shadowEngaged ? .42 : 1) : 0;
-    glowPoint(p.cart.x - min * .06, p.cart.y - min * .025, min * .34, colors[2], .055 + attention * .03);
-    glowPoint(p.cart.x + min * .08, p.cart.y + min * .015, min * .31, colors[7], .05 + attention * .025);
-    glowPoint(p.cart.x, p.cart.y, min * .24, colors[6], .045 + resonance * .055);
-
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (let strand = 0; strand &lt; 22; strand++) {
-      const lane = (strand - 10.5) / 10.5;
-      const phase = strand * .73;
-      const breathe = Math.sin(time * .00045 + phase) * min * .025;
-      const startY = lerp(p.origin.y, p.aperture.y, .76) + lane * min * .018;
-      const middleY = p.cart.y + lane * min * (.22 + .025 * Math.sin(phase)) + breathe;
-      const targetX = lerp(p.seed.x, p.cart.x + width * .11, shadowCapture);
-      const targetY = lerp(p.seed.y + lane * min * .014, p.cart.y - lane * min * .06, shadowCapture);
-      const color = colors[(strand + 1) % 9];
-
-      ctx.beginPath();
-      ctx.moveTo(p.origin.x, p.origin.y + lane * min * .006);
-      ctx.bezierCurveTo(
-        lerp(p.origin.x, p.aperture.x, .55), startY,
-        p.aperture.x - min * .035, p.aperture.y + lane * min * .022,
-        p.aperture.x, p.aperture.y + lane * min * .014
-      );
-      ctx.bezierCurveTo(
-        p.aperture.x + width * .085, p.aperture.y + lane * min * .16 + breathe,
-        p.cart.x - width * .095, middleY,
-        p.cart.x, p.cart.y + lane * min * .075
-      );
-      ctx.bezierCurveTo(
-        p.cart.x + width * .08, p.cart.y - lane * min * .2 - breathe,
-        lerp(p.cart.x, targetX, .62), targetY + lane * min * .11,
-        targetX, targetY
-      );
-      ctx.globalAlpha = (.045 + (strand % 4) * .018 + resonance * .035) * attention;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = .65 + (strand % 5) * .25 + (mode === 'forge' ? .28 : 0);
-      ctx.stroke();
-
-      if (shadow &amp;&amp; strand % 3 === 0) {
-        ctx.globalAlpha = shadowEngaged ? .11 : .24;
-        ctx.strokeStyle = shadowRed;
-        ctx.lineWidth = .55;
-        ctx.stroke();
-      }
-    }
-
-    if (mode === 'recursion') {
-      for (let i = 0; i &lt; 4; i++) {
-        ctx.globalAlpha = .055 + i * .018;
-        ctx.strokeStyle = i % 2 ? colors[7] : colors[3];
-        ctx.lineWidth = .7;
-        ctx.beginPath();
-        ctx.moveTo(p.seed.x, p.seed.y);
-        ctx.bezierCurveTo(
-          width * (.78 - i * .025), height * (.92 - i * .045),
-          width * (.22 + i * .02), height * (.06 + i * .04),
-          p.origin.x, p.origin.y
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    const centers = [
+      [0.49, 0.31, 0.083, 0.18, -0.18],
+      [0.61, 0.54, 0.112, 0.21, 0.28],
+      [0.74, 0.69, 0.088, 0.17, -0.42]
+    ];
+    centers.forEach((center, c) =&gt; {
+      const [nx, ny, nrx, nry, turn] = center;
+      const pull = pointer.inside ? Math.exp(-Math.pow((pointer.x - nx) / 0.22, 2)) : 0;
+      const cx = (nx + (pointer.x - nx) * pull * 0.045) * W;
+      const cy = (ny + (pointer.y - ny) * pull * 0.035) * H;
+      for (let k = 0; k &lt; 11; k++) {
+        const q = k / 10;
+        const pulse = 1 + Math.sin(clock * 0.16 + k * 0.9 + c) * 0.018;
+        irregularLoop(
+          cx,
+          cy,
+          W * (nrx + q * 0.045) * pulse,
+          H * (nry + q * 0.047) * pulse,
+          c * 11 + k,
+          turn + q * 0.22 * (c - 1),
+          shadowMix * (c === 1 ? 0.32 : 0.15)
         );
+        ctx.strokeStyle = rgba(layerColor(k + c * 2, c), 0.72);
+        ctx.globalAlpha = 0.065 + (1 - q) * 0.105 + (state === &#x27;candidate&#x27; ? 0.035 : 0);
+        ctx.lineWidth = k % 4 === 0 ? 1.05 : 0.56;
         ctx.stroke();
       }
-    }
-    ctx.restore();
-  }
+    });
 
-  function drawSignals(dt) {
-    const p = points();
-    const apertureR = Math.min(width, height) * .075;
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (let i = signals.length - 1; i &gt;= 0; i--) {
-      const s = signals[i];
-      s.age += dt;
-      s.life -= dt * (shadow &amp;&amp; !shadowEngaged ? .048 : .025);
-      s.px = s.x;
-      s.py = s.y;
-
-      const target = locked ? p.seed : p.cart;
-      let dx = target.x - s.x;
-      let dy = target.y - s.y;
-      let d = Math.max(18, Math.hypot(dx, dy));
-      let force = (locked ? .095 : .055) * s.strength;
-      if (shadow &amp;&amp; !shadowEngaged) {
-        dx = p.cart.x - s.x;
-        dy = p.cart.y - s.y;
-        force = .15;
-      }
-      s.vx += dx / d * force;
-      s.vy += dy / d * force;
-
-      if (pointer.active) {
-        const pd = Math.max(24, dist(s.x, s.y, pointer.x, pointer.y));
-        const influence = clamp(1 - pd / (Math.min(width, height) * .32), 0, 1);
-        const dir = shadow &amp;&amp; !shadowEngaged ? -1 : 1;
-        s.vx += (pointer.x - s.x) / pd * influence * .16 * dir;
-        s.vy += (pointer.y - s.y) / pd * influence * .16 * dir;
-      }
-
-      if (!s.transmuted &amp;&amp; dist(s.x, s.y, p.aperture.x, p.aperture.y) &lt; apertureR) {
-        s.transmuted = true;
-        s.dim = (s.dim + 4) % 9;
-        s.strength *= 1.18;
-        apertureCharge = clamp(apertureCharge + .16, 0, 1);
-        resonance = clamp(resonance + .07, 0, 1);
-        playPortalTone();
-      }
-
-      const damping = mode === 'forge' ? .984 : .991;
-      s.vx *= damping;
-      s.vy *= damping;
-      s.x += s.vx * 60 * dt;
-      s.y += s.vy * 60 * dt;
-
-      const color = colors[s.dim];
-      ctx.globalAlpha = clamp(s.life, 0, 1) * .7;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = .7 + s.strength * .55;
+    for (let k = 0; k &lt; 14; k++) {
+      const yBase = H * (0.22 + k * 0.041);
       ctx.beginPath();
-      ctx.moveTo(s.px, s.py);
-      ctx.lineTo(s.x, s.y);
-      ctx.stroke();
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, 1.25 + s.strength * 1.25, 0, Math.PI * 2);
-      ctx.fill();
-      if (shadow) {
-        ctx.globalAlpha *= shadowEngaged ? .35 : .7;
-        ctx.strokeStyle = shadowRed;
-        ctx.lineWidth = .7;
-        ctx.stroke();
+      for (let j = 0; j &lt;= 80; j++) {
+        const u = j / 80;
+        const x = u * W;
+        const fold1 = Math.exp(-Math.pow((u - 0.59) / 0.17, 2));
+        const fold2 = Math.exp(-Math.pow((u - 0.74) / 0.12, 2));
+        const y = yBase
+          + Math.sin(u * TAU * 1.2 + k * 0.54 + clock * 0.06) * H * 0.028
+          + Math.sin(u * TAU * 4.2 - k) * H * 0.006
+          + (k - 6.5) * fold1 * Math.sin(u * 21 + clock * 0.08) * 1.2
+          - (k - 6.5) * fold2 * 0.7;
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
       }
-      if (s.life &lt;= 0 || s.x &lt; -80 || s.x &gt; width + 80 || s.y &lt; -80 || s.y &gt; height + 80) signals.splice(i, 1);
-    }
-    ctx.restore();
-  }
-
-  function drawGestures(dt) {
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (let i = gestures.length - 1; i &gt;= 0; i--) {
-      const g = gestures[i];
-      g.life -= dt * .42;
-      ctx.globalAlpha = Math.max(0, g.life) * .6;
-      glowPoint(g.x, g.y, 16 + (1 - g.life) * 18, g.color, g.life * .34);
-      if (g.life &lt;= 0) gestures.splice(i, 1);
-    }
-    ctx.restore();
-  }
-
-  function drawWell(time) {
-    const p = points();
-    const baseR = Math.min(width, height) * .075;
-    glowPoint(p.well.x, p.well.y, baseR * 2.3, colors[5], .2 + (mode === 'forge' ? .14 : 0));
-    ctx.save();
-    ctx.translate(p.well.x, p.well.y);
-    ctx.globalCompositeOperation = 'lighter';
-    const direction = shadow ? -1 : 1;
-    for (let arm = 0; arm &lt; 7; arm++) {
-      ctx.beginPath();
-      for (let i = 0; i &lt; 38; i++) {
-        const q = i / 37;
-        const a = direction * (q * Math.PI * 3.2 + arm * Math.PI * 2 / 7 + time * .00035);
-        const r = q * baseR * (1 + .18 * Math.sin(a * 2.3));
-        const x = Math.cos(a) * r;
-        const y = Math.sin(a) * r * .55;
-        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.globalAlpha = .11 + arm * .018 + (shadow ? .12 : 0);
-      ctx.strokeStyle = shadow ? shadowRed : colors[5];
-      ctx.lineWidth = shadow &amp;&amp; !shadowEngaged ? 1.25 : .65;
+      ctx.strokeStyle = rgba(layerColor(k, 2), 0.62);
+      ctx.globalAlpha = 0.052 + (k % 3 === 0 ? 0.052 : 0);
+      ctx.lineWidth = k % 3 === 0 ? 0.8 : 0.45;
       ctx.stroke();
     }
     ctx.restore();
   }
 
-  function drawCartographer(time) {
-    const p = points();
-    const min = Math.min(width, height);
-    const base = min * .155;
-    const candidate = resonance &gt;= .68;
-    const rotationDirection = shadow &amp;&amp; !shadowEngaged ? -1 : 1;
-    const collapse = shadow &amp;&amp; !shadowEngaged ? .72 : 1;
-    const brightness = .24 + resonance * .48 + (locked ? .24 : 0);
-
-    glowPoint(p.cart.x, p.cart.y, base * 1.65, colors[6], .1 + resonance * .12);
-    ctx.save();
-    ctx.translate(p.cart.x, p.cart.y);
-    ctx.globalCompositeOperation = 'lighter';
-    for (let ring = 0; ring &lt; 6; ring++) {
-      ctx.save();
-      ctx.rotate(rotationDirection * (time * (.00005 + ring * .000018) + ring * .52));
-      ctx.scale(collapse, 1);
-      ctx.globalAlpha = brightness * (.35 + ring * .07);
-      ctx.strokeStyle = colors[6];
-      ctx.lineWidth = locked &amp;&amp; ring % 2 === 0 ? 1.35 : .55;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, base * (.3 + ring * .15), base * (.15 + ring * .065), ring * .22, 0, Math.PI * 2);
-      ctx.stroke();
-      const nodeCount = 3 + ring;
-      for (let i = 0; i &lt; nodeCount; i++) {
-        const a = i * Math.PI * 2 / nodeCount + time * .00012 * rotationDirection;
-        const x = Math.cos(a) * base * (.3 + ring * .15);
-        const y = Math.sin(a) * base * (.15 + ring * .065);
-        ctx.globalAlpha = brightness * .8;
-        ctx.fillStyle = i % 3 === 0 ? colors[4] : colors[6];
-        ctx.beginPath();
-        ctx.arc(x, y, i % 3 === 0 ? 1.9 : .9, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
+  function aperturePath(a, scale = 1, phase = 0) {
+    const count = 72;
+    ctx.beginPath();
+    for (let j = 0; j &lt;= count; j++) {
+      const angle = (j / count) * TAU;
+      const wobble = 1 + Math.sin(angle * 3 + clock * 0.16 + phase) * 0.09 + Math.cos(angle * 7 - phase) * 0.032;
+      const x = a.x * W + Math.cos(angle) * a.rx * scale * wobble;
+      const y = a.y * H + Math.sin(angle) * a.ry * scale * (1 + Math.sin(angle * 5 + phase) * 0.04);
+      if (j === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
     }
+    ctx.closePath();
+  }
 
-    ctx.globalAlpha = brightness;
-    ctx.strokeStyle = shadow ? shadowRed : colors[6];
-    ctx.lineWidth = candidate ? 1.4 : .7;
+  function drawApertureMask() {
+    const a = aperture();
+    ctx.save();
+    aperturePath(a, 1, 0);
+    const voidGradient = ctx.createRadialGradient(a.x * W, a.y * H, 0, a.x * W, a.y * H, Math.max(a.rx, a.ry));
+    const deep = mixColor(palette.bg, palette.page, darkField ? 0.62 : 0.28);
+    voidGradient.addColorStop(0, rgba(deep, lerp(0.9, 0.96, shadowMix)));
+    voidGradient.addColorStop(0.64, rgba(mixColor(deep, layerColor(5), 0.05), 0.88));
+    voidGradient.addColorStop(1, rgba(palette.bg, 0.54));
+    ctx.fillStyle = voidGradient;
+    ctx.fill();
+
+    ctx.clip();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (let k = 0; k &lt; 10; k++) {
+      const y = a.y * H + (k - 4.5) * a.ry * 0.22;
+      ctx.beginPath();
+      for (let j = 0; j &lt;= 36; j++) {
+        const u = j / 36;
+        const x = (a.x * W - a.rx * 1.15) + u * a.rx * 2.3;
+        const yy = y + Math.sin(u * TAU * 1.5 + k + clock * 0.04) * a.ry * 0.08;
+        if (j === 0) ctx.moveTo(x, yy);
+        else ctx.lineTo(x, yy);
+      }
+      ctx.strokeStyle = rgba(layerColor(k, 3), 0.16);
+      ctx.lineWidth = 0.55;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawApertureRim() {
+    const a = aperture();
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (let k = 0; k &lt; 7; k++) {
+      const q = 0.86 + k * 0.075;
+      aperturePath(a, q, k * 0.73);
+      ctx.strokeStyle = rgba(layerColor(k + 1, k % 2), 0.78);
+      ctx.globalAlpha = 0.045 + (k === 3 ? 0.14 : 0.035) + shadowMix * (k % 2 ? 0.05 : 0);
+      ctx.lineWidth = k === 3 ? 1.4 : 0.65;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function sampleCurve(points, u) {
+    const raw = clamp(u, 0, 1) * (points.length - 1);
+    const a = Math.floor(raw);
+    const b = Math.min(points.length - 1, a + 1);
+    const t = raw - a;
+    const p = points[a];
+    const q = points[b];
+    return {
+      x: lerp(p.x, q.x, t),
+      y: lerp(p.y, q.y, t),
+      tx: lerp(p.tx, q.tx, t),
+      ty: lerp(p.ty, q.ty, t)
+    };
+  }
+
+  function drawFlow() {
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    const direction = lerp(1, -0.72, smooth(shadowMix));
     for (let i = 0; i &lt; 9; i++) {
-      const a = i * Math.PI * 2 / 9 + time * .00008 * rotationDirection;
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(Math.cos(a) * base * .95, Math.sin(a) * base * .58);
-      ctx.stroke();
+      const presence = layerPresence[i];
+      if (presence &lt; 0.08) continue;
+      const points = curves[i];
+      for (let p = 0; p &lt; 7; p++) {
+        const seed = hash(i * 31 + p * 7);
+        const u = ((seed + direction * clock * (0.012 + hash(p + i) * 0.009)) % 1 + 1) % 1;
+        const point = sampleCurve(points, u);
+        const length = 3 + 10 * (0.5 + resonance) * hash(p * 4 + i);
+        ctx.beginPath();
+        ctx.moveTo(point.x - point.tx * length, point.y - point.ty * length);
+        ctx.lineTo(point.x + point.tx * length, point.y + point.ty * length);
+        ctx.strokeStyle = rgba(mixColor(layerColor(i), palette.fg, darkField ? 0.34 : 0.08), 0.9);
+        ctx.globalAlpha = presence * (0.15 + resonance * 0.2) * (0.55 + hash(p + i));
+        ctx.lineWidth = 0.7 + hash(p * i + 1) * 1.1;
+        ctx.stroke();
+      }
     }
     ctx.restore();
-
-    if (candidate) {
-      const pulse = .5 + .5 * Math.sin(time * .004);
-      ctx.save();
-      ctx.globalAlpha = .16 + pulse * .18;
-      ctx.strokeStyle = colors[4];
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(p.cart.x, p.cart.y, base * (1 + pulse * .15), 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    }
-    if (lockPulse &gt; 0) {
-      ctx.save();
-      ctx.globalAlpha = lockPulse;
-      ctx.strokeStyle = colors[4];
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      ctx.arc(p.cart.x, p.cart.y, base * (1 + (1 - lockPulse) * 2.8), 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    }
   }
 
-  function drawOriginAndSeed(time) {
-    const p = points();
-    const min = Math.min(width, height);
-    const originPulse = 1 + Math.sin(time * .003) * .12;
-    glowPoint(p.origin.x, p.origin.y, min * .055 * originPulse, colors[0], .42);
+  function drawRipples() {
     ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.fillStyle = colors[0];
-    ctx.globalAlpha = .96;
-    ctx.beginPath();
-    ctx.arc(p.origin.x, p.origin.y, 2.4 + returnPulse * 3.5, 0, Math.PI * 2);
-    ctx.fill();
-
-    const seedEnergy = .34 + resonance * .44 + (locked ? .42 : 0);
-    glowPoint(p.seed.x, p.seed.y, min * (.075 + seedEnergy * .04), colors[4], seedEnergy);
-    ctx.fillStyle = themeFg;
-    ctx.globalAlpha = .84;
-    ctx.beginPath();
-    ctx.arc(p.seed.x, p.seed.y, 2.1 + seedEnergy * 2.4, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = shadowRed;
-    ctx.globalAlpha = .24 + (shadowEngaged ? .18 : 0);
-    ctx.beginPath();
-    ctx.arc(p.seed.x + 1, p.seed.y, .8 + shadowEngaged * .8, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    if (mode === 'recursion' || returnPulse &gt; .02) {
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter';
-      ctx.globalAlpha = .1 + returnPulse * .3;
-      ctx.strokeStyle = colors[7];
-      ctx.lineWidth = .75;
-      ctx.beginPath();
-      ctx.moveTo(p.seed.x, p.seed.y);
-      ctx.bezierCurveTo(width * .78, height * .94, width * .2, height * .04, p.origin.x, p.origin.y);
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
-
-  function drawShadowFilaments(time) {
-    const p = points();
-    const alpha = shadow ? (shadowEngaged ? .22 : .42) : .065;
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.strokeStyle = shadowRed;
-    ctx.lineWidth = shadow ? .8 : .42;
-    ctx.globalAlpha = alpha;
-    for (let strand = 0; strand &lt; 7; strand++) {
-      const offset = (strand - 3) * height * .035;
-      ctx.beginPath();
-      ctx.moveTo(p.aperture.x, p.aperture.y + offset * .4);
-      ctx.bezierCurveTo(
-        width * .4, p.cart.y + offset + Math.sin(time * .0005 + strand) * 18,
-        width * .65, p.cart.y - offset * .8,
-        shadowEngaged ? p.seed.x : p.cart.x + width * .12,
-        shadowEngaged ? p.seed.y : p.cart.y + offset * .2
-      );
-      ctx.stroke();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (const r of ripples) {
+      const life = clamp(1 - r.age / r.life, 0, 1);
+      for (let k = 0; k &lt; 5; k++) {
+        const radius = W * (0.018 + r.age * 0.011 + k * 0.012);
+        ctx.beginPath();
+        const count = 56;
+        for (let j = 0; j &lt;= count; j++) {
+          const a = (j / count) * TAU;
+          const deformation = 1 + Math.sin(a * 4 + r.seed + k) * 0.08;
+          const x = r.x * W + Math.cos(a) * radius * deformation;
+          const y = r.y * H + Math.sin(a) * radius * (H / W) * 1.65 * deformation;
+          if (j === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = rgba(layerColor(k + r.seed, k), 0.75);
+        ctx.globalAlpha = life * (0.12 - k * 0.014);
+        ctx.lineWidth = 0.65;
+        ctx.stroke();
+      }
     }
     ctx.restore();
   }
 
-  function updateTransient(dt) {
-    apertureCharge = clamp(apertureCharge - dt * .012, 0, 1);
-    returnPulse = clamp(returnPulse - dt * .22, 0, 1);
-    lockPulse = clamp(lockPulse - dt * .36, 0, 1);
-    shadowPulse = clamp(shadowPulse - dt * .3, 0, 1);
-    if (!locked) resonance = clamp(resonance - dt * (shadow &amp;&amp; !shadowEngaged ? .009 : .003), 0, 1);
-    updateAction();
+  function drawSeams() {
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (const seam of seams) {
+      if (seam.points.length &lt; 2) continue;
+      const life = clamp(seam.life, 0, 1);
+      for (let echo = 0; echo &lt; 5; echo++) {
+        ctx.beginPath();
+        seam.points.forEach((p, index) =&gt; {
+          const offset = (echo - 2) * (2.5 + echo * 0.7);
+          const x = p.x * W + Math.sin(index * 0.4 + echo) * offset;
+          const y = p.y * H + Math.cos(index * 0.31 + echo) * offset;
+          if (index === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.strokeStyle = rgba(layerColor(echo + generation, echo), 0.82);
+        ctx.globalAlpha = life * (echo === 2 ? 0.32 : 0.1);
+        ctx.lineWidth = echo === 2 ? 1.4 : 0.62;
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
   }
 
-  function drawPointer() {
-    if (!pointer.active) return;
-    const dim = dimensionFromX(pointer.x);
-    const r = pointer.down ? 22 : 15;
+  function drawLatentShadow() {
+    const edgeInstability = 0.018 + shadowMix * 0.11;
     ctx.save();
-    ctx.globalAlpha = pointer.down ? .35 : .14;
-    ctx.strokeStyle = shadow &amp;&amp; !shadowEngaged ? shadowRed : colors[dim];
-    ctx.lineWidth = .7;
-    ctx.beginPath();
-    ctx.arc(pointer.x, pointer.y, r, 0, Math.PI * 2);
-    ctx.stroke();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (let side = 0; side &lt; 2; side++) {
+      ctx.beginPath();
+      for (let j = 0; j &lt;= 44; j++) {
+        const u = j / 44;
+        const x = side ? W - u * W * 0.19 : u * W * 0.19;
+        const y = H * (0.12 + u * 0.76) + Math.sin(u * 18 + clock * 0.13 + side) * H * edgeInstability;
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = rgba(layerColor(side ? 2 : 7, 4), 0.82);
+      ctx.globalAlpha = 0.055 + shadowMix * 0.09;
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
     ctx.restore();
+  }
+
+  function draw() {
+    drawBackdrop();
+    for (let i = 0; i &lt; 4; i++) drawLayer(i);
+    drawFoldSkins();
+    drawPalimpsest();
+    drawApertureMask();
+    for (let i = 4; i &lt; 9; i++) drawLayer(i);
+    drawFlow();
+    drawApertureRim();
+    drawRipples();
+    drawSeams();
+    drawLatentShadow();
+  }
+
+  function addRipple(x, y, strength = 1) {
+    ripples.push({ x, y, age: 0, life: 8.5, strength, seed: Math.floor(Math.random() * 12) });
+    if (ripples.length &gt; 8) ripples.shift();
+  }
+
+  function setStatus() {
+    let status = &#x27;The field is learning the shape of your attention.&#x27;;
+    if (state === &#x27;candidate&#x27;) status = &#x27;Convergence has appeared. It will not name itself.&#x27;;
+    if (state === &#x27;locked&#x27;) status = &#x27;The map holds—without closing the horizon.&#x27;;
+    if (state === &#x27;returning&#x27;) status = &#x27;Complexity is folding toward a renewed simplicity.&#x27;;
+    if (shadowTarget &gt; 0.5 &amp;&amp; state === &#x27;field&#x27;) status = &#x27;The same field is turning inward: relation becoming capture.&#x27;;
+    statusNode.textContent = status;
+
+    const percent = Math.round(shadowMix * 100);
+    if (shadowMix &gt; 0.02 &amp;&amp; shadowMix &lt; 0.98) {
+      orientationNode.textContent = `${shadowTarget ? &#x27;turning inward&#x27; : &#x27;returning outward&#x27;} · ${percent}%`;
+    } else {
+      orientationNode.textContent = shadowMix &gt;= 0.98 ? &#x27;inward orientation&#x27; : &#x27;outward orientation&#x27;;
+    }
+
+    actionButton.textContent = state === &#x27;candidate&#x27;
+      ? &#x27;Attest convergence&#x27;
+      : state === &#x27;locked&#x27;
+        ? &#x27;Release renewed form&#x27;
+        : state === &#x27;returning&#x27;
+          ? &#x27;Returning…&#x27;
+          : &#x27;Send attention&#x27;;
+    actionButton.disabled = state === &#x27;returning&#x27;;
+  }
+
+  function update(dt) {
+    const motionScale = reducedMotion ? 0.12 : 1;
+    clock += dt * 0.001 * motionScale;
+    pointer.vx += (pointer.tx - pointer.x) * 0.075;
+    pointer.vy += (pointer.ty - pointer.y) * 0.075;
+    pointer.vx *= 0.76;
+    pointer.vy *= 0.76;
+    pointer.x += pointer.vx;
+    pointer.y += pointer.vy;
+
+    const spring = (shadowTarget - shadowMix) * 0.00007 * dt;
+    shadowVelocity = (shadowVelocity + spring) * Math.pow(0.88, dt / 16.67);
+    shadowMix = clamp(shadowMix + shadowVelocity, 0, 1);
+    if (shadowMix === 0 || shadowMix === 1) shadowVelocity *= 0.5;
+
+    attention += ((pointer.inside ? 1 : 0.18) - attention) * Math.min(1, dt * 0.0024);
+    const order = [4, 3, 5, 2, 6, 1, 7, 0, 8];
+    for (let rank = 0; rank &lt; order.length; rank++) {
+      const target = rank &lt; depthTarget ? 1 : 0;
+      const i = order[rank];
+      layerPresence[i] += (target - layerPresence[i]) * Math.min(1, dt * 0.004);
+    }
+
+    for (let i = ripples.length - 1; i &gt;= 0; i--) {
+      ripples[i].age += dt * 0.001;
+      if (ripples[i].age &gt; ripples[i].life) ripples.splice(i, 1);
+    }
+    for (let i = seams.length - 1; i &gt;= 0; i--) {
+      if (!seams[i].active) seams[i].life -= dt * 0.00008;
+      if (seams[i].life &lt;= 0) seams.splice(i, 1);
+    }
+
+    if (state === &#x27;field&#x27;) {
+      resonance = Math.max(0.04, resonance - dt * 0.000008);
+      if (resonance &gt;= 0.68) {
+        state = &#x27;candidate&#x27;;
+        setStatus();
+        eventTone(&#x27;candidate&#x27;);
+      }
+    }
+
+    if (state === &#x27;returning&#x27;) {
+      returnProgress += dt / 3400;
+      if (returnProgress &gt;= 1) {
+        returnProgress = -1;
+        generation = (generation + 1) % 6;
+        resonance = 0.14;
+        state = &#x27;field&#x27;;
+        addRipple(0.18, 0.52, 1.2);
+        setStatus();
+        eventTone(&#x27;return&#x27;);
+      }
+    }
+
+    for (let i = 0; i &lt; 9; i++) buildCurve(i);
+    statusClock += dt;
+    if (statusClock &gt; 120) {
+      statusClock = 0;
+      setStatus();
+    }
+    if (frame % 4 === 0) updateAudio();
   }
 
   function animate(now) {
-    if (!root.isConnected) {
-      stopAudio();
-      return;
-    }
-    const dt = Math.min(.05, (now - lastTime) / 1000 || .016);
+    const dt = Math.min(40, now - lastTime || 16.67);
     lastTime = now;
-    frame += 1;
-    drawBackground(now, dt);
-    drawLattice(now);
-    drawCurrents(now);
-    drawFlow(now, dt);
-    drawShadowFilaments(now);
-    drawWell(now);
-    drawSignals(dt);
-    drawGestures(dt);
-    drawCartographer(now);
-    drawOriginAndSeed(now);
-    drawPointer();
-    updateTransient(dt);
-    if (frame % 4 === 0) updateAudio();
+    frame++;
+    update(dt);
+    draw();
     requestAnimationFrame(animate);
   }
 
-  canvas.addEventListener('pointermove', event =&gt; {
+  function canvasPoint(event) {
     const rect = canvas.getBoundingClientRect();
-    pointer.px = pointer.x;
-    pointer.py = pointer.y;
-    pointer.x = event.clientX - rect.left;
-    pointer.y = event.clientY - rect.top;
-    pointer.active = true;
-    if (pointer.down) {
-      dragDistance += Math.hypot(pointer.x - pointer.px, pointer.y - pointer.py);
-      weaveAt(pointer.x, pointer.y);
-    }
-    markInteraction(.012);
+    return {
+      x: clamp((event.clientX - rect.left) / rect.width, 0, 1),
+      y: clamp((event.clientY - rect.top) / rect.height, 0, 1)
+    };
+  }
+
+  function impress(x, y, strength = 1) {
+    addRipple(x, y, strength);
+    if (state === &#x27;field&#x27;) resonance = clamp(resonance + 0.18 * strength, 0, 1);
+    eventTone(&#x27;touch&#x27;, y);
+  }
+
+  canvas.addEventListener(&#x27;pointerenter&#x27;, event =&gt; {
+    pointer.inside = true;
+    const p = canvasPoint(event);
+    pointer.tx = p.x;
+    pointer.ty = p.y;
   });
-  canvas.addEventListener('pointerenter', () =&gt; { pointer.active = true; });
-  canvas.addEventListener('pointerleave', () =&gt; { if (!pointer.down) pointer.active = false; });
-  canvas.addEventListener('pointerdown', event =&gt; {
-    pointer.down = true;
-    dragDistance = 0;
+
+  canvas.addEventListener(&#x27;pointerleave&#x27;, () =&gt; {
+    pointer.inside = false;
+    if (!pointer.down) currentSeam = null;
+  });
+
+  canvas.addEventListener(&#x27;pointerdown&#x27;, event =&gt; {
     canvas.setPointerCapture(event.pointerId);
-    markInteraction(.08);
+    const p = canvasPoint(event);
+    pointer.down = true;
+    pointer.tx = p.x;
+    pointer.ty = p.y;
+    pressedAt = p;
+    dragged = false;
+    currentSeam = { points: [p], life: 1, active: true };
+    seams.push(currentSeam);
+    if (seams.length &gt; 5) seams.shift();
   });
-  canvas.addEventListener('pointerup', event =&gt; {
+
+  canvas.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
+    const p = canvasPoint(event);
+    pointer.tx = p.x;
+    pointer.ty = p.y;
+    if (!pointer.down || !currentSeam) return;
+    const previous = currentSeam.points[currentSeam.points.length - 1];
+    if (Math.hypot(p.x - previous.x, p.y - previous.y) &gt; 0.008) {
+      currentSeam.points.push(p);
+      if (currentSeam.points.length &gt; 90) currentSeam.points.shift();
+      dragged = true;
+      if (state === &#x27;field&#x27;) resonance = clamp(resonance + 0.0065, 0, 1);
+    }
+  });
+
+  function endPointer(event) {
+    if (!pointer.down) return;
+    const p = canvasPoint(event);
     pointer.down = false;
-    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
-    resonance = clamp(resonance + Math.min(.12, dragDistance / Math.max(width, height) * .24), 0, 1);
-    if (dragDistance &lt; 8) handleFieldAction(pointer.x, pointer.y);
-    updateAction();
-  });
-
-  actionButton.addEventListener('click', () =&gt; {
-    if (locked) {
-      releaseReturn();
-    } else if (resonance &gt;= .68) {
-      attestLock();
+    if (currentSeam) currentSeam.active = false;
+    if (dragged) {
+      impress(p.x, p.y, 0.78);
+      eventTone(&#x27;peel&#x27;, p.y);
     } else {
-      const p = points();
-      addSignal(p.origin.x, p.origin.y, cycles % 9, 1.2);
-      setStatus('A signal left the origin. Guide it through what the map cannot see.');
+      impress(p.x, p.y, 1);
     }
+    currentSeam = null;
+  }
+
+  canvas.addEventListener(&#x27;pointerup&#x27;, endPointer);
+  canvas.addEventListener(&#x27;pointercancel&#x27;, event =&gt; {
+    pointer.down = false;
+    if (currentSeam) currentSeam.active = false;
+    currentSeam = null;
   });
 
-  modeSelect.addEventListener('change', () =&gt; {
-    mode = modeSelect.value;
-    markInteraction(.08);
-    if (mode === 'forge') {
-      setStatus('Forge makes resistance visible. Signals that move now pay a cost.');
-      playModeTone(146.83);
-    } else if (mode === 'recursion') {
-      setStatus('Recursion lets the destination bend back toward the origin.');
-      playModeTone(196);
-    } else {
-      setStatus('Field reveals relationship: attraction, repulsion, and emergent form.');
-      playModeTone(164.81);
-    }
+  depthInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+    depthTarget = Number(depthInput.value);
+    depthValue.textContent = String(depthTarget);
   });
 
-  shadowSwitch.addEventListener('change', () =&gt; {
-    shadow = shadowSwitch.checked;
-    shadowEngaged = false;
-    markInteraction(.12);
-    if (shadow) {
-      setStatus('Shadow surfaced. The same intelligence now organizes toward capture.');
-      cycleEl.textContent = 'map · capture · possible engagement';
-      playShadowTone();
-    } else {
-      setStatus('Shadow returned to latency. Its possibility remains in the field.');
-      cycleEl.textContent = 'origin · encounter · return';
-      playModeTone(164.81);
-    }
-    updateAudioCharacter();
+  shadowInput.addEventListener(&#x27;change&#x27;, () =&gt; {
+    shadowTarget = shadowInput.checked ? 1 : 0;
+    setStatus();
+    eventTone(&#x27;shadow&#x27;);
   });
 
-  window.addEventListener('keydown', event =&gt; {
-    const tag = event.target &amp;&amp; event.target.tagName;
-    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    if (event.key.toLowerCase() === 's') {
-      shadowSwitch.checked = !shadowSwitch.checked;
-      shadowSwitch.dispatchEvent(new Event('change'));
+  actionButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+    if (state === &#x27;candidate&#x27;) {
+      state = &#x27;locked&#x27;;
+      resonance = 1;
+      addRipple(0.62, 0.5, 1.55);
+      eventTone(&#x27;lock&#x27;);
+    } else if (state === &#x27;locked&#x27;) {
+      state = &#x27;returning&#x27;;
+      returnProgress = 0;
+      eventTone(&#x27;release&#x27;);
+    } else if (state === &#x27;field&#x27;) {
+      impress(pointer.inside ? pointer.x : 0.54, pointer.inside ? pointer.y : 0.48, 1.35);
     }
+    setStatus();
   });
 
-  let audioContext = null;
-  let masterGain = null;
-  let ambientGain = null;
-  let ambientFilter = null;
-  let ambientPanner = null;
-  let ambientOscillators = [];
-  let lfo = null;
-  let lfoGain = null;
+  window.addEventListener(&#x27;keydown&#x27;, event =&gt; {
+    if (event.key.toLowerCase() !== &#x27;s&#x27; || /input|select|textarea/i.test(event.target.tagName)) return;
+    shadowInput.checked = !shadowInput.checked;
+    shadowInput.dispatchEvent(new Event(&#x27;change&#x27;));
+  });
+
+  let audio = null;
 
   function ensureAudio() {
-    if (audioContext) {
-      if (audioContext.state === 'suspended') audioContext.resume();
-      return;
+    if (audio) {
+      if (audio.context.state === &#x27;suspended&#x27;) audio.context.resume();
+      return audio;
     }
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) {
-      setStatus('This browser cannot create the sonic layer. The visual field remains active.');
-      ambientSwitch.checked = false;
-      tonesSwitch.checked = false;
-      return;
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return null;
+    const context = new AudioContext();
+    const master = context.createGain();
+    master.gain.value = 0;
+    master.connect(context.destination);
+
+    const filter = context.createBiquadFilter();
+    filter.type = &#x27;lowpass&#x27;;
+    filter.frequency.value = 900;
+    filter.Q.value = 0.7;
+    filter.connect(master);
+
+    const warmGain = context.createGain();
+    const glassGain = context.createGain();
+    const shadowGain = context.createGain();
+    warmGain.gain.value = 0.028;
+    glassGain.gain.value = 0.012;
+    shadowGain.gain.value = 0;
+    warmGain.connect(filter);
+    glassGain.connect(filter);
+    shadowGain.connect(filter);
+
+    const warm = context.createOscillator();
+    const glass = context.createOscillator();
+    const shadow = context.createOscillator();
+    warm.type = &#x27;sine&#x27;;
+    glass.type = &#x27;triangle&#x27;;
+    shadow.type = &#x27;sawtooth&#x27;;
+    warm.frequency.value = 72;
+    glass.frequency.value = 108;
+    shadow.frequency.value = 76;
+    warm.connect(warmGain);
+    glass.connect(glassGain);
+    shadow.connect(shadowGain);
+    warm.start();
+    glass.start();
+    shadow.start();
+
+    const noiseLength = context.sampleRate * 2;
+    const noiseBuffer = context.createBuffer(1, noiseLength, context.sampleRate);
+    const data = noiseBuffer.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i &lt; noiseLength; i++) {
+      const white = Math.random() * 2 - 1;
+      last = last * 0.985 + white * 0.015;
+      data[i] = last;
     }
-    audioContext = new AudioCtx();
-    masterGain = audioContext.createGain();
-    masterGain.gain.value = .72;
-    masterGain.connect(audioContext.destination);
+    const noise = context.createBufferSource();
+    const noiseFilter = context.createBiquadFilter();
+    const noiseGain = context.createGain();
+    noise.buffer = noiseBuffer;
+    noise.loop = true;
+    noiseFilter.type = &#x27;bandpass&#x27;;
+    noiseFilter.frequency.value = 420;
+    noiseFilter.Q.value = 2.4;
+    noiseGain.gain.value = 0.018;
+    noise.connect(noiseFilter);
+    noiseFilter.connect(noiseGain);
+    noiseGain.connect(filter);
+    noise.start();
 
-    ambientGain = audioContext.createGain();
-    ambientGain.gain.value = 0;
-    ambientFilter = audioContext.createBiquadFilter();
-    ambientFilter.type = 'lowpass';
-    ambientFilter.frequency.value = 680;
-    ambientFilter.Q.value = .8;
-    ambientPanner = audioContext.createStereoPanner ? audioContext.createStereoPanner() : null;
-    ambientGain.connect(ambientFilter);
-    if (ambientPanner) {
-      ambientFilter.connect(ambientPanner);
-      ambientPanner.connect(masterGain);
-    } else {
-      ambientFilter.connect(masterGain);
-    }
-
-    const frequencies = [55, 82.5, 110];
-    ambientOscillators = frequencies.map((frequency, index) =&gt; {
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      oscillator.type = index === 1 ? 'triangle' : 'sine';
-      oscillator.frequency.value = frequency;
-      gain.gain.value = index === 0 ? .52 : index === 1 ? .22 : .13;
-      oscillator.connect(gain);
-      gain.connect(ambientGain);
-      oscillator.start();
-      return { oscillator, gain, base: frequency };
-    });
-
-    lfo = audioContext.createOscillator();
-    lfoGain = audioContext.createGain();
-    lfo.frequency.value = .075;
-    lfoGain.gain.value = .007;
-    lfo.connect(lfoGain);
-    lfoGain.connect(ambientGain.gain);
-    lfo.start();
-    updateAudioCharacter();
-  }
-
-  function stopAudio() {
-    if (!audioContext) return;
-    try { audioContext.close(); } catch (_) {}
-    audioContext = null;
-  }
-
-  function setAmbientEnabled(enabled) {
-    ensureAudio();
-    if (!audioContext || !ambientGain) return;
-    ambientGain.gain.setTargetAtTime(enabled ? .042 : 0, audioContext.currentTime, .28);
-  }
-
-  function updateAudioCharacter() {
-    if (!audioContext || !ambientOscillators.length) return;
-    const now = audioContext.currentTime;
-    const shadowRatio = shadow ? (shadowEngaged ? .45 : 1) : 0;
-    const creative = [55, 82.5, 110];
-    const inverted = [55, 77.78, 108.7];
-    ambientOscillators.forEach((node, index) =&gt; {
-      const target = lerp(creative[index], inverted[index], shadowRatio);
-      node.oscillator.frequency.setTargetAtTime(target, now, .24);
-      node.oscillator.detune.setTargetAtTime(shadowRatio * 40, now, .24);
-      node.oscillator.type = shadowRatio &gt; .7 ? (index === 0 ? 'triangle' : 'sawtooth') : (index === 1 ? 'triangle' : 'sine');
-    });
-    ambientFilter.frequency.setTargetAtTime(shadow ? 430 : 760, now, .35);
+    audio = { context, master, filter, warm, glass, shadow, warmGain, glassGain, shadowGain, noiseFilter, noiseGain };
+    return audio;
   }
 
   function updateAudio() {
-    if (!audioContext || !ambientGain || !pointer.active) return;
-    const now = audioContext.currentTime;
-    const altitude = 1 - clamp(pointer.y / height, 0, 1);
-    const fieldX = clamp(pointer.x / width, 0, 1);
-    const baseFilter = shadow ? 260 : 390;
-    ambientFilter.frequency.setTargetAtTime(baseFilter + altitude * 1450, now, .16);
-    if (ambientPanner) ambientPanner.pan.setTargetAtTime(fieldX * 1.6 - .8, now, .18);
-    ambientOscillators.forEach((node, index) =&gt; {
-      const dimensionalLift = 1 + altitude * (.08 + index * .025);
-      node.oscillator.detune.setTargetAtTime((shadow ? 40 : 0) + Math.log2(dimensionalLift) * 1200, now, .22);
-    });
+    if (!audio) return;
+    const now = audio.context.currentTime;
+    const altitude = 1 - pointer.y;
+    const base = 52 * Math.pow(2, altitude * 1.85);
+    const inward = smooth(shadowMix);
+    const active = ambientInput.checked ? 1 : 0;
+    audio.master.gain.setTargetAtTime(active * 0.68, now, 0.45);
+    audio.warm.frequency.setTargetAtTime(base, now, 0.18);
+    audio.glass.frequency.setTargetAtTime(base * lerp(1.5, Math.SQRT2, inward), now, 0.22);
+    audio.shadow.frequency.setTargetAtTime(base * lerp(1.25, Math.SQRT2, inward), now, 0.2);
+    audio.shadow.detune.setTargetAtTime(inward * 42, now, 0.28);
+    audio.warmGain.gain.setTargetAtTime(0.028 * (1 - inward * 0.48), now, 0.34);
+    audio.glassGain.gain.setTargetAtTime(0.012 * (1 - inward * 0.34), now, 0.34);
+    audio.shadowGain.gain.setTargetAtTime(0.012 * inward, now, 0.38);
+    audio.filter.frequency.setTargetAtTime(lerp(1450 + altitude * 900, 430 + altitude * 280, inward), now, 0.32);
+    audio.noiseFilter.frequency.setTargetAtTime(lerp(520, 210, inward), now, 0.34);
+    audio.noiseGain.gain.setTargetAtTime(0.012 + inward * 0.014, now, 0.4);
   }
 
-  function eventTone(frequency, duration = .55, volume = .05, type = 'sine', detune = 0, endFrequency = null) {
-    if (!tonesSwitch.checked) return;
-    ensureAudio();
-    if (!audioContext) return;
-    const now = audioContext.currentTime;
-    const osc = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    const filter = audioContext.createBiquadFilter();
-    osc.type = type;
+  function eventTone(kind, y = pointer.y) {
+    if (!tonesInput.checked) return;
+    const engine = ensureAudio();
+    if (!engine) return;
+    const now = engine.context.currentTime;
+    const destination = engine.context.createGain();
+    destination.connect(engine.context.destination);
+    const notes = { touch: 0, peel: 5, candidate: 7, lock: 12, shadow: -1, release: 4, return: 9 };
+    const steps = notes[kind] ?? 0;
+    const base = 146.83 * Math.pow(2, (1 - y) * 0.78);
+    const frequency = base * Math.pow(2, steps / 12);
+    const significant = [&#x27;candidate&#x27;, &#x27;lock&#x27;, &#x27;release&#x27;, &#x27;return&#x27;].includes(kind);
+    const osc = engine.context.createOscillator();
+    const upper = engine.context.createOscillator();
+    const gain = engine.context.createGain();
+    const upperGain = engine.context.createGain();
+    osc.type = shadowMix &gt; 0.65 ? &#x27;triangle&#x27; : &#x27;sine&#x27;;
+    upper.type = shadowMix &gt; 0.65 ? &#x27;sawtooth&#x27; : &#x27;sine&#x27;;
     osc.frequency.value = frequency;
-    osc.detune.value = detune;
-    if (endFrequency) osc.frequency.exponentialRampToValueAtTime(endFrequency, now + duration * .75);
-    filter.type = 'lowpass';
-    filter.frequency.value = shadow ? 1100 : 2600;
-    gain.gain.value = .0001;
-    gain.gain.exponentialRampToValueAtTime(volume, now + .012);
-    gain.gain.exponentialRampToValueAtTime(.0001, now + duration);
-    osc.connect(filter);
-    filter.connect(gain);
-    gain.connect(masterGain);
+    upper.frequency.value = frequency * lerp(1.5, Math.SQRT2, shadowMix);
+    upper.detune.value = shadowMix * 38;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(significant ? 0.075 : 0.035, now + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.55 : 0.42));
+    upperGain.gain.setValueAtTime(0.0001, now);
+    upperGain.gain.exponentialRampToValueAtTime(significant ? 0.026 : 0.011, now + 0.012);
+    upperGain.gain.exponentialRampToValueAtTime(0.0001, now + (significant ? 1.15 : 0.32));
+    osc.connect(gain);
+    upper.connect(upperGain);
+    gain.connect(destination);
+    upperGain.connect(destination);
     osc.start(now);
-    osc.stop(now + duration + .03);
+    upper.start(now);
+    osc.stop(now + (significant ? 1.6 : 0.46));
+    upper.stop(now + (significant ? 1.2 : 0.36));
+    osc.addEventListener(&#x27;ended&#x27;, () =&gt; destination.disconnect(), { once: true });
   }
 
-  function playDimensionTone(dim, volumeScale = 1) {
-    const scale = [110, 132, 147, 165, 196, 220, 264, 294, 330];
-    eventTone(scale[dim], .3, .022 * volumeScale, shadow ? 'sawtooth' : 'sine', shadow ? 40 : 0);
-  }
-  function playModeTone(freq) { eventTone(freq, .72, .04, shadow ? 'triangle' : 'sine', shadow ? 40 : 0, freq * 1.5); }
-  function playCandidateTone() { eventTone(196, .8, .032, 'sine', 0, 294); }
-  function playPortalTone() { eventTone(132, .62, .046, shadow ? 'square' : 'triangle', shadow ? 40 : 0, 264); }
-  function playShadowTone() { eventTone(77.78, .92, .04, 'sawtooth', 40, 55); }
-  function playShadowEngagedTone() {
-    eventTone(77.78, .9, .032, 'triangle', 20, 110);
-    window.setTimeout(() =&gt; eventTone(164.81, .8, .026, 'sine', 0, 220), 140);
-  }
-  function playLockTone() {
-    eventTone(196, 1.15, .045, 'sine');
-    window.setTimeout(() =&gt; eventTone(294, 1, .034, 'sine'), 80);
-    window.setTimeout(() =&gt; eventTone(392, .92, .024, 'sine'), 160);
-  }
-  function playReturnTone() {
-    eventTone(98, 1.35, .045, 'sine', 0, 196);
-    window.setTimeout(() =&gt; eventTone(330, .9, .03, 'triangle'), 240);
-  }
-
-  ambientSwitch.addEventListener('change', () =&gt; {
-    setAmbientEnabled(ambientSwitch.checked);
-    setStatus(ambientSwitch.checked ? 'The field is audible. Height changes its register.' : 'The ambient field is silent; event structure remains available.');
+  ambientInput.addEventListener(&#x27;change&#x27;, () =&gt; {
+    if (ambientInput.checked) ensureAudio();
+    updateAudio();
   });
-  tonesSwitch.addEventListener('change', () =&gt; {
-    if (tonesSwitch.checked) {
+
+  tonesInput.addEventListener(&#x27;change&#x27;, () =&gt; {
+    if (tonesInput.checked) {
       ensureAudio();
-      setStatus('Event tones will sound only when structure changes.');
-      eventTone(164.81, .45, .035, 'sine');
-    } else {
-      setStatus('Event tones are silent. The visual field continues to respond.');
+      eventTone(&#x27;touch&#x27;, 0.5);
     }
   });
 
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(canvas);
+  new MutationObserver(refreshPalette).observe(document.documentElement, { attributes: true, attributeFilter: [&#x27;class&#x27;, &#x27;data-theme&#x27;] });
   resize();
-  updateAction();
+  setStatus();
+  addRipple(0.51, 0.5, 0.7);
   requestAnimationFrame(animate);
 })();
 &lt;/script&gt;
-
-
-&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
 
 &lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
@@ -2387,112 +2203,5 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 "></iframe>
-<script>(() => {
-  const frame = document.getElementById("codex-visualization");
-  if (!(frame instanceof HTMLIFrameElement)) {
-    return;
-  }
-  let viewportHeight = globalThis.innerHeight;
-
-  const channel = new MessageChannel();
-  channel.port1.addEventListener("message", (event) => {
-    const data = event.data;
-    if (typeof data !== "object" || data == null) {
-      return;
-    }
-    if (data.type === "height") {
-      const height = data.height;
-      if (
-        typeof height === "number" &&
-        Number.isFinite(height) &&
-        height >= 0 &&
-        height <= 10_000
-      ) {
-        frame.style.height = Math.ceil(height) + "px";
-      }
-      return;
-    }
-    if (data.type === "scroll-to") {
-      const top = data.top;
-      if (
-        typeof top === "number" &&
-        Number.isFinite(top) &&
-        top >= 0 &&
-        globalThis.navigator.userActivation?.isActive === true
-      ) {
-        globalThis.scrollTo({
-          top: Math.ceil(
-            globalThis.scrollY + frame.getBoundingClientRect().top + top,
-          ),
-        });
-      }
-      return;
-    }
-    if (data.type === "open-external") {
-      const rawHref = data.href;
-      if (typeof rawHref !== "string") {
-        return;
-      }
-      let href;
-      try {
-        const url = new URL(rawHref, document.baseURI);
-        if (url.protocol !== "https:") {
-          return;
-        }
-        href = url.href;
-      } catch {
-        return;
-      }
-      if (globalThis.navigator.userActivation?.isActive === true) {
-        const anchor = document.createElement("a");
-        anchor.href = href;
-        anchor.rel = "noopener noreferrer";
-        anchor.target = "_blank";
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
-      }
-      return;
-    }
-    if (data.type === "follow-up") {
-      const prompt = data.prompt;
-      if (
-        typeof prompt !== "string" ||
-        globalThis.navigator.userActivation?.isActive !== true
-      ) {
-        return;
-      }
-      const title = data.title;
-      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
-    }
-  });
-  channel.port1.start();
-  const srcdoc = frame.dataset.srcdoc;
-  if (srcdoc == null) {
-    return;
-  }
-  globalThis.addEventListener("resize", () => {
-    const height = Number.parseFloat(frame.style.height);
-    if (!Number.isFinite(height) || height <= viewportHeight) {
-      frame.style.removeProperty("height");
-    }
-    viewportHeight = globalThis.innerHeight;
-    channel.port1.postMessage({ type: "measure" });
-  });
-  frame.addEventListener(
-    "load",
-    () => {
-      frame.contentWindow?.postMessage(
-        { type: "codex-visualization-initialize" },
-        "*",
-        [channel.port2],
-      );
-    },
-    { once: true },
-  );
-  frame.srcdoc = srcdoc;
-  delete frame.dataset.srcdoc;
-})();
-</script>
 </body>
 </html>
