@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Renewed Field v4</title>
+<title>Renewed Field v5</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field v4" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field v5" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Renewed Field v4&lt;/title&gt;
+&lt;title&gt;Renewed Field v5&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(--background) !important;
@@ -748,73 +748,73 @@ svg {
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;renewed-field-v4&quot;&gt;
+&lt;div id=&quot;renewed-field-v5&quot;&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Field controls&quot;&gt;
-    &lt;button id=&quot;rfv4-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-shadow&quot;&gt;
-      &lt;input id=&quot;rfv4-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;button id=&quot;rfv5-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot; disabled&gt;Field unconverged&lt;/button&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-shadow&quot;&gt;
+      &lt;input id=&quot;rfv5-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Shadow&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-ambient&quot;&gt;
-      &lt;input id=&quot;rfv4-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-ambient&quot;&gt;
+      &lt;input id=&quot;rfv5-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Ambience&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-tones&quot;&gt;
-      &lt;input id=&quot;rfv4-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-tones&quot;&gt;
+      &lt;input id=&quot;rfv5-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Chimes&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Atmosphere and focal controls&quot;&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;rfv4-temperature&quot;&gt;Field temperature &lt;span id=&quot;rfv4-temperature-value&quot; class=&quot;text-muted&quot;&gt;sunrise&lt;/span&gt;
-      &lt;input id=&quot;rfv4-temperature&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;64&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv5-temperature&quot;&gt;Field temperature &lt;span id=&quot;rfv5-temperature-value&quot; class=&quot;text-muted&quot;&gt;warm dawn&lt;/span&gt;
+      &lt;input id=&quot;rfv5-temperature&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;58&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;rfv4-focus-force&quot;&gt;Focal force &lt;span id=&quot;rfv4-focus-force-value&quot; class=&quot;text-muted&quot;&gt;drift&lt;/span&gt;
-      &lt;input id=&quot;rfv4-focus-force&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-100&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;0&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv5-focus-force&quot; data-tooltip=&quot;How your stroke moves the blind spot. In Shadow, the displaced resting point persists until Shadow is released.&quot;&gt;Blind-spot response &lt;span id=&quot;rfv5-focus-force-value&quot; class=&quot;text-muted&quot;&gt;elastic drift&lt;/span&gt;
+      &lt;input id=&quot;rfv5-focus-force&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-100&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;0&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-emergent&quot;&gt;
-      &lt;input id=&quot;rfv4-emergent&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
-      &lt;span class=&quot;form-check-label&quot;&gt;Emergent focus&lt;/span&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-emergent&quot;&gt;
+      &lt;input id=&quot;rfv5-emergent&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+      &lt;span class=&quot;form-check-label&quot;&gt;Second focus from stains&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv4-status text-small&quot; aria-live=&quot;polite&quot;&gt;
-    &lt;span id=&quot;rfv4-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
-    &lt;span id=&quot;rfv4-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
+  &lt;div class=&quot;rfv5-status text-small&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;span id=&quot;rfv5-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
+    &lt;span id=&quot;rfv5-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv4-stage&quot;&gt;
-    &lt;canvas id=&quot;rfv4-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field with motion-weighted marks, deep stains, controllable focal gravity, and an emergent secondary focus.&quot;&gt;&lt;/canvas&gt;
-    &lt;div class=&quot;rfv4-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;motion becomes weight&lt;/span&gt;&lt;span&gt;shape the focal field&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;rfv5-stage&quot;&gt;
+    &lt;canvas id=&quot;rfv5-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field where the visitor draws continuous paint-like strokes, saturates locations into deep stains, and can elastically or persistently displace the blind spot.&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;rfv5-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;the stroke is yours&lt;/span&gt;&lt;span&gt;linger · overlap · saturate&lt;/span&gt;&lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;details class=&quot;rfv4-legend&quot;&gt;
-    &lt;summary class=&quot;text-small&quot;&gt;Field structure&lt;/summary&gt;
+  &lt;details class=&quot;rfv5-legend&quot;&gt;
+    &lt;summary class=&quot;text-small&quot;&gt;Why the field responds&lt;/summary&gt;
     &lt;div class=&quot;viz-row text-small text-muted&quot;&gt;
-      &lt;span&gt;void → filaments&lt;/span&gt;
-      &lt;span&gt;density → stains&lt;/span&gt;
-      &lt;span&gt;edges → long arcs&lt;/span&gt;
+      &lt;span&gt;long stroke → capacity&lt;/span&gt;
+      &lt;span&gt;thick stroke → falling fidelity&lt;/span&gt;
+      &lt;span&gt;slow overlap → saturation stain&lt;/span&gt;
+      &lt;span&gt;stain → gravity-bearing residue&lt;/span&gt;
       &lt;span&gt;blind spot → basin response&lt;/span&gt;
-      &lt;span&gt;motion → line weight&lt;/span&gt;
-      &lt;span&gt;stains → deep tapestry&lt;/span&gt;
-      &lt;span&gt;focus → coherent drift&lt;/span&gt;
+      &lt;span&gt;Shadow + response → displaced home&lt;/span&gt;
+      &lt;span&gt;attestation → human anchor&lt;/span&gt;
     &lt;/div&gt;
   &lt;/details&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-  #renewed-field-v4 {
+  #renewed-field-v5 {
     color: var(--foreground);
     width: 100%;
     min-width: 0;
     overflow: hidden;
   }
 
-  #renewed-field-v4 .viz-controls {
+  #renewed-field-v5 .viz-controls {
     flex-wrap: wrap;
   }
 
-  #renewed-field-v4 .rfv4-status {
+  #renewed-field-v5 .rfv5-status {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -822,18 +822,18 @@ html&gt;body{padding:0}&lt;/style&gt;
     margin: 8px 0;
   }
 
-  #renewed-field-v4 .viz-controls .form-label {
+  #renewed-field-v5 .viz-controls .form-label {
     flex: 1 1 210px;
     min-width: min(210px, 100%);
   }
 
-  #renewed-field-v4 .viz-controls .form-range {
+  #renewed-field-v5 .viz-controls .form-range {
     display: block;
     width: 100%;
     margin-top: 4px;
   }
 
-  #renewed-field-v4 .rfv4-stage {
+  #renewed-field-v5 .rfv5-stage {
     position: relative;
     width: 100%;
     height: clamp(400px, 69vw, 580px);
@@ -841,14 +841,14 @@ html&gt;body{padding:0}&lt;/style&gt;
     background: var(--card);
   }
 
-  #renewed-field-v4 canvas {
+  #renewed-field-v5 canvas {
     display: block;
     width: 100%;
     height: 100%;
     touch-action: none;
   }
 
-  #renewed-field-v4 .rfv4-whisper {
+  #renewed-field-v5 .rfv5-whisper {
     position: absolute;
     left: 12px;
     right: 12px;
@@ -861,22 +861,22 @@ html&gt;body{padding:0}&lt;/style&gt;
     mix-blend-mode: difference;
   }
 
-  #renewed-field-v4 .rfv4-legend {
+  #renewed-field-v5 .rfv5-legend {
     margin-top: 8px;
   }
 
-  #renewed-field-v4 .rfv4-legend .viz-row {
+  #renewed-field-v5 .rfv5-legend .viz-row {
     margin-top: 6px;
   }
 
   @media (max-width: 480px) {
-    #renewed-field-v4 .viz-controls {
+    #renewed-field-v5 .viz-controls {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       width: 100%;
     }
 
-    #renewed-field-v4 .viz-controls .form-label {
+    #renewed-field-v5 .viz-controls .form-label {
       display: flex;
       flex-wrap: wrap;
       grid-column: 1 / -1;
@@ -884,33 +884,36 @@ html&gt;body{padding:0}&lt;/style&gt;
       max-width: 100%;
     }
 
-    #renewed-field-v4 .viz-controls .form-label .text-muted {
-      margin-left: auto;
+    #renewed-field-v5 .viz-controls .form-label .text-muted {
+      flex: 1 0 100%;
+      order: 1;
+      margin-left: 0;
     }
 
-    #renewed-field-v4 .viz-controls .form-check {
+    #renewed-field-v5 .viz-controls .form-check {
       min-width: 0;
     }
 
-    #renewed-field-v4 .viz-controls .form-check-label {
+    #renewed-field-v5 .viz-controls .form-check-label {
       white-space: normal;
     }
 
-    #renewed-field-v4 .viz-controls .form-range {
+    #renewed-field-v5 .viz-controls .form-range {
       flex: 1 0 100%;
+      order: 2;
       max-width: 100%;
     }
 
-    #renewed-field-v4 .rfv4-status {
+    #renewed-field-v5 .rfv5-status {
       flex-direction: column;
       gap: 2px;
     }
 
-    #renewed-field-v4 .rfv4-stage {
+    #renewed-field-v5 .rfv5-stage {
       height: 430px;
     }
 
-    #renewed-field-v4 .rfv4-whisper span:last-child {
+    #renewed-field-v5 .rfv5-whisper span:last-child {
       display: none;
     }
   }
@@ -918,22 +921,22 @@ html&gt;body{padding:0}&lt;/style&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;renewed-field-v4&#x27;);
+  const root = document.getElementById(&#x27;renewed-field-v5&#x27;);
   if (!root) return;
 
-  const canvas = root.querySelector(&#x27;#rfv4-canvas&#x27;);
+  const canvas = root.querySelector(&#x27;#rfv5-canvas&#x27;);
   const ctx = canvas.getContext(&#x27;2d&#x27;, { alpha: false });
-  const actionButton = root.querySelector(&#x27;#rfv4-action&#x27;);
-  const shadowInput = root.querySelector(&#x27;#rfv4-shadow&#x27;);
-  const ambientInput = root.querySelector(&#x27;#rfv4-ambient&#x27;);
-  const tonesInput = root.querySelector(&#x27;#rfv4-tones&#x27;);
-  const temperatureInput = root.querySelector(&#x27;#rfv4-temperature&#x27;);
-  const temperatureValue = root.querySelector(&#x27;#rfv4-temperature-value&#x27;);
-  const focusForceInput = root.querySelector(&#x27;#rfv4-focus-force&#x27;);
-  const focusForceValue = root.querySelector(&#x27;#rfv4-focus-force-value&#x27;);
-  const emergentInput = root.querySelector(&#x27;#rfv4-emergent&#x27;);
-  const statusNode = root.querySelector(&#x27;#rfv4-status&#x27;);
-  const orientationNode = root.querySelector(&#x27;#rfv4-orientation&#x27;);
+  const actionButton = root.querySelector(&#x27;#rfv5-action&#x27;);
+  const shadowInput = root.querySelector(&#x27;#rfv5-shadow&#x27;);
+  const ambientInput = root.querySelector(&#x27;#rfv5-ambient&#x27;);
+  const tonesInput = root.querySelector(&#x27;#rfv5-tones&#x27;);
+  const temperatureInput = root.querySelector(&#x27;#rfv5-temperature&#x27;);
+  const temperatureValue = root.querySelector(&#x27;#rfv5-temperature-value&#x27;);
+  const focusForceInput = root.querySelector(&#x27;#rfv5-focus-force&#x27;);
+  const focusForceValue = root.querySelector(&#x27;#rfv5-focus-force-value&#x27;);
+  const emergentInput = root.querySelector(&#x27;#rfv5-emergent&#x27;);
+  const statusNode = root.querySelector(&#x27;#rfv5-status&#x27;);
+  const orientationNode = root.querySelector(&#x27;#rfv5-orientation&#x27;);
   const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
 
   const TAU = Math.PI * 2;
@@ -967,12 +970,17 @@ html&gt;body{padding:0}&lt;/style&gt;
   let generation = 0;
   let currentGesture = null;
   let statusClock = 0;
+  let lockPoint = null;
+  let candidatePoint = null;
+  let candidateScore = 0;
   const marks = [];
+  const strokes = [];
   const waves = [];
   const blindEvents = [];
   const curves = Array.from({ length: 9 }, () =&gt; []);
   const pointer = { x: 0.58, y: 0.47, tx: 0.58, ty: 0.47, vx: 0, vy: 0, down: false, inside: false };
   const blindFocus = { x: 0.315, y: 0.455, vx: 0, vy: 0 };
+  const blindHome = { offsetX: 0, offsetY: 0 };
   const emergentFocus = { x: 0.72, y: 0.36, vx: 0, vy: 0, coherence: 0 };
 
   const scene = document.createElement(&#x27;canvas&#x27;);
@@ -1065,13 +1073,27 @@ html&gt;body{padding:0}&lt;/style&gt;
     return smooth(shadowMix) * (1 - engagement * 0.58);
   }
 
+  function temperatureShift(color, strength = 1) {
+    const polarity = (temperature - 0.5) * 2 * strength;
+    if (polarity &gt;= 0) {
+      return [
+        Math.round(lerp(color[0], Math.min(255, color[0] + 72), polarity)),
+        Math.round(lerp(color[1], Math.min(255, color[1] + 18), polarity)),
+        Math.round(lerp(color[2], color[2] * 0.64, polarity)),
+        255
+      ];
+    }
+    const cool = -polarity;
+    return [
+      Math.round(lerp(color[0], color[0] * 0.62, cool)),
+      Math.round(lerp(color[1], Math.min(255, color[1] + 18), cool)),
+      Math.round(lerp(color[2], Math.min(255, color[2] + 78), cool)),
+      255
+    ];
+  }
+
   function gradedColor(color, band = 0) {
-    const warm = mixColor(palette.series[2], palette.series[5], 0.46);
-    const cool = mixColor(palette.series[1], palette.series[4], 0.44);
-    const distance = Math.abs(temperature - 0.5) * 0.32;
-    const anchor = temperature &gt;= 0.5 ? warm : cool;
-    const complement = temperature &gt;= 0.5 ? cool : warm;
-    return mixColor(color, band % 2 ? complement : anchor, distance * (band % 2 ? 0.46 : 0.88));
+    return temperatureShift(color, band % 3 === 1 ? 0.56 : 0.96);
   }
 
   function stainCentroid() {
@@ -1088,6 +1110,35 @@ html&gt;body{padding:0}&lt;/style&gt;
       weight += w;
     }
     return weight ? { x: x / weight, y: y / weight, weight } : { x: 0.67, y: 0.39, weight: 0 };
+  }
+
+  function findConvergenceCandidate() {
+    const stains = marks.filter(mark =&gt; mark.type === &#x27;stain&#x27; &amp;&amp; markLife(mark) &gt; 0.16);
+    let best = { score: 0, x: 0.5, y: 0.5 };
+    for (const center of stains) {
+      const cluster = stains.filter(mark =&gt; Math.hypot(mark.x - center.x, mark.y - center.y) &lt; 0.22);
+      if (cluster.length &lt; 3) continue;
+      const pillars = new Set(cluster.map(mark =&gt; mark.pillar));
+      let x = 0;
+      let y = 0;
+      let weight = 0;
+      let spread = 0;
+      for (const mark of cluster) {
+        const w = markLife(mark) * (0.4 + mark.depth * 0.8);
+        x += mark.x * w;
+        y += mark.y * w;
+        weight += w;
+        spread += Math.hypot(mark.x - center.x, mark.y - center.y) * w;
+      }
+      x /= Math.max(weight, 0.001);
+      y /= Math.max(weight, 0.001);
+      const diversity = pillars.size / 3;
+      const density = clamp(weight / 5.2, 0, 1);
+      const compactness = 1 - clamp(spread / Math.max(weight, 0.001) / 0.22, 0, 1);
+      const score = diversity * 0.50 + density * 0.32 + compactness * 0.18;
+      if (score &gt; best.score) best = { score, x, y };
+    }
+    return best;
   }
 
   function aperture() {
@@ -1178,6 +1229,10 @@ html&gt;body{padding:0}&lt;/style&gt;
         y += (emergentFocus.y - y) * secondary * emergentFocus.coherence * 0.11;
         y += sign * secondary * emergentFocus.coherence * 0.022;
       }
+      if (lockPoint) {
+        const locked = Math.exp(-Math.pow((nx - lockPoint.x) / 0.16, 2));
+        y += (lockPoint.y - y) * locked * 0.16;
+      }
 
       const pull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
       y += (pointer.y - y) * pull * (pointer.inside ? 0.08 : 0.018) * (0.58 + (i + 1) / 18);
@@ -1241,8 +1296,9 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   function drawBackdrop() {
     const grip = shadowGrip();
-    const temperatureColor = gradedColor(temperature &gt;= 0.5 ? palette.series[5] : palette.series[1], 0);
-    const tint = mixColor(mixColor(palette.bg, temperatureColor, darkField ? 0.035 : 0.014), palette.shadow, grip * 0.073);
+    const temperatureDepth = 0.12 + Math.abs(temperature - 0.5) * (darkField ? 0.30 : 0.16);
+    const temperatureColor = temperatureShift(palette.bg, 1);
+    const tint = mixColor(mixColor(palette.bg, temperatureColor, temperatureDepth), palette.shadow, grip * 0.073);
     const base = ctx.createLinearGradient(0, lerp(0, H, grip), W, lerp(H, 0, grip));
     base.addColorStop(0, rgba(mixColor(tint, gradedColor(colorFor(0, 1), 0), darkField ? 0.10 : 0.03), 1));
     base.addColorStop(0.47, rgba(tint, 1));
@@ -1366,6 +1422,185 @@ html&gt;body{padding:0}&lt;/style&gt;
     ctx.restore();
   }
 
+  function strokeLife(stroke) {
+    if (stroke.active) return 1;
+    const remaining = clamp(1 - stroke.age / stroke.life, 0, 1);
+    return Math.pow(remaining, 0.88);
+  }
+
+  function drawBrushStroke(stroke) {
+    const points = stroke.points;
+    const life = strokeLife(stroke);
+    if (!points.length || life &lt;= 0) return;
+    const color = gradedColor(colorFor(stroke.color, stroke.color), stroke.color);
+    if (points.length === 1) {
+      ctx.beginPath();
+      ctx.arc(points[0].x * W, points[0].y * H, Math.max(0.7, points[0].width * 0.5), 0, TAU);
+      ctx.fillStyle = rgba(color, 0.42 * life);
+      ctx.fill();
+      return;
+    }
+
+    for (let i = 1; i &lt; points.length; i++) {
+      const a = points[i - 1];
+      const b = points[i];
+      const dx = (b.x - a.x) * W;
+      const dy = (b.y - a.y) * H;
+      const rawLength = Math.hypot(dx, dy);
+      const length = rawLength || 1;
+      const nx = -dy / length;
+      const ny = dx / length;
+      const mess = b.mess;
+      const fidelity = b.fidelity;
+      const seed = stroke.seed * 37 + i * 11.7;
+
+      if (rawLength &lt; 0.2) {
+        ctx.beginPath();
+        ctx.arc(b.x * W, b.y * H, b.width * 0.46, 0, TAU);
+        ctx.fillStyle = rgba(color, life * (0.16 + fidelity * 0.18));
+        ctx.fill();
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(a.x * W, a.y * H);
+      ctx.lineTo(b.x * W, b.y * H);
+      ctx.strokeStyle = rgba(color, life * (0.20 + fidelity * 0.30));
+      ctx.lineWidth = b.width * (1 - mess * 0.18);
+      ctx.lineCap = &#x27;round&#x27;;
+      ctx.stroke();
+
+      const bristles = 1 + Math.floor(mess * 6);
+      for (let bristle = 0; bristle &lt; bristles; bristle++) {
+        if (hash(seed + bristle * 3.1) &lt; mess * 0.22) continue;
+        const lane = (bristle - (bristles - 1) * 0.5) / Math.max(1, bristles - 1);
+        const spread = lane * b.width * (0.30 + mess * 0.44);
+        const jitterA = (hash(seed + bristle * 7.7) - 0.5) * b.width * mess * 0.36;
+        const jitterB = (hash(seed + bristle * 9.3) - 0.5) * b.width * mess * 0.58;
+        ctx.beginPath();
+        ctx.moveTo(a.x * W + nx * (spread + jitterA), a.y * H + ny * (spread + jitterA));
+        ctx.lineTo(b.x * W + nx * (spread + jitterB), b.y * H + ny * (spread + jitterB));
+        ctx.strokeStyle = rgba(gradedColor(colorFor(stroke.color + bristle + 1, bristle), bristle), life * (0.08 + (1 - mess) * 0.10));
+        ctx.lineWidth = Math.max(0.35, b.width * (0.075 + hash(seed + bristle) * 0.08));
+        ctx.stroke();
+      }
+
+      if (mess &gt; 0.28 &amp;&amp; i % 2 === 0) {
+        const specks = 1 + Math.floor(mess * 4);
+        for (let speck = 0; speck &lt; specks; speck++) {
+          const t = hash(seed + speck * 13.1);
+          const spread = (hash(seed + speck * 17.3) - 0.5) * b.width * (1.1 + mess);
+          const x = lerp(a.x, b.x, t) * W + nx * spread;
+          const y = lerp(a.y, b.y, t) * H + ny * spread;
+          const size = 0.35 + hash(seed + speck * 19.9) * b.width * 0.16;
+          ctx.fillStyle = rgba(color, life * mess * 0.16);
+          ctx.fillRect(x, y, size, size * 0.62);
+        }
+      }
+    }
+  }
+
+  function drawBrushStrokes() {
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (const stroke of strokes) drawBrushStroke(stroke);
+    ctx.restore();
+  }
+
+  function createSaturationStain(stroke, point, metrics) {
+    const total = Math.max(stroke.depositWeight, 0.001);
+    const centerX = clamp(lerp(point.x, stroke.depositX / total, 0.48), 0.03, 0.97);
+    const centerY = clamp(lerp(point.y, stroke.depositY / total, 0.48), 0.04, 0.96);
+    const depth = clamp(0.28 + metrics.rho * 0.34 + stroke.deposit / stroke.nextStain * 0.22, 0.22, 1);
+    const mark = {
+      x: centerX,
+      y: centerY,
+      vx: point.dx || 0.01,
+      vy: point.dy || 0,
+      strength: 0.72 + depth * 0.45,
+      metrics,
+      type: &#x27;stain&#x27;,
+      reason: &#x27;flow-saturation&#x27;,
+      pillar: stroke.color % 3,
+      weight: clamp(0.65 + point.width / 10.5, 0.65, 1.65),
+      depth,
+      age: 0,
+      life: 390 + depth * 330 + Math.random() * 90,
+      seed: stroke.seed + marks.length * 0.73,
+      color: stroke.color,
+      shadow: shadowMix
+    };
+    marks.push(mark);
+    if (marks.length &gt; 260) marks.shift();
+    addWave(centerX, centerY, 0.76 + depth * 0.42, mark.seed);
+    resonance = clamp(resonance + 0.13 + depth * 0.08, 0, 1);
+    focalSeed = clamp(focalSeed + depth * 0.12, 0, 1.6);
+    canvas.dataset.lastMarkType = &#x27;stain&#x27;;
+    canvas.dataset.lastStainReason = mark.reason;
+    canvas.dataset.memoryCount = String(marks.length);
+    statusNode.textContent = &#x27;Saturated attention has become a gravity-bearing stain.&#x27;;
+    eventTone(&#x27;stain&#x27;, centerY);
+  }
+
+  function appendStrokePoint(stroke, point, force = false) {
+    const previous = stroke.points[stroke.points.length - 1];
+    if (!previous) {
+      stroke.points.push({ ...point, width: 0.85, fidelity: 1, mess: 0, dx: 0.01, dy: 0 });
+      return;
+    }
+    const dx = point.x - previous.x;
+    const dy = point.y - previous.y;
+    const distance = Math.hypot(dx, dy);
+    if (!force &amp;&amp; distance &lt; 0.0014) return;
+    const seconds = Math.max(0.008, (point.time - previous.time) / 1000);
+    const speed = clamp(distance / seconds / 1.25, 0, 1);
+    stroke.length += distance;
+    const elapsed = Math.max(0, (point.time - stroke.startedAt) / 1000);
+    const growth = 1 - Math.exp(-(elapsed * 0.24 + stroke.length * 1.55));
+    const width = Math.min(stroke.maxWidth, 0.85 + growth * (stroke.maxWidth - 0.85));
+    const mess = smooth(clamp((width - 3.7) / (stroke.maxWidth - 3.7), 0, 1));
+    const fidelity = clamp(1 - mess * 0.76 - speed * mess * 0.08, 0.16, 1);
+    const metrics = metricsAt(point.x, point.y, dx, dy);
+    let revisits = 0;
+    const start = Math.max(0, stroke.points.length - 70);
+    for (let i = start; i &lt; stroke.points.length - 8; i += 3) {
+      if (Math.hypot(point.x - stroke.points[i].x, point.y - stroke.points[i].y) &lt; 0.028) revisits++;
+    }
+    const revisit = clamp(revisits / 3, 0, 1);
+    const deposit = seconds * (0.045 + (1 - speed) * 0.24)
+      + distance * (0.18 + metrics.rho * 0.52)
+      + revisit * 0.024;
+    stroke.deposit += deposit;
+    stroke.depositX += point.x * deposit;
+    stroke.depositY += point.y * deposit;
+    stroke.depositWeight += deposit;
+    const enriched = { ...point, width, fidelity, mess, dx, dy, speed, revisit, rho: metrics.rho };
+    stroke.points.push(enriched);
+    stroke.lastDwellAt = point.time;
+    canvas.dataset.strokeWidth = width.toFixed(2);
+    canvas.dataset.strokeFidelity = fidelity.toFixed(3);
+    canvas.dataset.strokeSaturation = clamp(stroke.deposit / stroke.nextStain, 0, 1).toFixed(3);
+
+    if (stroke.deposit &gt;= stroke.nextStain) {
+      createSaturationStain(stroke, enriched, metrics);
+      stroke.nextStain += 1.05 + stroke.stains * 0.24;
+      stroke.stains++;
+    }
+    if (insideBlind(point.x, point.y) &amp;&amp; point.time - stroke.lastBlindAt &gt; 620) {
+      stroke.lastBlindAt = point.time;
+      addMark(point.x, point.y, dx, dy, 0.74, { speed, curvature: revisit, pressure: point.pressure });
+    } else {
+      applyFocusImpulse(point.x, point.y, 0.12 + mess * 0.12, metrics.rho);
+      if (shadowMix &gt; 0.08) engagement = clamp(engagement + 0.004 + mess * 0.005, 0, 1);
+    }
+    if (statusClock &gt; 48) {
+      const saturation = Math.round(clamp(stroke.deposit / stroke.nextStain, 0, 1) * 100);
+      statusNode.textContent = `Your stroke is carrying attention · saturation ${saturation}%`;
+      orientationNode.textContent = `${width.toFixed(1)}px · fidelity ${Math.round(fidelity * 100)}%`;
+      statusClock = 0;
+    }
+  }
+
   function drifted(mark) {
     const radialX = mark.x - 0.5;
     const radialY = mark.y - 0.5;
@@ -1383,6 +1618,9 @@ html&gt;body{padding:0}&lt;/style&gt;
     const center = drifted(mark);
     const base = 9 + mark.weight * 18 + mark.depth * 23 + Math.min(36, mark.age * 0.095);
     const rings = 8 + Math.round(mark.depth * 4);
+    const direction = Math.atan2(mark.vy * H, mark.vx * W);
+    const cosD = Math.cos(direction);
+    const sinD = Math.sin(direction);
     ctx.save();
     ctx.globalAlpha = 0.52 + mark.depth * 0.48;
     ctx.filter = mark.depth &lt; 0.38 ? &#x27;blur(1.4px)&#x27; : mark.depth &gt; 0.78 ? &#x27;blur(0.25px)&#x27; : &#x27;none&#x27;;
@@ -1393,8 +1631,10 @@ html&gt;body{padding:0}&lt;/style&gt;
         const angle = j / 44 * TAU;
         const noise = 1 + Math.sin(angle * 3 + mark.seed) * 0.19 + Math.sin(angle * 7 - mark.seed * 0.4) * 0.08;
         const pinch = lerp(1, 0.64 + 0.25 * Math.cos(angle), shadowMix * mark.shadow);
-        const x = center.x + Math.cos(angle) * radius * noise * pinch;
-        const y = center.y + Math.sin(angle) * radius * noise * lerp(0.75, 1.25, mark.metrics.mu);
+        const localX = Math.cos(angle) * radius * noise * pinch * (1.08 + mark.depth * 0.36);
+        const localY = Math.sin(angle) * radius * noise * lerp(0.58, 1.02, mark.metrics.mu);
+        const x = center.x + localX * cosD - localY * sinD;
+        const y = center.y + localX * sinD + localY * cosD;
         if (j === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -1520,6 +1760,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function drawMemory() {
+    drawBrushStrokes();
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
     const ordered = marks.slice().sort((a, b) =&gt; {
@@ -1687,6 +1928,28 @@ html&gt;body{padding:0}&lt;/style&gt;
     ctx.restore();
   }
 
+  function drawSignalLock() {
+    if (!lockPoint) return;
+    const cx = lockPoint.x * W;
+    const cy = lockPoint.y * H;
+    const pulse = 0.5 + Math.sin(clock * 0.9) * 0.5;
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    for (let ring = 0; ring &lt; 5; ring++) {
+      const radius = 8 + ring * 8 + pulse * 3;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, radius * 1.45, radius * 0.78, clock * 0.025, 0, TAU);
+      ctx.strokeStyle = rgba(gradedColor(colorFor(4 + ring, ring), ring), 0.24 - ring * 0.034);
+      ctx.lineWidth = ring === 0 ? 1.35 : 0.58;
+      ctx.stroke();
+    }
+    ctx.beginPath();
+    ctx.arc(cx, cy, 2.2 + pulse, 0, TAU);
+    ctx.fillStyle = rgba(mixColor(gradedColor(colorFor(4, 1), 0), palette.fg, 0.42), 0.72);
+    ctx.fill();
+    ctx.restore();
+  }
+
   function drawFlow() {
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
@@ -1718,6 +1981,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     drawMemory();
     drawWaves();
     drawEmergentFocus();
+    drawSignalLock();
     drawRefraction();
     drawApertureRim();
   }
@@ -1772,10 +2036,10 @@ html&gt;body{padding:0}&lt;/style&gt;
     const impulse = magnitude * (0.0018 + depth * 0.0025) * strength;
     blindFocus.vx += dx / distance * impulse * direction;
     blindFocus.vy += dy / distance * impulse * direction;
-    if (focusForce &gt; 0) {
-      emergentFocus.x = lerp(emergentFocus.x, x, 0.14 + magnitude * 0.16);
-      emergentFocus.y = lerp(emergentFocus.y, y, 0.14 + magnitude * 0.16);
-      focalSeed = clamp(focalSeed + magnitude * strength * 0.13, 0, 1.6);
+    if (shadowMix &gt; 0.58) {
+      const rewrite = impulse * direction * (0.62 + shadowMix * 0.46);
+      blindHome.offsetX = clamp(blindHome.offsetX + dx / distance * rewrite, -0.24, 0.24);
+      blindHome.offsetY = clamp(blindHome.offsetY + dy / distance * rewrite, -0.20, 0.20);
     }
   }
 
@@ -1836,27 +2100,32 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function setStatus() {
-    let status = &#x27;The field remembers where you have been.&#x27;;
-    if (state === &#x27;candidate&#x27;) status = &#x27;A pattern has survived its own disturbance.&#x27;;
+    let status = &#x27;Draw freely. Slow or overlap the stroke to saturate the field.&#x27;;
     if (blindEnergy &gt; 0.2) status = shadowMix &gt; 0.5 ? &#x27;The absence is binding the field to one attractor.&#x27; : &#x27;The absence is generating counterfactual space.&#x27;;
     if (emergentInput.checked &amp;&amp; emergentFocus.coherence &gt; 0.22) status = &#x27;A second focal coherence is learning where to belong.&#x27;;
     if (shadowMix &gt; 0.6 &amp;&amp; engagement &gt; 0.38) status = &#x27;Your engagement is loosening shadow’s grip on the field.&#x27;;
-    if (state === &#x27;locked&#x27;) status = &#x27;The map holds—its residues remain alive.&#x27;;
+    if (state === &#x27;candidate&#x27;) status = &#x27;The field has produced a convergence candidate; only you can attest it.&#x27;;
+    if (state === &#x27;locked&#x27;) status = &#x27;Your attestation is acting as a local gravitational anchor.&#x27;;
     if (state === &#x27;returning&#x27;) status = &#x27;Every mark is folding back into renewed energy.&#x27;;
     statusNode.textContent = status;
     const percent = Math.round(shadowMix * 100);
     const gripPercent = Math.round(shadowGrip() * 100);
+    const homeShift = Math.round(Math.hypot(blindHome.offsetX, blindHome.offsetY) * 260);
     orientationNode.textContent = shadowMix &gt; 0.02 &amp;&amp; shadowMix &lt; 0.98
       ? `${shadowTarget ? &#x27;turning inward&#x27; : &#x27;returning outward&#x27;} · ${percent}%`
-      : shadowMix &gt;= 0.98 ? `sunset orientation · grip ${gripPercent}%` : &#x27;sunrise orientation · outward&#x27;;
+      : shadowMix &gt;= 0.98
+        ? homeShift &gt; 2 ? `sunset · home displaced ${homeShift}%` : `sunset orientation · grip ${gripPercent}%`
+        : &#x27;sunrise orientation · outward&#x27;;
     actionButton.textContent = state === &#x27;candidate&#x27;
       ? &#x27;Attest convergence&#x27;
       : state === &#x27;locked&#x27;
-        ? &#x27;Release renewed form&#x27;
+        ? &#x27;Release convergence&#x27;
         : state === &#x27;returning&#x27;
           ? &#x27;Returning…&#x27;
-          : &#x27;Send attention&#x27;;
-    actionButton.disabled = state === &#x27;returning&#x27;;
+          : &#x27;Field unconverged&#x27;;
+    actionButton.disabled = state === &#x27;returning&#x27; || state === &#x27;field&#x27;;
+    canvas.dataset.fieldState = state;
+    canvas.dataset.lockPoint = lockPoint ? `${lockPoint.x.toFixed(3)},${lockPoint.y.toFixed(3)}` : &#x27;&#x27;;
   }
 
   function update(dt) {
@@ -1867,6 +2136,18 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.vy *= 0.76;
     pointer.x += pointer.vx;
     pointer.y += pointer.vy;
+
+    if (pointer.down &amp;&amp; currentGesture) {
+      const now = performance.now();
+      if (now - currentGesture.stroke.lastDwellAt &gt; 88) {
+        appendStrokePoint(currentGesture.stroke, {
+          x: pointer.tx,
+          y: pointer.ty,
+          time: now,
+          pressure: currentGesture.pressure
+        }, true);
+      }
+    }
 
     const spring = (shadowTarget - shadowMix) * 0.00007 * dt;
     shadowVelocity = (shadowVelocity + spring) * Math.pow(0.88, dt / 16.67);
@@ -1881,8 +2162,12 @@ html&gt;body{padding:0}&lt;/style&gt;
     const grip = shadowGrip();
     const centroid = stainCentroid();
     const stainGravity = clamp(centroid.weight / 14, 0, 1);
-    let blindTargetX = lerp(0.315, 0.43, grip);
-    let blindTargetY = lerp(0.455, 0.49, grip);
+    if (shadowMix &lt; 0.08) {
+      blindHome.offsetX *= Math.pow(0.982, step);
+      blindHome.offsetY *= Math.pow(0.982, step);
+    }
+    let blindTargetX = lerp(0.315, 0.43, grip) + blindHome.offsetX;
+    let blindTargetY = lerp(0.455, 0.49, grip) + blindHome.offsetY;
     blindTargetX += (centroid.x - 0.5) * stainGravity * 0.035;
     blindTargetY += (centroid.y - 0.5) * stainGravity * 0.028;
     if (pointer.down &amp;&amp; Math.abs(focusForce) &gt; 0.025) applyFocusImpulse(pointer.x, pointer.y, 0.11 * step, 0.5);
@@ -1894,7 +2179,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     blindFocus.y = clamp(blindFocus.y + blindFocus.vy * step, 0.15, 0.85);
 
     const emergentTarget = emergentInput.checked
-      ? clamp(0.04 + focalSeed * 0.5 + stainGravity * 0.56 + Math.max(0, focusForce) * 0.22, 0, 1)
+      ? clamp(0.04 + focalSeed * 0.5 + stainGravity * 0.56, 0, 1)
       : 0;
     emergentFocus.coherence += (emergentTarget - emergentFocus.coherence) * (1 - Math.pow(0.975, step));
     const emergentTargetX = centroid.weight &gt; 0.02 ? centroid.x : 0.68 + Math.sin(clock * 0.07) * 0.05;
@@ -1907,6 +2192,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     emergentFocus.y = clamp(emergentFocus.y + emergentFocus.vy * step, 0.12, 0.88);
     canvas.dataset.blindFocusX = blindFocus.x.toFixed(3);
     canvas.dataset.blindFocusY = blindFocus.y.toFixed(3);
+    canvas.dataset.blindHomeX = blindHome.offsetX.toFixed(3);
+    canvas.dataset.blindHomeY = blindHome.offsetY.toFixed(3);
     canvas.dataset.emergentCoherence = emergentFocus.coherence.toFixed(3);
     canvas.dataset.shadowGrip = grip.toFixed(3);
 
@@ -1914,14 +2201,23 @@ html&gt;body{padding:0}&lt;/style&gt;
       marks[i].age += dt * 0.001;
       if (marks[i].age &gt;= marks[i].life) marks.splice(i, 1);
     }
+    for (let i = strokes.length - 1; i &gt;= 0; i--) {
+      if (!strokes[i].active) strokes[i].age += dt * 0.001;
+      if (!strokes[i].active &amp;&amp; strokes[i].age &gt;= strokes[i].life) strokes.splice(i, 1);
+    }
     for (let i = waves.length - 1; i &gt;= 0; i--) {
       waves[i].age += dt * 0.001;
       if (waves[i].age &gt;= waves[i].life) waves.splice(i, 1);
     }
 
+    const convergence = findConvergenceCandidate();
+    candidateScore = clamp(convergence.score + (emergentInput.checked ? emergentFocus.coherence * 0.06 : 0), 0, 1);
+    candidatePoint = convergence.score &gt; 0 ? { x: convergence.x, y: convergence.y } : null;
+    canvas.dataset.convergenceCandidate = candidateScore.toFixed(3);
+
     if (state === &#x27;field&#x27;) {
       resonance = Math.max(0.04, resonance - dt * 0.0000025);
-      if (resonance &gt;= 0.7) {
+      if (candidatePoint &amp;&amp; candidateScore &gt;= 0.68) {
         state = &#x27;candidate&#x27;;
         eventTone(&#x27;candidate&#x27;, 0.5);
         setStatus();
@@ -1934,6 +2230,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         generation = (generation + 1) % 6;
         resonance = 0.14;
         state = &#x27;field&#x27;;
+        lockPoint = null;
         addWave(0.17, 0.53, 1.25, generation + 12);
         setStatus();
         eventTone(&#x27;return&#x27;, 0.5);
@@ -1942,7 +2239,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     for (let i = 0; i &lt; 9; i++) buildCurve(i);
     statusClock += dt;
-    if (statusClock &gt; 140) {
+    if (statusClock &gt; 180 &amp;&amp; !pointer.down) {
       statusClock = 0;
       setStatus();
     }
@@ -2004,7 +2301,30 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.down = true;
     pointer.tx = p.x;
     pointer.ty = p.y;
-    currentGesture = { points: [p], lastMark: 0, lastMotion: motionFromGesture([p]) };
+    const stroke = {
+      points: [],
+      active: true,
+      age: 0,
+      life: 240 + Math.random() * 120,
+      startedAt: p.time,
+      length: 0,
+      maxWidth: 10.5,
+      deposit: 0,
+      depositX: 0,
+      depositY: 0,
+      depositWeight: 0,
+      nextStain: 0.82,
+      stains: 0,
+      lastBlindAt: -Infinity,
+      lastDwellAt: p.time,
+      seed: Math.random() * 97,
+      color: (strokes.length * 4 + generation) % 9
+    };
+    appendStrokePoint(stroke, p, true);
+    strokes.push(stroke);
+    if (strokes.length &gt; 90) strokes.shift();
+    currentGesture = { stroke, pressure: p.pressure };
+    canvas.dataset.strokeCount = String(strokes.length);
   });
 
   canvas.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
@@ -2012,44 +2332,38 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.tx = p.x;
     pointer.ty = p.y;
     if (!pointer.down || !currentGesture) return;
-    const previous = currentGesture.points[currentGesture.points.length - 1];
-    const distance = Math.hypot(p.x - previous.x, p.y - previous.y);
-    if (distance &gt; 0.006) {
-      currentGesture.points.push(p);
-      currentGesture.lastMotion = motionFromGesture(currentGesture.points);
-      if (currentGesture.points.length - currentGesture.lastMark &gt;= 5) {
-        const anchor = currentGesture.points[currentGesture.lastMark];
-        addMark(p.x, p.y, p.x - anchor.x, p.y - anchor.y, 0.58, currentGesture.lastMotion);
-        currentGesture.lastMark = currentGesture.points.length - 1;
-      }
-    }
+    currentGesture.pressure = p.pressure;
+    appendStrokePoint(currentGesture.stroke, p);
   });
 
   function endGesture(event) {
     if (!pointer.down) return;
     const p = pointFromEvent(event);
     pointer.down = false;
-    if (!currentGesture || currentGesture.points.length &lt; 2) {
-      addMark(p.x, p.y, 0.012, 0, 1, { speed: 0.04, curvature: 0.18, pressure: p.pressure });
-    } else {
-      const first = currentGesture.points[0];
-      addMark(p.x, p.y, p.x - first.x, p.y - first.y, 0.82, currentGesture.lastMotion);
+    if (currentGesture) {
+      appendStrokePoint(currentGesture.stroke, p, true);
+      currentGesture.stroke.active = false;
+      addWave(p.x, p.y, 0.46 + currentGesture.stroke.deposit * 0.16, currentGesture.stroke.seed);
     }
     currentGesture = null;
+    setStatus();
   }
 
   canvas.addEventListener(&#x27;pointerup&#x27;, endGesture);
   canvas.addEventListener(&#x27;pointercancel&#x27;, () =&gt; {
     pointer.down = false;
+    if (currentGesture) currentGesture.stroke.active = false;
     currentGesture = null;
   });
 
   function temperatureName(value) {
-    if (value &lt; 0.18) return &#x27;moon-cool&#x27;;
-    if (value &lt; 0.42) return &#x27;blue dawn&#x27;;
-    if (value &lt; 0.58) return &#x27;balanced&#x27;;
-    if (value &lt; 0.80) return &#x27;sunrise&#x27;;
-    return &#x27;ember-warm&#x27;;
+    if (value &lt; 0.12) return &#x27;glacial&#x27;;
+    if (value &lt; 0.30) return &#x27;polar blue&#x27;;
+    if (value &lt; 0.46) return &#x27;moon-cool&#x27;;
+    if (value &lt; 0.56) return &#x27;temperate&#x27;;
+    if (value &lt; 0.72) return &#x27;warm dawn&#x27;;
+    if (value &lt; 0.88) return &#x27;ember-warm&#x27;;
+    return &#x27;forge heat&#x27;;
   }
 
   function syncAtmosphereControls() {
@@ -2057,10 +2371,10 @@ html&gt;body{padding:0}&lt;/style&gt;
     focusForceTarget = Number(focusForceInput.value) / 100;
     temperatureValue.textContent = temperatureName(temperatureTarget);
     focusForceValue.textContent = focusForceTarget &lt; -0.08
-      ? `pull ${Math.round(Math.abs(focusForceTarget) * 100)}%`
+      ? `stroke pulls ${Math.round(Math.abs(focusForceTarget) * 100)}%`
       : focusForceTarget &gt; 0.08
-        ? `push ${Math.round(focusForceTarget * 100)}%`
-        : &#x27;drift&#x27;;
+        ? `stroke pushes ${Math.round(focusForceTarget * 100)}%`
+        : &#x27;elastic drift&#x27;;
     canvas.dataset.temperature = temperatureTarget.toFixed(2);
     canvas.dataset.focusForce = focusForceTarget.toFixed(2);
   }
@@ -2084,14 +2398,13 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (state === &#x27;candidate&#x27;) {
       state = &#x27;locked&#x27;;
       resonance = 1;
-      addWave(0.62, 0.5, 1.6, 17);
+      lockPoint = candidatePoint ? { ...candidatePoint } : { x: emergentFocus.x, y: emergentFocus.y };
+      addWave(lockPoint.x, lockPoint.y, 1.6, 17);
       eventTone(&#x27;lock&#x27;, 0.5);
     } else if (state === &#x27;locked&#x27;) {
       state = &#x27;returning&#x27;;
       returnProgress = 0;
       eventTone(&#x27;release&#x27;, 0.5);
-    } else if (state === &#x27;field&#x27;) {
-      addMark(pointer.inside ? pointer.x : 0.55, pointer.inside ? pointer.y : 0.48, 0.018, -0.006, 1.25);
     }
     setStatus();
   });
