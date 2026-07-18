@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Renewed Field v5</title>
+<title>Renewed Field v6</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field v5" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field v6" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Renewed Field v5&lt;/title&gt;
+&lt;title&gt;Renewed Field v6&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(--background) !important;
@@ -748,73 +748,87 @@ svg {
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;renewed-field-v5&quot;&gt;
+&lt;div id=&quot;renewed-field-v6&quot;&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Field controls&quot;&gt;
-    &lt;button id=&quot;rfv5-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot; disabled&gt;Field unconverged&lt;/button&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-shadow&quot;&gt;
-      &lt;input id=&quot;rfv5-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;button id=&quot;rfv6-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot; data-tooltip=&quot;Attestation grants an emergent local coherence temporary influence over nearby flow. Releasing withdraws that privilege without erasing its residue.&quot; disabled&gt;Field unconverged&lt;/button&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv6-shadow&quot;&gt;
+      &lt;input id=&quot;rfv6-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Shadow&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-ambient&quot;&gt;
-      &lt;input id=&quot;rfv5-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv6-ambient&quot;&gt;
+      &lt;input id=&quot;rfv6-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Ambience&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-tones&quot;&gt;
-      &lt;input id=&quot;rfv5-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv6-tones&quot;&gt;
+      &lt;input id=&quot;rfv6-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Chimes&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Atmosphere and focal controls&quot;&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;rfv5-temperature&quot;&gt;Field temperature &lt;span id=&quot;rfv5-temperature-value&quot; class=&quot;text-muted&quot;&gt;warm dawn&lt;/span&gt;
-      &lt;input id=&quot;rfv5-temperature&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;58&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv6-temperature&quot;&gt;Field temperature &lt;span id=&quot;rfv6-temperature-value&quot; class=&quot;text-muted&quot;&gt;warm dawn&lt;/span&gt;
+      &lt;input id=&quot;rfv6-temperature&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;58&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;rfv5-focus-force&quot; data-tooltip=&quot;How your stroke moves the blind spot. In Shadow, the displaced resting point persists until Shadow is released.&quot;&gt;Blind-spot response &lt;span id=&quot;rfv5-focus-force-value&quot; class=&quot;text-muted&quot;&gt;elastic drift&lt;/span&gt;
-      &lt;input id=&quot;rfv5-focus-force&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-100&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;0&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv6-focus-force&quot; data-tooltip=&quot;How your stroke moves the blind spot. In Shadow, the displaced resting point persists until Shadow is released.&quot;&gt;Blind-spot response &lt;span id=&quot;rfv6-focus-force-value&quot; class=&quot;text-muted&quot;&gt;elastic drift&lt;/span&gt;
+      &lt;input id=&quot;rfv6-focus-force&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-100&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;0&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv5-emergent&quot;&gt;
-      &lt;input id=&quot;rfv5-emergent&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv6-emergent&quot;&gt;
+      &lt;input id=&quot;rfv6-emergent&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Second focus from stains&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv5-status text-small&quot; aria-live=&quot;polite&quot;&gt;
-    &lt;span id=&quot;rfv5-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
-    &lt;span id=&quot;rfv5-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
+  &lt;div class=&quot;rfv6-status text-small&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;span id=&quot;rfv6-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
+    &lt;span id=&quot;rfv6-stroke-meter-wrap&quot; class=&quot;rfv6-stroke-meter text-muted&quot; hidden&gt;
+      &lt;span&gt;chalk saturation&lt;/span&gt;
+      &lt;meter id=&quot;rfv6-stroke-meter&quot; min=&quot;0&quot; max=&quot;1&quot; value=&quot;0&quot;&gt;0%&lt;/meter&gt;
+      &lt;output id=&quot;rfv6-stroke-meter-value&quot; for=&quot;rfv6-stroke-meter&quot;&gt;0%&lt;/output&gt;
+    &lt;/span&gt;
+    &lt;span id=&quot;rfv6-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv5-stage&quot;&gt;
-    &lt;canvas id=&quot;rfv5-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field where the visitor draws continuous paint-like strokes, saturates locations into deep stains, and can elastically or persistently displace the blind spot.&quot;&gt;&lt;/canvas&gt;
-    &lt;div class=&quot;rfv5-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;the stroke is yours&lt;/span&gt;&lt;span&gt;linger · overlap · saturate&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;rfv6-stage&quot;&gt;
+    &lt;canvas id=&quot;rfv6-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field where the visitor draws continuous field-colored chalk traces. Released traces drift with the field, slowly dissipate, and saturate into depth-bearing stains where attention concentrates.&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;rfv6-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;the chalk follows your hand&lt;/span&gt;&lt;span&gt;linger · overlap · saturate&lt;/span&gt;&lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;details class=&quot;rfv5-legend&quot;&gt;
+  &lt;details class=&quot;rfv6-legend&quot;&gt;
     &lt;summary class=&quot;text-small&quot;&gt;Why the field responds&lt;/summary&gt;
     &lt;div class=&quot;viz-row text-small text-muted&quot;&gt;
-      &lt;span&gt;long stroke → capacity&lt;/span&gt;
-      &lt;span&gt;thick stroke → falling fidelity&lt;/span&gt;
-      &lt;span&gt;slow overlap → saturation stain&lt;/span&gt;
+      &lt;span&gt;long stroke → accumulating chalk&lt;/span&gt;
+      &lt;span&gt;thick stroke → broken, dusted edge&lt;/span&gt;
+      &lt;span&gt;slow overlap → concentration stain&lt;/span&gt;
       &lt;span&gt;stain → gravity-bearing residue&lt;/span&gt;
+      &lt;span&gt;released chalk → field-carried cloud&lt;/span&gt;
       &lt;span&gt;blind spot → basin response&lt;/span&gt;
       &lt;span&gt;Shadow + response → displaced home&lt;/span&gt;
       &lt;span&gt;attestation → human anchor&lt;/span&gt;
+      &lt;span&gt;release → ordinary mutability&lt;/span&gt;
+      &lt;span&gt;Δx,y → situated color&lt;/span&gt;
+      &lt;span&gt;rᵥ → cloud dispersal&lt;/span&gt;
+      &lt;span&gt;ρᵣ → compression + stain&lt;/span&gt;
+      &lt;span&gt;μ → compositional coherence&lt;/span&gt;
+      &lt;span&gt;xₚ → edge pull&lt;/span&gt;
+      &lt;span&gt;θ → glide or cross-grain scrape&lt;/span&gt;
+      &lt;span&gt;ds → thickness + depth&lt;/span&gt;
     &lt;/div&gt;
   &lt;/details&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-  #renewed-field-v5 {
+  #renewed-field-v6 {
     color: var(--foreground);
     width: 100%;
     min-width: 0;
     overflow: hidden;
   }
 
-  #renewed-field-v5 .viz-controls {
+  #renewed-field-v6 .viz-controls {
     flex-wrap: wrap;
   }
 
-  #renewed-field-v5 .rfv5-status {
+  #renewed-field-v6 .rfv6-status {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -822,18 +836,35 @@ html&gt;body{padding:0}&lt;/style&gt;
     margin: 8px 0;
   }
 
-  #renewed-field-v5 .viz-controls .form-label {
+  #renewed-field-v6 .rfv6-stroke-meter {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+
+  #renewed-field-v6 .rfv6-stroke-meter[hidden] {
+    display: none;
+  }
+
+  #renewed-field-v6 .rfv6-stroke-meter meter {
+    width: clamp(72px, 13vw, 118px);
+    height: 7px;
+    accent-color: var(--primary);
+  }
+
+  #renewed-field-v6 .viz-controls .form-label {
     flex: 1 1 210px;
     min-width: min(210px, 100%);
   }
 
-  #renewed-field-v5 .viz-controls .form-range {
+  #renewed-field-v6 .viz-controls .form-range {
     display: block;
     width: 100%;
     margin-top: 4px;
   }
 
-  #renewed-field-v5 .rfv5-stage {
+  #renewed-field-v6 .rfv6-stage {
     position: relative;
     width: 100%;
     height: clamp(400px, 69vw, 580px);
@@ -841,14 +872,14 @@ html&gt;body{padding:0}&lt;/style&gt;
     background: var(--card);
   }
 
-  #renewed-field-v5 canvas {
+  #renewed-field-v6 canvas {
     display: block;
     width: 100%;
     height: 100%;
     touch-action: none;
   }
 
-  #renewed-field-v5 .rfv5-whisper {
+  #renewed-field-v6 .rfv6-whisper {
     position: absolute;
     left: 12px;
     right: 12px;
@@ -861,22 +892,30 @@ html&gt;body{padding:0}&lt;/style&gt;
     mix-blend-mode: difference;
   }
 
-  #renewed-field-v5 .rfv5-legend {
+  #renewed-field-v6 .rfv6-legend {
     margin-top: 8px;
   }
 
-  #renewed-field-v5 .rfv5-legend .viz-row {
+  #renewed-field-v6 .rfv6-legend .viz-row {
     margin-top: 6px;
   }
 
   @media (max-width: 480px) {
-    #renewed-field-v5 .viz-controls {
+    #renewed-field-v6 .viz-controls {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       width: 100%;
     }
 
-    #renewed-field-v5 .viz-controls .form-label {
+    #renewed-field-v6 .viz-controls[aria-label=&quot;Field controls&quot;] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    #renewed-field-v6 .viz-controls[aria-label=&quot;Field controls&quot;] &gt; * {
+      grid-column: 1 / -1;
+    }
+
+    #renewed-field-v6 .viz-controls .form-label {
       display: flex;
       flex-wrap: wrap;
       grid-column: 1 / -1;
@@ -884,36 +923,51 @@ html&gt;body{padding:0}&lt;/style&gt;
       max-width: 100%;
     }
 
-    #renewed-field-v5 .viz-controls .form-label .text-muted {
+    #renewed-field-v6 .viz-controls .form-label .text-muted {
       flex: 1 0 100%;
       order: 1;
       margin-left: 0;
     }
 
-    #renewed-field-v5 .viz-controls .form-check {
+    #renewed-field-v6 .viz-controls .form-check {
       min-width: 0;
+      justify-self: start !important;
+      margin-inline: 0 !important;
     }
 
-    #renewed-field-v5 .viz-controls .form-check-label {
+    #renewed-field-v6 .viz-controls .form-check-label {
       white-space: normal;
     }
 
-    #renewed-field-v5 .viz-controls .form-range {
+    #renewed-field-v6 #rfv6-action,
+    #renewed-field-v6 label[for=&quot;rfv6-emergent&quot;] {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+
+    #renewed-field-v6 .viz-controls .form-range {
       flex: 1 0 100%;
       order: 2;
       max-width: 100%;
     }
 
-    #renewed-field-v5 .rfv5-status {
+    #renewed-field-v6 .rfv6-status {
       flex-direction: column;
       gap: 2px;
     }
 
-    #renewed-field-v5 .rfv5-stage {
+    #renewed-field-v6 .rfv6-status &gt; span {
+      min-width: 0;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    #renewed-field-v6 .rfv6-stage {
       height: 430px;
     }
 
-    #renewed-field-v5 .rfv5-whisper span:last-child {
+    #renewed-field-v6 .rfv6-whisper span:last-child {
       display: none;
     }
   }
@@ -921,22 +975,25 @@ html&gt;body{padding:0}&lt;/style&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;renewed-field-v5&#x27;);
+  const root = document.getElementById(&#x27;renewed-field-v6&#x27;);
   if (!root) return;
 
-  const canvas = root.querySelector(&#x27;#rfv5-canvas&#x27;);
+  const canvas = root.querySelector(&#x27;#rfv6-canvas&#x27;);
   const ctx = canvas.getContext(&#x27;2d&#x27;, { alpha: false });
-  const actionButton = root.querySelector(&#x27;#rfv5-action&#x27;);
-  const shadowInput = root.querySelector(&#x27;#rfv5-shadow&#x27;);
-  const ambientInput = root.querySelector(&#x27;#rfv5-ambient&#x27;);
-  const tonesInput = root.querySelector(&#x27;#rfv5-tones&#x27;);
-  const temperatureInput = root.querySelector(&#x27;#rfv5-temperature&#x27;);
-  const temperatureValue = root.querySelector(&#x27;#rfv5-temperature-value&#x27;);
-  const focusForceInput = root.querySelector(&#x27;#rfv5-focus-force&#x27;);
-  const focusForceValue = root.querySelector(&#x27;#rfv5-focus-force-value&#x27;);
-  const emergentInput = root.querySelector(&#x27;#rfv5-emergent&#x27;);
-  const statusNode = root.querySelector(&#x27;#rfv5-status&#x27;);
-  const orientationNode = root.querySelector(&#x27;#rfv5-orientation&#x27;);
+  const actionButton = root.querySelector(&#x27;#rfv6-action&#x27;);
+  const shadowInput = root.querySelector(&#x27;#rfv6-shadow&#x27;);
+  const ambientInput = root.querySelector(&#x27;#rfv6-ambient&#x27;);
+  const tonesInput = root.querySelector(&#x27;#rfv6-tones&#x27;);
+  const temperatureInput = root.querySelector(&#x27;#rfv6-temperature&#x27;);
+  const temperatureValue = root.querySelector(&#x27;#rfv6-temperature-value&#x27;);
+  const focusForceInput = root.querySelector(&#x27;#rfv6-focus-force&#x27;);
+  const focusForceValue = root.querySelector(&#x27;#rfv6-focus-force-value&#x27;);
+  const emergentInput = root.querySelector(&#x27;#rfv6-emergent&#x27;);
+  const statusNode = root.querySelector(&#x27;#rfv6-status&#x27;);
+  const strokeMeterWrap = root.querySelector(&#x27;#rfv6-stroke-meter-wrap&#x27;);
+  const strokeMeter = root.querySelector(&#x27;#rfv6-stroke-meter&#x27;);
+  const strokeMeterValue = root.querySelector(&#x27;#rfv6-stroke-meter-value&#x27;);
+  const orientationNode = root.querySelector(&#x27;#rfv6-orientation&#x27;);
   const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
 
   const TAU = Math.PI * 2;
@@ -967,9 +1024,13 @@ html&gt;body{padding:0}&lt;/style&gt;
   let resonance = 0.09;
   let state = &#x27;field&#x27;;
   let returnProgress = -1;
+  let releaseStartedAt = 0;
+  let lockStrength = 0;
+  let attestationCooldown = 0;
   let generation = 0;
   let currentGesture = null;
   let statusClock = 0;
+  let meterHideAt = 0;
   let lockPoint = null;
   let candidatePoint = null;
   let candidateScore = 0;
@@ -1194,12 +1255,11 @@ html&gt;body{padding:0}&lt;/style&gt;
     points.length = 0;
     const count = 108;
     const z = (i - 4) / 4;
-    const coherence = state === &#x27;locked&#x27; ? 0.76 : state === &#x27;candidate&#x27; ? 0.38 : 0;
+    const coherence = state === &#x27;locked&#x27; ? 0.76 * lockStrength : state === &#x27;candidate&#x27; ? 0.38 : 0;
     const grip = shadowGrip();
     const time = (reducedMotion ? clock * 0.12 : clock) * lerp(1, -0.52, grip);
     const a = aperture();
     const foldCenter = lerp(0.63, 0.54, shadowMix);
-    const rebirth = returnProgress &gt;= 0 ? Math.sin(Math.PI * returnProgress) : 0;
 
     for (let j = 0; j &lt; count; j++) {
       const u = j / (count - 1);
@@ -1231,7 +1291,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       }
       if (lockPoint) {
         const locked = Math.exp(-Math.pow((nx - lockPoint.x) / 0.16, 2));
-        y += (lockPoint.y - y) * locked * 0.16;
+        y += (lockPoint.y - y) * locked * 0.16 * lockStrength;
       }
 
       const pull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
@@ -1243,11 +1303,6 @@ html&gt;body{padding:0}&lt;/style&gt;
       x += Math.sin((nx - foldCenter) * 17 + i * 0.84 - time * 0.09) * fold * (0.013 + (1 - Math.abs(z)) * 0.022) * (i % 2 ? 1 : -1);
       x += nearBlind * refraction * 0.012;
       x += Math.sin(nx * 89 + i * 2.2 + clock * 0.37) * corrupt * grip * 0.006;
-      if (rebirth &gt; 0) {
-        x = lerp(x, lerp(0.72, 0.83, returnProgress), rebirth * (0.48 + Math.abs(z) * 0.1));
-        y = lerp(y, 0.5 + z * 0.018, rebirth * 0.57);
-      }
-
       const thickness = H * (0.034 + fold * 0.026 + second * 0.012)
         * (1 + Math.sin(nx * TAU * PHI + i * 0.61 - time * 0.2) * 0.22)
         * lerp(1, 0.69, grip)
@@ -1292,6 +1347,36 @@ html&gt;body{padding:0}&lt;/style&gt;
       tx: lerp(points[a].tx, points[b].tx, t),
       ty: lerp(points[a].ty, points[b].ty, t)
     };
+  }
+
+  function fieldSampleAt(nx, ny) {
+    const u = clamp((nx + 0.1) / 1.2, 0, 1);
+    let first = null;
+    let second = null;
+    for (let layer = 0; layer &lt; curves.length; layer++) {
+      if (!curves[layer].length) continue;
+      const point = sampleCurve(curves[layer], u);
+      const distance = Math.abs(point.y / H - ny);
+      const sample = { ...point, layer, distance };
+      if (!first || distance &lt; first.distance) {
+        second = first;
+        first = sample;
+      } else if (!second || distance &lt; second.distance) {
+        second = sample;
+      }
+    }
+    return { first, second: second || first };
+  }
+
+  function fieldColorAt(nx, ny, phase = 0) {
+    const { first, second } = fieldSampleAt(nx, ny);
+    if (!first) return gradedColor(colorFor(phase, phase), phase);
+    const spatial = Math.floor(nx * 7 + ny * 5 + phase);
+    const colorA = gradedColor(colorFor(first.layer, spatial), first.layer + phase);
+    const colorB = gradedColor(colorFor(second.layer + 1, spatial + 2), second.layer + phase + 1);
+    const denominator = Math.max(0.0001, first.distance + second.distance);
+    const blend = clamp(first.distance / denominator, 0.12, 0.52);
+    return intensify(mixColor(colorA, colorB, blend), darkField ? 1.18 : 1.04);
   }
 
   function drawBackdrop() {
@@ -1425,79 +1510,85 @@ html&gt;body{padding:0}&lt;/style&gt;
   function strokeLife(stroke) {
     if (stroke.active) return 1;
     const remaining = clamp(1 - stroke.age / stroke.life, 0, 1);
-    return Math.pow(remaining, 0.88);
+    const anchored = lockPoint &amp;&amp; stroke.points.some(point =&gt; Math.hypot(point.x + point.ox - lockPoint.x, point.y + point.oy - lockPoint.y) &lt; 0.19);
+    return Math.pow(remaining, anchored ? 0.58 : 0.88);
+  }
+
+  function chalkPoint(point) {
+    return { x: point.x + (point.ox || 0), y: point.y + (point.oy || 0) };
+  }
+
+  function chalkColorForPoint(point, stroke) {
+    const colorKey = `${Math.floor(frame / 6)}:${Math.round(temperature * 36)}`;
+    if (point.colorKey !== colorKey) {
+      const position = chalkPoint(point);
+      point.chalkColor = fieldColorAt(position.x, position.y, stroke.seed);
+      point.colorKey = colorKey;
+    }
+    return point.chalkColor;
+  }
+
+  function drawChalkLane(stroke, lane, widthScale, alphaScale, blur = 0) {
+    const points = stroke.points;
+    const life = strokeLife(stroke);
+    if (points.length &lt; 2 || life &lt;= 0) return;
+    ctx.save();
+    if (blur) ctx.filter = `blur(${blur}px)`;
+    ctx.lineJoin = &#x27;round&#x27;;
+    ctx.lineCap = &#x27;butt&#x27;;
+
+    for (let i = 1; i &lt; points.length; i++) {
+      const previous = points[Math.max(0, i - 2)];
+      const a = points[i - 1];
+      const b = points[i];
+      const pa = chalkPoint(previous);
+      const aa = chalkPoint(a);
+      const bb = chalkPoint(b);
+      const startX = (i === 1 ? aa.x : (pa.x + aa.x) * 0.5) * W;
+      const startY = (i === 1 ? aa.y : (pa.y + aa.y) * 0.5) * H;
+      const endX = ((aa.x + bb.x) * 0.5) * W;
+      const endY = ((aa.y + bb.y) * 0.5) * H;
+      const dx = (bb.x - aa.x) * W;
+      const dy = (bb.y - aa.y) * H;
+      const rawLength = Math.hypot(endX - startX, endY - startY);
+      if (rawLength &lt; 0.35) continue;
+      const length = Math.hypot(dx, dy) || 1;
+      const nx = -dy / length;
+      const ny = dx / length;
+      const mess = (a.mess + b.mess) * 0.5;
+      const seed = stroke.seed * 37 + i * 11.7;
+      const baseWidth = Math.max(0.55, (a.width + b.width) * 0.5 * widthScale);
+      const laneSpread = lane * (a.width + b.width) * 0.16;
+      const grain = (hash(seed + lane * 17.9) - 0.5) * mess * (a.width + b.width) * 0.22;
+      const offset = laneSpread + grain;
+      const startColor = chalkColorForPoint(a, stroke);
+      const endColor = chalkColorForPoint(b, stroke);
+      const depthAlpha = 0.72 + ((a.ds || 0.3) + (b.ds || 0.3)) * 0.28;
+      const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+      gradient.addColorStop(0, rgba(startColor, life * alphaScale * depthAlpha));
+      gradient.addColorStop(1, rgba(endColor, life * alphaScale * depthAlpha));
+      ctx.beginPath();
+      ctx.moveTo(startX + nx * offset, startY + ny * offset);
+      ctx.quadraticCurveTo(aa.x * W + nx * offset, aa.y * H + ny * offset, endX + nx * offset, endY + ny * offset);
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = baseWidth;
+      if (lane !== 0 &amp;&amp; mess &gt; 0.18) {
+        const mark = Math.max(7, baseWidth * (3.2 - mess * 0.5));
+        ctx.setLineDash([mark, Math.max(1.1, mark * (0.10 + mess * 0.18))]);
+        ctx.lineDashOffset = -hash(seed + lane) * mark * 2;
+      } else {
+        ctx.setLineDash([]);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
   }
 
   function drawBrushStroke(stroke) {
-    const points = stroke.points;
-    const life = strokeLife(stroke);
-    if (!points.length || life &lt;= 0) return;
-    const color = gradedColor(colorFor(stroke.color, stroke.color), stroke.color);
-    if (points.length === 1) {
-      ctx.beginPath();
-      ctx.arc(points[0].x * W, points[0].y * H, Math.max(0.7, points[0].width * 0.5), 0, TAU);
-      ctx.fillStyle = rgba(color, 0.42 * life);
-      ctx.fill();
-      return;
-    }
-
-    for (let i = 1; i &lt; points.length; i++) {
-      const a = points[i - 1];
-      const b = points[i];
-      const dx = (b.x - a.x) * W;
-      const dy = (b.y - a.y) * H;
-      const rawLength = Math.hypot(dx, dy);
-      const length = rawLength || 1;
-      const nx = -dy / length;
-      const ny = dx / length;
-      const mess = b.mess;
-      const fidelity = b.fidelity;
-      const seed = stroke.seed * 37 + i * 11.7;
-
-      if (rawLength &lt; 0.2) {
-        ctx.beginPath();
-        ctx.arc(b.x * W, b.y * H, b.width * 0.46, 0, TAU);
-        ctx.fillStyle = rgba(color, life * (0.16 + fidelity * 0.18));
-        ctx.fill();
-        continue;
-      }
-
-      ctx.beginPath();
-      ctx.moveTo(a.x * W, a.y * H);
-      ctx.lineTo(b.x * W, b.y * H);
-      ctx.strokeStyle = rgba(color, life * (0.20 + fidelity * 0.30));
-      ctx.lineWidth = b.width * (1 - mess * 0.18);
-      ctx.lineCap = &#x27;round&#x27;;
-      ctx.stroke();
-
-      const bristles = 1 + Math.floor(mess * 6);
-      for (let bristle = 0; bristle &lt; bristles; bristle++) {
-        if (hash(seed + bristle * 3.1) &lt; mess * 0.22) continue;
-        const lane = (bristle - (bristles - 1) * 0.5) / Math.max(1, bristles - 1);
-        const spread = lane * b.width * (0.30 + mess * 0.44);
-        const jitterA = (hash(seed + bristle * 7.7) - 0.5) * b.width * mess * 0.36;
-        const jitterB = (hash(seed + bristle * 9.3) - 0.5) * b.width * mess * 0.58;
-        ctx.beginPath();
-        ctx.moveTo(a.x * W + nx * (spread + jitterA), a.y * H + ny * (spread + jitterA));
-        ctx.lineTo(b.x * W + nx * (spread + jitterB), b.y * H + ny * (spread + jitterB));
-        ctx.strokeStyle = rgba(gradedColor(colorFor(stroke.color + bristle + 1, bristle), bristle), life * (0.08 + (1 - mess) * 0.10));
-        ctx.lineWidth = Math.max(0.35, b.width * (0.075 + hash(seed + bristle) * 0.08));
-        ctx.stroke();
-      }
-
-      if (mess &gt; 0.28 &amp;&amp; i % 2 === 0) {
-        const specks = 1 + Math.floor(mess * 4);
-        for (let speck = 0; speck &lt; specks; speck++) {
-          const t = hash(seed + speck * 13.1);
-          const spread = (hash(seed + speck * 17.3) - 0.5) * b.width * (1.1 + mess);
-          const x = lerp(a.x, b.x, t) * W + nx * spread;
-          const y = lerp(a.y, b.y, t) * H + ny * spread;
-          const size = 0.35 + hash(seed + speck * 19.9) * b.width * 0.16;
-          ctx.fillStyle = rgba(color, life * mess * 0.16);
-          ctx.fillRect(x, y, size, size * 0.62);
-        }
-      }
-    }
+    if (stroke.points.length &lt; 2 || strokeLife(stroke) &lt;= 0) return;
+    drawChalkLane(stroke, 0, 0.72, 0.46, stroke.active ? 0.12 : 0.42);
+    drawChalkLane(stroke, -1.25, 0.12, 0.18);
+    drawChalkLane(stroke, 1.28, 0.11, 0.16);
   }
 
   function drawBrushStrokes() {
@@ -1512,6 +1603,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     const centerX = clamp(lerp(point.x, stroke.depositX / total, 0.48), 0.03, 0.97);
     const centerY = clamp(lerp(point.y, stroke.depositY / total, 0.48), 0.04, 0.96);
     const depth = clamp(0.28 + metrics.rho * 0.34 + stroke.deposit / stroke.nextStain * 0.22, 0.22, 1);
+    const nearest = fieldSampleAt(centerX, centerY).first;
     const mark = {
       x: centerX,
       y: centerY,
@@ -1521,13 +1613,13 @@ html&gt;body{padding:0}&lt;/style&gt;
       metrics,
       type: &#x27;stain&#x27;,
       reason: &#x27;flow-saturation&#x27;,
-      pillar: stroke.color % 3,
+      pillar: ((nearest?.layer ?? 0) + stroke.color) % 3,
       weight: clamp(0.65 + point.width / 10.5, 0.65, 1.65),
       depth,
       age: 0,
       life: 390 + depth * 330 + Math.random() * 90,
       seed: stroke.seed + marks.length * 0.73,
-      color: stroke.color,
+      color: nearest?.layer ?? stroke.color,
       shadow: shadowMix
     };
     marks.push(mark);
@@ -1537,28 +1629,88 @@ html&gt;body{padding:0}&lt;/style&gt;
     focalSeed = clamp(focalSeed + depth * 0.12, 0, 1.6);
     canvas.dataset.lastMarkType = &#x27;stain&#x27;;
     canvas.dataset.lastStainReason = mark.reason;
+    canvas.dataset.stainCount = String(marks.filter(candidate =&gt; candidate.type === &#x27;stain&#x27;).length);
     canvas.dataset.memoryCount = String(marks.length);
     statusNode.textContent = &#x27;Saturated attention has become a gravity-bearing stain.&#x27;;
     eventTone(&#x27;stain&#x27;, centerY);
   }
 
+  function strokeAppearance(stroke, time) {
+    const elapsed = Math.max(0, (time - stroke.startedAt) / 1000);
+    const growth = 1 - Math.exp(-(elapsed * 0.24 + stroke.length * 1.55));
+    const width = Math.min(stroke.maxWidth, 0.85 + growth * (stroke.maxWidth - 0.85));
+    const mess = smooth(clamp((width - 3.7) / (stroke.maxWidth - 3.7), 0, 1));
+    return { width, mess };
+  }
+
+  function updateStrokeMeter(stroke, hold = true) {
+    const saturation = clamp(stroke.deposit / stroke.nextStain, 0, 1);
+    const percent = Math.round(saturation * 100);
+    strokeMeter.value = saturation;
+    strokeMeterValue.value = `${percent}%`;
+    strokeMeterValue.textContent = `${percent}%`;
+    strokeMeterWrap.hidden = false;
+    if (hold) meterHideAt = performance.now() + 1500;
+    canvas.dataset.strokeSaturation = saturation.toFixed(3);
+  }
+
+  function recordPrimitiveMetrics(stroke, metrics) {
+    const keys = [&#x27;delta&#x27;, &#x27;rv&#x27;, &#x27;rho&#x27;, &#x27;mu&#x27;, &#x27;xp&#x27;, &#x27;theta&#x27;, &#x27;ds&#x27;];
+    stroke.primitiveSums ||= Object.fromEntries(keys.map(key =&gt; [key, 0]));
+    stroke.primitiveCount = (stroke.primitiveCount || 0) + 1;
+    for (const key of keys) stroke.primitiveSums[key] += metrics[key] || 0;
+    const values = keys.map(key =&gt; stroke.primitiveSums[key] / stroke.primitiveCount);
+    canvas.dataset.primitiveVector = values.map(value =&gt; value.toFixed(3)).join(&#x27;,&#x27;);
+    canvas.dataset.primitiveLabels = &#x27;delta,rv,rho,mu,xp,theta,ds&#x27;;
+  }
+
+  function accrueStrokeDwell(stroke, time) {
+    const point = stroke.points[stroke.points.length - 1];
+    if (!point) return;
+    const seconds = clamp((time - stroke.lastDwellAt) / 1000, 0, 0.16);
+    if (seconds &lt;= 0) return;
+    const appearance = strokeAppearance(stroke, time);
+    point.width = appearance.width;
+    point.mess = appearance.mess;
+    point.fidelity = clamp(1 - appearance.mess * 0.76, 0.16, 1);
+    const metrics = metricsAt(point.x, point.y, point.dx || 0.001, point.dy || 0);
+    metrics.ds = clamp(point.width / stroke.maxWidth * 0.74 + stroke.deposit / stroke.nextStain * 0.26, 0, 1);
+    Object.assign(point, metrics);
+    const deposit = seconds * (0.095 + metrics.rho * 0.18 + point.revisit * 0.08);
+    stroke.deposit += deposit;
+    stroke.depositX += point.x * deposit;
+    stroke.depositY += point.y * deposit;
+    stroke.depositWeight += deposit;
+    stroke.lastDwellAt = time;
+    canvas.dataset.strokeWidth = point.width.toFixed(2);
+    canvas.dataset.strokeFidelity = point.fidelity.toFixed(3);
+    updateStrokeMeter(stroke, true);
+    if (stroke.deposit &gt;= stroke.nextStain) {
+      createSaturationStain(stroke, point, metrics);
+      stroke.nextStain += 1.05 + stroke.stains * 0.24;
+      stroke.stains++;
+    }
+  }
+
   function appendStrokePoint(stroke, point, force = false) {
     const previous = stroke.points[stroke.points.length - 1];
     if (!previous) {
-      stroke.points.push({ ...point, width: 0.85, fidelity: 1, mess: 0, dx: 0.01, dy: 0 });
+      const metrics = metricsAt(point.x, point.y, 0.01, 0);
+      metrics.ds = 0.08;
+      stroke.points.push({ ...point, ...metrics, width: 0.85, fidelity: 1, mess: 0, dx: 0.01, dy: 0, speed: 0, revisit: 0, ox: 0, oy: 0, vx: 0, vy: 0 });
+      recordPrimitiveMetrics(stroke, metrics);
+      updateStrokeMeter(stroke, true);
       return;
     }
     const dx = point.x - previous.x;
     const dy = point.y - previous.y;
     const distance = Math.hypot(dx, dy);
-    if (!force &amp;&amp; distance &lt; 0.0014) return;
+    const pointThreshold = stroke.points.length &gt; 420 ? 0.008 : stroke.points.length &gt; 240 ? 0.0048 : 0.0026;
+    if (!force &amp;&amp; distance &lt; pointThreshold) return;
     const seconds = Math.max(0.008, (point.time - previous.time) / 1000);
     const speed = clamp(distance / seconds / 1.25, 0, 1);
     stroke.length += distance;
-    const elapsed = Math.max(0, (point.time - stroke.startedAt) / 1000);
-    const growth = 1 - Math.exp(-(elapsed * 0.24 + stroke.length * 1.55));
-    const width = Math.min(stroke.maxWidth, 0.85 + growth * (stroke.maxWidth - 0.85));
-    const mess = smooth(clamp((width - 3.7) / (stroke.maxWidth - 3.7), 0, 1));
+    const { width, mess } = strokeAppearance(stroke, point.time);
     const fidelity = clamp(1 - mess * 0.76 - speed * mess * 0.08, 0.16, 1);
     const metrics = metricsAt(point.x, point.y, dx, dy);
     let revisits = 0;
@@ -1567,19 +1719,21 @@ html&gt;body{padding:0}&lt;/style&gt;
       if (Math.hypot(point.x - stroke.points[i].x, point.y - stroke.points[i].y) &lt; 0.028) revisits++;
     }
     const revisit = clamp(revisits / 3, 0, 1);
-    const deposit = seconds * (0.045 + (1 - speed) * 0.24)
-      + distance * (0.18 + metrics.rho * 0.52)
+    metrics.ds = clamp(width / stroke.maxWidth * 0.72 + stroke.deposit / stroke.nextStain * 0.28, 0, 1);
+    const deposit = seconds * (0.045 + (1 - speed) * 0.24 + metrics.mu * 0.06)
+      + distance * (0.18 + metrics.rho * 0.52 + metrics.xp * 0.12)
       + revisit * 0.024;
     stroke.deposit += deposit;
     stroke.depositX += point.x * deposit;
     stroke.depositY += point.y * deposit;
     stroke.depositWeight += deposit;
-    const enriched = { ...point, width, fidelity, mess, dx, dy, speed, revisit, rho: metrics.rho };
+    const enriched = { ...point, ...metrics, width, fidelity, mess, dx, dy, speed, revisit, ox: 0, oy: 0, vx: 0, vy: 0 };
     stroke.points.push(enriched);
+    recordPrimitiveMetrics(stroke, metrics);
     stroke.lastDwellAt = point.time;
     canvas.dataset.strokeWidth = width.toFixed(2);
     canvas.dataset.strokeFidelity = fidelity.toFixed(3);
-    canvas.dataset.strokeSaturation = clamp(stroke.deposit / stroke.nextStain, 0, 1).toFixed(3);
+    updateStrokeMeter(stroke, true);
 
     if (stroke.deposit &gt;= stroke.nextStain) {
       createSaturationStain(stroke, enriched, metrics);
@@ -1590,15 +1744,63 @@ html&gt;body{padding:0}&lt;/style&gt;
       stroke.lastBlindAt = point.time;
       addMark(point.x, point.y, dx, dy, 0.74, { speed, curvature: revisit, pressure: point.pressure });
     } else {
-      applyFocusImpulse(point.x, point.y, 0.12 + mess * 0.12, metrics.rho);
+      applyFocusImpulse(point.x, point.y, 0.12 + mess * 0.12 + metrics.xp * 0.08, metrics.rho);
       if (shadowMix &gt; 0.08) engagement = clamp(engagement + 0.004 + mess * 0.005, 0, 1);
     }
-    if (statusClock &gt; 48) {
-      const saturation = Math.round(clamp(stroke.deposit / stroke.nextStain, 0, 1) * 100);
-      statusNode.textContent = `Your stroke is carrying attention · saturation ${saturation}%`;
-      orientationNode.textContent = `${width.toFixed(1)}px · fidelity ${Math.round(fidelity * 100)}%`;
-      statusClock = 0;
+    updateChalkSound(speed, width, point.pressure, metrics.theta, metrics.rv);
+  }
+
+  function updateStrokeClouds(dt) {
+    if (frame % 3 !== 0) return;
+    const seconds = dt * 0.003;
+    const direction = lerp(1, -0.62, shadowGrip());
+    let driftTotal = 0;
+    let driftCount = 0;
+    for (const stroke of strokes) {
+      if (stroke.active) continue;
+      const reintegration = smooth(clamp((stroke.age / stroke.life - 0.32) / 0.62, 0, 1));
+      for (let index = 0; index &lt; stroke.points.length; index++) {
+        const point = stroke.points[index];
+        const x = point.x + point.ox;
+        const y = point.y + point.oy;
+        const { first } = fieldSampleAt(x, y);
+        if (!first) continue;
+        const voidness = point.rv ?? 0.5;
+        const compression = point.rho ?? 0.3;
+        const unity = point.mu ?? 0.3;
+        const stability = point.theta ?? 0.5;
+        const edgePull = point.xp ?? 0.2;
+        const turbulence = Math.sin(clock * 0.19 + stroke.seed * 2.7 + index * 0.31);
+        const transport = 0.0022 * (0.72 + voidness * 0.58) * (0.72 + stability * 0.38) * (1 - compression * 0.28);
+        const wander = 0.00018 + voidness * (1 - unity * 0.45) * 0.00034;
+        let targetVX = first.tx * direction * transport + turbulence * wander;
+        let targetVY = first.ty * direction * transport * (W / H) + Math.cos(clock * 0.16 + index * 0.23) * wander * 0.78;
+        targetVX += Math.sign(x - 0.5) * edgePull * 0.00052 * lerp(1, -0.35, shadowGrip());
+        targetVY += Math.sign(y - 0.5) * edgePull * 0.00038 * lerp(1, -0.35, shadowGrip());
+        if (lockPoint &amp;&amp; lockStrength &gt; 0.01) {
+          const dx = lockPoint.x - x;
+          const dy = lockPoint.y - y;
+          const distance = Math.hypot(dx, dy);
+          const influence = Math.exp(-Math.pow(distance / 0.28, 2)) * lockStrength;
+          targetVX += dx * influence * 0.014;
+          targetVY += dy * influence * 0.014;
+        }
+        const follow = 1 - Math.pow(0.90, dt / 16.67);
+        point.vx += (targetVX - point.vx) * follow;
+        point.vy += (targetVY - point.vy) * follow;
+        point.ox += point.vx * seconds;
+        point.oy += point.vy * seconds;
+        if (reintegration &gt; 0) {
+          const nearestY = first.y / H;
+          point.oy += (nearestY - (point.y + point.oy)) * reintegration * 0.00042 * dt;
+        }
+        point.ox = clamp(point.ox, -0.12, 0.12);
+        point.oy = clamp(point.oy, -0.14, 0.14);
+        driftTotal += Math.hypot(point.ox, point.oy);
+        driftCount++;
+      }
     }
+    canvas.dataset.cloudDrift = (driftTotal / Math.max(1, driftCount)).toFixed(5);
   }
 
   function drifted(mark) {
@@ -1929,7 +2131,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function drawSignalLock() {
-    if (!lockPoint) return;
+    if (!lockPoint || lockStrength &lt;= 0.005) return;
     const cx = lockPoint.x * W;
     const cy = lockPoint.y * H;
     const pulse = 0.5 + Math.sin(clock * 0.9) * 0.5;
@@ -1939,13 +2141,13 @@ html&gt;body{padding:0}&lt;/style&gt;
       const radius = 8 + ring * 8 + pulse * 3;
       ctx.beginPath();
       ctx.ellipse(cx, cy, radius * 1.45, radius * 0.78, clock * 0.025, 0, TAU);
-      ctx.strokeStyle = rgba(gradedColor(colorFor(4 + ring, ring), ring), 0.24 - ring * 0.034);
+      ctx.strokeStyle = rgba(gradedColor(colorFor(4 + ring, ring), ring), (0.24 - ring * 0.034) * lockStrength);
       ctx.lineWidth = ring === 0 ? 1.35 : 0.58;
       ctx.stroke();
     }
     ctx.beginPath();
     ctx.arc(cx, cy, 2.2 + pulse, 0, TAU);
-    ctx.fillStyle = rgba(mixColor(gradedColor(colorFor(4, 1), 0), palette.fg, 0.42), 0.72);
+    ctx.fillStyle = rgba(mixColor(gradedColor(colorFor(4, 1), 0), palette.fg, 0.42), 0.72 * lockStrength);
     ctx.fill();
     ctx.restore();
   }
@@ -2000,11 +2202,19 @@ html&gt;body{padding:0}&lt;/style&gt;
     const delta = clamp(Math.hypot(x - 0.5, y - 0.5) / 0.707, 0, 1);
     const speed = clamp(Math.hypot(vx, vy) * 18, 0, 1);
     const mu = clamp(rho * (0.72 + (1 - speed) * 0.28), 0, 1);
-    const outward = clamp(delta * 0.92 + rv * 0.36 - rho * 0.28 - mu * 0.18, -1, 1);
-    const xp = lerp(Math.max(0.08, outward), -Math.max(0.18, 0.42 + rho * 0.5), smooth(shadowMix));
-    const radialAngle = Math.atan2(y - 0.5, x - 0.5);
-    const movementAngle = Math.atan2(vy, vx);
-    const theta = clamp(1 - Math.abs(Math.sin(movementAngle - radialAngle)) * 0.74, 0, 1);
+    const edgeDistance = Math.min(x, 1 - x, y, 1 - y);
+    const apertureShape = aperture();
+    const apertureRadius = Math.hypot((x - apertureShape.x) / Math.max(apertureShape.rx / W, 0.001), (y - apertureShape.y) / Math.max(apertureShape.ry / H, 0.001));
+    const edgePull = Math.exp(-edgeDistance / 0.10);
+    const blindPull = Math.exp(-Math.abs(apertureRadius - 1) * 1.8);
+    const xp = clamp(edgePull * 0.54 + blindPull * 0.46 + shadowGrip() * blindPull * 0.18, 0, 1);
+    const field = fieldSampleAt(x, y).first;
+    const pixelVX = vx * W;
+    const pixelVY = vy * H;
+    const movementLength = Math.hypot(pixelVX, pixelVY);
+    const theta = field &amp;&amp; movementLength &gt; 0.01
+      ? clamp(Math.abs((pixelVX / movementLength) * field.tx + (pixelVY / movementLength) * field.ty), 0, 1)
+      : 0.5;
     const ds = clamp(0.22 + rho * 0.47 + (1 - speed) * 0.31, 0, 1);
     let basin = &#x27;B3&#x27;;
     if (delta &lt; 0.2 &amp;&amp; rv &lt; 0.62) basin = &#x27;B0&#x27;;
@@ -2100,13 +2310,13 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function setStatus() {
-    let status = &#x27;Draw freely. Slow or overlap the stroke to saturate the field.&#x27;;
+    let status = &#x27;Draw. Linger or overlap to saturate.&#x27;;
     if (blindEnergy &gt; 0.2) status = shadowMix &gt; 0.5 ? &#x27;The absence is binding the field to one attractor.&#x27; : &#x27;The absence is generating counterfactual space.&#x27;;
     if (emergentInput.checked &amp;&amp; emergentFocus.coherence &gt; 0.22) status = &#x27;A second focal coherence is learning where to belong.&#x27;;
     if (shadowMix &gt; 0.6 &amp;&amp; engagement &gt; 0.38) status = &#x27;Your engagement is loosening shadow’s grip on the field.&#x27;;
     if (state === &#x27;candidate&#x27;) status = &#x27;The field has produced a convergence candidate; only you can attest it.&#x27;;
     if (state === &#x27;locked&#x27;) status = &#x27;Your attestation is acting as a local gravitational anchor.&#x27;;
-    if (state === &#x27;returning&#x27;) status = &#x27;Every mark is folding back into renewed energy.&#x27;;
+    if (state === &#x27;releasing&#x27;) status = &#x27;The anchor is releasing its privilege; its residue remains in the field.&#x27;;
     statusNode.textContent = status;
     const percent = Math.round(shadowMix * 100);
     const gripPercent = Math.round(shadowGrip() * 100);
@@ -2120,12 +2330,16 @@ html&gt;body{padding:0}&lt;/style&gt;
       ? &#x27;Attest convergence&#x27;
       : state === &#x27;locked&#x27;
         ? &#x27;Release convergence&#x27;
-        : state === &#x27;returning&#x27;
-          ? &#x27;Returning…&#x27;
+        : state === &#x27;releasing&#x27;
+          ? &#x27;Releasing…&#x27;
           : &#x27;Field unconverged&#x27;;
-    actionButton.disabled = state === &#x27;returning&#x27; || state === &#x27;field&#x27;;
+    actionButton.disabled = state === &#x27;releasing&#x27; || state === &#x27;field&#x27;;
+    actionButton.setAttribute(&#x27;data-tooltip&#x27;, state === &#x27;locked&#x27;
+      ? &#x27;Release withdraws the anchor’s privileged influence. It does not erase the marks or stains that produced it.&#x27;
+      : &#x27;Attestation lets a locally coherent pattern influence nearby flow. It is a human commitment, not a claim that the pattern is correct.&#x27;);
     canvas.dataset.fieldState = state;
     canvas.dataset.lockPoint = lockPoint ? `${lockPoint.x.toFixed(3)},${lockPoint.y.toFixed(3)}` : &#x27;&#x27;;
+    canvas.dataset.lockStrength = lockStrength.toFixed(3);
   }
 
   function update(dt) {
@@ -2139,14 +2353,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     if (pointer.down &amp;&amp; currentGesture) {
       const now = performance.now();
-      if (now - currentGesture.stroke.lastDwellAt &gt; 88) {
-        appendStrokePoint(currentGesture.stroke, {
-          x: pointer.tx,
-          y: pointer.ty,
-          time: now,
-          pressure: currentGesture.pressure
-        }, true);
-      }
+      if (now - currentGesture.stroke.lastDwellAt &gt; 88) accrueStrokeDwell(currentGesture.stroke, now);
     }
 
     const spring = (shadowTarget - shadowMix) * 0.00007 * dt;
@@ -2157,6 +2364,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     focalSeed = Math.max(0, focalSeed - dt * 0.000012);
     temperature += (temperatureTarget - temperature) * (1 - Math.pow(0.86, dt / 16.67));
     focusForce += (focusForceTarget - focusForce) * (1 - Math.pow(0.82, dt / 16.67));
+    attestationCooldown = Math.max(0, attestationCooldown - dt * 0.001);
 
     const step = dt / 16.67;
     const grip = shadowGrip();
@@ -2205,6 +2413,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       if (!strokes[i].active) strokes[i].age += dt * 0.001;
       if (!strokes[i].active &amp;&amp; strokes[i].age &gt;= strokes[i].life) strokes.splice(i, 1);
     }
+    updateStrokeClouds(dt);
     for (let i = waves.length - 1; i &gt;= 0; i--) {
       waves[i].age += dt * 0.001;
       if (waves[i].age &gt;= waves[i].life) waves.splice(i, 1);
@@ -2217,21 +2426,23 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     if (state === &#x27;field&#x27;) {
       resonance = Math.max(0.04, resonance - dt * 0.0000025);
-      if (candidatePoint &amp;&amp; candidateScore &gt;= 0.68) {
+      if (attestationCooldown &lt;= 0 &amp;&amp; candidatePoint &amp;&amp; candidateScore &gt;= 0.68) {
         state = &#x27;candidate&#x27;;
         eventTone(&#x27;candidate&#x27;, 0.5);
         setStatus();
       }
     }
-    if (state === &#x27;returning&#x27;) {
-      returnProgress += dt / 4200;
+    if (state === &#x27;releasing&#x27;) {
+      returnProgress = (performance.now() - releaseStartedAt) / 2400;
+      lockStrength = 1 - ease(returnProgress);
       if (returnProgress &gt;= 1) {
         returnProgress = -1;
-        generation = (generation + 1) % 6;
         resonance = 0.14;
         state = &#x27;field&#x27;;
         lockPoint = null;
-        addWave(0.17, 0.53, 1.25, generation + 12);
+        lockStrength = 0;
+        attestationCooldown = 14;
+        addWave(candidatePoint?.x ?? 0.5, candidatePoint?.y ?? 0.5, 0.88, generation + 12);
         setStatus();
         eventTone(&#x27;return&#x27;, 0.5);
       }
@@ -2243,6 +2454,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       statusClock = 0;
       setStatus();
     }
+    if (!pointer.down &amp;&amp; !strokeMeterWrap.hidden &amp;&amp; performance.now() &gt; meterHideAt) strokeMeterWrap.hidden = true;
     if (frame % 4 === 0) updateAudio();
   }
 
@@ -2301,6 +2513,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.down = true;
     pointer.tx = p.x;
     pointer.ty = p.y;
+    eventTone(insideBlind(p.x, p.y) ? &#x27;blind&#x27; : &#x27;thread&#x27;, p.y);
+    chalkContact(p.y);
     const stroke = {
       points: [],
       active: true,
@@ -2325,6 +2539,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (strokes.length &gt; 90) strokes.shift();
     currentGesture = { stroke, pressure: p.pressure };
     canvas.dataset.strokeCount = String(strokes.length);
+    strokeMeterWrap.hidden = false;
   });
 
   canvas.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
@@ -2346,6 +2561,8 @@ html&gt;body{padding:0}&lt;/style&gt;
       addWave(p.x, p.y, 0.46 + currentGesture.stroke.deposit * 0.16, currentGesture.stroke.seed);
     }
     currentGesture = null;
+    stopChalkSound();
+    meterHideAt = performance.now() + 1500;
     setStatus();
   }
 
@@ -2354,6 +2571,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.down = false;
     if (currentGesture) currentGesture.stroke.active = false;
     currentGesture = null;
+    stopChalkSound();
+    meterHideAt = performance.now() + 900;
   });
 
   function temperatureName(value) {
@@ -2398,12 +2617,14 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (state === &#x27;candidate&#x27;) {
       state = &#x27;locked&#x27;;
       resonance = 1;
+      lockStrength = 1;
       lockPoint = candidatePoint ? { ...candidatePoint } : { x: emergentFocus.x, y: emergentFocus.y };
       addWave(lockPoint.x, lockPoint.y, 1.6, 17);
       eventTone(&#x27;lock&#x27;, 0.5);
     } else if (state === &#x27;locked&#x27;) {
-      state = &#x27;returning&#x27;;
+      state = &#x27;releasing&#x27;;
       returnProgress = 0;
+      releaseStartedAt = performance.now();
       eventTone(&#x27;release&#x27;, 0.5);
     }
     setStatus();
@@ -2430,31 +2651,139 @@ html&gt;body{padding:0}&lt;/style&gt;
     const warmGain = context.createGain();
     const glassGain = context.createGain();
     const shadowGain = context.createGain();
+    const chalkFilter = context.createBiquadFilter();
+    const chalkGain = context.createGain();
     master.gain.value = 0;
     filter.type = &#x27;lowpass&#x27;;
     filter.frequency.value = 900;
     warmGain.gain.value = 0.028;
     glassGain.gain.value = 0.012;
     shadowGain.gain.value = 0;
+    chalkFilter.type = &#x27;bandpass&#x27;;
+    chalkFilter.frequency.value = 1850;
+    chalkFilter.Q.value = 0.72;
+    chalkGain.gain.value = 0;
     filter.connect(master);
     master.connect(context.destination);
     warmGain.connect(filter);
     glassGain.connect(filter);
     shadowGain.connect(filter);
+    chalkFilter.connect(chalkGain);
+    chalkGain.connect(context.destination);
     const warm = context.createOscillator();
     const glass = context.createOscillator();
     const shadow = context.createOscillator();
+    const chalkBuffer = context.createBuffer(1, context.sampleRate * 2, context.sampleRate);
+    const chalkData = chalkBuffer.getChannelData(0);
+    for (let i = 0; i &lt; chalkData.length; i++) {
+      const grain = Math.random() * 2 - 1;
+      chalkData[i] = grain * (0.54 + Math.sin(i * 0.017) * 0.12);
+    }
+    const chalk = context.createBufferSource();
+    chalk.buffer = chalkBuffer;
+    chalk.loop = true;
     warm.type = &#x27;sine&#x27;;
     glass.type = &#x27;triangle&#x27;;
     shadow.type = &#x27;sawtooth&#x27;;
     warm.connect(warmGain);
     glass.connect(glassGain);
     shadow.connect(shadowGain);
+    chalk.connect(chalkFilter);
     warm.start();
     glass.start();
     shadow.start();
-    audio = { context, master, filter, warmGain, glassGain, shadowGain, warm, glass, shadow };
+    chalk.start();
+    audio = { context, master, filter, warmGain, glassGain, shadowGain, chalkFilter, chalkGain, warm, glass, shadow, chalk, chalkBuffer, lastScrape: -Infinity };
     return audio;
+  }
+
+  function chalkContact(y = pointer.y) {
+    if (!tonesInput.checked) return;
+    const engine = ensureAudio();
+    if (!engine) return;
+    const now = engine.context.currentTime;
+    const source = engine.context.createBufferSource();
+    const contactFilter = engine.context.createBiquadFilter();
+    const contactGain = engine.context.createGain();
+    const tick = engine.context.createOscillator();
+    const tickGain = engine.context.createGain();
+    source.buffer = engine.chalkBuffer;
+    source.playbackRate.value = 1.25 + (1 - y) * 0.42;
+    contactFilter.type = &#x27;highpass&#x27;;
+    contactFilter.frequency.value = 1150 + (1 - temperature) * 520;
+    contactFilter.Q.value = 0.72;
+    contactGain.gain.setValueAtTime(0.0001, now);
+    contactGain.gain.exponentialRampToValueAtTime(0.038, now + 0.0015);
+    contactGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.044);
+    tick.type = &#x27;triangle&#x27;;
+    tick.frequency.value = 1720 + (1 - y) * 780 + (1 - temperature) * 260;
+    tick.frequency.exponentialRampToValueAtTime(tick.frequency.value * 0.72, now + 0.028);
+    tickGain.gain.setValueAtTime(0.0001, now);
+    tickGain.gain.exponentialRampToValueAtTime(0.012, now + 0.001);
+    tickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.032);
+    source.connect(contactFilter);
+    contactFilter.connect(contactGain);
+    contactGain.connect(engine.context.destination);
+    tick.connect(tickGain);
+    tickGain.connect(engine.context.destination);
+    source.start(now, Math.random() * 0.5, 0.052);
+    tick.start(now);
+    tick.stop(now + 0.036);
+    source.addEventListener(&#x27;ended&#x27;, () =&gt; {
+      contactFilter.disconnect();
+      contactGain.disconnect();
+      tickGain.disconnect();
+    }, { once: true });
+    canvas.dataset.chalkContact = &#x27;tap&#x27;;
+  }
+
+  function updateChalkSound(speed = 0, width = 0.85, pressure = 0.32, stability = 0.5, voidness = 0.5) {
+    canvas.dataset.chalkMotion = speed.toFixed(3);
+    if (!tonesInput.checked || speed &lt; 0.018) {
+      stopChalkSound();
+      return;
+    }
+    const engine = ensureAudio();
+    if (!engine) return;
+    const now = engine.context.currentTime;
+    const interval = lerp(0.052, 0.014, speed) * lerp(1.22, 0.78, 1 - stability);
+    if (now - engine.lastScrape &lt; interval) return;
+    engine.lastScrape = now;
+    const grain = clamp((width - 0.85) / 9.65, 0, 1);
+    const crossGrain = 1 - stability;
+    const slip = 0.72 + Math.random() * 0.34;
+    const loudness = clamp((0.006 + speed * 0.019 + grain * 0.008 + pressure * 0.004 + crossGrain * 0.006) * slip, 0, 0.036);
+    engine.chalkFilter.frequency.setTargetAtTime(880 + speed * 2250 + (1 - temperature) * 360 + crossGrain * 720 + voidness * 180, now, 0.035);
+    engine.chalkFilter.Q.setTargetAtTime(0.52 + grain * 0.85 + crossGrain * 0.72, now, 0.05);
+    engine.chalkGain.gain.cancelScheduledValues(now);
+    engine.chalkGain.gain.setValueAtTime(Math.max(0.0001, engine.chalkGain.gain.value), now);
+    engine.chalkGain.gain.exponentialRampToValueAtTime(loudness, now + 0.002 + crossGrain * 0.002);
+    engine.chalkGain.gain.exponentialRampToValueAtTime(0.0001, now + lerp(0.034, 0.014, speed));
+    if (crossGrain &gt; 0.38 &amp;&amp; Math.random() &lt; 0.18 + crossGrain * 0.22) {
+      const squeak = engine.context.createOscillator();
+      const squeakGain = engine.context.createGain();
+      squeak.type = &#x27;triangle&#x27;;
+      squeak.frequency.value = 1120 + speed * 1180 + Math.random() * 210;
+      squeak.frequency.exponentialRampToValueAtTime(squeak.frequency.value * (0.86 + Math.random() * 0.1), now + 0.026);
+      squeakGain.gain.setValueAtTime(0.0001, now);
+      squeakGain.gain.exponentialRampToValueAtTime(0.0025 + crossGrain * 0.004, now + 0.002);
+      squeakGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
+      squeak.connect(squeakGain);
+      squeakGain.connect(engine.context.destination);
+      squeak.start(now);
+      squeak.stop(now + 0.032);
+      squeak.addEventListener(&#x27;ended&#x27;, () =&gt; squeakGain.disconnect(), { once: true });
+    }
+    canvas.dataset.chalkSound = &#x27;stick-slip&#x27;;
+  }
+
+  function stopChalkSound() {
+    if (audio) {
+      const now = audio.context.currentTime;
+      audio.chalkGain.gain.cancelScheduledValues(now);
+      audio.chalkGain.gain.setTargetAtTime(0, now, 0.018);
+    }
+    canvas.dataset.chalkSound = &#x27;quiet&#x27;;
   }
 
   function updateAudio() {
@@ -2475,6 +2804,8 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function eventTone(kind, y = pointer.y) {
+    canvas.dataset.lastToneKind = kind;
+    canvas.dataset.toneCount = String(Number(canvas.dataset.toneCount || 0) + 1);
     if (!tonesInput.checked) return;
     const engine = ensureAudio();
     if (!engine) return;
@@ -2520,7 +2851,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (tonesInput.checked) {
       ensureAudio();
       eventTone(&#x27;thread&#x27;, 0.5);
-    }
+    } else stopChalkSound();
   });
 
   const resizeObserver = new ResizeObserver(resize);
