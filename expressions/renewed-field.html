@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Renewed Field V3</title>
+<title>Renewed Field v4</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field V3" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Renewed Field v4" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;Renewed Field V3&lt;/title&gt;
+&lt;title&gt;Renewed Field v4&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(--background) !important;
@@ -748,52 +748,73 @@ svg {
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&quot;renewed-field-v3&quot;&gt;
+&lt;div id=&quot;renewed-field-v4&quot;&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Field controls&quot;&gt;
-    &lt;button id=&quot;rfv3-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-shadow&quot;&gt;
-      &lt;input id=&quot;rfv3-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;button id=&quot;rfv4-action&quot; class=&quot;btn btn-primary&quot; type=&quot;button&quot;&gt;Send attention&lt;/button&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-shadow&quot;&gt;
+      &lt;input id=&quot;rfv4-shadow&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Shadow&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-ambient&quot;&gt;
-      &lt;input id=&quot;rfv3-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-ambient&quot;&gt;
+      &lt;input id=&quot;rfv4-ambient&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Ambience&lt;/span&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv3-tones&quot;&gt;
-      &lt;input id=&quot;rfv3-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-tones&quot;&gt;
+      &lt;input id=&quot;rfv4-tones&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
       &lt;span class=&quot;form-check-label&quot;&gt;Chimes&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv3-status text-small&quot; aria-live=&quot;polite&quot;&gt;
-    &lt;span id=&quot;rfv3-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
-    &lt;span id=&quot;rfv3-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
+  &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Atmosphere and focal controls&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv4-temperature&quot;&gt;Field temperature &lt;span id=&quot;rfv4-temperature-value&quot; class=&quot;text-muted&quot;&gt;sunrise&lt;/span&gt;
+      &lt;input id=&quot;rfv4-temperature&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;64&quot;&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;rfv4-focus-force&quot;&gt;Focal force &lt;span id=&quot;rfv4-focus-force-value&quot; class=&quot;text-muted&quot;&gt;drift&lt;/span&gt;
+      &lt;input id=&quot;rfv4-focus-force&quot; class=&quot;form-range&quot; type=&quot;range&quot; min=&quot;-100&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;0&quot;&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;form-check form-switch&quot; for=&quot;rfv4-emergent&quot;&gt;
+      &lt;input id=&quot;rfv4-emergent&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+      &lt;span class=&quot;form-check-label&quot;&gt;Emergent focus&lt;/span&gt;
+    &lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class=&quot;rfv3-stage&quot;&gt;
-    &lt;canvas id=&quot;rfv3-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field where each region leaves a different residual and the blind spot refracts the surrounding reality.&quot;&gt;&lt;/canvas&gt;
-    &lt;div class=&quot;rfv3-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;draw through the field&lt;/span&gt;&lt;span&gt;enter the absence&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;rfv4-status text-small&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;span id=&quot;rfv4-status&quot;&gt;The field remembers where you have been.&lt;/span&gt;
+    &lt;span id=&quot;rfv4-orientation&quot; class=&quot;text-muted&quot;&gt;outward orientation&lt;/span&gt;
   &lt;/div&gt;
 
-  &lt;details class=&quot;rfv3-legend&quot;&gt;
+  &lt;div class=&quot;rfv4-stage&quot;&gt;
+    &lt;canvas id=&quot;rfv4-canvas&quot; role=&quot;img&quot; aria-label=&quot;A persistent layered field with motion-weighted marks, deep stains, controllable focal gravity, and an emergent secondary focus.&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;rfv4-whisper text-small&quot; aria-hidden=&quot;true&quot;&gt;&lt;span&gt;motion becomes weight&lt;/span&gt;&lt;span&gt;shape the focal field&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;details class=&quot;rfv4-legend&quot;&gt;
     &lt;summary class=&quot;text-small&quot;&gt;Field structure&lt;/summary&gt;
     &lt;div class=&quot;viz-row text-small text-muted&quot;&gt;
       &lt;span&gt;void → filaments&lt;/span&gt;
       &lt;span&gt;density → stains&lt;/span&gt;
       &lt;span&gt;edges → long arcs&lt;/span&gt;
       &lt;span&gt;blind spot → basin response&lt;/span&gt;
-      &lt;span&gt;all marks → entropy&lt;/span&gt;
+      &lt;span&gt;motion → line weight&lt;/span&gt;
+      &lt;span&gt;stains → deep tapestry&lt;/span&gt;
+      &lt;span&gt;focus → coherent drift&lt;/span&gt;
     &lt;/div&gt;
   &lt;/details&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
-  #renewed-field-v3 {
+  #renewed-field-v4 {
     color: var(--foreground);
     width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
-  #renewed-field-v3 .rfv3-status {
+  #renewed-field-v4 .viz-controls {
+    flex-wrap: wrap;
+  }
+
+  #renewed-field-v4 .rfv4-status {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -801,7 +822,18 @@ html&gt;body{padding:0}&lt;/style&gt;
     margin: 8px 0;
   }
 
-  #renewed-field-v3 .rfv3-stage {
+  #renewed-field-v4 .viz-controls .form-label {
+    flex: 1 1 210px;
+    min-width: min(210px, 100%);
+  }
+
+  #renewed-field-v4 .viz-controls .form-range {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  #renewed-field-v4 .rfv4-stage {
     position: relative;
     width: 100%;
     height: clamp(400px, 69vw, 580px);
@@ -809,14 +841,14 @@ html&gt;body{padding:0}&lt;/style&gt;
     background: var(--card);
   }
 
-  #renewed-field-v3 canvas {
+  #renewed-field-v4 canvas {
     display: block;
     width: 100%;
     height: 100%;
     touch-action: none;
   }
 
-  #renewed-field-v3 .rfv3-whisper {
+  #renewed-field-v4 .rfv4-whisper {
     position: absolute;
     left: 12px;
     right: 12px;
@@ -829,25 +861,56 @@ html&gt;body{padding:0}&lt;/style&gt;
     mix-blend-mode: difference;
   }
 
-  #renewed-field-v3 .rfv3-legend {
+  #renewed-field-v4 .rfv4-legend {
     margin-top: 8px;
   }
 
-  #renewed-field-v3 .rfv3-legend .viz-row {
+  #renewed-field-v4 .rfv4-legend .viz-row {
     margin-top: 6px;
   }
 
   @media (max-width: 480px) {
-    #renewed-field-v3 .rfv3-status {
+    #renewed-field-v4 .viz-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+    }
+
+    #renewed-field-v4 .viz-controls .form-label {
+      display: flex;
+      flex-wrap: wrap;
+      grid-column: 1 / -1;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    #renewed-field-v4 .viz-controls .form-label .text-muted {
+      margin-left: auto;
+    }
+
+    #renewed-field-v4 .viz-controls .form-check {
+      min-width: 0;
+    }
+
+    #renewed-field-v4 .viz-controls .form-check-label {
+      white-space: normal;
+    }
+
+    #renewed-field-v4 .viz-controls .form-range {
+      flex: 1 0 100%;
+      max-width: 100%;
+    }
+
+    #renewed-field-v4 .rfv4-status {
       flex-direction: column;
       gap: 2px;
     }
 
-    #renewed-field-v3 .rfv3-stage {
+    #renewed-field-v4 .rfv4-stage {
       height: 430px;
     }
 
-    #renewed-field-v3 .rfv3-whisper span:last-child {
+    #renewed-field-v4 .rfv4-whisper span:last-child {
       display: none;
     }
   }
@@ -855,17 +918,22 @@ html&gt;body{padding:0}&lt;/style&gt;
 
 &lt;script&gt;
 (() =&gt; {
-  const root = document.getElementById(&#x27;renewed-field-v3&#x27;);
+  const root = document.getElementById(&#x27;renewed-field-v4&#x27;);
   if (!root) return;
 
-  const canvas = root.querySelector(&#x27;#rfv3-canvas&#x27;);
+  const canvas = root.querySelector(&#x27;#rfv4-canvas&#x27;);
   const ctx = canvas.getContext(&#x27;2d&#x27;, { alpha: false });
-  const actionButton = root.querySelector(&#x27;#rfv3-action&#x27;);
-  const shadowInput = root.querySelector(&#x27;#rfv3-shadow&#x27;);
-  const ambientInput = root.querySelector(&#x27;#rfv3-ambient&#x27;);
-  const tonesInput = root.querySelector(&#x27;#rfv3-tones&#x27;);
-  const statusNode = root.querySelector(&#x27;#rfv3-status&#x27;);
-  const orientationNode = root.querySelector(&#x27;#rfv3-orientation&#x27;);
+  const actionButton = root.querySelector(&#x27;#rfv4-action&#x27;);
+  const shadowInput = root.querySelector(&#x27;#rfv4-shadow&#x27;);
+  const ambientInput = root.querySelector(&#x27;#rfv4-ambient&#x27;);
+  const tonesInput = root.querySelector(&#x27;#rfv4-tones&#x27;);
+  const temperatureInput = root.querySelector(&#x27;#rfv4-temperature&#x27;);
+  const temperatureValue = root.querySelector(&#x27;#rfv4-temperature-value&#x27;);
+  const focusForceInput = root.querySelector(&#x27;#rfv4-focus-force&#x27;);
+  const focusForceValue = root.querySelector(&#x27;#rfv4-focus-force-value&#x27;);
+  const emergentInput = root.querySelector(&#x27;#rfv4-emergent&#x27;);
+  const statusNode = root.querySelector(&#x27;#rfv4-status&#x27;);
+  const orientationNode = root.querySelector(&#x27;#rfv4-orientation&#x27;);
   const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
 
   const TAU = Math.PI * 2;
@@ -887,6 +955,12 @@ html&gt;body{padding:0}&lt;/style&gt;
   let shadowMix = 0;
   let shadowVelocity = 0;
   let blindEnergy = 0;
+  let engagement = 0;
+  let temperatureTarget = Number(temperatureInput.value) / 100;
+  let temperature = temperatureTarget;
+  let focusForceTarget = Number(focusForceInput.value) / 100;
+  let focusForce = focusForceTarget;
+  let focalSeed = 0;
   let resonance = 0.09;
   let state = &#x27;field&#x27;;
   let returnProgress = -1;
@@ -898,6 +972,8 @@ html&gt;body{padding:0}&lt;/style&gt;
   const blindEvents = [];
   const curves = Array.from({ length: 9 }, () =&gt; []);
   const pointer = { x: 0.58, y: 0.47, tx: 0.58, ty: 0.47, vx: 0, vy: 0, down: false, inside: false };
+  const blindFocus = { x: 0.315, y: 0.455, vx: 0, vy: 0 };
+  const emergentFocus = { x: 0.72, y: 0.36, vx: 0, vy: 0, coherence: 0 };
 
   const scene = document.createElement(&#x27;canvas&#x27;);
   const sceneCtx = scene.getContext(&#x27;2d&#x27;);
@@ -985,12 +1061,41 @@ html&gt;body{padding:0}&lt;/style&gt;
     return palette.series[index];
   }
 
+  function shadowGrip() {
+    return smooth(shadowMix) * (1 - engagement * 0.58);
+  }
+
+  function gradedColor(color, band = 0) {
+    const warm = mixColor(palette.series[2], palette.series[5], 0.46);
+    const cool = mixColor(palette.series[1], palette.series[4], 0.44);
+    const distance = Math.abs(temperature - 0.5) * 0.32;
+    const anchor = temperature &gt;= 0.5 ? warm : cool;
+    const complement = temperature &gt;= 0.5 ? cool : warm;
+    return mixColor(color, band % 2 ? complement : anchor, distance * (band % 2 ? 0.46 : 0.88));
+  }
+
+  function stainCentroid() {
+    let x = 0;
+    let y = 0;
+    let weight = 0;
+    for (const mark of marks) {
+      if (mark.type !== &#x27;stain&#x27;) continue;
+      const life = markLife(mark);
+      if (life &lt; 0.03) continue;
+      const w = life * (0.35 + mark.depth * 0.9) * mark.strength;
+      x += mark.x * w;
+      y += mark.y * w;
+      weight += w;
+    }
+    return weight ? { x: x / weight, y: y / weight, weight } : { x: 0.67, y: 0.39, weight: 0 };
+  }
+
   function aperture() {
     const turn = smooth(shadowMix);
     const agitation = 1 + blindEnergy * 0.12;
     return {
-      x: lerp(0.315, 0.43, turn) + Math.sin(clock * 0.21) * 0.012,
-      y: lerp(0.455, 0.49, turn) + Math.cos(clock * 0.17) * 0.018,
+      x: blindFocus.x + Math.sin(clock * 0.21) * 0.007,
+      y: blindFocus.y + Math.cos(clock * 0.17) * 0.010,
       rx: W * lerp(0.061, 0.043, turn) * agitation,
       ry: H * lerp(0.142, 0.19, turn) * lerp(agitation, 1.07, turn)
     };
@@ -1005,7 +1110,8 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   function markLife(mark) {
     const remaining = clamp(1 - mark.age / mark.life, 0, 1);
-    return Math.pow(remaining, 1.45) * Math.min(1, mark.age * 3.2 + 0.12);
+    const fade = mark.type === &#x27;stain&#x27; ? Math.pow(remaining, 0.42) : Math.pow(remaining, 1.45);
+    return fade * Math.min(1, mark.age * (mark.type === &#x27;stain&#x27; ? 1.35 : 3.2) + 0.12);
   }
 
   function memoryForce(nx, ny, layer) {
@@ -1020,7 +1126,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       const spread = mark.type === &#x27;stain&#x27; ? 0.11 : mark.type === &#x27;dust&#x27; ? 0.17 : 0.14;
       const influence = Math.exp(-(dx * dx + dy * dy * 0.42) / (spread * spread));
       const phase = dx * (mark.type === &#x27;thread&#x27; ? 34 : 19) - mark.age * 0.75 + mark.seed + layer * 0.42;
-      force += Math.sin(phase) * influence * life * mark.strength * (mark.type === &#x27;stain&#x27; ? 0.012 : 0.018);
+      force += Math.sin(phase) * influence * life * mark.strength * (mark.type === &#x27;stain&#x27; ? 0.014 + mark.depth * 0.008 : 0.018);
     }
     for (const wave of waves) {
       const life = clamp(1 - wave.age / wave.life, 0, 1);
@@ -1038,7 +1144,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     const count = 108;
     const z = (i - 4) / 4;
     const coherence = state === &#x27;locked&#x27; ? 0.76 : state === &#x27;candidate&#x27; ? 0.38 : 0;
-    const time = (reducedMotion ? clock * 0.12 : clock) * lerp(1, -0.52, smooth(shadowMix));
+    const grip = shadowGrip();
+    const time = (reducedMotion ? clock * 0.12 : clock) * lerp(1, -0.52, grip);
     const a = aperture();
     const foldCenter = lerp(0.63, 0.54, shadowMix);
     const rebirth = returnProgress &gt;= 0 ? Math.sin(Math.PI * returnProgress) : 0;
@@ -1058,9 +1165,19 @@ html&gt;body{padding:0}&lt;/style&gt;
       const nearBlind = Math.exp(-ax * ax * 0.58);
       const side = i &lt; 4 ? -1 : i &gt; 4 ? 1 : Math.sin(i + time) &gt; 0 ? 1 : -1;
       const refraction = Math.sin(ax * 3.2 + i * 0.63 + clock * 0.2) * blindEnergy;
-      y += side * nearBlind * (a.ry / H) * lerp(0.72, 0.45, shadowMix);
-      y += nearBlind * refraction * 0.034 * lerp(1, 0.42, shadowMix);
-      y += (a.y - y) * Math.exp(-Math.pow((nx - 0.53) / 0.28, 2)) * shadowMix * 0.29;
+      y += side * nearBlind * (a.ry / H) * lerp(0.72, 0.45, grip);
+      y += nearBlind * refraction * 0.034 * lerp(1, 0.42, grip);
+      y += (a.y - y) * Math.exp(-Math.pow((nx - a.x) / 0.29, 2)) * grip * 0.34;
+      const corrupt = Math.exp(-Math.pow((nx - a.x) / 0.38, 2));
+      y += Math.sin(nx * 71 + i * 1.73 - clock * 0.61) * corrupt * grip * (0.009 + blindEnergy * 0.013);
+      y += Math.sin(nx * 23 - i * 0.92 + clock * 0.29) * corrupt * grip * 0.011;
+
+      if (emergentInput.checked &amp;&amp; emergentFocus.coherence &gt; 0.02) {
+        const secondary = Math.exp(-Math.pow((nx - emergentFocus.x) / 0.20, 2));
+        const sign = i &lt; 4 ? -1 : i &gt; 4 ? 1 : Math.sin(i) &gt; 0 ? 1 : -1;
+        y += (emergentFocus.y - y) * secondary * emergentFocus.coherence * 0.11;
+        y += sign * secondary * emergentFocus.coherence * 0.022;
+      }
 
       const pull = Math.exp(-Math.pow((nx - pointer.x) / 0.17, 2));
       y += (pointer.y - y) * pull * (pointer.inside ? 0.08 : 0.018) * (0.58 + (i + 1) / 18);
@@ -1070,6 +1187,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       let x = nx + (pointer.x - 0.5) * z * 0.014 * (pointer.inside ? 1 : 0);
       x += Math.sin((nx - foldCenter) * 17 + i * 0.84 - time * 0.09) * fold * (0.013 + (1 - Math.abs(z)) * 0.022) * (i % 2 ? 1 : -1);
       x += nearBlind * refraction * 0.012;
+      x += Math.sin(nx * 89 + i * 2.2 + clock * 0.37) * corrupt * grip * 0.006;
       if (rebirth &gt; 0) {
         x = lerp(x, lerp(0.72, 0.83, returnProgress), rebirth * (0.48 + Math.abs(z) * 0.1));
         y = lerp(y, 0.5 + z * 0.018, rebirth * 0.57);
@@ -1077,7 +1195,8 @@ html&gt;body{padding:0}&lt;/style&gt;
 
       const thickness = H * (0.034 + fold * 0.026 + second * 0.012)
         * (1 + Math.sin(nx * TAU * PHI + i * 0.61 - time * 0.2) * 0.22)
-        * lerp(1, 0.72, shadowMix);
+        * lerp(1, 0.69, grip)
+        * (1 + corrupt * grip * Math.sin(nx * 37 + i) * 0.13);
       points.push({ x: x * W, y: y * H, thickness });
     }
 
@@ -1121,20 +1240,27 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function drawBackdrop() {
-    const tint = mixColor(palette.bg, palette.shadow, shadowMix * 0.065);
-    const base = ctx.createLinearGradient(0, 0, W, H);
-    base.addColorStop(0, rgba(mixColor(tint, colorFor(0, 1), darkField ? 0.085 : 0.025), 1));
+    const grip = shadowGrip();
+    const temperatureColor = gradedColor(temperature &gt;= 0.5 ? palette.series[5] : palette.series[1], 0);
+    const tint = mixColor(mixColor(palette.bg, temperatureColor, darkField ? 0.035 : 0.014), palette.shadow, grip * 0.073);
+    const base = ctx.createLinearGradient(0, lerp(0, H, grip), W, lerp(H, 0, grip));
+    base.addColorStop(0, rgba(mixColor(tint, gradedColor(colorFor(0, 1), 0), darkField ? 0.10 : 0.03), 1));
     base.addColorStop(0.47, rgba(tint, 1));
-    base.addColorStop(1, rgba(mixColor(tint, colorFor(3, 2), darkField ? 0.075 : 0.02), 1));
+    base.addColorStop(1, rgba(mixColor(tint, gradedColor(colorFor(3, 2), 3), darkField ? 0.09 : 0.025), 1));
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, W, H);
 
-    const blooms = [[0.17, 0.25, 0.5, 0], [0.63, 0.47, 0.58, 3], [0.87, 0.73, 0.43, 5]];
+    const blooms = [
+      [lerp(0.17, 0.82, grip), lerp(0.25, 0.78, grip), 0.5, 0],
+      [lerp(0.63, 0.56, grip), lerp(0.47, 0.55, grip), 0.58, 3],
+      [lerp(0.87, 0.18, grip), lerp(0.73, 0.28, grip), 0.43, 5]
+    ];
     for (let i = 0; i &lt; blooms.length; i++) {
       const [x, y, radius, colorIndex] = blooms[i];
       const gradient = ctx.createRadialGradient(x * W, y * H, 0, x * W, y * H, radius * Math.max(W, H));
-      gradient.addColorStop(0, rgba(colorFor(colorIndex, i), 0.18));
-      gradient.addColorStop(1, rgba(colorFor(colorIndex, i), 0));
+      const bloomColor = gradedColor(colorFor(colorIndex, i), i);
+      gradient.addColorStop(0, rgba(mixColor(bloomColor, palette.shadow, grip * (i === 0 ? 0.20 : 0.08)), 0.18));
+      gradient.addColorStop(1, rgba(bloomColor, 0));
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, W, H);
     }
@@ -1149,7 +1275,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         if (j === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = rgba(colorFor(k % 9, 1), 0.035);
+      ctx.strokeStyle = rgba(gradedColor(colorFor(k % 9, 1), k), 0.035);
       ctx.lineWidth = 0.6;
       ctx.stroke();
     }
@@ -1158,9 +1284,9 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   function drawLayer(i) {
     const points = curves[i];
-    const colorA = colorFor(i);
-    const colorB = colorFor(i + 2, 1);
-    const colorC = colorFor(i + 4, 2);
+    const colorA = gradedColor(colorFor(i), i);
+    const colorB = gradedColor(colorFor(i + 2, 1), i + 1);
+    const colorC = gradedColor(colorFor(i + 4, 2), i + 2);
     const depth = 1 - Math.abs(i - 4) / 7;
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
@@ -1224,15 +1350,15 @@ html&gt;body{padding:0}&lt;/style&gt;
         ctx.closePath();
         if (echo === 0) {
           const gradient = ctx.createLinearGradient(ax, ay + lift, bx, by + belly);
-          gradient.addColorStop(0, rgba(colorFor(colorIndex, index), 0.06));
-          gradient.addColorStop(0.48, rgba(colorFor(colorIndex + 2, index), 0.31));
-          gradient.addColorStop(1, rgba(colorFor(colorIndex, index), 0.04));
+          gradient.addColorStop(0, rgba(gradedColor(colorFor(colorIndex, index), index), 0.06));
+          gradient.addColorStop(0.48, rgba(gradedColor(colorFor(colorIndex + 2, index), index + 1), 0.31));
+          gradient.addColorStop(1, rgba(gradedColor(colorFor(colorIndex, index), index + 2), 0.04));
           ctx.fillStyle = gradient;
           ctx.globalAlpha = 0.44;
           ctx.fill();
         }
         ctx.globalAlpha = 0.15 - echo * 0.018;
-        ctx.strokeStyle = rgba(colorFor(colorIndex + echo, index), 0.9);
+        ctx.strokeStyle = rgba(gradedColor(colorFor(colorIndex + echo, index), echo), 0.9);
         ctx.lineWidth = echo === 0 ? 1.05 : 0.56;
         ctx.stroke();
       }
@@ -1246,17 +1372,22 @@ html&gt;body{padding:0}&lt;/style&gt;
     const radialLength = Math.hypot(radialX, radialY) || 1;
     const direction = lerp(1, -1, smooth(shadowMix));
     const distance = Math.min(0.12, mark.age * 0.00135 * Math.abs(mark.metrics.xp));
+    const parallax = mark.type === &#x27;stain&#x27; ? (mark.depth - 0.5) : 0;
     return {
-      x: (mark.x + radialX / radialLength * distance * direction) * W,
-      y: (mark.y + radialY / radialLength * distance * direction) * H
+      x: (mark.x + radialX / radialLength * distance * direction + (pointer.x - 0.5) * parallax * 0.024) * W,
+      y: (mark.y + radialY / radialLength * distance * direction + (pointer.y - 0.5) * parallax * 0.018) * H
     };
   }
 
   function drawStain(mark, life) {
     const center = drifted(mark);
-    const base = 10 + mark.metrics.ds * 25 + Math.min(24, mark.age * 0.22);
-    for (let ring = 0; ring &lt; 7; ring++) {
-      const radius = base * (1 - ring * 0.085);
+    const base = 9 + mark.weight * 18 + mark.depth * 23 + Math.min(36, mark.age * 0.095);
+    const rings = 8 + Math.round(mark.depth * 4);
+    ctx.save();
+    ctx.globalAlpha = 0.52 + mark.depth * 0.48;
+    ctx.filter = mark.depth &lt; 0.38 ? &#x27;blur(1.4px)&#x27; : mark.depth &gt; 0.78 ? &#x27;blur(0.25px)&#x27; : &#x27;none&#x27;;
+    for (let ring = 0; ring &lt; rings; ring++) {
+      const radius = base * (1 - ring * (0.69 / rings));
       ctx.beginPath();
       for (let j = 0; j &lt;= 44; j++) {
         const angle = j / 44 * TAU;
@@ -1268,14 +1399,16 @@ html&gt;body{padding:0}&lt;/style&gt;
         else ctx.lineTo(x, y);
       }
       ctx.closePath();
-      ctx.fillStyle = rgba(colorFor(mark.color + ring, ring), 0.12 * life * (1 - ring / 9));
+      const stainColor = gradedColor(colorFor(mark.color + ring, ring), ring);
+      ctx.fillStyle = rgba(stainColor, (0.07 + mark.depth * 0.07) * life * (1 - ring / (rings + 2)));
       ctx.fill();
       if (ring % 2 === 0) {
-        ctx.strokeStyle = rgba(colorFor(mark.color + ring + 1, 1), 0.24 * life);
-        ctx.lineWidth = 0.55;
+        ctx.strokeStyle = rgba(gradedColor(colorFor(mark.color + ring + 1, 1), ring + 1), (0.16 + mark.depth * 0.13) * life);
+        ctx.lineWidth = 0.4 + mark.weight * 0.52;
         ctx.stroke();
       }
     }
+    ctx.restore();
   }
 
   function drawThread(mark, life) {
@@ -1297,8 +1430,8 @@ html&gt;body{padding:0}&lt;/style&gt;
         center.x + vx * length * 0.66 - vy * offset,
         center.y + vy * length * 0.66 + vx * offset
       );
-      ctx.strokeStyle = rgba(colorFor(mark.color + echo, echo), life * (echo === 3 ? 0.42 : 0.14));
-      ctx.lineWidth = echo === 3 ? 1.25 + mark.metrics.ds : 0.58;
+      ctx.strokeStyle = rgba(gradedColor(colorFor(mark.color + echo, echo), echo), life * (echo === 3 ? 0.42 : 0.14));
+      ctx.lineWidth = echo === 3 ? 0.7 + mark.weight * 2.9 : 0.34 + mark.weight * 0.52;
       ctx.stroke();
     }
   }
@@ -1313,7 +1446,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       const x = lerp(center.x + Math.cos(angle) * radius * 1.7, W * 0.5, inward * 0.18);
       const y = lerp(center.y + Math.sin(angle) * radius, H * 0.5, inward * 0.18);
       const size = 0.5 + hash(i + mark.seed) * 1.8;
-      ctx.fillStyle = rgba(colorFor(mark.color + i, i), life * (0.11 + hash(i) * 0.2));
+      ctx.fillStyle = rgba(gradedColor(colorFor(mark.color + i, i), i), life * (0.11 + hash(i) * 0.2));
       ctx.fillRect(x, y, size * (inward &gt; 0.5 ? 2.4 : 1), size * 0.72);
     }
   }
@@ -1334,8 +1467,8 @@ html&gt;body{padding:0}&lt;/style&gt;
         center.x + sign * reach,
         center.y + spread * 0.3
       );
-      ctx.strokeStyle = rgba(colorFor(mark.color + i, 2), life * (i === 3 ? 0.36 : 0.11));
-      ctx.lineWidth = i === 3 ? 1.15 : 0.55;
+      ctx.strokeStyle = rgba(gradedColor(colorFor(mark.color + i, 2), i), life * (i === 3 ? 0.36 : 0.11));
+      ctx.lineWidth = i === 3 ? 0.62 + mark.weight * 1.55 : 0.32 + mark.weight * 0.36;
       ctx.stroke();
     }
   }
@@ -1389,7 +1522,14 @@ html&gt;body{padding:0}&lt;/style&gt;
   function drawMemory() {
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
-    for (const mark of marks) {
+    const ordered = marks.slice().sort((a, b) =&gt; {
+      if (a.type === &#x27;stain&#x27; &amp;&amp; b.type === &#x27;stain&#x27;) return a.depth - b.depth;
+      if (a.type === &#x27;stain&#x27;) return -1;
+      if (b.type === &#x27;stain&#x27;) return 1;
+      return 0;
+    });
+    drawTapestryLinks(ordered);
+    for (const mark of ordered) {
       const life = markLife(mark);
       if (life &lt;= 0) continue;
       if (mark.type === &#x27;stain&#x27;) drawStain(mark, life);
@@ -1399,6 +1539,32 @@ html&gt;body{padding:0}&lt;/style&gt;
       else drawBlindMark(mark, life);
     }
     ctx.restore();
+  }
+
+  function drawTapestryLinks(ordered) {
+    const stains = ordered.filter(mark =&gt; mark.type === &#x27;stain&#x27; &amp;&amp; markLife(mark) &gt; 0.12).slice(-28);
+    for (let i = 0; i &lt; stains.length; i++) {
+      for (let j = i + 1; j &lt; stains.length; j++) {
+        const a = stains[i];
+        const b = stains[j];
+        const distance = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distance &gt; 0.25) continue;
+        const p = drifted(a);
+        const q = drifted(b);
+        const life = Math.min(markLife(a), markLife(b));
+        const depth = (a.depth + b.depth) * 0.5;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.bezierCurveTo(
+          lerp(p.x, q.x, 0.32), lerp(p.y, q.y, 0.32) - H * 0.025 * depth,
+          lerp(p.x, q.x, 0.68), lerp(p.y, q.y, 0.68) + H * 0.018 * depth,
+          q.x, q.y
+        );
+        ctx.strokeStyle = rgba(gradedColor(colorFor(a.color + b.color, i + j), i + j), life * (0.018 + depth * 0.034) * (1 - distance / 0.25));
+        ctx.lineWidth = 0.35 + depth * 0.55;
+        ctx.stroke();
+      }
+    }
   }
 
   function drawWaves() {
@@ -1430,8 +1596,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     for (let j = 0; j &lt;= 72; j++) {
       const angle = j / 72 * TAU;
       const wobble = 1
-        + Math.sin(angle * 3 + clock * 0.16 + phase) * (0.09 + blindEnergy * 0.06)
-        + Math.cos(angle * 7 - phase + clock * 0.09) * (0.032 + blindEnergy * 0.025);
+        + Math.sin(angle * 3 + clock * 0.16 + phase) * (0.09 + blindEnergy * 0.06 + shadowGrip() * 0.035)
+        + Math.cos(angle * 7 - phase + clock * 0.09) * (0.032 + blindEnergy * 0.025 + shadowGrip() * 0.018);
       const x = a.x * W + Math.cos(angle) * a.rx * scale * wobble;
       const y = a.y * H + Math.sin(angle) * a.ry * scale * (1 + Math.sin(angle * 5 + phase) * 0.04);
       if (j === 0) ctx.moveTo(x, y);
@@ -1442,6 +1608,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   function drawRefraction() {
     const a = aperture();
+    const grip = shadowGrip();
     sceneCtx.setTransform(1, 0, 0, 1, 0, 0);
     sceneCtx.clearRect(0, 0, scene.width, scene.height);
     sceneCtx.drawImage(canvas, 0, 0);
@@ -1454,16 +1621,16 @@ html&gt;body{padding:0}&lt;/style&gt;
     for (let y = top; y &lt; bottom; y += strip) {
       const normalized = (y - a.y * H) / a.ry;
       const envelope = Math.max(0, 1 - normalized * normalized);
-      const oscillation = Math.sin(normalized * 12 + clock * 0.7) * (5 + blindEnergy * 25);
-      const capture = (a.x * W - W * 0.5) * shadowMix * envelope * 0.22;
+      const oscillation = Math.sin(normalized * (12 + grip * 5) + clock * 0.7) * (5 + blindEnergy * 25 + grip * 15);
+      const capture = (a.x * W - W * 0.5) * grip * envelope * 0.26;
       const shift = oscillation * envelope - capture;
       const sourceX = clamp(a.x * W - a.rx * 1.55 - shift, 0, W - 1);
       const width = Math.min(a.rx * 3.1, W - sourceX);
       ctx.drawImage(scene, sourceX * dpr, y * dpr, width * dpr, strip * dpr, sourceX + shift, y, width, strip + 0.5);
     }
     const veil = ctx.createRadialGradient(a.x * W, a.y * H, 0, a.x * W, a.y * H, Math.max(a.rx, a.ry));
-    veil.addColorStop(0, rgba(mixColor(palette.bg, palette.page, 0.55), lerp(0.34, 0.62, shadowMix)));
-    veil.addColorStop(0.68, rgba(mixColor(palette.bg, colorFor(5, 3), 0.08), 0.22));
+    veil.addColorStop(0, rgba(mixColor(palette.bg, palette.page, 0.55), lerp(0.34, 0.66, grip)));
+    veil.addColorStop(0.68, rgba(mixColor(palette.bg, gradedColor(colorFor(5, 3), 3), 0.08), 0.22));
     veil.addColorStop(1, rgba(palette.bg, 0.05));
     ctx.fillStyle = veil;
     ctx.fillRect(a.x * W - a.rx * 1.3, a.y * H - a.ry * 1.3, a.rx * 2.6, a.ry * 2.6);
@@ -1472,14 +1639,49 @@ html&gt;body{padding:0}&lt;/style&gt;
 
   function drawApertureRim() {
     const a = aperture();
+    const grip = shadowGrip();
     ctx.save();
     ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
     for (let k = 0; k &lt; 9; k++) {
       aperturePath(a, 0.84 + k * 0.068, k * 0.73);
-      const color = shadowMix &gt; 0.35 ? mixColor(colorFor(k + 1, k % 2), palette.shadow, shadowMix * 0.22) : colorFor(k + 1, k % 2);
+      const baseColor = gradedColor(colorFor(k + 1, k % 2), k);
+      const color = grip &gt; 0.35 ? mixColor(baseColor, palette.shadow, grip * 0.27) : baseColor;
       ctx.strokeStyle = rgba(color, 0.78);
       ctx.globalAlpha = 0.05 + (k === 4 ? 0.16 : 0.035) + blindEnergy * 0.055;
       ctx.lineWidth = k === 4 ? 1.35 : 0.62;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawEmergentFocus() {
+    const coherence = emergentInput.checked ? emergentFocus.coherence : 0;
+    if (coherence &lt; 0.012) return;
+    const cx = emergentFocus.x * W;
+    const cy = emergentFocus.y * H;
+    const radius = Math.min(W, H) * (0.035 + coherence * 0.07);
+    ctx.save();
+    ctx.globalCompositeOperation = darkField ? &#x27;screen&#x27; : &#x27;multiply&#x27;;
+    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 2.8);
+    glow.addColorStop(0, rgba(gradedColor(colorFor(2, 1), 0), 0.17 * coherence));
+    glow.addColorStop(0.38, rgba(gradedColor(colorFor(4, 2), 1), 0.08 * coherence));
+    glow.addColorStop(1, rgba(gradedColor(colorFor(1, 3), 2), 0));
+    ctx.fillStyle = glow;
+    ctx.fillRect(cx - radius * 3, cy - radius * 3, radius * 6, radius * 6);
+    for (let ring = 0; ring &lt; 8; ring++) {
+      const q = (ring + 1) / 8;
+      ctx.beginPath();
+      for (let j = 0; j &lt;= 52; j++) {
+        const angle = j / 52 * TAU;
+        const wobble = 1 + Math.sin(angle * (3 + ring % 3) - clock * 0.18 + ring) * 0.08;
+        const x = cx + Math.cos(angle) * radius * q * 1.45 * wobble;
+        const y = cy + Math.sin(angle) * radius * q * 0.82 * (1 + Math.cos(angle * 5 + clock * 0.1) * 0.035);
+        if (j === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = rgba(gradedColor(colorFor(ring + 2, ring), ring), coherence * (ring === 5 ? 0.28 : 0.085));
+      ctx.lineWidth = ring === 5 ? 1.15 : 0.52;
       ctx.stroke();
     }
     ctx.restore();
@@ -1515,6 +1717,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     drawFlow();
     drawMemory();
     drawWaves();
+    drawEmergentFocus();
     drawRefraction();
     drawApertureRim();
   }
@@ -1538,12 +1741,12 @@ html&gt;body{padding:0}&lt;/style&gt;
     const radialAngle = Math.atan2(y - 0.5, x - 0.5);
     const movementAngle = Math.atan2(vy, vx);
     const theta = clamp(1 - Math.abs(Math.sin(movementAngle - radialAngle)) * 0.74, 0, 1);
-    const ds = clamp(0.22 + rho * 0.47 + speed * 0.36, 0, 1);
+    const ds = clamp(0.22 + rho * 0.47 + (1 - speed) * 0.31, 0, 1);
     let basin = &#x27;B3&#x27;;
     if (delta &lt; 0.2 &amp;&amp; rv &lt; 0.62) basin = &#x27;B0&#x27;;
     else if (x &gt;= 0.5 &amp;&amp; rv &lt; 0.78) basin = &#x27;B1&#x27;;
     else if (x &lt; 0.5 &amp;&amp; rv &lt; 0.66) basin = &#x27;B2&#x27;;
-    return { delta, rv, rho, mu, xp, theta, ds, basin };
+    return { delta, rv, rho, mu, xp, theta, ds, speed, basin };
   }
 
   function typeFor(x, y, metrics) {
@@ -1559,15 +1762,42 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (waves.length &gt; 24) waves.shift();
   }
 
-  function addMark(x, y, vx = 0.01, vy = 0, strength = 1) {
+  function applyFocusImpulse(x, y, strength, depth) {
+    const magnitude = Math.abs(focusForce);
+    if (magnitude &lt; 0.025) return;
+    const dx = x - blindFocus.x;
+    const dy = y - blindFocus.y;
+    const distance = Math.hypot(dx, dy) || 1;
+    const direction = focusForce &lt; 0 ? 1 : -1;
+    const impulse = magnitude * (0.0018 + depth * 0.0025) * strength;
+    blindFocus.vx += dx / distance * impulse * direction;
+    blindFocus.vy += dy / distance * impulse * direction;
+    if (focusForce &gt; 0) {
+      emergentFocus.x = lerp(emergentFocus.x, x, 0.14 + magnitude * 0.16);
+      emergentFocus.y = lerp(emergentFocus.y, y, 0.14 + magnitude * 0.16);
+      focalSeed = clamp(focalSeed + magnitude * strength * 0.13, 0, 1.6);
+    }
+  }
+
+  function addMark(x, y, vx = 0.01, vy = 0, strength = 1, motion = {}) {
     const metrics = metricsAt(x, y, vx, vy);
     const type = typeFor(x, y, metrics);
+    const speed = clamp(motion.speed ?? metrics.speed, 0, 1);
+    const curvature = clamp(motion.curvature ?? 0.18, 0, 1);
+    const pressure = clamp(motion.pressure ?? 0.34, 0, 1);
+    const weight = clamp(0.22 + (1 - speed) * 0.72 + curvature * 0.38 + pressure * 0.42, 0.22, 1.62);
+    const depth = clamp(0.12 + (1 - speed) * 0.29 + curvature * 0.31 + pressure * 0.28 + metrics.rho * 0.24, 0.08, 1);
+    metrics.ds = clamp(weight / 1.45, 0, 1);
     const mark = {
       x, y, vx, vy, strength,
       metrics,
       type,
+      weight,
+      depth,
       age: 0,
-      life: 62 + metrics.rv * 46 + (type === &#x27;blind&#x27; ? 28 : 0),
+      life: type === &#x27;stain&#x27;
+        ? 330 + depth * 330 + Math.random() * 80
+        : 68 + metrics.rv * 58 + (type === &#x27;blind&#x27; ? 44 : 0),
       seed: Math.random() * 99,
       color: Math.floor(Math.random() * 9),
       shadow: shadowMix
@@ -1576,8 +1806,16 @@ html&gt;body{padding:0}&lt;/style&gt;
     canvas.dataset.lastMarkType = type;
     canvas.dataset.lastMarkX = x.toFixed(3);
     canvas.dataset.lastMarkY = y.toFixed(3);
+    canvas.dataset.lastMarkWeight = weight.toFixed(3);
+    canvas.dataset.lastMarkDepth = depth.toFixed(3);
     canvas.dataset.memoryCount = String(marks.length);
-    if (marks.length &gt; 180) marks.shift();
+    if (marks.length &gt; 260) {
+      const expendable = marks.findIndex(candidate =&gt; candidate.type !== &#x27;stain&#x27;);
+      marks.splice(expendable &gt;= 0 ? expendable : 0, 1);
+    }
+    if (shadowMix &gt; 0.08) engagement = clamp(engagement + 0.08 + strength * 0.055, 0, 1);
+    applyFocusImpulse(x, y, strength, depth);
+    if (emergentInput.checked &amp;&amp; type === &#x27;stain&#x27;) focalSeed = clamp(focalSeed + depth * strength * 0.05, 0, 1.6);
     addWave(x, y, 0.58 + strength * 0.55, mark.seed);
     if (type === &#x27;blind&#x27;) {
       blindEvents.push(mark);
@@ -1601,13 +1839,16 @@ html&gt;body{padding:0}&lt;/style&gt;
     let status = &#x27;The field remembers where you have been.&#x27;;
     if (state === &#x27;candidate&#x27;) status = &#x27;A pattern has survived its own disturbance.&#x27;;
     if (blindEnergy &gt; 0.2) status = shadowMix &gt; 0.5 ? &#x27;The absence is binding the field to one attractor.&#x27; : &#x27;The absence is generating counterfactual space.&#x27;;
+    if (emergentInput.checked &amp;&amp; emergentFocus.coherence &gt; 0.22) status = &#x27;A second focal coherence is learning where to belong.&#x27;;
+    if (shadowMix &gt; 0.6 &amp;&amp; engagement &gt; 0.38) status = &#x27;Your engagement is loosening shadow’s grip on the field.&#x27;;
     if (state === &#x27;locked&#x27;) status = &#x27;The map holds—its residues remain alive.&#x27;;
     if (state === &#x27;returning&#x27;) status = &#x27;Every mark is folding back into renewed energy.&#x27;;
     statusNode.textContent = status;
     const percent = Math.round(shadowMix * 100);
+    const gripPercent = Math.round(shadowGrip() * 100);
     orientationNode.textContent = shadowMix &gt; 0.02 &amp;&amp; shadowMix &lt; 0.98
       ? `${shadowTarget ? &#x27;turning inward&#x27; : &#x27;returning outward&#x27;} · ${percent}%`
-      : shadowMix &gt;= 0.98 ? &#x27;inward orientation&#x27; : &#x27;outward orientation&#x27;;
+      : shadowMix &gt;= 0.98 ? `sunset orientation · grip ${gripPercent}%` : &#x27;sunrise orientation · outward&#x27;;
     actionButton.textContent = state === &#x27;candidate&#x27;
       ? &#x27;Attest convergence&#x27;
       : state === &#x27;locked&#x27;
@@ -1631,6 +1872,43 @@ html&gt;body{padding:0}&lt;/style&gt;
     shadowVelocity = (shadowVelocity + spring) * Math.pow(0.88, dt / 16.67);
     shadowMix = clamp(shadowMix + shadowVelocity, 0, 1);
     blindEnergy = Math.max(0, blindEnergy - dt * 0.000019);
+    engagement = Math.max(0, engagement - dt * 0.000052);
+    focalSeed = Math.max(0, focalSeed - dt * 0.000012);
+    temperature += (temperatureTarget - temperature) * (1 - Math.pow(0.86, dt / 16.67));
+    focusForce += (focusForceTarget - focusForce) * (1 - Math.pow(0.82, dt / 16.67));
+
+    const step = dt / 16.67;
+    const grip = shadowGrip();
+    const centroid = stainCentroid();
+    const stainGravity = clamp(centroid.weight / 14, 0, 1);
+    let blindTargetX = lerp(0.315, 0.43, grip);
+    let blindTargetY = lerp(0.455, 0.49, grip);
+    blindTargetX += (centroid.x - 0.5) * stainGravity * 0.035;
+    blindTargetY += (centroid.y - 0.5) * stainGravity * 0.028;
+    if (pointer.down &amp;&amp; Math.abs(focusForce) &gt; 0.025) applyFocusImpulse(pointer.x, pointer.y, 0.11 * step, 0.5);
+    blindFocus.vx += (blindTargetX - blindFocus.x) * 0.0024 * step;
+    blindFocus.vy += (blindTargetY - blindFocus.y) * 0.0024 * step;
+    blindFocus.vx *= Math.pow(0.93, step);
+    blindFocus.vy *= Math.pow(0.93, step);
+    blindFocus.x = clamp(blindFocus.x + blindFocus.vx * step, 0.12, 0.88);
+    blindFocus.y = clamp(blindFocus.y + blindFocus.vy * step, 0.15, 0.85);
+
+    const emergentTarget = emergentInput.checked
+      ? clamp(0.04 + focalSeed * 0.5 + stainGravity * 0.56 + Math.max(0, focusForce) * 0.22, 0, 1)
+      : 0;
+    emergentFocus.coherence += (emergentTarget - emergentFocus.coherence) * (1 - Math.pow(0.975, step));
+    const emergentTargetX = centroid.weight &gt; 0.02 ? centroid.x : 0.68 + Math.sin(clock * 0.07) * 0.05;
+    const emergentTargetY = centroid.weight &gt; 0.02 ? centroid.y : 0.37 + Math.cos(clock * 0.09) * 0.04;
+    emergentFocus.vx += (emergentTargetX - emergentFocus.x) * (0.00075 + emergentFocus.coherence * 0.0012) * step;
+    emergentFocus.vy += (emergentTargetY - emergentFocus.y) * (0.00075 + emergentFocus.coherence * 0.0012) * step;
+    emergentFocus.vx *= Math.pow(0.955, step);
+    emergentFocus.vy *= Math.pow(0.955, step);
+    emergentFocus.x = clamp(emergentFocus.x + emergentFocus.vx * step, 0.10, 0.90);
+    emergentFocus.y = clamp(emergentFocus.y + emergentFocus.vy * step, 0.12, 0.88);
+    canvas.dataset.blindFocusX = blindFocus.x.toFixed(3);
+    canvas.dataset.blindFocusY = blindFocus.y.toFixed(3);
+    canvas.dataset.emergentCoherence = emergentFocus.coherence.toFixed(3);
+    canvas.dataset.shadowGrip = grip.toFixed(3);
 
     for (let i = marks.length - 1; i &gt;= 0; i--) {
       marks[i].age += dt * 0.001;
@@ -1684,8 +1962,29 @@ html&gt;body{padding:0}&lt;/style&gt;
     const rect = canvas.getBoundingClientRect();
     return {
       x: clamp((event.clientX - rect.left) / rect.width, 0, 1),
-      y: clamp((event.clientY - rect.top) / rect.height, 0, 1)
+      y: clamp((event.clientY - rect.top) / rect.height, 0, 1),
+      time: event.timeStamp || performance.now(),
+      pressure: event.pressure &gt; 0 ? event.pressure : (event.buttons ? 0.42 : 0.24)
     };
+  }
+
+  function motionFromGesture(points) {
+    if (points.length &lt; 2) return { speed: 0.08, curvature: 0.22, pressure: points[0]?.pressure ?? 0.42 };
+    const b = points[points.length - 1];
+    const a = points[points.length - 2];
+    const distance = Math.hypot(b.x - a.x, b.y - a.y);
+    const seconds = Math.max(0.008, (b.time - a.time) / 1000);
+    const speed = clamp(distance / seconds / 1.35, 0, 1);
+    let curvature = 0;
+    if (points.length &gt; 2) {
+      const p = points[points.length - 3];
+      const a1 = Math.atan2(a.y - p.y, a.x - p.x);
+      const a2 = Math.atan2(b.y - a.y, b.x - a.x);
+      let turn = Math.abs(a2 - a1);
+      if (turn &gt; Math.PI) turn = TAU - turn;
+      curvature = clamp(turn / (Math.PI * 0.72), 0, 1);
+    }
+    return { speed, curvature, pressure: b.pressure };
   }
 
   canvas.addEventListener(&#x27;pointerenter&#x27;, event =&gt; {
@@ -1705,7 +2004,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     pointer.down = true;
     pointer.tx = p.x;
     pointer.ty = p.y;
-    currentGesture = { points: [p], lastMark: 0 };
+    currentGesture = { points: [p], lastMark: 0, lastMotion: motionFromGesture([p]) };
   });
 
   canvas.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
@@ -1717,9 +2016,10 @@ html&gt;body{padding:0}&lt;/style&gt;
     const distance = Math.hypot(p.x - previous.x, p.y - previous.y);
     if (distance &gt; 0.006) {
       currentGesture.points.push(p);
+      currentGesture.lastMotion = motionFromGesture(currentGesture.points);
       if (currentGesture.points.length - currentGesture.lastMark &gt;= 5) {
         const anchor = currentGesture.points[currentGesture.lastMark];
-        addMark(p.x, p.y, p.x - anchor.x, p.y - anchor.y, 0.58);
+        addMark(p.x, p.y, p.x - anchor.x, p.y - anchor.y, 0.58, currentGesture.lastMotion);
         currentGesture.lastMark = currentGesture.points.length - 1;
       }
     }
@@ -1730,10 +2030,10 @@ html&gt;body{padding:0}&lt;/style&gt;
     const p = pointFromEvent(event);
     pointer.down = false;
     if (!currentGesture || currentGesture.points.length &lt; 2) {
-      addMark(p.x, p.y, 0.012, 0, 1);
+      addMark(p.x, p.y, 0.012, 0, 1, { speed: 0.04, curvature: 0.18, pressure: p.pressure });
     } else {
       const first = currentGesture.points[0];
-      addMark(p.x, p.y, p.x - first.x, p.y - first.y, 0.82);
+      addMark(p.x, p.y, p.x - first.x, p.y - first.y, 0.82, currentGesture.lastMotion);
     }
     currentGesture = null;
   }
@@ -1742,6 +2042,36 @@ html&gt;body{padding:0}&lt;/style&gt;
   canvas.addEventListener(&#x27;pointercancel&#x27;, () =&gt; {
     pointer.down = false;
     currentGesture = null;
+  });
+
+  function temperatureName(value) {
+    if (value &lt; 0.18) return &#x27;moon-cool&#x27;;
+    if (value &lt; 0.42) return &#x27;blue dawn&#x27;;
+    if (value &lt; 0.58) return &#x27;balanced&#x27;;
+    if (value &lt; 0.80) return &#x27;sunrise&#x27;;
+    return &#x27;ember-warm&#x27;;
+  }
+
+  function syncAtmosphereControls() {
+    temperatureTarget = Number(temperatureInput.value) / 100;
+    focusForceTarget = Number(focusForceInput.value) / 100;
+    temperatureValue.textContent = temperatureName(temperatureTarget);
+    focusForceValue.textContent = focusForceTarget &lt; -0.08
+      ? `pull ${Math.round(Math.abs(focusForceTarget) * 100)}%`
+      : focusForceTarget &gt; 0.08
+        ? `push ${Math.round(focusForceTarget * 100)}%`
+        : &#x27;drift&#x27;;
+    canvas.dataset.temperature = temperatureTarget.toFixed(2);
+    canvas.dataset.focusForce = focusForceTarget.toFixed(2);
+  }
+
+  temperatureInput.addEventListener(&#x27;input&#x27;, syncAtmosphereControls);
+  focusForceInput.addEventListener(&#x27;input&#x27;, syncAtmosphereControls);
+  emergentInput.addEventListener(&#x27;change&#x27;, () =&gt; {
+    if (emergentInput.checked) focalSeed = Math.max(focalSeed, 0.12);
+    canvas.dataset.emergentEnabled = String(emergentInput.checked);
+    setStatus();
+    eventTone(emergentInput.checked ? &#x27;candidate&#x27; : &#x27;thread&#x27;, 0.44);
   });
 
   shadowInput.addEventListener(&#x27;change&#x27;, () =&gt; {
@@ -1818,17 +2148,17 @@ html&gt;body{padding:0}&lt;/style&gt;
     if (!audio) return;
     const now = audio.context.currentTime;
     const altitude = 1 - pointer.y;
-    const base = 52 * Math.pow(2, altitude * 1.85);
-    const inward = smooth(shadowMix);
+    const base = 52 * Math.pow(2, altitude * 1.85 + (temperature - 0.5) * 0.14);
+    const inward = shadowGrip();
     audio.master.gain.setTargetAtTime(ambientInput.checked ? 0.68 : 0, now, 0.45);
     audio.warm.frequency.setTargetAtTime(base, now, 0.18);
     audio.glass.frequency.setTargetAtTime(base * lerp(1.5, Math.SQRT2, inward), now, 0.22);
     audio.shadow.frequency.setTargetAtTime(base * lerp(1.25, Math.SQRT2, inward), now, 0.2);
     audio.shadow.detune.setTargetAtTime(inward * 42, now, 0.28);
-    audio.warmGain.gain.setTargetAtTime(0.028 * (1 - inward * 0.48), now, 0.34);
-    audio.glassGain.gain.setTargetAtTime(0.012 * (1 - inward * 0.34), now, 0.34);
+    audio.warmGain.gain.setTargetAtTime(0.024 * (0.78 + temperature * 0.44) * (1 - inward * 0.48), now, 0.34);
+    audio.glassGain.gain.setTargetAtTime(0.012 * (1.16 - temperature * 0.32) * (1 - inward * 0.34), now, 0.34);
     audio.shadowGain.gain.setTargetAtTime(0.012 * inward, now, 0.38);
-    audio.filter.frequency.setTargetAtTime(lerp(1450 + altitude * 900, 430 + altitude * 280, inward), now, 0.32);
+    audio.filter.frequency.setTargetAtTime(lerp(1320 + temperature * 360 + altitude * 900, 390 + temperature * 140 + altitude * 280, inward), now, 0.32);
   }
 
   function eventTone(kind, y = pointer.y) {
@@ -1838,7 +2168,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     const now = engine.context.currentTime;
     const notes = { stain: -2, thread: 4, dust: 7, arc: 9, blind: 1, candidate: 7, lock: 12, shadow: -1, release: 4, return: 9 };
     const significant = [&#x27;blind&#x27;, &#x27;candidate&#x27;, &#x27;lock&#x27;, &#x27;release&#x27;, &#x27;return&#x27;].includes(kind);
-    const base = 146.83 * Math.pow(2, (1 - y) * 0.78);
+    const base = 146.83 * Math.pow(2, (1 - y) * 0.78 + (temperature - 0.5) * 0.10);
     const frequency = base * Math.pow(2, (notes[kind] || 0) / 12);
     const destination = engine.context.createGain();
     destination.connect(engine.context.destination);
@@ -1884,6 +2214,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   resizeObserver.observe(canvas);
   new MutationObserver(refreshPalette).observe(document.documentElement, { attributes: true, attributeFilter: [&#x27;class&#x27;, &#x27;data-theme&#x27;] });
   resize();
+  syncAtmosphereControls();
   for (let i = 0; i &lt; 9; i++) buildCurve(i);
   addWave(0.51, 0.5, 0.7, 3);
   setStatus();
