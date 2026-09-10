@@ -12,29 +12,17 @@ These are built using the [DN Concept-to-Canvas](../skills/SKILL_DN-Concept-to-C
 
 Each `.html` file in this directory is a self-contained, dependency-free interactive experience. Open any of them in a browser. No build step, no install, no framework required.
 
-Guidance lives inside each expression, through contextual notes, a "How to See" panel, or expandable captions explaining the interactions and their underlying rules.
+| Expression | Source |
+| --- | --- |
+| [DN Code Embodied](https://deusnosmachina.github.io/DN_Framework/expressions/DN_Code_Embodied.html) | [HTML](DN_Code_Embodied.html) |
+| [Illumination](https://deusnosmachina.github.io/DN_Framework/expressions/illumination.html) | [HTML](illumination.html) |
+| [Morning](https://deusnosmachina.github.io/DN_Framework/expressions/morning.html) | [HTML](morning.html) |
+| [Renewed Field](https://deusnosmachina.github.io/DN_Framework/expressions/renewed-field.html) | [HTML](renewed-field.html) |
+| [The Containment Principle](https://deusnosmachina.github.io/DN_Framework/expressions/the_containment_principle.html) | [HTML](the_containment_principle.html) |
+| [The RIP Field](https://deusnosmachina.github.io/DN_Framework/expressions/RIP_Field_DN_Framework.html) | [HTML](RIP_Field_DN_Framework.html) |
+| [What we carry](https://deusnosmachina.github.io/DN_Framework/expressions/what-we-carry.html) | [HTML](what-we-carry.html) |
 
-### What we carry
-
-[Open the expression](https://deusnosmachina.github.io/DN_Framework/expressions/what-we-carry.html) · [Single-file source](what-we-carry.html)
-
-Two observation fields read the same binary signals differently. Carry a reading forward, follow its influence through later layers, and replay the history without a contribution. Begin with **Follow an encounter** for a guided sequence, or **Your field** to explore. Ripple the field, shape its sound, inspect different lenses, or open a glyph’s body through time. Optional classical binary interactions evolve on Carry. Twenty contextual field notes explain the drawing rules and their limits.
-
-Choose from the seven binary alphabets in Russell’s page, each with a coordinated surface and sound treatment. Each new layer can retain its alphabet and reversible material geometry, so changing alphabets can shape the body across time without rewriting the underlying reading. Compare shared encoding or reveal the original contour inside History body. Freeform lets each signal keep its own marks, surface, and tuning; Carry records the assignments for later inspection and retrieval.
-
-Play the field through time, or play the selected glyph’s body. Saved ripple gestures restore each layer’s visual and sonic settings; contour geometry shapes the body’s voice. Pause, seek, loop, adjust the pace and mix, and export the same rendered audio as stereo WAV. Untouched layers use a labeled generated scan or silence. The history download preserves gestures, instrument settings, and composition choices alongside the unchanged signal records.
-
-The auto-randomizer appends 8, 16, 32, or 64 seeded layers, varying attention, classical binary interactions, and ripple placement. Stop keeps the completed sequence. Each run selects its playback range, adjusting pace for the audio limit; repeat it to extend the archive. Your alphabet, custom marks, water settings, and sound mix remain in use.
-
-History body now offers **Selected signal** and **Whole field**. The whole-field view follows each reader’s recorded observation boundary through time: wider attention widens a slice, and movement makes the shell lean. The selected slice reveals its signals, glyph readings, carried selections, and binary-pair links. Show both readers or either one; select any signal inside to enter its individual history. Play and Export use the existing whole-field soundtrack. Earlier histories already contain the required geometry.
-
-Selecting a binary 0 or 1 now opens that exact signal’s history. The body’s Signal menu includes all 64 sites and stays synchronized with field selection. Binaries trace their stored states along fixed 0/1 rails, with optional connecting ribbons, per-layer change explanations, isolated playback, and WAV export. Abstract glyphs retain their contour bodies.
-
-Dark is the default, with a saved Light option. Observer and Carry controls sit directly beneath the field; playback follows them. Fields may extend beyond the window while their centers remain reachable. Either highlights the union and staggers participating reader tones; Both highlights the overlap and sounds participating readers together. History body is always accessible, including its first slice. A shortcut guide and full-screen control are provided.
-
-The interface groups controls by activity: a compact viewing toolbar, **Observe & carry**, **Explore time**, and a **Signal / Instrument** inspector. Water, sound, and binary tuning are grouped within Instrument; playback settings and sequence generation unfold when needed. Short notes respond to relevant actions without opening popups. The complete explanations open on request in a focused reader, with all twenty also available in a grouped **Field notes** index at the bottom. All existing controls, computation, sound mappings, shortcuts, and stored-history formats are preserved.
-
-Developed with [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra). Created in dialogue with [Russell Foltz-Smith's pattern recognition pattern](https://pattern-recognition-pattern.un1crom.chatgpt.site/). Sessions stay in each visitor's browser; histories can be downloaded and reopened. Capture copies the current view as a PNG, with a download fallback. Sound is opt-in.
+Guidance lives inside each expression’s interface.
 
 ---
 
