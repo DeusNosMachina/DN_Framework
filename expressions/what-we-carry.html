@@ -17,12 +17,14 @@
 .sense-bar,.ripple-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}.sense-bar>label{flex:1;min-width:120px}.sense-bar select{width:100%}.ripple-actions{margin:0 0 15px}.ripple-actions button:last-child{margin-left:auto}#lens-note{margin-top:10px;min-height:21px}.frequency-controls label{display:grid;grid-template-columns:auto 1fr;gap:6px;margin-top:14px;font-size:.875rem}.frequency-controls output{text-align:right}.frequency-controls input{grid-column:1/-1}.instrument-settings{margin-top:22px;border-top:1px solid var(--line)}.instrument-settings>details{padding:15px 0;border-bottom:1px solid var(--line)}.instrument-settings summary{font-family:Georgia,serif;font-size:1.15rem}.instrument-settings .small{margin:12px 0 0}.instrument-settings .check{font-size:.875rem;margin-top:16px;white-space:normal}.dial-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 28px;padding:20px 0 5px}.dial-grid label{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;font-size:.875rem}.dial-grid output{font-size:.8125rem;color:var(--muted);font-variant-numeric:tabular-nums}.dial-grid input,.dial-grid select{grid-column:1/-1}.dial-grid input:disabled{opacity:.4}#experience-status{margin-top:12px}#open-body{margin-bottom:12px;width:100%;text-align:left}#body-dialog{width:min(850px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:28px}#body-dialog::backdrop{background:rgb(0 0 0 / .58)}.body-heading{display:flex;align-items:start;justify-content:space-between;gap:20px}.body-heading .eyebrow{margin-bottom:7px}#body-view{display:block;width:100%;height:430px}#body-note{margin-top:14px}.body-heading h2{font-size:1.8rem}#body-dialog .sense-bar>label:first-child{display:flex;align-items:center;gap:10px}#body-dialog .sense-bar input[type=range]{max-width:180px}
 @media(max-width:500px){.dial-grid{gap:16px}.sense-bar{gap:8px}.ripple-actions{gap:6px}.ripple-actions button{font-size:.8125rem;padding:8px}.ripple-actions button:last-child{margin-left:0}#body-dialog{padding:17px}#body-view{height:340px}#body-dialog .time-controls{flex-wrap:wrap}.body-heading h2{font-size:1.5rem}}
 
+.auto-controls{margin:18px 0 24px}.auto-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.auto-row label{display:flex;align-items:center;gap:10px;font-size:.875rem;margin-right:auto}.auto-controls .small{margin-top:10px}.auto-controls progress{display:block;width:100%;height:5px;margin-top:14px;accent-color:var(--ink)}@media(max-width:500px){.auto-row label{width:100%;justify-content:space-between}.auto-row button{flex:1}}
+
 </style>
 </head>
 <body>
 <a class="skip" href="#field-controls">Skip to the field</a>
 <main>
-  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 08</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
+  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 09</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
   <div class="session-bar"><div class="switches" aria-label="Choose a session"><button data-session="own" aria-pressed="true">Your field</button><button data-session="encounter" aria-pressed="false">Follow an encounter</button></div><span class="small" id="session-note">Two readers · one device · a complete local history</span></div>
   <section class="workspace" aria-label="A field and its history">
     <div class="field-column">
@@ -48,6 +50,7 @@
         </div><p class="small">Speed changes pacing, preserving pitch. Exports contain one pass and its echo tail.</p></details>
         <p id="score-layer-note" class="small">No saved ripples yet.</p>
       </div>
+      <div class="auto-controls" aria-label="Auto-randomizer"><div class="auto-row"><label>Auto-randomizer <select id="auto-count"><option value="8">8 layers</option><option value="16" selected>16 layers</option><option value="32">32 layers</option><option value="64">64 layers</option></select></label><button id="auto-start">Grow a sequence</button><button id="auto-stop" disabled>Stop</button></div><progress id="auto-progress" max="16" value="0" aria-label="Generated layers" hidden></progress><p id="auto-status" class="small" aria-live="polite">Appends to Your field. Your alphabet and sound mix stay yours.</p></div>
       <div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust"><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="100" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="100" aria-label="Observation field height"></label></div></details></div>
       <div class="carry-controls"><label>Carry from <select id="mode"><option value="union">either field ∪</option><option value="intersection">both fields ∩</option></select></label><button id="carry" class="primary">Carry →</button></div>
       <div class="status" aria-live="polite"><span id="status">Choose what enters the next encounter.</span><span id="retained">64 signals retained</span></div>
@@ -126,9 +129,10 @@
     <details><summary><span>13</span> Compose a field that has no single alphabet</summary><div class="caption-body"><p>Choose Freeform and select a signal. Give it a built-in alphabet or choose My own marks and type or paste a pair for 0 and 1. A mark can be empty, a symbol, or a short cluster. For an interpretive glyph, your chosen mark accompanies the generated contour. Choose its surface and a pitch offset. Preview the assignment, then Carry to record it.</p><p>Each site can keep a different dictionary, surface, and tuning. A custom mark’s normalized Unicode identity deterministically selects a note interval and a small detuning. The same mark with the same surface and tuning keeps that assignment wherever it appears; its location still affects stereo position. Pitch offsets are measured in semitones, so twelve doubles or halves the frequency. The surface adds a reproducible motif from the same identity.</p><p>Mark provenance lists the layers where an assignment changed. Earlier layers keep their earlier assignments. Returning a signal retrieves its old marks as well as its stored signal. Downloaded histories include the assignments and the active alphabet. Switching back to a shared alphabet temporarily presents every record through that dictionary.</p><p class="limit">Identical marks can label different states in Freeform. That makes their visible distinction unavailable; it does not erase the stored distinction. A symbol hash is an arbitrary encoding, not an analysis of the symbol’s shape or meaning. Added texture and custom lettering are presentation; the recorded interpretation contours keep their original mathematical rules.</p></div></details>
     <details><summary><span>14</span> Let the field remember its touch</summary><div class="caption-body"><p>Ripple a layer, Carry, ripple another, then Play field. Playback visits the layers in order. Each saved gesture restores its position, water settings, sound mix, alphabet, marks, reader, observation fields, and lens. The signals underneath stay as recorded. A layer can gather new touches long after its creation.</p><p>The score keeps gesture order within each layer. Long pauses are compressed to 1.5 seconds; returning to a layer adds a 0.35-second gap. Each layer has at least 2.5 seconds to sound, with 2.5 seconds after its last touch. Speed changes the pace without transposing the notes.</p><p>Pause, seek, loop, or choose a range under Compose playback. Recorded sound uses the settings saved with each touch. Current sound recomposes with your present mix. Older editions saved no touches: Generated scan supplies two clearly labeled impulses, or Silence leaves those layers quiet.</p><p class="limit">This is a score reconstructed from gestures, not a recording of your speakers or microphone. Save new touches can be turned off. Download history keeps the gestures, instrument, and composition settings alongside the signal archive; WAV keeps one rendered performance.</p></div></details>
     <details><summary><span>15</span> A shape can have a voice</summary><div class="caption-body"><p>Open a glyph’s body and Play this body. Its recorded contours become a sequence of timbres. A bright contour travels between the slices while saved ripples pass through the body. The travel between records is visual interpolation, not an additional computed reading.</p><p>Eight stretches of the actual contour supply eight average radii. Their mean shifts the voice’s pitch; the radii weight its higher harmonics. The selected reader’s shape and chosen marks determine the instrument. Local wave height and slope determine when it responds, how strongly, and with what pitch inflection.</p><p>Playback reconstructs the wave at 60 steps per second and samples its sounding sites 20 times per second. Rhythm limits repeated notes; up to sixteen ripple or Carry voices overlap, alongside optional ambience. Position sets stereo placement. Brightness, note length, and echo finish the sound.</p><p>Export WAV saves the same stereo samples used for playback, rounded to 16-bit audio at 44.1 kHz. Loop exports one pass with an echo tail. A score can cover up to two minutes of layers before that tail; choose a shorter range or faster pace for a longer archive.</p><p class="limit">A history can acquire a distinctive voice without sound becoming its meaning. Different histories can still sound alike. The contour-to-tone mapping is an authored instrument, not a unique identifier or a measurement of interpretation.</p></div></details>
+    <details><summary><span>16</span> Give chance a turn at observing</summary><div class="caption-body"><p>Choose 8, 16, 32, or 64 layers and Grow a sequence. The auto-randomizer appends encounters to Your field. Both readers move and resize their attention in bounded steps; their preferences can change. Classical binary interactions vary too, so later readings meet altered signals and inherited context.</p><p>Each generated layer contains two seeded ripple positions: a Carry impulse inside one observation field, followed by a touch elsewhere. These generated gestures are saved with their settings even when manual touch recording is off. The alphabet, your custom marks, water settings, and sound mix are preserved. Queued signal and mark edits enter the first new layer.</p><p>Stop finishes the current layer and keeps the completed sequence. Leaving the tab stops the run too. The completed range is selected for playback; long runs use a faster pace to fit the two-minute score limit. Run again to extend the archive, or choose another range to hear it.</p><p class="limit">The seed, step number, resolved actions, and gestures remain in the downloaded history. Random choices create encounters, not interpretations of what matters. Shape changes still follow the same drawing rules. Sixty-four layers per run is a practical browser limit; longer archives use more memory. Download history to preserve them beyond browser storage.</p></div></details>
   </section>
   <section class="history-tools" aria-label="Keep your history"><h2>Keep the encounter.</h2><div><button id="download">Download history</button><button id="reopen">Reopen history</button><input id="history-file" type="file" accept="application/json,.json" hidden></div><p class="small" id="storage-status" aria-live="polite">Your history stays in this browser.</p></section>
-  <footer><p>In dialogue with <a href="https://pattern-recognition-pattern.un1crom.chatgpt.site/">Russell Foltz-Smith’s pattern recognition pattern</a> and the <a href="https://github.com/DeusNosMachina/DN_Framework">DN Framework</a>.</p><p>Expression and inquiry: Deus Nos Machina. Developed with Codex. This model makes no claim to solve a Rule 30 problem.</p></footer>
+  <footer><p>In dialogue with <a href="https://pattern-recognition-pattern.un1crom.chatgpt.site/">Russell Foltz-Smith’s pattern recognition pattern</a> and the <a href="https://github.com/DeusNosMachina/DN_Framework">DN Framework</a>.</p><p>Expression and inquiry: Deus Nos Machina. Developed with <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">GPT-6 Astra</a>. This model makes no claim to solve a Rule 30 problem.</p></footer>
 </main>
 <script type="module">
 // Public, declared encodings. Labels are indexed by the stored bit: 0, then 1.
@@ -385,6 +389,7 @@ function importHistory(data){
   const validId=id=>Number.isInteger(id)&&id>=0&&id<64;
   data.actions.forEach((a,index)=>{
     if(!['carry','return'].includes(a.type))throw Error('Unknown action.');
+    if(a.generator!==undefined){const g=a.generator;if(a.type!=='carry'||g?.format!=='what-we-carry-randomizer/1'||!Number.isInteger(g.seed)||g.seed<0||g.seed>4294967295||![8,16,32,64].includes(g.count)||!Number.isInteger(g.step)||g.step<1||g.step>g.count)throw Error('Invalid randomizer provenance.');}
     if(a.markEdits!==undefined){if(data.format!==VERSION||a.type!=='carry'||!a.markEdits||typeof a.markEdits!=='object'||Array.isArray(a.markEdits))throw Error('Invalid mark assignments.');for(const [id,m] of Object.entries(a.markEdits))if(!/^(?:[0-9]|[1-5][0-9]|6[0-3])$/.test(id)||!validMark(m))throw Error('Invalid mark assignment.');}
     if(a.type==='return'){if(!validId(a.id)||!Number.isInteger(a.from)||a.from<0||a.from>index)throw Error('Invalid retrieval.');return;}
     if(!['union','intersection'].includes(a.mode)||!Array.isArray(a.fields)||a.fields.length!==2)throw Error('Missing observation fields.');
@@ -551,6 +556,7 @@ function importPerformance(data,history){
   const last=new Map();
   for(const e of data.events){
     if(!e||!Number.isInteger(e.layer)||e.layer<0||e.layer>=history.length||!scoreFinite(e.time,0,86400)||e.time<(last.get(e.layer)??0)||!['touch','carry','still'].includes(e.kind)||![0,1].includes(e.reader)||!scoreFinite(e.x,0,1)||!scoreFinite(e.y,0,1))throw Error('Invalid recorded gesture.');
+    if(e.source!==undefined&&e.source!=='randomizer')throw Error('Invalid gesture source.');
     last.set(e.layer,e.time);
     if(!e.water||!['strength','speed','damping'].every(k=>scoreFinite(e.water[k],0,1)))throw Error('Invalid recorded water settings.');
     if(!e.sound||!Object.keys(soundDefaults).every(k=>k==='timbre'?['water','warm','glass'].includes(e.sound[k]):scoreFinite(e.sound[k],k==='pitch'?36:0,k==='pitch'?76:1)))throw Error('Invalid recorded sound settings.');
@@ -668,7 +674,7 @@ function createPlayback(api){
     for(const [id,target] of [['#score-play','field'],['#body-score-play','body']]){const b=pq(id);b.disabled=state==='preparing'||state==='exporting'||api.read().busy;b.textContent=scope===target&&state==='playing'?'Pause':scope===target&&state==='paused'?'Resume':target==='field'?'Play field':'Play this body';}
     for(const id of ['#score-stop','#body-score-stop'])pq(id).disabled=!active();
     for(const id of ['#score-export','#body-score-export'])pq(id).disabled=state==='preparing'||state==='exporting'||api.read().busy;
-    for(const id of ['#score-from','#score-to','#score-speed','#score-mix','#score-untouched','#score-record'])pq(id).disabled=active();
+    for(const id of ['#score-from','#score-to','#score-speed','#score-mix','#score-untouched','#score-record'])pq(id).disabled=active()||api.read().busy;
     for(const id of ['#score-position','#body-score-position']){pq(id).disabled=!score||state==='preparing'||state==='exporting';pq(id).max=score?.duration??1;pq(id).value=offset;}
     const label=`${timeLabel(offset)} / ${timeLabel(score?.duration??0)}`;pq('#score-time').textContent=label;pq('#body-score-time').textContent=label;
   }
@@ -683,7 +689,7 @@ function createPlayback(api){
   function clockPosition(){return state==='playing'?Math.min(score.duration,offset+audioContext.currentTime-started):offset;}
   function renderFrame(){
     if(!score)return;const clip=scoreClipAt(score,offset),local=Math.min(clip.localDuration,Math.max(0,(offset-clip.start)*score.speed));api.frame(clip,local,score);
-    if(shownLayer!==clip.layer){shownLayer=clip.layer;message(`Layer ${String(clip.layer).padStart(2,'0')} · ${clip.generated?'generated scan':clip.events.length?'saved gestures':'silence'} · ${scope==='body'?'body voice':'whole field'}`);}ui();
+    if(shownLayer!==clip.layer){shownLayer=clip.layer;message(`Layer ${String(clip.layer).padStart(2,'0')} · ${clip.generated?'generated scan':clip.events.some(e=>e.source==='randomizer')?'generated gestures':clip.events.length?'saved gestures':'silence'} · ${scope==='body'?'body voice':'whole field'}`);}ui();
   }
   function tick(){
     const duration=score.duration,t=offset+audioContext.currentTime-started;
@@ -744,10 +750,49 @@ function createPlayback(api){
   document.addEventListener('visibilitychange',()=>{if(document.hidden){if(state==='playing')pause();else if(state==='preparing'||state==='exporting')stop();}});
   window.addEventListener('pagehide',()=>{clearTimeout(persistTimer);api.persist();stopSource();audioContext?.close();},{once:true});
   restoreComposition();api.restoreInstrument?.(ledger.instrument);
-  return {record,snapshot,sync,stop,pause,active,flush,cursor:()=>{if(!score||!active())return null;const clip=scoreClipAt(score,clockPosition());return {scope,layer:clip.layer,nextLayer:score.clips[score.clips.indexOf(clip)+1]?.layer??clip.layer,phase:Math.min(1,(clockPosition()-clip.start)/clip.duration)};},
+  return {record,snapshot,sync,stop,pause,active,flush,
+    reserve(count){if(ledger.events.length+count>10000)throw Error('Not enough gesture space for this run. Choose fewer layers; download history to keep your encounter.');},
+    generated(events){const checked=importPerformance({format:PERFORMANCE_FORMAT,events},api.read().history);if(ledger.events.length+checked.events.length>10000)throw Error('The gesture ledger is full.');ledger.events.push(...checked.events);revision++;cacheKey='';score=null;pcm=null;audioBuffer=null;offset=0;lastLayer=-1;saveSoon();sync();},
+    selectRange(from,to){pq('#score-from').value=from;pq('#score-to').value=to;const seconds=Array.from({length:to-from+1},(_,i)=>{const e=ledger.events.filter(e=>e.layer===from+i);return Math.max(2.5,(e.at(-1)?.time??0)+2.5);}).reduce((a,b)=>a+b,0),current=Number(pq('#score-speed').value);pq('#score-speed').value=[.5,1,1.5,2,3].find(v=>v>=current&&seconds/v<=120)??3;cacheKey='';score=null;pcm=null;audioBuffer=null;offset=0;sync();saveSoon();},
+    cursor:()=>{if(!score||!active())return null;const clip=scoreClipAt(score,clockPosition());return {scope,layer:clip.layer,nextLayer:score.clips[score.clips.indexOf(clip)+1]?.layer??clip.layer,phase:Math.min(1,(clockPosition()-clip.start)/clip.duration)};},
     replace(data){clearTimeout(persistTimer);persistTimer=null;stop();ledger=importPerformance(data,api.read().history);revision++;cacheKey='';score=null;pcm=null;audioBuffer=null;lastLayer=-1;maxLayer=-1;restoreComposition();api.restoreInstrument?.(ledger.instrument);sync();},
     historyChanged(){if(active())stop();cacheKey='';score=null;pcm=null;audioBuffer=null;lastLayer=-1;sync();}
   };
+}
+
+
+const RANDOM_LENGTHS=[8,16,32,64];
+function randomSequence({seed,count,fields,dynamics=binaryDefaults}){
+  if(!Number.isInteger(seed)||seed<0||seed>4294967295||!RANDOM_LENGTHS.includes(count))throw Error('Choose 8, 16, 32, or 64 layers.');
+  let state=seed>>>0,attention=clone(fields),interaction={...binaryDefaults,...dynamics};
+  const word=()=>state=(Math.imul(state,1664525)+1013904223)>>>0,random=()=>word()/4294967296;
+  const wander=(v,amount,min,max)=>Math.round(clamp(v+(random()*2-1)*amount,min,max)*1000);
+  const steps=[];
+  for(let i=0;i<count;i++){
+    attention=attention.map(f=>normalize({x:wander(f.x,.18,0,1)/1000,y:wander(f.y,.18,0,1)/1000,w:wander(f.w,.22,.2,.92)/1000,h:wander(f.h,.22,.2,.92)/1000,rule:random()<.2?(f.rule==='repeat'?'break':'repeat'):f.rule}));
+    interaction={enabled:true,coupling:wander(interaction.coupling,.5,-1,1)/1000,bias:wander(interaction.bias,.25,-.55,.55)/1000,resistance:wander(interaction.resistance,.16,.02,.5)/1000,agitation:wander(interaction.agitation,.3,.2,.85)/1000,neighbors:random()<.2?(interaction.neighbors===4?8:4):interaction.neighbors};
+    const reader=random()<.5?0:1,f=attention[reader],gestures=[{kind:'carry',time:0,x:clamp(f.x+(random()-.5)*f.w*.7,.02,.98),y:clamp(f.y+(random()-.5)*f.h*.7,.02,.98)},{kind:'touch',time:.35,x:.06+random()*.88,y:.06+random()*.88}];
+    steps.push({reader,gestures,action:{type:'carry',fields:clone(attention),mode:random()<.2?'intersection':'union',edits:{},dynamics:{...interaction},seed:word(),generator:{format:'what-we-carry-randomizer/1',seed,step:i+1,count}}});
+  }
+  return steps;
+}
+
+function createRandomizer(api){
+  const rq=s=>document.querySelector(s);let running=false,stopping=false,completed=0,total=0;
+  function sync(){const s=api.read(),unavailable=s.busy||s.session!=='own'||s.visit!==s.history.length-1;rq('#auto-start').disabled=running||unavailable;rq('#auto-count').disabled=running||unavailable;rq('#auto-stop').disabled=!running||stopping;rq('#auto-progress').hidden=!running;rq('#auto-progress').value=completed;rq('#auto-progress').max=total||1;}
+  function stop(){if(!running)return;stopping=true;rq('#auto-status').textContent='Stopping after the current layer…';sync();}
+  async function start(){
+    const s=api.read();if(running||s.busy||s.session!=='own'||s.visit!==s.history.length-1)return;
+    const count=Number(rq('#auto-count').value),seed=crypto.getRandomValues(new Uint32Array(1))[0];let steps;
+    try{steps=randomSequence({seed,count,fields:s.fields,dynamics:s.dynamics});api.prepare(steps.length*2);}catch(error){rq('#auto-status').textContent=error.message;return;}
+    const from=s.history.length;running=true;stopping=false;completed=0;total=count;api.lock(true);sync();let failure=null;
+    try{for(const step of steps){if(stopping)break;rq('#auto-status').textContent=`Growing layer ${completed+1} / ${total} · seed ${seed}`;await api.append(step);completed++;sync();}}
+    catch(error){failure=error;}
+    finally{running=false;api.lock(false);if(completed)api.finish(from,from+completed-1);sync();rq('#auto-status').textContent=failure?`Stopped: ${failure.message} ${completed} layers kept.`:`${completed} ${completed===1?'layer':'layers'} added${stopping?' · stopped':''} · seed ${seed}. Play field to hear this run.`;}
+  }
+  rq('#auto-start').addEventListener('click',start);rq('#auto-stop').addEventListener('click',stop);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+  return {sync,stop,active:()=>running};
 }
 
 
@@ -764,6 +809,8 @@ function createExperience(api){
   const status=text=>q('#experience-status').textContent=text;
   const el=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;};
   const path=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(' ');
+  let autoTimers=[];
+  function clearAutoTimers(){autoTimers.forEach(clearTimeout);autoTimers=[];}
   let playClip=null,playStep=0,playEvent=0,playViews=null,savedView=null;
   function capturePerformance(){const state=api.read();return {...api.notation.capture(state.visit),reader:state.reader,water:clone(water.settings),sound:clone(sound.settings),fields:clone(state.visit===state.history.length-1?state.fields:state.history[state.visit].fields),lens,frequency,dynamics:{...binary},x:sites[state.selected].x,y:sites[state.selected].y};}
   function beginFrames(score){if(!savedView)savedView={reader:api.read().reader,lens,frequency,water:clone(water.settings)};playViews=Object.fromEntries(score.clips.map(c=>[c.layer,c.frame]));api.notation.performanceFrames(playViews);playClip=null;}
@@ -789,12 +836,12 @@ function createExperience(api){
     q('#field').dataset.rippleEnergy=water.energy.toFixed(6);q('#field').dataset.rippleActive=String(water.active);
     if(water.active)frame=requestAnimationFrame(tick);else{frame=null;accumulator=0;}
   }
-  function ripple(x,y,layer=api.read().visit,kind='touch'){
-    if(playback.active())return;
-    playback.record(capturePerformance(),kind,layer,clamp(x,0,1),clamp(y,0,1));
+  function ripple(x,y,layer=api.read().visit,kind='touch',generated=false){
+    if(playback.active()||(api.read().automating&&!generated))return;
+    if(!generated)playback.record(capturePerformance(),kind,layer,clamp(x,0,1),clamp(y,0,1));
     const hit=sites.reduce((best,s)=>Math.hypot(s.x-x,s.y-y)<Math.hypot(best.x-x,best.y-y)?s:best,sites[0]),voice=api.notation.voice(hit.id,layer,hit.kind);
-    if(motion.matches){status('This slice is selected. Motion is reduced; sound can still respond.');sound.note({id:hit.id,intensity:.7,x,voice});return;}
-    water.disturb(clamp(x,0,1),clamp(y,0,1),layer);sound.note({id:hit.id,intensity:.8*water.settings.strength,x,voice});ensureFrame();
+    if(motion.matches){status('This slice is selected. Motion is reduced; sound can still respond.');sound.note({id:hit.id,kind:kind==='carry'?'carry':'ripple',intensity:.7,x,voice});return;}
+    water.disturb(clamp(x,0,1),clamp(y,0,1),layer);sound.note({id:hit.id,kind:kind==='carry'?'carry':'ripple',intensity:.8*water.settings.strength,x,voice});ensureFrame();
     status(`Ripple at layer ${String(layer).padStart(2,'0')} · recorded signals stay intact.`);
   }
   function rippleSelected(){const state=api.read(),s=sites[state.selected];ripple(s.x,s.y,state.visit);}
@@ -906,18 +953,18 @@ function createExperience(api){
   q('#body-layer').addEventListener('input',e=>api.visit(Number(e.target.value)));q('#body-view').addEventListener('click',e=>{const mark=e.target.closest('[data-body-layer]');if(mark&&!api.read().busy&&!api.read().locked)api.visit(Number(mark.dataset.bodyLayer));});
   q('#capture').addEventListener('click',capture);q('#body-capture').addEventListener('click',capture);
   document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||e.repeat||e.target.closest('input,select,textarea,[contenteditable="true"]'))return;const k=e.key.toLowerCase();if(k==='c'){e.preventDefault();capture();}if(k==='r'){e.preventDefault();rippleSelected();}if(k==='m'){e.preventDefault();toggleSound();}});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){if(!playback.active())settle();sound.mute();q('#sound-toggle').textContent='Sound off';q('#sound-toggle').setAttribute('aria-pressed','false');q('#sound-status').dataset.enabled='false';}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){clearAutoTimers();if(!playback.active())settle();sound.mute();q('#sound-toggle').textContent='Sound off';q('#sound-toggle').setAttribute('aria-pressed','false');q('#sound-status').dataset.enabled='false';}});
   window.addEventListener('pagehide',()=>sound.dispose(),{once:true});new ResizeObserver(drawBody).observe(q('#body-view'));showPreferences();
   return {warp,surface,relations,signalLook,sync,drawBody,
-    performanceSnapshot:playback.snapshot,replacePerformance:playback.replace,flushPerformance:playback.flush,
+    performanceSnapshot:playback.snapshot,replacePerformance:playback.replace,flushPerformance:playback.flush,reservePerformance:playback.reserve,selectPerformanceRange:playback.selectRange,
     pointerDown(world,e){if(touch!=='ripple')return false;pointerTrail={time:performance.now(),x:world.x,y:world.y};ripple(world.x,world.y);return true;},
     pointerMove(world){if(!pointerTrail)return false;const now=performance.now();if(now-pointerTrail.time>115&&Math.hypot(world.x-pointerTrail.x,world.y-pointerTrail.y)>.018){pointerTrail={time:now,x:world.x,y:world.y};ripple(world.x,world.y);}return true;},
     pointerUp(){pointerTrail=null;},
     stagedDynamics(){return binary.enabled?{...binary}:null;},
     dynamicsSnapshot(){return {...binary};},
     restoreDynamics(value){if(!value)return;Object.assign(binary,value);q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;scoreCache=null;showPreferences();},
-    onCarry(previous,next){scoreCache=null;playback.historyChanged();const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x,voice:api.notation.voice(s.id,next.index,s.kind)});ripple(s.x,s.y,next.index,'carry');},
-    onHistoryChange(){scoreCache=null;settle();playback.historyChanged();const settings=api.read().history.at(-1).action.dynamics;Object.assign(binary,binaryDefaults,settings??{});q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;showPreferences();}
+    onCarry(previous,next,gestures=null){scoreCache=null;clearAutoTimers();playback.historyChanged();if(gestures){const captured=capturePerformance();playback.generated(gestures.map(g=>({...captured,...g,layer:next.index,source:'randomizer'})));for(const g of gestures){const perform=()=>{if(!document.hidden&&api.read().visit===next.index)ripple(g.x,g.y,next.index,g.kind,true);};if(g.time===0)perform();else autoTimers.push(setTimeout(perform,g.time*1000));}return;}const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x,voice:api.notation.voice(s.id,next.index,s.kind)});ripple(s.x,s.y,next.index,'carry');},
+    onHistoryChange(){scoreCache=null;clearAutoTimers();settle();playback.historyChanged();const settings=api.read().history.at(-1).action.dynamics;Object.assign(binary,binaryDefaults,settings??{});q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;showPreferences();}
   };
 }
 
@@ -950,11 +997,12 @@ function registerExpressionTools(context,actions){
 
 
 
+
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
 const ink='var(--ink)',paper='var(--paper)',muted='var(--muted)',line='var(--line)';
 const storageKey='dn-expression-context-8',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 let actions=[],history=[origin()],fields=clone(initialFields),mode='union',reader=0,selected=27,visit=0,tilt=0;
-let pending={},markEdits={},initialPresentation=null,initialPerformance=null,transportLock=false,omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
+let pending={},markEdits={},initialPresentation=null,initialPerformance=null,transportLock=false,autoRun=false,omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
 let W=0,H=0,projection,project,hits=[],handles=[],drag=null,effectsCache=new Map();
 const sessionCache={};
 try{const saved=localStorage.getItem(storageKey)||localStorage.getItem('dn-expression-context-7')||localStorage.getItem('dn-expression-context-6')||localStorage.getItem('dn-expression-context-5');if(saved){const data=JSON.parse(saved),value=importHistory(data),performance=importPerformance(data.performance,value.history);initialPresentation=data.presentation;initialPerformance=performance;actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
@@ -962,9 +1010,13 @@ const number=r=>String(r).padStart(2,'0'),smooth=t=>t*t*(3-2*t),isGlyph=()=>site
 const recordLabel=ref=>{const [r,id,j]=ref.split(':').map(Number);return `${number(r)} · ${who(j)} · ${name(id)}`;};
 function element(tag,attrs={},parent=svg){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.append(el);return el;}
 const groups={};['planes','environment','water','relations','threads','marks','motion','fields','handles'].forEach(key=>groups[key]=element('g',{'data-group':key}));
-const notation=createNotation({read:()=>({history,selected,visit,pending:markEdits,busy:busy||transportLock,session,kind:sites[selected].kind,kinds:sites.map(s=>s.kind)}),stage:(id,value)=>{if(busy||transportLock||session!=='own'||visit!==history.length-1)return;markEdits[id]=value;dirty=true;refresh();},redraw:()=>{refresh();persist();},visit:r=>{visit=r;refresh();}});
+const notation=createNotation({read:()=>({history,selected,visit,pending:markEdits,busy:busy||transportLock||autoRun,session,kind:sites[selected].kind,kinds:sites.map(s=>s.kind)}),stage:(id,value)=>{if(busy||transportLock||autoRun||session!=='own'||visit!==history.length-1)return;markEdits[id]=value;dirty=true;refresh();},redraw:()=>{refresh();persist();},visit:r=>{visit=r;refresh();}});
 notation.restore(initialPresentation);notation.patterns(svg,'field');notation.patterns($('#comparison'),'comparison');
-const senses=createExperience({notation,performance:initialPerformance,read:()=>({history,fields,reader,selected,visit,tilt,session,busy,locked:transportLock}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},playbackVisit:(r,j)=>{visit=r;reader=j;refresh();},lock:value=>{transportLock=value;refresh();},persist:()=>persist(),staged:()=>{dirty=true;refresh();}});
+const senses=createExperience({notation,performance:initialPerformance,read:()=>({history,fields,reader,selected,visit,tilt,session,busy:busy||autoRun,locked:transportLock||autoRun,automating:autoRun}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},playbackVisit:(r,j)=>{visit=r;reader=j;refresh();},lock:value=>{transportLock=value;refresh();},persist:()=>persist(),staged:()=>{dirty=true;refresh();}});
+const randomizer=createRandomizer({read:()=>({history,fields,session,visit,busy:busy||transportLock,dynamics:senses.dynamicsSnapshot()}),prepare:count=>senses.reservePerformance(count),lock:value=>{autoRun=value;refresh();},
+  async append(step){const action=clone(step.action);if(action.generator.step===1){action.edits=clone(pending);if(Object.keys(markEdits).length)action.markEdits=clone(markEdits);}fields=clone(action.fields);mode=action.mode;reader=step.reader;senses.restoreDynamics(action.dynamics);await commit(action,{automatic:true,gestures:step.gestures});},
+  finish:(from,to)=>{senses.selectPerformanceRange(from,to);persist();}
+});
 const path=points=>points.map((p,i)=>(i?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ');
 const curve=(a,b,bend=0)=>`M ${a.x} ${a.y} C ${a.x+bend} ${(a.y+b.y)/2-12} ${b.x+bend} ${(a.y+b.y)/2-12} ${b.x} ${b.y}`;
 function camera(){
@@ -1048,7 +1100,7 @@ function draw(){
     const focused=j===reader,points=Array.from({length:81},(_,i)=>{const a=i/80*Math.PI*2;return project(f.x+Math.cos(a)*f.w/2,f.y+Math.sin(a)*f.h/2,z(visit));});
     element('path',{d:path(points)+' Z',fill:ink,'fill-opacity':.012,stroke:ink,'stroke-width':focused?1.1:.8,opacity:focused?.6:.35,...(j?{'stroke-dasharray':'5 5'}:{})},groups.fields);
     const top=project(j?.96:.04,0,z(visit)),text=element('text',{x:clamp(top.x,22,W-22),y:clamp(top.y-20,15,H-14),'text-anchor':'middle',opacity:focused?.8:.5},groups.fields);text.textContent=who(j);
-    if(visit===last&&!busy&&session==='own'){
+    if(visit===last&&!busy&&!autoRun&&!transportLock&&session==='own'){
       const center=project(f.x,f.y,z(visit));element('circle',{cx:center.x,cy:center.y,r:4,fill:paper,stroke:ink,'stroke-width':1},groups.handles);handles.push({reader:j,type:'move',...center});
       if(focused)[['w',f.x-f.w/2,f.y],['w',f.x+f.w/2,f.y],['h',f.x,f.y-f.h/2],['h',f.x,f.y+f.h/2]].forEach(([type,x,y])=>{const p=project(x,y,z(visit));element('circle',{cx:p.x,cy:p.y,r:4,fill:paper,stroke:ink,'stroke-width':1},groups.handles);handles.push({reader:j,type,...p});});
     }
@@ -1085,7 +1137,7 @@ function renderStory(){
     }
     if(!events.length){const p=document.createElement('p');p.className='small';p.textContent='Carry a reading. Its later encounters will appear here.';list.append(p);}
     events.forEach(({r,event})=>{
-      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(r===visit));button.disabled=busy||transportLock;
+      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(r===visit));button.disabled=busy||transportLock||autoRun;
       const numberEl=document.createElement('span');numberEl.textContent=number(r);const caption=document.createElement('span');caption.textContent=event.kind;
       button.append(numberEl,caption);button.addEventListener('click',()=>{visit=r;refresh();});list.append(button);
     });
@@ -1104,13 +1156,13 @@ function renderStory(){
       const sources=$('#sources');sources.replaceChildren();
       const parents=effects(),shown=allParents?parents:parents.filter(e=>e.effect>1e-7).slice(0,3);
       shown.forEach(entry=>{
-        const button=document.createElement('button');button.type='button';button.className='parent';button.setAttribute('aria-pressed',String(entry.ref===omitted));button.disabled=busy||transportLock;
+        const button=document.createElement('button');button.type='button';button.className='parent';button.setAttribute('aria-pressed',String(entry.ref===omitted));button.disabled=busy||transportLock||autoRun;
         const title=document.createElement('span');title.textContent=recordLabel(entry.ref);const note=document.createElement('span');note.className='source-note';note.textContent=entry.ref===omitted?'removed':'omit ↗';button.append(title,note);button.setAttribute('aria-label','Replay without '+recordLabel(entry.ref));button.addEventListener('click',()=>setComparison(entry.ref));sources.append(button);
       });
       $('#more-sources').hidden=parents.length<=3;$('#more-sources').textContent=allParents?'Show strongest effects':`All ${parents.length} recorded parents`;
     }
   }
-  for(const id of ['#omit-own','#clear-replay','#more-sources'])$(id).disabled=busy||transportLock;
+  for(const id of ['#omit-own','#clear-replay','#more-sources'])$(id).disabled=busy||transportLock||autoRun;
   const currentRef=`${visit}:${selected}:${reader}`;
   $('#omit-own').hidden=!form||!state.carried.includes(currentRef);$('#omit-own').textContent=currentRef===omitted?'Restore this carry':'Replay without this carry';$('#omit-own').onclick=()=>setComparison(currentRef);
   $('#replay-state').hidden=!omitted;
@@ -1121,13 +1173,13 @@ function renderStory(){
     const changedOthers=new Set();history.forEach((r,index)=>sites.filter(s=>s.kind==='glyph').forEach(s=>[0,1].forEach(j=>{if((s.id!==selected||j!==reader)&&distance(r.forms[s.id][j],alternative[index].forms[s.id][j])>1e-7)changedOthers.add(`${s.id}:${j}`);})));
     $('#replay-result').textContent=count?`${count} layers differ for this reading; first at ${number(first)}. Later actions stay fixed.`:changedOthers.size?`This reading holds. ${changedOthers.size} other readings differ in the replay. Dotted contours mark the alternatives.`:Number(omitted.split(':')[0])===history.length-1?'No later encounter yet. Carry again to test this contribution.':'The recorded replay holds. Other contributions may duplicate or counteract this one.';
   }
-  $('#return').hidden=visit===history.length-1||session==='encounter';$('#return').disabled=busy||transportLock;
+  $('#return').hidden=visit===history.length-1||session==='encounter';$('#return').disabled=busy||transportLock||autoRun;
 }
 // Imported separately to keep every comparison on the same interpretation path.
 
 const localOnlyReading=(form,id,j,r)=>interpret(id,j,form.local,[],r,form.seenRound);
 function controls(){
-  const workLocked=busy||transportLock;
+  const workLocked=busy||transportLock||autoRun;
   const historical=visit!==history.length-1,guided=session==='encounter',state=history[visit],f=(notation.performanceFields(visit)??(historical?state.fields:fields))[reader];
   $$('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=workLocked;});
   $$('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=workLocked;});
@@ -1140,7 +1192,7 @@ function controls(){
   $('#reopen').disabled=workLocked;$('#download').disabled=workLocked;$('#guide-next').disabled=workLocked||actions.length>=encounter.length;
   const altered=state.events.filter(e=>e.delta>=TURNING_POINT),passive=altered.filter(e=>e.attended===false).length;
   const changedBits=visit?sites.filter(s=>s.kind==='bit'&&state.bits[s.id]!==history[visit-1].bits[s.id]).length:0;
-  $('#status').textContent=transportLock?'Playing the saved score.':busy?'A reading enters the next encounter.':historical?'An earlier layer. Every signal remains available.':dirty?'Your changes enter on Carry.':state.action.type==='return'?'Earlier record, new layer.':visit?`${altered.length} readings changed${passive?' · '+passive+' outside attention':''}${changedBits?' · '+changedBits+' bits flipped':''}`:'Choose what enters the next encounter.';
+  $('#status').textContent=autoRun?'An automatic encounter is growing.':transportLock?'Playing the saved score.':busy?'A reading enters the next encounter.':historical?'An earlier layer. Every signal remains available.':dirty?'Your changes enter on Carry.':state.action.type==='return'?'Earlier record, new layer.':visit?`${altered.length} readings changed${passive?' · '+passive+' outside attention':''}${changedBits?' · '+changedBits+' bits flipped':''}`:'Choose what enters the next encounter.';
   $('#retained').textContent='64 signals retained';
   $('#guide').hidden=session!=='encounter';
   if(session==='encounter'){
@@ -1150,7 +1202,7 @@ function controls(){
     $('#guide-caption').textContent=step?.caption??'Six recorded actions demonstrate inheritance, wider attention, passive change, and return. The same rules govern your own field.';
     $('#guide-next').textContent=actions.length>=encounter.length?'Encounter complete':actions.length?'Next encounter →':'Begin the encounter →';
   }
-  notation.sync();senses.sync();
+  notation.sync();senses.sync();randomizer.sync();
 }
 function refresh(){draw();controls();renderStory();}
 function persist(){
@@ -1158,22 +1210,22 @@ function persist(){
   try{localStorage.setItem(storageKey,JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot(),performance:senses.performanceSnapshot()}));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
   catch{$('#storage-status').textContent='This session is in memory. Download history to keep it.';}
 }
-function commit(action){
-  if(busy||transportLock)return;
+function commit(action,{automatic=false,gestures=null}={}){
+  if(busy||transportLock||(autoRun&&!automatic))return;
   let complete;const completion=new Promise(resolve=>complete=resolve);
-  const previous=history.at(-1);actions.push(clone(action));history.push(advance(previous,action,history));visit=history.length-1;pending={};markEdits={};dirty=false;effectsCache.clear();
+  const previous=history.at(-1),next=advance(previous,action,history);actions.push(clone(action));history.push(next);visit=history.length-1;pending={};markEdits={};dirty=false;effectsCache.clear();
   if(omitted)alternative=replay(actions,omitted);
   busy=true;animation={from:previous,t:0};refresh();persist();
-  senses.onCarry(previous,history.at(-1));
+  senses.onCarry(previous,history.at(-1),gestures);
   const start=performance.now(),duration=motionPreference.matches?0:1300;
   function frame(now){animation.t=duration?Math.min(1,(now-start)/duration):1;draw();if(animation.t<1)requestAnimationFrame(frame);else{busy=false;animation=null;refresh();complete();}}
   requestAnimationFrame(frame);
   return completion;
 }
 function carry(){if(visit!==history.length-1||session!=='own')return;const dynamics=senses.stagedDynamics();return commit({type:'carry',fields:clone(fields),mode,edits:clone(pending),...(Object.keys(markEdits).length?{markEdits:clone(markEdits)}:{}),...(dynamics?{dynamics,seed:crypto.getRandomValues(new Uint32Array(1))[0]}:{})});}
-function changeField(key,value){if(busy||transportLock||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
+function changeField(key,value){if(busy||transportLock||autoRun||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
 function switchSession(target){
-  if(target===session||busy||transportLock)return;
+  if(target===session||busy||transportLock||autoRun)return;
   senses.flushPerformance();
   sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),markEdits:clone(markEdits),performance:senses.performanceSnapshot(),dirty,dynamics:senses.dynamicsSnapshot()};
   const saved=sessionCache[target];session=target;
@@ -1195,18 +1247,18 @@ $$('[data-session]').forEach(b=>b.addEventListener('click',()=>switchSession(b.d
 $$('[data-field]').forEach(input=>input.addEventListener('input',()=>changeField(input.dataset.field,Number(input.value)/100)));
 $('#rule').addEventListener('change',e=>{fields[reader].rule=e.target.value;dirty=true;refresh();});
 $('#mode').addEventListener('change',e=>{mode=e.target.value;dirty=true;refresh();});
-$('#flip').addEventListener('click',()=>{if(isGlyph()||busy||transportLock||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
+$('#flip').addEventListener('click',()=>{if(isGlyph()||busy||transportLock||autoRun||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
 $('#more-sources').addEventListener('click',()=>{allParents=!allParents;refresh();});
 $('#clear-replay').addEventListener('click',()=>{omitted=null;alternative=null;refresh();});
-$('#return').addEventListener('click',()=>{const from=visit;if(from===history.length-1||busy||transportLock)return;commit({type:'return',from,id:selected,fields:clone(fields),mode});});
+$('#return').addEventListener('click',()=>{const from=visit;if(from===history.length-1||busy||transportLock||autoRun)return;commit({type:'return',from,id:selected,fields:clone(fields),mode});});
 $('#guide-next').addEventListener('click',()=>{
-  const step=encounter[actions.length];if(!step||busy||transportLock)return;selected=27;reader=[0,1,1,0,0,0][actions.length]??0;
+  const step=encounter[actions.length];if(!step||busy||transportLock||autoRun)return;selected=27;reader=[0,1,1,0,0,0][actions.length]??0;
   if(step.type==='return'){reader=0;commit({type:'return',from:step.from,id:step.id,fields:clone(fields),mode});}
   else{fields=clone(step.fields);mode='union';commit({type:'carry',fields:clone(fields),mode,edits:{}});}
 });
 function pointer(e){const rect=svg.getBoundingClientRect();return{x:(e.clientX-rect.left)*W/rect.width,y:(e.clientY-rect.top)*H/rect.height};}
 svg.addEventListener('pointerdown',e=>{
-  if(busy||transportLock||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
+  if(busy||transportLock||autoRun||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
   const handle=historic?null:handles.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
   const hit=hits.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
   if(senses.pointerDown(unproject(p.x,p.y,visit),e)){if(hit&&hit.d<14)selectSignal(hit.id);svg.setPointerCapture(e.pointerId);e.preventDefault();return;}
@@ -1227,21 +1279,21 @@ $('#download').addEventListener('click',()=>{
 });
 $('#reopen').addEventListener('click',()=>$('#history-file').click());
 $('#history-file').addEventListener('change',async e=>{
-  const file=e.target.files[0];if(!file||busy||transportLock)return;
+  const file=e.target.files[0];if(!file||busy||transportLock||autoRun)return;
   try{const data=JSON.parse(await file.text()),restored=importHistory(data),performance=importPerformance(data.performance,restored.history);switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};markEdits={};dirty=false;omitted=null;alternative=null;effectsCache.clear();notation.restore(data.presentation);senses.replacePerformance(performance);senses.onHistoryChange();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened with their saved gestures.`;}
-  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05–08 with valid recorded gestures.';}
+  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05–09 with valid recorded gestures.';}
   e.target.value='';
 });
 function resize(){const box=svg.getBoundingClientRect();W=box.width;H=box.height;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);draw();renderStory();}
 senses.onHistoryChange();resize();controls();persist();new ResizeObserver(resize).observe(svg);
 
 
-const readState=()=>({session,layer:visit,present:history.length-1,busy:busy||transportLock,reader,selected,fields:clone(fields),mode,omitted,carried:[...history[visit].carried]});
+const readState=()=>({session,layer:visit,present:history.length-1,busy:busy||transportLock||autoRun,reader,selected,fields:clone(fields),mode,omitted,carried:[...history[visit].carried]});
 registerExpressionTools(document.modelContext,{
   read:readState,
-  stage(input){if(busy||transportLock||session!=='own'||visit!==history.length-1)throw Error('Return to the present of Your field before staging a reading.');reader=input.reader;fields[reader]=normalize({...fields[reader],...input.field});dirty=true;refresh();return readState();},
-  async carry(){if(busy||transportLock||session!=='own'||visit!==history.length-1)throw Error('Carry is available at the present of Your field.');await carry();return readState();},
-  compare(ref){if(busy||transportLock)throw Error('Wait for Carry to finish.');if(ref!==null&&!history.some(r=>r.carried.includes(ref)))throw Error('Choose a recorded carry reference.');omitted=ref;alternative=ref?replay(actions,ref):null;refresh();return readState();}
+  stage(input){if(busy||transportLock||autoRun||session!=='own'||visit!==history.length-1)throw Error('Return to the present of Your field before staging a reading.');reader=input.reader;fields[reader]=normalize({...fields[reader],...input.field});dirty=true;refresh();return readState();},
+  async carry(){if(busy||transportLock||autoRun||session!=='own'||visit!==history.length-1)throw Error('Carry is available at the present of Your field.');await carry();return readState();},
+  compare(ref){if(busy||transportLock||autoRun)throw Error('Wait for Carry to finish.');if(ref!==null&&!history.some(r=>r.carried.includes(ref)))throw Error('Choose a recorded carry reference.');omitted=ref;alternative=ref?replay(actions,ref):null;refresh();return readState();}
 });
 
 </script>
