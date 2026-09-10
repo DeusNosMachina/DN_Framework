@@ -18,9 +18,9 @@ Guidance lives inside each expression, through a "How to See" panel or expandabl
 
 [Open the expression](https://deusnosmachina.github.io/DN_Framework/expressions/what-we-carry.html) · [Single-file source](what-we-carry.html)
 
-Two observation fields read the same binary signals differently. Carry a reading forward, follow its influence through later layers, and replay the history without a contribution. Begin with **Follow an encounter** for a guided sequence, or **Your field** to explore. Six expandable captions explain the drawing rules and their limits.
+Two observation fields read the same binary signals differently. Carry a reading forward, follow its influence through later layers, and replay the history without a contribution. Begin with **Follow an encounter** for a guided sequence, or **Your field** to explore. Ripple the field, shape its sound, inspect different lenses, or open a glyph’s body through time. Optional classical binary interactions evolve on Carry. Eleven expandable captions explain the drawing rules and their limits.
 
-Created in dialogue with [Russell Foltz-Smith's pattern recognition pattern](https://pattern-recognition-pattern.un1crom.chatgpt.site/). Sessions stay in each visitor's browser; histories can be downloaded and reopened.
+Created in dialogue with [Russell Foltz-Smith's pattern recognition pattern](https://pattern-recognition-pattern.un1crom.chatgpt.site/). Sessions stay in each visitor's browser; histories can be downloaded and reopened. Capture copies the current view as a PNG, with a download fallback. Sound is opt-in.
 
 ---
 
