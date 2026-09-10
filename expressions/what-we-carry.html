@@ -12,6 +12,7 @@
 @media(max-width:420px){#field{height:315px}.status{flex-wrap:wrap;gap:3px}.status span:last-child{margin-left:auto}.carry-controls label{gap:6px;font-size:.8125rem}.carry-controls select{max-width:145px}.story-heading{flex-wrap:wrap;gap:12px}.story-heading label{min-width:160px}#sources{grid-template-columns:1fr}.view-controls>label:first-child{max-width:none}.check{font-size:.8125rem}.time-controls{gap:8px}.time-controls>label{grid-template-columns:auto 52px minmax(40px,1fr);gap:6px}.field-sliders{gap:12px}.session-bar .small{font-size:.8125rem}.observation-controls{gap:8px}}
 @media(pointer:coarse){button,select{min-height:44px}input[type=range]{min-height:32px}summary{padding:7px 0}}
 :root{--aligned:light-dark(#286777,#8bc5cf);--opposed:light-dark(#a35428,#dfaf83)}
+.alphabet-bar{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:14px}.alphabet-bar label{display:flex;align-items:center;gap:10px;font-size:.875rem}.alphabet-bar select{min-width:160px}#alphabet-note{margin-top:8px}#alphabet-legend{font-variant-numeric:tabular-nums}.sound-defaults{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14px}.sound-defaults .check{margin-top:0}.free-editor{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:20px}.free-editor h3{font-family:Georgia,serif;font-size:1.2rem;font-weight:400;margin:0 0 15px}.free-editor>label,.free-pair label{display:grid;gap:7px;margin-bottom:14px;font-size:.875rem}.free-editor input[type=text]{width:100%;min-width:0;min-height:44px;border:1px solid var(--line);border-radius:5px;background:var(--paper);padding:8px;font-size:1.125rem}.free-editor input::placeholder{font-size:.875rem;color:var(--muted)}.free-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}.free-editor .small{margin-top:12px}.free-editor output{color:var(--muted);font-size:.8125rem}.mark-history-section{margin-bottom:16px}.mark-history-section .eyebrow{margin-bottom:7px}#mark-history{display:flex;flex-wrap:wrap;gap:7px}#bit-cause{margin-bottom:14px}
 .sense-bar,.ripple-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}.sense-bar>label{flex:1;min-width:120px}.sense-bar select{width:100%}.ripple-actions{margin:0 0 15px}.ripple-actions button:last-child{margin-left:auto}#lens-note{margin-top:10px;min-height:21px}.frequency-controls label{display:grid;grid-template-columns:auto 1fr;gap:6px;margin-top:14px;font-size:.875rem}.frequency-controls output{text-align:right}.frequency-controls input{grid-column:1/-1}.instrument-settings{margin-top:22px;border-top:1px solid var(--line)}.instrument-settings>details{padding:15px 0;border-bottom:1px solid var(--line)}.instrument-settings summary{font-family:Georgia,serif;font-size:1.15rem}.instrument-settings .small{margin:12px 0 0}.instrument-settings .check{font-size:.875rem;margin-top:16px;white-space:normal}.dial-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 28px;padding:20px 0 5px}.dial-grid label{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;font-size:.875rem}.dial-grid output{font-size:.8125rem;color:var(--muted);font-variant-numeric:tabular-nums}.dial-grid input,.dial-grid select{grid-column:1/-1}.dial-grid input:disabled{opacity:.4}#experience-status{margin-top:12px}#open-body{margin-bottom:12px;width:100%;text-align:left}#body-dialog{width:min(850px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:28px}#body-dialog::backdrop{background:rgb(0 0 0 / .58)}.body-heading{display:flex;align-items:start;justify-content:space-between;gap:20px}.body-heading .eyebrow{margin-bottom:7px}#body-view{display:block;width:100%;height:430px}#body-note{margin-top:14px}.body-heading h2{font-size:1.8rem}#body-dialog .sense-bar>label:first-child{display:flex;align-items:center;gap:10px}#body-dialog .sense-bar input[type=range]{max-width:180px}
 @media(max-width:500px){.dial-grid{gap:16px}.sense-bar{gap:8px}.ripple-actions{gap:6px}.ripple-actions button{font-size:.8125rem;padding:8px}.ripple-actions button:last-child{margin-left:0}#body-dialog{padding:17px}#body-view{height:340px}#body-dialog .time-controls{flex-wrap:wrap}.body-heading h2{font-size:1.5rem}}
 
@@ -20,15 +21,17 @@
 <body>
 <a class="skip" href="#field-controls">Skip to the field</a>
 <main>
-  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 06</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
+  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 07</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
   <div class="session-bar"><div class="switches" aria-label="Choose a session"><button data-session="own" aria-pressed="true">Your field</button><button data-session="encounter" aria-pressed="false">Follow an encounter</button></div><span class="small" id="session-note">Two readers · one device · a complete local history</span></div>
   <section class="workspace" aria-label="A field and its history">
     <div class="field-column">
       <div class="view-controls" id="field-controls"><label>Tilt <output id="angle">0°</output><input id="tilt" type="range" min="0" max="78" value="0" aria-label="Tilt the field through time"></label><label class="check"><input id="threads" type="checkbox" checked>Story threads</label></div>
       <div class="sense-bar"><div class="switches" aria-label="Touch behavior"><button id="touch-ripple" aria-pressed="true">Ripple</button><button id="touch-move" aria-pressed="false">Move fields</button></div><label><span class="sr-only">Viewing lens</span><select id="lens"><option value="state">State</option><option value="relations">Relations</option><option value="change">Change</option><option value="memory">Memory</option><option value="frequency">Frequency</option></select></label><button id="capture">Capture · C</button></div>
+      <div class="alphabet-bar"><label>Alphabet <select id="alphabet"></select></label><span id="alphabet-legend" class="small"></span></div>
+      <p id="alphabet-note" class="small"></p>
       <div id="frequency-controls" class="frequency-controls" hidden><label>Frequency <output id="frequency-label"></output><input id="frequency" type="range" min="1" max="1" value="1" aria-label="Temporal frequency band"></label></div>
       <p id="lens-note" class="small">Touch the field. A ripple passes; the record stays.</p>
-      <svg id="field" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Touch to disturb a wave surface. Use Move fields to change observation. Digits are binary states; solid and dashed contours are separate readers. Ripple the selected signal with the button below as a keyboard alternative.</desc></svg>
+      <svg id="field" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Touch to disturb a wave surface. Use Move fields to change observation. The alphabet renders stored binary states; solid and dashed contours are separate readers. Ripple the selected signal with the button below as a keyboard alternative.</desc></svg>
       <div class="ripple-actions"><button id="ripple-here">Ripple this signal · R</button><button id="settle" class="quiet">Still the water</button><button id="sound-toggle" aria-pressed="false">Sound off</button></div>
       <div class="time-controls"><label>Layer <output id="layer-label">00 / 00</output><input id="layer" type="range" min="0" max="0" value="0" aria-label="Visit a recorded layer"></label><button id="present" class="quiet" disabled>Present ↑</button></div>
       <div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust"><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="100" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="100" aria-label="Observation field height"></label></div></details></div>
@@ -41,7 +44,7 @@
           <label>Travel speed <output data-ripple-value="speed"></output><input data-ripple="speed" type="range" min="0" max="100" value="55"></label>
           <label>Damping <output data-ripple-value="damping"></output><input data-ripple="damping" type="range" min="0" max="100" value="45"></label>
         </div><p class="small">Lower damping lets waves linger and meet. Higher damping settles them sooner.</p></details>
-        <details id="sound-settings"><summary>Shape the sound</summary><div class="dial-grid">
+        <details id="sound-settings"><summary>Shape the sound</summary><div class="sound-defaults"><label class="check"><input type="checkbox" id="alphabet-sound" checked> Use alphabet sound defaults</label><button id="sound-test">Test tone</button></div><p class="small">Switching alphabets keeps your levels. Uncheck to keep your tone settings too.</p><div class="dial-grid">
           <label>Master volume <output data-sound-value="volume"></output><input data-sound="volume" type="range" min="0" max="100" value="32"></label>
           <label>Ripple tones <output data-sound-value="ripples"></output><input data-sound="ripples" type="range" min="0" max="100" value="60"></label>
           <label>Carry sounds <output data-sound-value="carry"></output><input data-sound="carry" type="range" min="0" max="100" value="35"></label>
@@ -67,6 +70,15 @@
     <aside class="story" aria-label="Trace a reading">
       <div class="story-heading"><h2>Follow a reading</h2><label><span class="sr-only">Follow a signal</span><select id="follow"></select></label></div>
       <p class="small" id="reading-label">I · glyph 28</p>
+      <div id="free-editor" class="free-editor" hidden><h3 id="free-title">Compose a signal</h3>
+        <label>Marks <select id="free-alphabet"></select></label>
+        <label id="free-surface-row" hidden>Surface <select id="free-surface"></select></label>
+        <div id="free-pair" class="free-pair" hidden><label>For 0 <input id="free-zero" type="text" maxlength="24" autocomplete="off" spellcheck="false"></label><label>For 1 <input id="free-one" type="text" maxlength="24" autocomplete="off" spellcheck="false"></label></div>
+        <label id="free-glyph-row">Your glyph <input id="free-glyph" type="text" maxlength="24" autocomplete="off" spellcheck="false" placeholder="e.g. ◈, ∿, ✳, or a pasted symbol"></label>
+        <label>Tuning <output id="free-transpose-value">0 semitones</output><input id="free-transpose" type="range" min="-24" max="24" value="0"></label>
+        <div class="switches"><button id="free-apply">Preview assignment</button><button id="free-clear">Use shared alphabet</button></div><p id="free-note" class="small"></p>
+      </div>
+      <div id="mark-history-section" class="mark-history-section" hidden><p class="eyebrow">MARK PROVENANCE</p><div id="mark-history"></div></div>
       <button id="open-body">See its body through time</button>
       <div id="bit-controls" hidden><p id="bit-reading"></p><p id="bit-cause" class="small"></p><button id="flip">Queue 0 ↔ 1</button></div>
       <div id="story-list" class="story-list"></div>
@@ -89,20 +101,104 @@
     <details><summary><span>02</span> Overlap does not settle disagreement</summary><div class="caption-body"><p>Two observation fields can include the same signal while preserving different relationships within it. One reader emphasizes equal neighboring states; the other emphasizes changes. These are interpretive preferences. They are not two competing measurements of the bits.</p><p>Solid and dashed contours keep the readers attributable. Carrying from both fields requires shared attention to a glyph; it does not require agreement about its reading. A shared context can affect both contours without producing a group verdict.</p></div></details>
     <details><summary><span>03</span> What fades can still return</summary><div class="caption-body"><p>Each reader’s latest carried version of a glyph remains available to the shared context. Its influence decreases with the rounds since it was carried. Earlier versions and every captured binary state remain in the archive.</p><p>Visit any layer and return a signal. Its earlier record stays intact; a copy enters the present. On the next Carry, that record meets a different context. Fading here means reduced influence and visibility—not the destruction of a stored state.</p><p class="limit">History is kept on this device when browser storage permits. Download it to keep a portable copy. A public site does not make visitors’ separate sessions a shared multiplayer session.</p></div></details>
     <details><summary><span>04</span> The path we did not take</summary><div class="caption-body"><p>Removing a contribution suppresses one specific carry, then recomputes the later layers. The observation at that layer still happens. If an older carried version existed, it remains available and continues to lose influence.</p><p>The replay uses the same recorded fields, preferences, edits, retrieval actions, binary settings, and random seeds. A dotted contour shows the alternative beside the actual reading. Differences identify consequences under this model. They cannot tell us how people would have chosen differently after a different past.</p><p class="limit">A small or zero effect does not prove a contribution is irrelevant in every possible context. Other contributions can duplicate or counteract it. The archive retains those dependencies too.</p></div></details>
-    <details><summary><span>05</span> How a glyph gets its shape</summary><div class="caption-body"><p>The two states are literal 0 and 1. The other visual pair is an unarticulated scribble and an articulated reading. A glyph is a drawing of relationships; it has no preassigned word or universal meaning.</p><p>Each observed glyph reads adjacent binary pairs inside its observer’s field and within a fixed local neighborhood. Equal states support repetition; unequal states support interruption. Relationships contribute in their direction from the glyph. Nearer pairs have greater weight.</p><p>For each pair, the current local reading has weight 1. Each observer has twelve glyph slots sharing an inherited-voice budget of 0.55. A relevant carried glyph supplies its slot’s share; an unused slot stays unused. Age multiplies influence by 0.72 per elapsed round. The weighted reading controls eight contour directions. Tension between the local and inherited readings leaves more of the original spiral visible.</p><p>Attention alone does not progressively polish a glyph. Unchanged inputs and unchanged inherited influence produce the same contour. A retained reading can change outside attention when shared context changes; new raw evidence enters that reading only when it is observed again.</p><p class="limit">The radii, neighborhood, influence budget, and decay are declared drawing conventions, not measurements of intelligence, confidence, or social truth.</p></div></details>
+    <details><summary><span>05</span> How a glyph gets its shape</summary><div class="caption-body"><p>The stored states are 0 and 1. The alphabet chooses how they appear. The other visual pair is an unarticulated scribble and an articulated reading. A glyph is a drawing of relationships; it has no preassigned word or universal meaning.</p><p>Each observed glyph reads adjacent binary pairs inside its observer’s field and within a fixed local neighborhood. Equal states support repetition; unequal states support interruption. Relationships contribute in their direction from the glyph. Nearer pairs have greater weight.</p><p>For each pair, the current local reading has weight 1. Each observer has twelve glyph slots sharing an inherited-voice budget of 0.55. A relevant carried glyph supplies its slot’s share; an unused slot stays unused. Age multiplies influence by 0.72 per elapsed round. The weighted reading controls eight contour directions. Tension between the local and inherited readings leaves more of the original spiral visible.</p><p>Attention alone does not progressively polish a glyph. Unchanged inputs and unchanged inherited influence produce the same contour. A retained reading can change outside attention when shared context changes; new raw evidence enters that reading only when it is observed again.</p><p class="limit">The radii, neighborhood, influence budget, and decay are declared drawing conventions, not measurements of intelligence, confidence, or social truth.</p></div></details>
     <details><summary><span>06</span> Why these threads are visible</summary><div class="caption-body"><p>A thread names an earlier carried record that participates in a later reading through shared binary relationships. Its endpoints are records, not a match between similar-looking glyphs.</p><p>The default view follows one reader of one glyph. It shows turning points whose contour change exceeds 0.012 in this model’s feature distance, plus first encounters and returns. Up to three incoming parents are highlighted, ranked by the immediate change when each is individually removed and the reading is recomputed. All parents remain inspectable.</p><p>The longer replay tests an earlier carry across the subsequent history. It can reveal a consequence that passes through several other glyphs before reaching the selected one. Quiet layers remain accessible on the layer slider.</p><p class="limit">The visible story is a selection from the provenance. The selection rule is part of this expression and can be questioned with it.</p></div></details>
     <details><summary><span>07</span> Touch the water; keep the record</summary><div class="caption-body"><p>In Ripple mode, touch or drag across the field. Each disturbance spreads through neighboring points. Waves add where they meet, sometimes reinforcing and sometimes canceling. Strength changes the initial disturbance; speed changes its travel; damping determines how soon it settles. Still the water clears the disturbance immediately.</p><p>The surface is a small numerical wave grid. Each next height combines the two previous heights and the difference from its four neighbors. It runs in fixed time steps, with damping and absorbing edges. This is a water-like wave model, not a full simulation of flowing fluid.</p><p>Visit an earlier layer and ripple it. Adjacent layers receive a delayed, weaker display response. This coupling is an authored way of feeling depth. It does not travel along the causal threads or revise the archive. Carry makes a new record; a ripple passes over one.</p></div></details>
     <details><summary><span>08</span> Listen on your own terms</summary><div class="caption-body"><p>Enable Sound, then touch the field. As a wave reaches signals, their positions spread notes across stereo space. Wave height shapes loudness and slightly bends pitch. Binary state adds a pitch interval; each site also has an assigned note. Carry adds a lower tone.</p><p>Ripple tones, Carry tones, and ambience have separate levels. Choose a base pitch, brightness, note length, rhythm density, echo space, stereo width, and a water, warm, or glass timbre. Master volume controls the whole mix. Ambience starts silent. Sound stays off until you enable it.</p><p class="limit">These are choices for sonification, not the sound of a meaning being discovered. Rhythm changes how often a site may sound; it is not a fixed musical tempo. M toggles sound. Reduced-motion preferences suppress the visual wave while allowing sound.</p></div></details>
     <details><summary><span>09</span> Let a binary encounter its neighbors</summary><div class="caption-body"><p>Enable binary evolution, choose the rules, and Carry. Positive coupling favors matching neighbors; negative coupling favors opposition. Resistance favors the current state. Bias favors 1 or 0. Agitation allows less likely changes. Choose four edge neighbors or include the diagonals; the field has boundaries, and glyph sites do not act as binary neighbors.</p><p>All bits update together from the same prior field. Their 0/1 states become −1/+1 polarities. Neighbor pressure is a weighted average, multiplied by coupling and shifted by bias. Flip probability decreases as the current polarity agrees with that pressure or resistance rises. A recorded random seed makes each round replayable. An explicit bit edit is held for that round.</p><p>Select a changed bit to inspect its pressure, flip chance, and recorded random draw. These changes can alter the binary pairs that observed glyphs read. Glyph interpretation still uses horizontal and vertical pairs; choosing diagonal binary interactions does not change that reading grammar.</p><p class="limit">This is a classical coupled binary model. It does not simulate quantum entanglement. The interaction settings and randomness are part of the recorded action; touching water does not flip a bit.</p></div></details>
     <details><summary><span>10</span> One environment, several ways of seeing</summary><div class="caption-body"><p>State shows the marks. Relations connects matching and opposing bits, with brightness showing pressure under the chosen interaction settings. Change reveals what differed in this round. Memory reveals recent active glyph readings; dimness does not mean a record has disappeared.</p><p>Frequency inspects how each bit varied across the layers up to the one you are visiting. Its dial selects a discrete Fourier frequency: cycles per recorded round. A steady bit stays dim. A repeating variation can become bright at a corresponding frequency. At least four layers are needed; longer histories offer finer resolution. Glyphs remain visible as context.</p><p class="limit">These lenses reveal different quantities from the same environment. They do not add evidence. Temporal frequency is not an infrared or electromagnetic spectrum, and a bright pattern does not establish meaning or predict its continuation.</p></div></details>
-    <details><summary><span>11</span> A body made of encounters</summary><div class="caption-body"><p>Select a glyph and open its body through time. Each slice is the contour recorded for that reader at that layer. Tilt the view to see how it changes. Select or ripple an earlier slice. The connecting skin interpolates between the recorded contours; toggle it off to see the slices alone.</p><p>The body gives a history a spatial form. Its width follows the same drawing rules as the glyph, not a new measure of importance. Its silhouette can be computed precisely while its interpretation remains open. The skin is a visual bridge, not evidence of unrecorded intermediate encounters.</p><p>Capture saves the current field or open history body as a PNG, including a passing ripple. It copies to the clipboard where supported and otherwise downloads the image. C captures the view; R ripples the selected signal or slice. The separate history download preserves the records behind the image.</p></div></details>
+    <details><summary><span>11</span> A body made of encounters</summary><div class="caption-body"><p>Select a glyph and open its body through time. Each slice is the contour recorded for that reader at that layer. Tilt the view to see how it changes. Select or ripple an earlier slice. The connecting skin interpolates between the recorded contours; toggle it off to see the slices alone.</p><p>The body gives a history a spatial form. Its width follows the same drawing rules as the glyph, not a new measure of importance. The chosen alphabet adds a surface treatment; pending freeform marks can be previewed before Carry records them. Its silhouette can be computed precisely while its interpretation remains open. The skin is a visual bridge, not evidence of unrecorded intermediate encounters.</p><p>Capture saves the current field or open history body as a PNG, including a passing ripple. It copies to the clipboard where supported and otherwise downloads the image. C captures the view; R ripples the selected signal or slice. The separate history download preserves the records behind the image.</p></div></details>
+    <details><summary><span>12</span> The same states, another material</summary><div class="caption-body"><p>The alphabet menu follows the seven dictionaries in Russell’s pattern recognition pattern: 1/0, B/W, X/SP, dot/dash, shaded/blank, hatch/blank, and dark/light. The legend declares which mark means 1 and which means 0. Switching dictionaries redraws the whole archive through that alphabet; it does not invert the bits or rerun the interpretation.</p><p>The environment follows the marks. Letters sit in contrasting washes; crosses leave open spaces; dots and dashes make pulses and ribbons; cells give states mass; hatching gives them grain; scribbles give them density. The same material appears on historical planes, comparison contours, the glyph body, and captures. Viewing lenses modulate these marks while keeping the chosen alphabet.</p><p>Sound uses the same distinctions. SP is silent. Dots are shorter than dashes. Filled cells and dark scribbles have greater sonic weight. Each family has a declared scale and a default pitch, brightness, note length, and timbre. Your channel levels stay fixed when switching. Editing these tone settings turns off automatic defaults; recheck the option to follow the alphabet again.</p><p class="limit">These are authored visual and musical correspondences. Neither a texture nor a pitch is a measurement of a symbol’s meaning. The underlying equality and opposition rules still operate on the stored states.</p></div></details>
+    <details><summary><span>13</span> Compose a field that has no single alphabet</summary><div class="caption-body"><p>Choose Freeform and select a signal. Give it a built-in alphabet or choose My own marks and type or paste a pair for 0 and 1. A mark can be empty, a symbol, or a short cluster. For an interpretive glyph, your chosen mark accompanies the generated contour. Choose its surface and a pitch offset. Preview the assignment, then Carry to record it.</p><p>Each site can keep a different dictionary, surface, and tuning. A custom mark’s normalized Unicode identity deterministically selects a note interval and a small detuning. The same mark with the same surface and tuning keeps that assignment wherever it appears; its location still affects stereo position. Pitch offsets are measured in semitones, so twelve doubles or halves the frequency. The surface adds a reproducible motif from the same identity.</p><p>Mark provenance lists the layers where an assignment changed. Earlier layers keep their earlier assignments. Returning a signal retrieves its old marks as well as its stored signal. Downloaded histories include the assignments and the active alphabet. Switching back to a shared alphabet temporarily presents every record through that dictionary.</p><p class="limit">Identical marks can label different states in Freeform. That makes their visible distinction unavailable; it does not erase the stored distinction. A symbol hash is an arbitrary encoding, not an analysis of the symbol’s shape or meaning. Added texture and custom lettering are presentation; the recorded interpretation contours keep their original mathematical rules.</p></div></details>
   </section>
   <section class="history-tools" aria-label="Keep your history"><h2>Keep the encounter.</h2><div><button id="download">Download history</button><button id="reopen">Reopen history</button><input id="history-file" type="file" accept="application/json,.json" hidden></div><p class="small" id="storage-status" aria-live="polite">Your history stays in this browser.</p></section>
   <footer><p>In dialogue with <a href="https://pattern-recognition-pattern.un1crom.chatgpt.site/">Russell Foltz-Smith’s pattern recognition pattern</a> and the <a href="https://github.com/DeusNosMachina/DN_Framework">DN Framework</a>.</p><p>Expression and inquiry: Deus Nos Machina. Developed with Codex. This model makes no claim to solve a Rule 30 problem.</p></footer>
 </main>
 <script type="module">
+// Public, declared encodings. Labels are indexed by the stored bit: 0, then 1.
+const alphabets={
+  bits:{name:'1 / 0',book:['0','1'],surface:'points',sound:{pitch:52,brightness:.35,length:.5,timbre:'water'},scale:[0,2,5,7,9],note:'Discrete marks; clear, pitched droplets.'},
+  bw:{name:'B / W',book:['W','B'],surface:'contrast',sound:{pitch:52,brightness:.28,length:.65,timbre:'warm'},scale:[0,4,7,11],note:'Contrasting letterforms and washes; warm, sustained intervals.'},
+  space:{name:'X / SP',book:['SP','X'],surface:'gaps',sound:{pitch:52,brightness:.4,length:.18,timbre:'water'},scale:[0,7,12],note:'Crossed marks and open spaces; SP is silent, X sounds.'},
+  dot:{name:'dot / dash',book:['—','•'],surface:'pulses',sound:{pitch:52,brightness:.52,length:.34,timbre:'glass'},scale:[0,5,7],note:'Points and ribbons; a dot sounds briefly, a dash sustains.'},
+  cells:{name:'shaded / blank',book:['blank','shaded'],surface:'mass',sound:{pitch:40,brightness:.23,length:.7,timbre:'warm'},scale:[0,5,7,12],note:'Filled and empty cells; shaded states have greater sonic weight.'},
+  hatch:{name:'hatch / blank',book:['blank','hatch'],surface:'grain',sound:{pitch:57,brightness:.68,length:.25,timbre:'glass'},scale:[0,3,7,10],note:'Parallel grain and empty cells; short, brighter tones.'},
+  scribble:{name:'dark / light',book:['light','dark'],surface:'tangle',sound:{pitch:48,brightness:.4,length:.8,timbre:'warm'},scale:[0,2,3,7,10],note:'Loose and dense tangles; dark states sound with more weight.'}
+};
+const alphabetKeys=Object.keys(alphabets);
+function symbolHash(symbol){let n=2166136261;for(const c of symbol.normalize('NFC')){n^=c.codePointAt(0);n=Math.imul(n,16777619);}return n>>>0;}
+function validMark(mark){
+  if(mark===null)return true;
+  if(!mark||typeof mark!=='object'||Array.isArray(mark))return false;
+  if(![...alphabetKeys,'custom'].includes(mark.alphabet)||!alphabetKeys.includes(mark.surface)||!Number.isInteger(mark.transpose)||Math.abs(mark.transpose)>24)return false;
+  return ['zero','one','glyph'].every(k=>typeof mark[k]==='string'&&mark[k].length<=24&&!/[\u0000-\u001f\u007f-\u009f]/u.test(mark[k]));
+}
+function representationSpec(alphabet,bit,id,mark=null,fallback='bits',kind='bit'){
+  const free=alphabet==='free',custom=free&&mark?.alphabet==='custom',key=free?(mark?(custom?mark.surface:mark.alphabet):fallback):alphabet;
+  const family=alphabets[key]?key:'bits',profile=alphabets[family],text=kind==='glyph'?(free?mark?.glyph??'':''):(custom?(bit?mark.one:mark.zero):profile.book[bit]);
+  return {family,profile,bit,id,kind,text,custom:kind==='glyph'?Boolean(text):custom,transpose:free?(mark?.transpose??0):0,hash:symbolHash(text||`${family}:${id}`)};
+}
+function representationVoice(spec){
+  const {family,profile,bit,id,text,custom,transpose,kind}=spec;
+  const empty=custom&&!text,seed=custom?symbolHash(text):id;
+  return {interval:profile.scale[seed%profile.scale.length]+(kind==='bit'&&!custom&&bit?7:0)+transpose,
+    level:empty||(!custom&&kind==='bit'&&family==='space'&&!bit)?0:kind==='bit'&&['cells','scribble'].includes(family)?(bit?1:.48):1,
+    duration:!custom&&kind==='bit'&&family==='dot'?(bit?.3:1.25):1,
+    detune:custom?(symbolHash(text)%17-8):family==='scribble'?(id%9-4):0};
+}
+const vocabNS='http://www.w3.org/2000/svg';
+function vocabElement(tag,attrs,parent){const e=document.createElementNS(vocabNS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));parent.append(e);return e;}
+const vocabPath=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(' ');
+function installAlphabetPatterns(svg,prefix){
+  const defs=vocabElement('defs',{},svg);
+  const p=vocabElement('pattern',{id:prefix+'-hatch',patternUnits:'userSpaceOnUse',width:7,height:7,patternTransform:'rotate(28)'},defs);
+  vocabElement('path',{d:'M 0 0 V 7',stroke:'var(--ink)','stroke-width':1.1},p);
+  const dots=vocabElement('pattern',{id:prefix+'-dots',patternUnits:'userSpaceOnUse',width:8,height:8},defs);
+  vocabElement('circle',{cx:4,cy:4,r:1,fill:'var(--ink)'},dots);
+}
+function scribblePoints(seed,dense=true){
+  const phase=(seed%628)/100,steps=dense?50:25;
+  return Array.from({length:steps},(_,i)=>{const a=i*.89+phase;return{x:Math.cos(a)*( .48+.2*Math.sin(i*1.7+phase)),y:Math.sin(a)*(.43+.26*Math.cos(i*.73+phase))};});
+}
+function paintRepresentation(parent,spec,x,y,size,{angle=0,flatten=1}={}){
+  const g=vocabElement('g',{transform:`translate(${x} ${y}) rotate(${angle}) scale(1 ${flatten})`,'data-alphabet':spec.family},parent),{family,bit,custom,text,id}=spec;
+  const attrs={fill:'none',stroke:'var(--ink)','stroke-width':1.2,'stroke-linecap':'round','stroke-linejoin':'round'};
+  if(custom||['bits','bw','space'].includes(family)){
+    if(!text)return g;
+    const e=vocabElement('text',{x:0,y:0,'text-anchor':'middle','dominant-baseline':'central','font-size':Math.max(12,size*1.65),...(Array.from(text).length>2?{textLength:size*2.7,lengthAdjust:'spacingAndGlyphs'}:{})},g);e.style.fontSize=Math.max(12,size*1.65)+'px';e.textContent=text;
+  }else if(family==='dot'){
+    if(bit)vocabElement('circle',{cx:0,cy:0,r:size*.32,fill:'var(--ink)'},g);
+    else vocabElement('path',{...attrs,d:`M ${-size*.72} 0 H ${size*.72}`,'stroke-width':1.8},g);
+  }else if(['cells','hatch'].includes(family)){
+    const a=size*.68;vocabElement('rect',{...attrs,x:-a,y:-a,width:a*2,height:a*2,fill:family==='cells'&&bit?'var(--ink)':'var(--paper)'},g);
+    if(family==='hatch'&&bit)for(let i=-3;i<=3;i++){const z=i*a/3;vocabElement('path',{...attrs,d:`M ${Math.max(-a,z-a)} ${Math.min(a,a+z)} L ${Math.min(a,z+a)} ${Math.max(-a,z-a)}`,'stroke-width':.8},g);}
+  }else if(family==='scribble')vocabElement('path',{...attrs,d:vocabPath(scribblePoints(id+3,Boolean(bit)).map(p=>({x:p.x*size*1.25,y:p.y*size*1.25}))),'stroke-width':bit?1.05:.65,opacity:bit?1:.45},g);
+  return g;
+}
+function paintEnvironment(parent,spec,project,r,weight=1){
+  const {family,bit,id,custom,hash}=spec;if(family==='bits'&&!custom)return;
+  const x=.07+(id%8)*.123,y=.075+Math.floor(id/8)*.121,hw=.054,hh=.051;
+  const point=(u,v)=>project(x+u*hw,y+v*hh,r),line=(pts,attrs={})=>vocabElement('path',{d:vocabPath(pts.map(p=>point(p[0],p[1]))),fill:'none',stroke:'var(--ink)','stroke-width':.7,...attrs},parent);
+  const box=[[-1,-1],[1,-1],[1,1],[-1,1],[-1,-1]];
+  if(['bw','cells'].includes(family))line(box,{fill:bit?'var(--ink)':'var(--paper)',opacity:weight*(family==='cells'?(bit?.17:.12):.065)});
+  if(family==='space'){if(bit){line([[-.95,-.95],[.95,.95]],{opacity:weight*.12});line([[-.95,.95],[.95,-.95]],{opacity:weight*.12});}else line([[-.65,.5],[.65,.5]],{opacity:weight*.07});}
+  if(family==='dot'){if(bit){const ring=Array.from({length:25},(_,i)=>[Math.cos(i/24*Math.PI*2)*.76,Math.sin(i/24*Math.PI*2)*.76]);line(ring,{opacity:weight*.13,'stroke-dasharray':'1 4'});}else for(const dy of [-.17,.17])line([[-1,dy],[1,dy]],{opacity:weight*.12});}
+  if(family==='hatch'){if(bit)for(let i=-3;i<=3;i++){const z=i/3;line([[Math.max(-1,z-1),Math.min(1,z+1)],[Math.min(1,z+1),Math.max(-1,z-1)]],{opacity:weight*.19});}else line([[-1,1],[1,1]],{opacity:weight*.08});}
+  if(family==='scribble')line(scribblePoints(id+3,Boolean(bit)).map(p=>[p.x*1.25,p.y*1.25]),{opacity:weight*(bit?.15:.055),'stroke-width':bit?1:.65});
+  if(custom){const spokes=3+hash%5,phase=hash%628/100;for(let i=0;i<spokes;i++){const a=i/spokes*Math.PI*2+phase;line([[Math.cos(a)*.5,Math.sin(a)*.5],[Math.cos(a)*.95,Math.sin(a)*.95]],{opacity:weight*.13});}}
+}
+function decorateContour(parent,points,spec,prefix,{reader=0,body=false,mini=false}={}){
+  const {family}=spec,d=vocabPath(points),fill=family==='hatch'?`url(#${prefix}-hatch)`:family==='dot'?`url(#${prefix}-dots)`:'var(--ink)';
+  if(['bw','cells','hatch','dot'].includes(family))vocabElement('path',{d:d+' Z',fill,'fill-opacity':family==='cells'?.12:.075,stroke:'none'},parent);
+  if(family==='space')for(let i=0;i<points.length;i+=16){const p=points[i];vocabElement('path',{d:`M ${p.x-2} ${p.y-2} l 4 4 m -4 0 l 4 -4`,fill:'none',stroke:'var(--ink)','stroke-width':.7,opacity:.25},parent);}
+  if(family==='scribble'){const jittered=points.map((p,i)=>({x:p.x+Math.sin(i*1.8+spec.id)*(body?2:.6),y:p.y+Math.cos(i*1.3+spec.id)*(body?2:.6)}));vocabElement('path',{d:vocabPath(jittered),fill:'none',stroke:'var(--ink)','stroke-width':.7,opacity:.25,...(reader?{'stroke-dasharray':'4 3'}:{})},parent);}
+  if(spec.custom&&spec.text){const cx=points.reduce((n,p)=>n+p.x/points.length,0),cy=points.reduce((n,p)=>n+p.y/points.length,0),radius=Math.max(7,(Math.max(...points.map(p=>p.x))-Math.min(...points.map(p=>p.x)))*.45),spokes=3+spec.hash%5,phase=spec.hash%628/100;for(let i=0;i<spokes;i++){const a=i/spokes*Math.PI*2+phase;vocabElement('path',{d:`M ${cx+Math.cos(a)*radius*.7} ${cy+Math.sin(a)*radius*.7} L ${cx+Math.cos(a)*radius} ${cy+Math.sin(a)*radius}`,fill:'none',stroke:'var(--ink)','stroke-width':.8,opacity:.2},parent);}}
+  if(spec.custom&&spec.text){const c=points.reduce((a,p)=>({x:a.x+p.x/points.length,y:a.y+p.y/points.length}),{x:0,y:0}),width=Math.max(20,Math.max(...points.map(p=>p.x))-Math.min(...points.map(p=>p.x)));const e=vocabElement('text',{x:c.x,y:c.y,'text-anchor':'middle','dominant-baseline':'central','font-size':body?18:mini?13:12,...(Array.from(spec.text).length>2?{textLength:Math.min(width*.85,body?160:mini?65:30),lengthAdjust:'spacingAndGlyphs'}:{})},parent);e.style.fontSize=(body?18:mini?13:12)+'px';e.textContent=spec.text;}
+}
+
+
 // The complete drawing grammar. Binary agitation uses a recorded deterministic seed.
-const VERSION='what-we-carry/6';
+const VERSION='what-we-carry/7';
 const DECAY=.72, VOICE=.55, TURNING_POINT=.012;
 const clone=value=>JSON.parse(JSON.stringify(value));
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -180,9 +276,11 @@ function localKey(f){return f?f.local.rule+'|'+f.local.terms.map(t=>t.key+':'+t.
 function advance(previous,action,history,omitted=new Set()){
   const round=previous.index+1,fields=clone(action.fields??previous.fields),mode=action.mode??previous.mode;
   const next={index:round,fields,mode,bits:[...previous.bits],forms:clone(previous.forms),pool:[...previous.pool],carried:[],observed:[],events:[],action:clone(action)};
+  if(previous.marks||action.markEdits){next.marks=clone(previous.marks??{});for(const [id,mark] of Object.entries(action.markEdits??{})){if(mark===null)delete next.marks[id];else next.marks[id]=clone(mark);}}
   if(action.type==='return'){
     const old=history[action.from];if(!old)throw Error('Missing retrieval layer.');
     next.bits[action.id]=old.bits[action.id];next.forms[action.id]=clone(old.forms[action.id]);
+    if(next.marks||old.marks){next.marks??={};if(old.marks?.[action.id])next.marks[action.id]=clone(old.marks[action.id]);else delete next.marks[action.id];}
     next.forms[action.id].forEach((reading,reader)=>{
       if(!reading)return;
       const ref=tokenId(round,action.id,reader);
@@ -267,10 +365,11 @@ function sameRecord(a,b){
   const keys=Object.keys(a);return keys.length===Object.keys(b).length&&keys.every(k=>Object.hasOwn(b,k)&&sameRecord(a[k],b[k]));
 }
 function importHistory(data){
-  if(![VERSION,'what-we-carry/5'].includes(data?.format)||!Array.isArray(data.actions))throw Error('Choose a complete history from this edition.');
+  if(![VERSION,'what-we-carry/5','what-we-carry/6'].includes(data?.format)||!Array.isArray(data.actions))throw Error('Choose a complete history from this edition.');
   const validId=id=>Number.isInteger(id)&&id>=0&&id<64;
   data.actions.forEach((a,index)=>{
     if(!['carry','return'].includes(a.type))throw Error('Unknown action.');
+    if(a.markEdits!==undefined){if(data.format!==VERSION||a.type!=='carry'||!a.markEdits||typeof a.markEdits!=='object'||Array.isArray(a.markEdits))throw Error('Invalid mark assignments.');for(const [id,m] of Object.entries(a.markEdits))if(!/^(?:[0-9]|[1-5][0-9]|6[0-3])$/.test(id)||!validMark(m))throw Error('Invalid mark assignment.');}
     if(a.type==='return'){if(!validId(a.id)||!Number.isInteger(a.from)||a.from<0||a.from>index)throw Error('Invalid retrieval.');return;}
     if(!['union','intersection'].includes(a.mode)||!Array.isArray(a.fields)||a.fields.length!==2)throw Error('Missing observation fields.');
     for(const f of a.fields)if(!['x','y','w','h'].every(k=>Number.isFinite(f[k])&&f[k]>=0&&f[k]<=1)||f.w<.12||f.h<.12||!['repeat','break'].includes(f.rule))throw Error('Invalid field.');
@@ -343,7 +442,7 @@ class FieldSound {
       this.ambGain=ctx.createGain();this.ambGain.gain.value=0;this.ambGain.connect(master);
       this.ambOsc=[0,7].map(offset=>{const o=ctx.createOscillator();o.type='sine';o.frequency.value=110*2**(offset/12);o.connect(this.ambGain);o.start();return o;});
     }
-    await this.context.resume();this.enabled=true;this.update();
+    await this.context.resume();this.enabled=this.context.state==='running';if(!this.enabled)throw Error('Sound could not start here. Try the published page in a browser tab.');this.update();
   }
   mute(){this.enabled=false;this.update();if(this.context)this.cooldowns.clear();}
   update(){
@@ -355,22 +454,67 @@ class FieldSound {
     for(const voice of this.voices)voice.filter.frequency.setTargetAtTime(250*2**(s.brightness*5),t,.035);
     this.ambOsc.forEach((o,i)=>o.frequency.setTargetAtTime(440*2**((s.pitch-24+(i?7:0)-69)/12),t,.1));
   }
-  note({id=0,bit=0,intensity=.5,x=.5,kind='ripple',change=0}={}){
+  note({id=0,bit=0,intensity=.5,x=.5,kind='ripple',change=0,voice=null}={}){
     if(!this.enabled||!this.context||this.context.state!=='running'||intensity<=0)return false;
-    const s=this.settings,level=kind==='carry'?s.carry:s.ripples;if(!level||!s.volume||this.voices.size>=16)return false;
+    const s=this.settings,level=kind==='carry'?s.carry:s.ripples;if(!level||!s.volume||voice?.level===0||this.voices.size>=16)return false;
     const c=this.context,t=c.currentTime,interval=.12+(1-s.rhythm)*.65,key=kind+id;
     if(t-(this.cooldowns.get(key)??-Infinity)<interval)return false;this.cooldowns.set(key,t);
-    const duration=.15+s.length*2.1,pitch=s.pitch+(kind==='carry'?-12:(bit?7:0))+[0,2,5,7,9][id%5]+Math.round(change*3);
+    const duration=Math.max(.08,(.15+s.length*2.1)*(voice?.duration??1)),pitch=s.pitch+(kind==='carry'?-12:0)+(voice?.interval??((bit?7:0)+[0,2,5,7,9][id%5]))+Math.round(change*3),timbre=voice?.timbre??s.timbre;
     const frequency=440*2**((pitch-69)/12),o=c.createOscillator(),gain=c.createGain(),filter=c.createBiquadFilter(),pan=c.createStereoPanner();
-    o.type=s.timbre==='warm'?'triangle':'sine';o.frequency.setValueAtTime(frequency*(s.timbre==='water'?1.5:1),t);
-    if(s.timbre==='water')o.frequency.exponentialRampToValueAtTime(frequency,t+.085);
-    if(s.timbre==='glass'){o.type='triangle';o.detune.value=(id%2?1:-1)*4;}
-    filter.type='lowpass';filter.frequency.value=250*2**(s.brightness*5);filter.Q.value=.7;
-    gain.gain.setValueAtTime(0,t);gain.gain.linearRampToValueAtTime(Math.min(1,intensity)*.18,t+.012);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);
+    o.type=timbre==='warm'?'triangle':'sine';o.frequency.setValueAtTime(frequency*(timbre==='water'?1.5:1),t);
+    if(timbre==='water')o.frequency.exponentialRampToValueAtTime(frequency,t+.065);
+    if(timbre==='glass')o.type='triangle';o.detune.value=voice?.detune??(timbre==='glass'?(id%2?1:-1)*4:0);
+    filter.type='lowpass';filter.frequency.value=250*2**((voice?.brightness??s.brightness)*5);filter.Q.value=.7;
+    gain.gain.setValueAtTime(0,t);gain.gain.linearRampToValueAtTime(Math.min(1,intensity)*(voice?.level??1)*.18,t+.012);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);
     pan.pan.value=Math.max(-1,Math.min(1,(x-.5)*2*s.stereo));o.connect(filter);filter.connect(gain);gain.connect(pan);pan.connect(this.layers[kind==='carry'?'carry':'ripple']);
-    const voice={oscillator:o,filter};this.voices.add(voice);this.played++;o.onended=()=>{this.voices.delete(voice);o.disconnect();filter.disconnect();gain.disconnect();pan.disconnect();};o.start(t);o.stop(t+duration+.05);return true;
+    const activeVoice={oscillator:o,filter};this.voices.add(activeVoice);this.played++;o.onended=()=>{this.voices.delete(activeVoice);o.disconnect();filter.disconnect();gain.disconnect();pan.disconnect();};o.start(t);o.stop(t+duration+.05);return true;
   }
   async dispose(){this.enabled=false;if(this.context){await this.context.close();this.context=null;}this.voices.clear();}
+}
+
+
+function createNotation(api){
+  const nq=s=>document.querySelector(s),key='dn-notation-7';let alphabet='bits',fallback='bits',followTone=true,notify=()=>{},editorKey='';
+  const options=(select,custom=false)=>{for(const value of [...alphabetKeys,...(custom?['custom']:[])]){const o=document.createElement('option');o.value=value;o.textContent=alphabets[value]?.name??'My own marks';select.append(o);}};
+  options(nq('#alphabet'));const free=document.createElement('option');free.value='free';free.textContent='Freeform · mixed marks';nq('#alphabet').append(free);options(nq('#free-alphabet'),true);options(nq('#free-surface'));
+  function snapshot(){return {alphabet,fallback,followTone};}
+  function restore(value){if(!value||![...alphabetKeys,'free'].includes(value.alphabet)||!alphabetKeys.includes(value.fallback))return;alphabet=value.alphabet;fallback=value.fallback;followTone=Boolean(value.followTone);editorKey='';}
+  try{restore(JSON.parse(localStorage.getItem(key)||'null'));}catch{}
+  function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
+  function mark(id,r){const s=api.read();return r===s.history.length-1&&Object.hasOwn(s.pending,id)?s.pending[id]:s.history[r].marks?.[id]??null;}
+  function spec(id,r,kind='bit'){const s=api.read();return representationSpec(alphabet,s.history[r].bits[id],id,mark(id,r),fallback,kind);}
+  function fillEditor(){const s=api.read(),m=mark(s.selected,s.visit),base=m??{alphabet:fallback,surface:fallback,zero:alphabets[fallback].book[0],one:alphabets[fallback].book[1],glyph:'',transpose:0};nq('#free-alphabet').value=base.alphabet;nq('#free-surface').value=base.surface;for(const k of ['zero','one','glyph'])nq('#free-'+k).value=base[k];nq('#free-transpose').value=base.transpose;nq('#free-transpose-value').textContent=(base.transpose>0?'+':'')+base.transpose+' semitones';}
+  function sync(){
+    const s=api.read(),isGlyph=s.kind==='glyph',locked=s.busy||s.session!=='own'||s.visit!==s.history.length-1;
+    nq('#alphabet').value=alphabet;nq('#alphabet-sound').checked=followTone;
+    nq('#alphabet-note').textContent=alphabet==='free'?'Each signal can keep its own marks, surface, and tuning. Select one to compose.':alphabets[alphabet].note;
+    nq('#alphabet-legend').textContent=alphabet==='free'?'Freeform keeps the underlying states inspectable.':`1 → ${alphabets[alphabet].book[1]}   ·   0 → ${alphabets[alphabet].book[0]}`;
+    nq('#free-editor').hidden=alphabet!=='free';
+    const stamp=`${s.selected}:${s.visit}:${JSON.stringify(mark(s.selected,s.visit))}:${alphabet}`;if(stamp!==editorKey){fillEditor();editorKey=stamp;}
+    nq('#free-title').textContent=`Compose ${isGlyph?'glyph':'signal'} ${String(s.selected+1).padStart(2,'0')}`;
+    nq('#free-pair').hidden=isGlyph||nq('#free-alphabet').value!=='custom';nq('#free-glyph-row').hidden=!isGlyph;nq('#free-surface-row').hidden=nq('#free-alphabet').value!=='custom';
+    nq('#free-editor').querySelectorAll('input,select,button').forEach(e=>e.disabled=locked);
+    nq('#free-transpose-value').textContent=(Number(nq('#free-transpose').value)>0?'+':'')+nq('#free-transpose').value+' semitones';
+    const m=mark(s.selected,s.visit),same=m?.alphabet==='custom'&&m.zero===m.one&&!isGlyph;
+    nq('#free-note').textContent=locked?'Visit the present of Your field to compose.':same?'Both states have the same visible mark. The archive still distinguishes 0 and 1.':isGlyph?'Your mark accompanies the interpreted contour. Its shape has no assigned semantic meaning.':'Blank is allowed. Your pair labels stored 0 and 1; it does not redefine their interaction rules.';
+    const records=s.history.map((h,r)=>({r,m:JSON.stringify(h.marks?.[s.selected]??null)})).filter((v,r,all)=>r>0&&v.m!==all[r-1].m);
+    const trail=nq('#mark-history');trail.replaceChildren();for(const v of records){const b=document.createElement('button');b.textContent=`${String(v.r).padStart(2,'0')} · marks changed`;b.disabled=s.busy;b.addEventListener('click',()=>api.visit(v.r));trail.append(b);}nq('#mark-history-section').hidden=alphabet!=='free'||!records.length;
+  }
+  function changed(){save();editorKey='';notify(alphabets[alphabet==='free'?fallback:alphabet],followTone);api.redraw();}
+  nq('#alphabet').addEventListener('change',e=>{if(e.target.value!=='free')fallback=e.target.value;alphabet=e.target.value;changed();});
+  nq('#alphabet-sound').addEventListener('change',e=>{followTone=e.target.checked;changed();});
+  nq('#free-alphabet').addEventListener('change',()=>{nq('#free-pair').hidden=api.read().kind==='glyph'||nq('#free-alphabet').value!=='custom';nq('#free-surface-row').hidden=nq('#free-alphabet').value!=='custom';});
+  nq('#free-transpose').addEventListener('input',()=>nq('#free-transpose-value').textContent=(Number(nq('#free-transpose').value)>0?'+':'')+nq('#free-transpose').value+' semitones');
+  nq('#free-apply').addEventListener('click',()=>{const s=api.read(),a=nq('#free-alphabet').value,value={alphabet:a,surface:a==='custom'?nq('#free-surface').value:a,zero:nq('#free-zero').value.normalize('NFC'),one:nq('#free-one').value.normalize('NFC'),glyph:nq('#free-glyph').value.normalize('NFC'),transpose:Number(nq('#free-transpose').value)};if(!validMark(value)){nq('#free-note').textContent='Use up to 24 characters per mark and a tuning from −24 to +24.';return;}api.stage(s.selected,value);nq('#free-note').textContent='Previewing your assignment. Carry records it in the next layer.';});
+  nq('#free-clear').addEventListener('click',()=>api.stage(api.read().selected,null));
+  return {snapshot,restore,sync,onChange:fn=>notify=fn,profile:()=>alphabets[alphabet==='free'?fallback:alphabet],spec,
+    keepTone(){if(followTone){followTone=false;nq('#alphabet-sound').checked=false;save();api.redraw();}},
+    isFree:()=>alphabet==='free',voice:(id,r,kind)=>{const value=spec(id,r,kind),v=representationVoice(value);return alphabet==='free'&&followTone?{...v,interval:v.interval+value.profile.sound.pitch-alphabets[fallback].sound.pitch,timbre:value.profile.sound.timbre,brightness:value.profile.sound.brightness}:v;},label:(id,r)=>spec(id,r).text,
+    token:(parent,id,r,x,y,size,options)=>paintRepresentation(parent,spec(id,r),x,y,size,options),
+    environment:(parent,project,r,weight)=>{const kinds=api.read().kinds;for(let id=0;id<64;id++)if(kinds[id]==='bit')paintEnvironment(parent,spec(id,r),project,r,weight);},
+    contour:(parent,points,id,r,prefix,options)=>decorateContour(parent,points,spec(id,r,'glyph'),prefix,options),
+    patterns:installAlphabetPatterns
+  };
 }
 
 
@@ -393,15 +537,16 @@ function createExperience(api){
     api.redraw();drawBody();
     const state=api.read();
     if(sound.enabled&&water.active){
-      for(const site of sites){const v=water.sample(site.x,site.y,state.visit);if(Math.abs(v.height)>.075&&Math.hypot(v.dx,v.dy)>.008)sound.note({id:site.id,bit:state.history[state.visit].bits[site.id],intensity:Math.min(1,Math.abs(v.height)*1.2),x:site.x,change:v.height});}
+      for(const site of sites){const v=water.sample(site.x,site.y,state.visit);if(Math.abs(v.height)>.075&&Math.hypot(v.dx,v.dy)>.008)sound.note({id:site.id,bit:state.history[state.visit].bits[site.id],intensity:Math.min(1,Math.abs(v.height)*1.2),x:site.x,change:v.height,voice:api.notation.voice(site.id,state.visit,site.kind)});}
       q('#sound-status').dataset.played=String(sound.played);
     }
     q('#field').dataset.rippleEnergy=water.energy.toFixed(6);q('#field').dataset.rippleActive=String(water.active);
     if(water.active)frame=requestAnimationFrame(tick);else{frame=null;accumulator=0;}
   }
   function ripple(x,y,layer=api.read().visit){
-    if(motion.matches){status('This slice is selected. Motion is reduced; sound can still respond.');sound.note({id:api.read().selected,intensity:.7,x});return;}
-    water.disturb(clamp(x,0,1),clamp(y,0,1),layer);sound.note({id:api.read().selected,intensity:.8*water.settings.strength,x});ensureFrame();
+    const hit=sites.reduce((best,s)=>Math.hypot(s.x-x,s.y-y)<Math.hypot(best.x-x,best.y-y)?s:best,sites[0]),voice=api.notation.voice(hit.id,layer,hit.kind);
+    if(motion.matches){status('This slice is selected. Motion is reduced; sound can still respond.');sound.note({id:hit.id,intensity:.7,x,voice});return;}
+    water.disturb(clamp(x,0,1),clamp(y,0,1),layer);sound.note({id:hit.id,intensity:.8*water.settings.strength,x,voice});ensureFrame();
     status(`Ripple at layer ${String(layer).padStart(2,'0')} · recorded signals stay intact.`);
   }
   function rippleSelected(){const state=api.read(),s=sites[state.selected];ripple(s.x,s.y,state.visit);}
@@ -442,7 +587,7 @@ function createExperience(api){
     }}
   }
   function drawBody(){
-    const dialog=q('#body-dialog');if(!dialog.open)return;const svg=q('#body-view'),state=api.read(),s=sites[state.selected];svg.replaceChildren();
+    const dialog=q('#body-dialog');if(!dialog.open)return;const svg=q('#body-view'),state=api.read(),s=sites[state.selected];svg.replaceChildren();api.notation.patterns(svg,'body');
     const width=svg.getBoundingClientRect().width,height=svg.getBoundingClientRect().height;svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
     if(s.kind!=='glyph')return;const last=state.history.length-1,angle=bodyTilt*Math.PI/180,ct=Math.cos(angle),st=Math.sin(angle),radius=Math.min(width*.27,130),step=Math.min(40,(height-110)/Math.max(1,last));
     const project=(p,r)=>{const wave=water.sample(s.x+p.x*.05,s.y+p.y*.05,r);return{x:width/2+(p.x*.98-p.y*.2)*radius+wave.dx*13,y:height/2+(p.x*.2+p.y*.98)*radius*ct-(r-last/2)*step*st-wave.height*8};};
@@ -450,7 +595,7 @@ function createExperience(api){
     // The skin is explicitly interpolation; the per-layer paths remain exact.
     if(q('#body-skin').checked){for(let r=0;r<last;r++)for(let i=0;i<80;i+=2)el('path',{d:path([shapes[r][i],shapes[r][i+2],shapes[r+1][i+2],shapes[r+1][i]])+' Z',fill:'var(--ink)',opacity:.025+.03*Math.abs(Math.sin(i/80*Math.PI*2)),stroke:'none'},svg);
       for(let i=0;i<81;i+=5)el('path',{d:path(shapes.map(p=>p[i])),fill:'none',stroke:'var(--ink)','stroke-width':.65,opacity:.16},svg);}
-    shapes.forEach((pts,r)=>{el('path',{d:path(pts),fill:'none',stroke:'var(--ink)','stroke-width':r===state.visit?2:1,opacity:r===state.visit?1:.25,'data-body-layer':r,...(state.reader?{'stroke-dasharray':'4 3'}:{})},svg);
+    shapes.forEach((pts,r)=>{const decoration=el('g',{opacity:r===state.visit?1:.5},svg);api.notation.contour(decoration,pts,s.id,r,'body',{reader:state.reader,body:true});el('path',{d:path(pts),fill:'none',stroke:'var(--ink)','stroke-width':r===state.visit?2:1,opacity:r===state.visit?1:.25,'data-body-layer':r,...(state.reader?{'stroke-dasharray':'4 3'}:{})},svg);
       if(bodyTilt>20&&(r===0||r===last||r===state.visit)){const p=project({x:0,y:0},r),text=el('text',{x:12,y:p.y+4},svg);text.textContent=String(r).padStart(2,'0');}});
     q('#body-title').textContent=`${state.reader?'you':'I'} · glyph ${state.selected+1}`;q('#body-layer').max=last;q('#body-layer').value=state.visit;q('#body-layer-label').textContent=String(state.visit).padStart(2,'0');q('#body-layer').disabled=state.busy;
     q('#body-note').textContent=last?'Contours are recorded. The connecting skin is an interpolation. Ripple disturbs this view, then settles.':'One recorded slice. Carry readings to grow its body through time.';
@@ -481,7 +626,7 @@ function createExperience(api){
     originals.forEach((node,i)=>{const computed=getComputedStyle(node);for(const key of ['fill','stroke','font-family','font-size'])copies[i].style.setProperty(key,computed.getPropertyValue(key));});
     const background=el('rect',{x:0,y:0,width,height:height+40,fill:color('var(--paper)')},copy);copy.insertBefore(background,copy.firstChild);
     const style=el('style',{},copy);style.textContent=`text{fill:${color('var(--ink)')};font-family:system-ui,sans-serif;font-size:14px}.tiny{font-size:12px}`;
-    const footer=el('text',{x:12,y:height+26,fill:color('var(--ink)')},copy);footer.textContent=`what we carry · ${q('#body-dialog').open?'history body':lens} · layer ${String(state.visit).padStart(2,'0')}`;
+    const footer=el('text',{x:12,y:height+26,fill:color('var(--ink)')},copy);footer.style.fontSize='12px';footer.textContent=`what we carry · ${q('#body-dialog').open?'body':lens} · ${api.notation.snapshot().alphabet} · ${String(state.visit).padStart(2,'0')}`;
     let xml=new XMLSerializer().serializeToString(copy);for(const key of ['ink','paper','muted','line','aligned','opposed'])xml=xml.replaceAll(`var(--${key})`,color(`var(--${key})`));
     const url=URL.createObjectURL(new Blob([xml],{type:'image/svg+xml'}));
     try{const image=new Image();image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=Math.round(width*2);canvas.height=Math.round((height+40)*2);canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);return await new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(Error('Could not make an image.')),'image/png'));}finally{URL.revokeObjectURL(url);}
@@ -497,8 +642,10 @@ function createExperience(api){
   q('#touch-move').addEventListener('click',()=>{touch='move';q('#touch-ripple').setAttribute('aria-pressed','false');q('#touch-move').setAttribute('aria-pressed','true');});
   q('#ripple-here').addEventListener('click',rippleSelected);q('#settle').addEventListener('click',settle);q('#body-ripple').addEventListener('click',rippleSelected);q('#sound-toggle').addEventListener('click',toggleSound);
   qa('[data-ripple]').forEach(input=>input.addEventListener('input',()=>{water.settings[input.dataset.ripple]=Number(input.value)/100;showPreferences();save();}));
-  qa('[data-sound]').forEach(input=>input.addEventListener('input',()=>{const key=input.dataset.sound;sound.settings[key]=Number(input.value)/(key==='pitch'?1:100);sound.update();showPreferences();save();}));
-  q('#sound-timbre').addEventListener('change',e=>{sound.settings.timbre=e.target.value;save();});
+  qa('[data-sound]').forEach(input=>input.addEventListener('input',()=>{const key=input.dataset.sound;sound.settings[key]=Number(input.value)/(key==='pitch'?1:100);if(['pitch','brightness','length'].includes(key))api.notation.keepTone();sound.update();showPreferences();save();}));
+  q('#sound-timbre').addEventListener('change',e=>{sound.settings.timbre=e.target.value;api.notation.keepTone();save();});
+  q('#sound-test').addEventListener('click',async()=>{if(!sound.enabled)await toggleSound();if(sound.enabled){const played=sound.note({id:0,intensity:1,x:.5});q('#sound-status').textContent=!sound.settings.volume||!sound.settings.ripples?'Raise Master volume and Ripple tones to hear the test.':played?'Test tone sent. If silent, check the tab and device volume.':'Let the current tones settle, then try again.';}});
+  api.notation.onChange((profile,apply)=>{if(apply){Object.assign(sound.settings,profile.sound);sound.update();showPreferences();save();}drawBody();});
   qa('[data-binary]').forEach(input=>input.addEventListener('input',()=>{binary[input.dataset.binary]=Number(input.value)/100;scoreCache=null;showPreferences();api.staged();}));
   q('#binary-neighbors').addEventListener('change',e=>{binary.neighbors=Number(e.target.value);scoreCache=null;api.staged();});q('#binary-enabled').addEventListener('change',e=>{binary.enabled=e.target.checked;api.staged();});
   q('#lens').addEventListener('change',e=>{lens=e.target.value;scoreCache=null;sync();api.redraw();});q('#frequency').addEventListener('input',e=>{frequency=Number(e.target.value);scoreCache=null;sync();api.redraw();});
@@ -515,7 +662,7 @@ function createExperience(api){
     stagedDynamics(){return binary.enabled?{...binary}:null;},
     dynamicsSnapshot(){return {...binary};},
     restoreDynamics(value){if(!value)return;Object.assign(binary,value);q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;scoreCache=null;showPreferences();},
-    onCarry(previous,next){scoreCache=null;const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x});ripple(s.x,s.y,next.index);},
+    onCarry(previous,next){scoreCache=null;const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x,voice:api.notation.voice(s.id,next.index,s.kind)});ripple(s.x,s.y,next.index);},
     onHistoryChange(){scoreCache=null;settle();const settings=api.read().history.at(-1).action.dynamics;Object.assign(binary,binaryDefaults,settings??{});q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;showPreferences();}
   };
 }
@@ -547,19 +694,22 @@ function registerExpressionTools(context,actions){
 
 
 
+
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
 const ink='var(--ink)',paper='var(--paper)',muted='var(--muted)',line='var(--line)';
-const storageKey='dn-expression-context-6',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const storageKey='dn-expression-context-7',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 let actions=[],history=[origin()],fields=clone(initialFields),mode='union',reader=0,selected=27,visit=0,tilt=0;
-let pending={},omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
+let pending={},markEdits={},initialPresentation=null,omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
 let W=0,H=0,projection,project,hits=[],handles=[],drag=null,effectsCache=new Map();
 const sessionCache={};
-try{const saved=localStorage.getItem(storageKey)||localStorage.getItem('dn-expression-context-5');if(saved){const value=importHistory(JSON.parse(saved));actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
+try{const saved=localStorage.getItem(storageKey)||localStorage.getItem('dn-expression-context-6')||localStorage.getItem('dn-expression-context-5');if(saved){const data=JSON.parse(saved),value=importHistory(data);initialPresentation=data.presentation;actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
 const number=r=>String(r).padStart(2,'0'),smooth=t=>t*t*(3-2*t),isGlyph=()=>sites[selected].kind==='glyph';
 const recordLabel=ref=>{const [r,id,j]=ref.split(':').map(Number);return `${number(r)} · ${who(j)} · ${name(id)}`;};
 function element(tag,attrs={},parent=svg){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.append(el);return el;}
-const groups={};['planes','water','relations','threads','marks','motion','fields','handles'].forEach(key=>groups[key]=element('g',{'data-group':key}));
-const senses=createExperience({read:()=>({history,fields,reader,selected,visit,tilt,session,busy}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},staged:()=>{dirty=true;refresh();}});
+const groups={};['planes','environment','water','relations','threads','marks','motion','fields','handles'].forEach(key=>groups[key]=element('g',{'data-group':key}));
+const notation=createNotation({read:()=>({history,selected,visit,pending:markEdits,busy,session,kind:sites[selected].kind,kinds:sites.map(s=>s.kind)}),stage:(id,value)=>{if(busy||session!=='own'||visit!==history.length-1)return;markEdits[id]=value;dirty=true;refresh();},redraw:()=>{refresh();persist();},visit:r=>{visit=r;refresh();}});
+notation.restore(initialPresentation);notation.patterns(svg,'field');notation.patterns($('#comparison'),'comparison');
+const senses=createExperience({notation,read:()=>({history,fields,reader,selected,visit,tilt,session,busy}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},staged:()=>{dirty=true;refresh();}});
 const path=points=>points.map((p,i)=>(i?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ');
 const curve=(a,b,bend=0)=>`M ${a.x} ${a.y} C ${a.x+bend} ${(a.y+b.y)/2-12} ${b.x+bend} ${(a.y+b.y)/2-12} ${b.x} ${b.y}`;
 function camera(){
@@ -574,9 +724,10 @@ function camera(){
 function unproject(x,y,r){const p=projection,X=(x-p.ox)/p.scale,Y=((y-p.oy)/p.scale+(r*36-p.mid)*p.st)/p.ct;return{x:(p.c*X+p.s*Y)/550+.5,y:(-p.s*X+p.c*Y)/360+.5};}
 const z=r=>animation&&r===history.length-1?r-1+smooth(animation.t):r;
 function effects(r=visit,id=selected,j=reader){const key=`${r}:${id}:${j}`;if(!effectsCache.has(key))effectsCache.set(key,contributionEffects(history,r,id,j));return effectsCache.get(key);}
-function drawGlyph(parent,id,form,p,size,{opacity=1,dash='',before=undefined,mix=1,offset=0,width=1.35}={}){
+function drawGlyph(parent,id,form,p,size,{opacity=1,dash='',before=undefined,mix=1,offset=0,width=1.35,layer=visit,readerIndex=reader}={}){
   let pts=contour(id,form);if(before!==undefined){const old=contour(id,before);pts=pts.map((v,i)=>({x:old[i].x*(1-mix)+v.x*mix,y:old[i].y*(1-mix)+v.y*mix}));}
   pts=pts.map(v=>({x:p.x+(v.x*projection.c-v.y*projection.s)*size+offset,y:p.y+(v.x*projection.s+v.y*projection.c)*size*Math.max(.28,projection.ct)}));
+  notation.contour(parent,pts,id,layer,'field',{reader:readerIndex});
   return element('path',{d:path(pts),fill:'none',stroke:ink,'stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round',opacity,...(dash?{'stroke-dasharray':dash}:{})},parent);
 }
 function drawNode(id,r,current=false){
@@ -588,18 +739,17 @@ function drawNode(id,r,current=false){
   const look=senses.signalLook(id,r);group.setAttribute('opacity',opacity*look.opacity);if(look.color!=='var(--ink)')group.style.setProperty('--ink',look.color);
   const size=clamp(projection.scale*12,7,13);
   if(site.kind==='bit'){
-    if(tilt>59)element('circle',{cx:p.x,cy:p.y,r:2.3,fill:state.bits[id]?ink:paper,stroke:ink,'stroke-width':.85},group);
-    else{const text=element('text',{x:p.x,y:p.y,'text-anchor':'middle','dominant-baseline':'central'},group);text.textContent=state.bits[id];}
+    notation.token(group,id,r,p.x,p.y,size*.8,{angle:Math.atan2(projection.s,projection.c)*180/Math.PI,flatten:Math.max(.38,projection.ct)});
     if(current&&pending[id]!==undefined)element('circle',{cx:p.x,cy:p.y,r:10,fill:'none',stroke:ink,'stroke-width':1,'stroke-dasharray':'2 3'},group);
   }else{
     const forms=state.forms[id],prior=current&&animation?animation.from.forms[id]:null;
     const indexes=forms.some(Boolean)||prior?.some(Boolean)?[0,1].filter(j=>forms[j]||prior?.[j]):[0];
     indexes.forEach(j=>{
       const activeBranch=current&&j===reader;
-      drawGlyph(group,id,forms[j],p,size,{dash:j?'3 2.5':'',offset:indexes.length===2?(j?2.5:-2.5):0,opacity:current&&!activeBranch?.6:1,before:prior?prior[j]:undefined,mix:animation?smooth(clamp((animation.t-.12)/.72,0,1)):1,width:current?1.3:.9});
+      drawGlyph(group,id,forms[j],p,size,{dash:j?'3 2.5':'',offset:indexes.length===2?(j?2.5:-2.5):0,opacity:current&&!activeBranch?.6:1,before:prior?prior[j]:undefined,mix:animation?smooth(clamp((animation.t-.12)/.72,0,1)):1,width:current?1.3:.9,layer:r,readerIndex:j});
     });
     if(current&&alternative&&distance(forms[reader],alternative[r].forms[id][reader])>1e-7){
-      drawGlyph(group,id,alternative[r].forms[id][reader],p,size,{dash:'1 3',opacity:.8,width:1.5,offset:reader?2.5:-2.5});
+      drawGlyph(group,id,alternative[r].forms[id][reader],p,size,{dash:'1 3',opacity:.8,width:1.5,offset:reader?2.5:-2.5,layer:r});
     }
   }
   if(current){
@@ -630,6 +780,7 @@ function draw(){
   svg.dataset.round=String(last);svg.dataset.visit=String(visit);svg.dataset.phase=busy?'carrying':'ready';
   for(let r=0;r<=last;r++){
     if(tilt<3&&r!==visit)continue;
+    notation.environment(groups.environment,(x,y)=>project(x,y,z(r)),r,r===visit?1:Math.max(.035,.16*.78**Math.abs(visit-r)));
     const corners=[[.005,.005],[.995,.005],[.995,.995],[.005,.995],[.005,.005]].map(([x,y])=>project(x,y,z(r)));
     element('path',{d:path(corners),fill:r===visit&&tilt>3?paper:'none','fill-opacity':.12,stroke:ink,'stroke-width':.65,opacity:r===visit?.32:.1},groups.planes);
     if(tilt>15&&(r===0||r===last||r===visit)){const p=corners[0],text=element('text',{x:Math.max(16,p.x-6),y:p.y-9,'text-anchor':'end',class:'tiny',opacity:r===visit?.8:.4},groups.planes);text.textContent=number(r);}
@@ -658,8 +809,9 @@ function draw(){
 }
 function selectSignal(id){selected=id;allParents=false;refresh();}
 function setComparison(ref){omitted=omitted===ref?null:ref;alternative=omitted?replay(actions,omitted):null;refresh();}
-function miniature(parent,id,form,x,y,size,dash=''){
+function miniature(parent,id,form,x,y,size,dash='',layer=visit){
   const pts=contour(id,form).map(v=>({x:x+v.x*size,y:y+v.y*size}));
+  notation.contour(parent,pts,id,layer,'comparison',{reader,mini:true});
   element('path',{d:path(pts),fill:'none',stroke:ink,'stroke-width':1.3,'stroke-linecap':'round','stroke-linejoin':'round',...(dash?{'stroke-dasharray':dash}:{})},parent);
 }
 function renderStory(){
@@ -667,7 +819,7 @@ function renderStory(){
   $('#reading-label').textContent=`${who(reader)} · ${name(selected)} · layer ${number(visit)}`;
   $('#bit-controls').hidden=isGlyph();$('#event-detail').hidden=!isGlyph()||!form;
   if(!isGlyph()){
-    $('#bit-reading').textContent=`${state.bits[selected]}${pending[selected]!==undefined?' → '+pending[selected]+' queued':''}`;
+    $('#bit-reading').textContent=`${notation.label(selected,visit)||'blank'} · stored ${state.bits[selected]}${pending[selected]!==undefined?' → '+pending[selected]+' queued':''}`;
     const event=state.binaryEvents?.find(e=>e.id===selected),edited=state.action.edits?.[selected]!==undefined;
     $('#bit-cause').textContent=edited?'An explicit edit set this bit for this round.':event?`${event.from} → ${event.to} on Carry. ${event.neighbors.length} neighbors, coupling, and bias gave a signed pressure of ${event.pressure.toFixed(2)}. With resistance and agitation, its flip chance was ${(event.probability*100).toFixed(1)}%; the recorded draw was ${(event.sample*100).toFixed(1)}%.`:state.action.type==='return'&&state.action.id===selected?'This bit was retrieved from an earlier record.':'No recorded flip at this layer.';
   }else{
@@ -687,13 +839,13 @@ function renderStory(){
       $('#event-kind').textContent=event?.kind??'retained reading';
       const shared=form.terms.filter(t=>t.sources.length).length;
       $('#event-caption').textContent=state.action.type==='return'?`Returned from layer ${number(state.action.from)}. Carry again to meet the present context.`:shared?`Inherited context reaches ${shared} of ${form.terms.length} local relationships.`:`${form.terms.length} local relationships. No inherited contribution reaches this reading.`;
-      const diagram=$('#comparison'),width=diagram.parentElement.clientWidth;diagram.setAttribute('viewBox',`0 0 ${width} 132`);diagram.replaceChildren();
+      const diagram=$('#comparison'),width=diagram.parentElement.clientWidth;diagram.setAttribute('viewBox',`0 0 ${width} 132`);diagram.replaceChildren();notation.patterns(diagram,'comparison');
       const before=visit?history[visit-1].forms[selected][reader]:null;
       // Reuse the actual model for the local-only comparison.
       const local=localOnlyReading(form,selected,reader,visit);
       const forms=[before,form,alternative?alternative[visit].forms[selected][reader]:local];
       const labels=['before','recorded',alternative?'without carry':'local only'];
-      forms.forEach((value,i)=>{const x=width*(i+.5)/3;miniature(diagram,selected,value,x,54,Math.min(29,width/10),reader?'3 2.5':'');const text=element('text',{x,y:118,'text-anchor':'middle',class:'tiny'},diagram);text.textContent=labels[i];});
+      forms.forEach((value,i)=>{const x=width*(i+.5)/3;miniature(diagram,selected,value,x,54,Math.min(29,width/10),reader?'3 2.5':'',i===0?Math.max(0,visit-1):visit);const text=element('text',{x,y:118,'text-anchor':'middle',class:'tiny'},diagram);text.textContent=labels[i];});
       const sources=$('#sources');sources.replaceChildren();
       const parents=effects(),shown=allParents?parents:parents.filter(e=>e.effect>1e-7).slice(0,3);
       shown.forEach(entry=>{
@@ -741,18 +893,18 @@ function controls(){
     $('#guide-caption').textContent=step?.caption??'Six recorded actions demonstrate inheritance, wider attention, passive change, and return. The same rules govern your own field.';
     $('#guide-next').textContent=actions.length>=encounter.length?'Encounter complete':actions.length?'Next encounter →':'Begin the encounter →';
   }
-  senses.sync();
+  notation.sync();senses.sync();
 }
 function refresh(){draw();controls();renderStory();}
 function persist(){
   if(session!=='own')return;
-  try{localStorage.setItem(storageKey,JSON.stringify(exportHistory(actions,history)));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
+  try{localStorage.setItem(storageKey,JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot()}));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
   catch{$('#storage-status').textContent='This session is in memory. Download history to keep it.';}
 }
 function commit(action){
   if(busy)return;
   let complete;const completion=new Promise(resolve=>complete=resolve);
-  const previous=history.at(-1);actions.push(clone(action));history.push(advance(previous,action,history));visit=history.length-1;pending={};dirty=false;effectsCache.clear();
+  const previous=history.at(-1);actions.push(clone(action));history.push(advance(previous,action,history));visit=history.length-1;pending={};markEdits={};dirty=false;effectsCache.clear();
   if(omitted)alternative=replay(actions,omitted);
   busy=true;animation={from:previous,t:0};refresh();persist();
   senses.onCarry(previous,history.at(-1));
@@ -761,13 +913,13 @@ function commit(action){
   requestAnimationFrame(frame);
   return completion;
 }
-function carry(){if(visit!==history.length-1||session!=='own')return;const dynamics=senses.stagedDynamics();return commit({type:'carry',fields:clone(fields),mode,edits:clone(pending),...(dynamics?{dynamics,seed:crypto.getRandomValues(new Uint32Array(1))[0]}:{})});}
+function carry(){if(visit!==history.length-1||session!=='own')return;const dynamics=senses.stagedDynamics();return commit({type:'carry',fields:clone(fields),mode,edits:clone(pending),...(Object.keys(markEdits).length?{markEdits:clone(markEdits)}:{}),...(dynamics?{dynamics,seed:crypto.getRandomValues(new Uint32Array(1))[0]}:{})});}
 function changeField(key,value){if(busy||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
 function switchSession(target){
   if(target===session||busy)return;
-  sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),dirty,dynamics:senses.dynamicsSnapshot()};
+  sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),markEdits:clone(markEdits),dirty,dynamics:senses.dynamicsSnapshot()};
   const saved=sessionCache[target];session=target;
-  actions=saved?.actions??[];history=replay(actions);fields=saved?.fields??clone(initialFields);mode=saved?.mode??'union';reader=saved?.reader??0;selected=saved?.selected??27;visit=saved?.visit??0;pending=saved?.pending??{};dirty=saved?.dirty??true;omitted=null;alternative=null;effectsCache.clear();
+  actions=saved?.actions??[];history=replay(actions);fields=saved?.fields??clone(initialFields);mode=saved?.mode??'union';reader=saved?.reader??0;selected=saved?.selected??27;visit=saved?.visit??0;pending=saved?.pending??{};markEdits=saved?.markEdits??{};dirty=saved?.dirty??true;omitted=null;alternative=null;effectsCache.clear();
   senses.onHistoryChange();
   senses.restoreDynamics(saved?.dynamics);
   $('#session-note').textContent=target==='own'?'Two readers · one device · a complete local history':'An authored sequence · your own field is kept separately';refresh();
@@ -813,13 +965,13 @@ svg.addEventListener('pointermove',e=>{
 function stop(e){drag=null;senses.pointerUp();if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);draw();}
 svg.addEventListener('pointerup',stop);svg.addEventListener('pointercancel',stop);
 $('#download').addEventListener('click',()=>{
-  const data=JSON.stringify(exportHistory(actions,history)),url=URL.createObjectURL(new Blob([data],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='what-we-carry-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#storage-status').textContent='Downloaded the recorded history, including every layer.';
+  const data=JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot()}),url=URL.createObjectURL(new Blob([data],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='what-we-carry-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#storage-status').textContent='Downloaded the recorded history, including every layer.';
 });
 $('#reopen').addEventListener('click',()=>$('#history-file').click());
 $('#history-file').addEventListener('change',async e=>{
   const file=e.target.files[0];if(!file)return;
-  try{const restored=importHistory(JSON.parse(await file.text()));switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};dirty=false;omitted=null;alternative=null;effectsCache.clear();senses.onHistoryChange();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened.`;}
-  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05 or 06.';}
+  try{const data=JSON.parse(await file.text()),restored=importHistory(data);switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};markEdits={};dirty=false;omitted=null;alternative=null;effectsCache.clear();notation.restore(data.presentation);senses.onHistoryChange();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened.`;}
+  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05, 06, or 07.';}
   e.target.value='';
 });
 function resize(){const box=svg.getBoundingClientRect();W=box.width;H=box.height;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);draw();renderStory();}
