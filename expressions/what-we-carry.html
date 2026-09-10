@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>What we carry — an expression in shared context</title>
+  <meta name="description" content="Two readings, an inherited field, and a history you can question. An interactive expression about attention, interpretation, and what we carry forward.">
+  <meta name="color-scheme" content="light dark"><style>
+:root{color-scheme:light dark;--paper:light-dark(#fcfcfc,#141516);--ink:light-dark(#202124,#ececea);--muted:light-dark(#63656b,#a9aaad);--line:light-dark(#d5d6da,#404247);--wash:light-dark(#f0f1f2,#222428);--focus:light-dark(#42444a,#c9cbd0);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;color:var(--ink);background:var(--paper)}
+*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:auto;padding:36px 48px 24px}button,input,select{font:inherit;color:inherit}button,select{font-size:.875rem}button{border:1px solid var(--line);border-radius:5px;background:transparent;min-height:38px;padding:8px 12px;cursor:pointer}button:hover{background:var(--wash)}button:disabled{cursor:default;opacity:.4}button[aria-pressed=true],button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}button.quiet{border-color:transparent;padding-left:0;padding-right:0;text-align:left}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:4px}select{max-width:100%;min-height:38px;border:1px solid var(--line);background:var(--paper);border-radius:5px;padding:7px 30px 7px 9px}input[type=range]{width:100%;min-width:40px;accent-color:var(--ink)}input[type=checkbox]{accent-color:var(--ink);width:16px;height:16px}h1,h2,p{margin:0}h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400}h1{font-size:clamp(2.2rem,4vw,3.7rem);letter-spacing:-.045em;line-height:1.05}h2{font-size:1.5rem;line-height:1.2}.small{font-size:.875rem;line-height:1.5;color:var(--muted)}.eyebrow{font-size:.75rem;letter-spacing:.11em;line-height:1.5;color:var(--muted)}.masthead{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:30px}.masthead .eyebrow{margin-bottom:12px}.opening{font-family:Georgia,serif;font-size:1.15rem;line-height:1.45}.session-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.switches{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:38px;padding-top:22px}.field-column{min-width:0}.view-controls,.time-controls{display:flex;align-items:center;gap:20px;justify-content:space-between;font-size:.875rem}.view-controls>label:first-child,.time-controls>label{display:grid;grid-template-columns:auto 62px minmax(60px,1fr);align-items:center;gap:10px;flex:1}.view-controls>label:first-child{max-width:420px}.check{display:flex;align-items:center;gap:7px;white-space:nowrap}output{font-variant-numeric:tabular-nums}#field{display:block;width:100%;height:530px;touch-action:none;user-select:none;overflow:hidden}svg text{fill:var(--ink);font-family:system-ui,sans-serif;font-size:14px}svg .tiny{font-size:12px}svg .mark{cursor:pointer}svg .mark:hover{opacity:1}.observation-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px}.rule-label{flex:1;min-width:180px}.rule-label select{width:100%}#adjust{flex-basis:100%;font-size:.875rem}summary{cursor:pointer;line-height:1.5}#adjust summary{width:fit-content}.field-sliders{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;padding:16px 0}.field-sliders label{display:grid;grid-template-columns:auto 1fr;gap:6px}.field-sliders output{text-align:right}.field-sliders input{grid-column:1/-1}.carry-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.carry-controls label{display:flex;align-items:center;gap:10px;font-size:.875rem}.carry-controls .primary{min-width:112px}.status{display:flex;justify-content:space-between;gap:15px;font-size:.8125rem;line-height:1.5;margin-top:12px;min-height:40px;color:var(--muted)}.status span:last-child{white-space:nowrap}.story{border-left:1px solid var(--line);padding-left:28px;min-width:0}.story-heading h2{margin-bottom:12px}.story-heading select{width:100%}#reading-label{margin:12px 0}.story-list{display:flex;flex-direction:column;gap:2px;margin:18px 0}.story-list button{display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:center;text-align:left;border:0;border-radius:0;width:100%;padding:9px 0;min-height:40px}.story-list button[aria-pressed=true]{background:transparent;color:var(--ink)}.story-list button[aria-pressed=true] span:first-child{border-bottom:2px solid var(--ink)}.story-list button span:first-child{font-variant-numeric:tabular-nums;color:var(--muted);padding-bottom:3px}.story-list button span:last-child{font-size:.8125rem;line-height:1.4}.story-list button[aria-pressed=false]{color:var(--muted)}#event-kind{margin-top:18px}#comparison{width:100%;height:132px;display:block}#event-caption{margin-bottom:16px}#sources{display:grid;gap:6px}.parent{display:flex;justify-content:space-between;gap:10px;align-items:center;text-align:left;font-size:.8125rem;width:100%}.parent .source-note{font-size:.75rem;color:var(--muted)}.parent[aria-pressed=true] .source-note{color:inherit}.replay-state{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}.replay-state>p:first-child{font-size:.875rem;line-height:1.5;margin-bottom:8px}#return{display:block;margin-top:12px}#bit-reading{margin:16px 0}.guided{padding:16px 0;border-top:1px solid var(--line);margin-top:15px}.guided strong{display:block;font-weight:500;margin-top:6px}.guided p{font-size:.875rem;line-height:1.5;margin:8px 0 14px;color:var(--muted)}.captions{margin-top:64px;max-width:1000px}.caption-intro{display:flex;align-items:baseline;justify-content:space-between;gap:25px;padding-bottom:22px}.captions details{border-top:1px solid var(--line);padding:20px 0}.captions details:last-child{border-bottom:1px solid var(--line)}.captions summary{font-family:Georgia,serif;font-size:1.28rem}.captions summary span{font-family:system-ui,sans-serif;font-size:.75rem;color:var(--muted);margin-right:22px;letter-spacing:.1em}.caption-body{padding:20px 0 0 43px;max-width:810px;line-height:1.7}.caption-body p+p{margin-top:14px}.caption-body .limit{color:var(--muted);font-size:.875rem}.history-tools{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:46px}.history-tools h2{margin-right:auto}.history-tools>div{display:flex;gap:8px;flex-wrap:wrap}.history-tools>p{flex-basis:100%}footer{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.8125rem;line-height:1.65}footer p+p{margin-top:7px}a{color:inherit;text-underline-offset:3px}.sr-only,.skip:not(:focus){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
+@media(max-width:1000px){main{padding:28px}.workspace{grid-template-columns:minmax(0,1fr) 260px;gap:24px}.story{padding-left:20px}#field{height:450px}.opening{max-width:300px}.opening br{display:none}.session-bar{flex-wrap:wrap;gap:12px}}
+@media(max-width:760px){main{padding:22px 18px}.masthead{display:block;margin-bottom:22px}.opening{margin-top:18px;font-size:1rem;max-width:none}.opening br{display:none}.workspace{grid-template-columns:1fr;gap:25px}.story{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.story-heading{display:flex;align-items:center;gap:20px}.story-heading h2{margin-bottom:0}.story-heading label{flex:1}.story-list{flex-direction:row;flex-wrap:wrap;gap:12px}.story-list button{width:auto;max-width:180px}.view-controls{flex-wrap:wrap;gap:12px}.view-controls>label:first-child{min-width:170px}.view-controls>label:last-child{margin-left:auto}#field{height:390px}#comparison{height:155px}#sources{grid-template-columns:repeat(2,minmax(0,1fr))}.captions{margin-top:44px}.caption-intro{display:block}.caption-intro h2{margin-top:10px}.captions summary{font-size:1.1rem}.captions summary span{margin-right:12px}.caption-body{padding-left:0}.history-tools h2{width:100%}}
+@media(max-width:420px){#field{height:315px}.status{flex-wrap:wrap;gap:3px}.status span:last-child{margin-left:auto}.carry-controls label{gap:6px;font-size:.8125rem}.carry-controls select{max-width:145px}.story-heading{flex-wrap:wrap;gap:12px}.story-heading label{min-width:160px}#sources{grid-template-columns:1fr}.view-controls>label:first-child{max-width:none}.check{font-size:.8125rem}.time-controls{gap:8px}.time-controls>label{grid-template-columns:auto 52px minmax(40px,1fr);gap:6px}.field-sliders{gap:12px}.session-bar .small{font-size:.8125rem}.observation-controls{gap:8px}}
+@media(pointer:coarse){button,select{min-height:44px}input[type=range]{min-height:32px}summary{padding:7px 0}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#field-controls">Skip to the field</a>
+<main>
+  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / EDITION 05</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
+  <div class="session-bar"><div class="switches" aria-label="Choose a session"><button data-session="own" aria-pressed="true">Your field</button><button data-session="encounter" aria-pressed="false">Follow an encounter</button></div><span class="small" id="session-note">Two readers · one device · a complete local history</span></div>
+  <section class="workspace" aria-label="A field and its history">
+    <div class="field-column">
+      <div class="view-controls" id="field-controls"><label>Tilt <output id="angle">0°</output><input id="tilt" type="range" min="0" max="78" value="0" aria-label="Tilt the field through time"></label><label class="check"><input id="threads" type="checkbox" checked>Story threads</label></div>
+      <svg id="field" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Digits are binary states. Scribbles become two separately attributable glyph readings. Solid contours belong to I; dashed contours belong to you. Adjust the fields, carry, and follow the resulting dependencies. Use the controls below as a keyboard alternative to dragging.</desc></svg>
+      <div class="time-controls"><label>Layer <output id="layer-label">00 / 00</output><input id="layer" type="range" min="0" max="0" value="0" aria-label="Visit a recorded layer"></label><button id="present" class="quiet" disabled>Present ↑</button></div>
+      <div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust"><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="100" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="100" aria-label="Observation field height"></label></div></details></div>
+      <div class="carry-controls"><label>Carry from <select id="mode"><option value="union">either field ∪</option><option value="intersection">both fields ∩</option></select></label><button id="carry" class="primary">Carry →</button></div>
+      <div class="status" aria-live="polite"><span id="status">Choose what enters the next encounter.</span><span id="retained">64 signals retained</span></div>
+      <div class="guided" id="guide" hidden><span class="eyebrow" id="guide-step">AUTHORED ENCOUNTER</span><strong id="guide-title"></strong><p id="guide-caption"></p><button id="guide-next" class="primary">Next encounter →</button></div>
+    </div>
+    <aside class="story" aria-label="Trace a reading">
+      <div class="story-heading"><h2>Follow a reading</h2><label><span class="sr-only">Follow a signal</span><select id="follow"></select></label></div>
+      <p class="small" id="reading-label">I · glyph 28</p>
+      <div id="bit-controls" hidden><p id="bit-reading"></p><button id="flip">Queue 0 ↔ 1</button></div>
+      <div id="story-list" class="story-list"></div>
+      <div id="event-detail" hidden>
+        <p class="eyebrow" id="event-kind"></p>
+        <svg id="comparison" role="img" aria-label="Earlier, current, and alternative readings"></svg>
+        <p id="event-caption" class="small"></p>
+        <div id="sources"></div>
+        <button id="more-sources" class="quiet" hidden>All recorded parents</button>
+        <button id="omit-own" class="quiet" hidden>Replay without this carry</button>
+      </div>
+      <div class="replay-state" id="replay-state" hidden><p id="replay-label"></p><p class="small" id="replay-result"></p><button id="clear-replay">Restore contribution</button></div>
+      <button id="return" class="quiet" hidden>Return this signal ↑</button>
+    </aside>
+  </section>
+  <section class="captions" aria-label="Inside the expression">
+    <div class="caption-intro"><p class="eyebrow">INSIDE THE EXPRESSION</p><h2>A history you can question.</h2></div>
+    <details><summary><span>01</span> What we carry becomes what we expect</summary><div class="caption-body"><p>A carried reading becomes available as context for a later reading. The next observer encounters the present signals alongside an inheritance of earlier selections. This can make a relationship easier to recognize. It can also make another reading harder to maintain.</p><p>Here, inheritance is specific: two glyph readings can exchange influence only through binary pairs that both readings include. Select a parent in the story to remove that contribution and replay everything that follows.</p><p class="limit">This is an authored model of interpretive influence. Its weights are choices. Repeated or inherited readings are not counted as new, independent evidence.</p></div></details>
+    <details><summary><span>02</span> Overlap does not settle disagreement</summary><div class="caption-body"><p>Two observation fields can include the same signal while preserving different relationships within it. One reader emphasizes equal neighboring states; the other emphasizes changes. These are interpretive preferences. They are not two competing measurements of the bits.</p><p>Solid and dashed contours keep the readers attributable. Carrying from both fields requires shared attention to a glyph; it does not require agreement about its reading. A shared context can affect both contours without producing a group verdict.</p></div></details>
+    <details><summary><span>03</span> What fades can still return</summary><div class="caption-body"><p>Each reader’s latest carried version of a glyph remains available to the shared context. Its influence decreases with the rounds since it was carried. Earlier versions and every captured binary state remain in the archive.</p><p>Visit any layer and return a signal. Its earlier record stays intact; a copy enters the present. On the next Carry, that record meets a different context. Fading here means reduced influence and visibility—not the destruction of a stored state.</p><p class="limit">History is kept on this device when browser storage permits. Download it to keep a portable copy. A public site does not make visitors’ separate sessions a shared multiplayer session.</p></div></details>
+    <details><summary><span>04</span> The path we did not take</summary><div class="caption-body"><p>Removing a contribution suppresses one specific carry, then recomputes the later layers. The observation at that layer still happens. If an older carried version existed, it remains available and continues to lose influence.</p><p>The replay uses the same recorded fields, preferences, edits, and retrieval actions. A dotted contour shows the alternative beside the actual reading. Differences identify consequences under this model. They cannot tell us how people would have chosen differently after a different past.</p><p class="limit">A small or zero effect does not prove a contribution is irrelevant in every possible context. Other contributions can duplicate or counteract it. The archive retains those dependencies too.</p></div></details>
+    <details><summary><span>05</span> How a glyph gets its shape</summary><div class="caption-body"><p>The two states are literal 0 and 1. The other visual pair is an unarticulated scribble and an articulated reading. A glyph is a drawing of relationships; it has no preassigned word or universal meaning.</p><p>Each observed glyph reads adjacent binary pairs inside its observer’s field and within a fixed local neighborhood. Equal states support repetition; unequal states support interruption. Relationships contribute in their direction from the glyph. Nearer pairs have greater weight.</p><p>For each pair, the current local reading has weight 1. Each observer has twelve glyph slots sharing an inherited-voice budget of 0.55. A relevant carried glyph supplies its slot’s share; an unused slot stays unused. Age multiplies influence by 0.72 per elapsed round. The weighted reading controls eight contour directions. Tension between the local and inherited readings leaves more of the original spiral visible.</p><p>Attention alone does not progressively polish a glyph. Unchanged inputs and unchanged inherited influence produce the same contour. A retained reading can change outside attention when shared context changes; new raw evidence enters that reading only when it is observed again.</p><p class="limit">The radii, neighborhood, influence budget, and decay are declared drawing conventions, not measurements of intelligence, confidence, or social truth.</p></div></details>
+    <details><summary><span>06</span> Why these threads are visible</summary><div class="caption-body"><p>A thread names an earlier carried record that participates in a later reading through shared binary relationships. Its endpoints are records, not a match between similar-looking glyphs.</p><p>The default view follows one reader of one glyph. It shows turning points whose contour change exceeds 0.012 in this model’s feature distance, plus first encounters and returns. Up to three incoming parents are highlighted, ranked by the immediate change when each is individually removed and the reading is recomputed. All parents remain inspectable.</p><p>The longer replay tests an earlier carry across the subsequent history. It can reveal a consequence that passes through several other glyphs before reaching the selected one. Quiet layers remain accessible on the layer slider.</p><p class="limit">The visible story is a selection from the provenance. The selection rule is part of this expression and can be questioned with it.</p></div></details>
+  </section>
+  <section class="history-tools" aria-label="Keep your history"><h2>Keep the encounter.</h2><div><button id="download">Download history</button><button id="reopen">Reopen history</button><input id="history-file" type="file" accept="application/json,.json" hidden></div><p class="small" id="storage-status" aria-live="polite">Your history stays in this browser.</p></section>
+  <footer><p>In dialogue with <a href="https://pattern-recognition-pattern.un1crom.chatgpt.site/">Russell Foltz-Smith’s pattern recognition pattern</a> and the <a href="https://github.com/DeusNosMachina/DN_Framework">DN Framework</a>.</p><p>Expression and inquiry: Deus Nos Machina. Developed with Codex. This model makes no claim to solve a Rule 30 problem.</p></footer>
+</main>
+<script type="module">
+// The complete drawing grammar. No network, randomness, or language model.
+const VERSION='what-we-carry/5';
+const DECAY=.72, VOICE=.55, TURNING_POINT=.012;
+const clone=value=>JSON.parse(JSON.stringify(value));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const glyphs=new Set([9,12,18,22,27,29,34,36,41,45,50,54]);
+const sites=Array.from({length:64},(_,id)=>({id,x:.07+(id%8)*.123,y:.075+Math.floor(id/8)*.121,kind:glyphs.has(id)?'glyph':'bit'}));
+const initialFields=[{x:.36,y:.45,w:.58,h:.68,rule:'repeat'},{x:.65,y:.57,w:.54,h:.61,rule:'break'}];
+const name=id=>(sites[id].kind==='glyph'?'glyph ':'signal ')+String(id+1).padStart(2,'0');
+const who=reader=>reader===0?'I':'you';
+const inside=(s,f)=>((s.x-f.x)/(f.w/2))**2+((s.y-f.y)/(f.h/2))**2<=1+1e-9;
+function normalize(f){f.w=clamp(f.w,.12,1);f.h=clamp(f.h,.12,1);f.x=clamp(f.x,f.w/2,1-f.w/2);f.y=clamp(f.y,f.h/2,1-f.h/2);return f;}
+const tokenId=(r,id,j)=>`${r}:${id}:${j}`;
+function origin(){return {index:0,fields:clone(initialFields),mode:'union',bits:sites.map(s=>(s.id+Math.floor(s.id/8)+(s.id===20?1:0))%2),forms:sites.map(()=>[null,null]),pool:[],carried:[],observed:[],events:[],action:{type:'origin'}};}
+function localReading(id,reader,bits,fields){
+  const f=fields[reader],s=sites[id],terms=[];
+  for(const a of sites){
+    if(a.kind!=='bit'||!inside(a,f))continue;
+    for(const b of [a.id%8<7?a.id+1:-1,a.id+8]){
+      const other=sites[b];if(other?.kind!=='bit'||!inside(other,f))continue;
+      const dx=(a.x+other.x)/2-s.x,dy=((a.y+other.y)/2-s.y)*360/550,d=Math.hypot(dx,dy);
+      if(d>.34)continue;
+      const same=bits[a.id]===bits[b],base=(same?1:-1)*(f.rule==='repeat'?1:-1);
+      terms.push({key:`${a.id}-${b}`,ids:[a.id,b],bits:`${bits[a.id]}${bits[b]}`,base,angle:Math.atan2(dy,dx),weight:1/(1+(d/.2)**2)});
+    }
+  }
+  return {rule:f.rule,terms};
+}
+// Each observer has twelve fixed glyph slots sharing a VOICE budget. Removing
+// one contribution leaves its share unused; it does not boost the others.
+function interpret(id,reader,local,pool,round,seenRound){
+  if(!local?.terms.length)return null;
+  const parents=new Set(),vector=Array(8).fill(0),weights=Array(8).fill(0);
+  let tension=0,total=0;
+  const terms=local.terms.map(term=>{
+    const groups=[[],[]];
+    for(const record of pool){
+      if(record.id===id&&record.reader===reader)continue;
+      const value=record.reading.terms.find(t=>t.key===term.key)?.value;
+      if(value===undefined)continue;
+      groups[record.reader].push({ref:record.ref,value,age:DECAY**Math.max(0,round-record.round-1)});
+    }
+    const sources=[];
+    groups.forEach(group=>{
+      if(!group.length)return;
+      group.forEach(v=>sources.push({ref:v.ref,value:v.value,weight:VOICE*v.age/glyphs.size}));
+    });
+    const amount=sources.reduce((s,v)=>s+v.weight,0),inherited=sources.reduce((s,v)=>s+v.weight*v.value,0);
+    const value=(term.base+inherited)/(1+amount);
+    if(amount)tension+=term.weight*Math.abs(term.base-inherited/amount)/2;
+    total+=term.weight;sources.forEach(s=>parents.add(s.ref));
+    const sector=((term.angle/(Math.PI*2)*8)%8+8)%8,k=Math.floor(sector),u=sector-k;
+    [[k,1-u],[(k+1)%8,u]].forEach(([bin,share])=>{vector[bin]+=value*term.weight*share;weights[bin]+=term.weight*share;});
+    return {...term,value,sources};
+  });
+  return {local:clone(local),terms,vector:vector.map((v,k)=>v/(weights[k]+.35)),tension:total?tension/total:0,parents:[...parents],seenRound};
+}
+function distance(a,b){
+  if(!a&&!b)return 0;if(!a||!b)return 1;
+  return Math.sqrt(a.vector.reduce((s,v,k)=>s+(v-b.vector[k])**2,0)/8+(a.tension-b.tension)**2*.3);
+}
+function localKey(f){return f?f.local.rule+'|'+f.local.terms.map(t=>t.key+':'+t.base).join(','):'';}
+function advance(previous,action,history,omitted=new Set()){
+  const round=previous.index+1,fields=clone(action.fields??previous.fields),mode=action.mode??previous.mode;
+  const next={index:round,fields,mode,bits:[...previous.bits],forms:clone(previous.forms),pool:[...previous.pool],carried:[],observed:[],events:[],action:clone(action)};
+  if(action.type==='return'){
+    const old=history[action.from];if(!old)throw Error('Missing retrieval layer.');
+    next.bits[action.id]=old.bits[action.id];next.forms[action.id]=clone(old.forms[action.id]);
+    next.forms[action.id].forEach((reading,reader)=>{
+      if(!reading)return;
+      const ref=tokenId(round,action.id,reader);
+      if(!omitted.has(ref)){
+        next.pool=next.pool.filter(p=>p.id!==action.id||p.reader!==reader);
+        next.pool.push({ref,id:action.id,reader,round,reading:clone(reading),returnedFrom:action.from});next.carried.push(ref);
+      }
+      next.events.push({id:action.id,reader,kind:'returned',delta:distance(previous.forms[action.id][reader],reading),parents:reading.parents,ref,from:action.from});
+    });
+    return next;
+  }
+  for(const [key,value] of Object.entries(action.edits??{}))next.bits[Number(key)]=value;
+  for(const site of sites){
+    const mask=fields.map(f=>inside(site,f)),held=mode==='union'?mask.some(Boolean):mask.every(Boolean);
+    if(mask.some(Boolean))next.observed.push(site.id);
+    if(site.kind!=='glyph')continue;
+    for(let reader=0;reader<2;reader++){
+      const old=previous.forms[site.id][reader];
+      const local=mask[reader]?localReading(site.id,reader,next.bits,fields):old?.local;
+      // An unseen glyph has no invented reading. A previously encountered glyph
+      // can change passively as shared context changes or loses influence.
+      const reading=interpret(site.id,reader,local,previous.pool,round,mask[reader]?round:old?.seenRound??0);
+      next.forms[site.id][reader]=reading;
+      if(!reading)continue;
+      const ref=tokenId(round,site.id,reader),delta=distance(old,reading),localChanged=localKey(old)!==localKey(reading);
+      let kind=!old?'first reading':localChanged?'reading revised':!mask[reader]?'changed outside attention':'inherited context';
+      if(old&&!localChanged&&delta<TURNING_POINT)kind='quiet';
+      next.events.push({id:site.id,reader,kind,delta,parents:reading.parents,ref,localChanged,attended:mask[reader],held:held&&mask[reader]&&!omitted.has(ref)});
+      if(held&&mask[reader]&&!omitted.has(ref)){
+        next.pool=next.pool.filter(p=>p.id!==site.id||p.reader!==reader);
+        next.pool.push({ref,id:site.id,reader,round,reading:clone(reading)});next.carried.push(ref);
+      }
+    }
+  }
+  return next;
+}
+function replay(actions,omit=null){
+  const history=[origin()],omitted=new Set(omit?[omit]:[]);
+  actions.forEach(action=>history.push(advance(history.at(-1),action,history,omitted)));
+  return history;
+}
+function contributionEffects(history,round,id,reader){
+  const state=history[round],form=state?.forms[id][reader];if(!form||!round||state.action.type==='return')return [];
+  const pool=history[round-1].pool;
+  return form.parents.map(ref=>{
+    const source=pool.find(p=>p.ref===ref);
+    const without=interpret(id,reader,form.local,pool.filter(p=>p.ref!==ref),round,form.seenRound);
+    return {ref,source,effect:distance(form,without),without};
+  }).filter(p=>p.source).sort((a,b)=>b.effect-a.effect||a.ref.localeCompare(b.ref));
+}
+function contour(id,form){
+  return Array.from({length:81},(_,i)=>{
+    const t=i/80,a=t*Math.PI*2,spin=t*Math.PI*6.7+id*.21;
+    const r=(.16+.76*t)*(1+.12*Math.sin(spin*2.7+id));
+    const spiral={x:Math.cos(spin)*r+.1*Math.sin(spin*3),y:Math.sin(spin)*r};
+    if(!form)return spiral;
+    const k=Math.floor(t*8)%8,u=(1-Math.cos((t*8-Math.floor(t*8))*Math.PI))/2;
+    const radius=.88+.42*(form.vector[k]*(1-u)+form.vector[(k+1)%8]*u);
+    const definition=.9-.52*form.tension;
+    return {x:spiral.x*(1-definition)+Math.cos(a)*radius*definition,y:spiral.y*(1-definition)+Math.sin(a)*radius*definition};
+  });
+}
+const encounter=[
+  {title:'I carry a first reading.',caption:'One observer encounters these relationships. Nothing has yet been inherited.',fields:[{x:.36,y:.45,w:.58,h:.68,rule:'repeat'},{x:.89,y:.09,w:.16,h:.16,rule:'break'}]},
+  {title:'You encounter an inheritance.',caption:'The bits stay fixed. A second reading now receives relationships I carried.',fields:clone(initialFields)},
+  {title:'A wider frame adds distinctions.',caption:'You include relationships the narrower encounter left out. The inherited reading remains traceable.',fields:[clone(initialFields[0]),{x:.53,y:.53,w:.90,h:.90,rule:'break'}]},
+  {title:'My attention moves. My reading changes.',caption:'I leave the central glyph outside my field. Your earlier contributions can still alter its retained reading.',fields:[{x:.14,y:.14,w:.24,h:.24,rule:'repeat'},{x:.53,y:.53,w:.90,h:.90,rule:'break'}]},
+  {title:'An earlier reading returns.',caption:'The first reading of glyph 28 enters a later layer. Its earlier record is untouched.',type:'return',from:1,id:27},
+  {title:'The old record meets a new context.',caption:'Compare this encounter with the first. Remove a carried contribution to see which later contours depended on it.',fields:clone(initialFields)}
+];
+function exportHistory(actions,history=replay(actions)){return {format:VERSION,actions:clone(actions),rounds:clone(history)};}
+function sameRecord(a,b){
+  if(typeof a==='number'&&typeof b==='number')return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<=1e-10*Math.max(1,Math.abs(a),Math.abs(b));
+  if(a===b)return true;
+  if(!a||!b||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return false;
+  const keys=Object.keys(a);return keys.length===Object.keys(b).length&&keys.every(k=>Object.hasOwn(b,k)&&sameRecord(a[k],b[k]));
+}
+function importHistory(data){
+  if(data?.format!==VERSION||!Array.isArray(data.actions))throw Error('Choose a complete history from this edition.');
+  const validId=id=>Number.isInteger(id)&&id>=0&&id<64;
+  data.actions.forEach((a,index)=>{
+    if(!['carry','return'].includes(a.type))throw Error('Unknown action.');
+    if(a.type==='return'){if(!validId(a.id)||!Number.isInteger(a.from)||a.from<0||a.from>index)throw Error('Invalid retrieval.');return;}
+    if(!['union','intersection'].includes(a.mode)||!Array.isArray(a.fields)||a.fields.length!==2)throw Error('Missing observation fields.');
+    for(const f of a.fields)if(!['x','y','w','h'].every(k=>Number.isFinite(f[k])&&f[k]>=0&&f[k]<=1)||f.w<.12||f.h<.12||!['repeat','break'].includes(f.rule))throw Error('Invalid field.');
+    for(const [id,value] of Object.entries(a.edits??{}))if(!validId(Number(id))||![0,1].includes(value)||sites[Number(id)].kind!=='bit')throw Error('Invalid signal edit.');
+  });
+  const history=replay(data.actions);
+  if(data.rounds&&!sameRecord(data.rounds,history))throw Error('The stored layers do not match this edition’s rules.');
+  return {actions:clone(data.actions),history:data.rounds?clone(data.rounds):history};
+}
+
+// An optional imperative interface to the same visible actions. Unsupported
+// browsers keep the complete ordinary interface.
+function registerExpressionTools(context,actions){
+  if(!context?.registerTool)return {supported:false};
+  const lifecycle=new AbortController();
+  const object={type:'object',additionalProperties:false};
+  const tools=[
+    {name:'read_encounter',title:'Read the encounter',description:'Read the current layer, observation fields, selected reading, and carried references without changing them.',inputSchema:{...object,properties:{}},annotations:{readOnlyHint:true,untrustedContentHint:false},execute:()=>actions.read()},
+    {name:'stage_observer',title:'Stage an observer',description:'Adjust one observer in Your field. This changes the staged field and does not carry or record it.',inputSchema:{...object,properties:{reader:{type:'integer',enum:[0,1]},field:{...object,properties:{x:{type:'number',minimum:0,maximum:1},y:{type:'number',minimum:0,maximum:1},w:{type:'number',minimum:.12,maximum:1},h:{type:'number',minimum:.12,maximum:1},rule:{type:'string',enum:['repeat','break']}}}},required:['reader','field']},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){
+      if(!input||![0,1].includes(input.reader)||!input.field||typeof input.field!=='object'||Array.isArray(input.field))throw Error('Supply reader 0 or 1 and a field.');
+      if(Object.keys(input).some(k=>!['reader','field'].includes(k)))throw Error('Unexpected input.');
+      for(const [key,value] of Object.entries(input.field)){
+        if(key==='rule'){if(!['repeat','break'].includes(value))throw Error('Unknown reading rule.');}
+        else if(!['x','y','w','h'].includes(key)||!Number.isFinite(value)||value<(['w','h'].includes(key)?.12:0)||value>1)throw Error('Field coordinates must be normalized and sizes at least 0.12.');
+      }
+      return actions.stage(input);
+    }},
+    {name:'carry_readings',title:'Carry the staged readings',description:'Commit the staged fields and queued edits to a complete new layer, then wait for the visible Carry transition to finish.',inputSchema:{...object,properties:{}},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:()=>actions.carry()},
+    {name:'compare_without_carry',title:'Replay without a contribution',description:'Replay the recorded actions while omitting one carried reference. Null restores the original comparison. The recorded history stays intact.',inputSchema:{...object,properties:{reference:{type:['string','null']}},required:['reference']},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){if(!input||!(input.reference===null||typeof input.reference==='string'))throw Error('Supply a carried reference or null.');return actions.compare(input.reference);}}
+  ];
+  for(const tool of tools){try{Promise.resolve(context.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch{}}
+  if(typeof window!=='undefined')window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
+  return {supported:true,tools:tools.map(t=>t.name),dispose:()=>lifecycle.abort()};
+}
+
+
+const $=s=>document.querySelector(s),$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
+const ink='var(--ink)',paper='var(--paper)',muted='var(--muted)',line='var(--line)';
+const storageKey='dn-expression-context-5',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+let actions=[],history=[origin()],fields=clone(initialFields),mode='union',reader=0,selected=27,visit=0,tilt=0;
+let pending={},omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
+let W=0,H=0,projection,project,hits=[],handles=[],drag=null,effectsCache=new Map();
+const sessionCache={};
+try{const saved=localStorage.getItem(storageKey);if(saved){const value=importHistory(JSON.parse(saved));actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
+const number=r=>String(r).padStart(2,'0'),smooth=t=>t*t*(3-2*t),isGlyph=()=>sites[selected].kind==='glyph';
+const recordLabel=ref=>{const [r,id,j]=ref.split(':').map(Number);return `${number(r)} · ${who(j)} · ${name(id)}`;};
+function element(tag,attrs={},parent=svg){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.append(el);return el;}
+const groups={};['planes','threads','marks','motion','fields','handles'].forEach(key=>groups[key]=element('g',{'data-group':key}));
+const path=points=>points.map((p,i)=>(i?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ');
+const curve=(a,b,bend=0)=>`M ${a.x} ${a.y} C ${a.x+bend} ${(a.y+b.y)/2-12} ${b.x+bend} ${(a.y+b.y)/2-12} ${b.x} ${b.y}`;
+function camera(){
+  const t=tilt*Math.PI/180,c=Math.cos(-.34*Math.sin(t)),s=Math.sin(-.34*Math.sin(t)),ct=Math.cos(t),st=Math.sin(t);
+  const top=(history.length-1)*36,mid=top/2,raw=(x,y,z)=>({x:c*x-s*y,y:(s*x+c*y)*ct-(z-mid)*st});
+  const corners=[];for(const x of [-290,290])for(const y of [-195,195])for(const z of [0,top])corners.push(raw(x,y,z));
+  const minx=Math.min(...corners.map(p=>p.x)),maxx=Math.max(...corners.map(p=>p.x)),miny=Math.min(...corners.map(p=>p.y)),maxy=Math.max(...corners.map(p=>p.y));
+  const scale=Math.min((W-44)/(maxx-minx),(H-50)/(maxy-miny)),ox=W/2-(minx+maxx)*scale/2,oy=H/2-(miny+maxy)*scale/2;
+  projection={c,s,ct,st,scale,ox,oy,mid};
+  return(x,y,r)=>{const p=raw((x-.5)*550,(y-.5)*360,r*36);return{x:ox+p.x*scale,y:oy+p.y*scale};};
+}
+function unproject(x,y,r){const p=projection,X=(x-p.ox)/p.scale,Y=((y-p.oy)/p.scale+(r*36-p.mid)*p.st)/p.ct;return{x:(p.c*X+p.s*Y)/550+.5,y:(-p.s*X+p.c*Y)/360+.5};}
+const z=r=>animation&&r===history.length-1?r-1+smooth(animation.t):r;
+function effects(r=visit,id=selected,j=reader){const key=`${r}:${id}:${j}`;if(!effectsCache.has(key))effectsCache.set(key,contributionEffects(history,r,id,j));return effectsCache.get(key);}
+function drawGlyph(parent,id,form,p,size,{opacity=1,dash='',before=undefined,mix=1,offset=0,width=1.35}={}){
+  let pts=contour(id,form);if(before!==undefined){const old=contour(id,before);pts=pts.map((v,i)=>({x:old[i].x*(1-mix)+v.x*mix,y:old[i].y*(1-mix)+v.y*mix}));}
+  pts=pts.map(v=>({x:p.x+(v.x*projection.c-v.y*projection.s)*size+offset,y:p.y+(v.x*projection.s+v.y*projection.c)*size*Math.max(.28,projection.ct)}));
+  return element('path',{d:path(pts),fill:'none',stroke:ink,'stroke-width':width,'stroke-linecap':'round','stroke-linejoin':'round',opacity,...(dash?{'stroke-dasharray':dash}:{})},parent);
+}
+function drawNode(id,r,current=false){
+  const site=sites[id],state=history[r],p=project(site.x,site.y,z(r)),age=Math.abs(visit-r);
+  const recentlyCarried=state.pool.some(record=>record.id===id&&record.round===r);
+  let opacity=current?(id===selected?1:.75):Math.max(.018,.20*Math.exp(-age/(recentlyCarried?5:1.8)))*(tilt<4?.22:1);
+  if(!current&&id===selected&&$('#threads').checked)opacity=.5;
+  const group=element('g',{opacity,'data-signal':id,'data-layer':r,'data-current':current,class:'mark'},groups.marks);
+  const size=clamp(projection.scale*12,7,13);
+  if(site.kind==='bit'){
+    if(tilt>59)element('circle',{cx:p.x,cy:p.y,r:2.3,fill:state.bits[id]?ink:paper,stroke:ink,'stroke-width':.85},group);
+    else{const text=element('text',{x:p.x,y:p.y,'text-anchor':'middle','dominant-baseline':'central'},group);text.textContent=state.bits[id];}
+    if(current&&pending[id]!==undefined)element('circle',{cx:p.x,cy:p.y,r:10,fill:'none',stroke:ink,'stroke-width':1,'stroke-dasharray':'2 3'},group);
+  }else{
+    const forms=state.forms[id],prior=current&&animation?animation.from.forms[id]:null;
+    const indexes=forms.some(Boolean)||prior?.some(Boolean)?[0,1].filter(j=>forms[j]||prior?.[j]):[0];
+    indexes.forEach(j=>{
+      const activeBranch=current&&j===reader;
+      drawGlyph(group,id,forms[j],p,size,{dash:j?'3 2.5':'',offset:indexes.length===2?(j?2.5:-2.5):0,opacity:current&&!activeBranch?.6:1,before:prior?prior[j]:undefined,mix:animation?smooth(clamp((animation.t-.12)/.72,0,1)):1,width:current?1.3:.9});
+    });
+    if(current&&alternative&&distance(forms[reader],alternative[r].forms[id][reader])>1e-7){
+      drawGlyph(group,id,alternative[r].forms[id][reader],p,size,{dash:'1 3',opacity:.8,width:1.5,offset:reader?2.5:-2.5});
+    }
+  }
+  if(current){
+    hits.push({id,x:p.x,y:p.y});
+    if(id===selected)element('circle',{cx:p.x,cy:p.y,r:size+8,fill:'none',stroke:ink,'stroke-width':1.1},group);
+  }
+}
+function drawEdges(){
+  if(!$('#threads').checked||!isGlyph()||(animation&&animation.t<.3))return;
+  const incoming=effects().filter(e=>e.effect>1e-7).slice(0,allParents?Infinity:3),destination=project(sites[selected].x,sites[selected].y,z(visit));
+  for(const entry of incoming){
+    const source=entry.source,a=project(sites[source.id].x,sites[source.id].y,z(source.round)),b={x:destination.x+(reader?3:-3),y:destination.y};
+    const bend=Math.hypot(a.x-b.x,a.y-b.y)<12?(source.reader?28:-28):0;
+    const missing=source.ref===omitted;
+    element('path',{d:curve(a,b,bend),fill:'none',stroke:ink,'stroke-width':missing?.8:1.25,opacity:missing?.16:.5,...(source.reader||missing?{'stroke-dasharray':missing?'1 5':'4 3'}:{}),'data-parent':source.ref},groups.threads);
+    element('circle',{cx:a.x,cy:a.y,r:3.4,fill:source.reader?paper:ink,stroke:ink,'stroke-width':1,opacity:missing?.2:.8},groups.threads);
+    if(animation){const t=smooth(clamp((animation.t-.25)/.6,0,1)),m=1-t,c1={x:a.x+bend,y:(a.y+b.y)/2-12},c2={x:b.x+bend,y:(a.y+b.y)/2-12};
+      const p={x:m*m*m*a.x+3*m*m*t*c1.x+3*m*t*t*c2.x+t*t*t*b.x,y:m*m*m*a.y+3*m*m*t*c1.y+3*m*t*t*c2.y+t*t*t*b.y};
+      element('circle',{cx:p.x,cy:p.y,r:2.3,fill:ink,opacity:Math.sin(Math.PI*animation.t)},groups.motion);
+    }
+  }
+  const action=history[visit].action;
+  if(action.type==='return'&&action.id===selected){const a=project(sites[selected].x,sites[selected].y,action.from);element('path',{d:curve(a,destination,30),fill:'none',stroke:ink,'stroke-width':1.3,'data-retrieval':selected},groups.threads);}
+}
+function draw(){
+  if(!W)return;Object.values(groups).forEach(g=>g.replaceChildren());hits=[];handles=[];project=camera();
+  const last=history.length-1;
+  svg.dataset.round=String(last);svg.dataset.visit=String(visit);svg.dataset.phase=busy?'carrying':'ready';
+  for(let r=0;r<=last;r++){
+    if(tilt<3&&r!==visit)continue;
+    const corners=[[.005,.005],[.995,.005],[.995,.995],[.005,.995],[.005,.005]].map(([x,y])=>project(x,y,z(r)));
+    element('path',{d:path(corners),fill:r===visit&&tilt>3?paper:'none','fill-opacity':.12,stroke:ink,'stroke-width':.65,opacity:r===visit?.32:.1},groups.planes);
+    if(tilt>15&&(r===0||r===last||r===visit)){const p=corners[0],text=element('text',{x:Math.max(16,p.x-6),y:p.y-9,'text-anchor':'end',class:'tiny',opacity:r===visit?.8:.4},groups.planes);text.textContent=number(r);}
+  }
+  drawEdges();
+  for(let r=0;r<=last;r++)if(r!==visit)sites.forEach(s=>drawNode(s.id,r));
+  sites.forEach(s=>drawNode(s.id,visit,true));
+  const frames=visit===last?fields:history[visit].fields;
+  frames.forEach((f,j)=>{
+    const focused=j===reader,points=Array.from({length:81},(_,i)=>{const a=i/80*Math.PI*2;return project(f.x+Math.cos(a)*f.w/2,f.y+Math.sin(a)*f.h/2,z(visit));});
+    element('path',{d:path(points)+' Z',fill:ink,'fill-opacity':.012,stroke:ink,'stroke-width':focused?1.1:.8,opacity:focused?.6:.35,...(j?{'stroke-dasharray':'5 5'}:{})},groups.fields);
+    const top=project(j?.96:.04,0,z(visit)),text=element('text',{x:clamp(top.x,22,W-22),y:clamp(top.y-20,15,H-14),'text-anchor':'middle',opacity:focused?.8:.5},groups.fields);text.textContent=who(j);
+    if(visit===last&&!busy&&session==='own'){
+      const center=project(f.x,f.y,z(visit));element('circle',{cx:center.x,cy:center.y,r:4,fill:paper,stroke:ink,'stroke-width':1},groups.handles);handles.push({reader:j,type:'move',...center});
+      if(focused)[['w',f.x-f.w/2,f.y],['w',f.x+f.w/2,f.y],['h',f.x,f.y-f.h/2],['h',f.x,f.y+f.h/2]].forEach(([type,x,y])=>{const p=project(x,y,z(visit));element('circle',{cx:p.x,cy:p.y,r:4,fill:paper,stroke:ink,'stroke-width':1},groups.handles);handles.push({reader:j,type,...p});});
+    }
+  });
+  if(animation){
+    const t=animation.t,progress=clamp(t/.3,0,1),opacity=.5*(1-smooth(clamp((t-.4)/.5,0,1)));
+    const ids=[...new Set(history[visit].carried.map(ref=>Number(ref.split(':')[1])))];
+    ids.forEach(id=>{const s=sites[id],p=project(s.x,s.y,z(visit)),radius=clamp(projection.scale*12,7,13)+7;
+      const pts=Array.from({length:29},(_,i)=>{const a=-Math.PI/2+progress*Math.PI*2*i/28;return{x:p.x+Math.cos(a)*radius,y:p.y+Math.sin(a)*radius};});
+      element('path',{d:path(pts),fill:'none',stroke:ink,'stroke-width':1,opacity},groups.motion);
+    });
+  }
+}
+function selectSignal(id){selected=id;allParents=false;refresh();}
+function setComparison(ref){omitted=omitted===ref?null:ref;alternative=omitted?replay(actions,omitted):null;refresh();}
+function miniature(parent,id,form,x,y,size,dash=''){
+  const pts=contour(id,form).map(v=>({x:x+v.x*size,y:y+v.y*size}));
+  element('path',{d:path(pts),fill:'none',stroke:ink,'stroke-width':1.3,'stroke-linecap':'round','stroke-linejoin':'round',...(dash?{'stroke-dasharray':dash}:{})},parent);
+}
+function renderStory(){
+  const state=history[visit],form=state.forms[selected][reader],list=$('#story-list');list.replaceChildren();
+  $('#reading-label').textContent=`${who(reader)} · ${name(selected)} · layer ${number(visit)}`;
+  $('#bit-controls').hidden=isGlyph();$('#event-detail').hidden=!isGlyph()||!form;
+  if(!isGlyph()){
+    $('#bit-reading').textContent=`${state.bits[selected]}${pending[selected]!==undefined?' → '+pending[selected]+' queued':''}`;
+  }else{
+    const events=[];
+    for(let r=1;r<=history.length-1;r++){
+      const event=history[r].events.find(e=>e.id===selected&&e.reader===reader);
+      if(event&&(event.kind==='first reading'||event.kind==='returned'||event.delta>=TURNING_POINT))events.push({r,event});
+    }
+    if(!events.length){const p=document.createElement('p');p.className='small';p.textContent='Carry a reading. Its later encounters will appear here.';list.append(p);}
+    events.forEach(({r,event})=>{
+      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(r===visit));button.disabled=busy;
+      const numberEl=document.createElement('span');numberEl.textContent=number(r);const caption=document.createElement('span');caption.textContent=event.kind;
+      button.append(numberEl,caption);button.addEventListener('click',()=>{visit=r;refresh();});list.append(button);
+    });
+    if(form){
+      const event=state.events.find(e=>e.id===selected&&e.reader===reader);
+      $('#event-kind').textContent=event?.kind??'retained reading';
+      const shared=form.terms.filter(t=>t.sources.length).length;
+      $('#event-caption').textContent=state.action.type==='return'?`Returned from layer ${number(state.action.from)}. Carry again to meet the present context.`:shared?`Inherited context reaches ${shared} of ${form.terms.length} local relationships.`:`${form.terms.length} local relationships. No inherited contribution reaches this reading.`;
+      const diagram=$('#comparison'),width=diagram.parentElement.clientWidth;diagram.setAttribute('viewBox',`0 0 ${width} 132`);diagram.replaceChildren();
+      const before=visit?history[visit-1].forms[selected][reader]:null;
+      // Reuse the actual model for the local-only comparison.
+      const local=localOnlyReading(form,selected,reader,visit);
+      const forms=[before,form,alternative?alternative[visit].forms[selected][reader]:local];
+      const labels=['before','recorded',alternative?'without carry':'local only'];
+      forms.forEach((value,i)=>{const x=width*(i+.5)/3;miniature(diagram,selected,value,x,54,Math.min(29,width/10),reader?'3 2.5':'');const text=element('text',{x,y:118,'text-anchor':'middle',class:'tiny'},diagram);text.textContent=labels[i];});
+      const sources=$('#sources');sources.replaceChildren();
+      const parents=effects(),shown=allParents?parents:parents.filter(e=>e.effect>1e-7).slice(0,3);
+      shown.forEach(entry=>{
+        const button=document.createElement('button');button.type='button';button.className='parent';button.setAttribute('aria-pressed',String(entry.ref===omitted));button.disabled=busy;
+        const title=document.createElement('span');title.textContent=recordLabel(entry.ref);const note=document.createElement('span');note.className='source-note';note.textContent=entry.ref===omitted?'removed':'omit ↗';button.append(title,note);button.setAttribute('aria-label','Replay without '+recordLabel(entry.ref));button.addEventListener('click',()=>setComparison(entry.ref));sources.append(button);
+      });
+      $('#more-sources').hidden=parents.length<=3;$('#more-sources').textContent=allParents?'Show strongest effects':`All ${parents.length} recorded parents`;
+    }
+  }
+  const currentRef=`${visit}:${selected}:${reader}`;
+  $('#omit-own').hidden=!form||!state.carried.includes(currentRef);$('#omit-own').textContent=currentRef===omitted?'Restore this carry':'Replay without this carry';$('#omit-own').onclick=()=>setComparison(currentRef);
+  $('#replay-state').hidden=!omitted;
+  if(omitted){
+    $('#replay-label').textContent='Without '+recordLabel(omitted);
+    let count=0,first=null;
+    history.forEach((r,index)=>{const delta=distance(r.forms[selected][reader],alternative[index].forms[selected][reader]);if(delta>1e-7){count++;if(first===null)first=index;}});
+    const changedOthers=new Set();history.forEach((r,index)=>sites.filter(s=>s.kind==='glyph').forEach(s=>[0,1].forEach(j=>{if((s.id!==selected||j!==reader)&&distance(r.forms[s.id][j],alternative[index].forms[s.id][j])>1e-7)changedOthers.add(`${s.id}:${j}`);})));
+    $('#replay-result').textContent=count?`${count} layers differ for this reading; first at ${number(first)}. Later actions stay fixed.`:changedOthers.size?`This reading holds. ${changedOthers.size} other readings differ in the replay. Dotted contours mark the alternatives.`:Number(omitted.split(':')[0])===history.length-1?'No later encounter yet. Carry again to test this contribution.':'The recorded replay holds. Other contributions may duplicate or counteract this one.';
+  }
+  $('#return').hidden=visit===history.length-1||session==='encounter';$('#return').disabled=busy;
+}
+// Imported separately to keep every comparison on the same interpretation path.
+
+const localOnlyReading=(form,id,j,r)=>interpret(id,j,form.local,[],r,form.seenRound);
+function controls(){
+  const historical=visit!==history.length-1,guided=session==='encounter',state=history[visit],f=historical?state.fields[reader]:fields[reader];
+  $('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=busy;});
+  $('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=busy;});
+  $('[data-field]').forEach(input=>{const key=input.dataset.field;input.value=Math.round(f[key]*100);input.disabled=historical||busy||guided;$(`[data-value="${key}"]`).textContent=Math.round(f[key]*100)+'%';});
+  $('#rule').value=f.rule;$('#rule').disabled=historical||busy||guided;$('#mode').value=historical?state.mode:mode;$('#mode').disabled=historical||busy||guided;
+  $('#angle').textContent=tilt+'°';$('#layer').max=history.length-1;$('#layer').value=visit;$('#layer').disabled=busy;$('#layer-label').textContent=`${number(visit)} / ${number(history.length-1)}`;
+  $('#present').disabled=!historical||busy;$('#carry').disabled=historical||busy;
+  $('#carry').textContent=busy?'Carrying…':'Carry →';$('#flip').disabled=historical||busy||guided;$('#follow').value=selected;
+  $('.carry-controls').hidden=guided;
+  $('#reopen').disabled=busy;$('#download').disabled=busy;$('#guide-next').disabled=busy||actions.length>=encounter.length;
+  const altered=state.events.filter(e=>e.delta>=TURNING_POINT),passive=altered.filter(e=>e.attended===false).length;
+  $('#status').textContent=busy?'A reading enters the next encounter.':historical?'An earlier layer. Every signal remains available.':dirty?'Your changes enter on Carry.':state.action.type==='return'?'Earlier record, new layer.':visit?`${altered.length} readings changed${passive?' · '+passive+' outside attention':''}`:'Choose what enters the next encounter.';
+  $('#retained').textContent='64 signals retained';
+  $('#guide').hidden=session!=='encounter';
+  if(session==='encounter'){
+    const step=actions.length?encounter[Math.min(actions.length,encounter.length)-1]:null;
+    $('#guide-step').textContent=`AUTHORED ENCOUNTER · ${Math.min(actions.length,encounter.length)} / ${encounter.length}`;
+    $('#guide-title').textContent=step?.title??'Begin with a single reader.';
+    $('#guide-caption').textContent=step?.caption??'Six recorded actions demonstrate inheritance, wider attention, passive change, and return. The same rules govern your own field.';
+    $('#guide-next').textContent=actions.length>=encounter.length?'Encounter complete':actions.length?'Next encounter →':'Begin the encounter →';
+  }
+}
+function refresh(){draw();controls();renderStory();}
+function persist(){
+  if(session!=='own')return;
+  try{localStorage.setItem(storageKey,JSON.stringify(exportHistory(actions,history)));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
+  catch{$('#storage-status').textContent='This session is in memory. Download history to keep it.';}
+}
+function commit(action){
+  if(busy)return;
+  let complete;const completion=new Promise(resolve=>complete=resolve);
+  const previous=history.at(-1);actions.push(clone(action));history.push(advance(previous,action,history));visit=history.length-1;pending={};dirty=false;effectsCache.clear();
+  if(omitted)alternative=replay(actions,omitted);
+  busy=true;animation={from:previous,t:0};refresh();persist();
+  const start=performance.now(),duration=motionPreference.matches?0:1300;
+  function frame(now){animation.t=duration?Math.min(1,(now-start)/duration):1;draw();if(animation.t<1)requestAnimationFrame(frame);else{busy=false;animation=null;refresh();complete();}}
+  requestAnimationFrame(frame);
+  return completion;
+}
+function carry(){if(visit!==history.length-1||session!=='own')return;return commit({type:'carry',fields:clone(fields),mode,edits:clone(pending)});}
+function changeField(key,value){if(busy||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
+function switchSession(target){
+  if(target===session||busy)return;
+  sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),dirty};
+  const saved=sessionCache[target];session=target;
+  actions=saved?.actions??[];history=replay(actions);fields=saved?.fields??clone(initialFields);mode=saved?.mode??'union';reader=saved?.reader??0;selected=saved?.selected??27;visit=saved?.visit??0;pending=saved?.pending??{};dirty=saved?.dirty??true;omitted=null;alternative=null;effectsCache.clear();
+  $('#session-note').textContent=target==='own'?'Two readers · one device · a complete local history':'An authored sequence · your own field is kept separately';refresh();
+  if(target==='encounter')$('#storage-status').textContent='The guided encounter is separate. Download it to keep this example.';else persist();
+}
+sites.forEach(site=>{const option=document.createElement('option');option.value=site.id;option.textContent=name(site.id);$('#follow').append(option);});
+$('#follow').addEventListener('change',e=>selectSignal(Number(e.target.value)));
+$('#carry').addEventListener('click',carry);
+$('#tilt').addEventListener('input',e=>{tilt=Number(e.target.value);draw();$('#angle').textContent=tilt+'°';});
+$('#threads').addEventListener('change',draw);
+$('#layer').addEventListener('input',e=>{visit=Number(e.target.value);allParents=false;refresh();});
+$('#present').addEventListener('click',()=>{visit=history.length-1;refresh();});
+$('[data-reader]').forEach(b=>b.addEventListener('click',()=>{reader=Number(b.dataset.reader);allParents=false;refresh();}));
+$('[data-session]').forEach(b=>b.addEventListener('click',()=>switchSession(b.dataset.session)));
+$('[data-field]').forEach(input=>input.addEventListener('input',()=>changeField(input.dataset.field,Number(input.value)/100)));
+$('#rule').addEventListener('change',e=>{fields[reader].rule=e.target.value;dirty=true;refresh();});
+$('#mode').addEventListener('change',e=>{mode=e.target.value;dirty=true;refresh();});
+$('#flip').addEventListener('click',()=>{if(isGlyph()||busy||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
+$('#more-sources').addEventListener('click',()=>{allParents=!allParents;refresh();});
+$('#clear-replay').addEventListener('click',()=>{omitted=null;alternative=null;refresh();});
+$('#return').addEventListener('click',()=>{const from=visit;if(from===history.length-1||busy)return;commit({type:'return',from,id:selected,fields:clone(fields),mode});});
+$('#guide-next').addEventListener('click',()=>{
+  const step=encounter[actions.length];if(!step||busy)return;selected=27;reader=[0,1,1,0,0,0][actions.length]??0;
+  if(step.type==='return'){reader=0;commit({type:'return',from:step.from,id:step.id,fields:clone(fields),mode});}
+  else{fields=clone(step.fields);mode='union';commit({type:'carry',fields:clone(fields),mode,edits:{}});}
+});
+function pointer(e){const rect=svg.getBoundingClientRect();return{x:(e.clientX-rect.left)*W/rect.width,y:(e.clientY-rect.top)*H/rect.height};}
+svg.addEventListener('pointerdown',e=>{
+  if(busy||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
+  const handle=historic?null:handles.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
+  const hit=hits.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
+  if(handle&&handle.d<13){reader=handle.reader;drag={...handle,start:unproject(p.x,p.y,visit),field:clone(fields[reader])};svg.setPointerCapture(e.pointerId);e.preventDefault();controls();return;}
+  if(hit&&hit.d<14){selectSignal(hit.id);return;}
+  if(!historic){const world=unproject(p.x,p.y,visit),j=[reader,1-reader].find(k=>inside(world,fields[k]));if(j!==undefined){reader=j;drag={reader:j,type:'move',start:world,field:clone(fields[j])};svg.setPointerCapture(e.pointerId);e.preventDefault();controls();}}
+});
+svg.addEventListener('pointermove',e=>{
+  if(!drag)return;const p=pointer(e),world=unproject(p.x,p.y,visit),f=fields[reader];
+  if(drag.type==='move'){f.x=drag.field.x+world.x-drag.start.x;f.y=drag.field.y+world.y-drag.start.y;}else f[drag.type]=2*Math.abs((drag.type==='w'?world.x-f.x:world.y-f.y));
+  normalize(f);dirty=true;refresh();e.preventDefault();
+});
+function stop(e){drag=null;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);draw();}
+svg.addEventListener('pointerup',stop);svg.addEventListener('pointercancel',stop);
+$('#download').addEventListener('click',()=>{
+  const data=JSON.stringify(exportHistory(actions,history)),url=URL.createObjectURL(new Blob([data],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='what-we-carry-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#storage-status').textContent='Downloaded the recorded history, including every layer.';
+});
+$('#reopen').addEventListener('click',()=>$('#history-file').click());
+$('#history-file').addEventListener('change',async e=>{
+  const file=e.target.files[0];if(!file)return;
+  try{const restored=importHistory(JSON.parse(await file.text()));switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};dirty=false;omitted=null;alternative=null;effectsCache.clear();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened.`;}
+  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from edition 05.';}
+  e.target.value='';
+});
+function resize(){const box=svg.getBoundingClientRect();W=box.width;H=box.height;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);draw();renderStory();}
+resize();controls();persist();new ResizeObserver(resize).observe(svg);
+
+
+const readState=()=>({session,layer:visit,present:history.length-1,busy,reader,selected,fields:clone(fields),mode,omitted,carried:[...history[visit].carried]});
+registerExpressionTools(document.modelContext,{
+  read:readState,
+  stage(input){if(busy||session!=='own'||visit!==history.length-1)throw Error('Return to the present of Your field before staging a reading.');reader=input.reader;fields[reader]=normalize({...fields[reader],...input.field});dirty=true;refresh();return readState();},
+  async carry(){if(busy||session!=='own'||visit!==history.length-1)throw Error('Carry is available at the present of Your field.');await carry();return readState();},
+  compare(ref){if(busy)throw Error('Wait for Carry to finish.');if(ref!==null&&!history.some(r=>r.carried.includes(ref)))throw Error('Choose a recorded carry reference.');omitted=ref;alternative=ref?replay(actions,ref):null;refresh();return readState();}
+});
+
+</script>
+</body>
+</html>
