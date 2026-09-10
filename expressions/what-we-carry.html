@@ -654,7 +654,7 @@ function createPlayback(api){
   let state='idle',scope='field',score=null,pcm=null,cacheKey='',offset=0,started=0,source=null,audioContext=null,audioBuffer=null,raf=null,job=0,maxLayer=-1,shownLayer=-1;
   function message(text){pq('#score-status').textContent=text;pq('#body-score-status').textContent=text;}
   function snapshot(){const max=api.read().history.length-1,from=Math.max(0,Math.min(max,Number(pq('#score-from').value)||0)),to=Math.max(from,Math.min(max,Number(pq('#score-to').value)||0));const current=api.instrument?.()??api.capture();return {...clone(ledger),instrument:{sound:clone(current.sound),water:clone(current.water)},composition:{from,to,speed:Number(pq('#score-speed').value),mix:pq('#score-mix').value,untouched:pq('#score-untouched').value}};}
-  function restoreComposition(){if(ledger.composition){for(const key of ['from','to','speed','mix','untouched'])pq('#score-'+key).value=ledger.composition[key];maxLayer=api.read().history.length-1;}}
+  function restoreComposition(){if(ledger.composition){for(const key of ['from','to','speed','mix','untouched'])pq('#score-'+key).value=ledger.composition[key];maxLayer=api.read().history.length-1;for(const key of ['from','to'])pq('#score-'+key).max=maxLayer;}}
   function flush(){clearTimeout(persistTimer);persistTimer=null;api.persist();}
   function saveSoon(){clearTimeout(persistTimer);persistTimer=setTimeout(flush,250);}
   function record(context,kind,layer,x,y){
