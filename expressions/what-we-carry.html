@@ -245,7 +245,7 @@ function registerExpressionTools(context,actions){
 }
 
 
-const $=s=>document.querySelector(s),$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
 const ink='var(--ink)',paper='var(--paper)',muted='var(--muted)',line='var(--line)';
 const storageKey='dn-expression-context-5',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 let actions=[],history=[origin()],fields=clone(initialFields),mode='union',reader=0,selected=27,visit=0,tilt=0;
@@ -414,9 +414,9 @@ function renderStory(){
 const localOnlyReading=(form,id,j,r)=>interpret(id,j,form.local,[],r,form.seenRound);
 function controls(){
   const historical=visit!==history.length-1,guided=session==='encounter',state=history[visit],f=historical?state.fields[reader]:fields[reader];
-  $('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=busy;});
-  $('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=busy;});
-  $('[data-field]').forEach(input=>{const key=input.dataset.field;input.value=Math.round(f[key]*100);input.disabled=historical||busy||guided;$(`[data-value="${key}"]`).textContent=Math.round(f[key]*100)+'%';});
+  $$('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=busy;});
+  $$('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=busy;});
+  $$('[data-field]').forEach(input=>{const key=input.dataset.field;input.value=Math.round(f[key]*100);input.disabled=historical||busy||guided;$(`[data-value="${key}"]`).textContent=Math.round(f[key]*100)+'%';});
   $('#rule').value=f.rule;$('#rule').disabled=historical||busy||guided;$('#mode').value=historical?state.mode:mode;$('#mode').disabled=historical||busy||guided;
   $('#angle').textContent=tilt+'°';$('#layer').max=history.length-1;$('#layer').value=visit;$('#layer').disabled=busy;$('#layer-label').textContent=`${number(visit)} / ${number(history.length-1)}`;
   $('#present').disabled=!historical||busy;$('#carry').disabled=historical||busy;
@@ -469,9 +469,9 @@ $('#tilt').addEventListener('input',e=>{tilt=Number(e.target.value);draw();$('#a
 $('#threads').addEventListener('change',draw);
 $('#layer').addEventListener('input',e=>{visit=Number(e.target.value);allParents=false;refresh();});
 $('#present').addEventListener('click',()=>{visit=history.length-1;refresh();});
-$('[data-reader]').forEach(b=>b.addEventListener('click',()=>{reader=Number(b.dataset.reader);allParents=false;refresh();}));
-$('[data-session]').forEach(b=>b.addEventListener('click',()=>switchSession(b.dataset.session)));
-$('[data-field]').forEach(input=>input.addEventListener('input',()=>changeField(input.dataset.field,Number(input.value)/100)));
+$$('[data-reader]').forEach(b=>b.addEventListener('click',()=>{reader=Number(b.dataset.reader);allParents=false;refresh();}));
+$$('[data-session]').forEach(b=>b.addEventListener('click',()=>switchSession(b.dataset.session)));
+$$('[data-field]').forEach(input=>input.addEventListener('input',()=>changeField(input.dataset.field,Number(input.value)/100)));
 $('#rule').addEventListener('change',e=>{fields[reader].rule=e.target.value;dirty=true;refresh();});
 $('#mode').addEventListener('change',e=>{mode=e.target.value;dirty=true;refresh();});
 $('#flip').addEventListener('click',()=>{if(isGlyph()||busy||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
