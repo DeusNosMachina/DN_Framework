@@ -41,6 +41,12 @@ main{max-width:1500px;padding:24px 36px 28px}.masthead{align-items:center;margin
 /* Keep portable-history actions with their explanation, at the left edge. */
 .history-tools{display:grid;grid-template-columns:minmax(0,1fr);justify-items:start;align-items:start;gap:10px}.history-tools h2{margin:0;width:auto}.history-tools>div{margin-top:2px;justify-content:flex-start}
 
+/* Lower sections follow the field column, leaving the inspector's space clear. */
+main{--lower-column-width:calc(100% - 354px)}
+main>.history-tools,main>.note-index,main>footer{width:var(--lower-column-width);max-width:none}
+@media(max-width:1100px){main{--lower-column-width:calc(100% - 313px)}}
+@media(max-width:860px){main{--lower-column-width:100%}}
+
 </style>
 </head>
 <body>
