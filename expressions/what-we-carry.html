@@ -12,6 +12,7 @@
 @media(max-width:420px){#field{height:315px}.status{flex-wrap:wrap;gap:3px}.status span:last-child{margin-left:auto}.carry-controls label{gap:6px;font-size:.8125rem}.carry-controls select{max-width:145px}.story-heading{flex-wrap:wrap;gap:12px}.story-heading label{min-width:160px}#sources{grid-template-columns:1fr}.view-controls>label:first-child{max-width:none}.check{font-size:.8125rem}.time-controls{gap:8px}.time-controls>label{grid-template-columns:auto 52px minmax(40px,1fr);gap:6px}.field-sliders{gap:12px}.session-bar .small{font-size:.8125rem}.observation-controls{gap:8px}}
 @media(pointer:coarse){button,select{min-height:44px}input[type=range]{min-height:32px}summary{padding:7px 0}}
 :root{--aligned:light-dark(#286777,#8bc5cf);--opposed:light-dark(#a35428,#dfaf83)}
+.score-transport{margin:18px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.score-buttons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.score-buttons .check{margin-left:auto;font-size:.875rem}.score-seek{display:flex;align-items:center;gap:14px;margin:14px 0;font-size:.8125rem;font-variant-numeric:tabular-nums}.score-seek span{white-space:nowrap;min-width:85px}.score-transport details{margin-top:12px;font-size:.875rem}.score-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0}.score-options>label:not(.check){display:grid;gap:7px}.score-options .check{white-space:normal}.score-options input[type=number]{width:100%;min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:7px;color:var(--ink)}#score-layer-note{margin-top:10px}#body-dialog .score-transport{margin:16px 0}#body-dialog .score-buttons button{font-size:.8125rem}@media(max-width:600px){.score-options{grid-template-columns:1fr 1fr}.score-buttons{gap:6px}.score-buttons button{font-size:.8125rem}.score-buttons .check{margin-left:0}}
 .alphabet-bar{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:14px}.alphabet-bar label{display:flex;align-items:center;gap:10px;font-size:.875rem}.alphabet-bar select{min-width:160px}#alphabet-note{margin-top:8px}#alphabet-legend{font-variant-numeric:tabular-nums}.sound-defaults{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14px}.sound-defaults .check{margin-top:0}.free-editor{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:20px}.free-editor h3{font-family:Georgia,serif;font-size:1.2rem;font-weight:400;margin:0 0 15px}.free-editor>label,.free-pair label{display:grid;gap:7px;margin-bottom:14px;font-size:.875rem}.free-editor input[type=text]{width:100%;min-width:0;min-height:44px;border:1px solid var(--line);border-radius:5px;background:var(--paper);padding:8px;font-size:1.125rem}.free-editor input::placeholder{font-size:.875rem;color:var(--muted)}.free-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}.free-editor .small{margin-top:12px}.free-editor output{color:var(--muted);font-size:.8125rem}.mark-history-section{margin-bottom:16px}.mark-history-section .eyebrow{margin-bottom:7px}#mark-history{display:flex;flex-wrap:wrap;gap:7px}#bit-cause{margin-bottom:14px}
 .sense-bar,.ripple-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px}.sense-bar>label{flex:1;min-width:120px}.sense-bar select{width:100%}.ripple-actions{margin:0 0 15px}.ripple-actions button:last-child{margin-left:auto}#lens-note{margin-top:10px;min-height:21px}.frequency-controls label{display:grid;grid-template-columns:auto 1fr;gap:6px;margin-top:14px;font-size:.875rem}.frequency-controls output{text-align:right}.frequency-controls input{grid-column:1/-1}.instrument-settings{margin-top:22px;border-top:1px solid var(--line)}.instrument-settings>details{padding:15px 0;border-bottom:1px solid var(--line)}.instrument-settings summary{font-family:Georgia,serif;font-size:1.15rem}.instrument-settings .small{margin:12px 0 0}.instrument-settings .check{font-size:.875rem;margin-top:16px;white-space:normal}.dial-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 28px;padding:20px 0 5px}.dial-grid label{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;font-size:.875rem}.dial-grid output{font-size:.8125rem;color:var(--muted);font-variant-numeric:tabular-nums}.dial-grid input,.dial-grid select{grid-column:1/-1}.dial-grid input:disabled{opacity:.4}#experience-status{margin-top:12px}#open-body{margin-bottom:12px;width:100%;text-align:left}#body-dialog{width:min(850px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:28px}#body-dialog::backdrop{background:rgb(0 0 0 / .58)}.body-heading{display:flex;align-items:start;justify-content:space-between;gap:20px}.body-heading .eyebrow{margin-bottom:7px}#body-view{display:block;width:100%;height:430px}#body-note{margin-top:14px}.body-heading h2{font-size:1.8rem}#body-dialog .sense-bar>label:first-child{display:flex;align-items:center;gap:10px}#body-dialog .sense-bar input[type=range]{max-width:180px}
 @media(max-width:500px){.dial-grid{gap:16px}.sense-bar{gap:8px}.ripple-actions{gap:6px}.ripple-actions button{font-size:.8125rem;padding:8px}.ripple-actions button:last-child{margin-left:0}#body-dialog{padding:17px}#body-view{height:340px}#body-dialog .time-controls{flex-wrap:wrap}.body-heading h2{font-size:1.5rem}}
@@ -21,7 +22,7 @@
 <body>
 <a class="skip" href="#field-controls">Skip to the field</a>
 <main>
-  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 07</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
+  <header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 08</p><h1>what we carry</h1></div><p class="opening">What we carry forward becomes part of<br>what someone else encounters.</p></header>
   <div class="session-bar"><div class="switches" aria-label="Choose a session"><button data-session="own" aria-pressed="true">Your field</button><button data-session="encounter" aria-pressed="false">Follow an encounter</button></div><span class="small" id="session-note">Two readers · one device · a complete local history</span></div>
   <section class="workspace" aria-label="A field and its history">
     <div class="field-column">
@@ -34,6 +35,19 @@
       <svg id="field" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Touch to disturb a wave surface. Use Move fields to change observation. The alphabet renders stored binary states; solid and dashed contours are separate readers. Ripple the selected signal with the button below as a keyboard alternative.</desc></svg>
       <div class="ripple-actions"><button id="ripple-here">Ripple this signal · R</button><button id="settle" class="quiet">Still the water</button><button id="sound-toggle" aria-pressed="false">Sound off</button></div>
       <div class="time-controls"><label>Layer <output id="layer-label">00 / 00</output><input id="layer" type="range" min="0" max="0" value="0" aria-label="Visit a recorded layer"></label><button id="present" class="quiet" disabled>Present ↑</button></div>
+      <div class="score-transport" aria-label="Play the field through time">
+        <div class="score-buttons"><button id="score-play">Play field</button><button id="score-stop" disabled>Stop</button><button id="score-export">Export WAV</button><label class="check"><input id="score-loop" type="checkbox">Loop</label></div>
+        <label class="score-seek"><span id="score-time">0:00 / 0:00</span><input id="score-position" type="range" min="0" max="1" step="0.01" value="0" aria-label="Seek through the score" disabled></label>
+        <p id="score-status" class="small" aria-live="polite">Play enables audio. P plays or pauses.</p>
+        <details><summary>Compose playback</summary><div class="score-options">
+          <label>First layer <input id="score-from" type="number" min="0" max="0" value="0"></label><label>Last layer <input id="score-to" type="number" min="0" max="0" value="0"></label>
+          <label>Speed <select id="score-speed"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="1.5">1½×</option><option value="2">2×</option><option value="3">3×</option></select></label>
+          <label>Mix <select id="score-mix"><option value="recorded">Recorded sound</option><option value="current">Current sound</option></select></label>
+          <label>Untouched layers <select id="score-untouched"><option value="scan">Generated scan</option><option value="silence">Silence</option></select></label>
+          <label class="check"><input id="score-record" type="checkbox" checked>Save new touches</label>
+        </div><p class="small">Speed changes pacing, preserving pitch. Exports contain one pass and its echo tail.</p></details>
+        <p id="score-layer-note" class="small">No saved ripples yet.</p>
+      </div>
       <div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust"><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="100" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="100" aria-label="Observation field height"></label></div></details></div>
       <div class="carry-controls"><label>Carry from <select id="mode"><option value="union">either field ∪</option><option value="intersection">both fields ∩</option></select></label><button id="carry" class="primary">Carry →</button></div>
       <div class="status" aria-live="polite"><span id="status">Choose what enters the next encounter.</span><span id="retained">64 signals retained</span></div>
@@ -94,7 +108,7 @@
       <button id="return" class="quiet" hidden>Return this signal ↑</button>
     </aside>
   </section>
-  <dialog id="body-dialog" aria-labelledby="body-title"><div class="body-heading"><div><p class="eyebrow">THE SHAPE OF A HISTORY</p><h2 id="body-title">A glyph through time</h2></div><button id="close-body" aria-label="Close history body">Close</button></div><div class="sense-bar"><label>View <input id="body-tilt" type="range" min="0" max="80" value="64" aria-label="Tilt the history body"></label><label class="check"><input id="body-skin" type="checkbox" checked> Interpolated surface</label><button id="body-capture">Capture</button></div><svg id="body-view" role="img" aria-label="Recorded glyph contours joined through time"></svg><div class="time-controls"><label>Slice <output id="body-layer-label"></output><input id="body-layer" type="range" min="0" max="0" value="0" aria-label="Select a glyph history slice"></label><button id="body-ripple">Ripple this slice</button></div><p id="body-note" class="small">Contours are recorded. The connecting skin is an interpolation.</p></dialog>
+  <dialog id="body-dialog" aria-labelledby="body-title"><div class="body-heading"><div><p class="eyebrow">THE SHAPE OF A HISTORY</p><h2 id="body-title">A glyph through time</h2></div><button id="close-body" aria-label="Close history body">Close</button></div><div class="sense-bar"><label>View <input id="body-tilt" type="range" min="0" max="80" value="64" aria-label="Tilt the history body"></label><label class="check"><input id="body-skin" type="checkbox" checked> Interpolated surface</label><button id="body-capture">Capture</button></div><svg id="body-view" role="img" aria-label="Recorded glyph contours joined through time"></svg><div class="time-controls"><label>Slice <output id="body-layer-label"></output><input id="body-layer" type="range" min="0" max="0" value="0" aria-label="Select a glyph history slice"></label><button id="body-ripple">Ripple this slice</button></div><div class="score-transport"><div class="score-buttons"><button id="body-score-play">Play this body</button><button id="body-score-stop" disabled>Stop</button><button id="body-score-export">Export WAV</button></div><label class="score-seek"><span id="body-score-time">0:00 / 0:00</span><input id="body-score-position" type="range" min="0" max="1" step="0.01" value="0" aria-label="Seek through the body score" disabled></label><p id="body-score-status" class="small" aria-live="polite">The selected reader’s contour shapes this body’s voice.</p><p class="small">Range, speed, mix, and loop follow the field’s playback controls.</p></div><p id="body-note" class="small">Contours are recorded. The connecting skin is an interpolation.</p></dialog>
   <section class="captions" aria-label="Inside the expression">
     <div class="caption-intro"><p class="eyebrow">INSIDE THE EXPRESSION</p><h2>A history you can question.</h2></div>
     <details><summary><span>01</span> What we carry becomes what we expect</summary><div class="caption-body"><p>A carried reading becomes available as context for a later reading. The next observer encounters the present signals alongside an inheritance of earlier selections. This can make a relationship easier to recognize. It can also make another reading harder to maintain.</p><p>Here, inheritance is specific: two glyph readings can exchange influence only through binary pairs that both readings include. Select a parent in the story to remove that contribution and replay everything that follows.</p><p class="limit">This is an authored model of interpretive influence. Its weights are choices. Repeated or inherited readings are not counted as new, independent evidence.</p></div></details>
@@ -103,13 +117,15 @@
     <details><summary><span>04</span> The path we did not take</summary><div class="caption-body"><p>Removing a contribution suppresses one specific carry, then recomputes the later layers. The observation at that layer still happens. If an older carried version existed, it remains available and continues to lose influence.</p><p>The replay uses the same recorded fields, preferences, edits, retrieval actions, binary settings, and random seeds. A dotted contour shows the alternative beside the actual reading. Differences identify consequences under this model. They cannot tell us how people would have chosen differently after a different past.</p><p class="limit">A small or zero effect does not prove a contribution is irrelevant in every possible context. Other contributions can duplicate or counteract it. The archive retains those dependencies too.</p></div></details>
     <details><summary><span>05</span> How a glyph gets its shape</summary><div class="caption-body"><p>The stored states are 0 and 1. The alphabet chooses how they appear. The other visual pair is an unarticulated scribble and an articulated reading. A glyph is a drawing of relationships; it has no preassigned word or universal meaning.</p><p>Each observed glyph reads adjacent binary pairs inside its observer’s field and within a fixed local neighborhood. Equal states support repetition; unequal states support interruption. Relationships contribute in their direction from the glyph. Nearer pairs have greater weight.</p><p>For each pair, the current local reading has weight 1. Each observer has twelve glyph slots sharing an inherited-voice budget of 0.55. A relevant carried glyph supplies its slot’s share; an unused slot stays unused. Age multiplies influence by 0.72 per elapsed round. The weighted reading controls eight contour directions. Tension between the local and inherited readings leaves more of the original spiral visible.</p><p>Attention alone does not progressively polish a glyph. Unchanged inputs and unchanged inherited influence produce the same contour. A retained reading can change outside attention when shared context changes; new raw evidence enters that reading only when it is observed again.</p><p class="limit">The radii, neighborhood, influence budget, and decay are declared drawing conventions, not measurements of intelligence, confidence, or social truth.</p></div></details>
     <details><summary><span>06</span> Why these threads are visible</summary><div class="caption-body"><p>A thread names an earlier carried record that participates in a later reading through shared binary relationships. Its endpoints are records, not a match between similar-looking glyphs.</p><p>The default view follows one reader of one glyph. It shows turning points whose contour change exceeds 0.012 in this model’s feature distance, plus first encounters and returns. Up to three incoming parents are highlighted, ranked by the immediate change when each is individually removed and the reading is recomputed. All parents remain inspectable.</p><p>The longer replay tests an earlier carry across the subsequent history. It can reveal a consequence that passes through several other glyphs before reaching the selected one. Quiet layers remain accessible on the layer slider.</p><p class="limit">The visible story is a selection from the provenance. The selection rule is part of this expression and can be questioned with it.</p></div></details>
-    <details><summary><span>07</span> Touch the water; keep the record</summary><div class="caption-body"><p>In Ripple mode, touch or drag across the field. Each disturbance spreads through neighboring points. Waves add where they meet, sometimes reinforcing and sometimes canceling. Strength changes the initial disturbance; speed changes its travel; damping determines how soon it settles. Still the water clears the disturbance immediately.</p><p>The surface is a small numerical wave grid. Each next height combines the two previous heights and the difference from its four neighbors. It runs in fixed time steps, with damping and absorbing edges. This is a water-like wave model, not a full simulation of flowing fluid.</p><p>Visit an earlier layer and ripple it. Adjacent layers receive a delayed, weaker display response. This coupling is an authored way of feeling depth. It does not travel along the causal threads or revise the archive. Carry makes a new record; a ripple passes over one.</p></div></details>
+    <details><summary><span>07</span> Touch the water; keep the record</summary><div class="caption-body"><p>In Ripple mode, touch or drag across the field. Each disturbance spreads through neighboring points. Waves add where they meet, sometimes reinforcing and sometimes canceling. Strength changes the initial disturbance; speed changes its travel; damping determines how soon it settles. Still the water clears the disturbance immediately.</p><p>The surface is a small numerical wave grid. Each next height combines the two previous heights and the difference from its four neighbors. It runs in fixed time steps, with damping and absorbing edges. This is a water-like wave model, not a full simulation of flowing fluid.</p><p>Visit an earlier layer and ripple it. Adjacent layers receive a delayed, weaker display response. This coupling is an authored way of feeling depth. It does not travel along the causal threads or revise the signal archive. Carry makes a new signal record; a ripple passes over one. With Save new touches enabled, that gesture is kept in a separate performance ledger.</p></div></details>
     <details><summary><span>08</span> Listen on your own terms</summary><div class="caption-body"><p>Enable Sound, then touch the field. As a wave reaches signals, their positions spread notes across stereo space. Wave height shapes loudness and slightly bends pitch. Binary state adds a pitch interval; each site also has an assigned note. Carry adds a lower tone.</p><p>Ripple tones, Carry tones, and ambience have separate levels. Choose a base pitch, brightness, note length, rhythm density, echo space, stereo width, and a water, warm, or glass timbre. Master volume controls the whole mix. Ambience starts silent. Sound stays off until you enable it.</p><p class="limit">These are choices for sonification, not the sound of a meaning being discovered. Rhythm changes how often a site may sound; it is not a fixed musical tempo. M toggles sound. Reduced-motion preferences suppress the visual wave while allowing sound.</p></div></details>
     <details><summary><span>09</span> Let a binary encounter its neighbors</summary><div class="caption-body"><p>Enable binary evolution, choose the rules, and Carry. Positive coupling favors matching neighbors; negative coupling favors opposition. Resistance favors the current state. Bias favors 1 or 0. Agitation allows less likely changes. Choose four edge neighbors or include the diagonals; the field has boundaries, and glyph sites do not act as binary neighbors.</p><p>All bits update together from the same prior field. Their 0/1 states become −1/+1 polarities. Neighbor pressure is a weighted average, multiplied by coupling and shifted by bias. Flip probability decreases as the current polarity agrees with that pressure or resistance rises. A recorded random seed makes each round replayable. An explicit bit edit is held for that round.</p><p>Select a changed bit to inspect its pressure, flip chance, and recorded random draw. These changes can alter the binary pairs that observed glyphs read. Glyph interpretation still uses horizontal and vertical pairs; choosing diagonal binary interactions does not change that reading grammar.</p><p class="limit">This is a classical coupled binary model. It does not simulate quantum entanglement. The interaction settings and randomness are part of the recorded action; touching water does not flip a bit.</p></div></details>
     <details><summary><span>10</span> One environment, several ways of seeing</summary><div class="caption-body"><p>State shows the marks. Relations connects matching and opposing bits, with brightness showing pressure under the chosen interaction settings. Change reveals what differed in this round. Memory reveals recent active glyph readings; dimness does not mean a record has disappeared.</p><p>Frequency inspects how each bit varied across the layers up to the one you are visiting. Its dial selects a discrete Fourier frequency: cycles per recorded round. A steady bit stays dim. A repeating variation can become bright at a corresponding frequency. At least four layers are needed; longer histories offer finer resolution. Glyphs remain visible as context.</p><p class="limit">These lenses reveal different quantities from the same environment. They do not add evidence. Temporal frequency is not an infrared or electromagnetic spectrum, and a bright pattern does not establish meaning or predict its continuation.</p></div></details>
     <details><summary><span>11</span> A body made of encounters</summary><div class="caption-body"><p>Select a glyph and open its body through time. Each slice is the contour recorded for that reader at that layer. Tilt the view to see how it changes. Select or ripple an earlier slice. The connecting skin interpolates between the recorded contours; toggle it off to see the slices alone.</p><p>The body gives a history a spatial form. Its width follows the same drawing rules as the glyph, not a new measure of importance. The chosen alphabet adds a surface treatment; pending freeform marks can be previewed before Carry records them. Its silhouette can be computed precisely while its interpretation remains open. The skin is a visual bridge, not evidence of unrecorded intermediate encounters.</p><p>Capture saves the current field or open history body as a PNG, including a passing ripple. It copies to the clipboard where supported and otherwise downloads the image. C captures the view; R ripples the selected signal or slice. The separate history download preserves the records behind the image.</p></div></details>
     <details><summary><span>12</span> The same states, another material</summary><div class="caption-body"><p>The alphabet menu follows the seven dictionaries in Russell’s pattern recognition pattern: 1/0, B/W, X/SP, dot/dash, shaded/blank, hatch/blank, and dark/light. The legend declares which mark means 1 and which means 0. Switching dictionaries redraws the whole archive through that alphabet; it does not invert the bits or rerun the interpretation.</p><p>The environment follows the marks. Letters sit in contrasting washes; crosses leave open spaces; dots and dashes make pulses and ribbons; cells give states mass; hatching gives them grain; scribbles give them density. The same material appears on historical planes, comparison contours, the glyph body, and captures. Viewing lenses modulate these marks while keeping the chosen alphabet.</p><p>Sound uses the same distinctions. SP is silent. Dots are shorter than dashes. Filled cells and dark scribbles have greater sonic weight. Each family has a declared scale and a default pitch, brightness, note length, and timbre. Your channel levels stay fixed when switching. Editing these tone settings turns off automatic defaults; recheck the option to follow the alphabet again.</p><p class="limit">These are authored visual and musical correspondences. Neither a texture nor a pitch is a measurement of a symbol’s meaning. The underlying equality and opposition rules still operate on the stored states.</p></div></details>
     <details><summary><span>13</span> Compose a field that has no single alphabet</summary><div class="caption-body"><p>Choose Freeform and select a signal. Give it a built-in alphabet or choose My own marks and type or paste a pair for 0 and 1. A mark can be empty, a symbol, or a short cluster. For an interpretive glyph, your chosen mark accompanies the generated contour. Choose its surface and a pitch offset. Preview the assignment, then Carry to record it.</p><p>Each site can keep a different dictionary, surface, and tuning. A custom mark’s normalized Unicode identity deterministically selects a note interval and a small detuning. The same mark with the same surface and tuning keeps that assignment wherever it appears; its location still affects stereo position. Pitch offsets are measured in semitones, so twelve doubles or halves the frequency. The surface adds a reproducible motif from the same identity.</p><p>Mark provenance lists the layers where an assignment changed. Earlier layers keep their earlier assignments. Returning a signal retrieves its old marks as well as its stored signal. Downloaded histories include the assignments and the active alphabet. Switching back to a shared alphabet temporarily presents every record through that dictionary.</p><p class="limit">Identical marks can label different states in Freeform. That makes their visible distinction unavailable; it does not erase the stored distinction. A symbol hash is an arbitrary encoding, not an analysis of the symbol’s shape or meaning. Added texture and custom lettering are presentation; the recorded interpretation contours keep their original mathematical rules.</p></div></details>
+    <details><summary><span>14</span> Let the field remember its touch</summary><div class="caption-body"><p>Ripple a layer, Carry, ripple another, then Play field. Playback visits the layers in order. Each saved gesture restores its position, water settings, sound mix, alphabet, marks, reader, observation fields, and lens. The signals underneath stay as recorded. A layer can gather new touches long after its creation.</p><p>The score keeps gesture order within each layer. Long pauses are compressed to 1.5 seconds; returning to a layer adds a 0.35-second gap. Each layer has at least 2.5 seconds to sound, with 2.5 seconds after its last touch. Speed changes the pace without transposing the notes.</p><p>Pause, seek, loop, or choose a range under Compose playback. Recorded sound uses the settings saved with each touch. Current sound recomposes with your present mix. Older editions saved no touches: Generated scan supplies two clearly labeled impulses, or Silence leaves those layers quiet.</p><p class="limit">This is a score reconstructed from gestures, not a recording of your speakers or microphone. Save new touches can be turned off. Download history keeps the gestures, instrument, and composition settings alongside the signal archive; WAV keeps one rendered performance.</p></div></details>
+    <details><summary><span>15</span> A shape can have a voice</summary><div class="caption-body"><p>Open a glyph’s body and Play this body. Its recorded contours become a sequence of timbres. A bright contour travels between the slices while saved ripples pass through the body. The travel between records is visual interpolation, not an additional computed reading.</p><p>Eight stretches of the actual contour supply eight average radii. Their mean shifts the voice’s pitch; the radii weight its higher harmonics. The selected reader’s shape and chosen marks determine the instrument. Local wave height and slope determine when it responds, how strongly, and with what pitch inflection.</p><p>Playback reconstructs the wave at 60 steps per second and samples its sounding sites 20 times per second. Rhythm limits repeated notes; up to sixteen ripple or Carry voices overlap, alongside optional ambience. Position sets stereo placement. Brightness, note length, and echo finish the sound.</p><p>Export WAV saves the same stereo samples used for playback, rounded to 16-bit audio at 44.1 kHz. Loop exports one pass with an echo tail. A score can cover up to two minutes of layers before that tail; choose a shorter range or faster pace for a longer archive.</p><p class="limit">A history can acquire a distinctive voice without sound becoming its meaning. Different histories can still sound alike. The contour-to-tone mapping is an authored instrument, not a unique identifier or a measurement of interpretation.</p></div></details>
   </section>
   <section class="history-tools" aria-label="Keep your history"><h2>Keep the encounter.</h2><div><button id="download">Download history</button><button id="reopen">Reopen history</button><input id="history-file" type="file" accept="application/json,.json" hidden></div><p class="small" id="storage-status" aria-live="polite">Your history stays in this browser.</p></section>
   <footer><p>In dialogue with <a href="https://pattern-recognition-pattern.un1crom.chatgpt.site/">Russell Foltz-Smith’s pattern recognition pattern</a> and the <a href="https://github.com/DeusNosMachina/DN_Framework">DN Framework</a>.</p><p>Expression and inquiry: Deus Nos Machina. Developed with Codex. This model makes no claim to solve a Rule 30 problem.</p></footer>
@@ -474,22 +490,23 @@ class FieldSound {
 
 
 function createNotation(api){
-  const nq=s=>document.querySelector(s),key='dn-notation-7';let alphabet='bits',fallback='bits',followTone=true,notify=()=>{},editorKey='';
+  const nq=s=>document.querySelector(s),key='dn-notation-7';let alphabet='bits',fallback='bits',followTone=true,notify=()=>{},editorKey='',performanceFrames=null;
   const options=(select,custom=false)=>{for(const value of [...alphabetKeys,...(custom?['custom']:[])]){const o=document.createElement('option');o.value=value;o.textContent=alphabets[value]?.name??'My own marks';select.append(o);}};
   options(nq('#alphabet'));const free=document.createElement('option');free.value='free';free.textContent='Freeform · mixed marks';nq('#alphabet').append(free);options(nq('#free-alphabet'),true);options(nq('#free-surface'));
+  function shownView(r=api.read().visit){return performanceFrames?.[r]?.view??snapshot();}
   function snapshot(){return {alphabet,fallback,followTone};}
   function restore(value){if(!value||![...alphabetKeys,'free'].includes(value.alphabet)||!alphabetKeys.includes(value.fallback))return;alphabet=value.alphabet;fallback=value.fallback;followTone=Boolean(value.followTone);editorKey='';}
   try{restore(JSON.parse(localStorage.getItem(key)||'null'));}catch{}
   function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
   function mark(id,r){const s=api.read();return r===s.history.length-1&&Object.hasOwn(s.pending,id)?s.pending[id]:s.history[r].marks?.[id]??null;}
-  function spec(id,r,kind='bit'){const s=api.read();return representationSpec(alphabet,s.history[r].bits[id],id,mark(id,r),fallback,kind);}
+  function spec(id,r,kind='bit'){const s=api.read(),frame=performanceFrames?.[r],view=frame?.view??snapshot();return representationSpec(view.alphabet,s.history[r].bits[id],id,frame?frame.marks[id]??null:mark(id,r),view.fallback,kind);}
   function fillEditor(){const s=api.read(),m=mark(s.selected,s.visit),base=m??{alphabet:fallback,surface:fallback,zero:alphabets[fallback].book[0],one:alphabets[fallback].book[1],glyph:'',transpose:0};nq('#free-alphabet').value=base.alphabet;nq('#free-surface').value=base.surface;for(const k of ['zero','one','glyph'])nq('#free-'+k).value=base[k];nq('#free-transpose').value=base.transpose;nq('#free-transpose-value').textContent=(base.transpose>0?'+':'')+base.transpose+' semitones';}
   function sync(){
     const s=api.read(),isGlyph=s.kind==='glyph',locked=s.busy||s.session!=='own'||s.visit!==s.history.length-1;
-    nq('#alphabet').value=alphabet;nq('#alphabet-sound').checked=followTone;
-    nq('#alphabet-note').textContent=alphabet==='free'?'Each signal can keep its own marks, surface, and tuning. Select one to compose.':alphabets[alphabet].note;
-    nq('#alphabet-legend').textContent=alphabet==='free'?'Freeform keeps the underlying states inspectable.':`1 → ${alphabets[alphabet].book[1]}   ·   0 → ${alphabets[alphabet].book[0]}`;
-    nq('#free-editor').hidden=alphabet!=='free';
+    const view=shownView(),shown=view.alphabet;nq('#alphabet').value=shown;nq('#alphabet').disabled=s.busy;nq('#alphabet-sound').checked=view.followTone;nq('#alphabet-sound').disabled=s.busy;
+    nq('#alphabet-note').textContent=shown==='free'?'Each signal can keep its own marks, surface, and tuning. Select one to compose.':alphabets[shown].note;
+    nq('#alphabet-legend').textContent=shown==='free'?'Freeform keeps the underlying states inspectable.':`1 → ${alphabets[shown].book[1]}   ·   0 → ${alphabets[shown].book[0]}`;
+    nq('#free-editor').hidden=shown!=='free'||s.busy;
     const stamp=`${s.selected}:${s.visit}:${JSON.stringify(mark(s.selected,s.visit))}:${alphabet}`;if(stamp!==editorKey){fillEditor();editorKey=stamp;}
     nq('#free-title').textContent=`Compose ${isGlyph?'glyph':'signal'} ${String(s.selected+1).padStart(2,'0')}`;
     nq('#free-pair').hidden=isGlyph||nq('#free-alphabet').value!=='custom';nq('#free-glyph-row').hidden=!isGlyph;nq('#free-surface-row').hidden=nq('#free-alphabet').value!=='custom';
@@ -507,7 +524,9 @@ function createNotation(api){
   nq('#free-transpose').addEventListener('input',()=>nq('#free-transpose-value').textContent=(Number(nq('#free-transpose').value)>0?'+':'')+nq('#free-transpose').value+' semitones');
   nq('#free-apply').addEventListener('click',()=>{const s=api.read(),a=nq('#free-alphabet').value,value={alphabet:a,surface:a==='custom'?nq('#free-surface').value:a,zero:nq('#free-zero').value.normalize('NFC'),one:nq('#free-one').value.normalize('NFC'),glyph:nq('#free-glyph').value.normalize('NFC'),transpose:Number(nq('#free-transpose').value)};if(!validMark(value)){nq('#free-note').textContent='Use up to 24 characters per mark and a tuning from −24 to +24.';return;}api.stage(s.selected,value);nq('#free-note').textContent='Previewing your assignment. Carry records it in the next layer.';});
   nq('#free-clear').addEventListener('click',()=>api.stage(api.read().selected,null));
-  return {snapshot,restore,sync,onChange:fn=>notify=fn,profile:()=>alphabets[alphabet==='free'?fallback:alphabet],spec,
+  return {snapshot,shownView,restore,sync,onChange:fn=>notify=fn,profile:()=>alphabets[alphabet==='free'?fallback:alphabet],spec,
+    capture(r){const s=api.read(),marks=JSON.parse(JSON.stringify(s.history[r].marks??{}));if(r===s.history.length-1)for(const [id,value] of Object.entries(s.pending)){if(value===null)delete marks[id];else marks[id]=JSON.parse(JSON.stringify(value));}return {view:snapshot(),marks};},
+    performanceFrames(value){performanceFrames=value;},performanceFields:r=>performanceFrames?.[r]?.fields??null,
     keepTone(){if(followTone){followTone=false;nq('#alphabet-sound').checked=false;save();api.redraw();}},
     isFree:()=>alphabet==='free',voice:(id,r,kind)=>{const value=spec(id,r,kind),v=representationVoice(value);return alphabet==='free'&&followTone?{...v,interval:v.interval+value.profile.sound.pitch-alphabets[fallback].sound.pitch,timbre:value.profile.sound.timbre,brightness:value.profile.sound.brightness}:v;},label:(id,r)=>spec(id,r).text,
     token:(parent,id,r,x,y,size,options)=>paintRepresentation(parent,spec(id,r),x,y,size,options),
@@ -516,6 +535,221 @@ function createNotation(api){
     patterns:installAlphabetPatterns
   };
 }
+
+
+
+
+
+const PERFORMANCE_FORMAT='what-we-carry-performance/1';
+const scoreDefaults={speed:1,untouched:'scan',mix:'recorded'};
+const scoreFinite=(v,a,b)=>Number.isFinite(v)&&v>=a&&v<=b;
+function importPerformance(data,history){
+  if(data===undefined||data===null)return {format:PERFORMANCE_FORMAT,events:[]};
+  if(data.format!==PERFORMANCE_FORMAT||!Array.isArray(data.events)||data.events.length>10000)throw Error('Invalid performance ledger.');
+  const instrument=data.instrument;if(instrument!==undefined&&(!instrument||!instrument.water||!['strength','speed','damping'].every(k=>scoreFinite(instrument.water[k],0,1))||!instrument.sound||!Object.keys(soundDefaults).every(k=>k==='timbre'?['water','warm','glass'].includes(instrument.sound[k]):scoreFinite(instrument.sound[k],k==='pitch'?36:0,k==='pitch'?76:1))))throw Error('Invalid saved instrument.');
+  const c=data.composition;if(c!==undefined&&(!c||!Number.isInteger(c.from)||!Number.isInteger(c.to)||c.from<0||c.to<c.from||c.to>=history.length||!scoreFinite(c.speed,.25,3)||!['recorded','current'].includes(c.mix)||!['scan','silence'].includes(c.untouched)))throw Error('Invalid saved composition.');
+  const last=new Map();
+  for(const e of data.events){
+    if(!e||!Number.isInteger(e.layer)||e.layer<0||e.layer>=history.length||!scoreFinite(e.time,0,86400)||e.time<(last.get(e.layer)??0)||!['touch','carry','still'].includes(e.kind)||![0,1].includes(e.reader)||!scoreFinite(e.x,0,1)||!scoreFinite(e.y,0,1))throw Error('Invalid recorded gesture.');
+    last.set(e.layer,e.time);
+    if(!e.water||!['strength','speed','damping'].every(k=>scoreFinite(e.water[k],0,1)))throw Error('Invalid recorded water settings.');
+    if(!e.sound||!Object.keys(soundDefaults).every(k=>k==='timbre'?['water','warm','glass'].includes(e.sound[k]):scoreFinite(e.sound[k],k==='pitch'?36:0,k==='pitch'?76:1)))throw Error('Invalid recorded sound settings.');
+    if(!e.view||![...alphabetKeys,'free'].includes(e.view.alphabet)||!alphabetKeys.includes(e.view.fallback)||typeof e.view.followTone!=='boolean')throw Error('Invalid recorded alphabet.');
+    if(!e.marks||typeof e.marks!=='object'||Array.isArray(e.marks)||Object.entries(e.marks).some(([id,m])=>!/^(?:[0-9]|[1-5][0-9]|6[0-3])$/.test(id)||!validMark(m)))throw Error('Invalid recorded marks.');
+    if(!Array.isArray(e.fields)||e.fields.length!==2||e.fields.some(f=>!f||!['x','y','w','h'].every(k=>scoreFinite(f[k],0,1))||f.w<.12||f.h<.12||!['repeat','break'].includes(f.rule)))throw Error('Invalid recorded observation fields.');
+    if(e.dynamics!==undefined&&(!e.dynamics||typeof e.dynamics.enabled!=='boolean'||![4,8].includes(e.dynamics.neighbors)||!['coupling','resistance','agitation','bias'].every(k=>scoreFinite(e.dynamics[k],['coupling','bias'].includes(k)?-1:0,1))))throw Error('Invalid recorded interaction settings.');
+    if(!['state','relations','change','memory','frequency'].includes(e.lens))throw Error('Invalid recorded lens.');
+    if(e.frequency!==undefined&&(!Number.isInteger(e.frequency)||e.frequency<1||e.frequency>Math.max(1,Math.floor(history.length/2))))throw Error('Invalid recorded frequency band.');
+  }
+  return clone(data);
+}
+function shapeVoice(id,form){
+  const pts=contour(id,form),radii=Array.from({length:8},(_,i)=>{let n=0;for(let j=i*10;j<(i+1)*10;j++)n+=Math.hypot(pts[j].x,pts[j].y)/10;return n;}),mean=radii.reduce((a,b)=>a+b,0)/8;
+  return {interval:clamp(Math.round(7*Math.log2(Math.max(.1,mean)/.55)),-12,12),partials:[1,...radii.map((r,i)=>(.06+.24*clamp(r,0,1.5))/(1+i*.25))]};
+}
+function scoredVoice(event,record,id,reader){
+  const site=sites[id],spec=representationSpec(event.view.alphabet,record.bits[id],id,event.marks[id]??null,event.view.fallback,site.kind),voice=representationVoice(spec);
+  if(event.view.alphabet==='free'&&event.view.followTone){voice.interval+=spec.profile.sound.pitch-alphabets[event.view.fallback].sound.pitch;voice.timbre=spec.profile.sound.timbre;voice.brightness=spec.profile.sound.brightness;}
+  if(site.kind==='glyph'){const shape=shapeVoice(id,record.forms[id][reader]);voice.interval+=shape.interval;voice.partials=shape.partials;}
+  return voice;
+}
+function scoreClipAt(score,time){
+  return score.clips.find(c=>time<c.start+c.duration)??score.clips.at(-1);
+}
+async function compileScore(history,performance,context,options={},yieldWork=async()=>{}){
+  const settings={...scoreDefaults,...options},from=Number(settings.from??0),to=Number(settings.to??history.length-1),speed=Number(settings.speed),scope=settings.scope??'field',id=settings.id??27,reader=settings.reader??0;
+  if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||to<from||to>=history.length||!scoreFinite(speed,.25,3)||!['field','body'].includes(scope)||!sites[id]||![0,1].includes(reader)||!['recorded','current'].includes(settings.mix)||!['scan','silence'].includes(settings.untouched)||(scope==='body'&&sites[id].kind!=='glyph'))throw Error('Choose a valid layer range and playback speed.');
+  const score={format:'what-we-carry-score/1',scope,id,reader,speed,clips:[],notes:[],duration:0},ends=[];
+  for(let layer=from;layer<=to;layer++){
+    let events=performance.events.filter(e=>e.layer===layer).map(clone),generated=false;
+    if(!events.length&&settings.untouched==='scan'){
+      generated=true;const s=sites[id];events=[0,.65].map((time,i)=>({...clone(context),layer,time,kind:'touch',x:scope==='body'?clamp(s.x+(i?1:-1)*.03,0,1):i?.78:.22,y:scope==='body'?s.y:i?.55:.45,water:{...context.water,strength:.45},marks:clone(history[layer].marks??{}),fields:clone(history[layer].fields)}));
+    }
+    if(settings.mix==='current')events=events.map(e=>({...e,sound:clone(context.sound),view:{...e.view,followTone:context.view.followTone}}));
+    const localDuration=Math.max(2.5,(events.at(-1)?.time??0)+2.5),start=score.duration,duration=localDuration/speed;
+    if(start+duration>120)throw Error('Choose a shorter range or faster speed for a score up to two minutes.');
+    const fallback={...clone(context),layer,time:0,kind:'touch',marks:clone(history[layer].marks??{}),fields:clone(history[layer].fields)};
+    const clip={layer,start,duration,localDuration,events,generated,frame:events[0]??fallback};score.clips.push(clip);score.duration+=duration;
+    const record=history[layer],water=new RippleSurface(),cooldowns=new Map();let eventIndex=0,frame=clip.frame;
+    const add=(event,site,time,amplitude,change=0,kind='ripple',long=false)=>{
+      const sound=event.sound,voice=scoredVoice(event,record,site.id,scope==='body'?reader:event.reader),key=kind+site.id,interval=.12+(1-sound.rhythm)*.65;
+      if(!sound.volume||!(kind==='carry'?sound.carry:sound.ripples)||voice.level===0||time-(cooldowns.get(key)??-Infinity)<interval)return;
+      const t=start+time/speed;while(ends.length&&ends[0]<=t)ends.shift();if(ends.length>=16)return;
+      const length=(long?Math.min(2.4,localDuration):Math.max(.08,(.15+sound.length*2.1)*voice.duration))/speed;
+      const pitch=sound.pitch+voice.interval+(kind==='carry'?-12:0)+clamp(Math.round(change*3),-12,12),frequency=clamp(440*2**((pitch-69)/12)*2**(voice.detune/1200),30,8000);
+      score.notes.push({time:t,duration:length,frequency,gain:Math.min(1,amplitude)*voice.level*.18*sound.volume*.45*(kind==='carry'?sound.carry:sound.ripples),pan:clamp((site.x-.5)*2*sound.stereo,-1,1),timbre:voice.timbre??sound.timbre,brightness:voice.brightness??sound.brightness,space:sound.space,partials:voice.partials??null});
+      ends.push(t+length);ends.sort((a,b)=>a-b);cooldowns.set(key,time);
+    };
+    if(scope==='body'&&events.some(e=>e.kind!=='still'))add(frame,sites[id],0,.36,0,'ripple',true);
+    for(let step=0;step<Math.ceil(localDuration*60);step++){
+      const local=step/60;
+      while(eventIndex<events.length&&events[eventIndex].time<=local+1e-8){frame=events[eventIndex++];Object.assign(water.settings,frame.water);if(frame.kind==='still')water.clear();else{water.disturb(frame.x,frame.y,layer);const nearest=scope==='body'?sites[id]:sites.reduce((a,b)=>Math.hypot(a.x-frame.x,a.y-frame.y)<Math.hypot(b.x-frame.x,b.y-frame.y)?a:b);add(frame,nearest,local,.8*frame.water.strength,0,frame.kind==='carry'?'carry':'ripple');}}
+      water.step();
+      if(step%3===0&&water.active)for(const site of scope==='body'?[sites[id]]:sites){const w=water.sample(site.x,site.y,layer);if(Math.abs(w.height)>.075&&Math.hypot(w.dx,w.dy)>.008)add(frame,site,local,Math.min(1,Math.abs(w.height)*1.2),w.height);}
+      if(step%180===179)await yieldWork();
+    }
+    // Ambience is explicitly represented in the same score, not added during playback.
+    for(let i=0;i<events.length;i++){const e=events[i],span=((events[i+1]?.time??localDuration)-e.time)/speed;if(span>0&&e.sound.ambient&&e.sound.volume)for(const interval of [0,7])score.notes.push({time:start+e.time/speed,duration:span,frequency:440*2**((e.sound.pitch-24+interval-69)/12),gain:e.sound.ambient*.045*e.sound.volume*.45,pan:interval?.3:-.3,timbre:'warm',brightness:.2,space:0,partials:[1],sustain:true});}
+    await yieldWork();
+  }
+  score.duration=score.notes.reduce((end,n)=>Math.max(end,n.time+n.duration),score.duration)+2.5;
+  return score;
+}
+function scoreWaveTable(note){
+  const n=1024,table=new Float32Array(n),partials=note.partials??(note.timbre==='warm'?[1,0,.11,0,.035]:note.timbre==='glass'?[1,.18,.1,.07]:[1,.04]);
+  for(let i=0;i<n;i++){let v=0,total=0;for(let h=0;h<partials.length;h++){const weight=partials[h]*Math.exp(-h*(1-note.brightness)*.7);v+=weight*Math.sin(i/n*Math.PI*2*(h+1));total+=Math.abs(weight);}table[i]=v/Math.max(1,total);}
+  return table;
+}
+async function renderScoreAudio(score,{sampleRate=44100,yieldWork=async()=>{},progress=()=>{}}={}){
+  if(!scoreFinite(sampleRate,8000,96000)||!scoreFinite(score.duration,0,150))throw Error('Unsupported audio duration or sample rate.');
+  const length=Math.ceil(score.duration*sampleRate),left=new Float32Array(length),right=new Float32Array(length),wetL=new Float32Array(length),wetR=new Float32Array(length);
+  for(let index=0;index<score.notes.length;index++){
+    const note=score.notes[index],table=scoreWaveTable(note),start=Math.round(note.time*sampleRate),count=Math.ceil(note.duration*sampleRate),pan=(note.pan+1)*Math.PI/4,L=Math.cos(pan),R=Math.sin(pan);let phase=0;
+    for(let k=0;k<count&&start+k<length;k++){
+      const t=k/sampleRate,fade=Math.min(1,t/.012,(note.duration-t)/.025),envelope=note.sustain?fade:fade*Math.exp(-8*t/note.duration),frequency=Math.min(sampleRate*.4,note.frequency*(note.timbre==='water'?1+.5*Math.exp(-t/.018):1));
+      phase=(phase+frequency/sampleRate*1024)%1024;const p=Math.floor(phase),v=(table[p]*(1-(phase-p))+table[(p+1)%1024]*(phase-p))*envelope*note.gain,j=start+k;
+      left[j]+=v*L;right[j]+=v*R;wetL[j]+=v*L*note.space*.5;wetR[j]+=v*R*note.space*.5;
+    }
+    if(index%12===11){progress(.8*(index+1)/Math.max(1,score.notes.length));await yieldWork();}
+  }
+  const delay=Math.round(.23*sampleRate);let peak=0;
+  for(let k=0;k<length;k++){
+    if(k>=delay){wetL[k]+=.35*wetR[k-delay];wetR[k]+=.35*wetL[k-delay];left[k]+=wetL[k-delay];right[k]+=wetR[k-delay];}
+    left[k]=Math.tanh(left[k]*1.5)/1.5;right[k]=Math.tanh(right[k]*1.5)/1.5;peak=Math.max(peak,Math.abs(left[k]),Math.abs(right[k]));
+    if(k%(sampleRate*2)===0){progress(.8+.2*k/length);await yieldWork();}
+  }
+  progress(1);return {left,right,sampleRate,peak,duration:length/sampleRate};
+}
+function encodeScoreWav(audio){
+  const count=audio.left.length,buffer=new ArrayBuffer(44+count*4),view=new DataView(buffer),word=(offset,value)=>{for(let i=0;i<value.length;i++)view.setUint8(offset+i,value.charCodeAt(i));};
+  word(0,'RIFF');view.setUint32(4,36+count*4,true);word(8,'WAVE');word(12,'fmt ');view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,2,true);view.setUint32(24,audio.sampleRate,true);view.setUint32(28,audio.sampleRate*4,true);view.setUint16(32,4,true);view.setUint16(34,16,true);word(36,'data');view.setUint32(40,count*4,true);
+  for(let i=0;i<count;i++)for(let c=0;c<2;c++){const v=clamp((c?audio.right:audio.left)[i],-1,1);view.setInt16(44+(i*2+c)*2,Math.round(v*(v<0?32768:32767)),true);}return buffer;
+}
+
+
+
+function createPlayback(api){
+  const pq=s=>document.querySelector(s),timeLabel=t=>`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}`;
+  let ledger=importPerformance(api.initial,api.read().history),revision=0,recording=true,lastLayer=-1,lastTouch=0,persistTimer=null;
+  let state='idle',scope='field',score=null,pcm=null,cacheKey='',offset=0,started=0,source=null,audioContext=null,audioBuffer=null,raf=null,job=0,maxLayer=-1,shownLayer=-1;
+  function message(text){pq('#score-status').textContent=text;pq('#body-score-status').textContent=text;}
+  function snapshot(){const max=api.read().history.length-1,from=Math.max(0,Math.min(max,Number(pq('#score-from').value)||0)),to=Math.max(from,Math.min(max,Number(pq('#score-to').value)||0));const current=api.instrument?.()??api.capture();return {...clone(ledger),instrument:{sound:clone(current.sound),water:clone(current.water)},composition:{from,to,speed:Number(pq('#score-speed').value),mix:pq('#score-mix').value,untouched:pq('#score-untouched').value}};}
+  function restoreComposition(){if(ledger.composition){for(const key of ['from','to','speed','mix','untouched'])pq('#score-'+key).value=ledger.composition[key];maxLayer=api.read().history.length-1;}}
+  function flush(){clearTimeout(persistTimer);persistTimer=null;api.persist();}
+  function saveSoon(){clearTimeout(persistTimer);persistTimer=setTimeout(flush,250);}
+  function record(context,kind,layer,x,y){
+    if(!recording||['preparing','playing','paused','exporting'].includes(state))return;
+    if(ledger.events.length>=10000){recording=false;pq('#score-record').checked=false;message('This performance has reached 10,000 gestures. Download history to preserve it.');return;}
+    const now=performance.now(),prior=ledger.events.findLast(e=>e.layer===layer),gap=lastLayer===layer?Math.min(1.5,Math.max(0,(now-lastTouch)/1000)):.35;
+    ledger.events.push({...clone(context),kind,layer,x,y,time:prior?prior.time+gap:0});lastLayer=layer;lastTouch=now;revision++;cacheKey='';score=null;pcm=null;audioBuffer=null;offset=0;saveSoon();sync();
+  }
+  function active(){return ['preparing','playing','paused','exporting'].includes(state);}
+  function ui(){
+    for(const [id,target] of [['#score-play','field'],['#body-score-play','body']]){const b=pq(id);b.disabled=state==='preparing'||state==='exporting'||api.read().busy;b.textContent=scope===target&&state==='playing'?'Pause':scope===target&&state==='paused'?'Resume':target==='field'?'Play field':'Play this body';}
+    for(const id of ['#score-stop','#body-score-stop'])pq(id).disabled=!active();
+    for(const id of ['#score-export','#body-score-export'])pq(id).disabled=state==='preparing'||state==='exporting'||api.read().busy;
+    for(const id of ['#score-from','#score-to','#score-speed','#score-mix','#score-untouched','#score-record'])pq(id).disabled=active();
+    for(const id of ['#score-position','#body-score-position']){pq(id).disabled=!score||state==='preparing'||state==='exporting';pq(id).max=score?.duration??1;pq(id).value=offset;}
+    const label=`${timeLabel(offset)} / ${timeLabel(score?.duration??0)}`;pq('#score-time').textContent=label;pq('#body-score-time').textContent=label;
+  }
+  function sync(){
+    const s=api.read(),last=s.history.length-1;
+    if(maxLayer!==last){if(maxLayer<0||Number(pq('#score-to').value)===maxLayer)pq('#score-to').value=last;for(const id of ['#score-from','#score-to']){pq(id).max=last;pq(id).value=Math.min(Number(pq(id).value),last);}maxLayer=last;}
+    const count=ledger.events.filter(e=>e.layer===s.visit&&e.kind!=='still').length;pq('#score-layer-note').textContent=`Layer ${String(s.visit).padStart(2,'0')} · ${count} saved ripple${count===1?'':'s'}`;ui();
+  }
+  function stopSource(){if(source){source.onended=null;try{source.stop();}catch{}source.disconnect();source=null;}if(raf!==null){cancelAnimationFrame(raf);raf=null;}}
+  function release(){api.clearFrame();api.lock(false);ui();}
+  function stop(){job++;stopSource();state='idle';offset=0;shownLayer=-1;release();message('Stopped. Recorded signals and gestures are unchanged.');}
+  function clockPosition(){return state==='playing'?Math.min(score.duration,offset+audioContext.currentTime-started):offset;}
+  function renderFrame(){
+    if(!score)return;const clip=scoreClipAt(score,offset),local=Math.min(clip.localDuration,Math.max(0,(offset-clip.start)*score.speed));api.frame(clip,local,score);
+    if(shownLayer!==clip.layer){shownLayer=clip.layer;message(`Layer ${String(clip.layer).padStart(2,'0')} · ${clip.generated?'generated scan':clip.events.length?'saved gestures':'silence'} · ${scope==='body'?'body voice':'whole field'}`);}ui();
+  }
+  function tick(){
+    const duration=score.duration,t=offset+audioContext.currentTime-started;
+    if(t>=duration&&pq('#score-loop').checked){offset=0;started=audioContext.currentTime-(t%duration);shownLayer=-1;api.resetWave();}
+    const position=Math.min(duration,offset+audioContext.currentTime-started),saved=offset;offset=position;renderFrame();offset=saved;
+    if(state==='playing')raf=requestAnimationFrame(tick);
+  }
+  function pause(){if(state!=='playing')return;offset=clockPosition();stopSource();state='paused';renderFrame();ui();message('Paused. Resume, seek, or export this score.');}
+  function startSource(){
+    stopSource();if(offset>=score.duration)offset=0;
+    source=audioContext.createBufferSource();source.buffer=audioBuffer;source.loop=pq('#score-loop').checked;source.connect(audioContext.destination);started=audioContext.currentTime;state='playing';
+    source.onended=()=>{if(state!=='playing'||pq('#score-loop').checked)return;offset=score.duration;state='ended';stopSource();release();message('Playback complete. Export WAV keeps this same rendered sound.');};
+    source.start(0,offset);ui();raf=requestAnimationFrame(tick);
+  }
+  async function prepare(target,token){
+    const s=api.read(),context=api.capture(),options={scope:target,id:s.selected,reader:s.reader,from:Number(pq('#score-from').value),to:Number(pq('#score-to').value),speed:Number(pq('#score-speed').value),mix:pq('#score-mix').value,untouched:pq('#score-untouched').value};
+    const key=JSON.stringify({revision,history:s.history,context,options});
+    if(key===cacheKey&&score&&pcm)return;
+    const yieldWork=async()=>{await new Promise(resolve=>setTimeout(resolve,0));if(token!==job)throw Error('Canceled.');};
+    message('Composing the saved layers…');const compiled=await compileScore(s.history,ledger,context,options,yieldWork);
+    message('Rendering the score…');const rendered=await renderScoreAudio(compiled,{yieldWork,progress:p=>message(`Rendering audio · ${Math.round(p*100)}%`)});
+    if(token!==job)throw Error('Canceled.');score=compiled;pcm=rendered;cacheKey=key;audioBuffer=null;offset=0;shownLayer=-1;
+  }
+  async function readyAudio(){
+    if(!audioContext){const Audio=globalThis.AudioContext||globalThis.webkitAudioContext;if(!Audio)throw Error('Audio playback is unavailable in this browser. WAV export still works.');audioContext=new Audio();}
+    await audioContext.resume();if(audioContext.state!=='running')throw Error('Sound could not start. Try the live page in a browser tab.');
+  }
+  function readyBuffer(){if(!audioBuffer){audioBuffer=audioContext.createBuffer(2,pcm.left.length,pcm.sampleRate);audioBuffer.copyToChannel(pcm.left,0);audioBuffer.copyToChannel(pcm.right,1);}}
+  async function play(target){
+    if(state==='preparing'||state==='exporting'||api.read().busy)return;
+    if(state==='playing'&&scope===target){pause();return;}
+    if(state==='paused'&&scope===target){const token=job;try{await readyAudio();if(token!==job||state!=='paused')return;readyBuffer();startSource();}catch(e){message(e.message);}return;}
+    stopSource();api.clearFrame();const token=++job;scope=target;state='preparing';api.lock(true);api.silence();ui();
+    try{
+      await readyAudio();if(token!==job)return;
+      await prepare(target,token);if(token!==job)return;
+      readyBuffer();
+      api.beginFrames(score);startSource();if(pcm.peak<.000001)message('This mix is silent. Choose Current sound and raise its levels to recompose.');
+    }catch(e){if(token===job){state='idle';release();message(e.message);}}
+  }
+  async function exportAudio(target){
+    if(state==='preparing'||state==='exporting'||api.read().busy)return;
+    const reuse=scope===target&&score&&pcm&&(state==='playing'||state==='paused');if(state==='playing')pause();if(!reuse)api.clearFrame();api.silence();const token=++job;scope=target;state='exporting';api.lock(true);ui();
+    try{
+      if(!reuse)await prepare(target,token);if(token!==job)return;
+      const blob=new Blob([encodeScoreWav(pcm)],{type:'audio/wav'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`what-we-carry-${target==='body'?'glyph-'+(score.id+1)+'-'+(score.reader?'you':'I'):'field'}-${score.clips[0].layer}-${score.clips.at(-1).layer}.wav`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      state='ended';release();message(`Exported ${timeLabel(pcm.duration)} of stereo audio · one pass, including the echo tail.`);
+    }catch(e){if(token===job){state='idle';release();message(e.message);}}
+  }
+  function seek(value){if(!score||state==='preparing'||state==='exporting')return;const wasPlaying=state==='playing';stopSource();offset=Math.min(score.duration,Math.max(0,Number(value)));api.resetWave();api.beginFrames(score);api.silence();api.lock(true);state='paused';renderFrame();if(wasPlaying)startSource();}
+  pq('#score-play').addEventListener('click',()=>play('field'));pq('#body-score-play').addEventListener('click',()=>play('body'));
+  for(const id of ['#score-stop','#body-score-stop'])pq(id).addEventListener('click',stop);
+  pq('#score-export').addEventListener('click',()=>exportAudio('field'));pq('#body-score-export').addEventListener('click',()=>exportAudio('body'));
+  for(const id of ['#score-position','#body-score-position'])pq(id).addEventListener('input',e=>seek(e.target.value));
+  for(const id of ['#score-from','#score-to','#score-speed','#score-mix','#score-untouched'])pq(id).addEventListener('change',()=>{cacheKey='';score=null;pcm=null;offset=0;ui();saveSoon();});
+  pq('#score-loop').addEventListener('change',()=>{if(source)source.loop=pq('#score-loop').checked;});pq('#score-record').addEventListener('change',e=>{recording=e.target.checked;lastLayer=-1;message(recording?'New touches are saved with their layer.':'Touch recording is off. The existing score is kept.');});
+  document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='p'&&!e.repeat&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.target.closest('input,select,textarea,[contenteditable="true"]')){e.preventDefault();play(pq('#body-dialog').open?'body':'field');}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){if(state==='playing')pause();else if(state==='preparing'||state==='exporting')stop();}});
+  window.addEventListener('pagehide',()=>{clearTimeout(persistTimer);api.persist();stopSource();audioContext?.close();},{once:true});
+  restoreComposition();api.restoreInstrument?.(ledger.instrument);
+  return {record,snapshot,sync,stop,pause,active,flush,cursor:()=>{if(!score||!active())return null;const clip=scoreClipAt(score,clockPosition());return {scope,layer:clip.layer,nextLayer:score.clips[score.clips.indexOf(clip)+1]?.layer??clip.layer,phase:Math.min(1,(clockPosition()-clip.start)/clip.duration)};},
+    replace(data){clearTimeout(persistTimer);persistTimer=null;stop();ledger=importPerformance(data,api.read().history);revision++;cacheKey='';score=null;pcm=null;audioBuffer=null;lastLayer=-1;maxLayer=-1;restoreComposition();api.restoreInstrument?.(ledger.instrument);sync();},
+    historyChanged(){if(active())stop();cacheKey='';score=null;pcm=null;audioBuffer=null;lastLayer=-1;sync();}
+  };
+}
+
 
 
 
@@ -530,6 +764,18 @@ function createExperience(api){
   const status=text=>q('#experience-status').textContent=text;
   const el=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e;};
   const path=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(' ');
+  let playClip=null,playStep=0,playEvent=0,playViews=null,savedView=null;
+  function capturePerformance(){const state=api.read();return {...api.notation.capture(state.visit),reader:state.reader,water:clone(water.settings),sound:clone(sound.settings),fields:clone(state.visit===state.history.length-1?state.fields:state.history[state.visit].fields),lens,frequency,dynamics:{...binary},x:sites[state.selected].x,y:sites[state.selected].y};}
+  function beginFrames(score){if(!savedView)savedView={reader:api.read().reader,lens,frequency,water:clone(water.settings)};playViews=Object.fromEntries(score.clips.map(c=>[c.layer,c.frame]));api.notation.performanceFrames(playViews);playClip=null;}
+  function clearFrame(){scoreCache=null;playClip=null;playViews=null;api.notation.performanceFrames(null);water.clear();if(savedView){const prior=savedView;savedView=null;lens=prior.lens;frequency=prior.frequency;Object.assign(water.settings,prior.water);q('#lens').value=lens;api.playbackVisit(api.read().visit,prior.reader);}api.redraw();drawBody();}
+  function playFrame(clip,local,score){
+    const target=Math.floor(local*60);if(playClip!==clip||target<playStep-1){water.clear();playClip=clip;playStep=0;playEvent=0;}
+    let visual=playViews?.[clip.layer]??clip.frame;
+    while(playStep<=target){const t=playStep/60;while(playEvent<clip.events.length&&clip.events[playEvent].time<=t+1e-8){visual=clip.events[playEvent++];Object.assign(water.settings,visual.water);if(visual.kind==='still')water.clear();else water.disturb(visual.x,visual.y,clip.layer);}water.step();playStep++;}
+    const previous=playViews[clip.layer];if(visual!==previous)scoreCache=null;playViews[clip.layer]=visual;api.notation.performanceFrames(playViews);lens=visual.lens;frequency=visual.frequency??1;q('#lens').value=lens;
+    const reader=score.scope==='body'?score.reader:visual.reader;if(api.read().visit!==clip.layer||api.read().reader!==reader||visual!==previous)api.playbackVisit(clip.layer,reader);else{api.redraw();drawBody();}
+  }
+  const playback=createPlayback({initial:api.performance,read:api.read,capture:capturePerformance,instrument:()=>({sound:sound.settings,water:savedView?.water??water.settings}),restoreInstrument:value=>{if(value){Object.assign(sound.settings,value.sound);Object.assign(water.settings,value.water);sound.update();showPreferences();}},persist:api.persist,lock:api.lock,beginFrames,clearFrame,frame:playFrame,resetWave:()=>{playClip=null;water.clear();},silence:()=>{settle();sound.mute();q('#sound-toggle').setAttribute('aria-pressed','false');q('#sound-status').dataset.enabled='false';},});
   function ensureFrame(){if(frame===null){lastTime=performance.now();frame=requestAnimationFrame(tick);}}
   function tick(now){
     accumulator+=Math.min(.05,(now-lastTime)/1000);lastTime=now;
@@ -543,7 +789,9 @@ function createExperience(api){
     q('#field').dataset.rippleEnergy=water.energy.toFixed(6);q('#field').dataset.rippleActive=String(water.active);
     if(water.active)frame=requestAnimationFrame(tick);else{frame=null;accumulator=0;}
   }
-  function ripple(x,y,layer=api.read().visit){
+  function ripple(x,y,layer=api.read().visit,kind='touch'){
+    if(playback.active())return;
+    playback.record(capturePerformance(),kind,layer,clamp(x,0,1),clamp(y,0,1));
     const hit=sites.reduce((best,s)=>Math.hypot(s.x-x,s.y-y)<Math.hypot(best.x-x,best.y-y)?s:best,sites[0]),voice=api.notation.voice(hit.id,layer,hit.kind);
     if(motion.matches){status('This slice is selected. Motion is reduced; sound can still respond.');sound.note({id:hit.id,intensity:.7,x,voice});return;}
     water.disturb(clamp(x,0,1),clamp(y,0,1),layer);sound.note({id:hit.id,intensity:.8*water.settings.strength,x,voice});ensureFrame();
@@ -553,7 +801,7 @@ function createExperience(api){
   function settle(){water.clear();if(frame!==null)cancelAnimationFrame(frame);frame=null;accumulator=0;api.redraw();drawBody();q('#field').dataset.rippleActive='false';status('The water is still.');}
   function warp(x,y,r){if(!water.active||motion.matches)return {x:0,y:0,z:0};const w=water.sample(x,y,r);return{x:clamp(w.dx*-.06,-.05,.05),y:clamp(w.dy*-.06,-.06,.06),z:clamp(w.height*.6,-1,1)};}
   function surface(parent,project){
-    if(!water.active)return;const r=api.read().visit;
+    if(!water.active||motion.matches)return;const r=api.read().visit;
     // Local strips make the wave's slope visible even when viewed from above.
     for(let row=0;row<25;row++)for(let col=0;col<36;col++){
       const x=col/36,y=row/24,w=water.sample(x,y,r),a=Math.min(.35,Math.abs(w.height)*.12+Math.hypot(w.dx,w.dy)*.2);
@@ -565,7 +813,7 @@ function createExperience(api){
   function getScores(){
     const state=api.read();if(scoreCache?.history===state.history&&scoreCache.visit===state.visit&&scoreCache.reader===state.reader&&scoreCache.lens===lens&&scoreCache.frequency===frequency)return scoreCache.values;
     const row=state.history[state.visit],previous=state.history[state.visit-1],N=state.visit+1,k=Math.min(frequency,Math.floor(N/2));
-    const pressures=lens==='relations'?binaryStep(row.bits,{...binary,enabled:false,agitation:0},0).pressure:null;
+    const interaction=playViews?.[state.visit]?.dynamics??binary,pressures=lens==='relations'?binaryStep(row.bits,{...interaction,enabled:false,agitation:0},0).pressure:null;
     const values=sites.map(s=>{
       if(lens==='change')return previous?(s.kind==='bit'?Number(row.bits[s.id]!==previous.bits[s.id]):Math.min(1,distance(row.forms[s.id][state.reader],previous.forms[s.id][state.reader]))):0;
       if(lens==='memory'){const source=row.pool.filter(p=>p.id===s.id);return source.length?Math.max(...source.map(p=>DECAY**Math.max(0,state.visit-p.round))):0;}
@@ -581,8 +829,8 @@ function createExperience(api){
   }
   function signalLook(id,r){if(lens==='state')return {opacity:1,color:'var(--ink)'};const state=api.read();if(r!==state.visit)return {opacity:.35,color:'var(--ink)'};if(lens==='frequency'&&sites[id].kind==='glyph')return {opacity:.35,color:'var(--ink)'};const v=getScores()[id];return {opacity:.12+.88*Math.min(1,Math.abs(v)),color:lens==='relations'?(v<0?'var(--opposed)':'var(--aligned)'):'var(--ink)'};}
   function relations(parent,project){
-    if(lens!=='relations')return;const state=api.read(),bits=state.history[state.visit].bits;
-    for(const a of sites){if(a.kind!=='bit')continue;for(const b of sites){if(b.kind!=='bit'||b.id<=a.id)continue;const dx=Math.abs(a.id%8-b.id%8),dy=Math.abs(Math.floor(a.id/8)-Math.floor(b.id/8));if(dx>1||dy>1||(!dx&&!dy)||(binary.neighbors===4&&dx+dy!==1))continue;
+    if(lens!=='relations')return;const state=api.read(),bits=state.history[state.visit].bits,interaction=playViews?.[state.visit]?.dynamics??binary;
+    for(const a of sites){if(a.kind!=='bit')continue;for(const b of sites){if(b.kind!=='bit'||b.id<=a.id)continue;const dx=Math.abs(a.id%8-b.id%8),dy=Math.abs(Math.floor(a.id/8)-Math.floor(b.id/8));if(dx>1||dy>1||(!dx&&!dy)||(interaction.neighbors===4&&dx+dy!==1))continue;
       const same=bits[a.id]===bits[b.id];el('path',{d:path([project(a.x,a.y,state.visit),project(b.x,b.y,state.visit)]),fill:'none',stroke:same?'var(--aligned)':'var(--opposed)','stroke-width':.8,opacity:.22,...(same?{}:{'stroke-dasharray':'3 4'})},parent);
     }}
   }
@@ -590,24 +838,27 @@ function createExperience(api){
     const dialog=q('#body-dialog');if(!dialog.open)return;const svg=q('#body-view'),state=api.read(),s=sites[state.selected];svg.replaceChildren();api.notation.patterns(svg,'body');
     const width=svg.getBoundingClientRect().width,height=svg.getBoundingClientRect().height;svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
     if(s.kind!=='glyph')return;const last=state.history.length-1,angle=bodyTilt*Math.PI/180,ct=Math.cos(angle),st=Math.sin(angle),radius=Math.min(width*.27,130),step=Math.min(40,(height-110)/Math.max(1,last));
-    const project=(p,r)=>{const wave=water.sample(s.x+p.x*.05,s.y+p.y*.05,r);return{x:width/2+(p.x*.98-p.y*.2)*radius+wave.dx*13,y:height/2+(p.x*.2+p.y*.98)*radius*ct-(r-last/2)*step*st-wave.height*8};};
+    const project=(p,r)=>{const wave=motion.matches?{dx:0,height:0}:water.sample(s.x+p.x*.05,s.y+p.y*.05,r);return{x:width/2+(p.x*.98-p.y*.2)*radius+wave.dx*13,y:height/2+(p.x*.2+p.y*.98)*radius*ct-(r-last/2)*step*st-wave.height*8};};
     const shapes=state.history.map((record,r)=>contour(s.id,record.forms[s.id][state.reader]).map(p=>project(p,r)));
     // The skin is explicitly interpolation; the per-layer paths remain exact.
     if(q('#body-skin').checked){for(let r=0;r<last;r++)for(let i=0;i<80;i+=2)el('path',{d:path([shapes[r][i],shapes[r][i+2],shapes[r+1][i+2],shapes[r+1][i]])+' Z',fill:'var(--ink)',opacity:.025+.03*Math.abs(Math.sin(i/80*Math.PI*2)),stroke:'none'},svg);
       for(let i=0;i<81;i+=5)el('path',{d:path(shapes.map(p=>p[i])),fill:'none',stroke:'var(--ink)','stroke-width':.65,opacity:.16},svg);}
     shapes.forEach((pts,r)=>{const decoration=el('g',{opacity:r===state.visit?1:.5},svg);api.notation.contour(decoration,pts,s.id,r,'body',{reader:state.reader,body:true});el('path',{d:path(pts),fill:'none',stroke:'var(--ink)','stroke-width':r===state.visit?2:1,opacity:r===state.visit?1:.25,'data-body-layer':r,...(state.reader?{'stroke-dasharray':'4 3'}:{})},svg);
       if(bodyTilt>20&&(r===0||r===last||r===state.visit)){const p=project({x:0,y:0},r),text=el('text',{x:12,y:p.y+4},svg);text.textContent=String(r).padStart(2,'0');}});
-    q('#body-title').textContent=`${state.reader?'you':'I'} · glyph ${state.selected+1}`;q('#body-layer').max=last;q('#body-layer').value=state.visit;q('#body-layer-label').textContent=String(state.visit).padStart(2,'0');q('#body-layer').disabled=state.busy;
-    q('#body-note').textContent=last?'Contours are recorded. The connecting skin is an interpolation. Ripple disturbs this view, then settles.':'One recorded slice. Carry readings to grow its body through time.';
+    const cursor=playback.cursor();if(cursor&&!motion.matches&&shapes[cursor.layer]){const a=shapes[cursor.layer],b=shapes[cursor.nextLayer]??a,pts=a.map((p,i)=>({x:p.x+(b[i].x-p.x)*cursor.phase,y:p.y+(b[i].y-p.y)*cursor.phase}));el('path',{d:path(pts),fill:'none',stroke:'var(--ink)','stroke-width':2.6,opacity:.85,'data-sounding-contour':'true'},svg);}
+    q('#body-title').textContent=`${state.reader?'you':'I'} · glyph ${state.selected+1}`;q('#body-layer').max=last;q('#body-layer').value=state.visit;q('#body-layer-label').textContent=String(state.visit).padStart(2,'0');q('#body-layer').disabled=state.busy||state.locked;
+    q('#body-note').textContent=cursor&&!motion.matches?'The bright contour follows playback. Movement between recorded slices is interpolated.':last?'Contours are recorded. The connecting skin is an interpolation. Ripple disturbs this view, then settles.':'One recorded slice. Carry readings to grow its body through time.';
   }
   function sync(){
-    const state=api.read(),N=state.visit+1;getScores();q('#open-body').hidden=sites[state.selected].kind!=='glyph';q('#open-body').disabled=state.busy;
+    const state=api.read(),N=state.visit+1;getScores();q('#open-body').hidden=sites[state.selected].kind!=='glyph';q('#open-body').disabled=state.busy||state.locked;
     q('#frequency-controls').hidden=lens!=='frequency';q('#frequency').max=Math.max(1,Math.floor(N/2));frequency=Math.min(frequency,Number(q('#frequency').max));q('#frequency').value=frequency;q('#frequency').disabled=N<4;
     q('#frequency-label').textContent=N<4?'needs 4 recorded layers':`${frequency} cycles / ${N} rounds`;
     const notes={state:'Touch the field. A ripple passes; the record stays.',relations:'Solid links: matching bits. Dashed links: opposing bits. Bright sites carry stronger local pressure.',change:'Brighter signals changed more in this round.',memory:'Brighter glyphs carry more recent active readings. Archived signals remain available.',frequency:N<4?'Carry at least three times to inspect temporal frequencies.':`Brighter bits vary at ${frequency}/${N} cycles per round. Glyphs remain visible as context.`};q('#lens-note').textContent=notes[lens];
-    const locked=state.session!=='own'||state.visit!==state.history.length-1||state.busy;
+    const locked=state.session!=='own'||state.visit!==state.history.length-1||state.busy||state.locked;
     q('#binary-enabled').disabled=locked;q('#binary-neighbors').disabled=locked;qa('[data-binary]').forEach(e=>e.disabled=locked);
-    q('#body-ripple').disabled=state.busy;drawBody();
+    for(const selector of ['#body-ripple','#ripple-here','#settle','#sound-toggle','#sound-test','#lens','#frequency','#sound-timbre'])q(selector).disabled=state.busy||state.locked||(selector==='#frequency'&&N<4);
+    qa('[data-sound],[data-ripple]').forEach(e=>e.disabled=state.locked);q('#sound-toggle').textContent=state.locked?'Score playback':sound.enabled?'Sound on · M':'Sound off';
+    playback.sync();drawBody();
   }
   function showPreferences(){
     qa('[data-sound]').forEach(input=>{const key=input.dataset.sound,v=sound.settings[key];input.value=key==='pitch'?v:Math.round(v*100);q(`[data-sound-value="${key}"]`).textContent=key==='pitch'?`${Math.round(440*2**((v-69)/12))} Hz`:key==='length'?`${(.15+v*2.1).toFixed(1)} s`:`${Math.round(v*100)}%`;});q('#sound-timbre').value=sound.settings.timbre;
@@ -615,6 +866,7 @@ function createExperience(api){
     qa('[data-binary]').forEach(input=>{input.value=Math.round(binary[input.dataset.binary]*100);q(`[data-binary-value="${input.dataset.binary}"]`).textContent=input.value+'%';});
   }
   async function toggleSound(){
+    if(playback.active()){playback.pause();return;}
     try{if(sound.enabled)sound.mute();else await sound.enable();q('#sound-toggle').setAttribute('aria-pressed',String(sound.enabled));q('#sound-toggle').textContent=sound.enabled?'Sound on · M':'Sound off';q('#sound-status').textContent=sound.enabled?'Listening. Touch the field or Carry a reading.':'Sound is off. Your mix is kept.';q('#sound-status').dataset.enabled=String(sound.enabled);}
     catch(error){q('#sound-status').textContent=error.message;}
   }
@@ -626,7 +878,7 @@ function createExperience(api){
     originals.forEach((node,i)=>{const computed=getComputedStyle(node);for(const key of ['fill','stroke','font-family','font-size'])copies[i].style.setProperty(key,computed.getPropertyValue(key));});
     const background=el('rect',{x:0,y:0,width,height:height+40,fill:color('var(--paper)')},copy);copy.insertBefore(background,copy.firstChild);
     const style=el('style',{},copy);style.textContent=`text{fill:${color('var(--ink)')};font-family:system-ui,sans-serif;font-size:14px}.tiny{font-size:12px}`;
-    const footer=el('text',{x:12,y:height+26,fill:color('var(--ink)')},copy);footer.style.fontSize='12px';footer.textContent=`what we carry · ${q('#body-dialog').open?'body':lens} · ${api.notation.snapshot().alphabet} · ${String(state.visit).padStart(2,'0')}`;
+    const footer=el('text',{x:12,y:height+26,fill:color('var(--ink)')},copy);footer.style.fontSize='12px';footer.textContent=`what we carry · ${q('#body-dialog').open?'body':lens} · ${api.notation.shownView().alphabet} · ${String(state.visit).padStart(2,'0')}`;
     let xml=new XMLSerializer().serializeToString(copy);for(const key of ['ink','paper','muted','line','aligned','opposed'])xml=xml.replaceAll(`var(--${key})`,color(`var(--${key})`));
     const url=URL.createObjectURL(new Blob([xml],{type:'image/svg+xml'}));
     try{const image=new Image();image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=Math.round(width*2);canvas.height=Math.round((height+40)*2);canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);return await new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(Error('Could not make an image.')),'image/png'));}finally{URL.revokeObjectURL(url);}
@@ -640,7 +892,7 @@ function createExperience(api){
   }
   q('#touch-ripple').addEventListener('click',()=>{touch='ripple';q('#touch-ripple').setAttribute('aria-pressed','true');q('#touch-move').setAttribute('aria-pressed','false');});
   q('#touch-move').addEventListener('click',()=>{touch='move';q('#touch-ripple').setAttribute('aria-pressed','false');q('#touch-move').setAttribute('aria-pressed','true');});
-  q('#ripple-here').addEventListener('click',rippleSelected);q('#settle').addEventListener('click',settle);q('#body-ripple').addEventListener('click',rippleSelected);q('#sound-toggle').addEventListener('click',toggleSound);
+  q('#ripple-here').addEventListener('click',rippleSelected);q('#settle').addEventListener('click',()=>{if(water.active){const state=api.read(),s=sites[state.selected];playback.record(capturePerformance(),'still',state.visit,s.x,s.y);}settle();});q('#body-ripple').addEventListener('click',rippleSelected);q('#sound-toggle').addEventListener('click',toggleSound);
   qa('[data-ripple]').forEach(input=>input.addEventListener('input',()=>{water.settings[input.dataset.ripple]=Number(input.value)/100;showPreferences();save();}));
   qa('[data-sound]').forEach(input=>input.addEventListener('input',()=>{const key=input.dataset.sound;sound.settings[key]=Number(input.value)/(key==='pitch'?1:100);if(['pitch','brightness','length'].includes(key))api.notation.keepTone();sound.update();showPreferences();save();}));
   q('#sound-timbre').addEventListener('change',e=>{sound.settings.timbre=e.target.value;api.notation.keepTone();save();});
@@ -650,20 +902,22 @@ function createExperience(api){
   q('#binary-neighbors').addEventListener('change',e=>{binary.neighbors=Number(e.target.value);scoreCache=null;api.staged();});q('#binary-enabled').addEventListener('change',e=>{binary.enabled=e.target.checked;api.staged();});
   q('#lens').addEventListener('change',e=>{lens=e.target.value;scoreCache=null;sync();api.redraw();});q('#frequency').addEventListener('input',e=>{frequency=Number(e.target.value);scoreCache=null;sync();api.redraw();});
   q('#open-body').addEventListener('click',()=>{q('#body-dialog').showModal();drawBody();});q('#close-body').addEventListener('click',()=>q('#body-dialog').close());q('#body-tilt').addEventListener('input',e=>{bodyTilt=Number(e.target.value);drawBody();});q('#body-skin').addEventListener('change',drawBody);
-  q('#body-layer').addEventListener('input',e=>api.visit(Number(e.target.value)));q('#body-view').addEventListener('click',e=>{const mark=e.target.closest('[data-body-layer]');if(mark&&!api.read().busy)api.visit(Number(mark.dataset.bodyLayer));});
+  q('#body-dialog').addEventListener('close',()=>{if(playback.active())playback.stop();});
+  q('#body-layer').addEventListener('input',e=>api.visit(Number(e.target.value)));q('#body-view').addEventListener('click',e=>{const mark=e.target.closest('[data-body-layer]');if(mark&&!api.read().busy&&!api.read().locked)api.visit(Number(mark.dataset.bodyLayer));});
   q('#capture').addEventListener('click',capture);q('#body-capture').addEventListener('click',capture);
   document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||e.repeat||e.target.closest('input,select,textarea,[contenteditable="true"]'))return;const k=e.key.toLowerCase();if(k==='c'){e.preventDefault();capture();}if(k==='r'){e.preventDefault();rippleSelected();}if(k==='m'){e.preventDefault();toggleSound();}});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){settle();sound.mute();q('#sound-toggle').textContent='Sound off';q('#sound-toggle').setAttribute('aria-pressed','false');q('#sound-status').dataset.enabled='false';}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){if(!playback.active())settle();sound.mute();q('#sound-toggle').textContent='Sound off';q('#sound-toggle').setAttribute('aria-pressed','false');q('#sound-status').dataset.enabled='false';}});
   window.addEventListener('pagehide',()=>sound.dispose(),{once:true});new ResizeObserver(drawBody).observe(q('#body-view'));showPreferences();
   return {warp,surface,relations,signalLook,sync,drawBody,
+    performanceSnapshot:playback.snapshot,replacePerformance:playback.replace,flushPerformance:playback.flush,
     pointerDown(world,e){if(touch!=='ripple')return false;pointerTrail={time:performance.now(),x:world.x,y:world.y};ripple(world.x,world.y);return true;},
     pointerMove(world){if(!pointerTrail)return false;const now=performance.now();if(now-pointerTrail.time>115&&Math.hypot(world.x-pointerTrail.x,world.y-pointerTrail.y)>.018){pointerTrail={time:now,x:world.x,y:world.y};ripple(world.x,world.y);}return true;},
     pointerUp(){pointerTrail=null;},
     stagedDynamics(){return binary.enabled?{...binary}:null;},
     dynamicsSnapshot(){return {...binary};},
     restoreDynamics(value){if(!value)return;Object.assign(binary,value);q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;scoreCache=null;showPreferences();},
-    onCarry(previous,next){scoreCache=null;const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x,voice:api.notation.voice(s.id,next.index,s.kind)});ripple(s.x,s.y,next.index);},
-    onHistoryChange(){scoreCache=null;settle();const settings=api.read().history.at(-1).action.dynamics;Object.assign(binary,binaryDefaults,settings??{});q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;showPreferences();}
+    onCarry(previous,next){scoreCache=null;playback.historyChanged();const s=sites[api.read().selected];sound.note({id:s.id,kind:'carry',intensity:.8,x:s.x,voice:api.notation.voice(s.id,next.index,s.kind)});ripple(s.x,s.y,next.index,'carry');},
+    onHistoryChange(){scoreCache=null;settle();playback.historyChanged();const settings=api.read().history.at(-1).action.dynamics;Object.assign(binary,binaryDefaults,settings??{});q('#binary-enabled').checked=binary.enabled;q('#binary-neighbors').value=binary.neighbors;showPreferences();}
   };
 }
 
@@ -695,21 +949,22 @@ function registerExpressionTools(context,actions){
 
 
 
+
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],svg=$('#field'),NS='http://www.w3.org/2000/svg';
 const ink='var(--ink)',paper='var(--paper)',muted='var(--muted)',line='var(--line)';
-const storageKey='dn-expression-context-7',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const storageKey='dn-expression-context-8',motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 let actions=[],history=[origin()],fields=clone(initialFields),mode='union',reader=0,selected=27,visit=0,tilt=0;
-let pending={},markEdits={},initialPresentation=null,omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
+let pending={},markEdits={},initialPresentation=null,initialPerformance=null,transportLock=false,omitted=null,alternative=null,busy=false,animation=null,dirty=true,allParents=false,session='own';
 let W=0,H=0,projection,project,hits=[],handles=[],drag=null,effectsCache=new Map();
 const sessionCache={};
-try{const saved=localStorage.getItem(storageKey)||localStorage.getItem('dn-expression-context-6')||localStorage.getItem('dn-expression-context-5');if(saved){const data=JSON.parse(saved),value=importHistory(data);initialPresentation=data.presentation;actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
+try{const saved=localStorage.getItem(storageKey)||localStorage.getItem('dn-expression-context-7')||localStorage.getItem('dn-expression-context-6')||localStorage.getItem('dn-expression-context-5');if(saved){const data=JSON.parse(saved),value=importHistory(data),performance=importPerformance(data.performance,value.history);initialPresentation=data.presentation;initialPerformance=performance;actions=value.actions;history=value.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;dirty=false;}}catch{}
 const number=r=>String(r).padStart(2,'0'),smooth=t=>t*t*(3-2*t),isGlyph=()=>sites[selected].kind==='glyph';
 const recordLabel=ref=>{const [r,id,j]=ref.split(':').map(Number);return `${number(r)} · ${who(j)} · ${name(id)}`;};
 function element(tag,attrs={},parent=svg){const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.append(el);return el;}
 const groups={};['planes','environment','water','relations','threads','marks','motion','fields','handles'].forEach(key=>groups[key]=element('g',{'data-group':key}));
-const notation=createNotation({read:()=>({history,selected,visit,pending:markEdits,busy,session,kind:sites[selected].kind,kinds:sites.map(s=>s.kind)}),stage:(id,value)=>{if(busy||session!=='own'||visit!==history.length-1)return;markEdits[id]=value;dirty=true;refresh();},redraw:()=>{refresh();persist();},visit:r=>{visit=r;refresh();}});
+const notation=createNotation({read:()=>({history,selected,visit,pending:markEdits,busy:busy||transportLock,session,kind:sites[selected].kind,kinds:sites.map(s=>s.kind)}),stage:(id,value)=>{if(busy||transportLock||session!=='own'||visit!==history.length-1)return;markEdits[id]=value;dirty=true;refresh();},redraw:()=>{refresh();persist();},visit:r=>{visit=r;refresh();}});
 notation.restore(initialPresentation);notation.patterns(svg,'field');notation.patterns($('#comparison'),'comparison');
-const senses=createExperience({notation,read:()=>({history,fields,reader,selected,visit,tilt,session,busy}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},staged:()=>{dirty=true;refresh();}});
+const senses=createExperience({notation,performance:initialPerformance,read:()=>({history,fields,reader,selected,visit,tilt,session,busy,locked:transportLock}),redraw:()=>draw(),visit:r=>{visit=r;allParents=false;refresh();},playbackVisit:(r,j)=>{visit=r;reader=j;refresh();},lock:value=>{transportLock=value;refresh();},persist:()=>persist(),staged:()=>{dirty=true;refresh();}});
 const path=points=>points.map((p,i)=>(i?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ');
 const curve=(a,b,bend=0)=>`M ${a.x} ${a.y} C ${a.x+bend} ${(a.y+b.y)/2-12} ${b.x+bend} ${(a.y+b.y)/2-12} ${b.x} ${b.y}`;
 function camera(){
@@ -788,7 +1043,7 @@ function draw(){
   senses.surface(groups.water,project);senses.relations(groups.relations,project);drawEdges();
   for(let r=0;r<=last;r++)if(r!==visit)sites.forEach(s=>drawNode(s.id,r));
   sites.forEach(s=>drawNode(s.id,visit,true));
-  const frames=visit===last?fields:history[visit].fields;
+  const frames=notation.performanceFields(visit)??(visit===last?fields:history[visit].fields);
   frames.forEach((f,j)=>{
     const focused=j===reader,points=Array.from({length:81},(_,i)=>{const a=i/80*Math.PI*2;return project(f.x+Math.cos(a)*f.w/2,f.y+Math.sin(a)*f.h/2,z(visit));});
     element('path',{d:path(points)+' Z',fill:ink,'fill-opacity':.012,stroke:ink,'stroke-width':focused?1.1:.8,opacity:focused?.6:.35,...(j?{'stroke-dasharray':'5 5'}:{})},groups.fields);
@@ -830,7 +1085,7 @@ function renderStory(){
     }
     if(!events.length){const p=document.createElement('p');p.className='small';p.textContent='Carry a reading. Its later encounters will appear here.';list.append(p);}
     events.forEach(({r,event})=>{
-      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(r===visit));button.disabled=busy;
+      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(r===visit));button.disabled=busy||transportLock;
       const numberEl=document.createElement('span');numberEl.textContent=number(r);const caption=document.createElement('span');caption.textContent=event.kind;
       button.append(numberEl,caption);button.addEventListener('click',()=>{visit=r;refresh();});list.append(button);
     });
@@ -849,12 +1104,13 @@ function renderStory(){
       const sources=$('#sources');sources.replaceChildren();
       const parents=effects(),shown=allParents?parents:parents.filter(e=>e.effect>1e-7).slice(0,3);
       shown.forEach(entry=>{
-        const button=document.createElement('button');button.type='button';button.className='parent';button.setAttribute('aria-pressed',String(entry.ref===omitted));button.disabled=busy;
+        const button=document.createElement('button');button.type='button';button.className='parent';button.setAttribute('aria-pressed',String(entry.ref===omitted));button.disabled=busy||transportLock;
         const title=document.createElement('span');title.textContent=recordLabel(entry.ref);const note=document.createElement('span');note.className='source-note';note.textContent=entry.ref===omitted?'removed':'omit ↗';button.append(title,note);button.setAttribute('aria-label','Replay without '+recordLabel(entry.ref));button.addEventListener('click',()=>setComparison(entry.ref));sources.append(button);
       });
       $('#more-sources').hidden=parents.length<=3;$('#more-sources').textContent=allParents?'Show strongest effects':`All ${parents.length} recorded parents`;
     }
   }
+  for(const id of ['#omit-own','#clear-replay','#more-sources'])$(id).disabled=busy||transportLock;
   const currentRef=`${visit}:${selected}:${reader}`;
   $('#omit-own').hidden=!form||!state.carried.includes(currentRef);$('#omit-own').textContent=currentRef===omitted?'Restore this carry':'Replay without this carry';$('#omit-own').onclick=()=>setComparison(currentRef);
   $('#replay-state').hidden=!omitted;
@@ -865,25 +1121,26 @@ function renderStory(){
     const changedOthers=new Set();history.forEach((r,index)=>sites.filter(s=>s.kind==='glyph').forEach(s=>[0,1].forEach(j=>{if((s.id!==selected||j!==reader)&&distance(r.forms[s.id][j],alternative[index].forms[s.id][j])>1e-7)changedOthers.add(`${s.id}:${j}`);})));
     $('#replay-result').textContent=count?`${count} layers differ for this reading; first at ${number(first)}. Later actions stay fixed.`:changedOthers.size?`This reading holds. ${changedOthers.size} other readings differ in the replay. Dotted contours mark the alternatives.`:Number(omitted.split(':')[0])===history.length-1?'No later encounter yet. Carry again to test this contribution.':'The recorded replay holds. Other contributions may duplicate or counteract this one.';
   }
-  $('#return').hidden=visit===history.length-1||session==='encounter';$('#return').disabled=busy;
+  $('#return').hidden=visit===history.length-1||session==='encounter';$('#return').disabled=busy||transportLock;
 }
 // Imported separately to keep every comparison on the same interpretation path.
 
 const localOnlyReading=(form,id,j,r)=>interpret(id,j,form.local,[],r,form.seenRound);
 function controls(){
-  const historical=visit!==history.length-1,guided=session==='encounter',state=history[visit],f=historical?state.fields[reader]:fields[reader];
-  $$('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=busy;});
-  $$('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=busy;});
-  $$('[data-field]').forEach(input=>{const key=input.dataset.field;input.value=Math.round(f[key]*100);input.disabled=historical||busy||guided;$(`[data-value="${key}"]`).textContent=Math.round(f[key]*100)+'%';});
-  $('#rule').value=f.rule;$('#rule').disabled=historical||busy||guided;$('#mode').value=historical?state.mode:mode;$('#mode').disabled=historical||busy||guided;
-  $('#angle').textContent=tilt+'°';$('#layer').max=history.length-1;$('#layer').value=visit;$('#layer').disabled=busy;$('#layer-label').textContent=`${number(visit)} / ${number(history.length-1)}`;
-  $('#present').disabled=!historical||busy;$('#carry').disabled=historical||busy;
-  $('#carry').textContent=busy?'Carrying…':'Carry →';$('#flip').disabled=historical||busy||guided;$('#follow').value=selected;
+  const workLocked=busy||transportLock;
+  const historical=visit!==history.length-1,guided=session==='encounter',state=history[visit],f=(notation.performanceFields(visit)??(historical?state.fields:fields))[reader];
+  $$('[data-reader]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.reader)===reader));b.disabled=workLocked;});
+  $$('[data-session]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.session===session));b.disabled=workLocked;});
+  $$('[data-field]').forEach(input=>{const key=input.dataset.field;input.value=Math.round(f[key]*100);input.disabled=historical||workLocked||guided;$(`[data-value="${key}"]`).textContent=Math.round(f[key]*100)+'%';});
+  $('#rule').value=f.rule;$('#rule').disabled=historical||workLocked||guided;$('#mode').value=historical?state.mode:mode;$('#mode').disabled=historical||workLocked||guided;
+  $('#angle').textContent=tilt+'°';$('#layer').max=history.length-1;$('#layer').value=visit;$('#layer').disabled=workLocked;$('#layer-label').textContent=`${number(visit)} / ${number(history.length-1)}`;
+  $('#present').disabled=!historical||workLocked;$('#carry').disabled=historical||workLocked;
+  $('#carry').textContent=busy?'Carrying…':'Carry →';$('#flip').disabled=historical||workLocked||guided;$('#follow').value=selected;$('#follow').disabled=workLocked;
   $('.carry-controls').hidden=guided;
-  $('#reopen').disabled=busy;$('#download').disabled=busy;$('#guide-next').disabled=busy||actions.length>=encounter.length;
+  $('#reopen').disabled=workLocked;$('#download').disabled=workLocked;$('#guide-next').disabled=workLocked||actions.length>=encounter.length;
   const altered=state.events.filter(e=>e.delta>=TURNING_POINT),passive=altered.filter(e=>e.attended===false).length;
   const changedBits=visit?sites.filter(s=>s.kind==='bit'&&state.bits[s.id]!==history[visit-1].bits[s.id]).length:0;
-  $('#status').textContent=busy?'A reading enters the next encounter.':historical?'An earlier layer. Every signal remains available.':dirty?'Your changes enter on Carry.':state.action.type==='return'?'Earlier record, new layer.':visit?`${altered.length} readings changed${passive?' · '+passive+' outside attention':''}${changedBits?' · '+changedBits+' bits flipped':''}`:'Choose what enters the next encounter.';
+  $('#status').textContent=transportLock?'Playing the saved score.':busy?'A reading enters the next encounter.':historical?'An earlier layer. Every signal remains available.':dirty?'Your changes enter on Carry.':state.action.type==='return'?'Earlier record, new layer.':visit?`${altered.length} readings changed${passive?' · '+passive+' outside attention':''}${changedBits?' · '+changedBits+' bits flipped':''}`:'Choose what enters the next encounter.';
   $('#retained').textContent='64 signals retained';
   $('#guide').hidden=session!=='encounter';
   if(session==='encounter'){
@@ -898,11 +1155,11 @@ function controls(){
 function refresh(){draw();controls();renderStory();}
 function persist(){
   if(session!=='own')return;
-  try{localStorage.setItem(storageKey,JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot()}));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
+  try{localStorage.setItem(storageKey,JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot(),performance:senses.performanceSnapshot()}));$('#storage-status').textContent='Saved on this device. Download a portable copy to keep it.';}
   catch{$('#storage-status').textContent='This session is in memory. Download history to keep it.';}
 }
 function commit(action){
-  if(busy)return;
+  if(busy||transportLock)return;
   let complete;const completion=new Promise(resolve=>complete=resolve);
   const previous=history.at(-1);actions.push(clone(action));history.push(advance(previous,action,history));visit=history.length-1;pending={};markEdits={};dirty=false;effectsCache.clear();
   if(omitted)alternative=replay(actions,omitted);
@@ -914,13 +1171,14 @@ function commit(action){
   return completion;
 }
 function carry(){if(visit!==history.length-1||session!=='own')return;const dynamics=senses.stagedDynamics();return commit({type:'carry',fields:clone(fields),mode,edits:clone(pending),...(Object.keys(markEdits).length?{markEdits:clone(markEdits)}:{}),...(dynamics?{dynamics,seed:crypto.getRandomValues(new Uint32Array(1))[0]}:{})});}
-function changeField(key,value){if(busy||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
+function changeField(key,value){if(busy||transportLock||visit!==history.length-1||session!=='own')return;fields[reader][key]=value;normalize(fields[reader]);dirty=true;refresh();}
 function switchSession(target){
-  if(target===session||busy)return;
-  sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),markEdits:clone(markEdits),dirty,dynamics:senses.dynamicsSnapshot()};
+  if(target===session||busy||transportLock)return;
+  senses.flushPerformance();
+  sessionCache[session]={actions:clone(actions),fields:clone(fields),mode,reader,selected,visit,pending:clone(pending),markEdits:clone(markEdits),performance:senses.performanceSnapshot(),dirty,dynamics:senses.dynamicsSnapshot()};
   const saved=sessionCache[target];session=target;
   actions=saved?.actions??[];history=replay(actions);fields=saved?.fields??clone(initialFields);mode=saved?.mode??'union';reader=saved?.reader??0;selected=saved?.selected??27;visit=saved?.visit??0;pending=saved?.pending??{};markEdits=saved?.markEdits??{};dirty=saved?.dirty??true;omitted=null;alternative=null;effectsCache.clear();
-  senses.onHistoryChange();
+  senses.replacePerformance(saved?.performance);senses.onHistoryChange();
   senses.restoreDynamics(saved?.dynamics);
   $('#session-note').textContent=target==='own'?'Two readers · one device · a complete local history':'An authored sequence · your own field is kept separately';refresh();
   if(target==='encounter')$('#storage-status').textContent='The guided encounter is separate. Download it to keep this example.';else persist();
@@ -937,18 +1195,18 @@ $$('[data-session]').forEach(b=>b.addEventListener('click',()=>switchSession(b.d
 $$('[data-field]').forEach(input=>input.addEventListener('input',()=>changeField(input.dataset.field,Number(input.value)/100)));
 $('#rule').addEventListener('change',e=>{fields[reader].rule=e.target.value;dirty=true;refresh();});
 $('#mode').addEventListener('change',e=>{mode=e.target.value;dirty=true;refresh();});
-$('#flip').addEventListener('click',()=>{if(isGlyph()||busy||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
+$('#flip').addEventListener('click',()=>{if(isGlyph()||busy||transportLock||visit!==history.length-1)return;const base=history.at(-1).bits[selected],value=1-(pending[selected]??base);if(value===base)delete pending[selected];else pending[selected]=value;dirty=true;refresh();});
 $('#more-sources').addEventListener('click',()=>{allParents=!allParents;refresh();});
 $('#clear-replay').addEventListener('click',()=>{omitted=null;alternative=null;refresh();});
-$('#return').addEventListener('click',()=>{const from=visit;if(from===history.length-1||busy)return;commit({type:'return',from,id:selected,fields:clone(fields),mode});});
+$('#return').addEventListener('click',()=>{const from=visit;if(from===history.length-1||busy||transportLock)return;commit({type:'return',from,id:selected,fields:clone(fields),mode});});
 $('#guide-next').addEventListener('click',()=>{
-  const step=encounter[actions.length];if(!step||busy)return;selected=27;reader=[0,1,1,0,0,0][actions.length]??0;
+  const step=encounter[actions.length];if(!step||busy||transportLock)return;selected=27;reader=[0,1,1,0,0,0][actions.length]??0;
   if(step.type==='return'){reader=0;commit({type:'return',from:step.from,id:step.id,fields:clone(fields),mode});}
   else{fields=clone(step.fields);mode='union';commit({type:'carry',fields:clone(fields),mode,edits:{}});}
 });
 function pointer(e){const rect=svg.getBoundingClientRect();return{x:(e.clientX-rect.left)*W/rect.width,y:(e.clientY-rect.top)*H/rect.height};}
 svg.addEventListener('pointerdown',e=>{
-  if(busy||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
+  if(busy||transportLock||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
   const handle=historic?null:handles.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
   const hit=hits.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
   if(senses.pointerDown(unproject(p.x,p.y,visit),e)){if(hit&&hit.d<14)selectSignal(hit.id);svg.setPointerCapture(e.pointerId);e.preventDefault();return;}
@@ -965,25 +1223,25 @@ svg.addEventListener('pointermove',e=>{
 function stop(e){drag=null;senses.pointerUp();if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);draw();}
 svg.addEventListener('pointerup',stop);svg.addEventListener('pointercancel',stop);
 $('#download').addEventListener('click',()=>{
-  const data=JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot()}),url=URL.createObjectURL(new Blob([data],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='what-we-carry-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#storage-status').textContent='Downloaded the recorded history, including every layer.';
+  const data=JSON.stringify({...exportHistory(actions,history),presentation:notation.snapshot(),performance:senses.performanceSnapshot()}),url=URL.createObjectURL(new Blob([data],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='what-we-carry-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#storage-status').textContent='Downloaded every layer and its recorded performance.';
 });
 $('#reopen').addEventListener('click',()=>$('#history-file').click());
 $('#history-file').addEventListener('change',async e=>{
-  const file=e.target.files[0];if(!file)return;
-  try{const data=JSON.parse(await file.text()),restored=importHistory(data);switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};markEdits={};dirty=false;omitted=null;alternative=null;effectsCache.clear();notation.restore(data.presentation);senses.onHistoryChange();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened.`;}
-  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05, 06, or 07.';}
+  const file=e.target.files[0];if(!file||busy||transportLock)return;
+  try{const data=JSON.parse(await file.text()),restored=importHistory(data),performance=importPerformance(data.performance,restored.history);switchSession('own');actions=restored.actions;history=restored.history;fields=clone(history.at(-1).fields);mode=history.at(-1).mode;visit=history.length-1;pending={};markEdits={};dirty=false;omitted=null;alternative=null;effectsCache.clear();notation.restore(data.presentation);senses.replacePerformance(performance);senses.onHistoryChange();refresh();persist();$('#storage-status').textContent=`${history.length} complete layers reopened with their saved gestures.`;}
+  catch{$('#storage-status').textContent='Could not reopen this file. Choose a complete history from study 05–08 with valid recorded gestures.';}
   e.target.value='';
 });
 function resize(){const box=svg.getBoundingClientRect();W=box.width;H=box.height;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);draw();renderStory();}
 senses.onHistoryChange();resize();controls();persist();new ResizeObserver(resize).observe(svg);
 
 
-const readState=()=>({session,layer:visit,present:history.length-1,busy,reader,selected,fields:clone(fields),mode,omitted,carried:[...history[visit].carried]});
+const readState=()=>({session,layer:visit,present:history.length-1,busy:busy||transportLock,reader,selected,fields:clone(fields),mode,omitted,carried:[...history[visit].carried]});
 registerExpressionTools(document.modelContext,{
   read:readState,
-  stage(input){if(busy||session!=='own'||visit!==history.length-1)throw Error('Return to the present of Your field before staging a reading.');reader=input.reader;fields[reader]=normalize({...fields[reader],...input.field});dirty=true;refresh();return readState();},
-  async carry(){if(busy||session!=='own'||visit!==history.length-1)throw Error('Carry is available at the present of Your field.');await carry();return readState();},
-  compare(ref){if(busy)throw Error('Wait for Carry to finish.');if(ref!==null&&!history.some(r=>r.carried.includes(ref)))throw Error('Choose a recorded carry reference.');omitted=ref;alternative=ref?replay(actions,ref):null;refresh();return readState();}
+  stage(input){if(busy||transportLock||session!=='own'||visit!==history.length-1)throw Error('Return to the present of Your field before staging a reading.');reader=input.reader;fields[reader]=normalize({...fields[reader],...input.field});dirty=true;refresh();return readState();},
+  async carry(){if(busy||transportLock||session!=='own'||visit!==history.length-1)throw Error('Carry is available at the present of Your field.');await carry();return readState();},
+  compare(ref){if(busy||transportLock)throw Error('Wait for Carry to finish.');if(ref!==null&&!history.some(r=>r.carried.includes(ref)))throw Error('Choose a recorded carry reference.');omitted=ref;alternative=ref?replay(actions,ref):null;refresh();return readState();}
 });
 
 </script>

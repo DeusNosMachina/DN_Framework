@@ -18,9 +18,11 @@ Guidance lives inside each expression, through a "How to See" panel or expandabl
 
 [Open the expression](https://deusnosmachina.github.io/DN_Framework/expressions/what-we-carry.html) · [Single-file source](what-we-carry.html)
 
-Two observation fields read the same binary signals differently. Carry a reading forward, follow its influence through later layers, and replay the history without a contribution. Begin with **Follow an encounter** for a guided sequence, or **Your field** to explore. Ripple the field, shape its sound, inspect different lenses, or open a glyph’s body through time. Optional classical binary interactions evolve on Carry. Thirteen expandable captions explain the drawing rules and their limits.
+Two observation fields read the same binary signals differently. Carry a reading forward, follow its influence through later layers, and replay the history without a contribution. Begin with **Follow an encounter** for a guided sequence, or **Your field** to explore. Ripple the field, shape its sound, inspect different lenses, or open a glyph’s body through time. Optional classical binary interactions evolve on Carry. Fifteen expandable captions explain the drawing rules and their limits.
 
 Choose from the seven binary alphabets in Russell’s page, each with a coordinated surface and sound treatment. Freeform lets each signal keep its own marks, surface, and tuning; Carry records the assignments for later inspection and retrieval.
+
+Play the field through time, or play the selected glyph’s body. Saved ripple gestures restore each layer’s visual and sonic settings; contour geometry shapes the body’s voice. Pause, seek, loop, adjust the pace and mix, and export the same rendered audio as stereo WAV. Untouched layers use a labeled generated scan or silence. The history download preserves gestures, instrument settings, and composition choices alongside the unchanged signal records.
 
 Created in dialogue with [Russell Foltz-Smith's pattern recognition pattern](https://pattern-recognition-pattern.un1crom.chatgpt.site/). Sessions stay in each visitor's browser; histories can be downloaded and reopened. Capture copies the current view as a PNG, with a download fallback. Sound is opt-in.
 
