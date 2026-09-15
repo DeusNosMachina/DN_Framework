@@ -54,14 +54,94 @@ main>.history-tools,main>.note-index,main>footer{width:var(--lower-column-width)
 
 #body-scope{min-width:145px}#body-dialog .sense-bar>label:first-child{min-width:195px}#body-attention-details{font-size:.8125rem}#body-attention-details p{line-height:1.5;margin-top:8px}#body-source-context{font-size:.8125rem}
 
+/* Study 17: the canvas and its controls share one visible working area. */
+.workspace{grid-template-columns:minmax(0,1fr) 390px;gap:22px}
+.inspector{display:flex;flex-direction:column;min-height:0}
+.workbench-nav{flex:none;background:var(--panel);border-radius:10px 10px 0 0;z-index:4}
+.workbench-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px 0}
+.workbench-scroll-hint{font-size:.75rem}
+.inspector-tabs{padding:3px 8px 0;gap:0}
+.inspector-tabs [role=tab]{min-width:0;padding:11px 6px;font-size:.8125rem}
+.inspector [role=tabpanel]{min-height:0;max-height:none;padding:18px;scrollbar-gutter:stable;scrollbar-width:thin}
+.inspector #field-panel{padding:16px}
+.inspector .observe-dock{padding:0 0 16px;border:0;border-bottom:1px solid var(--line);border-radius:0}
+.inspector .observation-controls .switches{flex-basis:100%}
+.inspector .observation-controls #adjust{flex-basis:100%}
+.inspector .view-options{display:block;margin-top:12px}
+.inspector .view-options>summary{margin-left:0}
+.inspector .view-options-content{padding:12px}
+.inspector .view-controls>label:first-child{min-width:0;max-width:100%;grid-template-columns:auto 44px minmax(60px,1fr)}
+.inspector .moment-note{display:block;padding:14px 0}
+.inspector .moment-note p{margin-top:5px;font-size:.8125rem}
+.inspector .moment-note .note-link{margin-top:4px}
+.inspector .timeline-dock{margin-top:8px;padding-top:16px}
+.inspector .score-options{grid-template-columns:1fr 1fr}
+.inspector .source-panel{margin:0;padding:0;border:0}
+.inspector .source-panel>summary .small{display:block;margin:3px 0 0;font-size:.8125rem}
+.inspector .source-row>label{min-width:0;flex-wrap:wrap}
+.inspector .source-row select{max-width:100%}
+.inspector .source-row button,.inspector .source-heading button{font-size:.8125rem}
+.inspector .source-heading>span{flex-basis:100%;font-size:.8125rem}
+.inspector .source-row input[type=number]{width:70px}
+.inspector .source-levels{gap:12px}
+.inspector .story-list{max-height:none;overflow:visible}
+.inspector>#experience-status{flex:none;font-size:.75rem;padding:8px 16px;border-top:1px solid var(--soft-line)}
+.inspector>#experience-status:empty{padding:0;border:0}
+.carry-dock{padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-top:10px}
+.carry-dock .carry-controls{margin:0;flex-wrap:wrap;gap:8px}
+.carry-dock .carry-controls .primary{min-width:110px;margin-left:auto}
+.carry-dock .status{font-size:.75rem;flex-wrap:wrap}
+.carry-dock #carry-note{font-size:.75rem;margin-top:7px}
+.field-to-controls,.workbench-return{display:none;font-size:.8125rem;text-underline-offset:3px}
+#workbench,#field{scroll-margin-top:12px}
+@media(min-width:901px){
+  .field-column,.inspector{position:sticky;top:16px;align-self:start}
+  .inspector{height:var(--workbench-height,calc(100svh - 205px))}
+  .inspector [role=tabpanel]{flex:1;overflow-y:auto;overscroll-behavior-y:contain}
+  .field-column #field{height:var(--canvas-height,clamp(180px,calc(100svh - 500px),580px))}
+  .field-column .ripple-strip{padding:8px 2px 0;gap:4px}
+  .field-column .ripple-strip>.note-link{display:none}
+  #field-stage:fullscreen{grid-template-columns:minmax(0,1fr) 390px;padding:16px;gap:20px}
+  #field-stage:fullscreen .field-column,#field-stage:fullscreen .inspector{top:0}
+  #field-stage:fullscreen .inspector{height:var(--workbench-height,calc(100svh - 32px))}
+  #field-stage:fullscreen #field{height:var(--canvas-height,clamp(180px,calc(100svh - 300px),760px))}
+}
+@media(min-width:901px) and (max-width:1150px){.workspace,#field-stage:fullscreen{grid-template-columns:minmax(0,1fr) 350px;gap:18px}.inspector [role=tabpanel]{padding:16px}.field-column .scene-toolbar .alphabet-bar{flex-basis:100%}}
+@media(max-width:900px){
+  .workspace,#field-stage:fullscreen{grid-template-columns:1fr;gap:16px}
+  .field-column,.inspector{position:static;height:auto}
+  .inspector [role=tabpanel]{max-height:none;overflow:visible;scrollbar-gutter:auto}
+  .workbench-nav{position:sticky;top:0;border-bottom:1px solid var(--line)}
+  .workbench-scroll-hint{display:none}
+  .workbench-return,.field-to-controls{display:inline-block}
+  .field-to-controls{padding:7px 6px}
+  .inspector .instrument-settings .dial-grid{grid-template-columns:1fr 1fr}
+  .carry-dock .carry-controls label{flex-wrap:wrap}
+}
+@media(max-width:420px){.inspector [role=tabpanel],.inspector #field-panel{padding:14px}.inspector-tabs [role=tab]{padding:11px 4px}.workbench-heading{padding:12px 14px 0}.inspector .source-row select{max-width:230px}}
+
 </style>
 </head>
 <body>
 <a class="skip" href="#field-controls">Skip to the field</a>
 <main>
-<header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 16</p><h1>what we carry</h1></div><div class="display-tools"><label>Appearance <select id="theme"><option value="dark">Dark</option><option value="light">Light</option></select></label><button id="show-shortcuts">Shortcuts · ?</button></div></header>
+<header class="masthead"><div><p class="eyebrow">DEUS NOS MACHINA / WORKING STUDY 17</p><h1>what we carry</h1></div><div class="display-tools"><label>Appearance <select id="theme"><option value="dark">Dark</option><option value="light">Light</option></select></label><button id="show-shortcuts">Shortcuts · ?</button></div></header>
 <div class="session-bar"><div class="switches" aria-label="Choose a session"><button data-session="own" aria-pressed="true">Your field</button><button data-session="encounter" aria-pressed="false">Follow an encounter</button></div><button id="reset-field" class="quiet reset-action">Reset field</button><span class="small" id="session-note">Two readers · one device · a complete local history</span></div>
-<section id="field-stage" class="workspace" aria-label="A field and its history"><div class="field-column"><details id="source-panel" class="source-panel"><summary>Listen to a source <span class="small">A recording, read another way</span></summary>
+<section id="field-stage" class="workspace" aria-label="A field and its history"><div class="field-column"><div class="scene"><div class="scene-toolbar"><div class="alphabet-bar"><label>Alphabet <select id="alphabet"></select></label></div><label class="lens-select">Lens <select id="lens"><option value="state">State</option><option value="relations">Relations</option><option value="change">Change</option><option value="memory">Memory</option><option value="frequency">Frequency</option></select></label><a class="notes-jump" href="#notes-index">Field notes</a></div><div class="scene-subtoolbar"><span id="alphabet-legend" class="small"></span></div><svg id="field" tabindex="-1" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Touch to disturb a wave surface. Use Move fields to change observation. The alphabet renders stored binary states; solid and dashed contours are separate readers. Ripple the selected signal with the button below as a keyboard alternative.</desc></svg><div class="scene-actions"><div class="switches" aria-label="Touch behavior"><button id="touch-ripple" aria-pressed="true">Ripple</button><button id="touch-move" aria-pressed="false">Move fields</button></div><div class="scene-utilities"><a class="field-to-controls" href="#workbench">Controls ↓</a><button id="capture">Capture · C</button><button id="full-view">Full screen · F</button></div></div></div>
+<div class="carry-dock"><div class="carry-controls"><label>Carry from <select id="mode"><option value="union">either field ∪</option><option value="intersection">both fields ∩</option></select></label><button id="carry" class="primary">Carry · N →</button></div><p id="carry-note" class="small" aria-live="polite"></p><div class="status" aria-live="polite"><span id="status">Choose what enters the next encounter.</span><span id="retained">64 signals retained</span></div></div>
+<div class="ripple-strip"><div class="ripple-actions"><button id="ripple-here">Ripple this signal · R</button><button id="settle" class="quiet">Still the water</button><button id="sound-toggle" aria-pressed="false">Sound off</button></div><button type="button" class="note-link" data-note="7">Water & record <span aria-hidden="true">↗</span></button></div><div class="guided" id="guide" hidden><span class="eyebrow" id="guide-step">AUTHORED ENCOUNTER</span><strong id="guide-title"></strong><p id="guide-caption"></p><button id="guide-next" class="primary">Next encounter →</button></div></div><aside id="workbench" class="inspector" aria-label="Field workbench" tabindex="-1"><div class="workbench-nav"><div class="workbench-heading"><span class="eyebrow">WORKBENCH</span><span class="workbench-scroll-hint small">Scroll the controls</span><a class="workbench-return" href="#field">Back to field ↑</a></div><div class="inspector-tabs" role="tablist" aria-label="Field workbench"><button id="field-tab" role="tab" aria-selected="true" aria-controls="field-panel" tabindex="0">Field</button><button id="source-tab" role="tab" aria-selected="false" aria-controls="source-workbench" tabindex="-1">Source</button><button id="signal-tab" role="tab" aria-selected="false" aria-controls="signal-panel" tabindex="-1">Signal</button><button id="instrument-tab" role="tab" aria-selected="false" aria-controls="instrument-panel" tabindex="-1">Instrument</button></div></div><section id="field-panel" role="tabpanel" aria-labelledby="field-tab" tabindex="0"><section class="observe-dock" aria-labelledby="observe-title"><div class="section-heading"><h2 id="observe-title"><span class="step">01</span> Observe & carry</h2><button type="button" class="note-link" data-note="2">What carries? <span aria-hidden="true">↗</span></button></div><div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust" open><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="160" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="160" aria-label="Observation field height"></label></div><p class="small">Fields can reach beyond this window. Their centers remain within it; only visible signals can be observed.</p><div class="note-links"><button type="button" class="note-link" data-note="19">The shape of attention <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="17">Beyond the window <span aria-hidden="true">↗</span></button></div></details></div></section><details class="view-options" id="view-options"><summary>View options</summary><div class="view-options-content"><div class="view-controls" id="field-controls"><label>Tilt <output id="angle">0°</output><input id="tilt" type="range" min="0" max="78" value="0" aria-label="Tilt the field through time"></label><label class="check"><input id="threads" type="checkbox" checked>Story threads</label></div><div class="alphabet-options"><label class="check"><input id="alphabet-history" type="checkbox" checked> Layer alphabets</label><label class="check"><input id="alphabet-shape" type="checkbox" checked> Shape from alphabet</label></div><p id="alphabet-provenance" class="small"></p><p id="alphabet-note" class="small"></p><p id="lens-note" class="small">Touch the field. A ripple passes; the record stays.</p><div class="note-links"><button type="button" class="note-link" data-note="10">Ways of seeing <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="12">Alphabet & shape <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="6">Story threads <span aria-hidden="true">↗</span></button></div></div></details><div id="frequency-controls" class="frequency-controls" hidden><label>Frequency <output id="frequency-label"></output><input id="frequency" type="range" min="1" max="1" value="1" aria-label="Temporal frequency band"></label></div><div class="moment-note"><span class="eyebrow">IN THIS MOMENT</span><p id="moment-copy">Two readers can attend to the same signals and preserve different relationships.</p><button type="button" id="moment-more" class="note-link" data-note="2" aria-label="Read more: Shared attention">Read more <span aria-hidden="true">↗</span></button></div><section class="timeline-dock" aria-labelledby="timeline-title"><div class="section-heading"><h2 id="timeline-title"><span class="step">02</span> Explore time</h2><button type="button" class="note-link" data-note="3">What stays? <span aria-hidden="true">↗</span></button></div><div class="time-controls"><label>Layer <output id="layer-label">00 / 00</output><input id="layer" type="range" min="0" max="0" value="0" aria-label="Visit a recorded layer"></label><button id="present" class="quiet" disabled>Present ↑</button></div><div class="body-access"><button id="open-body">History body · B</button><span id="body-hint" class="small">One slice now; Carry gives it depth.</span></div><div class="score-transport" aria-label="Play the field through time">
+        <div class="score-buttons"><button id="score-play">Play field</button><button id="score-stop" disabled>Stop</button><button id="score-export">Export WAV</button><label class="check"><input id="score-loop" type="checkbox">Loop</label></div>
+        <label class="score-seek"><span id="score-time">0:00 / 0:00</span><input id="score-position" type="range" min="0" max="1" step="0.01" value="0" aria-label="Seek through the score" disabled></label>
+        <p id="score-status" class="small" aria-live="polite">Play enables audio. P plays or pauses.</p>
+        <details><summary>Playback settings</summary><div class="score-options">
+          <label>First layer <input id="score-from" type="number" min="0" max="0" value="0"></label><label>Last layer <input id="score-to" type="number" min="0" max="0" value="0"></label>
+          <label>Speed <select id="score-speed"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="1.5">1½×</option><option value="2">2×</option><option value="3">3×</option></select></label>
+          <label>Mix <select id="score-mix"><option value="recorded">Recorded sound</option><option value="current">Current sound</option></select></label>
+          <label>Untouched layers <select id="score-untouched"><option value="scan">Generated scan</option><option value="silence">Silence</option></select></label>
+          <label class="check"><input id="score-record" type="checkbox" checked>Save new touches</label>
+        </div><p class="small">Speed changes pacing, preserving pitch. Exports contain one pass and its echo tail.</p><div class="note-links"><button type="button" class="note-link" data-note="14">Recorded gestures <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="15">How the score is made <span aria-hidden="true">↗</span></button></div></details>
+        <p id="score-layer-note" class="small">No saved ripples yet.</p>
+      </div><details class="sequence-settings" id="sequence-settings"><summary>Generate a sequence <span class="small">Give chance a turn</span></summary><div class="auto-controls" aria-label="Auto-randomizer"><div class="auto-row"><label>Auto-randomizer <select id="auto-count"><option value="8">8 layers</option><option value="16" selected>16 layers</option><option value="32">32 layers</option><option value="64">64 layers</option></select></label><button id="auto-start">Grow a sequence</button><button id="auto-stop" disabled>Stop</button></div><progress id="auto-progress" max="16" value="0" aria-label="Generated layers" hidden></progress><p id="auto-status" class="small" aria-live="polite">Appends to Your field. Your alphabet and sound mix stay yours.</p></div><button type="button" class="note-link" data-note="16">How chance is recorded <span aria-hidden="true">↗</span></button></details></section></section><section id="source-workbench" role="tabpanel" aria-labelledby="source-tab" tabindex="0" hidden><details id="source-panel" class="source-panel" open><summary>Listen to a source <span class="small">A recording, read another way</span></summary>
   <div class="source-heading"><button id="source-load">Load sound / relink</button><span id="source-name" class="small">A local recording can supply the signals.</span><input id="source-file" type="file" accept="audio/*,.wav,.mp3,.m4a,.aac,.ogg,.flac,.wwcaudio" hidden></div>
   <p id="source-status" class="small" role="status">Local processing. WAV and browser-supported music formats, up to 3 minutes / 32 MB. Existing layers stay.</p><button id="source-cancel" hidden>Cancel</button><progress id="source-progress" value="0" max="1" aria-label="Source work progress" hidden></progress>
   <div id="source-controls" hidden>
@@ -87,20 +167,7 @@ main>.history-tools,main>.note-index,main>footer{width:var(--lower-column-width)
     <label class="source-review">Review <select id="source-take"><option value="">Current reading</option></select></label><p id="source-comparison" class="small"></p></details>
     <details class="source-depth"><summary>Keep or export this source</summary><div class="source-row"><button id="source-package">Download audio package</button><select id="source-export-kind" aria-label="Source audio export contents"><option value="response">Synthesized response</option><option value="mix">Source + field mix</option></select><button id="source-export">Export source WAV</button></div><p class="small">Keep the audio package beside Download history. Together they preserve the original bytes, full measurements, mappings, and layers. History alone needs the exact source relinked. A response uses instrument volume; a mix also applies the Source and Field levels. Both exclude live interactions. The existing Export WAV below keeps the generated gesture score.</p><button id="source-detach" class="quiet" data-source-edit>Detach source from live field</button></details>
   </div>
-</details>
-<div class="scene"><div class="scene-toolbar"><div class="alphabet-bar"><label>Alphabet <select id="alphabet"></select></label></div><label class="lens-select">Lens <select id="lens"><option value="state">State</option><option value="relations">Relations</option><option value="change">Change</option><option value="memory">Memory</option><option value="frequency">Frequency</option></select></label><a class="notes-jump" href="#notes-index">Field notes</a></div><div class="scene-subtoolbar"><span id="alphabet-legend" class="small"></span><details class="view-options" id="view-options"><summary>View options</summary><div class="view-options-content"><div class="view-controls" id="field-controls"><label>Tilt <output id="angle">0°</output><input id="tilt" type="range" min="0" max="78" value="0" aria-label="Tilt the field through time"></label><label class="check"><input id="threads" type="checkbox" checked>Story threads</label></div><div class="alphabet-options"><label class="check"><input id="alphabet-history" type="checkbox" checked> Layer alphabets</label><label class="check"><input id="alphabet-shape" type="checkbox" checked> Shape from alphabet</label></div><p id="alphabet-provenance" class="small"></p><p id="alphabet-note" class="small"></p><p id="lens-note" class="small">Touch the field. A ripple passes; the record stays.</p><div class="note-links"><button type="button" class="note-link" data-note="10">Ways of seeing <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="12">Alphabet & shape <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="6">Story threads <span aria-hidden="true">↗</span></button></div></div></details></div><div id="frequency-controls" class="frequency-controls" hidden><label>Frequency <output id="frequency-label"></output><input id="frequency" type="range" min="1" max="1" value="1" aria-label="Temporal frequency band"></label></div><svg id="field" role="img" aria-labelledby="field-title field-description"><title id="field-title">A field of signals with an inherited context</title><desc id="field-description">Sixty-four anchored signals. Touch to disturb a wave surface. Use Move fields to change observation. The alphabet renders stored binary states; solid and dashed contours are separate readers. Ripple the selected signal with the button below as a keyboard alternative.</desc></svg><div class="scene-actions"><div class="switches" aria-label="Touch behavior"><button id="touch-ripple" aria-pressed="true">Ripple</button><button id="touch-move" aria-pressed="false">Move fields</button></div><div class="scene-utilities"><button id="capture">Capture · C</button><button id="full-view">Full screen · F</button></div></div></div><div class="moment-note"><span class="eyebrow">IN THIS MOMENT</span><p id="moment-copy">Two readers can attend to the same signals and preserve different relationships.</p><button type="button" id="moment-more" class="note-link" data-note="2" aria-label="Read more: Shared attention">Read more <span aria-hidden="true">↗</span></button></div><section class="observe-dock" aria-labelledby="observe-title"><div class="section-heading"><h2 id="observe-title"><span class="step">01</span> Observe & carry</h2><button type="button" class="note-link" data-note="2">What carries? <span aria-hidden="true">↗</span></button></div><div class="observation-controls"><div class="switches" aria-label="Select an observer"><button data-reader="0" aria-pressed="true">I ─</button><button data-reader="1" aria-pressed="false">you ┄</button></div><label class="rule-label"><span class="sr-only">Interpretive rule</span><select id="rule"><option value="repeat">preserve repetition</option><option value="break">preserve interruption</option></select></label><details id="adjust"><summary>Adjust field</summary><div class="field-sliders"><label>Across <output data-value="x"></output><input type="range" data-field="x" min="0" max="100" aria-label="Observation field horizontal position"></label><label>Down <output data-value="y"></output><input type="range" data-field="y" min="0" max="100" aria-label="Observation field vertical position"></label><label>Width <output data-value="w"></output><input type="range" data-field="w" min="12" max="160" aria-label="Observation field width"></label><label>Height <output data-value="h"></output><input type="range" data-field="h" min="12" max="160" aria-label="Observation field height"></label></div><p class="small">Fields can reach beyond this window. Their centers remain within it; only visible signals can be observed.</p><div class="note-links"><button type="button" class="note-link" data-note="19">The shape of attention <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="17">Beyond the window <span aria-hidden="true">↗</span></button></div></details></div><div class="carry-controls"><label>Carry from <select id="mode"><option value="union">either field ∪</option><option value="intersection">both fields ∩</option></select></label><button id="carry" class="primary">Carry · N →</button></div><p id="carry-note" class="small" aria-live="polite"></p><div class="status" aria-live="polite"><span id="status">Choose what enters the next encounter.</span><span id="retained">64 signals retained</span></div></section><div class="guided" id="guide" hidden><span class="eyebrow" id="guide-step">AUTHORED ENCOUNTER</span><strong id="guide-title"></strong><p id="guide-caption"></p><button id="guide-next" class="primary">Next encounter →</button></div><div class="ripple-strip"><div class="ripple-actions"><button id="ripple-here">Ripple this signal · R</button><button id="settle" class="quiet">Still the water</button><button id="sound-toggle" aria-pressed="false">Sound off</button></div><button type="button" class="note-link" data-note="7">Water & record <span aria-hidden="true">↗</span></button></div><section class="timeline-dock" aria-labelledby="timeline-title"><div class="section-heading"><h2 id="timeline-title"><span class="step">02</span> Explore time</h2><button type="button" class="note-link" data-note="3">What stays? <span aria-hidden="true">↗</span></button></div><div class="time-controls"><label>Layer <output id="layer-label">00 / 00</output><input id="layer" type="range" min="0" max="0" value="0" aria-label="Visit a recorded layer"></label><button id="present" class="quiet" disabled>Present ↑</button></div><div class="body-access"><button id="open-body">History body · B</button><span id="body-hint" class="small">One slice now; Carry gives it depth.</span></div><div class="score-transport" aria-label="Play the field through time">
-        <div class="score-buttons"><button id="score-play">Play field</button><button id="score-stop" disabled>Stop</button><button id="score-export">Export WAV</button><label class="check"><input id="score-loop" type="checkbox">Loop</label></div>
-        <label class="score-seek"><span id="score-time">0:00 / 0:00</span><input id="score-position" type="range" min="0" max="1" step="0.01" value="0" aria-label="Seek through the score" disabled></label>
-        <p id="score-status" class="small" aria-live="polite">Play enables audio. P plays or pauses.</p>
-        <details><summary>Playback settings</summary><div class="score-options">
-          <label>First layer <input id="score-from" type="number" min="0" max="0" value="0"></label><label>Last layer <input id="score-to" type="number" min="0" max="0" value="0"></label>
-          <label>Speed <select id="score-speed"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="1.5">1½×</option><option value="2">2×</option><option value="3">3×</option></select></label>
-          <label>Mix <select id="score-mix"><option value="recorded">Recorded sound</option><option value="current">Current sound</option></select></label>
-          <label>Untouched layers <select id="score-untouched"><option value="scan">Generated scan</option><option value="silence">Silence</option></select></label>
-          <label class="check"><input id="score-record" type="checkbox" checked>Save new touches</label>
-        </div><p class="small">Speed changes pacing, preserving pitch. Exports contain one pass and its echo tail.</p><div class="note-links"><button type="button" class="note-link" data-note="14">Recorded gestures <span aria-hidden="true">↗</span></button><button type="button" class="note-link" data-note="15">How the score is made <span aria-hidden="true">↗</span></button></div></details>
-        <p id="score-layer-note" class="small">No saved ripples yet.</p>
-      </div><details class="sequence-settings" id="sequence-settings"><summary>Generate a sequence <span class="small">Give chance a turn</span></summary><div class="auto-controls" aria-label="Auto-randomizer"><div class="auto-row"><label>Auto-randomizer <select id="auto-count"><option value="8">8 layers</option><option value="16" selected>16 layers</option><option value="32">32 layers</option><option value="64">64 layers</option></select></label><button id="auto-start">Grow a sequence</button><button id="auto-stop" disabled>Stop</button></div><progress id="auto-progress" max="16" value="0" aria-label="Generated layers" hidden></progress><p id="auto-status" class="small" aria-live="polite">Appends to Your field. Your alphabet and sound mix stay yours.</p></div><button type="button" class="note-link" data-note="16">How chance is recorded <span aria-hidden="true">↗</span></button></details></section></div><aside class="inspector" aria-label="Signal and instrument"><div class="inspector-tabs" role="tablist" aria-label="Inspector"><button id="signal-tab" role="tab" aria-selected="true" aria-controls="signal-panel" tabindex="0">Signal</button><button id="instrument-tab" role="tab" aria-selected="false" aria-controls="instrument-panel" tabindex="-1">Instrument</button></div><section id="signal-panel" class="story" role="tabpanel" aria-labelledby="signal-tab" tabindex="0">
+</details></section><section id="signal-panel" class="story" role="tabpanel" aria-labelledby="signal-tab" tabindex="0" hidden>
       <div class="story-heading"><h2>Selected signal</h2><label><span class="sr-only">Follow a signal</span><select id="follow"></select></label></div>
       <p id="source-layer-context" class="small" hidden></p><button id="source-listen-layer" hidden>Listen to this source interval</button><p class="small" id="reading-label">I · glyph 28</p>
       <div id="free-editor" class="free-editor" hidden><h3 id="free-title">Compose a signal</h3>
@@ -1447,8 +1514,14 @@ function createWorkbench(api){
   const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
   const tabs=qa('.inspector-tabs [role="tab"]'),pages=qa('[data-note-page]'),dialog=q('#notes-dialog');
   let activeNote=2,returnFocus=null;
+  const panelScroll=new Map();
   function panel(name,focus=false){
-    for(const tab of tabs){const selected=tab.id===name+'-tab';tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;q('#'+tab.getAttribute('aria-controls')).hidden=!selected;if(selected&&focus)tab.focus();}
+    const next=tabs.find(t=>t.id===name+'-tab');if(!next)return;
+    const current=tabs.find(t=>t.getAttribute('aria-selected')==='true');
+    if(current&&current!==next)panelScroll.set(current.id,q('#'+current.getAttribute('aria-controls')).scrollTop);
+    for(const tab of tabs){const selected=tab.id===name+'-tab';tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;q('#'+tab.getAttribute('aria-controls')).hidden=!selected;if(selected&&focus)tab.focus({preventScroll:true});}
+    if(current!==next)q('#'+next.getAttribute('aria-controls')).scrollTop=panelScroll.get(next.id)??0;
+    api.redraw?.();
   }
   tabs.forEach((tab,i)=>{
     tab.addEventListener('click',()=>panel(tab.id.replace('-tab','')));
@@ -1457,6 +1530,19 @@ function createWorkbench(api){
       event.preventDefault();panel(tabs[next].id.replace('-tab',''),true);
     });
   });
+  // Size both columns to the actual visible space, including wrapped controls.
+  // Only layout changes and page scrolling schedule this; audio frames do not.
+  if(typeof ResizeObserver!=='undefined'){
+    const stage=q('#field-stage'),column=q('.field-column'),field=q('#field'),wide=matchMedia('(min-width: 901px)');let fitFrame=null;
+    function fit(){fitFrame=null;if(!wide.matches){stage.style.removeProperty('--workbench-height');stage.style.removeProperty('--canvas-height');return;}
+      const top=Math.max(document.fullscreenElement?0:16,stage.getBoundingClientRect().top+parseFloat(getComputedStyle(stage).paddingTop)),available=Math.max(320,innerHeight-top-16),extras=column.getBoundingClientRect().height-field.getBoundingClientRect().height;
+      const dimensions={'--workbench-height':Math.round(available),'--canvas-height':Math.max(180,Math.round(available-extras))};
+      for(const [key,value] of Object.entries(dimensions))if(Math.abs(parseFloat(stage.style.getPropertyValue(key))-value)>=1||!stage.style.getPropertyValue(key))stage.style.setProperty(key,value+'px');
+    }
+    function queueFit(){if(fitFrame===null)fitFrame=requestAnimationFrame(fit);}
+    const sizeWatch=new ResizeObserver(queueFit);for(const el of [column,q('.masthead'),q('.session-bar')])sizeWatch.observe(el);
+    window.addEventListener('resize',queueFit);window.addEventListener('scroll',queueFit,{passive:true});document.addEventListener('fullscreenchange',queueFit);queueFit();
+  }
   function suggest(id){const note=momentNotes[id];if(!note)return;q('#moment-copy').textContent=note.text;q('#moment-more').dataset.note=String(id);q('#moment-more').textContent='Read more ↗';q('#moment-more').setAttribute('aria-label','Read more: '+note.label);}
   function showNote(id,opener){
     const page=pages.find(p=>Number(p.dataset.notePage)===Number(id));if(!page)return;
@@ -1469,6 +1555,7 @@ function createWorkbench(api){
   document.addEventListener('click',event=>{
     const source=event.target.closest?.('[data-note]');if(source){showNote(source.dataset.note,source);return;}
     const jump=event.target.closest?.('.notes-jump');if(jump)q('#notes-index').open=true;
+    const anchor=event.target.closest?.('a[href^="#"]');if(anchor){const target=q(anchor.getAttribute('href')),owner=target?.closest?.('[role="tabpanel"]'),tab=tabs.find(t=>t.getAttribute('aria-controls')===owner?.id);if(tab){panel(tab.id.replace('-tab',''));for(let el=target;el&&el!==owner;el=el.parentElement)if(el.tagName==='DETAILS')el.open=true;}}
   });
   q('#close-notes').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('close',()=>{returnFocus?.focus?.({preventScroll:true});returnFocus=null;});
@@ -1485,7 +1572,7 @@ function createWorkbench(api){
   on('#touch-ripple,#ripple-here,#body-ripple,#settle','click',7);on('[data-ripple]','input',7);
   on('#sound-toggle,#sound-test','click',8);on('[data-sound],#sound-timbre,#alphabet-sound','change',8);
   on('#binary-enabled,#binary-neighbors,[data-binary]','change',9);on('#flip','click',9);
-  on('#lens,#frequency','change',10);on('#tilt','input',11);
+  on('#lens','change',()=>{if(q('#lens').value==='frequency')panel('field');return 10;});on('#frequency','change',10);on('#tilt','input',11);
   on('#open-body','click',()=>api.isGlyph()?11:20);on('#body-scope','change',()=>q('#body-scope').value==='field'?19:20);
   on('#body-signal','change',20);on('#body-base,#body-skin','change',11);
   on('#alphabet','change',()=>{if(q('#alphabet').value==='free'){panel('signal');return 13;}return 12;});
@@ -1760,7 +1847,7 @@ const randomizer=createRandomizer({read:()=>({history,fields,session,visit,busy:
   finish:(from,to)=>{senses.selectPerformanceRange(from,to);persist();}
 });
 createInterface({toggleSound:senses.toggleSound,redraw:()=>{draw();senses.drawBody();}});
-const workbench=createWorkbench({isGlyph});
+const workbench=createWorkbench({isGlyph,redraw:refresh});
 const path=points=>points.map((p,i)=>(i?'L':'M')+p.x.toFixed(2)+' '+p.y.toFixed(2)).join(' ');
 const curve=(a,b,bend=0)=>`M ${a.x} ${a.y} C ${a.x+bend} ${(a.y+b.y)/2-12} ${b.x+bend} ${(a.y+b.y)/2-12} ${b.x} ${b.y}`;
 function camera(){
@@ -1881,7 +1968,7 @@ function draw({motion=false}={}){
   }
   Object.values(groups).forEach(endSvgFrame);
 }
-function selectSignal(id){selected=id;allParents=false;refresh();workbench.panel('signal');workbench.suggest(isGlyph()?5:20);}
+function selectSignal(id,{reveal=true}={}){selected=id;allParents=false;refresh();if(reveal)workbench.panel('signal');workbench.suggest(isGlyph()?5:20);}
 function setComparison(ref){omitted=omitted===ref?null:ref;alternative=omitted?replay(actions,omitted):null;refresh();}
 function miniature(parent,id,form,x,y,size,dash='',layer=visit){
   const pts=notation.points(id,form,layer).map(v=>({x:x+v.x*size,y:y+v.y*size}));
@@ -2049,7 +2136,7 @@ svg.addEventListener('pointerdown',e=>{
   if(busy||transportLock||autoRun||sourceLock||e.button!==0)return;const p=pointer(e),historic=visit!==history.length-1||session==='encounter';
   const handle=historic?null:handles.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
   const hit=hits.map(h=>({...h,d:Math.hypot(h.x-p.x,h.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
-  if(senses.pointerDown(unproject(p.x,p.y,visit),e)){if(hit&&hit.d<14)selectSignal(hit.id);svg.setPointerCapture(e.pointerId);e.preventDefault();return;}
+  if(senses.pointerDown(unproject(p.x,p.y,visit),e)){if(hit&&hit.d<14)selectSignal(hit.id,{reveal:false});svg.setPointerCapture(e.pointerId);e.preventDefault();return;}
   if(handle&&handle.d<13){sourcePanel?.manualAttention();reader=handle.reader;drag={...handle,start:unproject(p.x,p.y,visit),field:clone(fields[reader])};svg.setPointerCapture(e.pointerId);e.preventDefault();controls();return;}
   if(hit&&hit.d<14){selectSignal(hit.id);return;}
   if(!historic){const world=unproject(p.x,p.y,visit),j=[reader,1-reader].find(k=>inside(world,fields[k]));if(j!==undefined){sourcePanel?.manualAttention();reader=j;drag={reader:j,type:'move',start:world,field:clone(fields[j])};svg.setPointerCapture(e.pointerId);e.preventDefault();controls();}}
