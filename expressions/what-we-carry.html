@@ -1019,6 +1019,11 @@ function createPlayback(api){
     if(key!==timingKey){timingKey=key;try{plannedTiming=scoreTiming(history,ledger,options);}catch{plannedTiming=null;}}
     return plannedTiming;
   }
+  // A message yields to input and painting without chained-timer throttling.
+  function yieldAudioTask(){return new Promise(resolve=>{
+    if(typeof MessageChannel==='undefined'){setTimeout(resolve,0);return;}
+    const channel=new MessageChannel();channel.port1.onmessage=()=>{channel.port1.close();channel.port2.close();resolve();};channel.port2.postMessage(null);
+  });}
   function message(text){pq('#score-status').textContent=text;pq('#body-score-status').textContent=text;api.notice?.(text);}
   function progress(value){for(const id of ['#score-progress','#body-score-progress']){if(value===undefined)pq(id).removeAttribute('value');else pq(id).value=value;}}
   function snapshot(){const max=api.read().history.length-1,from=Math.max(0,Math.min(max,Number(pq('#score-from').value)||0)),to=Math.max(from,Math.min(max,Number(pq('#score-to').value)||0));const current=api.instrument?.()??api.capture();return {...clone(ledger),instrument:{sound:clone(current.sound),water:clone(current.water)},composition:{from,to,speed:Number(pq('#score-speed').value),mix:pq('#score-mix').value,untouched:pq('#score-untouched').value}};}
@@ -1073,7 +1078,7 @@ function createPlayback(api){
     const s=api.read(),context=api.capture(),options={scope:target,id:s.selected,reader:s.reader,from:Number(pq('#score-from').value),to:Number(pq('#score-to').value),speed:Number(pq('#score-speed').value),mix:pq('#score-mix').value,untouched:pq('#score-untouched').value};
     const key=JSON.stringify({revision,history:s.history,context,options});
     if(key===cacheKey&&score&&pcm)return;
-    const yieldWork=async()=>{await new Promise(resolve=>setTimeout(resolve,0));if(token!==job)throw Error('Canceled.');};
+    const yieldWork=async()=>{await yieldAudioTask();if(token!==job)throw Error('Canceled.');};
     message('Composing the saved layers…');const compiled=await compileScore(s.history,ledger,context,options,yieldWork);
     message('Rendering the score…');const rendered=await renderScoreAudio(compiled,{yieldWork,progress:p=>{progress(p);message(`Rendering audio · ${Math.round(p*100)}%`);}});
     if(token!==job)throw Error('Canceled.');score=compiled;pcm=rendered;cacheKey=key;audioBuffer=null;offset=0;shownLayer=-1;
